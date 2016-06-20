@@ -1,18 +1,26 @@
 <!doctype html>
 <html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, user-scalable=no'>
     <title>Elo7 Tech</title>
-    <link rel="stylesheet" href="{{site.baseUrl}}/reset.css">
-    <link rel="stylesheet" href="{{site.baseUrl}}/main.css">
+    <link rel='stylesheet' href='{{site.baseUrl}}/reset.css'>
+    <link rel='stylesheet' href='{{site.baseUrl}}/fonts.css'>
+    <link rel='stylesheet' href='{{site.baseUrl}}/main.css'>
 </head>
 <body>
     <header>
-        <h1>{{site.title}}</h1>
-        <nav>
-            <li><a href='{{site.baseUrl}}/'>Início</a></li>
-            <li><a href='{{site.baseUrl}}/about'>Sobre a Elo7</a></li>
+        <nav class='navigation'>
+            <a href='{{site.baseUrl}}/' class='logo'>{{site.title}}</a>
+            <h2 class='categories-title'>Categorias</h2>
+            <ul class='categories-list'>
+                <li><a href=''>Java</a></li>
+                <li><a href=''>Front end</a></li>
+                <li><a href=''>Back end</a></li>
+                <li><a href=''>Java</a></li>
+                <li><a href=''>Java</a></li>
+                <li><a href=''>Java</a></li>
+            </ul>
         </nav>
     </header>
     <main>
