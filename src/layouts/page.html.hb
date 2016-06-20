@@ -14,12 +14,9 @@
             <a href='{{site.baseUrl}}/' class='logo'>{{site.title}}</a>
             <h2 class='categories-title'>Categorias</h2>
             <ul class='categories-list'>
-                <li><a href=''>Java</a></li>
-                <li><a href=''>Front end</a></li>
-                <li><a href=''>Back end</a></li>
-                <li><a href=''>Java</a></li>
-                <li><a href=''>Java</a></li>
-                <li><a href=''>Java</a></li>
+                {{#each (getCategories)}}
+                    <li><a href="/{{category}}">{{category}}</a></li>
+                {{/each}}
             </ul>
         </nav>
     </header>

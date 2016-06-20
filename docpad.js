@@ -1,19 +1,13 @@
 moment = require('moment');
 
 docpadConfig = function() {
-    var categories = [
-        "front-end",
-        "back-end",
-        "design",
-        "devops",
-        "busca"
-    ];
-
     return {
         documentsPaths: ['documents', 'posts'],
 
+        filesPaths: ['assets'],
+
         plugins: {
-            handlebars: {
+           handlebars: {
                 helpers: {
                     getCollection: function(name) {
                         return this.getCollection(name).toJSON();
@@ -21,6 +15,15 @@ docpadConfig = function() {
 
                     dateAsText: function(date) {
                         return moment(date).utcOffset("00:00").format('DD MMM YYYY');
+                    },
+                    getCategories: function() {
+                        return [
+                            { category: "front-end" },
+                            { category: "back-end" },
+                            { category: "design" },
+                            { category: "devops" },
+                            { category: "busca" }
+                        ];
                     }
                 }
             }
