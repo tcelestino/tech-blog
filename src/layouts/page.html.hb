@@ -12,7 +12,6 @@
         <h1>{{site.title}}</h1>
         <nav>
             <li><a href='{{site.baseUrl}}/'>Início</a></li>
-            <li><a href='{{site.baseUrl}}/posts'>Posts</a></li>
             <li><a href='{{site.baseUrl}}/about'>Sobre a Elo7</a></li>
         </nav>
     </header>
