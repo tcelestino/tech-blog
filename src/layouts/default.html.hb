@@ -1,24 +1,25 @@
 <!doctype html>
 <html>
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=devicewidth, initial-scale=1, user-scalable=no">
-	<title>Tech Elo7</title>
-	<link rel="stylesheet" href="{{site.baseUrl}}/icons.css">
-	<link rel="stylesheet" href="{{site.baseUrl}}/style.css">
-	<!-- <link rel="alternate" type="application/atom+xml" title="CaelUX" href="{{site.baseUrl}}/feed"> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no">
+    <title>Elo7 Tech</title>
+    <link rel="stylesheet" href="{{site.baseUrl}}/reset.css">
+    <link rel="stylesheet" href="{{site.baseUrl}}/main.css">
 </head>
 <body>
-	<header>
-		<h1>{{site.title}}</h1>
-		<a href='{{site.baseUrl}}/'>Ir para a página principal</a>
-		<a href='{{site.baseUrl}}/feed'>Assine o feed</a>
-	</header>
-	<main>
-		{{{content}}}
-	</main>
-	<footer>
-
-	</footer>
+    <header>
+        <h1>{{site.title}}</h1>
+        <nav>
+            <li><a href='{{site.baseUrl}}/'>Início</a></li>
+            <li><a href='{{site.baseUrl}}/posts'>Posts</a></li>
+            <li><a href='{{site.baseUrl}}/about'>Sobre a Elo7</a></li>
+        </nav>
+    </header>
+    <main>
+        {{{content}}}
+    </main>
+    <footer>
+    </footer>
 </body>
 </html>
