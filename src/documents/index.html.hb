@@ -10,9 +10,9 @@ referenceOthers: true
                     <h1 class="title">{{title}}</h1>
                 </header>
                 <small class="date">{{dateAsText this.date}}</small>
-                <small class="category {{category}}">{{category}}</small>
-                
+
                 <p class="description">{{description}}</p>
+                <small class="category {{category}}">{{category}}</small>
             </article>
         </a>
     {{/each}}
