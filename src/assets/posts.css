@@ -1,0 +1,79 @@
+.posts-container {
+    padding: 1em;
+}
+
+.posts-container > a {
+    text-decoration: none;
+    color: black;
+}
+
+.posts-container .post-card {
+    position: relative;
+    padding: 2em;
+    margin: 1em 0;
+    border-radius: 2px;
+    border: 1px solid #e2e2e2;
+    transition: 100ms;
+}
+
+.posts-container .post-card:hover {
+    box-shadow: 3px 3px 5px #888888;
+}
+
+.post-card .date {
+    position: absolute;
+    font-size: 0.8em;
+    top: 0.5em;
+    left: 0.5em;
+    color: #888;
+}
+
+.post-card .category {
+    position: absolute;
+    top: 0.5em;
+    right: 0.5em;
+}
+
+.post-card .title {
+    font-size: 2em;
+}
+
+.post-card .description {
+    margin-top: 2em;
+    font-weight: lighter;
+}
+
+.posts-container .card-back-end {
+    border-color: rgba(240,30,30,0.4);
+}
+.post-card .back-end {
+    color: rgba(240,30,30,1);
+}
+
+.posts-container .card-front-end {
+    border-color: rgba(0,0,255,0.4);
+}
+.post-card .front-end {
+    color: rgba(0,0,255,1);
+}
+
+.posts-container .card-design {
+    border-color: rgba(0,160,100,0.4);
+}
+.post-card .design {
+    color: rgba(0,160,100,1);
+}
+
+.posts-container .card-vagas {
+    border-color: rgba(0,0,0,0.4);
+}
+.post-card .vagas {
+    color: rgba(0,0,0,1);
+}
+
+.posts-container .card-devops {
+    border-color: rgba(120,180,240,0.4);
+}
+.post-card .devops {
+    color: rgba(120,180,240,1);
+}

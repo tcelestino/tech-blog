@@ -21,8 +21,8 @@ docpadConfig = function() {
                             { category: "front-end" },
                             { category: "back-end" },
                             { category: "design" },
-                            { category: "devops" },
-                            { category: "busca" }
+                            { category: "vagas" },
+                            { category: "devops" }
                         ];
                     }
                 }

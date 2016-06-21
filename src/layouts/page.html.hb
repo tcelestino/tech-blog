@@ -7,9 +7,10 @@
     <link rel='stylesheet' href='{{site.baseUrl}}/reset.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/fonts.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/main.css'>
+    <link rel='stylesheet' href='{{site.baseUrl}}/posts.css'>
 </head>
 <body>
-    <header>
+    <header class="left-pane">
         <nav class='navigation'>
             <a href='{{site.baseUrl}}/' class='logo'>{{site.title}}</a>
             <h2 class='categories-title'>Categorias</h2>
