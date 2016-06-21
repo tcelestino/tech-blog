@@ -20,6 +20,7 @@
                 {{/each}}
             </ul>
         </nav>
+        <a href="https://github.com/elo7/tech-blog" class="social github"></a>
     </header>
     <main>
         {{{content}}}

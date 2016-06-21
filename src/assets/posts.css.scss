@@ -1,0 +1,73 @@
+@import 'categories';
+
+.posts-container {
+    padding: 1em;
+
+    > a {
+        text-decoration: none;
+        color: black;
+    }
+    .post-card {
+        position: relative;
+        padding: 2em;
+        margin: 1em 0;
+        border-radius: 2px;
+        border: 1px solid #e2e2e2;
+        transition: 100ms;
+
+        .date {
+            position: absolute;
+            font-size: 0.8em;
+            top: 0.5em;
+            left: 0.5em;
+            color: #888;
+        }
+        .category {
+            position: absolute;
+            top: 0.5em;
+            right: 0.5em;
+        }
+        .title {
+            font-size: 2em;
+        }
+        .description {
+            margin-top: 2em;
+            font-weight: lighter;
+        }
+        .back-end { color: $back-end; }
+        .front-end { color: $front-end; }
+        .design { color: $design; }
+        .vagas { color: $vagas; }
+        .devops { color: $devops; }
+    }
+    .card-back-end { 
+        border-color: $back-end-shadow;
+        &:hover {
+            box-shadow: 1px 1px 10px $back-end-shadow;
+        }
+    }
+    .card-front-end {
+        border-color: $front-end-shadow; 
+        &:hover {
+            box-shadow: 1px 1px 10px $front-end-shadow;
+        }
+    }
+    .card-design {
+        border-color: $design-shadow; 
+        &:hover {
+            box-shadow: 1px 1px 10px $design-shadow;
+        }
+    }
+    .card-vagas {
+        border-color: $vagas-shadow; 
+        &:hover {
+            box-shadow: 1px 1px 10px $vagas-shadow;
+        }
+    }
+    .card-devops {
+        border-color: $devops-shadow; 
+        &:hover {
+            box-shadow: 1px 1px 10px $devops-shadow;
+        }
+    }
+}

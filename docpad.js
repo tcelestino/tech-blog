@@ -2,12 +2,10 @@ moment = require('moment');
 
 docpadConfig = function() {
     return {
-        documentsPaths: ['documents', 'posts'],
-
-        filesPaths: ['assets'],
+        documentsPaths: ['documents', 'posts', 'assets'],
 
         plugins: {
-           handlebars: {
+            handlebars: {
                 helpers: {
                     getCollection: function(name) {
                         return this.getCollection(name).toJSON();
