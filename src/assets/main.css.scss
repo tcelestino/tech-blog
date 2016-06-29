@@ -31,9 +31,9 @@ main {
 
 .logo {
     background: url('//images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg') no-repeat;
-    background-size: 89px 34px;
-    height: 34px;
-    width: 89px;
+    background-size: 90px 35px;
+    width: 90px;
+    height: 35px;
     text-indent: -9999px;
     display: block;
     -webkit-filter: brightness(100); /*REMOVER*/
@@ -43,13 +43,14 @@ main {
 .navigation {
     margin: 0 5em;
 
-    .categories-title {
+    .nav-title {
         color: white;
         font-size:  1.6em;
+        margin-top: 1.5em;
     }
 }
 
-.categories-list {
+.nav-list {
     margin: 1em 0;
 
     li{

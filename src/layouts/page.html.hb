@@ -13,11 +13,17 @@
     <header class="left-pane">
         <nav class='navigation'>
             <a href='{{site.baseUrl}}/' class='logo'>{{site.title}}</a>
-            <h2 class='categories-title'>Categorias</h2>
-            <ul class='categories-list'>
+            <h2 class='nav-title'>Categorias</h2>
+            <ul class='nav-list'>
                 {{#each (getCategories)}}
                     <li><a href="/{{category}}">{{category}}</a></li>
                 {{/each}}
+            </ul>
+            <h2 class='nav-title'>Veja também</h2>
+            <ul class='nav-list'>
+                <li><a href="http://elo7.com.br" target="_blank">Conheça o Elo7</a></li>
+                <li><a href="http://carreira.elo7.com.br/" target="_blank">Carreiras</a></li>
+                <li><a href="http://eventos.elo7.com.br/" target="_blank">Nossos eventos</a></li>
             </ul>
         </nav>
         <a href="https://github.com/elo7/tech-blog" class="social github"></a>

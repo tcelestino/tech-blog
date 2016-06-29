@@ -24,6 +24,9 @@ docpadConfig = function() {
                         ];
                     }
                 }
+            },
+            cleanurls: {
+                static: true
             }
         },
 

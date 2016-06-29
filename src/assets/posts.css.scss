@@ -18,23 +18,35 @@
             position: absolute;
             font-size: 0.8em;
             top: 0.5em;
-            left: 0.5em;
+            right: 0.5em;
             color: #888;
         }
         .category {
             color: white;
+            text-decoration: none;
             font-size: 0.8em;
             padding: .5em;
             border-radius: 20px;
             display: inline-block;
             margin-top: 0.8em;
+            cursor: pointer;
         }
         .title {
             font-size: 2em;
+            text-decoration: none;
+            color: black;
         }
         .description {
             margin-top: 2em;
             font-weight: lighter;
+        }
+        .link {
+            text-decoration: none;
+            color: black;
+        }
+        .post-link {
+            display: block;
+            text-align: center;
         }
         .back-end { background-color: $back-end; }
         .front-end { background-color: $front-end; }
