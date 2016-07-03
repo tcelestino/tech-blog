@@ -5,15 +5,14 @@ body {
 }
 header.left-pane {
     background-color: $yellow-default;
-    padding: 2em 0;
     text-align: center;
+    position: relative;
     
     .social {
-        position: absolute;
-        left: 2em;
         width: 2em;
         height: 2em;
-        display: block;
+        position: absolute;
+        display: none;
     }
     .github {
         background-size: 2em 2em;
@@ -23,34 +22,90 @@ header.left-pane {
 
 }
 
-.logo {
-    background: url('//images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg') no-repeat;
-    background-size: 100px 40px;
-    width: 100px;
-    height: 40px;
-    text-indent: -9999px;
-    display: inline-block;
-    -webkit-filter: brightness(100); /*REMOVER*/    
-}
+.logo-container {
+    padding-top: 2em;
 
+    .logo {
+        background: url('//images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg') no-repeat;
+        background-size: 100px 40px;
+        width: 100px;
+        height: 40px;
+        text-indent: -9999px;
+        display: inline-block;
+
+        -webkit-filter: brightness(100); /*REMOVER*/    
+    }
+}
 .navigation {
     margin: 0 5em;
+    padding: 1em 0;
+
+    .categories-switch {
+        display: none;
+
+        &:checked {
+            ~ .nav-category {
+                display: initial;
+            }
+
+            + .selectable {
+                &:after {
+                    border-bottom: .50em solid white;
+                    border-top: 0;
+                }
+            }
+        }
+    }
+
+    .more-switch {
+        display: none;
+
+        &:checked {
+            ~ .nav-more {
+                display: initial;
+            }
+
+            + .selectable {
+                &:after {
+                    border-bottom: .50em solid white;
+                    border-top: 0;
+                }
+            }
+        }
+    }
+
+    .selectable {
+        cursor: pointer;
+        display: block;
+        position: relative;
+
+        &:after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: .50em;
+            right: -.65em;
+            border-top: .50em solid white;
+            border-left: .45em solid transparent;
+            border-right: .45em solid transparent;
+        }
+    }
 
     .nav-title {
         color: white;
-        font-size:  1.6em;
-        margin-top: 1.5em;
+        font-size:  1.4em;
+        margin-bottom: 0.5em;
         text-align: left;
 
         &:first-of-type {
-            margin-top: 2.5em;
+            margin-top: 2em;
         }
     }
 }
 
 .nav-list {
+    display: none;
     text-align: left;
-    margin: 1em 0;
 
     li {
         transition: 100ms;
@@ -63,16 +118,37 @@ header.left-pane {
             color: #fff;
             padding: 0.5em 0.2em;
             display: block;
+            cursor: pointer;
         }
     }
 }
 
-@media (min-width: 500px) {
+@media (min-width: 800px) {
     header.left-pane {
         height: 100%;
         width: 25%;
         max-width: 500px;
         position: fixed;
+
+        .social {
+            display: block;
+            bottom: 2em;
+        }
+
+        .github {
+            left: 2em;
+        }
+    }
+
+    .selectable {
+        cursor: inherit !important;
+
+        &:after {
+            content: none !important;
+        }
+    }
+    .nav-list {
+        display: initial;
     }
 
     main {
