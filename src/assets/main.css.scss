@@ -7,7 +7,7 @@ header.left-pane {
     background-color: $yellow-default;
     text-align: center;
     position: relative;
-    
+
     .social {
         width: 2em;
         height: 2em;
@@ -33,7 +33,7 @@ header.left-pane {
         text-indent: -9999px;
         display: inline-block;
 
-        -webkit-filter: brightness(100); /*REMOVER*/    
+        -webkit-filter: brightness(100); /*REMOVER*/
     }
 }
 .navigation {
@@ -48,11 +48,9 @@ header.left-pane {
                 display: initial;
             }
 
-            + .selectable {
-                &:after {
-                    border-bottom: .50em solid white;
-                    border-top: 0;
-                }
+            + .selectable::after {
+                border-bottom: .50em solid white;
+                border-top: 0;
             }
         }
     }
@@ -65,11 +63,9 @@ header.left-pane {
                 display: initial;
             }
 
-            + .selectable {
-                &:after {
-                    border-bottom: .50em solid white;
-                    border-top: 0;
-                }
+            + .selectable::after {
+                border-bottom: .50em solid white;
+                border-top: 0;
             }
         }
     }
@@ -113,9 +109,10 @@ header.left-pane {
         &:hover {
             padding-left: 1em;
         }
+
         a {
             text-decoration: none;
-            color: #fff;
+            color: white;
             padding: 0.5em 0.2em;
             display: block;
             cursor: pointer;
@@ -140,15 +137,18 @@ header.left-pane {
         }
     }
 
-    .selectable {
-        cursor: inherit !important;
+    .navigation {
+        .selectable {
+            cursor: inherit;
 
-        &:after {
-            content: none !important;
+            &:after {
+                content: none;
+            }
         }
-    }
-    .nav-list {
-        display: initial;
+
+        .nav-list {
+            display: initial;
+        }
     }
 
     main {
@@ -160,11 +160,11 @@ header.left-pane {
 ::-webkit-scrollbar {
     width: 0.5em;
 }
- 
+
 ::-webkit-scrollbar-track {
     background-color: white;
 }
- 
+
 ::-webkit-scrollbar-thumb {
     background-color: $yellow-default;
 }

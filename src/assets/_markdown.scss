@@ -1,0 +1,55 @@
+@import 'fonts';
+@import 'colors';
+
+.post-content {
+    * {
+        font-weight: map-get($font-weight, normal);
+    }
+
+    h1 {
+        font-size: 1.8em;
+    }
+
+    h2 {
+        font-size: 1.6em;
+    }
+
+    h3 {
+        font-size: 1.4em;
+    }
+
+    h4 {
+        font-size: 1.2em;
+    }
+
+    h1, h2, h3, h4 {
+        margin: 1em 0;
+        font-weight: map-get($font-weight, bold);
+    }
+
+    p {
+        line-height: 1.4;
+        text-align: justify;
+        margin: 0.5em 0;
+    }
+
+    ul, ol {
+        list-style: initial;
+        margin-left: 1.5em;
+        line-height: 1.4;
+    }
+
+    strong {
+        font-weight: map-get($font-weight, bold);
+    }
+
+    code {
+        margin: 1em 0;
+    }
+
+    a {
+        cursor: pointer;
+        color: map-get($colors-text, link);
+        font-weight: map-get($font-weight, bold);
+    }
+}

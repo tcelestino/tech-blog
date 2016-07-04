@@ -8,6 +8,7 @@
     <link rel='stylesheet' href='{{site.baseUrl}}/fonts.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/main.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/posts.css'>
+    <link rel='stylesheet' href='{{site.baseUrl}}/post.css'>
 </head>
 <body>
     <header class="left-pane">

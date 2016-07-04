@@ -1,3 +1,16 @@
+$font-size: (
+	smallest: 0.7,
+	small: 0.85,
+	normal: 1,
+	big: 1.15,
+	biggest: 1.3,
+);
+
+$font-weight: (
+	normal: 300,
+	bold: 500,
+);
+
 @font-face {
 	font-family: 'museo_sans';
 	src:
@@ -34,4 +47,13 @@
 		format('svg');
 	font-weight: 500;
 	font-style: normal;
+}
+
+
+@mixin font-size($unit, $size) {
+	@if $unit == 'rem' {
+		@include rem-fallback('font-size', map-get($font-size, $size));
+	} @else {
+		font-size: map-get($font-size, $size) + $unit;
+	}
 }

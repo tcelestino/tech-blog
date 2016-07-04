@@ -1,8 +1,8 @@
 ---
 layout: page
 ---
-<section>
-  <h2>{{document.title}}</h2>
+<section class="post-content">
+  <h1>{{document.title}}</h1>
   <div>
     {{{content}}}
   </div>

@@ -1,4 +1,4 @@
-@import 'categories';
+@import 'colors';
 
 .posts-container {
     padding: 1em;
@@ -11,15 +11,14 @@
         position: relative;
         padding: 2em;
         margin: 1em 0;
-        border-bottom: 1px solid #e2e2e2;
-        transition: 100ms;
+        border-bottom: 1px solid map-get($colors-border, light-gray);
 
         .date {
             position: absolute;
             font-size: 0.8em;
             top: 0.5em;
             right: 0.5em;
-            color: #888;
+            color: map-get($colors-text, gray);
         }
         .category {
             color: white;
@@ -49,11 +48,11 @@
             display: block;
             text-align: center;
         }
-        .back-end { background-color: $back-end; }
-        .front-end { background-color: $front-end; }
-        .design { background-color: $design; }
-        .vagas { background-color: $vagas; }
-        .devops { background-color: $devops; }
+        .back-end { background-color: map-get($colors-categories, back-end); }
+        .front-end { background-color: map-get($colors-categories, front-end); }
+        .design { background-color: map-get($colors-categories, design); }
+        .vagas { background-color: map-get($colors-categories, vagas); }
+        .devops { background-color: map-get($colors-categories, devops); }
     }
 
 }

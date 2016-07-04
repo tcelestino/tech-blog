@@ -27,6 +27,10 @@ docpadConfig = function() {
             },
             cleanurls: {
                 static: true
+            },
+            markit: {
+                html: true,
+                useHighlighter: true
             }
         },
 

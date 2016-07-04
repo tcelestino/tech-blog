@@ -3,10 +3,12 @@
   "version": "0.1.0",
   "description": "Tech Blog",
   "dependencies": {
-    "docpad": "6.78.5",
+    "docpad": "6.78.6",
     "docpad-plugin-cleanurls": "2.8.1",
     "docpad-plugin-ghpages": "2.4.4",
     "docpad-plugin-handlebars": "2.3.0",
+    "docpad-plugin-highlightjs": "2.3.0",
+    "docpad-plugin-markit": "2.3.0",
     "docpad-plugin-nodesass": "2.8.2",
     "moment": "2.13.0"
   },
