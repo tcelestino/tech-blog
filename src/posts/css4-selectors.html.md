@@ -20,14 +20,14 @@ Hoje com os novos seletores é possível tratar elementos que estão limitados p
 
 **HTML**
 
-```
+``` html
 <form>
     <input type="number" id="quantidade" min="1" max="5" >
 </form>
 ```
 **CSS**
 
-```
+``` css
 input[type="number"]:in-range {
     border-color: green;
 }
@@ -49,7 +49,7 @@ As pseudo-classes de "opcionalidade" servem para tratar elementos de inputs e fo
 
 **HTML**
 
-```
+``` html
 <form>
     <input type='email' placeholder='Seu email' required >
     <input type='text' placeholder='Seu nome' optional >
@@ -58,7 +58,7 @@ As pseudo-classes de "opcionalidade" servem para tratar elementos de inputs e fo
 
 **CSS**
 
-```
+``` css
 input:optional {
     border-style: dotted;
 }
@@ -82,7 +82,7 @@ As pseudo-classes de "mutabilidade" representam os elementos que permitem ou nã
 
 **HTML**
 
-```
+``` html
 <p contenteditable='false'>
     Apenas de leitura
 </p>
@@ -99,7 +99,7 @@ As pseudo-classes de "mutabilidade" representam os elementos que permitem ou nã
 
 **CSS**
 
-```
+``` css
 input:read-only,
 p:read-only {
     background: red;
@@ -119,7 +119,7 @@ A pseudo-classe **placeholder-shown** seleciona elementos input que estão exibi
 
 **HMTL**
 
-```
+``` html
 <form>
     <input type='text' placeholder='Digite seu nome aqui' />
 </form>
@@ -127,7 +127,7 @@ A pseudo-classe **placeholder-shown** seleciona elementos input que estão exibi
 
 **CSS**
 
-```
+``` css
 input:placeholder-shown {
     background: #000;
     color: #FFF;
@@ -140,7 +140,7 @@ A pseudo-classe **matches** ajuda a realizar seletores de agrupamento mais simpl
 
 **HTML**
 
-```
+``` html
 <ul>
     <p>Mensagem 1</p>
     <p class='fechado'>Mensagem 2</p>
@@ -151,7 +151,7 @@ A pseudo-classe **matches** ajuda a realizar seletores de agrupamento mais simpl
 
 **CSS**
 
-```
+``` css
 p:matches(.fechado, .cancelado, .nao-lida) {
     color: red;
 }
@@ -185,7 +185,7 @@ Presente no CSS3, agora ele possui suporte para receber **mais de um argumento**
 
 **HTML**
 
-```
+``` html
 <ul>
     <li>Compra 1</li>
     <li class='cancelado'>Compra 2</li>
@@ -196,7 +196,7 @@ Presente no CSS3, agora ele possui suporte para receber **mais de um argumento**
 
 **CSS**
 
-```
+``` css
 /* suportado */
 li:not(.cancelado) {
     color: red;
@@ -214,7 +214,7 @@ Um problema antigo na seleção de elementos por parâmetros, muitas vezes o sis
 
 **HTML**
 
-```
+``` html
 <a href="test.pdf">Test 1</a>
 <a href="test.PDF">Test 2</a>
 <a href="test.pDF">Test 3</a>
@@ -222,7 +222,7 @@ Um problema antigo na seleção de elementos por parâmetros, muitas vezes o sis
 
 **CSS**
 
-```
+``` css
 a[href$="pdf" i] {
     color: red;
 }
@@ -236,14 +236,14 @@ Com HTML é possível especificar a direção do texto. Esse é um recurso usado
 
 **HTML**
 
-```
+``` html
 <div dir="ltr"> Some text Default writing direction.</div>
 <div dir="rtl"> بعض النصوص من اليمين إلى اليسار الاتجاه </div>
 ```
 
 **CSS**
 
-```
+``` css
 :dir(ltr) {
     color: red;
 }

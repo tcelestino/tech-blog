@@ -45,6 +45,12 @@
 
     code {
         margin: 1em 0;
+        overflow: auto;
+        line-height: 1.2;
+
+        &::-webkit-scrollbar {
+            height: 0.4em;
+        }
     }
 
     a {

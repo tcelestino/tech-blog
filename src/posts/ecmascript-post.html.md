@@ -23,7 +23,7 @@ Para resolvermos isso, a SDK do **Android** e do **iOS** possibilita a injeção
 
 Vamos a um exemplo simples: o cliente fez uma compra no site do Elo7, já realizou todo o processo de compra e agora precisa confirmar o recebimento do pacote. O nativo injeta um objeto chamado `WebView` na página com a função `exibirModalDeConfirmacao(texto)` mapeada. Essa função pode ser chamada na webview da seguinte forma:
 
-```
+``` javascript
 if (WebView.exibirModalDeConfirmacao("Confirma o recebimento do pedido?")) {
     //Fazer algo na confirmação
 }
@@ -42,7 +42,7 @@ Seguindo essa linha, decidimos testar no Chrome carregando os scripts webview. M
 
 Isso ocorre porque não temos o aplicativo nativo injetando o objeto chamado `WebView`. Então para resolvermos esse problema, adicionamos um script para o ambiente local a qual cria um objeto chamado `WebView` com um função chamada `exibirModalDeConfirmacao`:
 
-```
+``` javascript
 var WebView = {
     'exibirModalDeConfirmacao' : function(texto) {
         console.log("Simulando uma chamada webview de modal com o texto: ", texto);
@@ -67,7 +67,7 @@ O segundo argumento é um `handler` a qual podemos definir comportamentos custom
 
 Exemplo de delegação:
 
-```
+``` javascript
 var meuObjeto = {};
 var proxy = new Proxy(meuObjeto);
 proxy.meuMetodo = "Olá Mundo!";
@@ -77,7 +77,7 @@ console.log(meuObjeto.meuMetodo); // Imprime "Olá Mundo" no console.
 
 Exemplo do handler:
 
-```
+``` javascript
 var handler = {
     get: function(target, name) {
         console.log("Simulando chamada webview: ", name);
@@ -92,11 +92,11 @@ WebView.exibirModalDeConfirmacao("Teste");
 
 Neste caso sobrescrevemos como é feito o acesso a qualquer propriedade/função do objeto, o código irá imprimir o seguinte:
 
-<a href="http://i1.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-4-52-25-pm.png" rel="attachment wp-att-484"><img class="alignnone size-full wp-image-484" src="http://i1.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-4-52-25-pm.png?fit=492%2C58" alt="Screen Shot 2015-12-07 at 4.52.25 PM" srcset="http://i1.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-4-52-25-pm.png?w=492 492w, http://i1.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-4-52-25-pm.png?resize=300%2C35 300w" sizes="(max-width: 492px) 100vw, 492px" data-recalc-dims="1" /></a>
+![Alt "Erro de webview no Chrome"](/images/ecmascript-3.png)
 
 Ocorreu um erro durante a execução porque esperava-se que retornasse uma função, e como não adicionamos nenhum retorno para o nosso `handler` foi lançada essa exceção. Isso pode ser facilmente corrigido:
 
-```
+``` javascript
 var handler = {
     get: function(target, name) {
         return function() {
@@ -109,7 +109,7 @@ var handler = {
 
 Agora o código roda sem erros e imprime exatamente o que precisamos! Mas ainda está faltando imprimir os parâmetros que passamos no nosso método `exibirModalDeConfirmacao`. Isso pode ser facilmente corrigido com o nosso querido `arguments`.
 
-```
+``` javascript
 var handler = {
     get: function(target, name) {
         return function() {
@@ -122,7 +122,7 @@ var handler = {
 
 ```
 
-<a href="http://i2.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-5-19-48-pm.png" rel="attachment wp-att-485"><img class="alignnone size-full wp-image-485" src="http://i2.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-5-19-48-pm.png?fit=446%2C45" alt="Screen Shot 2015-12-07 at 5.19.48 PM" srcset="http://i2.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-5-19-48-pm.png?w=446 446w, http://i2.wp.com/tech.elo7.com.br/wp-content/uploads/2015/12/screen-shot-2015-12-07-at-5-19-48-pm.png?resize=300%2C30 300w" sizes="(max-width: 446px) 100vw, 446px" data-recalc-dims="1" /></a>
+![Alt "Erro de webview no Chrome"](/images/ecmascript-4.png)
 
 E agora temos exatamente o que precisamos! Uma forma mais simples de testar, deixando bem claro o que está sendo chamado e quais são os parâmetros passados.
 
@@ -130,7 +130,7 @@ Por que não aproveitamos e utilizamos uma nova funcionalidade do ECMAScript 201
 
 É bem simples, ao invés de declarar a string com aspas simples ou duplas, declaramos com a crase. Dessa forma podemos interpolar com os valores das nossas variáveis:
 
-```
+``` javascript
 console.log(`Simulando chamada webview: ${name}`);
 
 for(key in arguments)

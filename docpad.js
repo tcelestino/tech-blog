@@ -29,8 +29,7 @@ docpadConfig = function() {
                 static: true
             },
             markit: {
-                html: true,
-                useHighlighter: true
+                html: true
             }
         },
 
