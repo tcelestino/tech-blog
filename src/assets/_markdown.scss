@@ -58,4 +58,10 @@
         color: map-get($colors-text, link);
         font-weight: map-get($font-weight, bold);
     }
+
+    blockquote {
+        padding-left: 1em;
+        margin-left: 1em;
+        border-left: 1px solid #ccc;
+    }
 }

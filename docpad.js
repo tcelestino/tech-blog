@@ -20,7 +20,10 @@ docpadConfig = function() {
                             { category: "back-end" },
                             { category: "design" },
                             { category: "vagas" },
-                            { category: "devops" }
+                            { category: "devops" },
+                            { category: "scala" },
+                            { category: "programming" },
+                            { category: "cloud" }
                         ];
                     }
                 }
