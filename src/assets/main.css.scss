@@ -23,7 +23,7 @@ header.left-pane {
 }
 
 .logo-container {
-    padding-top: 2em;
+    padding-top: 0.5em;
 
     .logo {
         background: url('//images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg') no-repeat;
@@ -93,10 +93,7 @@ header.left-pane {
         margin-bottom: 0.5em;
         text-align: left;
         text-shadow: -1px 1px 0 #c58300;
-
-        &:first-of-type {
-            margin-top: 2em;
-        }
+        margin-top: 1.5em;
     }
 }
 
@@ -135,6 +132,10 @@ header.left-pane {
 
         .github {
             left: 2em;
+        }
+
+        .logo-container {
+            padding-top: 2em;
         }
     }
 

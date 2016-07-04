@@ -1,7 +1,7 @@
 @import 'colors';
 
 .posts-container {
-    padding: 1em;
+    padding: 1em 0;
 
     > a {
         text-decoration: none;
@@ -59,4 +59,10 @@
         .eventos { background-color: map-get($colors-categories, eventos); }
     }
 
+}
+
+@media (min-width: 800px) {
+    .posts-container {
+        padding: 1em;
+    }
 }
