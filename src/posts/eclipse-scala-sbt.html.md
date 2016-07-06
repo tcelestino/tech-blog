@@ -3,14 +3,14 @@ title: Configuring Eclipse scala project with SBT
 date: 2013-08-13
 author: davidrobert
 layout: post
-category: scala
+category: back-end
 description: Recently we started a new project here in Elo7 and this is a quick guide to help you to configure a new Scala project using SBT to manage your project dependencies and Eclipse as your IDE...
 tags:
-  - Bootstrapping
+  - bootstrapping
   - eclipse
-  - SBT
+  - sbt
   - scala
-  - Simple Build Tool
+  - simple-build-tool
 ---
 
 Recently we started a new project here in Elo7 and this is a quick guide to help you to configure a new Scala project using SBT to manage your project dependencies and Eclipse as your IDE.

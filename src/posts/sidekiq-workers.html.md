@@ -3,14 +3,14 @@ title: Auto scale Sidekiq workers on Amazon EC2
 date: 2013-06-24
 author: pablocantero
 layout: post
-category: cloud
+category: back-end
 description: We use Sidekiq to process messages from images conversion to shipping tickets' generation...
 tags:
-  - Amazon Elastic Compute Cloud
-  - Amazon Web Services
-  - AutoScaling
-  - CloudWatch
-  - Netflix
+  - amazon-elastic-compute-cloud
+  - amazon-web-services
+  - auto-scaling
+  - cloudwatch
+  - netflix
 ---
 We use [Sidekiq](https://github.com/mperham/sidekiq) to process messages from images conversion to shipping tickets' generation.
 

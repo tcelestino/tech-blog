@@ -6,9 +6,8 @@ layout: post
 category: front-end
 description: No Elo7 temos uma série de iniciativas legais que realizamos em nosso dia-a-dia: Tech Talks, Dojos, Grupos de estudos, café da manhã com vendedores, craft day, além de aplicar...
 tags:
-  - Front End
-  - Otimização
-  - Tech Talk
+  - otimização
+  - tech-talk
 ---
 
 No Elo7 temos uma série de iniciativas legais que realizamos em nosso dia-a-dia: Tech Talks, Dojos, Grupos de estudos, café da manhã com vendedores, craft day, além de aplicar as metodologias ágil no nosso dia a dia.

@@ -8,9 +8,8 @@ author: fellyph
 github: fellyph
 tags:
   - css
-  - CSS4
-  - Front End
-  - Tech Talk
+  - front-end
+  - tech-talk
 ---
 
 O **CSS3** já está aí com força total, mas poucos sabem que o **CSS4** já está em rascunho desde 2011 e muitas funções hoje são usadas sem você saber. Um dos focos dessa versão são os novos seletores. Neste post irei falar um pouco sobre o que vem por aí, este tema foi uma apresentação realizada em um TechTalk do Elo7 e os slides estão no final do post.

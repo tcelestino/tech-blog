@@ -6,9 +6,9 @@ layout: post
 description: Já faz algum tempo que ouvimos falar de ECMAScript 2015  (também conhecido como ECMAScript 6) com todas as suas novidades como map reduce, escopos, promises, etc. Mas infelizmente não podemos utilizá-las porque temos problema de compatibilidade entre os navegadores, ora por versão, ora por falta da implementação da especificação...
 category: front-end
 tags:
-  - EcmaScript 2015
-  - FrontEnd
-  - JavaScript
+  - eccmaScript
+  - front-end
+  - javascript
 ---
 
 Já faz algum tempo que ouvimos falar de **ECMAScript 2015**  (também conhecido como ECMAScript 6) com todas as suas novidades como map reduce, escopos, promises, etc. Mas infelizmente não podemos utilizá-las porque temos problema de compatibilidade entre os navegadores, ora por versão, ora por falta da implementação da especificação. Assim como todas as especificações (_ECMA, CSS, HTML)_, as adoções são feitas aos poucos pelos navegadores. Com o tempo a aceitação se torna maior, até que um belo dia a especificação se torna recomendada e viável. Infelizmente, até chegar a esse ponto, temos alguns belos anos pela frente.

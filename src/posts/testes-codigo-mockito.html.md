@@ -2,7 +2,7 @@
 date: 2016-05-02
 category: back-end
 tags:
-  - Java
+  - java
   - mockito
   - tdd
 author: tiagolimaelo7

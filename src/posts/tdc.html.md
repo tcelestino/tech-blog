@@ -5,8 +5,9 @@ author: fellyph
 layout: post
 category: eventos
 description: O TDC2014 trouxe trilhas tradicionais, cobrindo várias tecnologias e assuntos relacionados, como: Java, .NET, Ruby, Android, Cloud, Python, Empreendedorismo, Agile, Web e Testes...
-categories:
-  - Eventos
+tags:
+  - eventos
+  - tdc
 ---
 
 O TDC2014 trouxe trilhas tradicionais, cobrindo várias tecnologias e assuntos relacionados, como: Java, .NET, Ruby, Android, Cloud, Python, Empreendedorismo, Agile, Web e Testes, entre muitas outras trilhas. E A equipe Elo7 esteve presente apresentando algumas palestras:

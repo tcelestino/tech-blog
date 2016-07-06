@@ -3,14 +3,12 @@ title: e-DNE Correios
 date: 2013-07-23
 author: brunobuccoloelo7
 layout: post
-category: programming
+category: back-end
 description: O e-DNE é um banco de dados que contém todos os CEPs do Brasil. No entanto, essa base é disponibilizada apenas para download. Então criamos uma ferramenta para importar...
 tags:
-  - base de ceps
   - cep
   - correios
   - edne
-  - github
   - importação
   - open-source
   - ruby
