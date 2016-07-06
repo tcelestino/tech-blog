@@ -1,7 +1,7 @@
 ---
 title: Vaga Engenheiro de Software/DevOps
 date: 2016-04-04
-author: Renato Sardinha
+author: sardinha
 layout: post
 category: devops
 description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Temos a seguinte vaga para o time da engenharia...

@@ -5,7 +5,7 @@ tags:
   - Java
   - mockito
   - tdd
-author: Tiago Lima
+author: tiagolimaelo7
 layout: post
 title: Testes de código com Mockito
 description: No trabalho da Engenharia do Elo7, valorizamos bastante a qualidade do código que produzimos. Isso passa por várias etapas: boas práticas de código, programação pareada, revisões cuidadosas e, claro, testes. Muitos testes...

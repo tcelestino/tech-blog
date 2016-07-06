@@ -10,6 +10,7 @@ referenceOthers: true
                         <h1 class="title">{{title}}</h1>
                     </a>
                 </header>
+                <a href="https://github.com/{{author}}" target="_blank" class="author"><p>@{{author}}</p></a>
                 <small class="date">{{dateAsText this.date}}</small>
 
                 <p class="description">{{description}}</p>
