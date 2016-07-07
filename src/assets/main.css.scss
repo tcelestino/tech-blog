@@ -119,6 +119,19 @@ header.left-pane {
     }
 }
 
+footer {
+    background-color: $yellow-default;
+    padding: 3em 1em;
+
+    a {
+        display: block;
+        text-align: center;
+        color: white;
+        text-decoration: none;
+        text-shadow: -1px 1px 0 #c58300;
+        font-size: 14pt;
+    }
+}
 @media (min-width: 800px) {
     header.left-pane {
         height: 100%;
@@ -159,6 +172,19 @@ header.left-pane {
 
     main {
         margin-left: 15em;
+    }
+    footer {
+        border-top: 1px solid map-get($colors-border, light-gray);
+        margin-left: 15em;
+        background-color: white;
+        padding: 2em 1em;
+
+        a {
+            text-align: center;
+            color: map-get($colors-text, link);
+            text-shadow: none;
+            font-size: 12pt;
+        }
     }
 }
 

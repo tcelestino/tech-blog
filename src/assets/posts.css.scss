@@ -13,6 +13,10 @@
         margin: 1em 0;
         border-bottom: 1px solid map-get($colors-border, light-gray);
 
+        &:last-of-type {
+            border-bottom: none;
+        }
+
         .date {
             position: absolute;
             font-size: 0.8em;
