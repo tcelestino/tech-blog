@@ -5,7 +5,6 @@ layout: post
 title: 'CSS4 - Seletores nível 4'
 description: O CSS3 já está aí com força total, mas poucos sabem que o CSS4 já está em rascunho desde 2011 e muitas funções hoje são usadas sem você saber. Um dos focos dessa versão são os novos seletores. Neste post irei falar um pouco sobre o que vem por aí...
 author: fellyph
-github: fellyph
 tags:
   - css
   - front-end
