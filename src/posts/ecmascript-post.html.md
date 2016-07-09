@@ -38,7 +38,7 @@ O código acima é responsabilidade do time Martell e precisa ser testado antes 
 
 Seguindo essa linha, decidimos testar no Chrome carregando os scripts webview. Mas ao testar no navegador já nos deparamos com o seguinte erro:
 
-![Alt "Erro de webview no Chrome"](/images/ecmascript-1.png)
+![Alt "Erro de webview no Chrome"](../images/ecmascript-1.png)
 
 Isso ocorre porque não temos o aplicativo nativo injetando o objeto chamado `WebView`. Então para resolvermos esse problema, adicionamos um script para o ambiente local a qual cria um objeto chamado `WebView` com um função chamada `exibirModalDeConfirmacao`:
 
@@ -53,7 +53,7 @@ var WebView = {
 
 Ao testar no navegador será exibido o seguite:
 
-![Alt "Chamada webview no Chrome"](/images/ecmascript-2.png)
+![Alt "Chamada webview no Chrome"](../images/ecmascript-2.png)
 
 Agora está melhor! Está bem mais claro qual chamada está sendo feita!
 
@@ -92,7 +92,7 @@ WebView.exibirModalDeConfirmacao("Teste");
 
 Neste caso sobrescrevemos como é feito o acesso a qualquer propriedade/função do objeto, o código irá imprimir o seguinte:
 
-![Alt "Erro de webview no Chrome"](/images/ecmascript-3.png)
+![Alt "Erro de webview no Chrome"](../images/ecmascript-3.png)
 
 Ocorreu um erro durante a execução porque esperava-se que retornasse uma função, e como não adicionamos nenhum retorno para o nosso `handler` foi lançada essa exceção. Isso pode ser facilmente corrigido:
 
@@ -122,7 +122,7 @@ var handler = {
 
 ```
 
-![Alt "Erro de webview no Chrome"](/images/ecmascript-4.png)
+![Alt "Erro de webview no Chrome"](../images/ecmascript-4.png)
 
 E agora temos exatamente o que precisamos! Uma forma mais simples de testar, deixando bem claro o que está sendo chamado e quais são os parâmetros passados.
 

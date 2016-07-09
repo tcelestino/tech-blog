@@ -9,7 +9,7 @@ tags:
   - browsers
 ---
 
-![Alt "Browsers"](/images/compatibilidade-cross-browser-1.png)
+![Alt "Browsers"](../images/compatibilidade-cross-browser-1.png)
 
 Em um mundo ideal, todos os browsers apresentariam o mesmo comportamento no carregamento e renderização das páginas da web. Para o terror de muitos desenvolvedores, existem determinadas situações em que uma implementação funciona perfeitamente no navegador utilizado na hora de testar o código, contudo ao abrir a mesma página com o mesmo código em outro, o site está quebrado.
 

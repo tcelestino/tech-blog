@@ -85,7 +85,7 @@ This will download all your dependencies, create your eclipse project files and 
 
 Import your project and you are ready to go!
 
-![Alt "Your new scala project"](/images/eclipse-scala-sbt-1.png)
+![Alt "Your new scala project"](../images/eclipse-scala-sbt-1.png)
 
 The project generated with sbt adds several source files directories, separating java source files from scala source files and tests from main code.
 
@@ -103,7 +103,7 @@ go to your console and in your project root directory type:
 $ sbt run
 ```
 
-![Alt "Hello!"](/images/eclipse-scala-sbt-2.png)
+![Alt "Hello!"](../images/eclipse-scala-sbt-2.png)
 
 Thank you
 

@@ -26,7 +26,7 @@ O objetivo desse _post_ é justamente mostrar quando é útil uma ferramenta de
 
 Aqui no Elo7, comecei a utilizar uma ferramenta de análise de cobertura de testes integrada à IDE (no caso o Eclipse). A ferramenta que instalei foi o  **<a href="http://eclemma.org/" target="_blank">Eclemma</a>** que fornece um _feedback_ visual mostrando as partes do código que estão cobertas. A **figura 1** exibe um trecho de código que foi analisado pelo **Eclemma**.
 
-![Alt "Exemplo de análise"](/images/cobertura-testes-1.png)
+![Alt "Exemplo de análise"](../images/cobertura-testes-1.png)
 
 Figura 1 &#8211; Exemplo de análise de cobertura visual gerado pelo Eclemma
 
