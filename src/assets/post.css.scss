@@ -3,7 +3,7 @@
 @import 'code';
 
 .post-content {
-    padding: 1em 2.5em;
+    padding: 1em;
 
     .title {
         margin-bottom: 0.2em;
@@ -16,5 +16,15 @@
         p {
             margin-bottom: 2em;
         }
+    }
+    .date {
+        float: right;
+        font-size: 0.8em;
+        color: map-get($colors-text, gray);
+    }
+}
+@media (min-width: 800px) {
+    .post-content {
+        padding: 1em 2.5em;
     }
 }
