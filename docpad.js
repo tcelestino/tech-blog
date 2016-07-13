@@ -23,7 +23,7 @@ docpadConfig = function() {
                             { category: "devops" },
                             { category: "scala" },
                             { category: "programming" },
-                            { category: "cloud" },
+                            { category: "mobile" },
                             { category: "eventos" }
                         ];
                     }
