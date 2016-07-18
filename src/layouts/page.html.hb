@@ -6,7 +6,6 @@
     <title>Elo7 Tech - {{document.title}}</title>
     <meta name='description' content='{{document.description}}'>
     <link rel='stylesheet' href='{{site.baseUrl}}/reset.css'>
-    <link rel='stylesheet' href='{{site.baseUrl}}/fonts.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/main.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/posts.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/post.css'>

@@ -75,6 +75,66 @@ docpadConfig = function() {
                                     return moment(dateB).unix() - moment(dateA).unix();
                                 });
                 },
+                backend : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "back-end";
+                                })
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                design : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "design";
+                                })
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                vagas : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "vagas";
+                                })
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                mobile : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "mobile";
+                                })
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                eventos : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "eventos";
+                                })
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
 
             }
             return collections;
