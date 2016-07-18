@@ -55,23 +55,27 @@ docpadConfig = function() {
         collections: function() {
             var collections = {
                 posts : function() {
-                    return this.getCollection("documents")
-                                .setFilter('isPost', function(model) {
-                                    var isIn = model.attributes.fullPath.substr((__dirname+'/src/').length);
-                                    return isIn.indexOf('posts') == 0;
-                                })
-                                .on("add", function(model) {
-                                    model.setMetaDefaults({
-                                        layout: 'post'
-                                    });
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                frontend : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "front-end";
                                 })
                                 .setComparator(function(postA, postB) {
                                     var dateA = postA.toJSON().date;
                                     var dateB = postB.toJSON().date;
                                     return moment(dateB).unix() - moment(dateA).unix();
-                                })
-                                .live();
-                }
+                                });
+                },
+
             }
             return collections;
         }()

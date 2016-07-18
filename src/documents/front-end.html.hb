@@ -1,14 +1,14 @@
 ---
-title: Home
-description: Blog de tecnologia do Elo7, com postagens dos próprios colaboradores mostrando como é o dia a dia de um colaborador fora de série
+title: Front End
+description: Todos os posts da categoria front-end
 layout: page
 ---
 <section class="posts-container">
-    {{#each (getCollection "posts")}}
+    {{#each (getCollection "frontend")}}
             <article itemprop="blogPost" itemtype="http://schema.org/Blog" class="post-card card-{{category}}">
                 <header>
                     <a href="{{../site.baseUrl}}{{url}}" class="link">
-                        <h1 class="title">{{title}}</h1>
+                        <h2 class="title">{{title}}</h2>
                     </a>
                 </header>
                 <a href="https://github.com/{{author}}" target="_blank" class="author"><p>@{{author}}</p></a>
