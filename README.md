@@ -10,11 +10,16 @@ O blog usa como ferramenta o [docpad](http://docpad.org/docs/intro), um gerador 
 Para criar um post, basta adiciona um novo arquivo dentro da pasta ``src/posts`` com o padrão de nomenclatura ``<nomedopost>.html.hb``. o layout para o post deve ser:
 ```html
 ---
-date: 2016-06-21
+date: 2016-07-18
 category: back-end
+tags:
+  - java
+  - mockito
+  - tdd
+author: seugithub
 layout: post
-title: Titulo do post
-description: Alguma descrição do post...
+title: Título do post
+description: Alguma descrição do post que irá aparecer na home...
 ---
 ```
 
@@ -34,4 +39,4 @@ description: Alguma descrição do post...
 
 ### Hospedagem
 
-Blog hospedado no [github-pages](https://elo7.github.io/tech-blog)
+Blog hospedado no [github-pages](https://elo7.github.io/tech-blog) ou [engenharia.elo7.com.br](engenharia.elo7.com.br)
