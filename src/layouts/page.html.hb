@@ -30,9 +30,10 @@
                 <h2 class='nav-title'>Veja também</h2>
             </label>
             <ul class='nav-list nav-more'>
-                <li><a itemprop="url" href="http://elo7.com.br" target="_blank">Conheça o Elo7</a></li>
+                <li><a itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">A engenharia</a></li>
                 <li><a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">Carreiras</a></li>
                 <li><a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">Nossos eventos</a></li>
+                <li><a itemprop="url" href="http://elo7.com.br/" target="_blank">Elo7</a></li>
             </ul>
         </nav>
         <a rel="external" itemprop="url" href="https://github.com/elo7/tech-blog" class="social github"></a>
