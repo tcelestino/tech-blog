@@ -36,8 +36,8 @@ docpadConfig = function() {
 
         templateData: {
             site: {
-                title: "Elo7 Tech",
-                url: "http://localhost:9778"
+                url: "http://localhost:9778",
+                baseUrl: ""
             }
         },
 
