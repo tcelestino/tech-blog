@@ -9,6 +9,7 @@
     <link rel='stylesheet' href='{{site.baseUrl}}/main.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/posts.css'>
     <link rel='stylesheet' href='{{site.baseUrl}}/post.css'>
+    <link rel="icon" type="image/png" href="{{site.baseUrl}}/images/favicon.ico">
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
     <header class="left-pane">
