@@ -36,8 +36,7 @@ docpadConfig = function() {
 
         templateData: {
             site: {
-                url: "http://localhost:9778",
-                baseUrl: ""
+                url: "http://localhost:9778"
             }
         },
 
@@ -45,8 +44,7 @@ docpadConfig = function() {
             static: {
                 templateData: {
                     site: {
-                        url: "https://elo7.github.io/tech-blog",
-                        baseUrl: "/tech-blog"
+                        url: "https://elo7.github.io/tech-blog"
                     }
                 }
             }

@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Elo7 Tech - {{document.title}}</title>
     <meta name='description' content='{{document.description}}'>
-    <link rel='stylesheet' href='{{site.baseUrl}}/reset.css'>
-    <link rel='stylesheet' href='{{site.baseUrl}}/main.css'>
-    <link rel='stylesheet' href='{{site.baseUrl}}/posts.css'>
-    <link rel='stylesheet' href='{{site.baseUrl}}/post.css'>
-    <link rel="icon" type="image/png" href="{{site.baseUrl}}/images/favicon.ico">
+    <link rel='stylesheet' href='/reset.css'>
+    <link rel='stylesheet' href='/main.css'>
+    <link rel='stylesheet' href='/posts.css'>
+    <link rel='stylesheet' href='/post.css'>
+    <link rel="icon" type="image/png" href="/images/favicon.ico">
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
     <header class="left-pane">
         <div class="logo-container">
-            <a rel="home" itemprop="url" href='{{site.baseUrl}}/' class='logo'>{{site.title}}</a>
+            <a rel="home" itemprop="url" href='/' class='logo'>{{site.title}}</a>
         </div>
         <nav aria-label="Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement" class='navigation'>
             <input id="categories-switch" type="checkbox" class="categories-switch">
@@ -23,7 +23,7 @@
             </label>
             <ul class='nav-list nav-category'>
                 {{#each (getCategories)}}
-                    <li><a itemprop="url" href="{{../site.baseUrl}}/{{category}}">{{category}}</a></li>
+                    <li><a itemprop="url" href="/{{category}}">{{category}}</a></li>
                 {{/each}}
             </ul>
             <input id="more-switch" type="checkbox" class="more-switch">
