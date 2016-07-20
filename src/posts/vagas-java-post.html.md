@@ -10,7 +10,7 @@ tags:
   - back-end
 ---
 
-# Desenvolvedor(a) de Software Java Sênior {.title}
+# Desenvolvedor(a) de Software Java Sênior
 
 Procuramos desenvolvedores Java com bons conhecimentos em:
 
