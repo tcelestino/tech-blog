@@ -129,7 +129,7 @@ footer {
         color: white;
         text-decoration: none;
         text-shadow: -1px 1px 0 #c58300;
-        font-size: 14pt;
+        font-size: 1.2em;
     }
 }
 @media (min-width: 800px) {
@@ -183,7 +183,7 @@ footer {
             text-align: center;
             color: map-get($colors-text, link);
             text-shadow: none;
-            font-size: 12pt;
+            font-size: 1em;
         }
     }
 }

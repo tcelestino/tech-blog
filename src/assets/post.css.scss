@@ -3,9 +3,10 @@
 @import 'code';
 
 .post-content {
-    padding: 1em;
+    padding: 1em 5%;
 
     .title {
+        font-size: 2.5em;
         margin-bottom: 0.2em;
     }
 
@@ -25,6 +26,6 @@
 }
 @media (min-width: 800px) {
     .post-content {
-        padding: 1em 2.5em;
+        padding: 1em 15%;
     }
 }
