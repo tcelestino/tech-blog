@@ -1,17 +1,22 @@
+---
+autoprefix: true
+---
+
 @import 'colors';
 
 .posts-container {
-    padding: 1em 0;
+    padding: 1em 5%;
 
     > a {
         text-decoration: none;
         color: black;
     }
     .post-card {
-        position: relative;
-        padding: 2em 1em;
-        margin: 1em 0;
         border-bottom: 1px solid map-get($colors-border, light-gray);
+        margin: 1em 0;
+        padding: 2em 0;
+        position: relative;
+        overflow: auto;
 
         &:last-of-type {
             border-bottom: none;
@@ -20,50 +25,69 @@
         .date {
             position: absolute;
             font-size: 0.8em;
-            top: 0.5em;
+            top: 2.5em;
             right: 0.5em;
             color: map-get($colors-text, gray);
         }
         .category {
+            background-color: map-get($colors-text, link);
             color: white;
             text-decoration: none;
             font-size: 0.8em;
             padding: .5em;
-            border-radius: 20px;
+            border-radius: 3px;
             display: inline-block;
-            margin-top: 0.8em;
+            margin-top: 2.5em;
             cursor: pointer;
+            transition: background-color 0.3s;
+
+            &:hover {
+                background-color: lighten(map-get($colors-text, link), 10);
+            }
         }
         .title {
+            color: black;
+            display: inline-block;
             font-size: 2em;
             text-decoration: none;
-            color: black;
+
+            &:hover {
+                text-decoration: underline;
+            }
         }
         .author{
             text-decoration: none;
             color: map-get($colors-text, gray);
+            transition: color 0.3s;
 
             p {
-                padding-top: 0.4em;
+                display: inline-block;
+                padding-top: 0.6em;
+            }
+
+            &:hover {
+                color: $yellow-default;
             }
         }
         .description {
             margin-top: 1.5em;
             font-weight: lighter;
+            line-height: 1.8;
         }
         .link {
             text-decoration: none;
             color: black;
         }
         .post-link {
-            background-color: $yellow-default;
-            color: #fff;
+            border: 1px solid darken($yellow-default, 10);
+            border-radius: 3px;
+            color: darken($yellow-default, 10);
             display: inline-block;
             float: right;
             margin-top: 1em;
             padding: 0.8em;
             text-align: center;
-            transition: background-color 0.5s;
+            transition: background-color 0.3s, color 0.3s;
 
             &:after {
                 content: '⟩';
@@ -72,26 +96,20 @@
             }
 
             &:hover {
-                background-color: $yellow-hover;
-                text-decoration: underline;
+                background-color: darken($yellow-default, 10);
+                color: #fff;
             }
         }
-        .back-end { background-color: map-get($colors-categories, back-end); }
-        .front-end { background-color: map-get($colors-categories, front-end); }
-        .design { background-color: map-get($colors-categories, design); }
-        .vagas { background-color: map-get($colors-categories, vagas); }
-        .mobile { background-color: map-get($colors-categories, mobile); }
-        .eventos { background-color: map-get($colors-categories, eventos); }
     }
 
 }
 
 @media (min-width: 800px) {
     .posts-container {
-        padding: 1em;
+        padding: 1em 15%;
 
         .post-card {
-            padding: 2em;
+            padding: 2em 0;
         }
     }
 }

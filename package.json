@@ -4,6 +4,7 @@
   "description": "Tech Blog",
   "dependencies": {
     "docpad": "6.78.6",
+    "docpad-plugin-autoprefix": "2.0.0",
     "docpad-plugin-cleanurls": "2.8.1",
     "docpad-plugin-ghpages": "2.4.4",
     "docpad-plugin-handlebars": "2.3.0",

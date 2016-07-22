@@ -1,3 +1,7 @@
+---
+autoprefix: true
+---
+
 @import 'colors';
 @import 'markdown';
 @import 'code';
@@ -13,9 +17,15 @@
     .author{
         text-decoration: none;
         color: map-get($colors-text, gray);
+        transition: color 0.3s;
 
         p {
             margin-top: 0.5em;
+            display: inline-block;
+        }
+
+        &:hover {
+            color: $yellow-default;
         }
     }
     .date {
