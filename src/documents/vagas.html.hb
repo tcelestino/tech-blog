@@ -16,7 +16,7 @@ layout: page
 
                 <p class="description">{{description}}</p>
                 <a href="/{{category}}" class="category {{category}}">{{category}}</a>
-                <a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continuar lendo &rarr;</a>
+                <a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
             </article>
     {{/each}}
 </section>
