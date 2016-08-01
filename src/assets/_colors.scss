@@ -1,19 +1,18 @@
 $colors-text: (
+	darker: #333,
 	gray: #888,
 	link: #359C9C,
+	white: #FFF,
+	black: #000,
 );
 
 $colors-border: (
 	light-gray: #E2E2E2,
+	white: #FFF,
 );
 
-$colors-categories: (
-	back-end: #DB4F4F,
-	front-end: #3498DB,
-	design: #00A064,
-	vagas: #9B59B6,
-	mobile: #95A5A6,
-	eventos: #1ABC9C
+$colors-background: (
+	green: #73bebe,
 );
 
 $yellow-default: #FDB933;

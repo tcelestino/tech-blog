@@ -10,8 +10,10 @@ autoprefix: true
     padding: 1em 5%;
 
     .title {
-        font-size: 2.5em;
-        margin-bottom: 0.5em;
+        font-size: 2.1em;
+        margin-bottom: 0;
+        line-height: 1.2;
+        color: map-get($colors-text, darker);
     }
 
     .author{
@@ -33,10 +35,17 @@ autoprefix: true
         font-size: 0.8em;
         margin-top: 0.5em;
         margin-bottom: 0.5em;
+        display: inline-block;
+    }
+
+    .post-meta {
+        color: map-get($colors-text, gray);
+        font-weight: 300;
+        font-size: 0.9em;
     }
 }
 @media (min-width: 800px) {
     .post-content {
-        padding: 1em 15%;
+        padding: 1em 23%;
     }
 }

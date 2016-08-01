@@ -9,7 +9,7 @@ autoprefix: true
 
     > a {
         text-decoration: none;
-        color: black;
+        color: map-get($colors-text, black);
     }
     .post-card {
         border-bottom: 1px solid map-get($colors-border, light-gray);
@@ -22,34 +22,40 @@ autoprefix: true
             border-bottom: none;
         }
 
+        .post-meta {
+            color: map-get($colors-text, gray);
+            font-weight: 300;
+            font-size: 0.9em;
+        }
+
         .date {
-            position: absolute;
-            font-size: 0.8em;
-            top: 2.5em;
-            right: 0.5em;
+            font-size: 0.9em;
             color: map-get($colors-text, gray);
         }
+
         .category {
-            background-color: map-get($colors-text, link);
-            color: white;
+            background-color: map-get($colors-background, green);
+            color: map-get($colors-text, white);
             text-decoration: none;
             font-size: 0.8em;
             padding: .5em;
             border-radius: 3px;
             display: inline-block;
-            margin-top: 2.5em;
+            margin-top: 2.3em;
             cursor: pointer;
             transition: background-color 0.3s;
+            font-weight: 300;
 
             &:hover {
-                background-color: lighten(map-get($colors-text, link), 10);
+                background-color: darken(map-get($colors-background, green), 10);
             }
         }
         .title {
-            color: black;
+            color: map-get($colors-text, darker);
             display: inline-block;
-            font-size: 2em;
+            font-size: 1.8em;
             text-decoration: none;
+            line-height: 1.2;
 
             &:hover {
                 text-decoration: underline;
@@ -66,7 +72,7 @@ autoprefix: true
             }
 
             &:hover {
-                color: $yellow-default;
+                color: darken($yellow-default, 10);
             }
         }
         .description {
@@ -76,7 +82,7 @@ autoprefix: true
         }
         .link {
             text-decoration: none;
-            color: black;
+            color: map-get($colors-text, black);
         }
         .post-link {
             border: 1px solid darken($yellow-default, 10);
@@ -88,16 +94,11 @@ autoprefix: true
             padding: 0.8em;
             text-align: center;
             transition: background-color 0.3s, color 0.3s;
-
-            &:after {
-                content: '⟩';
-                display: inline-block;
-                padding-left: 0.7em;
-            }
+            font-size: 0.9em;
 
             &:hover {
                 background-color: darken($yellow-default, 10);
-                color: #fff;
+                color: map-get($colors-text, white);
             }
         }
     }
@@ -106,7 +107,7 @@ autoprefix: true
 
 @media (min-width: 800px) {
     .posts-container {
-        padding: 1em 15%;
+        padding: 1em 23%;
 
         .post-card {
             padding: 2em 0;

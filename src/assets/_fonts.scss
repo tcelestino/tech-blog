@@ -49,7 +49,6 @@ $font-weight: (
 	font-style: normal;
 }
 
-
 @mixin font-size($unit, $size) {
 	@if $unit == 'rem' {
 		@include rem-fallback('font-size', map-get($font-size, $size));
