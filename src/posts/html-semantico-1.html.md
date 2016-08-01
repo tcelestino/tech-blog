@@ -1,5 +1,5 @@
 ---
-date: 2016-08-01
+date: 2016-07-01
 category: front-end
 layout: post
 title: 'A importância da semântica no HTML - parte I'
