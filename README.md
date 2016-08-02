@@ -23,9 +23,26 @@ description: Alguma descrição do post que irá aparecer na home...
 ---
 ```
 
-### Build and Development
+Para adicionar imagens ao seu post, adicione cada uma das imagens na pasta ``src/assets/images``. Sua imagem deve ser ``.png`` ou ``.jpg`` e o nome deve seguir o padrão: ``<nomedopost>-<numerodaimagem>.<extensão>``.
 
-- Necessário ter instalado o npm
+## Markdown
+Todo o post deve ser escrito na linguagem markdown. Abaixo seguem alguns exemplos da marcação (apenas para demonstração, todas as marcações do markdown funcionam :) ):
+* h2 - ``## Título de segundo nível``
+* h3 - ``### Título de terceiro nível``
+* negrito - ``**texto em negrito**``
+* itálico - ``*texto em itálico*``
+* underline - ``_texto sublinhado_``
+* imagem - ``![Alt da imagem](url da imagem)``
+* link - ``[texto do link](url do link)``
+* código - \`\`\```nome da linguagem``\`\`\`
+* código inline - \```código``\`
+* lista - ``* item da lista``
+* lista numerada - ``1. item da lista``
+* blockquote - ``> quote``
+
+### Build e Desenvolvimento
+
+- Para rodar o projeto na sua máquina, é necessário ter instalado o npm e seguir os seguintes passos:
 
 ```
 sudo npm install -g docpad
@@ -33,7 +50,15 @@ sudo npm install
 docpad run
 ```
 
+### Labels do PR
+Seu PR(Pull Request) pode ter duas classificações: ``POST`` (novo post do blog) ou ``ENHANCEMENT`` (melhorias para o blog como um todo).
+O PR pode passar pelas etapas de avaliação:
+* ``TO REVIEW`` - inicialmente seu PR entra para que outras pessoas possam testar.
+* ``FIX`` - quando um usuário testar um PR e tiver partes que devem ser alteradas, a label deve mudar para fix. Após o dono do PR fazer as modificações, a tarefa volta para ``TO REVIEW``
+* ``APPROVED`` - após um usuário diferente do dono do PR testar e não existir mais modificações a serem feitas, deve-se aprovar o PR. Apenas o dono da tarefa pode mergear com a master.
+
 ### Deploy
+Quando seu PR for aprovado, você deve mergear na master e rodar o seguinte comando:
 
 ``docpad deploy-ghpages --env static``
 
