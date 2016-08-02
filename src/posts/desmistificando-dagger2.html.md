@@ -202,28 +202,6 @@ public class Martelos {
 
 Fácil, né? Agora, podemos "comprar" vários martelos e irá ser bem simples de fornecer (_provides_) eles para quem quiser usa-los.
 
-Agora, iremos precisar do nossos martelos várias e várias vezes. Seria péssimo ter que dar _new_ neles o tempo todo. Seria ótimo se a instância daquele martelo fosse única, para nos poupar memória:
-
-```
-@NaoPodeMudar
-@Provides
-public MarteloMedio providesMarteloMedio() {
-    return new MarteloMedio();
-}
-```
-
-Traduzindo pro **Dagger 2**:
-
-```
-@Singleton
-@Provides
-public MarteloMedio providesMarteloMedio() {
-    return new MarteloMedio();
-}
-```
-
-Pronto! Agora sim, otimizamos nossa memória.
-
 ## Colocando as ferramentas na caixa
 
 Agora, precisamos colocar isso tudo junto. Então, vamos colocar nossas ferramentas na caixa de ferramentas:
