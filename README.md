@@ -34,7 +34,16 @@ Todo o post deve ser escrito na linguagem markdown. Abaixo seguem alguns exemplo
 * underline - ``_texto sublinhado_``
 * imagem - ``![Alt da imagem](url da imagem)``
 * link - ``[texto do link](url do link)``
-* código - \`\`\```nome da linguagem``\`\`\`
+* código em bloco - 
+
+\`\`\` nomedalinguagem
+
+``
+trecho do código
+``
+
+\`\`\`
+
 * código inline - \```código``\`
 * lista - ``* item da lista``
 * lista numerada - ``1. item da lista``
