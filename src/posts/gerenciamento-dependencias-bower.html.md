@@ -1,7 +1,7 @@
 ---
 title: Gerenciamento de dependências front-end com bower
 date: 2015-03-05
-author: williammizuta87
+author: williammizuta
 layout: post
 category: front-end
 description: Durante o desenvolvimento de um projeto, nos deparamos com diversos problemas que não são exclusivos do mesmo. Muitos destes problemas, como persistência de dados, troca de mensagens assíncronas, transação e segurança, já possuem soluções que foram compiladas em bibliotecas para facilitar o nosso dia-a-dia ao resolver diversos problemas, tanto no back-end quando no front-end.
@@ -41,7 +41,7 @@ Imagine que você já tem um projeto configurado com o bower. Você pode baixar 
   ],
   "dependencies": {
       "jquery": "~2.1.3"
-  },                            
+  },
   "devDependencies": {
       "cucumber": "~0.4.7"
   }

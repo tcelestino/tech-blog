@@ -1,7 +1,7 @@
 ---
 title: Metodologia ágil no Elo7
 date: 2014-11-17
-author: gustavocsmaia
+author: gustavomaia
 layout: post
 category: back-end
 description: Atualmente no mercado existem diversas metodologias de desenvolvimento de software, como:  RUP (Processo unificado da Rational), XP (Programação extrema), Scrum...

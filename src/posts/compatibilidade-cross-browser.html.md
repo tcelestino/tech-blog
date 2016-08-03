@@ -4,7 +4,7 @@ date: 2015-09-28
 category: front-end
 layout: post
 description: Em um mundo ideal, todos os browsers apresentariam o mesmo comportamento no carregamento e renderização das páginas da web. Para o terror de muitos desenvolvedores, existem determinadas situações em que uma implementação funciona perfeitamente no navegador utilizado na hora de testar o código, contudo ao abrir a mesma página com o mesmo código em outro, o site está quebrado...
-author: molinaromotta
+author: mottam
 tags:
   - browsers
 ---
@@ -97,14 +97,14 @@ Nos navegadores atuais, o único que suporta tal propriedade é o Firefox. Pasme
 .parent {
     height: 100px;
     text-align: justify;
-    
+
     .son {
         display: inline-block;
         background: black;
         height: 100px;
         width: 20px;
     }
-    
+
     &:after {
         content: ''; /* conteúdo vazio */
         display: inline-block; /* com o inline-block este conteúdo tenta permanecer na mesma linha dos elementos irmãos */
