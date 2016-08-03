@@ -19,4 +19,18 @@ layout: page
   <div itemprop="articleBody">
     {{{content}}}
   </div>
+  <div id="disqus_thread"></div>
+
+  <script async>
+      var disqus_shortname = 'engenhariaelo7';
+      var disqus_identifier = '{{dateAsText document.date}}:{{document.url}}';
+      var disqus_url = '{{site.url}}{{document.url}}';
+
+      (function() {
+          var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+          dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+      })();
+  </script>
+  <noscript>Habilite o JavaScript para ver os comentários</noscript>
 </article>
