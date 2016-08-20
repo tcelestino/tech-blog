@@ -10,23 +10,56 @@ tags:
   - eclipse
 ---
 
-Desde de quando entrei para o time de engenharia do Elo7, a dois meses atrás, fiquei bem "assustado" quando olhei pela prmeira vez o código um código Java. Nunca tive a experiência de desenvolver aplicações em Java, o máximo de conhecimento que tinha foi a experiência que tive na época da faculdade. Por isso, uma das minhas metas é aprender e entender melhor esse mundo e documentar para todos como o "bicho de sete cabeças" não é tão assustador assim.
+Entrei para o time de engenharia da Elo7 há dois meses e vou dizer que fiquei "assustado" quando vi que o time de front end mexia muito com código Java. Nunca tive a experiência em desenvolver aplicações em Java, o máximo de conhecimento que tinha foi a experiência que tive na época da faculdade.
+
+Chega de história e vamos ao que interessa!
 
 ## Instalando o Java
 
-Para começar, vamos precisar verificar se já temos o Java instalado na máquina. A grande maioria dos sistemas operacionais, já possuem alguma versão do Java instalada, para saber se realmente tem o Java instalado em sua máquina, abra o "Terminal" e execute o segundo comando:
+Para iniciar, vamos precisar verificar se já temos o Java. A grande maioria dos SO's já tem alguma versão do Java instalada. Para verificar se já tem uma versão instalada, execute no terminal:
 
-(entra uma imagem aqui)
+introducao-ao-java-1.png
 
-A mensagem deve ser igual a exibida na imagem acima. Caso você não tenha instalado, nesse link vai poder encontrar como instalar.
+![Verificando se o Java já está instalado](../images/introducao-ao-java-1.jpg)
 
-**Nota**
+Caso ainda não tenha o Java instalado em sua máquina, leia esse tutorial de como instalar no seu SO.
 
-Para usuários macOS(OSX), pode ser preciso desabilitar o recurso de segurança (pesquisar recurso) para poder o instalador do Java ser executado.
+Após a instalação, já podemos brincar um pouco com o Java.
 
-Após instalação, podemos criar nossas classes Java.
+***Nota***
 
-Mas você deve tá se perguntando se não estou usando alguma IDE. Sim, estou usando o Eclipse, porém para os exemplos desses posts, vamos apenas precisar do Java instalado e o Terminal.
+<small>Se for usuário do macOS(OSX), pode ser que tenha problemas para executar o instalador do Java. Caso tenha esse problema, recomendo ler [esse tutorial](http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/) (em inglês).</small>
+
+## Nosso primeira classe
+
+Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, nos próximos posts pretendo abordar mais sobre a IDE que usamos aqui na Elo7.
+
+Para começar, vamos criar a nossa classe com o velho e famoso "Hello World".
+
+```Java
+class MyFirstClass {
+  public static void main(String[] args) {
+    System.out.println("Hello World!");
+  }
+}
+
+```
+
+Salve o arquivo como MyFirstClass.java e no terminal, execute o seguinte comando:
+
+```bash
+$ java MyFirstClass.java
+```
+
+O comando acima, irá compilar seu código, criando o arquivo MyFirstClass.class. Após compilar seu arquivo, execute:
+
+```bash
+$ javac MyFirstClass
+```
+
+Esse comando irá executar o código compilado anteriormente, mostrando a mensagem no console do terminal.
+
+(add image)
 
 ## Entendendo tipos primitivos
 
@@ -36,22 +69,6 @@ Existem diversos tipos de primitivos, irei falar dos mais básicos que são eles
 
 Para definir uma variável, você precisa apenas dizer qual é o tipo dela. Algo assim:
 
-```Java
-
-public void main(String args[]) {
-  String myString = 'Minha Várivel é uma string';
-  int myNumber = 10;
-  float MyNumberWithDouble = 10.40;
-  Long myNumberIsLong = 10000000;
-  Boolean isTrue = false;
-
-  System.out.printLn(myString);
-  System.out.printLn(myNumber);
-  System.out.printLn(MyNumberWithDouble);
-  System.out.printLn(myNumberIsLong);
-  System.out.printLn(isTrue);
-}
-```
 Se rodar esse escri
 
 ### String
