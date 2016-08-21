@@ -7,28 +7,34 @@ description:
 author: tcelestino
 tags:
   - java
-  - eclipse
+  - tipos primitivos
 ---
 
-Entrei para o time de engenharia da Elo7 há dois meses e vou dizer que fiquei "assustado" quando vi que o time de front end mexia muito com código Java. Nunca tive a experiência em desenvolver aplicações em Java, o máximo de conhecimento que tinha foi a experiência que tive na época da faculdade.
+Entrei para o time de engenharia da Elo7 há dois meses e vou dizer que fiquei "assustado" quando vi que o time de front end mexia muito com código Java. Por falta de experência em desenvolver aplicações em Java, tirando na época da faculdade que até cheguei a desenvolver o [iSnake](https://github.com/tcelestino/iSnake), minha experiência com Java era quase nula.
 
-Chega de história e vamos ao que interessa!
+Mas chega de história e vamos ao que interessa!
 
 ## Instalando o Java
 
-Para iniciar, vamos precisar verificar se já temos o Java. A grande maioria dos SO's já tem alguma versão do Java instalada. Para verificar se já tem uma versão instalada, execute no terminal:
+Para iniciar, precisamos verificar se já temos o Java instalado. A grande maioria dos sistemas operacionais (SO's) já vem com alguma versão do Java instalada, mas para ter certeza execute no terminal:
 
-introducao-ao-java-1.png
+```bash
+$ javac -version
+```
+
+A imagem abaixo é o que deve aparecer para você
 
 ![Verificando se o Java já está instalado](../images/introducao-ao-java-1.jpg)
 
-Caso ainda não tenha o Java instalado em sua máquina, leia esse tutorial de como instalar no seu SO.
+*Estou usando o Java 8, provavelmente terá uma outra versão instalada*
+
+Caso a mensagem não seja a informada no console do terminal, leia esse [artigo](https://goo.gl/XfZCiB) do pessoal da Caelum que explica muito bem de como instalar o Java nos diversos SO's
 
 Após a instalação, já podemos brincar um pouco com o Java.
 
 ***Nota***
 
-<small>Se for usuário do macOS(OSX), pode ser que tenha problemas para executar o instalador do Java. Caso tenha esse problema, recomendo ler [esse tutorial](http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/) (em inglês).</small>
+*Se for usuário do El Capitan(OSX), pode ser que tenha problemas para executar o instalador do Java. Caso o instalador não esteja sendo executado, leia [esse tutorial](http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/) (em inglês).*
 
 ## Nosso primeira classe
 
@@ -63,14 +69,57 @@ Esse comando irá executar o código compilado anteriormente, mostrando a mensag
 
 ## Entendendo tipos primitivos
 
-O Java é uma linguagem fortemente tipada, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado, a variável será até o seu fim do mesmo tipo.
 
-Existem diversos tipos de primitivos, irei falar dos mais básicos que são eles: String, int, float, Long e Boolean.
 
-Para definir uma variável, você precisa apenas dizer qual é o tipo dela. Algo assim:
+Existem diversos tipos de primitivos, farei um uso das mais básicas, que são:
 
-Se rodar esse escri
+  * String
+  * int
+  * float
+  * Boolean
 
-### String
+Abra o arquivo MyFirstClass.java e atualize o código adicionando as variáveis:
 
-Para quem já programa, sabe o que é uma string. No Java, você define uma variável
+```Java
+class HelloWorld {
+  public static void main(String[] args) {
+    String myString = "Introdução ao Java"; //apenas texto
+    int postStep = 1; //numeros inteiros
+    float numberLine = 10.4; //numeros como double
+    Boolean hasEmoji = true; //verdadeiro ou falso.
+
+    System.out.Println(myString);
+    System.out.Println(postStep);
+    System.out.Println(numberLine);
+    System.out.Println(hasEmoji);
+  }
+}
+```
+
+Faça a compilação do arquivo e execute-o.
+
+(add image)
+
+Se notar, todas as variáveis estão especificamente tipadas, sendo mais direito, digo quais serão os tipos de valores de cada uma delas.
+
+E se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer? Vejamos o código abaixo:
+
+```Java
+class HelloWorld {
+  public static void main(String[] args) {
+    String myString = true;
+    int postStep = 1.3;
+    float numberLine = 10;
+    Boolean hasEmoji = "true";
+
+    System.out.Println(myString);
+    System.out.Println(postStep);
+    System.out.Println(numberLine);
+    System.out.Println(hasEmoji);
+  }
+}
+```
+
+O que aconteceu? Sim, seu código não nem compilado. Isso acontece porque o Java é fortemente tipado, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo.
+
+Existem outros tipos (Long, Double, etc...), mas deixamos para falar delas nos próximos posts.
