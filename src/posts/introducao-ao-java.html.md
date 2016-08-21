@@ -7,30 +7,29 @@ description:
 author: tcelestino
 tags:
   - java
-  - tipos primitivos
 ---
 
-Entrei para o time de engenharia da Elo7 há dois meses e vou dizer que fiquei "assustado" quando vi que o time de front end mexia muito com código Java. Por falta de experência em desenvolver aplicações em Java, tirando na época da faculdade que até cheguei a desenvolver o [iSnake](https://github.com/tcelestino/iSnake), minha experiência com Java era quase nula.
+Entrei para o time de front-end da [Elo7](http://elo7.com.br) tem alguns meses e digo que fiquei "assustado" quando vi que o time mexia muito com código Java. Meu susto maior é que minha única experiência com a linguagem foi na época da faculdade, chegando apenas a desenvolver o [iSnake](https://github.com/tcelestino/iSnake). Tirando isso, posso dizer que minha experiência é null.
 
 Mas chega de história e vamos ao que interessa!
 
 ## Instalando o Java
 
-Para iniciar, precisamos verificar se já temos o Java instalado. A grande maioria dos sistemas operacionais (SO's) já vem com alguma versão do Java instalada, mas para ter certeza execute no terminal:
+Antes de começar a escrever algum código, precisamos verificar se já temos o Java instalado. A grande maioria dos sistemas operacionais (SO's) já vem com alguma versão do Java instalada, mas para ter certeza abra o terminal e execute o comando:
 
 ```bash
 $ javac -version
 ```
 
-A imagem abaixo é o que deve aparecer para você
+Mas para frente vamos ver para que serve o `javac`.
 
 ![Verificando se o Java já está instalado](../images/introducao-ao-java-1.jpg)
 
 *Estou usando o Java 8, provavelmente terá uma outra versão instalada*
 
-Caso a mensagem não seja a informada no console do terminal, leia esse [artigo](https://goo.gl/XfZCiB) do pessoal da Caelum que explica muito bem de como instalar o Java nos diversos SO's
+Caso a mensagem não seja a informada no console do terminal, leia esse [artigo](https://goo.gl/XfZCiB) do pessoal da Caelum que explica muito bem como instalar o Java em diversos SO's
 
-Após a instalação, já podemos brincar um pouco com o Java.
+Após a instalação, podemos começar a iniciar o básico..
 
 ***Nota***
 
@@ -38,9 +37,11 @@ Após a instalação, já podemos brincar um pouco com o Java.
 
 ## Nosso primeira classe
 
-Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, nos próximos posts pretendo abordar mais sobre a IDE que usamos aqui na Elo7.
+Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, nos próximos posts pretendo abordar mais sobre a IDE que usamos aqui na Elo7, e vamos criar a nossa primeira classe.
 
-Para começar, vamos criar a nossa classe com o velho e famoso "Hello World".
+***Nota***
+
+*Todos os exemplos de código que serão usados na série, estará disponivel [nesse repositório](http://github.com/tcelestino/intro-java.git)*
 
 ```Java
 class MyFirstClass {
@@ -48,7 +49,6 @@ class MyFirstClass {
     System.out.println("Hello World!");
   }
 }
-
 ```
 
 Salve o arquivo como MyFirstClass.java e no terminal, execute o seguinte comando:
@@ -57,7 +57,7 @@ Salve o arquivo como MyFirstClass.java e no terminal, execute o seguinte comando
 $ java MyFirstClass.java
 ```
 
-O comando acima, irá compilar seu código, criando o arquivo MyFirstClass.class. Após compilar seu arquivo, execute:
+O comando acima, irá compilar seu código, criando o arquivo `MyFirstClass.class`. Após a compilação do arquivo, execute:
 
 ```bash
 $ javac MyFirstClass
@@ -69,19 +69,17 @@ Esse comando irá executar o código compilado anteriormente, mostrando a mensag
 
 ## Entendendo tipos primitivos
 
-
-
-Existem diversos tipos de primitivos, farei um uso das mais básicas, que são:
+Existem diversos tipos de primitivos, irei falar das mais básicas, que são:
 
   * String
   * int
   * float
   * Boolean
 
-Abra o arquivo MyFirstClass.java e atualize o código adicionando as variáveis:
+Abra o arquivo `MyFirstClass.java` e atualize o código adicionando as variáveis:
 
 ```Java
-class HelloWorld {
+class MyFirstClass {
   public static void main(String[] args) {
     String myString = "Introdução ao Java"; //apenas texto
     int postStep = 1; //numeros inteiros
@@ -100,12 +98,12 @@ Faça a compilação do arquivo e execute-o.
 
 (add image)
 
-Se notar, todas as variáveis estão especificamente tipadas, sendo mais direito, digo quais serão os tipos de valores de cada uma delas.
+Se você notou, todas as variáveis estão especificamente tipadas, sendo mais direito, digo quais serão os tipos de valores que cada uma delas poderá suportar. E se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer?
 
-E se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer? Vejamos o código abaixo:
+Vejamos o código abaixo:
 
 ```Java
-class HelloWorld {
+class MyFirstClass {
   public static void main(String[] args) {
     String myString = true;
     int postStep = 1.3;
@@ -120,6 +118,6 @@ class HelloWorld {
 }
 ```
 
-O que aconteceu? Sim, seu código não nem compilado. Isso acontece porque o Java é fortemente tipado, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo.
+Notou o que aconteceu quando tentou compilar seu arquivo? Isso acontece porque o Java é uma linguagem fortemente tipado, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo.
 
-Existem outros tipos (Long, Double, etc...), mas deixamos para falar delas nos próximos posts.
+Existem outros tipos (Long, Double, etc...), mas deixamos para falar delas nos próximos posts, quando podemos "brincar" e aprender ainda mais sobre a linguagem.
