@@ -73,18 +73,18 @@ Existem diversos tipos de primitivos, irei falar das mais básicas, que são:
 
   * String
   * int
-  * float
-  * Boolean
+  * double
+  * boolean
 
-Abra o arquivo `MyFirstClass.java` e atualize o código adicionando as variáveis:
+Crie agora criar um arquivo chamado `MyTypes.class` e vamos adicionar o código abaixo:
 
 ```Java
 class MyFirstClass {
   public static void main(String[] args) {
     String myString = "Introdução ao Java"; //apenas texto
     int postStep = 1; //numeros inteiros
-    float numberLine = 10.4; //numeros como double
-    Boolean hasEmoji = true; //verdadeiro ou falso.
+    doubl numberLine = 10.4; //numeros como double
+    boolean hasEmoji = false; //verdadeiro ou falso.
 
     System.out.Println(myString);
     System.out.Println(postStep);
@@ -120,4 +120,4 @@ class MyFirstClass {
 
 Notou o que aconteceu quando tentou compilar seu arquivo? Isso acontece porque o Java é uma linguagem fortemente tipado, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo.
 
-Existem outros tipos (Long, Double, etc...), mas deixamos para falar delas nos próximos posts, quando podemos "brincar" e aprender ainda mais sobre a linguagem.
+Se tiver algo para acrescentar ou sugerir, deixe nos comentários e aguardem os próximos posts.
