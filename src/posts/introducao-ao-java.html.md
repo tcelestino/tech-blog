@@ -3,7 +3,7 @@ title: 'Introdução ao Java'
 date: 2016-08-19
 category: back-end
 layout: post
-description:
+description: O primeiro post de uma série sobre como começar com a codificar algo em Java. Nesse primeiro post você vai entender como que funciona a execução do Java no computador, além de entender sobre tipos primitivos.
 author: tcelestino
 tags:
   - java
@@ -21,7 +21,8 @@ Antes de começar a escrever algum código, precisamos verificar se já temos o 
 $ javac -version
 ```
 
-![Verificando se o Java já está instalado](../images/introducao-ao-java-1.jpg)
+[add image]
+
 *Estou usando o Java 8, provavelmente terá uma outra versão instalada*
 
 Mas para frente vamos ver para que serve o comando `javac`.
@@ -30,11 +31,11 @@ Caso a mensagem não seja parecida com a que tem na imagem acima, recomendo esse
 
 Após a instalação, podemos começar a iniciar o básico..
 
-***Nota***
+**Nota**
 
 *Se for usuário do El Capitan(OSX), pode ser que tenha problemas para executar o instalador do Java. Caso o instalador não esteja sendo executado, leia [esse tutorial](http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/) (em inglês).*
 
-## Nosso primeira classe
+## Nossa primeira classe
 
 Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, assunto que ficará para futuros posts.
 
