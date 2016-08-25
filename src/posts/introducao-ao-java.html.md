@@ -36,7 +36,7 @@ Após a instalação, podemos começar a iniciar o básico..
 
 ## Nosso primeira classe
 
-Abra seu editor de texto preferido e o Terminal. Sim, por enquanto não vamos usar nenhuma IDE, assunto que ficará para futuros posts.
+Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, assunto que ficará para futuros posts.
 
 Escreva (ou cópie) o código abaixo e salve como `HelloWorld.java`.
 
@@ -47,22 +47,21 @@ class HelloWorld {
   }
 }
 ```
-
-Volte para o terminal do seu sistema operacional e digite o seguinte comando:
+Agora, abra o terminal do seu sistema operacional e digite o seguinte comando:
 
 ```bash
-$ java HelloWorld.java
+$ javac HelloWorld.java
 ```
 
-*Explicando:* o comando `java` irá compilar seu `arquivo.java`, no caso, criando um arquivo chamado `HelloWorld.class`.
+*Explicando:* o comando `javac` irá compilar seu `arquivo.java`, e criar um arquivo `nomeDaClass.class`, no nosso caso `HelloWorld.class`.
 
 Agora vamos executar nosso código e ver o que acontece:
 
 ```bash
-$ javac MyFirstClass
+$ java HelloWorld
 ```
 
-Explicando: simplesmente o `javac` irá executar o nosso arquivo `HelloWorld.class`, mostrando a mensagem:
+*Explicando:* simplesmente o `java` irá executar o nosso arquivo `HelloWorld.class`.
 
 [add image]
 
