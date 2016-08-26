@@ -28,10 +28,93 @@ Conforme os desenvolvedores foram percebendo a importância desses fatores para 
     - Vibração (`navigator.vibrate`)
 - Manifesto para aplicações web (`link rel="manifest"`)
 - A falecida especificação de cache de aplicação (atributo `manifest` na tag `html`)
+- A especificação de `CacheStorage`, que veio substituir o cache de aplicação (`window.caches`)
 - Service workers (`navigator.serviceWorker`)
 
+Vamos falar um pouco mais das últimas quatro APIs, que permitem dar uma cara mais *app* para qualquer tipo de site.
+
+## Manifesto para aplicações web
+
+Quando acessamos uma página da web, ela é aberta dentro de um navegador. O navegador adiciona, ao redor do conteúdo, barra de endereços, menu, ícones de extensões, barra de status etc. Tudo isso atrapalha a experiência do usuário quando queremos que ele realize tarefas na nossa aplicação, não é verdade? Compare com a experiência de acessar um aplicativo: toda a tela pode ser usada por ele, tornando a experiência mais imersiva e aproveitando melhor o espaço de tela, que é restrito.
+
+TODO: imagens
+
+Fora isso, é comum que os usuários criem atalhos para seus aplicativos favoritos. No entanto, é difícil ver atalhos para sites. Por que? No Google Chrome, por exemplo, existe a opção de adicionar à tela inicial um atalho para o site que estamos visitando. Mas, quando fazemos isso num site simples, o atalho não é tão fácil de identificar quanto um atalho de aplicativo.
+
+TODO: mais imagens
+
+Para melhorar esses pontos, surgiu a especificação do manifesto para aplicações web. Com ele, você consegue especificar se seu site deve ser visualizado com a barra de endereços ou em tela cheia; qual orientação de tela é mais adequada para seu site (retrato, paisagem ou indiferente); qual a cor principal do tema de cores do site (útil para customizar a cor da janela do navegador); e qual nome e ícone deve ter o atalho na área de trabalho.
+
+Usar essa especificação é simples: basta escrever um arquivo no formato JSON seguindo a especificação:
+
+```json
+{
+    "name": "Elo7",
+    "short_name": "Elo7",
+    "icons": [
+        {
+            "src": "//images.elo7.com.br/marketplace/assets/web/common/png/favicon/32x32-negative.png",
+            "sizes": "32x32",
+            "type": "image/png",
+            "density": 0.75
+        },
+        {
+            "src": "//images.elo7.com.br/marketplace/assets/web/common/png/favicon/48x48-negative.png",
+            "sizes": "48x48",
+            "type": "image/png",
+            "density": 1.0
+        },
+        {
+            "src": "//images.elo7.com.br/marketplace/assets/web/common/png/favicon/64x64-negative.png",
+            "sizes": "64x64",
+            "type": "image/png",
+            "density": 1.5
+        },
+    ],
+    "start_url": "/?elo7_source=web_app_manifest",
+    "display": "standalone",
+    "orientation": "portrait",
+    "theme_color": "#FDB933",
+    "background_color": "#FDB933"
+}
+```
+
+e referenciá-lo nas páginas de seu site com a tag `<link>`:
+
+```html
+<link rel="manifest" href="manifest.json">
+```
+
+Com isso, sua aplicação web já começa a ganhar uma aparência de aplicativo! Mas a experiência de navegação ainda é de um site: uma conexão ruim afeta diretamente a experiência.
+
+## AppCache: uma primeira tentativa de experiência offline
+
+A única forma de fazer com que a aplicação não dependa de conectividade com a internet para funcionar é fazer com que os recursos de que ela depende sejam armazenados no dispositivo do usuário.
+
+Já existe há muito tempo a ideia de *cachear* recursos no navegador do cliente. A ideia é guardar algumas informações como arquivos CSS, Javascript e imagens que mudam pouco no site. Assim, na próxima visita do usuário, ele não precisa baixar de novo essas informações. No entanto, mesmo tendo esses dados armazenados, o navegador ainda faz requisições para carregar o HTML inicial e verificar se é necessário atualizar os dados em cache.
+
+Para tentar resolver esse problema, surgiu a especificação *AppCache*. A ideia é parecida com a do manifesto de aplicação: você escreve um arquivo descrevendo os dados que seu site necessita para funcionar offline e qual o comportamento dele nessa situação:
+
+```
+CACHE MANIFEST
+index.html
+estilo.css
+logo.svg
+banner.png
+interacoes.js
+```
+
+Em seguida, referencia esse arquivo no seu HTML usando um atributo na tag `<html>` para que o navegador possa carregá-lo:
+
+```html
+<html manifest="elo7.appcache">
+    ...
+</html>
+```
+
+Com essas informações, o navegador consegue fornecer uma versão offline do seu site ou aplicação web para o usuário quando necessário.
+
 Tópicos a seguir:
-- Explicar manifest.json
 - Explicar por que a especificação AppCache é ruim
 - Explicar Service Workers
 - SPA
