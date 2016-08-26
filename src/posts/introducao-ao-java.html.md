@@ -21,7 +21,7 @@ Antes de começar a escrever algum código, precisamos verificar se já temos o 
 $ javac -version
 ```
 
-[add image]
+![Verificando se já temos o Java instalado](../images/introducao-ao-java-1.png)
 
 *Estou usando o Java 8, provavelmente terá uma outra versão instalada*
 
@@ -64,7 +64,7 @@ $ java HelloWorld
 
 *Explicando:* simplesmente o `java` irá executar o nosso arquivo `HelloWorld.class`.
 
-[add image]
+![Nossa primeira classe: Hello World!](../images/introducao-ao-java-2.png)
 
 ***Nota***
 
@@ -100,7 +100,7 @@ class MyPersonalInfo {
 
 Compile e execute o código (não esqueça do `java` e `javac`) e o resultado no seu terminal deverá ser esse:
 
-[add image]
+![Tipos primitivos no Java](../images/introducao-ao-java-3.png)
 
 Se você bem notou, todas as variáveis estão declaradas com o seu tipo, ou seja, cada uma está especificamente "rotulada" com o tipo de valores que elas poderão suportar.
 
@@ -122,7 +122,11 @@ class MyPersonalInfo {
 }
 ```
 
-Viu o que acontecue quando tentou compilar o arquivo? Isso acontece porque o Java é uma linguagem fortemente tipado, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo. Vale lembrar que a tipagem não está restrita apenas a variáveis, mas também aos metódos, mas isso fica para os futuros posts.
+Viu o que acontecue quando tentou compilar o arquivo?
+
+![Exibe erros ao tentar compilar o código Java](../images/introducao-ao-java-4.png)
+
+Isso acontece porque o Java é uma linguagem fortemente tipado, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo. Vale lembrar que a tipagem não está restrita apenas a variáveis, mas também aos metódos, mas isso fica para os futuros posts.
 
 Se tiver algo para acrescentar/sugerir, deixe nos comentários e aguardem os próximos posts.
 
