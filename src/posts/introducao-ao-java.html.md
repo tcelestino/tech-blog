@@ -21,34 +21,24 @@ Antes de começar a escrever algum código, precisamos verificar se já temos o 
 $ javac -version
 ```
 
+Você precisa ver uma mensagem como a que aparece na imagem abaixo.
+
 ![Verificando se já temos o Java instalado](../images/introducao-ao-java-1.png)
 
-*Estou usando o Java 8, provavelmente terá uma outra versão instalada*
-
-Mas para frente vamos ver para que serve o comando `javac`.
-
-Caso a mensagem não seja parecida com a que tem na imagem acima, recomendo esse [artigo](https://goo.gl/XfZCiB) criado pelo o pessoal da Caelum que explica muito bem como fazer a instalação do Java em diversos SO's.
-
-Após a instalação, podemos começar a iniciar o básico..
-
-**Nota**
-
-*Se for usuário do El Capitan(OSX), pode ser que tenha problemas para executar o instalador do Java. Caso o instalador não esteja sendo executado, leia [esse tutorial](http://osxdaily.com/2015/10/05/disable-rootless-system-integrity-protection-mac-os-x/) (em inglês).*
+Estou usando a versão 8 do Java, provalvemente você estará usando uma outra versão, que não vai impactar por enquanto nossos primeiros passos. Agora, caso a mensagem não seja parecida com a que tem na imagem acima, recomendo esse [artigo](https://goo.gl/XfZCiB) do pessoal da Caelum que explica como fazer a instalação do Java em diversos sistemas operacionais.
 
 ## Nossa primeira classe
 
-Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, assunto que ficará para futuros posts.
-
-Escreva (ou cópie) o código abaixo e salve como `HelloWorld.java`.
+Abra seu editor de texto preferido. Sim, por enquanto não vamos usar nenhuma IDE, assunto que ficará para os futuros posts e escreva (ou cópie) o código abaixo. Salve como "HelloWorld.java".
 
 ```Java
-class HelloWorld {
+public class HelloWorld {
   public static void main(String[] args) {
     System.out.println("Hello World!");
   }
 }
 ```
-Agora, abra o terminal do seu sistema operacional e digite o seguinte comando:
+Agora, abra o terminal e digite o seguinte comando:
 
 ```bash
 $ javac HelloWorld.java
@@ -56,17 +46,17 @@ $ javac HelloWorld.java
 
 *Explicando:* o comando `javac` irá compilar seu `arquivo.java`, e criar um arquivo `nomeDaClass.class`, no nosso caso `HelloWorld.class`.
 
-Agora vamos executar nosso código e ver o que acontece:
+Depois de compilar nosso arquivo, vamos precisar executar o nosso código compilado. Rode o comando:
 
 ```bash
 $ java HelloWorld
 ```
 
-*Explicando:* simplesmente o `java` irá executar o nosso arquivo `HelloWorld.class`.
+*Explicando:* o comando "java" irá executar o nosso arquivo `HelloWorld.class`.
 
 ![Nossa primeira classe: Hello World!](../images/introducao-ao-java-2.png)
 
-***Nota***
+*Nota*
 
 *Todos os exemplos de código que serão usados nos posts, estarão disponíveis [nesse repositório](http://github.com/tcelestino/intro-java.git)*
 
@@ -74,20 +64,19 @@ $ java HelloWorld
 
 No Java, precisamos sempre definir o tipo das variáveis que não poderá ser modificada em qualquer momento da execução do código. Vou mostrar as mais básicas, sendo elas:
 
-  * String - texto
+  * String - apenas texto
   * int - número inteiro (5)
-  * double - números flutantes (1.80)
+  * float - números fluentes (1.80), porém com menos bits em memória
   * boolean - verdadeiro ou falso
-
 
 Vamos colocar na prática como que funciona a tipificação/declaração de variáveis no Java. Crie um arquivo chamado `MyPersonalInfo.java` e adicionamos o código abaixo:
 
 ```Java
-class MyPersonalInfo {
+public class MyPersonalInfo {
   public static void main(String[] args) {
     String myName = "Tiago Celestino";
     int age = 29;
-    double weight = 78.9; //é verdade
+    float weight = 80.0;
     boolean isBrazilian = true;
 
     System.out.Println(myName);
@@ -107,11 +96,11 @@ Se você bem notou, todas as variáveis estão declaradas com o seu tipo, ou sej
 Agora, se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer? Vamos alterar nossa classe anterior para ver o acontece.
 
 ```Java
-class MyPersonalInfo {
+public class MyPersonalInfo {
   public static void main(String[] args) {
     String myName = 29;
     int age = 78.9;
-    double weight = 29;
+    float weight = 29;
     boolean isBrazilian = "Tiago Celestino";
 
     System.out.Println(myName);
@@ -122,7 +111,7 @@ class MyPersonalInfo {
 }
 ```
 
-Viu o que acontecue quando tentou compilar o arquivo?
+Viu o que acontece quando tentou compilar o arquivo?
 
 ![Exibe erros ao tentar compilar o código Java](../images/introducao-ao-java-4.png)
 
