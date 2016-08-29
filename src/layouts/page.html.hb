@@ -43,7 +43,9 @@
         {{{content}}}
     </main>
     <footer>
-        <a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/">engenharia.elo7.com.br © 2016</a>
+        <a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" itemscope itemtype="http://schema.org/Organization">
+            <span itemprop="copyrightHolder">engenharia.elo7.com.br © 2016</span>
+        </a>
     </footer>
 </body>
 </html>
