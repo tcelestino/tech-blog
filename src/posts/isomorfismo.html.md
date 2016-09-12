@@ -37,3 +37,85 @@ Depois da parte teórica, a pergunta que surge é: como isso funciona no código
 Basicamente, temos o mesmo código que consegue rodar no cliente e no servidor. Isso é possível, já que temos a seguinte separação entre os dois lados:
 
 ![Alt "Responsabilidades do cliente/servidor"](../images/isomorfismo-2.png)
+
+Como é possível perceber, alguns pontos são repetidos dos dois lados, e são esses os pontos que serão unificador em um código só isomórfico. O resto, como por exemplo, a parte de persistência e de sessão fazem parte unicamente do lado servidor. Enquanto eventos de DOM e o local storage do lado cliente.
+
+![Alt "Unificação em um código isomórfico"](../images/isomorfismo-3.png)
+
+Para exemplificar como fazer um código isomórfico e quais são as especificações do lado cliente e do servidor, segue o código abaixo:
+
+```js
+class Pessoa {
+    constructor(nome, dataNascimento) {
+        this.nome = nome;
+        this.dataNascimento = dataNascimento;
+    }
+
+    get idade() { ... }
+
+    get primeiroNome() { ... }
+}
+
+module.exports = Pessoa;
+```
+Esse arquivo, seria como se fosse um modelo Pessoa, que teria apenas nome e data de nascimento. O que seria possível chamar dessa classe seria a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante desse exemplo, já que será nele que aplicaremos o isomorfismo.
+
+```js
+Pessoa = require('./pessoa');
+
+const parser = {
+    parse: function(txt) {
+        return txt.split('\n').map((linha) => {
+            let [nome, dataTxt] = linha.split(';');
+            return new Pessoa(nome, new Date(dataTxt));
+        });
+    }
+};
+
+module.exports = parser;
+```
+Nesse código temos um parser para o arquivo, que separa cada linha do texto e separa por `;` e com o resultado disso, cria uma nova Pessoa. O importante desse código é perceber que não utilizamos nenhum módulo do node (require) nem manipulamos o document do browser.
+Na primeira parte do nosso exemplo, vamos rodar todo esse código no node, apenas no lado servidor. Para isso criaremos mais um arquivo (main.js), para rodar todo o código criado.
+
+```js
+const parser = require('./pessoa_parser');
+const fs = require('fs');
+fs.readFile('pessoas.txt', (err, content) => {
+    let pessoas = parser.parse(content.toString());
+    console.log(pessoas);
+});
+
+```
+Dessa forma, quando rodamos no servidor esse arquivo, obtemos essa resposta:
+
+![Alt "Output do código quando rodado no servidor"](../images/isomorfismo-4.png)
+
+Agora, como nosso objetivo é ter um código que rode no lado servidor e no cliente, precisamos criar um arquivo HTML para tentar rodar esse código que já criamos. Nesse HTML, teremos apenas os imports de todos os javascripts utilizados e uma label com um textarea (para podermos colocar o txt que será parseado) e um botão para submit. Logo de início, se tentarmos abrir o arquivo em um browser, teremos esse erro:
+
+![Alt "Erro de código quando código não isomórfico roda no browser"](../images/isomorfismo-5.png)
+
+Aqui, percebemos que o module e o require não funcionam no browser, apenas no servidor. Para isso, precisamos arrumar o nosso código para que ele consiga se adaptar nos diferentes ambientes. Mas, lembrando que não iremos alterar a função parser, já que esse é o código isomórfico. O lugar que vamos alterar será no main.js, como mostra o código a seguir:
+
+```js
+if (typeof module === 'object') {
+    const parser = require('./pessoa_parser');
+    const fs = require('fs');
+    fs.readFile('pessoas.txt', (err, content) => { ... });
+} else {
+    document.getElementById('processar').addEventListener('click', () => {
+        let pessoas = parser.parse(document.getElementById('pessoas').value);
+        console.log(pessoas);
+    });
+}
+```
+Além disso, em todos os lugares que usar o require ou o module, teremos que fazer o seguinte if:
+
+```js
+if (typeof module === 'object') { ... }
+```
+
+Dessa forma, no servidor continuará funcionando normalmente e no browser passará a funcionar:
+
+![Alt "Output do código no browser"](../images/isomorfismo-6.png)
+
+Agora temos um código isomórfico! (Nossa função parser :) ) Nesse [repositório](https://github.com/FernandaBernardo/palestra-isomorfismo-exemplo) está o código completo do exemplo explicado. Finalizando, nesse post temos o que é o isomorfismo, toda a parte histórica e como funciona um código simples. No próximo post, falarei mais sobre frameworks e o que usar isomorfismo traz para seu projeto.
