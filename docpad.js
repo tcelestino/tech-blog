@@ -18,7 +18,6 @@ docpadConfig = function() {
                         return [
                             { category: "front-end" },
                             { category: "back-end" },
-                            { category: "design" },
                             { category: "vagas" },
                             { category: "mobile" },
                             { category: "eventos" }
