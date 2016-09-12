@@ -5,10 +5,6 @@
     margin: 0 auto;
     padding: 0 15%;
 
-    * {
-        font-weight: map-get($font-weight, normal);
-    }
-
     h1 {
         font-size: 1.8em;
     }
@@ -49,7 +45,10 @@
     code {
         margin: 1em 0;
         overflow: auto;
-        line-height: 1.2;
+        line-height: 1.5;
+        padding: 0.7em 1em;
+        font-family: monospace;
+        font-size: 1.2em;
 
         &::-webkit-scrollbar {
             height: 0.4em;
@@ -75,5 +74,9 @@
 
     img {
         width: 100%;
+    }
+
+    em {
+        font-style: italic;
     }
 }
