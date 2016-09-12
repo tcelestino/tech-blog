@@ -3,8 +3,9 @@ date: 2016-08-09
 category: front-end
 tags:
   - javascript
-  - progressive
-  - webapp
+  - progressive webapps
+  - pwa
+  - service workers
 author: luiz
 layout: post
 title: A tecnologia por trás de *progressive web apps*
