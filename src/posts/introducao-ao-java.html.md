@@ -39,13 +39,13 @@ public class HelloWorld {
 }
 ```
 
-Salve o arquivo como "HelloWorld.java". No terminal digite o seguinte comando:
+Salve o arquivo como *HelloWorld.java*. No terminal digite o seguinte comando:
 
 ```bash
 $ javac HelloWorld.java
 ```
 
-*Explicando:* o comando `javac` irá compilar seu `arquivo.java`, e criar um arquivo chamado `nomeDaClasse.class`, no nosso caso `HelloWorld.class`.
+**Explicando:** o comando *javac* irá compilar seu *nomeClasse.java* e criar um arquivo chamado *nomeClasse.class*, no nosso caso *HelloWorld.class*.
 
 Depois de compilar nosso arquivo, vamos precisar executar o nosso código compilado. Rode o comando:
 
@@ -53,58 +53,97 @@ Depois de compilar nosso arquivo, vamos precisar executar o nosso código compil
 $ java HelloWorld
 ```
 
-*Explicando:* o comando "java" irá executar o nosso arquivo `HelloWorld.class`.
+**Explicando:** o comando *java* irá executar o nosso arquivo compilado.
 
 ![Nossa primeira classe: Hello World!](../images/introducao-ao-java-2.png)
 
-*Nota*
-
-*Todos os exemplos de código que serão usados nos posts, estarão disponíveis [nesse repositório](http://github.com/tcelestino/intro-java)*
+**Nota:** Todos os exemplos de código que serão usados nos posts, estarão disponíveis [nesse repositório](http://github.com/tcelestino/intro-java)
 
 ## Entendendo tipos primitivos
 
-No Java, precisamos sempre definir o tipo das variáveis que não poderá ser modificada em qualquer momento da execução do código. Vou mostrar as mais básicas, sendo elas:
+No Java, precisamos sempre definir o tipo das variáveis que não poderá ser modificada em qualquer momento da execução do código. Existem 8 tipos de dados primitivos (char, boolean, byte, int, short, long, float e double). Vou explicar algumas delas.
 
-  * String - apenas texto
-  * int - número inteiro (Ex.: 5)
-  * double - números flutuante (Ex.: 1.80)
-  * boolean - verdadeiro ou falso
+### int
 
-Vamos colocar na prática como que funciona a tipificação/declaração de variáveis no Java. Crie um arquivo chamado `MyPersonalInfo.java` e adicione o código abaixo:
+Variáveis do tipo *int* armazenam valores inteiros. Além disso, podemos realizar operações matemáticas (somar, subtrair, dividir, multiplicar, etc..) com os valores armazenados. Segue um exemplo:
 
-```Java
-public class MyPersonalInfo {
+```java
+public class ExampleInt {
   public static void main(String[] args) {
-    String myName = "Tiago Celestino";
-    int age = 29;
-    double weight = 80.0;
-    boolean isBrazilian = true;
+    int bornYear = 1987;
+    int actualYear = 2016;
+    int myAge = bornYear - actualYear;
+    int myNewAge = myAge + 1;
 
-    System.out.Println(myName);
-    System.out.Println(age);
-    System.out.Println(weight);
-    System.out.Println(isBrazilian);
+    System.out.println(myAge);
+    System.out.println(myNewAge);
   }
 }
 ```
 
-Compile e execute o código (não esqueça do `javac` e `java`) e o resultado no seu terminal deverá ser esse:
+### double
 
-![Tipos primitivos no Java](../images/introducao-ao-java-3.png)
+Em variavéis do tipo *double*, podemos armazenar valores com pontos flutuantes (Ex.: 1.89) e além desses valores fracionados, o *double* também aceita números inteiros. E assim como nas variáveis do tipo *int* é possível fazer operações matemáticas.
 
-Se você bem notou, todas as variáveis estão declaradas com o seu tipo, ou seja, cada uma está especificamente "rotulada" com o tipo de valores que elas poderão suportar.
+```java
+public class ExampleDouble {
+  public static void main(String[] args) {
+    double dollar = 3.20;
+    double weight = 75;
+    double count = weight / 3;
 
-Agora, se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer? Vamos alterar nossa classe anterior para ver o acontece.
+    System.out.println(dollar);
+    System.out.println(weight);
+    System.out.println(count);
+  }
+}
+```
+
+**Nota:** assim como o *double*, existe o tipo *float* que também aceita valores fracionados, sendo que a diferença entre eles fica pela quantidade de bytes que cada um pode suportar. No **float** são 4 bytes e no *double* 8 bytes.
+
+### char
+
+Variáveis do tipo *char* apenas podem receber um caractere. Ou seja, você não pode escrever um texto, ou definir um número para ela.
+
+```java
+public class ExampleChar {
+  public static void main(String[] args) {
+    char e = 'e';
+
+    System.out.println(e);
+  }
+}
+```
+
+Vale anotar que variáveis desse tipo não podem receber um valor vazio (Ex.: char d = ''), isso porque um valor vazio não é um caractere.
+
+### boolean
+
+Variáveis do tipo *boolean* apenas possuem dois valores: *true* ou *false*. As palavras *true* e *false*, no Java são palavras reservadas, ou seja, só podem ser usadas em variáveis que são do tipo *boolean*.
+
+```java
+public class ExampleBoolean {
+  public static void main(String[] args) {
+    int myAge = 29;
+    boolean isBrazilian = true;
+    boolean isOldMan = myAge > 50; // expressão booleana
+
+    System.out.println(isBrazilian);
+    System.out.println(isOldMan);
+  }
+}
+```
+
+Agora, se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer? Vamos criar um arquivo que vamos chamar de *MyPersonalInfo.java* e vamos escrever (pode copiar) o código abaixo:
 
 ```Java
 public class MyPersonalInfo {
   public static void main(String[] args) {
-    String myName = 29;
+    char t = 29;
     int age = 78.9;
     double weight = 29;
-    boolean isBrazilian = "Tiago Celestino";
+    boolean isBrazilian = "e";
 
-    System.out.Println(myName);
     System.out.Println(age);
     System.out.Println(weight);
     System.out.Println(isBrazilian);
@@ -112,14 +151,14 @@ public class MyPersonalInfo {
 }
 ```
 
-Viu o que acontece quando tentou compilar o arquivo?
+Ao tentar compilar o arquivo, provavelmente você verá uma mensagem como a da imagem abaixo:
 
-![Exibe erros ao tentar compilar o código Java](../images/introducao-ao-java-4.png)
+![Exibe erros ao tentar compilar o código Java](../images/introducao-ao-java-3.png)
 
 Isso acontece porque o Java é uma linguagem fortemente tipada, ou seja, toda variável precisa ter um tipo especifico, sendo que após seu tipo ser declarado a variável será até o seu fim do mesmo tipo. Vale lembrar que a tipagem não está restrita apenas a variáveis, mas também aos metódos, mas isso fica para os futuros posts.
 
 Se tiver algo para acrescentar/sugerir, deixe nos comentários e aguardem os próximos posts.
 
-***Fontes***
+***Fonte***
 
-- [Variáveis primitivas e Controle de fluxo](https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/) - Caelum
+- [Variáveis primitivas e Controle de fluxo](https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/)
