@@ -21,17 +21,18 @@ A ideia de tentar transformar um site em algo mais próximo de um aplicativo nã
 
 Conforme os desenvolvedores foram percebendo a importância desses fatores para uma melhor experiência do usuário, começaram a surgir algumas especificações que procuram tornar os sites mais próximos do sistema operacional, com acesso a mais recursos do dispositivo e sem tanta dependência de conectividade para funcionar. Dentre elas, podemos citar:
 
-- APIs de acesso a recursos do dispositivo
+- APIs de acesso a sensores do dispositivo
     - Geolocalização (`navigator.geolocation`)
     - Câmera/microfone (`navigator.getUserMedia`)
     - Giroscópio/acelerômetro (eventos `deviceorientation` e `devicemotion`, respectivamente)
-    - Vibração (`navigator.vibrate`)
+- LocalStorage/SessionStorage (`window.localStorage`/`window.sessionStorage`)
+- Indexed Database (`window.indexedDB`)
 - Manifesto para aplicações web (`link rel="manifest"`)
 - A falecida especificação de cache de aplicação (atributo `manifest` na tag `html`)
 - A especificação de `CacheStorage`, que veio substituir o cache de aplicação (`window.caches`)
 - Service workers (`navigator.serviceWorker`)
 
-Vamos falar um pouco mais das últimas quatro APIs, que permitem dar uma cara mais *app* para qualquer tipo de site.
+Neste post, vamos focar nas APIs que permitem uma experiência "app" para qualquer tipo de site, que são as APIs de armazenamento (LocalStorage/SessionStorage, Indexed Database, Cache de aplicação e CacheStorage), o manifesto para aplicações web e os *service workers*.
 
 ## Manifesto para aplicações web
 
@@ -114,8 +115,50 @@ Em seguida, referencia esse arquivo no seu HTML usando um atributo na tag `<html
 
 Com essas informações, o navegador consegue fornecer uma versão offline do seu site ou aplicação web para o usuário quando necessário.
 
+Apesar de parecer uma solução simples e efetiva, ela vem com uma série de complicações. Primeiro, uma vez que o conteúdo tenha sido cacheado pelo AppCache, o navegador do usuário vai **sempre** usar a versão cacheada. Ou seja, para servir uma nova versão da aplicação para seu usuário, você vai precisar força-lo a atualizar o cache, e isso não é nada fácil. O AppCache só é atualizado quando o arquivo de manifesto é alterado e, **além disso**, os arquivos por ele referenciados devem ser atualizados de acordo com as regras de cache HTTP tradicional.
+
+Fora essas dificuldades com atualização, o AppCache também não fornece um controle muito forte sobre **o que** vai ser cacheado e **por quanto tempo**. Dependendo de como for utilizado, o cache pode crescer indefinidamente, gerando sérios problemas para o usuário.
+
+Felizmente, uma nova especificação, muito mais poderosa, veio resolver a questão da experiência offline e *quase* offline (sabe aqueles momentos em que o 3G começa a falhar?) e enterrou a especificação AppCache.
+
+## Service workers
+
+Em meados de 2014, surgiu a primeira versão dessa nova especificação, trazendo um mundo enorme de possibilidades com ela. Pela primeira vez na web, uma página poderia especificar um arquivo Javascript para executar além do escopo da própria página e controlar **totalmente** o acesso a recursos externos.
+
+```javascript
+if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js')
+        .then(function(sw) {
+            // service worker registrado!
+        }).catch(function() {
+            // falha ao registrar service worker
+        });
+}
+```
+
+Para evitar problemas de segurança, esse é um recurso que está disponível apenas para páginas servidas via HTTPS (criptografia).
+
+Na especificação AppCache, a estratégia de cache e *fallback* ficava toda a cargo do navegador; era inflexível. Com os *service workers*, o controle passa todo para o desenvolvedor. Ele pode implementar a mesma estratégia do AppCache (servir o conteúdo cacheado e atualizar em background) ou outra totalmente diferente, como acessar o cache e a rede ao mesmo tempo para responder rapidamente a uma requisição sem deixar de atualizar sempre o conteúdo. Nesse caso, o *service worker* trabalha em conjunto com outra especificação: CacheStorage, um cache programável voltado para o armazenamento de recursos pelo *service worker*.
+
+```javascript
+// sw.js
+self.addEventListener('install', function(event) {
+    event.waitUntil(
+        caches.open('meusite-v1').then(function(cache) {
+            return cache.addAll([ /* URLs aqui */ ]);
+        })
+    );
+});
+
+self.addEventListener('fetch', function(event) {
+    event.respondWith(
+        // sua estratégia para offline aqui
+    );
+});
+```
+
+Além do controle de acesso à rede, que por si só já é muito valioso, o *service worker* também permite trabalhar com sincronização de dados em background, algo que já existe há muito tempo em aplicações nativas e é fundamental para uma experiência de uso mais fluida e para aumentar o engajamento do usuário com o site ou a aplicação.
+
 Tópicos a seguir:
-- Explicar por que a especificação AppCache é ruim
-- Explicar Service Workers
-- SPA
-- União Service Workers + SPA
+- LocalStorage/SessionStorage
+- IndexedDB
