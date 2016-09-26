@@ -73,3 +73,33 @@ Para finalizar, acredito que não poderia falar de isomorfismo sem falar das bib
 Aqui finalizamos nossos posts sobre isomorfismo, sabendo um pouco mais das bibliotecas que existem e como as empresas usam em seus projetos. Qualquer dúvida, só perguntar ;D
 
 Recomendo a leitura desses outros dois posts contanto sobre a implementação da arquitetura isomórfica no [Airbnb](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/) e na [Netflix](http://techblog.netflix.com/2015/08/making-netflixcom-faster.html). O Airbnb reconstruiu todo seu site mobile web para melhorar o tempo de carregamento da página e melhorar a usabilidade para o usuário. E com isso, lançaram sua própria lib isomórfica, o [Rendr](http://rendrjs.github.io/). Já o Netflix, trocou sua estrutura Java, com Struts e Tiles, e Javascript(com Jquery), no front, por uma estrutura só com React. Isso rendeu uma melhora de 70% no TTI (*Time to Interact*).
+
+No Elo7, nós temos um servidor de componentes, onde na primeira requisição ao marketplace pela página, o marketplace bate no servidor de componentes, que retorna o JSON para o marketplace, que retorna a página ao cliente. Na segunda requisição, ocorre uma requisição ao marketplace pelo JSON e uma requisição ao servidor de componentes para conseguir um template do componente. Com isso, a renderização ocorre do lado do cliente e quando é preciso (no caso do exemplo, na primeira requisição) ele consegue renderizar no marketplace também. Com isso, temos nossa arquitetura isomórfica, que utilizamos o [Dust.js](http://www.dustjs.com/) como engine de templates.
+
+# Fatos sobre isomorfismo
+Falar sobre prós e contras é um pouco complicado, mas esses fatos foram o que eu percebi ao longo do meu estudo e o que vários posts sobre o assunto comentavam:
+* Menos duplicação de código, mais fácil de dar manutenção
+* Menos tempo gasto para escrever código no servidor e no cliente.
+* Cuidado para levar em conta onde o código será executado
+* Primeiro request é rápido e os outros ainda mais.
+* Mais simples de funcionar sem JS, servidor consegue retornar o HTML.
+* Debug é mais complicado, já que temos um código que funciona no cliente e no servidor
+* Evitar expor dados sensíveis. Não podemos expor dados que colocaríamos apenas no back end, como chaves por exemplo. Esse código ainda não pode ser exposto.
+* Os frameworks mudam muito rápido e quebram rápido também
+* Se sua página não tiver muita atualização dinâmica, você irá implementar muito código para pouco benefício
+
+# Frameworks e Libs
+Vou colocar aqui os links dos frameworks e libs mais conhecidas e vou entrar em detalhes de apenas algumas. Segue a lista:
+* [Meteor](https://www.meteor.com/)
+* [Rendr](http://rendrjs.github.io/)
+* [Catberry](http://catberry.org/)
+* [Ezel](http://ezeljs.com/)
+* [React](https://facebook.github.io/react/)
+* [Dust.js](http://www.dustjs.com/)
+* [Derby](http://derbyjs.com/)
+* [Taunus](https://github.com/taunus/taunus)
+* [Lazojs](https://github.com/lazojs/lazo)
+* [Mithril](http://mithril.js.org/)
+* entre muitos outros ...
+
+# Mojito
