@@ -49,7 +49,7 @@ Vou colocar aqui os links dos frameworks e bibliotecas mais conhecidas e vou ent
 * entre muitos outros ...
 
 # Mojito
-Não coloquei o [Mojito](https://github.com/yahoo/mojito) na lista acima, pelo fato de estar com o build quebrado a última versão e o último *commit* ser de 2014. Mas acredito que vale a pena falar dele, já que foi a primeira biblioteca isomórfica open source, desenvolvida em abril de 2012, pelo Yahoo. 
+Não coloquei o [Mojito](https://github.com/yahoo/mojito) na lista acima, pelo fato de estar com o build quebrado a última versão e o último *commit* ser de 2014. Mas acredito que vale a pena falar dele, já que foi a primeira biblioteca isomórfica open source, desenvolvida em abril de 2012, pelo Yahoo.
 
 # Meteor
 O Meteor já tem um conceito um pouco diferente dos outros que falarei aqui. Ele é uma plataforma open source usada para desenvolver aplicações web e mobile. Ele é fullstack, ou seja, apresenta soluções desde o back end (como banco de dados, por exemplo) até o front end. Listarei algumas características que percebi ao usá-lo para desenvolver uma aplicação básica, que pode ser encontrada no [repositório](https://github.com/FernandaBernardo/meteor-simple-todos).
@@ -62,7 +62,7 @@ O Meteor já tem um conceito um pouco diferente dos outros que falarei aqui. Ele
 
 # React
 O [React](https://facebook.github.io/react/), biblioteca desenvolvida pelo Facebook, é uma linguagem de templates que é utilizada para renderizar HTML, ou seja, só está presente na parte da *view*. Pelo fato de estar presente apenas na *view*, não pode ser comparado diretamente com outros frameworks como Angular, Backbone, Ember, que são utilizados na aplicação como um todo, enquanto o React está preocupado somente com a parte de renderização.
-No React, todo o código HTML é escrito no meio do código Javascript. Logo, no caso, não existe arquivos `.html`, existem somento `.js`. E um problema (ou não) do React, é que ele não dá suporte, e nem pretende, ao Internet Explorer 8 para baixo. 
+No React, todo o código HTML é escrito no meio do código Javascript. Logo, no caso, não existe arquivos `.html`, existem somento `.js`. E um problema (ou não) do React, é que ele não dá suporte, e nem pretende, ao Internet Explorer 8 para baixo.
 
 # Marko
 Passando rapidamente pelo [Marko](https://github.com/marko-js/marko), ele é uma linguagem de template desenvolvida pelo Ebay. Ela é conhecida por ser uma das mais rápidas linguagens de template. Diferentemente do React, ela tenta fazer o HTML ser mais parecido com o Javascript. Existem alguns *benchmarks* [comparando o Marko com outras linguagens](https://github.com/marko-js/templating-benchmarks) e uma específica, [comparando ele com React](https://github.com/patrick-steele-idem/marko-vs-react).
@@ -71,3 +71,5 @@ Passando rapidamente pelo [Marko](https://github.com/marko-js/marko), ele é uma
 Para finalizar, acredito que não poderia falar de isomorfismo sem falar das bibliotecas que permitem ele ser possível. Uma delas é o [browserify](http://browserify.org/), que permite ao *browser* suportar o *require*. Outra bem famosa é o [webpack](https://webpack.github.io/), que transforma módulos com dependências em *assets* estáticos. Quando se trata de Javascript isomórfico, essas duas bibliotecas geralmente aparecem, então é bom saber que elas existem e onde são utilizadas.
 
 Aqui finalizamos nossos posts sobre isomorfismo, sabendo um pouco mais das bibliotecas que existem e como as empresas usam em seus projetos. Qualquer dúvida, só perguntar ;D
+
+Recomendo a leitura desses outros dois posts contanto sobre a implementação da arquitetura isomórfica no [Airbnb](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/) e na [Netflix](http://techblog.netflix.com/2015/08/making-netflixcom-faster.html). O Airbnb reconstruiu todo seu site mobile web para melhorar o tempo de carregamento da página e melhorar a usabilidade para o usuário. E com isso, lançaram sua própria lib isomórfica, o [Rendr](http://rendrjs.github.io/). Já o Netflix, trocou sua estrutura Java, com Struts e Tiles, e Javascript(com Jquery), no front, por uma estrutura só com React. Isso rendeu uma melhora de 70% no TTI (*Time to Interact*).
