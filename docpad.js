@@ -18,6 +18,7 @@ docpadConfig = function() {
                         return [
                             { category: "front-end" },
                             { category: "back-end" },
+                            { category: "devops" },
                             { category: "vagas" },
                             { category: "mobile" },
                             { category: "eventos" }
@@ -77,6 +78,18 @@ docpadConfig = function() {
                                 .findAll({layout: 'post'})
                                 .setFilter('isCategory', function(model) {
                                     return model.attributes.category == "back-end";
+                                })
+                                .setComparator(function(postA, postB) {
+                                    var dateA = postA.toJSON().date;
+                                    var dateB = postB.toJSON().date;
+                                    return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                devops : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'post'})
+                                .setFilter('isCategory', function(model) {
+                                    return model.attributes.category == "devops";
                                 })
                                 .setComparator(function(postA, postB) {
                                     var dateA = postA.toJSON().date;
