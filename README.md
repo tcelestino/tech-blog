@@ -23,7 +23,7 @@ description: Alguma descrição do post que irá aparecer na home...
 ---
 ```
 
-Para adicionar imagens ao seu post, adicione cada uma das imagens na pasta ``src/assets/images``. Sua imagem deve ser ``.png`` ou ``.jpg`` e o nome deve seguir o padrão: ``<nomedopost>-<numerodaimagem>.<extensão>``.
+Para adicionar imagens ao seu post, adicione cada uma das imagens na pasta ``src/assets/images``. Sua imagem deve ser ``.png`` ou ``.jpg`` e o nome deve seguir o padrão: ``<nomedopost>-<numerodaimagem>.<extensão>``. Para referenciá-las no post, use URLs absolutas como ``/images/titulo-post-1.png``.
 
 ## Markdown
 Todo o post deve ser escrito na linguagem markdown. Abaixo seguem alguns exemplos da marcação (apenas para demonstração, todas as marcações do markdown funcionam :) ):
