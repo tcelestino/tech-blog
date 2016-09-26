@@ -63,6 +63,6 @@ Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legív
 
 O desenho conceitual final da arquitetura fica como abaixo:
 
-**(inserir diagrama da arquitetura)**
+![Arquitetura Logs Elo7](../images/gestao-de-logs-1)
 
 E você, como gerencia seus logs? Deixe um comentário abaixo!
