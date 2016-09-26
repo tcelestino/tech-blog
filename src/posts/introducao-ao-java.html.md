@@ -1,6 +1,6 @@
 ---
 title: 'Introdução ao Java'
-date: 2016-08-19
+date: 2016-09-26
 category: back-end
 layout: post
 description: O primeiro post de uma série sobre como começar a codificar algo em Java. Nesse primeiro post você vai entender como que funciona a execução do Java no computador, além de entender sobre tipos primitivos.
@@ -63,7 +63,7 @@ $ java HelloWorld
 
 No Java, precisamos sempre definir o tipo das variáveis que não poderá ser modificada em qualquer momento da execução do código. Existem 8 tipos de dados primitivos (char, boolean, byte, int, short, long, float e double). Vou explicar algumas delas.
 
-### int
+### #int
 
 Variáveis do tipo *int* armazenam valores inteiros. Além disso, podemos realizar operações matemáticas (somar, subtrair, dividir, multiplicar, etc..) com os valores armazenados. Segue um exemplo:
 
@@ -81,7 +81,7 @@ public class ExampleInt {
 }
 ```
 
-### double
+### #double
 
 Em variavéis do tipo *double*, podemos armazenar valores com pontos flutuantes (Ex.: 1.89) e além desses valores fracionados, o *double* também aceita números inteiros. E assim como nas variáveis do tipo *int* é possível fazer operações matemáticas.
 
@@ -101,7 +101,7 @@ public class ExampleDouble {
 
 **Nota:** assim como o *double*, existe o tipo *float* que também aceita valores fracionados, sendo que a diferença entre eles fica pela quantidade de bytes que cada um pode suportar. No **float** são 4 bytes e no *double* 8 bytes.
 
-### char
+### #char
 
 Variáveis do tipo *char* apenas podem receber um caractere. Ou seja, você não pode escrever um texto, ou definir um número para ela.
 
@@ -115,34 +115,47 @@ public class ExampleChar {
 }
 ```
 
-Vale anotar que variáveis desse tipo não podem receber um valor vazio (Ex.: char d = ''), isso porque um valor vazio não é um caractere.
+Vale anotar que variáveis desse tipo não podem receber um valor vazio, isso porque um valor vazio não é um caractere. Veja o exemplo:
 
-### boolean
+```java
+public class ExampleChar2 {
+  public static void main(String[] args) {
+    char charEmpty = '';
+
+    System.out.println(charEmpty);
+  }
+}
+```
+
+Se tentar compilar, terá o seguinte erro no terminal:
+
+![Erro ao tentar compilar um char vazio](../images/introducao-ao-java-4.png)
+
+### #boolean
 
 Variáveis do tipo *boolean* apenas possuem dois valores: *true* ou *false*. As palavras *true* e *false*, no Java são palavras reservadas, ou seja, só podem ser usadas em variáveis que são do tipo *boolean*.
 
 ```java
 public class ExampleBoolean {
   public static void main(String[] args) {
-    int myAge = 29;
     boolean isBrazilian = true;
-    boolean isOldMan = myAge > 50; // expressão booleana
+    boolean isFitness = false;
 
     System.out.println(isBrazilian);
-    System.out.println(isOldMan);
+    System.out.println(isFitness);
   }
 }
 ```
 
-Agora, se tentarmos adicionar valores que não seja do tipo definido, o que pode acontecer? Vamos criar um arquivo que vamos chamar de *MyPersonalInfo.java* e vamos escrever (pode copiar) o código abaixo:
+Agora, se tentarmos adicionar valores que não sejam do tipo definido, o que pode acontecer? Vamos criar um arquivo que vamos chamar de *MyPersonalInfo.java* e vamos escrever (pode copiar) o código abaixo:
 
 ```Java
 public class MyPersonalInfo {
   public static void main(String[] args) {
     char t = 29;
     int age = 78.9;
-    double weight = 29;
-    boolean isBrazilian = "e";
+    double weight = true;
+    boolean isBrazilian = "a";
 
     System.out.Println(age);
     System.out.Println(weight);
@@ -159,6 +172,4 @@ Isso acontece porque o Java é uma linguagem fortemente tipada, ou seja, toda va
 
 Se tiver algo para acrescentar/sugerir, deixe nos comentários e aguardem os próximos posts.
 
-***Fonte***
-
-- [Variáveis primitivas e Controle de fluxo](https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/)
+**Fonte:** [Variáveis primitivas e Controle de fluxo](https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/)
