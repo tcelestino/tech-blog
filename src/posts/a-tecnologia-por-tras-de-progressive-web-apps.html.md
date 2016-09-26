@@ -23,9 +23,9 @@ A ideia de tentar transformar um site em algo mais próximo de um aplicativo nã
 Conforme os desenvolvedores foram percebendo a importância desses fatores para uma melhor experiência do usuário, começaram a surgir algumas especificações que procuram tornar os sites mais próximos do sistema operacional, com acesso a mais recursos do dispositivo e sem tanta dependência de conectividade para funcionar. Dentre elas, podemos citar:
 
 - APIs de acesso a sensores do dispositivo
-    - Geolocalização (`navigator.geolocation`)
-    - Câmera/microfone (`navigator.getUserMedia`)
-    - Giroscópio/acelerômetro (eventos `deviceorientation` e `devicemotion`, respectivamente)
+    - [Geolocalização](https://developer.mozilla.org/pt-BR/docs/Web/API/Geolocation) (`navigator.geolocation`)
+    - [Câmera/microfone](https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia) (`navigator.mediaDevices.getUserMedia`)
+    - [Giroscópio/acelerômetro](https://developer.mozilla.org/en-US/docs/Web/API/Detecting_device_orientation) (eventos `deviceorientation` e `devicemotion`, respectivamente)
 - LocalStorage/SessionStorage (`window.localStorage`/`window.sessionStorage`)
 - Indexed Database (`window.indexedDB`)
 - Manifesto para aplicações web (`link rel="manifest"`)
@@ -47,7 +47,7 @@ Ambas são muito parecidas: especificam um objeto no escopo global do JavaScript
 
 A diferença entre elas está no tempo de vida da informação armazenada nesses objetos. O objeto `window.localStorage` armazena as informações indefinidamente, até que o usuário apague-as explicitamente por meio das configurações do navegador. Já o objeto `window.sessionStorage` armazena as informações até que você feche a aba ou janela do navegador.
 
-Por serem objetos de armazenamento exclusivamente local, o LocalStorage e o SessionStorage têm capacidade de armazenamento de informações muito maior do que os *cookies*, sem afetar em nada a velocidade de comunicação com o servidor. A capacidade exata varia de acordo com o navegador, mas fica na faixa dos megabytes.
+Por serem objetos de armazenamento exclusivamente local, o LocalStorage e o SessionStorage têm capacidade de armazenamento de informações muito maior do que os *cookies*, sem afetar em nada a velocidade de comunicação com o servidor. A capacidade exata varia de acordo com o navegador, mas fica na faixa dos megabytes (você pode verificar os limites do seu navegador usando o [Web Storage Support Test](http://dev-test.nemikor.com/web-storage/support-test/)).
 
 ### Indexed Database
 
@@ -63,12 +63,12 @@ Tendo uma base de dados sofisticada como uma *Indexed Database* disponível, já
 
 Quando acessamos uma página da web, ela é aberta dentro de um navegador. O navegador adiciona, ao redor do conteúdo, barra de endereços, menu, ícones de extensões, barra de status etc. Tudo isso atrapalha a experiência do usuário quando queremos que ele realize tarefas na nossa aplicação, não é verdade? Compare com a experiência de acessar um aplicativo: toda a tela pode ser usada por ele, tornando a experiência mais imersiva e aproveitando melhor o espaço de tela, que é restrito.
 
-![Barra de endereços do navegador tomando parte do espaço disponível](../images/tecnologia-pwa-4.png)
-![Usando todo o espaço da tela](../images/tecnologia-pwa-3.png)
+![Barra de endereços do navegador tomando parte do espaço disponível](../images/tecnologia-pwa-4.jpg)
+![Usando todo o espaço da tela](../images/tecnologia-pwa-5.jpg)
 
 Fora isso, é comum que os usuários criem atalhos para seus aplicativos favoritos. No entanto, é difícil ver atalhos para sites. Por que? No Google Chrome, por exemplo, existe a opção de adicionar à tela inicial um atalho para o site que estamos visitando. Mas, quando fazemos isso num site simples, o atalho não é tão fácil de identificar quanto um atalho de aplicativo.
 
-![Atalho de um site comum versus atalho de um site com manifesto configurado](../images/tecnologia-pwa-5.png)
+![Atalho de um site comum versus atalho de um site com manifesto configurado](../images/tecnologia-pwa-6.jpg)
 
 Para melhorar esses pontos, surgiu a especificação do manifesto para aplicações web. Com ele, você consegue especificar se seu site deve ser visualizado com a barra de endereços ou em tela cheia; qual orientação de tela é mais adequada para seu site (retrato, paisagem ou indiferente); qual a cor principal do tema de cores do site (útil para customizar a cor da janela do navegador); e qual nome e ícone deve ter o atalho na área de trabalho.
 
@@ -195,7 +195,7 @@ No Firefox, também é possível inspecionar os dados armazenados pela aplicaç�
 
 ![Painel Storage do DevTools do Firefox](../images/tecnologia-pwa-2.png)
 
-![Painel Storage do DevTools do Firefox](../images/tecnologia-pwa-3.png)
+![Debug de Service Workers no Firefox](../images/tecnologia-pwa-3.png)
 
 Safari e Edge estão a caminho de fornecer suporte às APIs necessárias e ferramentas de auxílio aos desenvolvedores. É possível acompanhar a evolução dos navegadores, pelo menos quanto ao suporte a *service workers*, no site [*Is ServiceWorker Ready?*](https://jakearchibald.github.io/isserviceworkerready/).
 
@@ -222,8 +222,8 @@ Essa preocupação também implica em garantir que o desempenho do site ou da ap
 
 ## O futuro
 
-As tecnologias envolvidas com as PWAs ainda são bem recentes e, portanto, vão amadurecer bastante, ainda. A começar pelo suporte dos navegadores (tanto funcionalidade quanto ferramentas de desenvolvedores). O suporte a *service workers* e as funcionalidades que deles dependem (sincronização em segundo plano, *push notifications*) ainda está só no começo e a expectativa, agora, é de que o Safari implemente suporte, para que web apps mais ricas funcionem bem nos dispositivos da Apple. Vale notar que o Edge, navegador da Microsoft, deve ganhar suporte a *service workers* em breve.
+As tecnologias envolvidas com as PWAs ainda são bem recentes e, portanto, vão amadurecer bastante. A começar pelo suporte dos navegadores (tanto funcionalidade quanto ferramentas de desenvolvedores). O suporte a *service workers* e as funcionalidades que deles dependem (sincronização em segundo plano, *push notifications*) está só no começo e a expectativa, agora, é de que o Safari implemente suporte, para que web apps mais ricas funcionem bem nos dispositivos da Apple. Vale notar que o Edge, navegador da Microsoft, deve ganhar suporte a *service workers* em breve.
 
-Outro ponto que deve evoluir bastante nos próximos meses é a caracterização automática de PWAs pelos navegadores. Isso é importante para que o navegador disponibilize de forma clara para o usuário a opção de adicionar a aplicação à tela inicial do dispositivo, que é o passo básico para que o usuário passe a enxergar um endereço web como uma aplicação. O Google Chrome já conta com alguns critérios para mostrar, automaticamente, uma mensagem convidando o usuário a instalar a aplicação, dentre eles a presença de um manifesto e de um *service worker* na página em questão ([o autor desses critérios escreveu sobre eles em seu blog, em inglês](https://infrequently.org/2016/09/what-exactly-makes-something-a-progressive-web-app/)). Esses critérios ainda estão sendo aperfeiçoados com base no feedback de desenvolvedores e usuários, e podem mudar consideravelmente ainda, principalmente com a evolução do suporte de PWAs por outros navegadores.
+Outro ponto que deve evoluir bastante nos próximos meses é a caracterização automática de PWAs pelos navegadores. Isso é importante para que o navegador disponibilize de forma clara para o usuário a opção de adicionar a aplicação à tela inicial do dispositivo, que é o passo básico para que o usuário passe a enxergar um endereço web como uma aplicação. O Google Chrome já conta com alguns critérios para mostrar, automaticamente, uma mensagem convidando o usuário a instalar a aplicação, dentre eles a presença de um manifesto e de um *service worker* na página em questão ([o autor desses critérios escreveu sobre eles em seu blog, em inglês](https://infrequently.org/2016/09/what-exactly-makes-something-a-progressive-web-app/)). Esses critérios ainda estão sendo aperfeiçoados com base no feedback de desenvolvedores e usuários, e podem mudar consideravelmente, principalmente com a evolução do suporte de PWAs por outros navegadores.
 
-Aqui no Elo7, estamos aos poucos implementando os requisitos necessários para transformar nosso site numa PWA. O [manifesto de aplicação web já está lá](http://www.elo7.com.br/v3/manifest/webapp.json)! Os próximos passos incluem a migração da infraestrutura toda para HTTPS para, assim, podermos começar a usar *service workers* em algumas páginas. E você, na sua empresa, como está considerando a implementação de PWAs? Compartilhe conosco nos comentários ou via Twitter, na tag `#elo7dev`.
+Aqui no Elo7, estamos aos poucos implementando os requisitos necessários para transformar nosso site numa PWA. O [manifesto de aplicação web já está lá](http://www.elo7.com.br/v3/manifest/webapp.json)! Os próximos passos incluem a migração da infraestrutura toda para HTTPS para, assim, podermos começar a usar *service workers* em algumas páginas. E você, na sua empresa, como está considerando a implementação de PWAs? Compartilhe conosco nos comentários ou via Twitter, na tag `#elo7tech`.
