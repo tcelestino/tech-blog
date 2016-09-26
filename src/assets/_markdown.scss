@@ -42,6 +42,10 @@
         font-weight: map-get($font-weight, bold);
     }
 
+    em {
+        font-style: italic;
+    }
+
     code {
         margin: 1em 0;
         overflow: auto;
