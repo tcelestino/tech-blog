@@ -29,36 +29,40 @@ Nos últimos anos, tendo como ponto de apoio outras soluções de armazenamento 
 
 ## Logs fora de série
 ### Graylog
-Aqui no Elo7, nós temos usado o _Graylog_ como gerenciador de logs já há algum tempo, com sucesso. Trata-se de uma solução bastante completa, possuindo, entre outras, as seguintes funcionalidades:
+Aqui no **Elo7**, nós temos usado o _Graylog_ como gerenciador de logs já há algum tempo, com sucesso. Trata-se de uma solução bastante completa, possuindo, entre outras, as seguintes funcionalidades:
 - suporte a ingestão de logs via rede em diversos protocolos (_inputs_);
 - interface gráfica para consulta dos dados (incluindo suporte a criação de _dashboards_ customizados);
-- suporte a fluxos de filtragem e repasse dos eventos/logs (_outputs_);
-- suporte a módulos (para _inputs_, _outputs_, entre outras coisas)
+- suporte a fluxos de filtragem e repasse dos eventos/logs (_streams_ e _outputs_);
+- suporte a módulos (para _inputs_, _outputs_, entre outras coisas).
 
-Além de gerar logs em arquivo, nossas aplicações enviam os logs diretamente para o _Graylog_ em alguns dos formatos suportados. Aplicações internas tendem a usar o formato _GELF_ (um protocolo próprio do _Graylog_), pois temos a possibilidade de fazer essa customização. Já para aplicações terceiras de mercado, o _syslog_ (o protocolo, não o serviço) tende a ser um formato mais suportado. Por exemplo, o servidor web _Nginx_ possui suporte a envio de logs em formato _syslog_ nativo, sem necessidade de qualquer customização. Uma vez entregues, esses logs ficam disponíveis para consulta a partir do _Graylog_ por um período de tempo fixo, pré-estipulado, em dias.
+Além de gerar logs em arquivo, nossas aplicações enviam os logs diretamente para o _Graylog_ em alguns dos formatos suportados. Aplicações internas tendem a usar o formato _GELF_ (um protocolo próprio do _Graylog_), pois temos a possibilidade de fazer essa customização. Já para aplicações terceiras de mercado, o _syslog_ (o protocolo, não o serviço) tende a ser um formato mais suportado, e portanto utilizado. Por exemplo, o servidor web _Nginx_ possui suporte a envio de logs em formato _syslog_ nativo, sem necessidade de qualquer customização. Uma vez entregues, esses logs ficam disponíveis aos usuários para consulta a partir do _Graylog_ por um período de tempo fixo, pré-estipulado, em dias.
 
 **(inserir screeenshot do Graylog)**
 
 ### Elastic Search e MongoDB
-Embora gerencie toda a ingestão e visualização de dados, o _Graylog_ não faz a persistência deles, delegando essa tarefa para um cluster de [Elastic Search](https://www.elastic.co/products/elasticsearch), que fica a cargo de armazenar, indexar e oferecer uma API de consulta para os dados. O _Elastic Search_ é um motor de busca baseado no já mencionado _Lucene_, que oferece funcionalidades de particionamento, replicação, agregação dos dados, entre diversas outras. O _Graylog_ cuida de criar os índices nele, rotacioná-los e purgá-los, tudo de acordo com a configuração definida pelo administrador.
+Embora gerencie toda a ingestão e visualização de dados, o _Graylog_ não faz a persistência deles, delegando essa tarefa para um cluster de [Elastic Search](https://www.elastic.co/products/elasticsearch), que fica a cargo de armazenar, indexar e oferecer uma API de consulta para os dados, utilizado pelo _Graylog_ para realizar as buscas dos usuários.
 
-O armazenamento de dados de configuração e _runtime_ ficam a carga de um banco de dados _MongoDB_ (que pode estar em modo _replicaset_ ou _standalone_).
+O _Elastic Search_ é um motor de busca baseado no já mencionado _Lucene_, que oferece funcionalidades de particionamento, replicação, agregação dos dados, entre diversas outras. O _Graylog_ cuida de criar os índices nele, rotacioná-los e purgá-los, tudo de acordo com a configuração definida pelo administrador.
+
+O armazenamento de dados de configuração e _runtime_ do _Graylog_ ficam a cargo de um banco de dados _MongoDB_ (que pode estar em modo _replicaset_ ou _standalone_).
 
 ### Melhorias
 Ainda que a solução acima nos atenda satisfatoriamente, ela possui alguns pontos fracos:
 - indisponibilidades do _Graylog_ gera perda de eventos, que nunca mais são recuperados - os logs enviados durante o período de indisponibilidade são simplesmente perdidos;
-- "sincronia" no recebimento dos dados - como o _Graylog_ não controla a ingestão dos dados, um aumento abrupto na geração de logs o sobrecarrega de uma só vez, podendo derrubar o serviço, mesmo que trata-se apenas de um pico e logo em seguida o volume de logs volte ao normal;
-- efemeridade dos dados - devido à necessidade de expirarmos os dados do _Graylog_, deixamos de ter um ponto central de armazenamento desses logs, voltando a depender dos velhos arquivos texto espalhados por diversas máquinas.
+- "sincronia" no recebimento dos dados - como o _Graylog_ não controla a ingestão dos dados, um aumento abrupto na geração de logs o sobrecarrega de uma só vez, podendo derrubar o serviço, mesmo que trate-se apenas de um pico e logo em seguida o volume de logs volte ao normal;
+- efemeridade dos dados - devido à necessidade de expirarmos os dados do _Graylog_ (afinal, recursos **têm** limite), deixamos de ter um ponto central de armazenamento desses logs, voltando a depender dos velhos arquivos texto espalhados por diversas máquinas.
 
 ### Kafka
-Embora existam uma série de alternativas possíveis pra solução dos problemas citados acima, optamos pela inclusão de um elemento a mais nessa arquitetura, que resolve ou facilita a solução de uma só vez de todos eles, o servidor de tópicos [Apache Kafka](http://kafka.apache.org/). O _Kafka_ é, segundo a própria definição oficial, um servidor de _commit-log_ distribuído, que oferece funcionalidades de replicação e particionamento. Na versão mais recente da nossa arquitetura, serve como ponto central da ingestão de logs, de modo que as aplicações possam enviá-los para um único local, e múltiplas fontes possam consumi-los. Além disso, serve como um buffer desses dados, evitando a perda de dados em caso de indisponibilidade de outros componentes mais suscetíveis a falhas, como _Graylog_ e _Elastic Search_. Os dados nele também expiram, mas garantimos que fiquem disponíveis por tempo suficiente para que os outros sitemas possam se recuperar e recuperar o atraso no consumo.
+Embora existam uma série de alternativas possíveis pra solução dos problemas citados acima, optamos pela inclusão de um elemento a mais nessa arquitetura, que resolve ou facilita a solução de todos eles de uma só vez - o servidor de tópicos [Apache Kafka](http://kafka.apache.org/).
 
-Dessa forma, isolamos a função de recebimento primário dos dados em um sistema altamente dedicado, conhecido por sua robustez, e que é totalmente independente do restante da arquitetura. O _Graylog_ passa a consumir os dados que estão no Kafka, que são enviados pelas aplicações. Além disso, torna-se muito mais simples e eficiente escalar o serviço para suportar a carga necessária, uma vez que ele muito leve e simples, por ser altamente especializado. Ao _Graylog_ é deixada a função apenas de enviar os dados para indexação e oferecer uma interface de consulta amigável aos usuários.
+_Kafka_ é, segundo a definição oficial, um servidor de _commit-log_ distribuído, que oferece funcionalidades de replicação e particionamento. Na versão mais recente da nossa arquitetura, serve como ponto central da ingestão de logs, de modo que as aplicações possam enviá-los para um único local, e múltiplas fontes possam consumi-los. Além disso, serve como _buffer_ dos dados, evitando a perda em caso de indisponibilidade de outros componentes mais suscetíveis a falhas, como _Graylog_ e _Elastic Search_. Os dados nele também expiram, mas garantimos que fiquem disponíveis por tempo suficiente para que os outros sitemas possam se recuperar e zerar o atraso no consumo.
 
-Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legíveis" por outras aplicações, o que nos permiter plugar nessa arquitetura outros componentes, por exemplo, um agente externo que faz o arquivamente desses logs em um outro tipo de _storage_, como o [Amazon S3](https://aws.amazon.com/pt/s3/), por exemplo. Assim como qualquer outro sistema interno que também precisa desses dados poderia consumi-los, todos de forma independente um do outro.
+Dessa forma, isolamos a função de recebimento primário dos dados em um sistema altamente dedicado, conhecido por sua robustez, e que é totalmente independente do restante da arquitetura. O _Graylog_ passa a consumir os dados que estão no Kafka, que são enviados pelas aplicações. Além disso, torna-se muito mais simples e eficiente escalar o serviço para suportar a carga necessária, uma vez que ele é bastante leve e simples, por ser altamente especializado. Ao _Graylog_ é deixada apenas a função de enviar os dados para indexação e oferecer uma interface de consulta amigável aos usuários.
+
+Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legíveis" por outras aplicações, o que nos permiter plugar nessa arquitetura outros componentes como, por exemplo, um agente externo que faz o arquivamento desses logs em um outro tipo de _storage_, como o [Amazon S3](https://aws.amazon.com/pt/s3/), por exemplo. Assim como qualquer outro sistema que também precise desses dados poderia consumi-los, todos de forma independente um do outro.
 
 O desenho conceitual final da arquitetura fica como abaixo:
 
-**(inserir screeenshot do Graylog)**
+**(inserir diagrama da arquitetura)**
 
 E você, como gerencia seus logs? Deixe um comentário abaixo!
