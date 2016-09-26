@@ -201,7 +201,7 @@ Safari e Edge estão a caminho de fornecer suporte às APIs necessárias e ferra
 
 ## Mas... e o suporte?
 
-Sempre que surge uma nova tecnologia ou uma nova API, aparece o mesmo questionamento na cabeça dos desenvolvedores: mas como começar a trabalhar com isso se tenho que continuar dando suporte a navegadores antigos, com poucos recursos? O termo ***progressive** web app* inclui essa preocupação. A palavra *progressive* implica que, antes de mais nada, sua aplicação deve funcionar como um site comum, **independentemente do suporte do navegador**. As tecnologias comentadas nesse post são usadas pela aplicação para *melhorar* a experiência do usuário, não para determinar quem pode e quem não pode acessar o site.
+Sempre que surge uma nova tecnologia ou uma nova API, aparece o mesmo questionamento na cabeça dos desenvolvedores: mas como começar a trabalhar com isso se tenho que continuar dando suporte a navegadores antigos, com poucos recursos? O termo *progressive web app* inclui essa preocupação. A palavra ***progressive*** implica que, antes de mais nada, sua aplicação deve funcionar como um site comum, **independentemente do suporte do navegador**. As tecnologias comentadas nesse post são usadas pela aplicação para *melhorar* a experiência do usuário, não para determinar quem pode e quem não pode acessar o site.
 
 Desenvolver uma *progressive web app*, ou PWA para simplificar, significa ter constantemente a preocupação de fazer a aplicação ser acessível por todos, sem quebrar. Implica em ter diversas verificações no código para garantir que uma API só será chamada se ela estiver presente no navegador, como, por exemplo, na hora de registrar um *service worker*:
 
