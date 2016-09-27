@@ -37,7 +37,7 @@ Aqui no **Elo7**, nós temos usado o _Graylog_ como gerenciador de logs já há 
 
 Além de gerar logs em arquivo, nossas aplicações enviam os logs diretamente para o _Graylog_ em alguns dos formatos suportados. Aplicações internas tendem a usar o formato _GELF_ (um protocolo próprio do _Graylog_), pois temos a possibilidade de fazer essa customização. Já para aplicações terceiras de mercado, o _syslog_ (o protocolo, não o serviço) tende a ser um formato mais suportado, e portanto utilizado. Por exemplo, o servidor web _Nginx_ possui suporte a envio de logs em formato _syslog_ nativo, sem necessidade de qualquer customização. Uma vez entregues, esses logs ficam disponíveis aos usuários para consulta a partir do _Graylog_ por um período de tempo fixo, pré-estipulado, em dias.
 
-**(inserir screeenshot do Graylog)**
+![Busca de logs no Graylog](../images/gestao-de-logs-1.png)
 
 ### Elastic Search e MongoDB
 Embora gerencie toda a ingestão e visualização de dados, o _Graylog_ não faz a persistência deles, delegando essa tarefa para um cluster de [Elastic Search](https://www.elastic.co/products/elasticsearch), que fica a cargo de armazenar, indexar e oferecer uma API de consulta para os dados, utilizado pelo _Graylog_ para realizar as buscas dos usuários.
@@ -63,6 +63,6 @@ Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legív
 
 O desenho conceitual final da arquitetura fica como abaixo:
 
-![Arquitetura Logs Elo7](../images/gestao-de-logs-1.png)
+![Arquitetura Logs Elo7](../images/gestao-de-logs-2.png)
 
 E você, como gerencia seus logs? Deixe um comentário abaixo!
