@@ -61,7 +61,7 @@ _Kafka_ é, segundo a definição oficial, um servidor de _commit-log_ distribu�
 
 Dessa forma, isolamos a função de recebimento primário dos dados em um sistema altamente dedicado, conhecido por sua robustez, e que é totalmente independente do restante da arquitetura. O _Graylog_ passa a consumir os dados que estão no Kafka, que são enviados pelas aplicações. Além disso, torna-se muito mais simples e eficiente escalar o serviço para suportar a carga necessária, uma vez que ele é bastante leve e simples, por ser altamente especializado. Ao _Graylog_ é deixada apenas a função de enviar os dados para indexação e oferecer uma interface de consulta amigável aos usuários.
 
-Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legíveis" por outras aplicações, o que nos permite plugar nessa arquitetura outros componentes como, por exemplo, um agente externo que faz o arquivamento desses logs em um outro tipo de _storage_, como o [Amazon S3](https://aws.amazon.com/pt/s3/), por exemplo. Da mesma maneira, qualquer outro sistema que precise desses dados também poderia consumi-los de forma independente.
+Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legíveis" por outras aplicações, o que nos permite plugar nessa arquitetura outros componentes como, por exemplo, um agente externo que faz o arquivamento desses logs em um outro tipo de _storage_, como o [Amazon S3](https://aws.amazon.com/pt/s3/). Da mesma maneira, qualquer outro sistema que precise desses dados também poderia consumi-los de forma independente.
 
 O desenho conceitual final da arquitetura fica como abaixo:
 
