@@ -20,7 +20,7 @@ Aqui no **Elo7** nós cuidamos de nossos logs assim como cuidamos das pessoas - 
 ## Logs na era pré-Cloud
 Logs sempre estiveram por aí, desde o momento em que o primeiro programa de computador foi criado. E, embora nem sempre tão estimados assim, eles são parte importantíssima de qualquer sistema, especialmente se você precisa diagnosticar um problema, coletar reatroativamente informações de uso ou execução, rastrear usuários, ou qualquer outra coisa que envolva saber o que seu programa fez de fato (e que você pode, ou não, ter previsto que ele faria).
 
-Até pouco tempo atrás, o formato predominante de armazenamento e consulta de logs era o velho e bom arquivo texto e o acesso a eles costumava ser direto, conectando-se no próprio servidor (ambientes _on-premise_) e lendo seu conteúdo. Com surgimento da computação em nuvem, especialmente soluções de plataforma e software como serviço, onde não se tem um controle direto da infra-estrutura, esse modelo tornou-se pouco prático ou até mesmo inviável. Soluções de centralização de logs, embora, de fato, já fossem adotados em ambientes on-premises de grande escala, tornaram-se algo obrigatório para essa nova realidade da computação em nuvem, ou _Cloud_. Nessa mesma linha, o surgimento e adoção de _containers_ como forma de entrega das aplicações só reforça essa necessidade.
+Até pouco tempo atrás, o formato predominante de armazenamento e consulta de logs era o velho e bom arquivo texto e o acesso a eles costumava ser direto, conectando-se no próprio servidor (ambientes _on-premise_) e lendo seu conteúdo. Com o surgimento da computação em nuvem, especialmente soluções de plataforma e software como serviço, onde não se tem um controle direto da infra-estrutura, esse modelo tornou-se pouco prático ou até mesmo inviável. Soluções de centralização de logs, embora, de fato, já fossem adotados em ambientes on-premises de grande escala, tornaram-se algo obrigatório para essa nova realidade da computação em nuvem, ou _Cloud_. Nessa mesma linha, o surgimento e adoção de _containers_ como forma de entrega das aplicações só reforça essa necessidade.
 
 ## Servidores de logs
 Como já mencionado, servidores de logs não são exatamente um novidade. Alguns softwares bastante tradicionais como _Syslog_, _Syslog-ng_, _Rsyslog_, entre outros, vêm sendo usados como um centralizador de logs há muito anos, recebendo logs de múltiplas origens via rede ou localmente e gerenciando seu armazenamento, filtragem, repasse, entre outras coisas. Entretanto, esses sistemas, ainda assim, não atacam um aspecto muito importante do problema: **a busca e visualização desses dados**.
@@ -29,7 +29,7 @@ Nos últimos anos, tendo como ponto de apoio outras soluções de armazenamento 
 
 ## Logs fora de série
 ### Graylog
-Aqui no **Elo7**, nós temos usado o _Graylog_ como gerenciador de logs já há algum tempo, com sucesso. Trata-se de uma solução bastante completa, possuindo, entre outras, as seguintes funcionalidades:
+Aqui no **Elo7**, nós usamos o _Graylog_ como gerenciador de logs já há algum tempo, com sucesso. Trata-se de uma solução bastante completa, possuindo, entre outras, as seguintes funcionalidades:
 - suporte a ingestão de logs via rede em diversos protocolos (_inputs_);
 - interface gráfica para consulta dos dados (incluindo suporte a criação de _dashboards_ customizados);
 - suporte a fluxos de filtragem e repasse dos eventos/logs (_streams_ e _outputs_);
@@ -61,7 +61,7 @@ _Kafka_ é, segundo a definição oficial, um servidor de _commit-log_ distribu�
 
 Dessa forma, isolamos a função de recebimento primário dos dados em um sistema altamente dedicado, conhecido por sua robustez, e que é totalmente independente do restante da arquitetura. O _Graylog_ passa a consumir os dados que estão no Kafka, que são enviados pelas aplicações. Além disso, torna-se muito mais simples e eficiente escalar o serviço para suportar a carga necessária, uma vez que ele é bastante leve e simples, por ser altamente especializado. Ao _Graylog_ é deixada apenas a função de enviar os dados para indexação e oferecer uma interface de consulta amigável aos usuários.
 
-Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legíveis" por outras aplicações, o que nos permiter plugar nessa arquitetura outros componentes como, por exemplo, um agente externo que faz o arquivamento desses logs em um outro tipo de _storage_, como o [Amazon S3](https://aws.amazon.com/pt/s3/), por exemplo. Assim como qualquer outro sistema que também precise desses dados poderia consumi-los, todos de forma independente um do outro.
+Diferente do _Graylog_, os dados disponíveis no _Kafka_ são facilmente "legíveis" por outras aplicações, o que nos permite plugar nessa arquitetura outros componentes como, por exemplo, um agente externo que faz o arquivamento desses logs em um outro tipo de _storage_, como o [Amazon S3](https://aws.amazon.com/pt/s3/), por exemplo. Da mesma maneira, qualquer outro sistema que precise desses dados também poderia consumi-los de forma independente.
 
 O desenho conceitual final da arquitetura fica como abaixo:
 
