@@ -26,7 +26,8 @@ docpadConfig = function() {
                 }
             },
             cleanurls: {
-                static: true
+                static: true,
+                trailingSlashes: true
             },
             markit: {
                 html: true
