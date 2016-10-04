@@ -7,7 +7,7 @@ layout: page
     {{#each (getCollection "posts")}}
             <article itemprop="blogPost" itemtype="http://schema.org/Blog" class="post-card card-{{category}}">
                 <header>
-                    <a href="{{../site.baseUrl}}{{url}}" class="link">
+                    <a href="{{../site.baseUrl}}{{url}}/" class="link">
                         <h1 class="title">{{title}}</h1>
                     </a>
                 </header>
@@ -17,7 +17,7 @@ layout: page
                 </div>
                 <p class="description">{{description}}</p>
                 <a href="/{{category}}" class="category {{category}}">{{category}}</a>
-                <a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
+                <a href="{{../site.baseUrl}}{{url}}/" class="link post-link">Continue lendo</a>
             </article>
     {{/each}}
 </section>
