@@ -1,6 +1,6 @@
 ---
 title: 'Gestão de logs'
-date: 2016-09-27
+date: 2016-10-10
 category: devops
 layout: post
 description: Logs são parte fundamental de qualquer aplicação, e sua importância é notada especialmente nos momentos mais difíceis. Neste artigo veremos como gerenciar esses dados de forma eficaz e versátil, provendo robustez e, ainda assim, facilitando o dia-a-dia de nossas colabores aqui no Elo7.
@@ -11,10 +11,6 @@ tags:
 ---
 
 ## Introdução
-
-(O parágrafo abaixo é para aqueles já iniciados no universo de _O Guia do Mochileiro das Galáxias_, do genial escritor britânico _Douglas Adams_. O restante dos leitores podem ignorá-lo e seguir direto para o segundo parágrafo.)
-
-_Todos os dias, universo afora, quantidades burlescas de logs são geradas pelos mais diversos tipos de sistemas, programas e até mesmo ínfimos e imperceptíveis scripts, mesmo nos "confins inexplorados da região mais brega da Borda Ocidental desta Galáxia". A maior parte desse aglomerado gigantesco de informação acaba perdida em meio a tanto volume, tão indistinto como um fóton num buraco negro. Nos momentos de dificuldade, qualquer viajante interestelar bem avisado e prevenido sempre tirará de sua mochila o bom e velho Grep. Entretanto, há momentos em que aquele velho one-liner (grep|cut|uniq|sort) não é suficiente ou, ao menos, não eficiente o bastante, nos fazendo pensar se aquele famoso Guia devia mesmo ser levado tão a sério assim. Em todo caso, esteja preparado para o fim do mundo, quando isso fatalmente acontecer e você não estiver com a arma certa em mãos._
 
 Aqui no **Elo7** nós cuidamos de nossos logs assim como cuidamos das pessoas - com muito carinho. Como toda empresa de tecnologia, nós geramos centenas de milhões de linhas de log diariamente, a partir dos mais diversos tipos de sistemas. Isso implica imediatamente em um sério problema: como gerenciar esses dados, organizá-los, salvá-los e disponibilizá-los para consulta quando necessário? Além disso, como extrair significado deles em tempo real e dar visibilidade da saúde de nossos sistemas e dos eventos que ocorrem? É disso que vamos tratar nesse artigo.
 
