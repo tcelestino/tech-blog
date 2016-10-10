@@ -69,7 +69,7 @@ Fora isso, é comum que os usuários criem atalhos para seus aplicativos favorit
 
 ![Atalho de um site comum versus atalho de um site com manifesto configurado](../images/tecnologia-pwa-6.jpg)
 
-Para melhorar esses pontos, surgiu a especificação do manifesto para aplicações web. Com ele, você consegue especificar se seu site deve ser visualizado com a barra de endereços ou em tela cheia; qual orientação de tela é mais adequada para seu site (retrato, paisagem ou indiferente); qual a cor principal do tema de cores do site (útil para customizar a cor da janela do navegador); e qual nome e ícone deve ter o atalho na área de trabalho.
+Para melhorar esses pontos, surgiu a especificação do manifesto para aplicações web. Com ele, você consegue especificar se seu site deve ser visualizado com a barra de endereços ou em tela cheia (propriedade `display`); qual orientação de tela é mais adequada para seu site (retrato, paisagem ou indiferente, na propriedade `orientation`); qual a cor principal do tema de cores do site (propriedade `theme_color`, útil para customizar a cor da janela do navegador); e qual nome e ícone deve ter o atalho na área de trabalho (propriedades `short_name` e `icons`, respectivamente).
 
 Usar essa especificação é simples: basta escrever um arquivo no formato JSON seguindo a especificação:
 
