@@ -1,9 +1,9 @@
 ---
-date: 2016-08-01
+date: 2016-10-10
 category: front-end
 layout: post
-title: 'A importância da semântica no HTML - parte II'
-description: 'Neste segundo post da série sobre a importância da semântica para os usuários e desenvolvedores, trataremos sobre como podemos melhorar nosso conteúdo de forma que os buscadores entendam o que realmente estamos oferecendo, com a menor possibilidade de ruídos de informação possível. Saberemos de maneira prática como podemos melhorar a disponibilidade de nosso conteúdo.'
+title: A importância da semântica no HTML - parte II
+description: Neste segundo post da série sobre a importância da semântica para os usuários e desenvolvedores, trataremos sobre como podemos melhorar nosso conteúdo de forma que os buscadores entendam o que realmente estamos oferecendo, com a menor possibilidade de ruídos de informação possível. Saberemos de maneira prática como podemos melhorar a disponibilidade de nosso conteúdo.
 author: rapahaeru
 tags:
   - html
@@ -17,20 +17,20 @@ tags:
 
 Neste segundo post da série sobre a importância da semântica para os usuários e desenvolvedores, trataremos sobre como podemos melhorar nosso conteúdo de forma que os buscadores entendam o que realmente estamos oferecendo, com a menor possibilidade de ruídos de informação possível. Saberemos de maneira prática como podemos melhorar a disponibilidade de nosso conteúdo.
 
-Caso não tenha lido o nosso primeiro post, basta acessar aqui ().
+Caso não tenha lido o nosso primeiro post, basta acessar <a href="http://engenharia.elo7.com.br/html-semantico-1/">aqui</a>.
 
 ![Se não souber o significado desses papéis ...](../images/semantica-money.jpg)
 
 ### Dando significado ao HTML
 
-Lembram do uso da palavra “lembrança” que utilizamos no post anterior ? Para ajudar a entender o significado dos elementos em um html ela ainda será útil.<br>
-Ao buscar em um site de buscas as palavras “lembranças de casamento”, o que faria o motor de busca entender exatamente o que você está procurando ? É apenas um exemplo para reflexão. Você acharia errado se na lista de respostas viessem fotos de pessoas felizes comemorando uma festa ? Acharia errado também se viessem bem-casados e enfeites da festa ? Tudo isso é relativo.<br>
-Para evitar esses tipo de ruídos e fazer com que o computador se aproxime mais a entender o uso contextual do significado, surgem as microdatas.
+Lembram do uso da palavra “lembrança” que utilizamos no post anterior ? Para ajudar a entender o significado dos elementos em um html ela ainda será útil.
+Ao buscar em um site de buscas as palavras “lembranças de casamento”, o que faria o motor de busca entender exatamente o que você está procurando ? É apenas um exemplo para reflexão. Você acharia errado se na lista de respostas viessem fotos de pessoas felizes comemorando uma festa? Acharia errado também se viessem bem-casados e enfeites da festa ? Tudo isso é relativo.<br>
+Para evitar esses tipo de ruídos e fazer com que o computador se aproxime mais a entender o uso contextual do significado, surgem os "microdatas" (microdados).
 
 ### Trabalhando com microdatas
 
-O objetivo da microdata é dar um maior significado aos documentos web. Foi criada pela organização do HTML5 (WHATWG) e hoje tornou-se o padrão de marcação do mesmo.
-Com a microdata, é possível ampliar o valor semântico dos elementos, saindo do tradicional e aprofundando no significado direto, inserindo marcações específicas no código fonte.
+O objetivo dos microdados é dar um maior significado aos documentos web. Foi criado pela organização do HTML5 (WHATWG) e hoje tornou-se o padrão de marcação do mesmo.
+Com os microdados, é possível ampliar o valor semântico dos elementos, saindo do tradicional e aprofundando no significado direto, inserindo marcações específicas no código fonte.
 Ele se utiliza de vários vocabulários para descrever os itens com pares de chave-valor para atribuir um significado aos elementos.<br>
 Utilizaremos aqui os vocabulários do <a href="http://schema.org/" title="Schema.org">Schema.org</a>, pois é o que mais cresce e onde a maioria dos motores de busca se baseiam para refinar seus resultados na busca, além de ser patrocinado pro Google, Yahoo, Microsoft e Yandex .
 
@@ -42,11 +42,11 @@ Schema é uma palavra de origem grega Skhema e do latim Schema que quer dizer fi
 
 Ele possui uma lista de vocabulários em tags xml para padronizarmos o que podemos oferecer na web de uma forma em que o conteúdo ali presente seja exatamente o que o comunicador deseja que seja encontrado.
 
-Existiram outros formatos anteriores, não é uma novidade real, porém como haviam “alguns” outros, ficava difícil conseguir padronizar todos os significados. Porém, como o Schema surgiu de uma força colaborativa dentre as empresas acima citadas, foi adotado como um modelo padrão, que facilitou a vida dos desenvolvedores – não precisando procurar diferentes linguagens de significado.
+Haviam outros formatos antes, porém por serem diferentes uns dos outros, complicava para padronizar todos os significados. Como o Schema surgiu de uma força colaborativa dentre as empresas acima citadas, foi adotado como um modelo padrão, que facilitou a vida dos desenvolvedores – não precisando procurar diferentes linguagens de significado.
 
 ### Mas isso é realmente útil ?
 
-Além de conseguir separar exatamente (ou se aproximar disso) o significado de cada palavra, como por exemplo: Saia(objeto) de Saia (sair), ele pode fazer isso em outras línguas. Cada palavra explicitada com seu vocabulário correto, os buscadores não só entenderão o significado do que está sendo comunicado, como ainda entenderão em todas as outras línguas, pois a padronização dos vocabulários é feita em inglês e igualmente implementado em qualquer lugar.
+Além de conseguir separar exatamente (ou se aproximar disso) o significado de cada palavra, como por exemplo: Saia(objeto) de Saia (sair), ele pode fazer independente de línguas. Cada palavra explicitada com seu vocabulário correto, os buscadores não só entenderão o significado do que está sendo comunicado, como ainda entenderão em todas as outras línguas, pois a padronização dos vocabulários é feita em inglês e igualmente implementado em qualquer lugar, ficará mais claro nos exemplos logo mais a frente.
 
 ## Mas o que são esse vocabulários ?
 
@@ -65,8 +65,10 @@ Agora que vimos quais vocabulários existem e sabemos qual a utilidade dos Micro
 
 <strong>Observação importante: Essas propriedades somente podem ser aplicadas em doctype HTML5.</strong>
 
-Toda a explicação abaixo é baseada no “getting started” do Schema.org, acesse aqui caso queira mais detalhes.<br>
+Toda a explicação abaixo é baseada no “getting started” do <a href="http://schema.org/">Schema.org</a>, acesse <a href="https://schema.org/docs/gs.html">aqui</a> caso queira mais detalhes.
+
 #### Sobre Itemscope e Itemtype
+
 Começando de forma direta, imagine que você tenha uma página do filme Avatar, de James Cameron, e que essa página possua: um link para o trailler e informações sobre o diretor. O código html ficaria mais ou menos assim:
 
 ``` html
@@ -102,7 +104,7 @@ Agora é necessário que se especifique qual o contexto da informação escopada
 
 #### - Itemprop
 
-É o valor da propriedade especificada anteriormente. Acima dizemos que o escopo se trata de um filme, correto ? Quais propriedades constituem um filme ? Atores, diretores, trailer e muito mais. São essas informações que podemos enriquecer para os motores de busca, para rotulá-las utilizamos o atributo <strong>Itemprop</strong>.<br>
+Acima dizemos que o escopo se trata de um filme, correto ? Quais propriedades constituem um filme ? Atores, diretores, trailer e muito mais. São essas informações que podemos enriquecer para os motores de busca, para rotulá-las utilizamos o atributo <strong>Itemprop</strong>.<br>
 Para exemplificar, vamos atribuir o valor “diretor” ao próprio.
 
 ``` html
@@ -135,7 +137,7 @@ Pronto. Há muita lógica e pura semântica na tratativa dos escopos.
 
 Agora, para enriquecer a compreensão do assunto, vamos ver um exemplo de como aplicamos aqui no Elo7.
 
-### Exemplo aqui no Elo7
+## Exemplo aqui no Elo7
 
 Acessando a página de um produto, temos informações como: imagem, nome do produto, nome da loja e produtos relacionados.
 
@@ -166,7 +168,6 @@ Sabemos quais propriedades pertencem a um produto, como as acima citadas, portan
 ![Informações da loja](../images/semantica-info-loja.png)
 
 Um produto, no site do Elo 7, vem do anúncio de seu vendedor e em cada página de um produto, há também informações de sua loja.
-
 Seria, e é, muito rico, no campo semântico, se também conseguíssemos aplicar significado às informações das lojas. Os motores de busca também o encontrariam de forma mais exata e por consequência aumentariam as chances de se efetuar uma venda. Portanto, também aplicamos microdados nas informações das lojas.
 
 Só que agora o escopo é de um contexto diferente, estamos falando de uma loja, analisando os vocabulários, indentificamos a informação de uma loja como uma organização (Organization).
@@ -197,7 +198,7 @@ Repare que também utilizamos escopos do tipo de localização, <a href="http://
 
 ![Lista de produtos relacionados](../images/semantica-relacionados.png)
 
-E não vamos nos esquecer dos produtos relacionados. Mas, há também como aplicar microdados utilizando os vocabulários do Schema, para eles ? A respota está logo abaixo :
+E não vamos nos esquecer dos produtos relacionados. Mas, há também como aplicar microdados utilizando os vocabulários do Schema, para eles ? A resposta está logo abaixo:
 ``` html
 <section class="related-items">
 	<h3>Veja também</h3>
