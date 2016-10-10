@@ -8,11 +8,11 @@ tags:
   - service workers
 author: luiz
 layout: post
-title: A tecnologia por trás de *progressive web apps*
-description: Se você trabalha com web, provavelmente já deve ter ouvido falar no termo *progressive web app*. Essa é uma tendência que vem aparecendo muito forte, impulsionada principalmente pela Google. O objetivo deste post vai ser explorar um pouco mais o lado técnico dessa tendência: como a tecnologia evoluiu para chegarmos nesse ponto, o que temos de ferramentas e o que ainda está por vir.
+title: A tecnologia por trás de progressive web apps
+description: Se você trabalha com web, provavelmente já deve ter ouvido falar no termo progressive web app. Essa é uma tendência que vem aparecendo muito forte, impulsionada principalmente pelo Google. O objetivo deste post vai ser explorar um pouco mais o lado técnico dessa tendência: como a tecnologia evoluiu para chegarmos nesse ponto, o que temos de ferramentas e o que ainda está por vir.
 ---
 
-Se você trabalha com web, provavelmente já deve ter ouvido falar no termo *progressive web app*. Essa é uma tendência que vem aparecendo muito forte, impulsionada principalmente pela Google, que até já organizou [um evento especificamente sobre esse tema](https://events.withgoogle.com/progressive-web-app-dev-summit/).
+Se você trabalha com web, provavelmente já deve ter ouvido falar no termo *progressive web app*. Essa é uma tendência que vem aparecendo muito forte, impulsionada principalmente pelo Google, que até já organizou [um evento especificamente sobre esse tema](https://events.withgoogle.com/progressive-web-app-dev-summit/).
 
 O [Fabricio Teixeira](http://fabricio.nu/) já escreveu [um post explicando bem o **conceito** de *progressive web apps*](http://arquiteturadeinformacao.com/mobile/o-que-sao-progressive-web-apps/). O objetivo aqui, então, vai ser explorar um pouco mais o lado técnico dessa tendência: como a tecnologia evoluiu para chegarmos nesse ponto, o que temos de ferramentas e o que ainda está por vir.
 
@@ -41,9 +41,9 @@ Armazenar informações sobre o usuário na máquina dele sempre foi um requisit
 
 Os *cookies* foram projetados para facilitar o envio de informações relativas a um usuário para o servidor da aplicação; eles são enviados a cada requisição feita ao servidor e, portanto, não podem conter muita informação. Por isso, normalmente eles incluem apenas um código que identifica o usuário, e o resto das informações personalizadas, tais como nome de usuário, avatar, preferências etc. ficam todas no servidor.
 
-No entanto, com a possibilidade de criar aplicações cada vez mais ricas do lado do cliente, com navegadores mais poderosos e bibliotecas JavaScript mais sofisticadas, surgiu a necessidade de armazenar mais informações no navegador do cliente. Como os *cookies* precisam ser leves, era necessário surgir algo com esse propósito específico; surgiam então as especificações de LocalStorage e SessionStorage.
+No entanto, com a possibilidade de criar aplicações cada vez mais ricas do lado do cliente, com navegadores mais poderosos e bibliotecas JavaScript mais sofisticadas, surgiu a necessidade de armazenar mais informações no navegador do cliente. Como os *cookies* precisam ser leves, era necessário algo com esse propósito específico; surgiam então as especificações de LocalStorage e SessionStorage.
 
-Ambas são muito parecidas: especificam um objeto no escopo global do JavaScript que permite associar uma chave e um valor, ambos textuais. Esse objeto é único por domínio, ou seja, sua aplicação pode usá-lo tanto para armazenar informações específicas de uma página como informações mais genéricas.
+Ambas são muito parecidas: especificam um objeto no escopo global do JavaScript que permite associar uma chave e um valor, ambos textuais. Esse objeto é único por domínio (por subdomínio, na verdade), ou seja, sua aplicação pode usá-lo tanto para armazenar informações específicas de uma página como informações mais genéricas.
 
 A diferença entre elas está no tempo de vida da informação armazenada nesses objetos. O objeto `window.localStorage` armazena as informações indefinidamente, até que o usuário apague-as explicitamente por meio das configurações do navegador. Já o objeto `window.sessionStorage` armazena as informações até que você feche a aba ou janela do navegador.
 
@@ -51,20 +51,19 @@ Por serem objetos de armazenamento exclusivamente local, o LocalStorage e o Sess
 
 ### Indexed Database
 
-Ter um espaço de armazenamento no cliente já permite criar aplicações muito mais ricas no cliente. Porém, conforme a complexidade da aplicação cresce, cresce também a complexidade dos dados que ela precisa armazenar e consultar. Surge, então, a necessidade de algo mais sofisticado que o LocalStorage ou o SessionStorage, que permita o armazenamento e a consulta de dados mais estruturados.
+Ter um espaço de armazenamento no cliente já permite criar aplicações muito mais ricas no cliente. Porém, conforme aumenta a complexidade da aplicação, cresce também a complexidade dos dados que ela precisa armazenar e consultar. Surge, então, a necessidade de algo mais sofisticado que o LocalStorage ou o SessionStorage, que permita o armazenamento e a consulta de dados mais estruturados.
 
 Nessa linha, surgiram duas especificações em paralelo: a especificação *Web SQL Database* e a especificação *Indexed Database*. A primeira, implementada experimentalmente nos navegadores baseados em WebKit (Chrome, Safari, Opera etc.), tenta trazer uma base de dados com suporte a SQL para o navegador. A segunda, que acabou se tornando a recomendação da W3C e que já é [bem suportada por todos os navegadores mais modernos](http://caniuse.com/#feat=indexeddb), segue uma abordagem diferenciada, com uma API de mais baixo nível de acesso aos dados armazenados.
 
 A especificação *Indexed Database* acabou tornando-se a escolha oficial para armazenamento de dados pela falta de um padrão claro na linguagem SQL e pelo poder que uma API de mais baixo nível fornece aos desenvolvedores ([você pode ler mais sobre esses pontos no blog de desenvolvedores da Mozilla](https://hacks.mozilla.org/2010/06/beyond-html5-database-apis-and-the-road-to-indexeddb/)). Com essa especificação, é possível implementar inúmeras bibliotecas de mais alto nível sobre ela, inclusive bibliotecas que dão suporte a algum tipo de SQL.
 
-Tendo uma base de dados sofisticada como uma *Indexed Database* disponível, já é possível criar aplicações muito sofisticadas no navegador apenas, sem a necessidade de acessar o servidor o tempo todo. No entanto, a experiência do usuário não se aproxima da experiência de uso de uma aplicação nativa apenas com poder de processamento. É necessário lidar ainda com a parte mais visual da experiência, além dos problemas de conectividade inerentes aos dispositivos móveis. Afinal, mesmo as aplicações mais sofisticadas precisam sincronizar os dados com um servidor de vez em quando. As próximas especificações lidam justamente com essas questões.
+Tendo uma base de dados sofisticada como uma *Indexed Database* disponível, já é possível criar aplicações incríveis que não precisam acessar o servidor o tempo todo. No entanto, a experiência do usuário não se aproxima da experiência de uso de uma aplicação nativa apenas com poder de processamento. É necessário lidar ainda com a parte mais visual da experiência, além dos problemas de conectividade inerentes aos dispositivos móveis. Afinal, mesmo as aplicações mais sofisticadas precisam sincronizar os dados com um servidor de vez em quando. As próximas especificações lidam justamente com essas questões.
 
 ### Manifesto para aplicações web
 
 Quando acessamos uma página da web, ela é aberta dentro de um navegador. O navegador adiciona, ao redor do conteúdo, barra de endereços, menu, ícones de extensões, barra de status etc. Tudo isso atrapalha a experiência do usuário quando queremos que ele realize tarefas na nossa aplicação, não é verdade? Compare com a experiência de acessar um aplicativo: toda a tela pode ser usada por ele, tornando a experiência mais imersiva e aproveitando melhor o espaço de tela, que é restrito.
 
-![Barra de endereços do navegador tomando parte do espaço disponível](../images/tecnologia-pwa-4.jpg)
-![Usando todo o espaço da tela](../images/tecnologia-pwa-5.jpg)
+![Barra de endereços do navegador tomando parte do espaço disponível](../images/tecnologia-pwa-4.png)
 
 Fora isso, é comum que os usuários criem atalhos para seus aplicativos favoritos. No entanto, é difícil ver atalhos para sites. Por que? No Google Chrome, por exemplo, existe a opção de adicionar à tela inicial um atalho para o site que estamos visitando. Mas, quando fazemos isso num site simples, o atalho não é tão fácil de identificar quanto um atalho de aplicativo.
 
@@ -218,7 +217,7 @@ if ('serviceWorker' in navigator) {
 
 No código acima, o `if` garante que o navegador tem suporte a *service worker* antes de começar a usar a API. Assim, caso o navegador **não** tenha esse suporte, o resto do Javascript do site continua funcionando normalmente.
 
-Essa preocupação também implica em garantir que o desempenho do site ou da aplicação seja razoável mesmo em condições precárias de conectividade e de capacidade de processamento. Para isso, ajuda pensar **primeiro** nos cenários mais limitados. Isso é uma forma de trabalhar que não é nova para quem trabalha com web, e se torna cada vez mais importante conforme temos mais poder nas mãos. É o conceito de *progressive enhancement*, e agora temos que considerá-lo na implementação de aplicações web.
+Essa preocupação também implica em garantir que o desempenho do site ou da aplicação seja razoável mesmo em condições precárias de conectividade e de capacidade de processamento. Para isso, ajuda pensar **primeiro** nos cenários mais limitados. Isso é uma forma de trabalhar que é conhecida para quem trabalha com web, e que se torna cada vez mais importante conforme temos mais poder nas mãos. É o conceito de *progressive enhancement*, e agora temos que considerá-lo na implementação de aplicações web.
 
 ## O futuro
 
