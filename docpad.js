@@ -23,7 +23,10 @@ docpadConfig = function() {
                             { category: "mobile" },
                             { category: "eventos" }
                         ];
-                    }
+                    },
+                    isProduction: function() {
+                        return this.getEnvironments() == "static";
+                    },
                 }
             },
             cleanurls: {
