@@ -3,7 +3,7 @@ title: 'Java 8: O que mudou?'
 date: 2016-10-24
 category: back-end
 layout: post
-description: Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vamos falar sobre as principais novidades do Java8.
+description: Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vou falar sobre as principais novidades do Java 8.
 author: diegocesar
 tags:
   - java
@@ -11,12 +11,12 @@ tags:
   - back-end
 ---
 
-Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vamos falar sobre as principais novidades do Java8. É importante observar é que o Java 8 foi desenvolvido pensando na retrocompatibilidade, ou seja, aplicações desenvolvidas na versão 7 funcionarão perfeitamente nas versõese mais atuais da linguagem. Esse é um dos pontos fortes do java, que ajudam a garantir o seu sucesso.
+Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vou falar sobre as principais novidades do Java 8. É importante observar é que o Java 8 foi desenvolvido pensando na retrocompatibilidade, ou seja, aplicações desenvolvidas na versão 7 funcionarão perfeitamente nas versõese mais atuais da linguagem. Esse é um dos pontos fortes do Java, que ajudam a garantir o seu sucesso.
 
-Veremos a seguir um pouco sobre as principais novidades implementas no Java 8:
+Veremos a seguir um pouco sobre as principais novidades implementadas no Java 8:
 
 ## Lambda expressions
-Uma das principais e mais comentadas mudanças do Java 8, são **Lambda Expressions** que trazem um pouco do paradigma da programação funcional para o java. [Segundo a oracle](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) Lambda é uma forma clara e objetiva de representar um método usando apenas uma expressão. É importante lembrar que Lambda Expressions só funcionarão para **interfaces funcionais**. Interfaces funcionais são aquelas que possuem apenas método um abstrato.
+Uma das principais e mais comentadas mudanças do Java 8, são **Lambda Expressions** que trazem um pouco do paradigma da programação funcional para o Java. [Segundo a Oracle](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) Lambda é uma forma clara e objetiva de representar um método usando apenas uma expressão. É importante lembrar que Lambda Expressions só funcionarão para **interfaces funcionais**. Interfaces funcionais são aquelas que possuem apenas um método.
 
 Exemplo:
 ```java
@@ -40,7 +40,7 @@ public class Calculator {
 Resultado: `25.0`
 
 ## Stream
-Stream, no java 8, é uma abstração que permite processar dados de coleções de forma declarativa, usando Lambda Expressions. Os passos para fazer uso do stream são:
+Stream, no Java 8, é uma abstração que permite processar dados de coleções de forma declarativa, usando Lambda Expressions. Os passos para fazer uso do stream são:
 
 1. Obter o stream a partir de uma Collection
 2. Adicionar uma ou mais operações no pipeline como filtros, ordenações, etc.
@@ -168,3 +168,9 @@ Optional é um `Wrapper` ou `Container` que determina a existência ou não de u
 ```
 
 Resultado: 5
+
+Essas são apenas algumas das principais novidades do Java 8. De acordo com os exemplos dados é fácil notar que ganhamos em produtividade quando utilizamos as novidades apresentadas. No caso da aplicação de streams ainda ganhamos em performance já que o processamento é executado através de um pipeline, seja este serial ou paralelo.
+
+No [site da Oracle](http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html) você encontra a lista completa de novas implementações. Consulte também a [documentação do Java 8](http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html) para obter a referêcia completa da linguagem.
+
+O que achou das novidades? Você utiliza alguma novidade do Java 8 que não foi comentada aqui?
