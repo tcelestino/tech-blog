@@ -1,6 +1,6 @@
 ---
-title: 'Java 8: O que mudou?'
-date: 2016-10-24
+title: 'Introdução à programação funcional com Java 8'
+date: 2016-11-07
 category: back-end
 layout: post
 description: Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vou falar sobre as principais novidades do Java 8.
@@ -11,12 +11,12 @@ tags:
   - back-end
 ---
 
-Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vou falar sobre as principais novidades do Java 8. É importante observar é que o Java 8 foi desenvolvido pensando na retrocompatibilidade, ou seja, aplicações desenvolvidas na versão 7 funcionarão perfeitamente nas versõese mais atuais da linguagem. Esse é um dos pontos fortes do Java, que ajudam a garantir o seu sucesso.
+Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior e a incorporação de conceitos de programação funcional. Nesse post vou falar sobre as principais novidades do Java 8. É importante observar que o Java 8 foi desenvolvido pensando na retrocompatibilidade, ou seja, aplicações desenvolvidas na versão 7 funcionarão perfeitamente nas versões mais atuais da linguagem. Esse é um dos pontos fortes do Java, que ajudam a garantir o seu sucesso.
 
 Veremos a seguir um pouco sobre as principais novidades implementadas no Java 8:
 
 ## Lambda expressions
-Uma das principais e mais comentadas mudanças do Java 8, são **Lambda Expressions** que trazem um pouco do paradigma da programação funcional para o Java. [Segundo a Oracle](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html) Lambda é uma forma clara e objetiva de representar um método usando apenas uma expressão. É importante lembrar que Lambda Expressions só funcionarão para **interfaces funcionais**. Interfaces funcionais são aquelas que possuem apenas um método.
+Uma das principais e mais comentadas mudanças do Java 8, são as **Lambda Expressions** que trazem um pouco do paradigma da programação funcional para o Java. [Segundo a Oracle](http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/Lambda-QuickStart/index.html), Lambda é uma forma clara e objetiva de representar um método usando apenas uma expressão. É importante lembrar que as Lambda Expressions só funcionarão para **interfaces funcionais**, que são interfaces que possuem apenas um método.
 
 Exemplo:
 ```java
@@ -40,17 +40,17 @@ public class Calculator {
 Resultado: `25.0`
 
 ## Stream
-Stream, no Java 8, é uma abstração que permite processar dados de coleções de forma declarativa, usando Lambda Expressions. Os passos para fazer uso do stream são:
+Stream, é uma abstração que permite processar dados de coleções de forma declarativa, usando Lambda Expressions. Os passos para fazer uso do stream são:
 
-1. Obter o stream a partir de uma Collection
-2. Adicionar uma ou mais operações no pipeline como filtros, ordenações, etc.
-3. Invocar o método collect, este é responsável por processar o pipeline e retornar o resultado no formato solicitado
+1. Obter o stream a partir de uma Collection;
+2. Adicionar uma ou mais operações no pipeline como filtros, ordenações, etc;
+3. Invocar o método collect, este é responsável por processar o pipeline e retornar o resultado no formato solicitado.
 
 Veja algumas das operações que você pode executar em um Stream:
 
 ### filter
 
-Filtra strings de acordo com a regra passada como parâmetro. Neste caso, filtra todas as strings não vazias.
+Filtra *strings* de acordo com a regra passada como parâmetro. Neste caso, filtra todas as '*strings* não vazias'.
 
 ```java
 public void removeEmptyStrings() {
@@ -63,7 +63,7 @@ Resultado: `[abc, bc, abcd, xyz, foo]`
 
 ### sorted
 
-Ordena os itens da Collection:
+Tem como função ordenar os itens de uma *Collection*, como no seguinte exemplo:
 
 ```java
 public void sortListAlphabetically() {
@@ -88,7 +88,7 @@ Resultado: `[5, 4, 3, 2, 1]`
 
 ### map
 
-O map aceita uma função como argumento que pode transformar cada um dos itens em um novo elemento
+O map aceita uma função como argumento que pode transformar cada um dos itens em um novo elemento:
 
 ```java
 public void countStringCharacters() {
@@ -101,7 +101,7 @@ Resultado: `[3, 3, 5, 4]`
 
 ### reduce
 
-O objetivo do reduce, como o nome sugere, é reduzir o número de itens de uma Collection, para isso o reduce receber um argumento [opcional] que será utilizado como valor inicial do segundo argumento, em que passamos uma função que recebe dois parâmetros e trata os dados da forma desejada de modo a reduzi-los.
+O objetivo do reduce, como o nome sugere, é reduzir o número de itens de uma *Collection*. Para isso ele recebe um argumento [opcional] que será utilizado como valor inicial do segundo argumento, que por sua vez é obrigatório. O segundo argumento é uma função que deve receber dois parâmetros, tratá-los da maneira desejada e devolver um resultado, este resultado será o primeiro parâmetro desta mesma função na próxima iteração em conjunto com o próximo elemento da *Collection*.
 
 Exemplo: Retornar a soma dos números pares de uma lista:
 
@@ -128,7 +128,7 @@ public void distinctElements() {
 Resultado: `[1, 2, 3, 4, 5]`
 
 ## Parallel Stream
-O resultado final do Parallel Stream é o mesmo do Stream, a diferença entre eles é que neste caso os dados são processados de forma paralela, em várias threads, diferente do Stream que é serial. O processamento paralelo por si só não garante melhora de performance, exceto em casos onde exista um grande volume de dados ou múltiplos cores de processamento.
+O resultado final do Parallel Stream é o mesmo do Stream, a diferença entre eles é que neste caso os dados são processados de forma paralela, em várias threads, diferente do segundo que é serial. O processamento paralelo por si só não garante melhora de performance, exceto em casos onde exista um grande volume de dados ou múltiplos núcleos de processamento.
 
 ## Default Methods
 O Java 8 permite a implementação de métodos padrões em interfaces utilizando a palavra chave **default**.
@@ -169,7 +169,7 @@ Optional é um `Wrapper` ou `Container` que determina a existência ou não de u
 
 Resultado: 5
 
-Essas são apenas algumas das principais novidades do Java 8. De acordo com os exemplos dados é fácil notar que ganhamos em produtividade quando utilizamos as novidades apresentadas. No caso da aplicação de streams ainda ganhamos em performance já que o processamento é executado através de um pipeline, seja este serial ou paralelo.
+Essas são apenas algumas das principais novidades do Java 8. De acordo com os exemplos dados, é fácil notar que ganhamos em produtividade quando utilizamos as novidades apresentadas. No caso da aplicação de streams ainda ganhamos em performance já que o processamento é executado através de um pipeline, seja este serial ou paralelo.
 
 No [site da Oracle](http://www.oracle.com/technetwork/java/javase/8-whats-new-2157071.html) você encontra a lista completa de novas implementações. Consulte também a [documentação do Java 8](http://www.oracle.com/technetwork/java/javase/documentation/jdk8-doc-downloads-2133158.html) para obter a referêcia completa da linguagem.
 
