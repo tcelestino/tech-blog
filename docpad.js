@@ -1,4 +1,4 @@
-moment = require('moment');
+var moment = require('moment');
 
 docpadConfig = function() {
     return {
@@ -25,7 +25,7 @@ docpadConfig = function() {
                         ];
                     },
                     isProduction: function() {
-                        return this.getEnvironments() == "static";
+                        return this.getEnvironment() === "static";
                     },
                 }
             },
