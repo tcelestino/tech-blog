@@ -52,6 +52,8 @@ O [Schema.org](http://schema.org/) os utiliza para rotular seu HTML com marcaç�
 
 Hoje existem 571 vocabulários hierarquizados em grupos, caso queira analisar mais aprofundadamente, recomendo que acessem [aqui](http://schema.org/docs/full.html), para ver a lista completa.
 
+![Vocabulários](../images/html-semantico-2-06.jpg)
+
 Por ser colaborativo, a tendência é aumentar cada vez mais. Observando a “cadeia” de palavras, percebemos que tudo começa com “Thing” que quer dizer, "coisa.  Muito vago! Porém, propositalmente e por isso existe a hierarquia.
 A  palavra **“Thing”** possui um conjunto de filhos: **Action**(Ação), **Creative Work**(Trabalho Criativo), **Event**(Evento), **Intagible**(Intangível), **Organization**(Organização), **Person**(Pessoa), **Place**(Lugar) e **Product**(Produto). Por sua vez, esses grupos são subdivididos em mais grupos e quanto mais descer o caminho, você notará que ficará cada vez mais específico e essa é a idéia.
 
