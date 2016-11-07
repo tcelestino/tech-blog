@@ -1,5 +1,5 @@
 ---
-date: 2016-10-24
+date: 2016-11-07
 category: front-end
 layout: post
 title: A importância da semântica no HTML - parte II
@@ -25,7 +25,7 @@ Caso não tenha lido o nosso primeiro post, basta acessar [aqui](http://engenhar
 
 Lembram do uso da palavra “lembrança” que utilizamos no post anterior? Para ajudar a entender o significado dos elementos em um html ela ainda será útil.
 Ao procurar um conteúdo com as palavras “lembranças de casamento”, o que faria o motor de busca entender exatamente o que você está pesquisando? É apenas um exemplo para reflexão. Você acharia errado se na lista de respostas viessem fotos de pessoas felizes comemorando uma festa? Acharia errado também se viessem bem-casados e enfeites? Tudo isso é relativo.
-Para evitar esses tipo de ruídos e fazer com que o computador se aproxime mais a entender o uso contextual do significado, utilizamos os "microdatas" (microdados).
+Para evitar esses tipo de ruídos e fazer com que o computador se aproxime mais a entender o uso contextual do significado, utilizamos os microdados (em inglês, microdatas).
 
 ## Trabalhando com microdados
 
@@ -36,23 +36,23 @@ Utilizaremos aqui os vocabulários do [Schema.org](http://schema.org/), pois é 
 
 ## Schema.org, o que é exatamente?
 
-É uma comunidade colaborativa com a missão de criar, manter e promover esquemas para dados estruturados na Internet. Porém, como estamos falando bastante sobre semântica ser o estudo do significado, então o que significa a palavra Schema ?
+É uma comunidade colaborativa com a missão de criar, manter e promover esquemas para dados estruturados na Internet. Porém, como estamos falando bastante sobre semântica ser o estudo do significado, então o que significa a palavra Schema?
 
-Schema é uma palavra de origem grega Skhema e do latim Schema que quer dizer figura, plano ou modelo. Ele possui uma lista de vocabulários em tags xml para padronizarmos o que podemos oferecer na web de uma forma em que o conteúdo ali presente seja exatamente o que o comunicador deseja que seja encontrado.
+Schema é uma palavra de origem grega *Skhema* e do latim *Schema* que quer dizer figura, plano ou modelo. Ele possui uma lista de vocabulários em tags xml para padronizarmos o que podemos oferecer na web de uma forma em que o conteúdo ali presente seja exatamente o que o comunicador deseja que seja encontrado.
 
-Haviam outros formatos antes, porém por serem diferentes uns dos outros, complicava para padronizar todos os significados. Como o Schema surgiu de uma força colaborativa dentre as empresas acima citadas, foi adotado como um modelo padrão, que facilitou a vida dos desenvolvedores – não precisando procurar diferentes linguagens de significado.
+Haviam outros formatos antes, mas por serem diferentes uns dos outros não existia um padrão para todos os significados. Como o Schema surgiu de uma força colaborativa dentre as empresas acima citadas, foi adotado como um modelo padrão, que facilitou a vida dos desenvolvedores.
 
 ## Mas isso é realmente útil?
 
-Além de conseguir separar exatamente (ou se aproximar disso) o significado de cada palavra, como por exemplo: Saia(objeto) de Saia (sair), ele pode fazer independente de línguas. Cada palavra explicitada em seu vocabulário correto, os buscadores não só entenderão o significado do que está sendo comunicado, como ainda entenderão em todas as outras línguas, pois a padronização dos vocabulários é feita em inglês e igualmente implementado em qualquer lugar, ficará mais claro nos exemplos logo mais a frente.
+Além de conseguir separar exatamente (ou se aproximar disso) o significado de cada palavra, como por exemplo: Saia(objeto) de Saia (sair), ele pode fazer independente de línguas. Cada palavra explicitada em seu vocabulário correto, os buscadores não só entenderão o significado do que está sendo comunicado, como ainda compreenderão em todas as outras línguas, pois a padronização dos vocabulários é feita em inglês e igualmente implementado em qualquer lugar. Os exemplos seguintes deixam isso mais claro.
 
 ## Mas o que são esse vocabulários?
 
 O [Schema.org](http://schema.org/) os utiliza para rotular seu HTML com marcações que indiquem a que grupo semântico pertencem. E para que os grupos não ficassem espalhados, foi criada uma hierarquização para facilitar a vida de todos
 
-Hoje existem 571 vocabulários hierarquizados em grupos, caso queira analisar mais aprofundadamente, recomendo que acessem [aqui](http://schema.org/docs/full.html), para a lista completa.
+Hoje existem 571 vocabulários hierarquizados em grupos, caso queira analisar mais aprofundadamente, recomendo que acessem [aqui](http://schema.org/docs/full.html), para ver a lista completa.
 
-Por ser colaborativo, a tendência é aumentar cada vez mais. Observando a “cadeia” de palavras, percebemos que tudo começa com “Thing” que quer dizer, coisa.  Muito vago! Porém, propositalmente e por isso existe a hierarquia.
+Por ser colaborativo, a tendência é aumentar cada vez mais. Observando a “cadeia” de palavras, percebemos que tudo começa com “Thing” que quer dizer, "coisa.  Muito vago! Porém, propositalmente e por isso existe a hierarquia.
 A  palavra **“Thing”** possui um conjunto de filhos: **Action**(Ação), **Creative Work**(Trabalho Criativo), **Event**(Evento), **Intagible**(Intangível), **Organization**(Organização), **Person**(Pessoa), **Place**(Lugar) e **Product**(Produto). Por sua vez, esses grupos são subdivididos em mais grupos e quanto mais descer o caminho, você notará que ficará cada vez mais específico e essa é a idéia.
 
 ## Aplicando em nosso HTML as propriedades dos microdados com vocabulários do Schema
@@ -61,7 +61,7 @@ Agora que vimos quais vocabulários existem e sabemos qual a utilidade dos Micro
 
 **Observação importante:** Essas propriedades somente podem ser aplicadas em doctype *HTML5*.
 
-Toda a explicação abaixo é baseada no “getting started” do [Schema.org](http://schema.org/), acesse [aqui](https://schema.org/docs/gs.html) caso queira mais detalhes.
+Toda a explicação abaixo é baseada no “Getting started” do [Schema.org](http://schema.org/), acesse [aqui](https://schema.org/docs/gs.html) caso queira mais detalhes.
 
 ### Sobre Itemscope e Itemtype
 
@@ -75,7 +75,7 @@ Começando de forma direta, imagine que você tenha uma página do filme Avatar,
 	<a href="../movies/avatar-theatrical-trailer.html">Trailer</a>
 </div>
 ```
-Para começar, vamos identificar a seção da página que fala sobre o filme e vamos aplicar o elemento **itemscope** na tag html no qual o conteúdo se relaciona ao longa.
+Para começar, vamos identificar a seção da página que fala sobre o filme e vamos aplicar o elemento **itemscope** na tag HTML no qual o conteúdo se relaciona ao longa.
 
 ``` html
 <div itemscope>
@@ -100,8 +100,8 @@ Agora é necessário que se especifique qual o contexto da informação escopada
 
 ### Sobre o atributo itemprop
 
-Acima dizemos que o escopo se trata de um filme, correto? Quais propriedades constituem um filme? Atores, diretores, trailer e muito mais. São essas informações que podemos enriquecer para os motores de busca, para rotulá-las utilizamos o atributo **Itemprop**.
-Para exemplificar, vamos atribuir o valor “diretor” ao próprio.
+Acima dizemos que o escopo se trata de um filme, correto? Quais propriedades constituem um filme? Atores, diretores, trailer e muito mais. São essas informações que podemos enriquecer para os motores de busca. Para rotulá-las utilizamos o atributo **Itemprop**.
+Para exemplificar, vamos atribuir o valor “director” a James Cameron.
 
 ``` html
 <div itemscope itemtype ="http://schema.org/Movie">
@@ -112,7 +112,7 @@ Para exemplificar, vamos atribuir o valor “diretor” ao próprio.
 </div>
 ```
 
-**Obs. :** Todas essas propriedades utilizadas no atributo **itemprop** são dos vocabulários de schema. Basta procurar na [lista](http://schema.org/docs/full.html) para saber qual melhor adequa ao seu contexto. No caso, todas são baseadas no escopo do filme, com o vocabulário Movie.
+**Obs. :** Há uma [lista](http://schema.org/docs/full.html) para saber qual propriedade se adequa melhor ao seu contexto. No caso atual, são baseadas no escopo do filme, com o vocabulário [Movie](http://schema.org/Movie).
 
 Agora os motores de busca não só sabem que a url do filme é de um trailer, como também é de um filme do gênero ficção cientifica, cujo o diretor é James Cameron.
 
@@ -213,9 +213,7 @@ O propriedade **isRelatedTo** do atributo **itemprop** é utilizada justamente p
 
 ## Como sei se apliquei as marcações da forma correta em meu site?
 
-Hoje já existe uma ferramenta do Google chamada [Ferramenta de testes de dados estruturados](https://search.google.com/structured-data/testing-tool). Com ela você pode testar e conferir em tempo real todas as suas marcações aplicadas. É só inserir a url da página no qual gostaria de ter um relatório.
-
-Já da pra notar o quão difundida essa idéia está, certo?
+Hoje já existe uma ferramenta do Google chamada [Ferramenta de testes de dados estruturados](https://search.google.com/structured-data/testing-tool). Com ela você pode testar e conferir em tempo real todas as suas marcações aplicadas. É só inserir a url da página que deseja de ter um feedback.
 
 ## Com isso…
 
