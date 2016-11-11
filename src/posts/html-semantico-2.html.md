@@ -1,5 +1,5 @@
 ---
-date: 2016-11-07
+date: 2016-11-11
 category: front-end
 layout: post
 title: A importância da semântica no HTML - parte II
@@ -32,7 +32,7 @@ Para evitar esses tipo de ruídos e fazer com que o computador se aproxime mais 
 O objetivo dos microdados é dar um maior significado aos documentos web. Foi criado pela organização do HTML5 (WHATWG) e hoje tornou-se o padrão de marcação do mesmo.
 Com os microdados, é possível ampliar o valor semântico dos elementos, saindo do tradicional e aprofundando no significado direto, inserindo marcações específicas no código fonte.
 Ele se utiliza de vários vocabulários para descrever os itens com pares de chave-valor para atribuir um significado aos elementos.
-Utilizaremos aqui os vocabulários do [Schema.org](http://schema.org/), pois é o que mais cresce e onde a maioria dos motores de busca se baseiam para refinar seus resultados, além de ser patrocinado pro Google, Yahoo, Microsoft e Yandex .
+Utilizaremos aqui os vocabulários do [Schema.org](http://schema.org/), pois é o que mais cresce e onde a maioria dos motores de busca se baseiam para refinar seus resultados, além de ser patrocinado pelo Google, Yahoo, Microsoft e Yandex .
 
 ## Schema.org, o que é exatamente?
 
@@ -44,18 +44,19 @@ Haviam outros formatos antes, mas por serem diferentes uns dos outros não exist
 
 ## Mas isso é realmente útil?
 
-Além de conseguir separar exatamente (ou se aproximar disso) o significado de cada palavra, como por exemplo: Saia(objeto) de Saia (sair), ele pode fazer independente de línguas. Cada palavra explicitada em seu vocabulário correto, os buscadores não só entenderão o significado do que está sendo comunicado, como ainda compreenderão em todas as outras línguas, pois a padronização dos vocabulários é feita em inglês e igualmente implementado em qualquer lugar. Os exemplos seguintes deixam isso mais claro.
+Além de conseguir separar exatamente (ou se aproximar disso) o significado de cada palavra, como por exemplo: Saia (objeto) de Saia (sair), ele pode fazer independente de línguas. Cada palavra explicitada em seu vocabulário correto, os buscadores não só entenderão o significado do que está sendo comunicado, como ainda compreenderão em todas as outras línguas, pois a padronização dos vocabulários é feita em inglês e igualmente implementado em qualquer lugar. Os exemplos seguintes deixam isso mais claro.
 
 ## Mas o que são esse vocabulários?
 
-O [Schema.org](http://schema.org/) os utiliza para rotular seu HTML com marcações que indiquem a que grupo semântico pertencem. E para que os grupos não ficassem espalhados, foi criada uma hierarquização para facilitar a vida de todos
+O [Schema.org](http://schema.org/) os utiliza para rotular seu HTML com marcações que indiquem a que grupo semântico pertencem. E para que os grupos não ficassem espalhados, foi criada uma hierarquia para facilitar a vida de todos.
 
-Hoje existem 571 vocabulários hierarquizados em grupos, caso queira analisar mais aprofundadamente, recomendo que acessem [aqui](http://schema.org/docs/full.html), para ver a lista completa.
+Observando a “cadeia” de palavras, percebemos que tudo começa com “Thing” que quer dizer, "coisa". Muito vago! Porém, propositalmente e por isso existe a hierarquia.
 
 ![Vocabulários](../images/html-semantico-2-06.jpg)
 
-Por ser colaborativo, a tendência é aumentar cada vez mais. Observando a “cadeia” de palavras, percebemos que tudo começa com “Thing” que quer dizer, "coisa.  Muito vago! Porém, propositalmente e por isso existe a hierarquia.
-A  palavra **“Thing”** possui um conjunto de filhos: **Action**(Ação), **Creative Work**(Trabalho Criativo), **Event**(Evento), **Intagible**(Intangível), **Organization**(Organização), **Person**(Pessoa), **Place**(Lugar) e **Product**(Produto). Por sua vez, esses grupos são subdivididos em mais grupos e quanto mais descer o caminho, você notará que ficará cada vez mais específico e essa é a idéia.
+A  palavra **“Thing”** possui um conjunto de filhos: **Action**(Ação), **Creative Work**(Trabalho Criativo), **Event**(Evento), **Intagible**(Intangível), **Organization**(Organização), **Person**(Pessoa), **Place**(Lugar) e **Product**(Produto). Por sua vez, esses grupos são subdivididos em mais grupos e quanto mais descer o caminho, você notará que ficará cada vez mais específico, e essa é a idéia.
+
+Hoje existem 571 vocabulários hierarquizados em grupos, caso queira analisar mais aprofundadamente, recomendo que acessem [aqui](http://schema.org/docs/full.html), para ver a lista completa.
 
 ## Aplicando em nosso HTML as propriedades dos microdados com vocabulários do Schema
 
@@ -102,8 +103,9 @@ Agora é necessário que se especifique qual o contexto da informação escopada
 
 ### Sobre o atributo itemprop
 
-Acima dizemos que o escopo se trata de um filme, correto? Quais propriedades constituem um filme? Atores, diretores, trailer e muito mais. São essas informações que podemos enriquecer para os motores de busca. Para rotulá-las utilizamos o atributo **Itemprop**.
-Para exemplificar, vamos atribuir o valor “director” a James Cameron.
+Acima dizemos que o escopo se trata de um filme, correto? Quais propriedades constituem um filme? Atores, diretores, trailer e muito mais. Para rotulá-las utilizamos o atributo **Itemprop** que indica qual a relação dessa informação em relação ao escopo. Um exemplo seria atribuir o valor “director” a "James Cameron" para relacionar que o mesmo é o diretor do filme "Avatar".
+
+Voltando ao nosso exemplo, vamos adicionar essas relações ao nosso html.
 
 ``` html
 <div itemscope itemtype ="http://schema.org/Movie">
@@ -118,7 +120,7 @@ Para exemplificar, vamos atribuir o valor “director” a James Cameron.
 
 Agora os motores de busca não só sabem que a url do filme é de um trailer, como também é de um filme do gênero ficção cientifica, cujo o diretor é James Cameron.
 
-Há casos que uma propriedade, pode possuir seu próprio conjunto de propriedades. Por exemplo, podemos especificar que o Diretor é alguém e logo uma pessoa (Person). Cada pessoa possui um nome (Name) e uma data de nascimento (birthDate), podemos especificar que o valor de uma propriedade é um outro item que possa ser escopado.
+Há casos a qual uma propriedade possui seu próprio conjunto de propriedades. Por exemplo: podemos relacionar que o Diretor é uma pessoa (Person) e que possui um nome (Name) e uma data de nascimento (birthDate). Dessa forma podemos especificar que o valor de uma propriedade (director) é um outro item que possa ser escopado (Person).
 
 ``` html
 <div itemscope itemtype ="http://schema.org/Movie">
@@ -166,9 +168,9 @@ Sabemos quais propriedades pertencem à um produto, como as acima citadas, porta
 ![Informações da loja](../images/html-semantico-2-05.png)
 
 Um produto, no site do [Elo7](http://www.elo7.com.br/), vem do anúncio de seu vendedor e em cada página de um produto, há também informações de sua loja.
-Seria, e é muito rico, no campo semântico, se também conseguíssemos aplicar significado às informações das lojas. Os motores de busca também o encontrariam de forma mais exata e por consequência aumentariam as chances de se efetuar uma venda. Logo, também aplicamos os microdados nas informações das lojas.
+Seria mais rico semanticamente, se também conseguíssemos aplicar significado às informações das lojas. Os motores de busca também o encontrariam de forma mais exata e por consequência aumentariam as chances de se efetuar uma venda. Logo, também aplicamos os microdados nas informações das lojas.
 
-Só que agora o escopo é de um contexto diferente, estamos falando de uma loja, analisando os vocabulários, indentificamos a informação de uma loja como uma organização (Organization).
+Só que agora o escopo é de um contexto diferente, estamos falando de uma loja, analisando os vocabulários, identificamos a informação de uma loja como uma organização (Organization).
 
 ``` html
 <article itemprop="manufacturer" itemscope itemtype="http://schema.org/Organization">
@@ -220,7 +222,7 @@ Hoje já existe uma ferramenta do Google chamada [Ferramenta de testes de dados 
 ## Com isso…
 
 Depois de tudo isso, concordemos que este é um assunto que nós, desenvolvedores, precisamos nos focar e dar a real importância que ele merece.
-Vamos ser diretos? Do que se trata a web, a rede, a internet ? Informação, certo? Se soubermos como armazená-la da forma que seja o mais fácil possível ser encontrada, sairemos muito na frente…
+Vamos ser diretos? Do que se trata a web, a rede, a internet? Informação, certo? Se soubermos como armazená-la da forma que seja o mais fácil possível ser encontrada, sairemos muito na frente…
 
 ## Mais informações:
 
