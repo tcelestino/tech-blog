@@ -204,29 +204,13 @@ public class HelloWorldTask implements StreamTaskProcessor<DataPoint<String>> {
 	}
 }
 ```
-Esse é um exemplo de task que apenas processaria apenas os eventos de `OrderStarted`. Para podermos subir e testar esse exemplo devemos:
-1. Baixar e subir o _Zookeeper_.
-2. Baixar e subir o _Kafka_ linkando com o _Zookeeper_.
+Esse é um exemplo de task que processaria apenas os eventos de `OrderStarted`.
 
-1:
-2:
+Agora que já sabemos como ele funciona e porque o criamos vamos à alguns exemplos, para qualquer exemplo de `Stream` precisaremos do _Kafka_, se você quer um exemplo de **Batch** [clique aqui]
 
-**OBS:** Para os passos 1 e 2 sugiro utilizar o **Docker** que deixa muito mais simples.
-Exemplo de criação com o **Docker**:
+1. Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para instalação e startup do mesmo. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
 
-1:
-```shell
-docker create --name zookeeper -e CONFIG_FILE=zoo.conf.development -p 2181:2181 -p 3888:3888 -p 2888:2888 my-images/zookeeper
-docker start zookeeper
-```
 
-2:
-```shell
-docker create --name kafka --link zookeeper:zookeeper -p 9092:9092 -e KAFKA_ZOOKEEPER_CONNECT=$(docker-machine ip dev):2181/kafka -e KAFKA_ADVERTISE_HOST_ADDRESS=$(docker-machine ip dev) -e KAFKA_PROPERTIES=/opt/kafka/config/kafka-server-development.properties -e KAFKA_DATA_STORE_DIR=/kafka my-images/kafka
-docker start kafka
-```
-
-Após o _Kafka_ estar UP criar
 
 
 
