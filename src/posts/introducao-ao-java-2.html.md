@@ -10,17 +10,17 @@ tags:
   - controle de fluxo
 ---
 
-No [primeiro post](http://engenharia.elo7.com.br/introducao-ao-java/) da série de introduação ao Java, mostrei como configurar e executar nossos códigos via Terminal. Dando continuidade a série, vou apresentar o conceito de expressão booleana para controlar o fluxo de funcionamento de lógica do nossos códigos. Sim, é básico, porém essencial para que passamos para os próximos posts, que começará a ser mais "legal", já que vamos começar a lidar com o conceito principal da linguagem, a Programação Orientada à Objetos.
+No [primeiro post](http://engenharia.elo7.com.br/introducao-ao-java/) da série de introduação ao Java, mostrei como configurar e executar nosso código Java. Continuando, nesse post vou apresentar alguns conceitos que são necessários para lidarmos com o controle de fluxo na lógica de funcionamento dos nossos códigos. Sim, vamos continuar no básico, porém essencial para os próximos posts, que pretende se tornar muito mais interessante. Mas vamos deixar de conversa e partimos!!
 
 ##Lidando com o controle de fluxo
 
-Provavelmente, se você já iniciou algum estudo em qualquer linguagem de programação, acredito que já tenha ouvido falar do "if", "else", ou do "while" e do "for". Basicamente faland são usadas quando queremos criar alguma condicional, ou seja, controlar o fluxo de funcionamento dos nossos códigos (melhorar essa parte).
+Provavelmente, se você já iniciou algum estudo em qualquer linguagem de programação, acredito que já tenha ouvido falar de "if", "else", do "while" e "for". Eles são usadas quando queremos criar alguma condicional, ou seja, controlar o fluxo de funcionamento dos nossos códigos.
 
-Para trabalharmos com condicionais, vamos precisar criar uma expressão booleana, que é nada mais, nada menos, que uma expressão que retorna "true" ou "false". Para obter o resultado esperado, podemos usar os seguintes operadores: <, >, <=, >=, ==, !=, entre outros. Podemos encontrar esses operadores em diversas outras linguagens (Java, Ruby, Javascript etc...).
+Para trabalharmos com condicionais, vamos precisar criar uma expressão booleana, que é nada mais, nada menos, uma expressão que retorna "true" ou "false". Para obter o resultado esperado, podemos usar os seguintes operadores: < (menor que), > (maior que), <= (menor e igual a que), >= (maior e igual a que), == (igual a), != (diferente de), entre outros. Basicamente, podemos encontrar esses operadores em diversas outras linguagens (Java, Ruby, Javascript etc...).
 
 ### - if, else, else if
 
-Vamos imaginar que temos um caso de uso:
+Vamos imaginar que temos um caso de uso: apenas maiores de idades podem visualizar a mensagem de texto.
 
 ```Java
 public void main(String[] args) {
@@ -34,13 +34,12 @@ public void main(String[] args) {
 }
 ```
 
-Execute o código (se não lembrar, [tem a cola aqui](http://engenharia.elo7.com.br/introducao-ao-java/)). (adicionar print).
+Analisando o código acima, podemos notar que existe uma expressão booleana, no qual verificamos se o valor da nossa váriavel 'menorIdade' tem o valor menor que o número 18. Para executar o código acima, tem uma [tem a cola aqui](http://engenharia.elo7.com.br/introducao-ao-java/). Agora, se alteramos o valor da váriavel para um valor acima de 18, o que aconteceria? Execute o código e veja.
 
-Se explicaramos traduzindo o código acima, teriamos algo assim: se a váriavel "menorIdade" for menor que "18", exiba na tela a mensagem, se não, exiba na tela a outra mensagem. Ou seja, verificamos se o valor da variável é menor que o número que passamos, como o resultado será "true", entramos no nossa primeira condicional. Utilizamos o "else" para quando a expressão booleana retornar "false", com isso podemos tratar os dois casos.
+Para deixarmos mais interessante nosso código, vamos adicionar mais uma expressão booleana, que irá verificar duas situações:
 
-Mas e o "else if"?
-
-Agora vamos imaginar o seguinte cenário
+1. se valor da váriavel menorIdade é menor que 18;
+2. se o valor da váriavel maiorIdade é maior que 18.
 
 ```Java
 public void main(String[] args) {
@@ -57,15 +56,13 @@ public void main(String[] args) {
 }
 ```
 
-Se rodar o código acima, vai notar que os teremos duas mensagens na tela (colocar print screen).
-
-Isso acontece devido ao uso do "else if", que cria uma nova condição a ser executada após o primeiro "if". Podemos ter diversas condições secundárias, ou seja, vários casos que precisamos fazer alguma comparação com a mesma variável ou valor com execuções diferentes.
+Rodando o código, você vai notar duas mensagens na tela. Isso aconteceu porque usamos o "else if", que criou uma condição a ser executada após a primeira condicional. Podemos ter diversas condições secundárias, ou seja, vários casos que precisamos fazer alguma comparação com a mesma variável ou valores com execuções diferentes.
 
 ### - while
 
-Em portugues, a palavra "while" quer dizer "enquanto", esse é o mesmo comportamento que temos quando precisamos fazer uma operação que seja executada a partir de um período de tempo. Resumindo, quando precisamos fazer um "loop" de um trecho de código algumas vezes.
+A palavra "while" no português pode ser traduzida pela a palavra "enquanto". Na expressão booleana, esse é o comportamento que precisamos executar uma operação que em um "período de tempo", ou até chegarmos a uma quantidade de de loops naquela mesma condicional.
 
-Vamos ver abaixo como podemos usar o "while".
+Um exemplo básico de como usar o "while".
 
 ```Java
 public void main(String[] args) {
@@ -78,9 +75,7 @@ public void main(String[] args) {
 }
 ```
 
-O código acima será executado até o valor da variável "numero" ter o valor de "18", ou seja, enquanto o valor da variável (numero) estiver como "true" (já que ela é menor que 18), irá passar e salvar o valor na mesma variável (criando a sobrescrita) e somando mais um valor. A execução do "while" só será finalizada quando o valor da variável ser igual ao número passado na condição, se tornado falsa.
-
-Podemos utilizar o "while", "if", etc... para melhorarmos nosso controle. Vejamos melhorar o nosso penúltimo código, acrescentando o "while".
+Ao executar o código, a váriavel "numero" receberá novos valores até chegar ao valor que está sendo comparada, no caso 18. Ou seja, enquanto a váriavel como "true", já que ela é menor que 18, o código será executado, havendo a sobrescrita e adicionando sempre o valor atual + 1. A execução do trecho do código só é finalizada quando o valor da váriavel se torna maior que a comparação, fazendo que a mesma tenha o valor "false" em relação ao valor comparado. Para deixarmos o código mais interessante, vamos fazer uma combinação de código com as expressões anteriores.
 
 ```Java
 public void main(String[] args) {
@@ -99,4 +94,10 @@ public void main(String[] args) {
 }
 ```
 
+### - for
+
+Diferente do "while", que precisa de uma condição booleana para ser executado, o "for" serve para controlar a execução de loops em que algum momento da execução possa parar a qualquer momento.
+
 ## Operadores lógicos
+
+https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/#3-9-controlando-loops
