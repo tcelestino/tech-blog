@@ -1,5 +1,5 @@
 ---
-title: 'Nightfall - Injetando dependências no Spark'
+title: 'Nightfall - Injetando dependências no Spark (Parte 1)'
 date: 2016-11-07
 category: back-end
 layout: post
@@ -208,16 +208,105 @@ Esse é um exemplo de task que processaria apenas os eventos de `OrderStarted`.
 
 Agora que já sabemos como ele funciona e porque o criamos vamos à alguns exemplos, para qualquer exemplo de `Stream` precisaremos do _Kafka_, se você quer um exemplo de **Batch** [clique aqui]
 
-1. Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para instalação e startup do mesmo. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
+- Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para :
+  1. Instalação e startup do mesmo. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
+  2. Crie um tópico no Kafka.
+  3. Envar mensagens para o tópico criado.
 
+Agora que possuímos o tópico criado podemos criar um stream para consumir as mensagens, para isso podemos utilizar a estrutura do `nightfall` e adicionar a task que criamos acima no sub-módulo `examples`.
+Além de adicionar o `Job` e a `Task` precisaremos configurar o arquivo `nightfall.properties` também, ficaria mais ou menos assim:
+```properties
+# Kafka Consumer
+kafka.brokers=localhost:9092
+kafka.topics=${NOME_DO_TÓPICO_CRIADO}
 
+# Kafka Offset
+kafka.offset.persistent=false
+kafka.cassandra.hosts=cassandra
+kafka.cassandra.keyspace=kafka
+kafka.cassandra.auto.migration=false
+kafka.cassandra.user=
+kafka.cassandra.password=
+kafka.cassandra.datacenter=
 
+# Stream Configurations
+stream.batch.interval.ms=20000
+stream.provider.converter=com.elo7.nightfall.di.providers.spark.stream.DataPointStreamContextConverter
+stream.checkpoint.directory=/Users/developer/dev/tmp/examples/HelloWorldJob
 
+# Monitoring config
+reporter.statsd.host=localhost
+reporter.statsd.port=8125
+reporter.statsd.prefix=dev.spark
+reporter.enabled=false
+reporter.class=com.elo7.nightfall.di.providers.reporter.jmx.JMXReporterFactory
+```
 
+Após a configuração do arquivo localizado em `examples/src/main/resources` podemos adicionar executar o `Job` através do comando:
+```shell
+gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
+```
+É possível verificar a execução do job a partir dos logs, assim que ele terminar o `start` enviar o exemplo de `ORDER_STARTED`, se o job estiver correto será impresso o `json` nos logs do `job`, também poderá ser enviado outro tipo de evento e verificar que apenas o evento do tipo configurado na `Task` está sendo printado, se houver a necessidade de consumir um outro evento seria recomendado a criação de outra `Task`.
 
+Agora podemos alterar nosso `Job`, `Task` e configurações para processar em `Batch` invés de `Stream` para isso precisaremos alterar o job:
+```java
+@FileRDD
+public class BatchOrderJob {
 
+    public static void main(String[] args) {
+        NightfallApplication.run(OrderJob.class, args);
+    }
+}
 
+```
+Precisamos alterar a task também para:
+```java
+@Task
+public class HelloWorldTask implements BatchTaskProcessor<DataPoint<String>> {
+	private static final long serialVersionUID = 1L;
+	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldTask.class);
+	private static final String ORDER_STARTED = "OrderStarted";
 
+	@Override
+	public void process(JavaRDD<DataPoint<String>> dataPointsStream) {
+		dataPointsStream
+				.filter(dataPoint -> DataPointValidator.isValidForType(dataPoint, ORDER_STARTED))
+				.foreachPartition(
+					rdd.foreachPartition(partition -> partition.forEachRemaining(this::log))
+				);
+	}
 
+	private void log(DataPoint<String> dataPoint) {
+		LOGGER.info("######################## \n Order Started processed: {} \n ######################## ", dataPoint);
+	}
+}
+```
+Não podemos esquecer de alterar a configuração que ficará assim:
+```properties
+# Batch Configuration
+# File Configuration
+file.s3.access.key=
+file.s3.secret.key=
+file.source=/tmp/nightfall
 
+# Batch
+batch.history.enabled=false
 
+# Batch - Job History
+batch.cassandra.hosts=cassandrar
+batch.cassandra.port=9042
+batch.cassandra.user=
+batch.cassandra.password=
+batch.cassandra.keyspace=kafka
+batch.cassandra.datacenter=
+batch.history.ttl.days=7
+```
+Precisaremos criar um arquivo compactado contendo os eventos para ser processado pelo `Batch`, pode ser um arquivo `txt` com os eventos e zipado, ele deve ser colocado no caminho especificado em `file.source`.
+Para executar o `Batch` executamos o seguinte comando:
+```shell
+gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
+```
+Podemos ver a impressão dos eventos que são do tipo `ORDER_STARTED` no log da aplicação :)
+
+### É hora da revisão
+Nesse post vimos o que nos motivou a criar o `Nightfall`, as configurações básicas para conseguir criar um `Stream` e um `Batch`. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do `Nigthfall`. Se você também utiliza o `Spark` e sentia falta de um injetor de dependência/facilitador comente o que achou :D
