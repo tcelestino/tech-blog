@@ -16,7 +16,7 @@ tags:
 ## O início
 Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real do site de forma assíncrona, evitando assim a necessidade de retirar métricas a partir do banco de dados utilizado pelo site, para isso enviamos eventos a partir do nosso **marketplace**, exemplo:
 
-
+![Alt "Exemplo de arquitetura"](../images/nightfall-1.png)
 
 Após a produção do eventos é necessário o desenvolvimento de consumidores, esses consumidores são os nossos `jobs` do _Spark_. Nossos `jobs` possuem várias _tasks_ que cada uma processa um tipo de evento de uma forma específica. Quando iniciamos o desenvolvimento dos nossos `jobs` o nosso código era mais ou menos assim:
 - Job
