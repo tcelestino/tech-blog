@@ -13,8 +13,10 @@ tags:
   - kafka
 ---
 
-
+## O início
 Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real do site de forma assíncrona, evitando assim a necessidade de retirar métricas a partir do banco de dados utilizado pelo site, para isso enviamos eventos a partir do nosso **marketplace**, exemplo:
+
+
 
 Após a produção do eventos é necessário o desenvolvimento de consumidores, esses consumidores são os nossos `jobs` do _Spark_. Nossos `jobs` possuem várias _tasks_ que cada uma processa um tipo de evento de uma forma específica. Quando iniciamos o desenvolvimento dos nossos `jobs` o nosso código era mais ou menos assim:
 - Job
@@ -128,7 +130,7 @@ Dessa forma possuíamos uma "injeção de dependência" de uma forma "tosca" par
 
 Ou seja para cada nova classe que nossa _task_ utilize precisamos instancia-la no `Job` um pouco ruim não acham?
 
-
+## Simplificando as coisas
 Para ajudar nosso problema de injeção de dependência criamos um projeto chamado **Nightfall** que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração, com isso fica muito mais simples a criação de novos `jobs`, reutilizamos o código de criação do **Spark Context** e por fim podemos injetar as classes necessárias diretamente na _task_ evitando instanciar **todas** as classes que precisamos no `Job`, não precisamos mais controlar o ciclo de vida das mesmas, deixando que o `guava` cuide disso. Exemplo de como fica o código com **Nightfall**:
 ```java
 @KafkaSimple
@@ -141,7 +143,7 @@ public class KafkaSimpleTest {
 ```
 Muito mais simples não? O código acima provê um `Job` **SparkStream** que utiliza uma conexão `Simple` com o `Kafka`.
 
-#
+## Criando um Stream
 Agora que já sabemos o que nos motivou a criar o projeto **Nightfall** podemos ver como utiliza-lo para facilitar nossa vida :D
 Digamos que temos um produtor de evento que envia um evento do tipo `ORDER_STARTED`
 ```json
@@ -248,7 +250,8 @@ gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
 É possível verificar a execução do job a partir dos logs, assim que ele terminar o `start` enviar o exemplo de `ORDER_STARTED`, se o job estiver correto será impresso o `json` nos logs do `job`, também poderá ser enviado outro tipo de evento e verificar que apenas o evento do tipo configurado na `Task` está sendo printado, se houver a necessidade de consumir um outro evento seria recomendado a criação de outra `Task`.
 
-Agora podemos alterar nosso `Job`, `Task` e configurações para processar em `Batch` invés de `Stream` para isso precisaremos alterar o job:
+## Criando um Batch
+Agora podemos criar nosso `Job`, `Task` e configurações para processar em `Batch` invés de `Stream` para isso precisaremos criar o seguinte job:
 ```java
 @FileRDD
 public class BatchOrderJob {
@@ -259,10 +262,10 @@ public class BatchOrderJob {
 }
 
 ```
-Precisamos alterar a task também para:
+Precisamos criar a task também:
 ```java
 @Task
-public class HelloWorldTask implements BatchTaskProcessor<DataPoint<String>> {
+public class BatchHelloWorldTask implements BatchTaskProcessor<DataPoint<String>> {
 	private static final long serialVersionUID = 1L;
 	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldTask.class);
 	private static final String ORDER_STARTED = "OrderStarted";
@@ -281,7 +284,7 @@ public class HelloWorldTask implements BatchTaskProcessor<DataPoint<String>> {
 	}
 }
 ```
-Não podemos esquecer de alterar a configuração que ficará assim:
+Não podemos esquecer de criar as configurações que ficará assim:
 ```properties
 # Batch Configuration
 # File Configuration
@@ -301,7 +304,7 @@ batch.cassandra.keyspace=kafka
 batch.cassandra.datacenter=
 batch.history.ttl.days=7
 ```
-Precisaremos criar um arquivo compactado contendo os eventos para ser processado pelo `Batch`, pode ser um arquivo `txt` com os eventos e zipado, ele deve ser colocado no caminho especificado em `file.source`.
+Por fim mas não menos importante precisaremos criar um arquivo compactado contendo os eventos para ser processado pelo `Batch`, pode ser um arquivo `txt` com os eventos e zipado, ele deve ser colocado no caminho especificado em `file.source`.
 Para executar o `Batch` executamos o seguinte comando:
 ```shell
 gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
@@ -309,4 +312,4 @@ gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
 Podemos ver a impressão dos eventos que são do tipo `ORDER_STARTED` no log da aplicação :)
 
 ### É hora da revisão
-Nesse post vimos o que nos motivou a criar o `Nightfall`, as configurações básicas para conseguir criar um `Stream` e um `Batch`. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do `Nigthfall`. Se você também utiliza o `Spark` e sentia falta de um injetor de dependência/facilitador comente o que achou :D
+Nesse post vimos o que nos motivou a criar o `Nightfall`, as configurações básicas para conseguir criar um `Stream` e um `Batch`. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do `Nigthfall`. Gostou? Se tiver algo para acrescentar/sugerir/duvida, deixe nos comentários e aguardem os próximos posts.
