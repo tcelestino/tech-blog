@@ -1,5 +1,5 @@
 ---
-date: 2016-11-11
+date: 2016-12-06
 category: front-end
 layout: post
 title: A importância da semântica no HTML - parte II
@@ -19,11 +19,9 @@ Neste segundo post da série sobre a importância da semântica para os usuário
 
 Caso não tenha lido o nosso primeiro post, basta acessar [aqui](http://engenharia.elo7.com.br/html-semantico-1/).
 
-![Se não souber o significado desses papéis ...](../images/html-semantico-2-02.jpg)
-
 ## Dando significado ao HTML
 
-Lembram do uso da palavra “lembrança” que utilizamos no post anterior? Para ajudar a entender o significado dos elementos em um html ela ainda será útil.
+Lembram do uso da palavra “lembrança” que utilizamos no post anterior? Para ajudar a entender o significado dos elementos em um HTML ela ainda será útil.
 Ao procurar um conteúdo com as palavras “lembranças de casamento”, o que faria o motor de busca entender exatamente o que você está pesquisando? É apenas um exemplo para reflexão. Você acharia errado se na lista de respostas viessem fotos de pessoas felizes comemorando uma festa? Acharia errado também se viessem bem-casados e enfeites? Tudo isso é relativo.
 Para evitar esses tipo de ruídos e fazer com que o computador se aproxime mais a entender o uso contextual do significado, utilizamos os microdados (em inglês, microdatas).
 
@@ -40,7 +38,7 @@ Utilizaremos aqui os vocabulários do [Schema.org](http://schema.org/), pois é 
 
 Schema é uma palavra de origem grega *Skhema* e do latim *Schema* que quer dizer figura, plano ou modelo. Ele possui uma lista de vocabulários em tags xml para padronizarmos o que podemos oferecer na web de uma forma em que o conteúdo ali presente seja exatamente o que o comunicador deseja que seja encontrado.
 
-Haviam outros formatos antes, mas por serem diferentes uns dos outros não existia um padrão para todos os significados. Como o Schema surgiu de uma força colaborativa dentre as empresas acima citadas, foi adotado como um modelo padrão, que facilitou a vida dos desenvolvedores.
+Haviam outras marcações semânticas antes, como RDF e microformats, mas por serem diferentes umas das outras não existia um padrão para todos os significados. Como o Schema surgiu de uma força colaborativa dentre as empresas acima citadas, foi adotado como um modelo padrão, que facilitou a vida dos desenvolvedores.
 
 ## Mas isso é realmente útil?
 
@@ -68,7 +66,7 @@ Toda a explicação abaixo é baseada no “Getting started” do [Schema.org](h
 
 ### Sobre Itemscope e Itemtype
 
-Começando de forma direta, imagine que você tenha uma página do filme Avatar, de James Cameron, e que essa página possua: um link para o trailer e informações sobre o diretor. O código html ficaria mais ou menos assim:
+Começando de forma direta, imagine que você tenha uma página do filme Avatar, de James Cameron, e que essa página possua: um link para o trailer e informações sobre o diretor. O código HTML ficaria mais ou menos assim:
 
 ``` html
 <div>
@@ -89,7 +87,7 @@ Para começar, vamos identificar a seção da página que fala sobre o filme e v
 </div>
 ```
 
-Adicionando **itemscope**, você está especificando que o conteúdo presente no html no elemento **< div > … < /div >** é sobre um assunto específico.
+Adicionando **itemscope**, você está especificando que o conteúdo presente no HTML no elemento **< div > … < /div >** é sobre um assunto específico.
 Agora é necessário que se especifique qual o contexto da informação escopada, para isso adicionamos a propriedade **itemtype** imediatamente a seguir de **itemscope**.
 
 ``` html
@@ -105,7 +103,7 @@ Agora é necessário que se especifique qual o contexto da informação escopada
 
 Acima dizemos que o escopo se trata de um filme, correto? Quais propriedades constituem um filme? Atores, diretores, trailer e muito mais. Para rotulá-las utilizamos o atributo **Itemprop** que indica qual a relação dessa informação em relação ao escopo. Um exemplo seria atribuir o valor “director” a "James Cameron" para relacionar que o mesmo é o diretor do filme "Avatar".
 
-Voltando ao nosso exemplo, vamos adicionar essas relações ao nosso html.
+Voltando ao nosso exemplo, vamos adicionar essas relações ao nosso HTML.
 
 ``` html
 <div itemscope itemtype ="http://schema.org/Movie">
