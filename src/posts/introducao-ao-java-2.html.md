@@ -96,8 +96,53 @@ public void main(String[] args) {
 
 ### - for
 
-Diferente do "while", que precisa de uma condição booleana para ser executado, o "for" serve para controlar a execução de loops em que algum momento da execução possa parar a qualquer momento.
+O "for" tem o mesmo comportamento do "while", porém podemos executar nossos códigos de maneira mais prática e mais legível. Veja o exemplo:
 
-## Operadores lógicos
+```Java
+public void main(String[] args) {
+  for (int i = 0; i < 20; i = i + 1) {
+    System.out.println("Executando: " + i);
+  }
+}
+```
+Já que o "for" e o "while" são bem parecidos, você deve tá se perguntando
 
-https://www.caelum.com.br/apostila-java-orientacao-objetos/variaveis-primitivas-e-controle-de-fluxo/#3-9-controlando-loops
+- quando usar o for e o while?
+
+Tudo vai depender de como você está implementando seu código e também o seu gosto. Eu prefiro o "for", porque consigo entender mais facilmente o que está acontecendo, mas em algumas situação preciso usar o "while" e vice-versa. Fica ao seu gosto!
+
+## Controlando loops
+
+Agora que sabemos usar os loops, porque não aprender a controla-los? Sim, é possível fazer o controle das execuções dos loops. Ou seja, podemos dizer quando que o código vai parar ou continuar (passar para outro trecho de código), mesmo tendo uma expressão booleana fazendo o controle. Para ficar mais fácil de entender, vejamos o exemplo:
+
+```Java
+public void main(String[] args) {
+  int x = 1;
+
+  for (int i = x; i < 15; i++) {
+    if (i % 3 == 0) {
+      System.out.println("Número divisível por 3: " + i);
+      break;
+    }
+  }
+}
+```
+
+Olhando o código acima, não existe nada tão diferente. Nosso código vai executar um "for", vai pecorrer a variável i até encontrar um número divisível por 3. Ao encontrar, nosso código irá parar de executar. Isso só acontece porque adicionamos ao trecho da nossa condicional (if) a palavra chave "break". Com o "break", dizemos que o nosso trecho de código irá parar de ser executado assim que a nossa condicional for verdadeira (no caso, divisível por 3).
+
+Além do "break", temos a palavra chave "continue", que é serve para o ao contrário do "break", fazendo nosso código executar o próximo laço.
+
+```Java
+public void main(String[] args) {
+  int x = 1;
+
+  for (int i = 0; i < 50; i++) {
+    if (i > 10 && i < 40) {
+      continue;
+    }
+    System.out.println(i);
+  }
+}
+```
+
+Depois desse pequeno resumo de como funciona o controle de loops, o que é uma expressão booleana e como podemos controlar o fluxo de nossos códigos, acredito que já podemos evoluir nossos estudos, já estamos preparados para iniciarmos nossos estudos mais "divertidos" com o Java. Preparados!?
