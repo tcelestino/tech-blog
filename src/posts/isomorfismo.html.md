@@ -24,7 +24,7 @@ No final dos anos 2000, as Single Page Applications (SPAs) se tornaram populares
 
 Alguns problemas encontrados são com questões de Search Engine Optimization (SEO), já que, por padrão, não é possível rodar uma página dessas sem Javascript, pois todo o seu código é gerado no cliente via JS. Porém, melhora a usabilidade do usuário, tornando uma página mais fluida.
 
-Em 2009, foi criado o NodeJS e com isso é possível rodar um código Javascript no lado do servidor. Porém, isso foi possível alguns anos antes com o [Rhino](https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/Rhino), que não deu muito certo.
+Em 1997, o projeto do [Rhino](https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/Rhino) foi iniciado na Netscape. O objetivo dele estava ligado ao suporte de scripting dentro de aplicações Java, e não ao desenvolvimento de aplicações completas. Anos depois, em 2009, foi criado o NodeJS e com isso é possível rodar um código Javascript no lado do servidor
 
 Sendo possível rodar código Javascript no servidor e também no cliente, podemos nos fazer uma pergunta: E se fosse possível rodar **um mesmo** código Javascript no servidor e no cliente?
 
@@ -32,7 +32,7 @@ Sendo possível rodar código Javascript no servidor e também no cliente, podem
 A palavra isomorfismo no dicionário tem alguns significados, mas o que mais se assemelha ao que queremos é:
 > 2\. *miner* fenômeno pelo qual duas ou mais substâncias de composição química diferente se apresentam com a mesma estrutura cristalina.
 
-Outra nomenclatura conhecida é **Javascript Universal**. Essa nomenclatura surgiu com um [post](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.e5tzyhurr) em 2015 do Michael Jackson (é verdade). Ele fez um pull request para o React colocando os significados das duas nomenclaturas. No post, um dos argumentos que achei mais interessante, foi que quando falamos para uma pessoa sobre Javascript isomórfico, ninguém entende logo o que significa, mas se falarmos Javascript universal, todos entendem bem mais rápido sobre o que estamos falando. Mas isso é uma discussão mais filosófica. No post usarei isomórfico, mas é bom saber que as duas nomenclaturas são usadas hoje em dia.
+Outra nomenclatura conhecida é **Javascript Universal**. Essa nomenclatura surgiu com um [post](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.e5tzyhurr) em 2015 do Michael Jackson (é verdade). Ele fez um [pull request](https://github.com/facebook/react/pull/4041) para o React colocando os significados das duas nomenclaturas. No post, um dos argumentos mais interessantes é que, quando falamos para uma pessoa sobre Javascript isomórfico, ninguém entende logo o que significa, mas, se falarmos Javascript Universal, todos entendem bem mais rápido sobre o que estamos falando. No post, usarei o termo isomórfico, mas é bom saber que as duas nomenclaturas são usadas hoje em dia.
 
 ## Código isomórfico
 Depois da parte teórica, a pergunta que surge é: como isso funciona no código?
@@ -40,7 +40,7 @@ Basicamente, temos o mesmo código que consegue rodar no cliente e no servidor. 
 
 !["Responsabilidades do cliente/servidor"](../images/isomorfismo-2.png)
 
-Como é possível perceber, alguns pontos são repetidos dos dois lados, e são esses os pontos que serão unificador em um código só isomórfico. O resto, como por exemplo, a parte de persistência e de sessão fazem parte unicamente do lado servidor. Enquanto eventos de DOM e o local storage do lado cliente.
+Como é possível perceber, alguns pontos são repetidos dos dois lados, e são esses os pontos que serão unificados em um código só isomórfico. O resto, como, por exemplo, a parte de persistência e de sessão, faz parte unicamente do lado servidor, enquanto eventos de DOM e o Local Storage faz parte do lado cliente.
 
 !["Unificação em um código isomórfico"](../images/isomorfismo-3.png)
 
@@ -60,7 +60,7 @@ class Pessoa {
 
 module.exports = Pessoa;
 ```
-Esse arquivo, seria como se fosse um modelo Pessoa, que teria apenas nome e data de nascimento. O que seria possível chamar dessa classe seria a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante desse exemplo, já que será nele que aplicaremos o isomorfismo.
+Esse arquivo é o modelo de uma pessoa, com nome e data de nascimento. Nesse modelo tem dois métodos, que retornam, respectivamente, a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante desse exemplo, já que será nele que aplicaremos o isomorfismo.
 
 ```js
 Pessoa = require('./pessoa');
@@ -76,8 +76,8 @@ const parser = {
 
 module.exports = parser;
 ```
-Nesse código temos um parser para o arquivo, que separa cada linha do texto e separa por `;` e com o resultado disso, cria uma nova Pessoa. O importante desse código é perceber que não utilizamos nenhum módulo do node nem manipulamos o document do *browser*.
-Na primeira parte do nosso exemplo, vamos rodar todo esse código no node, apenas no lado servidor. Para isso criaremos mais um arquivo (main.js), para rodar todo o código criado.
+Nesse código, temos um parser para o arquivo, que separa cada linha do texto e quebra a linha em casa `;`, com o resultado disso, cria uma nova Pessoa. O importante desse código é perceber que não utilizamos nenhum módulo do Node nem manipulamos o `document do *browser*.
+Na primeira parte do nosso exemplo, vamos rodar todo esse código no Node, apenas no lado servidor. Para isso, criaremos mais um arquivo (`main.js) para rodar todo o código criado.
 
 ```js
 const parser = require('./pessoa_parser');
@@ -92,11 +92,25 @@ Dessa forma, quando rodamos no servidor esse arquivo, obtemos essa resposta:
 
 !["Output do código quando rodado no servidor"](../images/isomorfismo-4.png)
 
-Agora, como nosso objetivo é ter um código que rode no lado servidor e no cliente, precisamos criar um arquivo HTML para tentar rodar esse código que já criamos. Nesse HTML, teremos apenas os imports de todos os javascripts utilizados e uma label com um textarea (para podermos colocar o txt que será parseado) e um botão para submit. Logo de início, se tentarmos abrir o arquivo em um *browser*, teremos esse erro:
+Agora, como nosso objetivo é ter um código que rode no servidor e no cliente, precisamos criar um arquivo HTML para tentar rodar esse código que já criamos. Esse HTML ficaria parecido com o código a seguir:
+```html
+<html>
+    <head></head>
+    <body>
+        <label>Pessoas
+            <textarea id='pessoas'></textarea>
+        </label>
+        <button id='processar'>Processar</button>
+        <script></script>  <!-- Import dos scripts -->
+    </body>
+</html>
+```
 
-!["Erro de código quando código não isomórfico roda no browser"](../images/isomorfismo-5.png)
+Logo de início, se tentarmos abrir o arquivo em um *browser*, teremos esse erro:
 
-Aqui, percebemos que o module e o require não funcionam no *browser*, apenas no servidor. Para isso, precisamos arrumar o nosso código para que ele consiga se adaptar nos diferentes ambientes. Mas, lembrando que não iremos alterar a função parser, já que esse é o código isomórfico. O lugar que vamos alterar será no main.js, como mostra o código a seguir:
+!["Erro quando código não isomórfico roda no browser"](../images/isomorfismo-5.png)
+
+Aqui, percebemos que o `module` e o `require` não funcionam no *browser*, apenas no servidor. Precisamos arrumar o nosso código para que ele consiga se adaptar nos diferentes ambientes. Porém, vale lembrar que não iremos alterar a função `parser`, já que esse é o código isomórfico. O lugar que vamos alterar será no `main.js, como mostra o código a seguir:
 
 ```js
 if (typeof module === 'object') {
@@ -110,13 +124,13 @@ if (typeof module === 'object') {
     });
 }
 ```
-Além disso, em todos os lugares que usar o require ou o module, teremos que fazer o seguinte if:
+Além disso, em todos os lugares que usarem o `require` ou o `module`, teremos que fazer o seguinte `if:
 
 ```js
 if (typeof module === 'object') { ... }
 ```
 
-Dessa forma, no servidor continuará funcionando normalmente e no *browser* passará a funcionar:
+Dessa forma, no servidor continuará funcionando normalmente e, no *browser*, passará a funcionar:
 
 !["Output do código no browser"](../images/isomorfismo-6.png)
 
