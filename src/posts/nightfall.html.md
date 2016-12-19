@@ -90,7 +90,7 @@ public class MyJob {
 }
 ```
 
-Dessa forma possuíamos uma "injeção de dependência" de uma forma "tosca" para as configs do banco e do job. Mas e se quiséssemos injetar outras classes? Para "injetar" outras classes seria necessário fazer algo assim:
+Dessa forma possuíamos uma "injeção de dependência" de uma forma "rudimentar" para as configs do banco e do job. Mas e se quiséssemos injetar outras classes? Para "injetar" outras classes seria necessário fazer algo assim:
 ```java
 	@SuppressWarnings("unchecked")
     private static JavaStreamingContext createContext(MyJobConfiguration config) {
@@ -141,7 +141,7 @@ public class KafkaSimpleTest {
     }
 }
 ```
-Muito mais simples não? O código acima provê um `Job` **SparkStream** que utiliza uma conexão `Simple` com o `Kafka`.
+Muito mais simples não? O código acima provê um `Job` **SparkStream** que utiliza o `Simple API` do `Kafka`.
 
 ## Criando um Stream
 Agora que já sabemos o que nos motivou a criar o projeto **Nightfall** podemos ver como utiliza-lo para facilitar nossa vida :D
@@ -208,7 +208,7 @@ public class HelloWorldTask implements StreamTaskProcessor<DataPoint<String>> {
 ```
 Esse é um exemplo de task que processaria apenas os eventos de `OrderStarted`.
 
-Agora que já sabemos como ele funciona e porque o criamos vamos à alguns exemplos, para qualquer exemplo de `Stream` precisaremos do _Kafka_, se você quer um exemplo de **Batch** [clique aqui]
+Agora que já sabemos como ele funciona e porque o criamos vamos à alguns exemplos, para qualquer exemplo de `Stream` precisaremos do _Kafka_, se você quer um exemplo de **Batch** [clique aqui](#criando-um-batch)
 
 - Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para :
   1. Instalação e startup do mesmo. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
@@ -246,9 +246,9 @@ reporter.class=com.elo7.nightfall.di.providers.reporter.jmx.JMXReporterFactory
 
 Após a configuração do arquivo localizado em `examples/src/main/resources` podemos adicionar executar o `Job` através do comando:
 ```shell
-gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
+./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
-É possível verificar a execução do job a partir dos logs, assim que ele terminar o `start` enviar o exemplo de `ORDER_STARTED`, se o job estiver correto será impresso o `json` nos logs do `job`, também poderá ser enviado outro tipo de evento e verificar que apenas o evento do tipo configurado na `Task` está sendo printado, se houver a necessidade de consumir um outro evento seria recomendado a criação de outra `Task`.
+É possível verificar a execução do job a partir dos logs. Após o job ser startado podemos enviar um evento do tipo [ORDER_STARTED](#L149), se o job estiver correto será impresso o `json` nos logs do `job`, também poderá ser enviado outro tipo de evento e verificar que apenas o evento do tipo configurado na `Task` está sendo printado, se houver a necessidade de consumir um outro evento seria recomendado a criação de outra `Task`.
 
 ## Criando um Batch
 Agora podemos criar nosso `Job`, `Task` e configurações para processar em `Batch` invés de `Stream` para isso precisaremos criar o seguinte job:
@@ -307,7 +307,7 @@ batch.history.ttl.days=7
 Por fim mas não menos importante precisaremos criar um arquivo compactado contendo os eventos para ser processado pelo `Batch`, pode ser um arquivo `txt` com os eventos e zipado, ele deve ser colocado no caminho especificado em `file.source`.
 Para executar o `Batch` executamos o seguinte comando:
 ```shell
-gradle 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
+./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
 ```
 Podemos ver a impressão dos eventos que são do tipo `ORDER_STARTED` no log da aplicação :)
 
