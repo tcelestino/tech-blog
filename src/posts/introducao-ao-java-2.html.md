@@ -1,6 +1,6 @@
 ---
 title: 'Introdução ao Java - parte 2'
-date: 2016-11-02
+date: 2016-12-24
 category: back-end
 layout: post
 description: Entenda como controlar o fluxo de funcionamento do seu código usando expressão boolena. Entenda o funcionamento do "if", "else", "for", "while" e de alguns operadores.
@@ -44,11 +44,10 @@ Para deixarmos mais interessante nosso código, vamos adicionar mais uma express
 ```Java
 public void main(String[] args) {
   int menorIdade = 15;
-  int maiorIdade = 30;
 
   if(menorIdade < 18) {
     System.out.println("Você ainda é menor de idade!");
-  } else if (maiorIdade > 18) {
+  } else if (menorIdade == 18) {
     System.out.println("Agora você é maior de idade.");
   } else {
     System.out.println("Reveja sua idade, parça!");
@@ -56,7 +55,7 @@ public void main(String[] args) {
 }
 ```
 
-Rodando o código, você vai notar duas mensagens na tela. Isso aconteceu porque usamos o "else if", que criou uma condição a ser executada após a primeira condicional. Podemos ter diversas condições secundárias, ou seja, vários casos que precisamos fazer alguma comparação com a mesma variável ou valores com execuções diferentes.
+Executando o código acima, ele exibirá a primeira condicional, porém se alteramos o valor da variável `menorIdade` para 18, entrará no "else if" e se alteramos o valor para maior que 18, o que acontece?
 
 ### - while
 
@@ -68,31 +67,37 @@ Um exemplo básico de como usar o "while".
 public void main(String[] args) {
   int numero = 0;
 
-  while(numero < 18) {
-    System.outprintln(numero);
+  while(numero < 20) {
+    System.out.println(numero);
     numero = numero + 1;
   }
 }
 ```
 
-Ao executar o código, a váriavel "numero" receberá novos valores até chegar ao valor que está sendo comparada, no caso 18. Ou seja, enquanto a váriavel como "true", já que ela é menor que 18, o código será executado, havendo a sobrescrita e adicionando sempre o valor atual + 1. A execução do trecho do código só é finalizada quando o valor da váriavel se torna maior que a comparação, fazendo que a mesma tenha o valor "false" em relação ao valor comparado. Para deixarmos o código mais interessante, vamos fazer uma combinação de código com as expressões anteriores.
+No código acima, a variável "numero" receberá novos valores até chegar ao valor que está sendo comparada. Ou seja, enquanto a variável estiver com o status verdadeiro (true), o código será executado, havendo a sobrescrita do valor anterior e fazendo a soma do valor atual. A execução do trecho do código só é finalizada quando o valor da variável chegar ao valor menor que 20. Vamos melhorar um pouco o código, deixando um pouco mais interessante.
 
 ```Java
 public void main(String[] args) {
   int menorIdade = 15;
 
-  if(menorIdade < 18) {
-    System.out.println("Você ainda é menor de idade!");
-    while(menorIdade < 18) {
-      menorIdade = menorIdade + 1;
-    }
-  } else if (menorIdade == 18) {
-    System.out.println("Agora você é maior de idade.");
-  } else {
-    System.out.println("Reveja sua idade, parça!");
+
+  while(menorIdade < 20) {
+    if(menorIdade < 18) {
+      System.out.println("Você ainda é menor de idade!");
+
+      } else if(menorIdade == 18) {
+        System.out.println("Agora você é maior de idade.");
+
+      } else {
+        System.out.println("Reveja sua idade, parça!");
+      }
+
+    menorIdade = menorIdade + 1;
   }
 }
 ```
+
+Isso é apenas um exemplo de como podemos fazer uma combinação de várias expressões boolenas para criar lógicas em nossos códigos.
 
 ### - for
 
@@ -105,39 +110,31 @@ public void main(String[] args) {
   }
 }
 ```
-Já que o "for" e o "while" são bem parecidos, você deve tá se perguntando
-
-- quando usar o for e o while?
-
-Tudo vai depender de como você está implementando seu código e também o seu gosto. Eu prefiro o "for", porque consigo entender mais facilmente o que está acontecendo, mas em algumas situação preciso usar o "while" e vice-versa. Fica ao seu gosto!
+Já que o "for" e o "while" são bem "parecidos", você deve tá se perguntando: quando usar o for e o while? Tudo vai depender de como você está implementando seu código e também o seu gosto. Eu prefiro o "for", porque consigo entender mais facilmente o que está acontecendo. Fica ao seu gosto!
 
 ## Controlando loops
 
-Agora que sabemos usar os loops, porque não aprender a controla-los? Sim, é possível fazer o controle das execuções dos loops. Ou seja, podemos dizer quando que o código vai parar ou continuar (passar para outro trecho de código), mesmo tendo uma expressão booleana fazendo o controle. Para ficar mais fácil de entender, vejamos o exemplo:
+Agora que sabemos usar os loops, porque não aprender a controla-los? Podemos dizer quando que o código vai parar ou continuar (passar para outro trecho de código). Para ficar mais fácil de entender, vejamos o exemplo:
 
 ```Java
 public void main(String[] args) {
-  int x = 1;
-
-  for (int i = x; i < 15; i++) {
-    if (i % 3 == 0) {
-      System.out.println("Número divisível por 3: " + i);
+  for (int i = 0; i < 100; i++) {
+    if (i < 51) {
+      System.out.println("Olha até aonde vamos" + i);
       break;
     }
   }
 }
 ```
 
-Olhando o código acima, não existe nada tão diferente. Nosso código vai executar um "for", vai pecorrer a variável i até encontrar um número divisível por 3. Ao encontrar, nosso código irá parar de executar. Isso só acontece porque adicionamos ao trecho da nossa condicional (if) a palavra chave "break". Com o "break", dizemos que o nosso trecho de código irá parar de ser executado assim que a nossa condicional for verdadeira (no caso, divisível por 3).
+Olhando o código acima, não existe nada tão diferente. Nosso código vai executar um "for", vai pecorrer a variável até a mesma ter o valor 50. Ao encontrar, nosso código irá parar de executar. Isso só acontece porque adicionamos ao trecho da nossa expressão boolena a palavra chave "break".
 
 Além do "break", temos a palavra chave "continue", que é serve para o ao contrário do "break", fazendo nosso código executar o próximo laço.
 
 ```Java
 public void main(String[] args) {
-  int x = 1;
-
-  for (int i = 0; i < 50; i++) {
-    if (i > 10 && i < 40) {
+  for (int i = 0; i < 100; i++) {
+    if (i > 10 && i < 20) {
       continue;
     }
     System.out.println(i);
@@ -145,4 +142,8 @@ public void main(String[] args) {
 }
 ```
 
-Depois desse pequeno resumo de como funciona o controle de loops, o que é uma expressão booleana e como podemos controlar o fluxo de nossos códigos, acredito que já podemos evoluir nossos estudos, já estamos preparados para iniciarmos nossos estudos mais "divertidos" com o Java. Preparados!?
+Ao executar, alguns números serão imprimidos, não todos. Veja no seu terminal o que acontece com essa condicional.
+
+## Resumo
+
+Nesses dois primeiros posts sobre Introdução ao Java ([leia o primeiro post](http://engenharia.elo7.com.br/introducao-ao-java/)), aprendemos como configurar o Java e como executar nosso código sem necessidade de um IDE. Também descobrimos como que podemos utilizar expressões boolenas para criar fluxos em nosso código, controlando loops e criando condicionais. Agora, acredito que podemos evoluir nossos estudos, começanndo a estudar algo mais real, principalmente o grande princípio do Java: Orientação a Objetos. Preparados!?
