@@ -1,5 +1,5 @@
 ---
-title: Vaga de estagio em desenvolvimento de software
+title: Vaga de estágio em desenvolvimento de software
 
 date: 2016-12-26
 author: davidrobert
@@ -12,23 +12,21 @@ tags:
   - front-end
 ---
 
-# Vaga de estagio em desenvolvimento de software
-
 Procuramos estagiários com os seguintes requisitos:
 
   * **Gostar de programar!**
   * Orientação a objetos
   * Conhecimento em Java ou C
-  * Conhecimento de HTML, CSS e JavaScript  
+  * Conhecimento de HTML, CSS e JavaScript
   * **Disposto a aprender e compartilhar conhecimento!**
+  * Cursando faculdade ou técnico
 
-Desejável experiência também em:  
+Desejável experiência também em:
 
-  * Boas práticas de programação 
+  * Boas práticas de programação
   * Conhecimento em Java para web (VRaptor ou Spring)
-  * Design Patterns 
+  * Design Patterns
 
 Vaga para 6 horas diárias.
-**Curtiu o desafio? Quer fazer parte deste time #foradesérie? Envie um e-mail com o título: Estagio Java para: **jobs+estagio@elo7.com****
 
-
+**Curtiu o desafio? Envie um e-mail com o título: Estágio Java para: **jobs+estagio@elo7.com****
