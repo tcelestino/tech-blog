@@ -29,4 +29,6 @@ Desejável experiência também em:
 
 Vaga para 6 horas diárias.
 
-**Curtiu o desafio? Envie um e-mail com o título: Estágio Java para: **jobs+estagio@elo7.com****
+Curtiu o desafio?
+
+Envie um e-mail com o título: **Estágio Desenvolvimento** para: **jobs+estagio@elo7.com** com o seu **currículo anexado (PDF)** e o **link do seu perfil** no Linkedin.
