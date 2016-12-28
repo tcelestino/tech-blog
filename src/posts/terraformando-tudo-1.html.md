@@ -13,12 +13,15 @@ tags:
   - infra
 ---
 
-## Terraformando tudo - parte 1
+## IaC7
 
 Esse post dá início a uma série de posts intitulada **Terraformando tudo**. Nessa série iremos mostrar o caminho que trilhamos (e os percalços que tivemos) no **Elo7** e o que ainda falta alcançar a meta de termos **toda** nossa infraestrutura sendo gerenciada por código (o famoso IaC - Infrastructure as Code). 
+
 Pelo título do post, é fácil ver que escolhemos o [**Terraform**](http://terraform.io) pra nos ajudar nessa tarefa, certo? :-). Mas como fizemos essa escolha? Hype? Know-how prévio? Nome bonito? Ninguém sabe?!?
+
 Negativo! Apesar de *ágeis e early adopters*, pesamos nossas decisões em diversos aspectos, como curva de aprendizado, escopo da resolução do problema, possíveis *lock-ins* e escala à longo prazo.
-E é exatamente disso que se trata esse primeiro post, um comparativo das features (**que nos interessam**) de cada ferramenta analisada e como nos pautamos para decidir utilizar o **Terraform**. Em nenhum momento esse post se trata de decidir se uma ferramenta é melhor que outra e sim, da ferramenta que é **melhor para nós e para nossas necessidades**. 
+
+E é exatamente disso que se trata esse primeiro post, um comparativo das features - **que nos interessam** - de cada ferramenta analisada e como nos pautamos para decidir utilizar o **Terraform**. Em nenhum momento esse post se trata de decidir se uma ferramenta é melhor que outra e sim, da ferramenta que é **melhor para nós e para nossas necessidades**. 
 
 ## Um paralelo com o desenvolvimento das nossas aplicações
 
@@ -26,7 +29,7 @@ Ao buscar codificar nossa infra, tinhamos como intuíto utilizar o mesmo fluxo q
 
 Pair-programming (cada dev com seu monitor/teclado/mouse na mesma workstation) -> Testes -> Pull-request -> Review/Testes -> Fixes -> Review/Testes fixes -> Deploy (ESSA LINHA SERÁ UM FLUXOGRAMA)
 
-Nosso fluxo de desenvolvimento do código responsável por nossa infra deveria ser capaz de caber exatamente nesse fluxo, ou pelo menos em grande parte dele. Principalmente na parte de pair-programming e review. 
+Nosso fluxo de desenvolvimento do código responsável por nossa infra deveria ser capaz de caber nesse fluxo, ou pelo menos em grande parte dele. Principalmente nas etapas de pair-programming e review. 
 
 Além desse principal requisito, também temos algumas outras necessidades:
 * Suporte à AWS;
@@ -58,7 +61,7 @@ Os próximos sub-tópicos discutem os motivos que foram importantes **para nós*
 ### Puppet, Chef e Ansible
 
 Nas nossas discussões sobre qual ferramenta escolher, essas 3 ficaram no mesmo balaio. Existia um know-how prévio dessas ferramentas no time, o que já trouxe elas para lista de finalistas automaticamente.
-Porém, mesmo elas dando suporte à criação de infra, elas não foram concebidas para isso. A especialidade dessas ferramentas é gerenciamento de configurções e aplicações. O escopo onde elas brilham é a configuração de ambiente e aplicações.
+Porém, mesmo elas dando suporte à criação de infra, elas não foram concebidas para isso. A especialidade dessas ferramentas é gerenciamento de configurações e aplicações.
 
 Apesar de serem ferramentas completas, poderosas e confiáveis, extrapolavam bastante nosso escopo, então decidimos deixá-las em hold para ver se outra ferramenta se encaixaria melhor nas nossas necessidades. 
 
@@ -70,11 +73,11 @@ Não poderíamos deixar de analisar a ferramenta oferecida pela própria AWS par
 
 Além de não gostarmos da sintaxe JSON do Cloud Formation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O Cloud Formation só dá suporte à AWS (obviamente :P) e não gostamos de lock-ins. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o Cloud Formation da nossa lista.
 
-Com Puppet, Chef e Ansible esperando para uma possível finalissíma entre os 3, ainda restava o Terraform para analisarmos. Como já sabem, ele foi o escolhido e, a seguir, veremos que características que fizeram com que escolhessemos o Terraform como ferramenta de cabeceira para nosso IaC.
+Com Puppet, Chef e Ansible esperando para uma possível finalissíma entre os 3, ainda restava o Terraform para analisarmos. Como já sabem, ele foi o privilegiado e, a seguir, veremos quais características que fizeram com que o Terraform fosse escolhido como ferramenta de cabeceira para nosso IaC.
 
 ### Conclusão: Terraform
 
-Ao nos analisar friamente o Terraform, levantamos algumas características. Todas elas se encaixaram bem nos nossos requisitos, inclusive nos requisitos desejáveis.
+Ao analisar friamente o Terraform, separamos algumas características que chamaram nosssa atenção. Todas elas se encaixam bem nos nossos requisitos, inclusive nos requisitos desejáveis.
 
 Primeiramente, o Terraform tem o suporte da *Hashicorp*, empresa que contribui com outros diversos projetos Opensource já conhecidos, como o Consul e Vault. É um projeto escrito em Golang com comunidade muito ativa e um ciclo de releases de aproximadamente 20 dias, com cada release sempre trazendo novas features e fixes importantes.
 
@@ -82,7 +85,7 @@ Foi a ferramenta que cabe exatamente no nosso escopo de criação de infra e som
 
 A linguagem utilizada para criação da infra no Terraform é a HCL (Hashicorp Configuration Language), que é uma linguagem declarativa desenvolvida pela Hashicorp. Apesar de parecer um pouco estranha no início, nos acostumamos fácilmente com ela.
 
-Encontramos alguns posts sobre o *Terraform*, alguns falando bem e outros falando mal, principalmente por ser uma ferramenta nova, que realmente carece de algumas funcionalidades. Fizemos validações e diversas simulações, principalmente de desastres. Estávamos muito precupados com comportamentos inesperados na hora de criar/destruir a nossa infra, principalmente mudanças críticas, como alteração de um registro DNS no *Route53*. Então queríamos conhecer exatamente como a ferramenta se comporta em diversas situações.
+Encontramos alguns posts sobre o *Terraform*, uns falando bem e outros falando mal, principalmente por ser uma ferramenta nova, que realmente carece de algumas funcionalidades. Fizemos validações e diversas simulações, principalmente de desastres. Estávamos muito precupados com comportamentos inesperados na hora de criar/destruir a nossa infra, principalmente mudanças críticas, como alteração de um registro DNS no *Route53*. Então, queríamos conhecer exatamente como a ferramenta se comporta em diversas situações.
 
 Encontramos sim, alguns problemas com a nossa escolha. Tanto técnicos como na definição de um fluxo que seja capaz de ser implementado para todo o time da Engenharia Elo7. Um assunto polêmico que fez a gente pensar bastante, foi como íamos tratar a infra já existente, criada na base do mouse... Mas esses serão assuntos para os próximos posts! :D
 
