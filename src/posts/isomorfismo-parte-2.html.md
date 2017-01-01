@@ -1,6 +1,6 @@
 ---
 title: Javascript Isomórfico - parte 2
-date: 2016-09-26
+date: 2017-01-02
 category: front-end
 layout: post
 description: Continuando com a série de posts sobre javascript isomórfico, agora falando um pouco mais sobre frameworks e onde usar.
