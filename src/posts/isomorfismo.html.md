@@ -10,21 +10,23 @@ tags:
   - isomorfico
 ---
 
-Novos frameworks são criados a todo momento e um novo nome está criando mais força no mundo Javascript: Isomorfismo. Farei uma série de posts para explicar melhor esse conceito e algumas aplicações dele com o uso de frameworks. Nesse primeiro post, será abordada uma parte mais teórica sobre o que é isomorfismo.
+Novos frameworks são criados a todo momento e um novo nome está criando mais força no mundo Javascript: isomorfismo. Farei uma série de posts para explicar melhor esse conceito e algumas aplicações dele com o uso de frameworks. Nesse primeiro post, será abordada uma parte mais teórica sobre o que é isomorfismo.
 
 ## Voltando no tempo
 Antes de falar de fato do isomorfismo, é interessante pensar em o que aconteceu na história para surgir a necessidade de utilizar um código Javascript isomórfico.
-No final de 1990, Tim Berners-Lee publicou uma proposta mais formal para a *World Wide Web*. Em 1993, lançaram o [Mosaic](https://pt.wikipedia.org/wiki/Mosaic), o primeiro navegador WWW, que rodava tanto em Windows quanto em Linux. Ele abriu a web para o público em geral. Nesse mesmo ano, já é possível ver as primeiras páginas estáticas, com muitos textos e imagens. [Alguns desses sites antigos podem ser encontrados nesse artigo](http://gizmodo.com/5960831/23-ancient-web-sites-that-are-still-alive).
+No final de 1990, Tim Berners-Lee publicou uma proposta de gerenciamento de informações mais formal para a *World Wide Web*. Em 1993, lançaram o [Mosaic](https://pt.wikipedia.org/wiki/Mosaic), o primeiro navegador WWW, que rodava tanto em Windows quanto em Linux. Ele abriu a web para o público em geral. Nesse mesmo ano, já é possível observar as primeiras páginas estáticas, com muitos textos e imagens. [Alguns desses sites antigos podem ser encontrados nesse artigo](http://gizmodo.com/5960831/23-ancient-web-sites-that-are-still-alive).
 
 !["Sites estáticos: Netscape e Space Jam"](../images/isomorfismo-1.png)
 
-Já em maio de 1995, o Javascript foi criado por Brendan Eich. Mas ele não era conhecido por esse nome e sim por Mocha. Um tempo depois ficou conhecido por LiveScript. E só em dezembro, depois de receber uma licença da Sun, que o nome Javascript foi finalmente adotado. Mas tudo isso foi uma jogada de marketing, já que o Java estava começando a ficar bem popular no mesmo período. Com o Javascript, foi possível adicionar mais interações com a página, eventos, animações...
+Já em maio de 1995, Brendan Eich criou o Javascript. Inicialmente conhecido como Mocha e mais tarde como LiveScript, o Javascript passou a ser conhecido com este nome apenas em dezembro, depois de receber uma licença da Sun. Essa mudança foi devido a uma jogada de marketing, já que o Java estava começando a ficar bem popular no mesmo período. Com o Javascript, foi possível adicionar mais interações com a página, eventos, animações...
 
-No final dos anos 2000, as Single Page Applications (SPAs) se tornaram populares. Elas são um modelo de desenvolvimento de aplicações web e mobile. Desenvolver uma SPA significa dividir a responsabilidade com o cliente, ou seja, ter mais código rodando no cliente do que no servidor. Elas se assemelham mais a aplicativos desktop e com elas é possível interagir com uma página sem a necessidade de atualizá-las. Como não é mais necessário o reload, é possível carregar dados assincronamente para que os usuários possam fazer algo durante o primeiro carregamento da página. Temos vários exemplos de SPA (Facebook, Google Drive, Twitter, FourSquare), onde podemos realizar diversas tarefas sem ter que aguardar cada uma delas serem concluídas. Um bom exemplo é o Gmail, que podemos enviar diversos emails em paralelo sem ter que aguardar o primeiro processo encerrar com sucesso.
+No final dos anos 2000, as *Single Page Applications* (SPAs) se tornaram populares. Elas são um modelo de desenvolvimento de aplicações web e mobile. Desenvolver uma SPA significa dividir a responsabilidade com o cliente, ou seja, ter mais código rodando no cliente. Elas se assemelham mais a aplicativos desktop e com elas é possível interagir com uma página sem a necessidade de atualizá-la. Como não é mais necessário o reload, é possível carregar dados assincronamente para que os usuários possam fazer algo durante o primeiro carregamento da página. Temos vários exemplos de SPA (Facebook, Google Drive, Twitter, FourSquare), onde podemos realizar diversas tarefas sem ter que aguardar cada uma delas ser concluída. Um bom exemplo é o Gmail, no qual podemos enviar diversos emails em paralelo sem ter que aguardar o primeiro processo encerrar com sucesso.
 
-Alguns problemas encontrados são com questões de Search Engine Optimization (SEO), já que, por padrão, não é possível rodar uma página dessas sem Javascript, pois todo o seu código é gerado no cliente via JS. Porém, melhora a usabilidade do usuário, tornando uma página mais fluida.
+## Problemas atuais
 
-Em 1997, o projeto do [Rhino](https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/Rhino) foi iniciado na Netscape. O objetivo dele estava ligado ao suporte de scripting dentro de aplicações Java, e não ao desenvolvimento de aplicações completas. Anos depois, em 2009, foi criado o NodeJS e com isso é possível rodar um código Javascript no lado do servidor
+Alguns problemas encontrados são com questões de *Search Engine Optimization* (SEO), já que, por padrão, não é possível rodar uma página dessas sem Javascript, pois todo o seu código é gerado no cliente via JS. Porém, melhora a usabilidade do usuário, tornando uma página mais fluida.
+
+Em 1997, o projeto do [Rhino](https://developer.mozilla.org/pt-BR/docs/Mozilla/Projects/Rhino) foi iniciado na Netscape. O objetivo dele estava ligado ao suporte de scripting dentro de aplicações Java, e não ao desenvolvimento de aplicações completas. Anos depois, em 2009, foi criado o NodeJS e com isso é possível rodar um código Javascript no lado do servidor.
 
 Sendo possível rodar código Javascript no servidor e também no cliente, podemos nos fazer uma pergunta: E se fosse possível rodar **um mesmo** código Javascript no servidor e no cliente?
 
@@ -32,7 +34,7 @@ Sendo possível rodar código Javascript no servidor e também no cliente, podem
 A palavra isomorfismo no dicionário tem alguns significados, mas o que mais se assemelha ao que queremos é:
 > 2\. *miner* fenômeno pelo qual duas ou mais substâncias de composição química diferente se apresentam com a mesma estrutura cristalina.
 
-Outra nomenclatura conhecida é **Javascript Universal**. Essa nomenclatura surgiu com um [post](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.e5tzyhurr) em 2015 do Michael Jackson (é verdade). Ele fez um [pull request](https://github.com/facebook/react/pull/4041) para o React colocando os significados das duas nomenclaturas. No post, um dos argumentos mais interessantes é que, quando falamos para uma pessoa sobre Javascript isomórfico, ninguém entende logo o que significa, mas, se falarmos Javascript Universal, todos entendem bem mais rápido sobre o que estamos falando. No post, usarei o termo isomórfico, mas é bom saber que as duas nomenclaturas são usadas hoje em dia.
+Outra nomenclatura conhecida é **Javascript Universal**. Esta surgiu com um [post](https://medium.com/@mjackson/universal-javascript-4761051b7ae9#.e5tzyhurr) em 2015 do Michael Jackson (é verdade). Ele fez um [pull request](https://github.com/facebook/react/pull/4041) para o React colocando os significados das duas nomenclaturas. No post, um dos argumentos mais interessantes é que, quando falamos para uma pessoa sobre Javascript isomórfico, ninguém entende logo o que significa, mas, se falarmos Javascript Universal, todos entendem bem mais rápido sobre o que estamos falando. No post, usarei o termo isomórfico, mas é bom saber que as duas nomenclaturas são usadas hoje em dia.
 
 ## Código isomórfico
 Depois da parte teórica, a pergunta que surge é: como isso funciona no código?
@@ -44,7 +46,7 @@ Como é possível perceber, alguns pontos são repetidos dos dois lados, e são 
 
 !["Unificação em um código isomórfico"](../images/isomorfismo-3.png)
 
-Para exemplificar como fazer um código isomórfico e quais são as especificações do lado cliente e do servidor, segue o código abaixo, feito com EcmaScript 6:
+Para exemplificar como fazer um código isomórfico e quais são as especificações do lado cliente e do servidor, segue o código abaixo, feito com EcmaScript 2015:
 
 ```js
 class Pessoa {
@@ -60,7 +62,7 @@ class Pessoa {
 
 module.exports = Pessoa;
 ```
-Esse arquivo é o modelo de uma pessoa, com nome e data de nascimento. Nesse modelo tem dois métodos, que retornam, respectivamente, a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante desse exemplo, já que será nele que aplicaremos o isomorfismo.
+Esse arquivo é o modelo de uma pessoa, com nome e data de nascimento. Nesse modelo há dois métodos, que retornam, respectivamente, a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante desse exemplo, já que será nele que aplicaremos o isomorfismo.
 
 ```js
 Pessoa = require('./pessoa');
@@ -76,8 +78,9 @@ const parser = {
 
 module.exports = parser;
 ```
-Nesse código, temos um parser para o arquivo, que separa cada linha do texto e quebra a linha em casa `;`, com o resultado disso, cria uma nova Pessoa. O importante desse código é perceber que não utilizamos nenhum módulo do Node nem manipulamos o `document do *browser*.
-Na primeira parte do nosso exemplo, vamos rodar todo esse código no Node, apenas no lado servidor. Para isso, criaremos mais um arquivo (`main.js) para rodar todo o código criado.
+Nesse código, temos um parser para o arquivo, que separa cada linha do texto e quebra a linha em cada `;` e, com o resultado disso, cria uma nova Pessoa. O importante desse código é perceber que não utilizamos nenhum módulo do Node nem manipulamos o `document` do *browser*.
+
+Na primeira parte do nosso exemplo, vamos rodar todo esse código no Node, apenas no lado servidor. Para isso, criaremos mais um arquivo (`main.js`) para rodar todo o código criado.
 
 ```js
 const parser = require('./pessoa_parser');
@@ -88,7 +91,7 @@ fs.readFile('pessoas.txt', (err, content) => {
 });
 
 ```
-Dessa forma, quando rodamos no servidor esse arquivo, obtemos essa resposta:
+Dessa forma, quando rodamos esse arquivo no servidor, obtemos essa resposta:
 
 !["Output do código quando rodado no servidor"](../images/isomorfismo-4.png)
 
@@ -110,7 +113,7 @@ Logo de início, se tentarmos abrir o arquivo em um *browser*, teremos esse erro
 
 !["Erro quando código não isomórfico roda no browser"](../images/isomorfismo-5.png)
 
-Aqui, percebemos que o `module` e o `require` não funcionam no *browser*, apenas no servidor. Precisamos arrumar o nosso código para que ele consiga se adaptar nos diferentes ambientes. Porém, vale lembrar que não iremos alterar a função `parser`, já que esse é o código isomórfico. O lugar que vamos alterar será no `main.js, como mostra o código a seguir:
+Aqui, percebemos que o `module` e o `require`, que fazem parte da especificação do *node*, não funcionam no *browser*, apenas no servidor. Precisamos arrumar o nosso código para que ele consiga se adaptar nos diferentes ambientes. Porém, vale lembrar que não iremos alterar a função `parser`, já que esse é o código isomórfico. O lugar que vamos alterar será no `main.js`, como mostra o código a seguir:
 
 ```js
 if (typeof module === 'object') {
@@ -124,7 +127,7 @@ if (typeof module === 'object') {
     });
 }
 ```
-Além disso, em todos os lugares que usarem o `require` ou o `module`, teremos que fazer o seguinte `if:
+Além disso, em todos os lugares que usarem o `require` ou o `module`, teremos que fazer o seguinte `if`:
 
 ```js
 if (typeof module === 'object') { ... }
