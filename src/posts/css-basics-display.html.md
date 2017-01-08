@@ -48,3 +48,13 @@ Esses elementos possuem uma mistura de propriedades. Como o próprio nome diz, t
 
 <p data-height="300" data-theme-id="23784" data-slug-hash="GrgeQM" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display Inline-Block" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/GrgeQM/">Display Inline-Block</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+# Table
+
+Como o próprio nome já diz, é possível renderizar elementos como se fossem tabelas. É preciso tomar cuidado com essa propriedade, com o quesito acessibilidade. Se queremos estilizar um elemento como uma tabela, ela não deveria ser uma tabela na sua essência, ou seja, no HTMl? Por isso, cada caso deve ser analisado e pensado com cuidado. Existem alguns tipos de `display` capazes de estilizar elementos como tabelas, entre eles `table`, `table-row` e `table-cell` que se assemelham às tags `<table>`, `<tr>` e `<td>` do HTML.
+
+<p data-height="300" data-theme-id="23784" data-slug-hash="JEdxXv" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display table" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/JEdxXv/">Display table</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+
+Nesse post, falamos um pouco de como funciona alguns atributos da propriedade `display` e sobre como usá-los. Nos próximos posts abordarei sobre outras propriedades comuns e também sobre novas especificações. 
