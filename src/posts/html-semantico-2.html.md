@@ -52,9 +52,9 @@ Observando a “cadeia” de palavras, percebemos que tudo começa com “Thing�
 
 ![Vocabulários](../images/html-semantico-2-06.jpg)
 
-A  palavra **“Thing”** possui um conjunto de filhos: **Action** (Ação), **Creative Work** (Trabalho Criativo), **Event** (Evento), **Intagible** (Intangível), **Organization** (Organização), **Person** (Pessoa), **Place** (Lugar) e **Product** (Produto). Por sua vez, esses grupos são subdivididos em mais grupos e quanto mais descer o caminho, você notará que ficará cada vez mais específico, e essa é a ideia.
+A  palavra **“Thing”** possui um conjunto de filhos: **Action** (Ação), **Creative Work** (Trabalho Criativo), **Event** (Evento), **Intangible** (Intangível), **Organization** (Organização), **Person** (Pessoa), **Place** (Lugar) e **Product** (Produto). Por sua vez, esses grupos são subdivididos em mais grupos e quanto mais descer o caminho, você notará que ficará cada vez mais específico, e essa é a ideia.
 
-Hoje existem 571 vocabulários hierarquizados em grupos, caso queira analisar mais profundamente, recomendo que vejam a [lista completa](http://schema.org/docs/full.html).
+Hoje existem 571 vocabulários hierarquizados em grupos, Caso queira analisar mais profundamente, recomendo que vejam a [lista completa](http://schema.org/docs/full.html).
 
 ## Aplicação dos microdados no HTML
 
@@ -62,7 +62,7 @@ Agora que vimos quais vocabulários existem e sabemos qual a utilidade dos micro
 
 **Observação importante:** Essas propriedades somente podem ser aplicadas em *doctype HTML5*.
 
-Toda a explicação abaixo é baseada no [“Getting started” do Schema.org](http://schema.org/), acesse [aqui](https://schema.org/docs/gs.html) caso queira mais detalhes.
+Caso queira mais detalhes, toda a explicação abaixo é baseada no [“Getting started” do Schema.org](https://schema.org/docs/gs.html).
 
 ### Itemscope e Itemtype
 
@@ -87,7 +87,7 @@ Para começar, vamos identificar a seção da página que fala sobre o filme e v
 </div>
 ```
 
-Adicionando **itemscope**, você está especificando que o conteúdo presente no HTML no elemento `<div> … </div> é sobre um assunto específico.
+Adicionando **itemscope**, você está especificando que o conteúdo presente no HTML no elemento `<div> … </div>` é sobre um assunto específico.
 Agora é necessário que se especifique qual o contexto da informação escopada, para isso adicionamos a propriedade **itemtype** imediatamente a seguir de **itemscope**.
 
 ``` html
@@ -174,7 +174,7 @@ Só que agora o escopo é de um contexto diferente, estamos falando de uma loja,
 <article itemprop="manufacturer" itemscope itemtype="http://schema.org/Organization">
 ```
 
-Completanto o código com o atributo **itemprop**, ficaria:
+Completando o código com o atributo **itemprop**, ficaria:
 
 ``` html
 <article itemprop="manufacturer" itemscope itemtype="http://schema.org/Organization">
@@ -224,7 +224,7 @@ Vamos ser diretos? Do que se trata a web, a rede, a internet? Informação, cert
 
 ## Mais informações:
 
-Mozilla Developer Network – HTML Element Reference – [https://developer.mozilla.org/en-US/docs/Web/HTML/Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)<br>
-WHATWG – Semantics – [https://html.spec.whatwg.org/multipage/semantics.html](https://html.spec.whatwg.org/multipage/semantics.html)<br>
-Filho, Almir – Microdata – [http://loopinfinito.com.br/2012/05/02/microdata/](http://loopinfinito.com.br/2012/05/02/microdata/)<br>
-Schema – Documentation – [http://schema.org/docs/documents.html](http://schema.org/docs/documents.html)<br>
+- Mozilla Developer Network – HTML Element Reference – [https://developer.mozilla.org/en-US/docs/Web/HTML/Element](https://developer.mozilla.org/en-US/docs/Web/HTML/Element)
+- WHATWG – Semantics – [https://html.spec.whatwg.org/multipage/semantics.html](https://html.spec.whatwg.org/multipage/semantics.html)
+- Filho, Almir – Microdata – [http://loopinfinito.com.br/2012/05/02/microdata/](http://loopinfinito.com.br/2012/05/02/microdata/)
+- Schema – Documentation – [http://schema.org/docs/documents.html](http://schema.org/docs/documents.html)
