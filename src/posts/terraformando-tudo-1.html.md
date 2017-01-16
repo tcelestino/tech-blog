@@ -13,11 +13,20 @@ tags:
   - infra
 ---
 
-## IaC7
+## Infrastructure as Code no Elo7
 
-Esse post dá início a uma série de posts intitulada **Terraformando tudo**. Nessa série iremos mostrar o caminho que trilhamos (e os percalços que tivemos) no **Elo7** e o que ainda falta para concluir nosso objetivo de ter **toda** nossa infraestrutura sendo gerenciada por código (o famoso IaC - *Infrastructure as Code*). 
+Esse post dá início a uma série de posts intitulada **Terraformando tudo**. Nessa série iremos mostrar o caminho que trilhamos (e os percalços que tivemos) no **Elo7** e o que ainda falta para concluir nosso objetivo de ter **toda** nossa infraestrutura sendo gerenciada por código, ou seja, termos *Infrastructure as Code*.
 
-Pelo título do post, é fácil ver que escolhemos o [**Terraform**](http://terraform.io) pra nos ajudar nessa tarefa, certo? :-). Mas como fizemos essa escolha? Hype? Know-how prévio? Nome bonito? Ninguém sabe?!?
+Mas o que seria *Infrastructure as Code* (ou *IaC* para os mais íntimos)? 
+
+Além de ser mais uma *buzzword*, *Infrastructure as Code* é o ato de gerenciar a infraestrutura (seja ela física ou virtual) e suas configurações. Tal gerenciamento deve ser feito através de código versionado, seja utilizando ferramentas desenvolvidas *in-house* ou de mercado. Esse processo é de grande importância para a cultura *DevOps*, possibilitando que todo o time de Engenharia possa ser responsável pela infraestrutura de suas aplicações e trazendo diversos benefícios:
+* Velocidade: execução rápida, evitando processos manuais;
+* Padronizações: melhora a garantia de que os padrões definidos sejam seguidos;
+* Evita erros manuais: ao não ser necessário utilizar ferramentas interativas, diminui a chance de falhas;
+* Qualidade: Pode-se inserir no processo um *code review*, garantindo a qualidade do código/padrões;
+* Fácil reprodutibilidade: é fácil escalar a infra ou cloná-la em outro datacenter.
+
+Pelos motivos supracitados e ainda outras vantagens, decidimos ter *IaC* aqui no Elo7 e, pelo título do post, é fácil ver que escolhemos o [**Terraform**](http://terraform.io) para nos ajudar nessa tarefa, certo? :-). Mas como fizemos essa escolha? Hype? Know-how prévio? Nome bonito? Ninguém sabe?!?
 
 Negativo! Apesar de *ágeis e early adopters*, pesamos nossas decisões em diversos aspectos, como curva de aprendizado, escopo da resolução do problema, possíveis *lock-ins* e escala a longo prazo.
 
@@ -71,7 +80,7 @@ A outra opção veio de dentro do cloud provider que usamos (AWS).
 
 Não poderíamos deixar de analisar a ferramenta oferecida pela própria AWS para gerenciamento de infraestrutura como código. Por ser da própria AWS, já podíamos contar com suporte a todos os recursos existentes (EC2, S3, route53, redshift, lambda, etc), além de performance e confiabilidade no que está sendo executado.
 
-Além de não gostarmos da sintaxe JSON do Cloud Formation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O Cloud Formation só dá suporte à AWS (obviamente :P) e não gostamos de lock-ins. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o Cloud Formation da nossa lista.
+Apesar de não gostarmos da sintaxe JSON do Cloud Formation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O Cloud Formation só dá suporte à AWS (obviamente :P) e não gostamos de lock-ins. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o Cloud Formation da nossa lista.
 
 Com Puppet, Chef e Ansible esperando para uma possível finalissíma entre os 3, ainda restava o Terraform para analisarmos. Como já sabem, ele foi o privilegiado e, a seguir, veremos quais características que fizeram com que o Terraform fosse escolhido como ferramenta de cabeceira para nosso IaC.
 
@@ -87,7 +96,7 @@ A linguagem utilizada para criação da infra no Terraform é a HCL (*Hashicorp 
 
 Encontramos alguns posts sobre o *Terraform*, uns falando bem e outros falando mal, principalmente por ser uma ferramenta nova, que realmente carece de algumas funcionalidades. Fizemos validações e diversas simulações, principalmente de desastres. Estávamos muito precupados com comportamentos inesperados na hora de criar/destruir a nossa infra, principalmente mudanças críticas, como alteração de um registro DNS no *Route53*. Então, queríamos conhecer exatamente como a ferramenta se comporta em diversas situações.
 
-Encontramos sim, alguns problemas com a nossa escolha. Tanto técnicos como na definição de um fluxo que seja capaz de ser implementado para todo o time da Engenharia Elo7. Um assunto polêmico que fez a gente pensar bastante, foi como íamos tratar a infra já existente, criada na base do mouse... Mas esses serão assuntos para os próximos posts! :D
+Encontramos sim, alguns problemas com a nossa escolha. Tanto técnicos como na definição de um fluxo que seja capaz de ser implementado para todo o time da Engenharia Elo7. Um assunto polêmico que fez a gente pensar bastante foi como íamos tratar a infra já existente, criada na base do mouse... Mas esses serão assuntos para os próximos posts! :D
 
 Pretendemos voltar logo mais, nesse mesmo canal, com os próximos posts dessa série, dando exemplos práticos de como utilizamos o Terraform e como resolvemos problemas conhecidos e não conhecidos nessa nossa aventura de Terraformar tudo. 
 
