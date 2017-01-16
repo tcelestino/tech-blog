@@ -1,5 +1,5 @@
 ---
-date: 2017-01-09
+date: 2017-01-16
 category: front-end
 layout: post
 title: A importância da semântica no HTML - parte II
