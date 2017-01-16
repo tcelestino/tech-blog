@@ -3,7 +3,7 @@ title: Javascript Isomórfico
 date: 2016-08-29
 category: front-end
 layout: post
-description: Novos frameworks são criados a todo momento e um novo nome está criando mais força no mundo Javascript: Isomorfismo.
+description: Novos frameworks são criados a todo momento e um novo nome está criando mais força no mundo Javascript: isomorfismo.
 author: fernandabernardo
 tags:
   - javascript
@@ -14,13 +14,13 @@ Novos frameworks são criados a todo momento e um novo nome está criando mais f
 
 ## Voltando no tempo
 Antes de falar de fato do isomorfismo, é interessante pensar em o que aconteceu na história para surgir a necessidade de utilizar um código Javascript isomórfico.
-No final de 1990, Tim Berners-Lee publicou uma proposta de gerenciamento de informações mais formal para a *World Wide Web*. Em 1993, lançaram o [Mosaic](https://pt.wikipedia.org/wiki/Mosaic), o primeiro navegador WWW, que rodava tanto em Windows quanto em Linux. Ele abriu a web para o público em geral. Nesse mesmo ano, já é possível observar as primeiras páginas estáticas, com muitos textos e imagens. [Alguns desses sites antigos podem ser encontrados nesse artigo](http://gizmodo.com/5960831/23-ancient-web-sites-that-are-still-alive).
+No final de 1990, Tim Berners-Lee publicou uma proposta de gerenciamento de informações mais formal para a *World Wide Web*. Em 1993, lançaram o [Mosaic](https://pt.wikipedia.org/wiki/Mosaic), o primeiro navegador WWW, que rodava tanto em Windows quanto em Linux, a qual abriu a web para o público em geral. Nesse mesmo ano, já é possível observar as primeiras páginas estáticas, com muitos textos e imagens. [Alguns desses sites antigos podem ser encontrados nesse artigo](http://gizmodo.com/5960831/23-ancient-web-sites-that-are-still-alive).
 
 !["Sites estáticos: Netscape e Space Jam"](../images/isomorfismo-1.png)
 
 Já em maio de 1995, Brendan Eich criou o Javascript. Inicialmente conhecido como Mocha e mais tarde como LiveScript, o Javascript passou a ser conhecido com este nome apenas em dezembro, depois de receber uma licença da Sun. Essa mudança foi devido a uma jogada de marketing, já que o Java estava começando a ficar bem popular no mesmo período. Com o Javascript, foi possível adicionar mais interações com a página, eventos, animações...
 
-No final dos anos 2000, as *Single Page Applications* (SPAs) se tornaram populares. Elas são um modelo de desenvolvimento de aplicações web e mobile. Desenvolver uma SPA significa dividir a responsabilidade com o cliente, ou seja, ter mais código rodando no cliente. Elas se assemelham mais a aplicativos desktop e com elas é possível interagir com uma página sem a necessidade de atualizá-la. Como não é mais necessário o reload, é possível carregar dados assincronamente para que os usuários possam fazer algo durante o primeiro carregamento da página. Temos vários exemplos de SPA (Facebook, Google Drive, Twitter, FourSquare), onde podemos realizar diversas tarefas sem ter que aguardar cada uma delas ser concluída. Um bom exemplo é o Gmail, no qual podemos enviar diversos emails em paralelo sem ter que aguardar o primeiro processo encerrar com sucesso.
+No final dos anos 2000, as *Single Page Applications* (SPAs) se tornaram populares. Elas são um modelo de desenvolvimento de aplicações web e mobile. Desenvolver uma SPA significa dividir a responsabilidade com o cliente, ou seja, ter mais código rodando no cliente. Elas se assemelham mais a aplicativos desktop e com elas é possível interagir com uma página sem a necessidade de atualizá-la (reload). Como não é mais necessário o reload, é possível carregar dados assincronamente para que os usuários possam fazer algo durante o primeiro carregamento da página. Temos vários exemplos de SPA (Facebook, Google Drive, Twitter, FourSquare), onde podemos realizar diversas tarefas sem ter que aguardar cada uma delas ser concluída. Um bom exemplo é o Gmail, no qual podemos enviar diversos emails em paralelo sem ter que aguardar o primeiro processo encerrar com sucesso.
 
 ## Problemas atuais
 
@@ -62,7 +62,7 @@ class Pessoa {
 
 module.exports = Pessoa;
 ```
-Esse arquivo é o modelo de uma pessoa, com nome e data de nascimento. Nesse modelo há dois métodos, que retornam, respectivamente, a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante desse exemplo, já que será nele que aplicaremos o isomorfismo.
+Esse arquivo é o modelo de uma pessoa, com nome e data de nascimento. Nesse modelo há dois métodos, que retornam, respectivamente, a idade e o primeiro nome. Apenas isso é importante saber no momento, toda a forma de como foi implementado é irrelevante para o exemplo. Já o próximo código é a parte mais importante, já que será nele que aplicaremos o isomorfismo.
 
 ```js
 Pessoa = require('./pessoa');
@@ -96,6 +96,7 @@ Dessa forma, quando rodamos esse arquivo no servidor, obtemos essa resposta:
 !["Output do código quando rodado no servidor"](../images/isomorfismo-4.png)
 
 Agora, como nosso objetivo é ter um código que rode no servidor e no cliente, precisamos criar um arquivo HTML para tentar rodar esse código que já criamos. Esse HTML ficaria parecido com o código a seguir:
+
 ```html
 <html>
     <head></head>
@@ -127,6 +128,7 @@ if (typeof module === 'object') {
     });
 }
 ```
+
 Além disso, em todos os lugares que usarem o `require` ou o `module`, teremos que fazer o seguinte `if`:
 
 ```js
