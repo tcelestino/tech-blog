@@ -18,7 +18,7 @@ tags:
   - Vue.js
 ---
 
-Recenetemente, temos ouvido cada vez mais sobre novos frameworks js e os que já estão há algum tempo no mercado: [jQuery](https://jquery.com/), [Zepto](http://zeptojs.com/), [Ember](http://emberjs.com/), [Backbone](http://backbonejs.org/), [AngularJS](https://angular.io/), [React](https://facebook.github.io/react/), [Vue.js](https://vuejs.org/)... Mas será que precisamos usar algum deles? Se sim, qual devemos escolher para nossa apliacação? Neste post, vou apresentar porque no Elo7 decidimos por não adotar nenhum desses frameworks e quais as suas consquências.
+Recenetemente, temos ouvido cada vez mais sobre novos frameworks js e os que já estão há algum tempo no mercado: [jQuery](https://jquery.com/), [Zepto](http://zeptojs.com/), [Ember](http://emberjs.com/), [Backbone](http://backbonejs.org/), [AngularJS](https://angular.io/), [React](https://facebook.github.io/react/), [Vue.js](https://vuejs.org/)... Mas será que precisamos usar algum deles? Se sim, qual devemos escolher para nossa aplicação? Neste post, vou apresentar porque no Elo7 decidimos por não adotar nenhum desses frameworks e quais as suas consequências.
 
 ## O que são Frameworks js e para que servem?
 
@@ -26,11 +26,11 @@ Com o desenvolvimento de diversos sites, os desenvolvedores front-end se deparar
 
 Para resolver este problema, um dos Frameworks mais famosos e mais utilizados no mercado surgiu: o jQuery. Além de permitir que o desenvolvedor escreva um código que funcione numa gama enorme de navegadores, ele também trouxe uma API mais amigável.
 
-E com as novas necessidades que os desenvolvedores precisam implementar nos projetos, novos problemas vão surgindo. E com isso, novos frameworks são criados para resolver determinados problemas. É por isso que tem aparecido novos frameworks a cada dia.
+A cada projeto, surgem novas necessidades para os desenvolvedores implementarem e, logo, novos problemas vão surgindo. E com isso, novos frameworks são criados para resolver determinados problemas. É por isso que tem aparecido novos frameworks a cada dia.
 
 ## Quais as desvantagens dos Frameworks js?
 
-Como toda decisão técnica que tomamos, a escolha de um framework traz suas vantagens e desvantagens. As vantagens já falamos que está relacionado com a não necessidade de resolver problemas comuns, ou seja, não precisamos reiventar a roda para cada projeto. Mas, os frameworks também tem suas desvantagens.
+Como toda decisão técnica que tomamos, a escolha de um framework traz suas vantagens e desvantagens. As vantagens já falamos que está relacionado com a não necessidade de resolver problemas comuns, ou seja, não precisamos reinventar a roda para cada projeto. Mas, os frameworks também tem suas desvantagens.
 
 Uma das principais desvantagens que todo framework front-end traz é em relação à carga inicial que o framework traz no carregamento inicial do site. Para visualizar um site, o usuário precisa baixar todos os assets necessários: html, css, js, fontes e imagens. Quanto maior for o framework, mais banda consumimos do usuário. E muitas vezes, o site fica inoperante e até em branco enquanto o framework não é baixado e executado.
 
@@ -49,12 +49,14 @@ Como cada vez mais os usuários têm acessado os sites utilizando os celulares, 
 | React DOM 15.4.0 | 37,0 kb |  504 ms |
 | Vue.js 2.1.8     | 28,7 kb |  405 ms |
 
-Além disso, precisamos pensar na execução do código: todo código vai ocupar memória e utilizar o processador para executar. Quanto maior e mais complexo for o código, mais recurso ele utilizará do dispositivo do celular. Se não for muito bem pensando, o site pode passar a sensação de "travado", pois o processamento é pesado para o dispositivo que o usuário está usando.
+Além disso, precisamos pensar na execução do código: todo código vai ocupar memória e utilizar o processador para executar. Quanto maior e mais complexo for, mais recurso ele utilizará do dispositivo do celular. Se não for muito bem pensando, o site pode passar a sensação de "travado", pois o processamento é pesado para o dispositivo que o usuário está usando.
 
-E se você deseja que o conteúdo do seu site seja indexado pelos sites de busca (SEO), o conteúdo precisa estar disponível mesmo que o JavaScript da página não rode. Assim, você não depende dos "bots" conseguirem rodar JavaScript para ele poder ler o conteúdo do seu site. Lembrando que o tempo de carregamento é um critério de SEO. Ou seja, quanto mais tempo demorar para carregar a página, menor a change do seu site aparecer na busca.
+E se você deseja que o conteúdo do seu site seja indexado pelos sites de busca (SEO), o conteúdo precisa estar disponível mesmo que o JavaScript da página não rode. Assim, você não depende dos "bots" conseguirem rodar JavaScript para ser possível ler o conteúdo do seu site. Lembrando que o tempo de carregamento é um critério de SEO. Ou seja, quanto mais tempo demorar para carregar a página, menor a chance do seu site aparecer na busca.
 
 ## Quando devemos utilizar um Framework js e qual escolher?
 
-Ao iniciar um projeto, todo desenvolvedor pensa em qual a arquitetura deverá utilizar junto com os frameworks. Essa escolha geralmente é feita seguindo alguma das seguintes formas: utilizar a mesma arquitetura do projeto anterior, escolher a arquitetura que é mais utilizada ou a última arquitetura comentada na comunidade. Mas será que essas são as melhores formas de escolher a base do projeto?
+Ao iniciar um projeto, todo desenvolvedor pensa em qual a arquitetura deverá utilizar junto com os frameworks. Essa escolha geralmente é feita seguindo alguma das seguintes formas: utilizar a mesma arquitetura do projeto anterior, escolher a arquitetura que é mais utilizada no momento ou a última arquitetura comentada na comunidade. Mas será que essas são as melhores formas de escolher a base do projeto?
 
-Como mencionado anteriormente, os Frameworks js foram desenvolvidos para resolver algum problema que vários sites se depararam. Então, eu acho que o mais justo é ver se o projeto vai ter algum problema antes de adotar qualquer framework, pois todo framework vai trazer uma queda de performance que nem sempre trará algum benefício em troca.
+Como mencionado anteriormente, os Frameworks js foram desenvolvidos para resolver alguns problemas que vários sites se depararam. Mas não significa que todo o projeto vai ter os mesmos problemas. Então, eu acho que o mais justo é ver se o projeto vai ter algum problema antes de adotar qualquer framework, pois todo framework vai trazer uma queda de performance que nem sempre trará algum benefício em troca.
+
+## A arquitetura no Elo7
