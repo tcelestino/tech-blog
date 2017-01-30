@@ -36,7 +36,9 @@ E é exatamente disso que se trata esse primeiro post, um comparativo das featur
 
 Ao buscar codificar nossa infra, tínhamos como intuito utilizar o mesmo fluxo que nós utilizamos para o desenvolvimento de nossas aplicações. Para termos o máximo de qualidade em tudo que fazemos, temos um fluxo rígido de desenvolvimento, que consiste em:
 
-Pair-programming (cada dev com seu monitor/teclado/mouse na mesma workstation) -> Testes -> Pull-request -> Review/Testes -> Fixes -> Review/Testes fixes -> Deploy (ESSA LINHA SERÁ UM FLUXOGRAMA)
+![Fluxo de desenvolvimento](../images/terraformando-tudo-1-1.png)
+
+kpdoks<sup>sdsadasd</sup>
 
 O processo de desenvolvimento do código responsável por nossa infra deveria se encaixar nesse fluxo, ou pelo menos em grande parte dele. Principalmente nas etapas de *pair-programming* e *review*. 
 
