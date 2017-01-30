@@ -7,7 +7,7 @@ tags:
 author: victorkendy
 layout: post
 title: Otimização de queries lentas em bancos relacionais
-description: Alguma descrição do post que irá aparecer na home...
+description: O banco relacional é uma das ferramentas mais utilizadas para o armazenamento de dados em aplicações, porém sem o devido cuidado, a performance dessas ferramentas pode sofrer caso os dados sejam inseridos sem o devido cuidado. Nesse post teremos uma introdução prática aos índices como uma forma de otimização de buscas.
 ---
 
 Quando começamos a desenvolver um novo sistema, a performance do banco de dados parece não ser um problema muito importante,
@@ -21,11 +21,11 @@ apresentados funcionam para qualquer banco relacional):
 
 ```sql
 CREATE TABLE usuario (
-  id
-  nome
-  data_nascimento
+  id int(10) unsigned NOT NULL AUTO_INCREMENT,
+  nome varchar(100) NOT NULL,
+  data_nascimento datetime NOT NULL,
   PRIMARY KEY(id)
-);
+) ENGINE=InnoDB;
 ```
 Precisamos listar os 20 primeiros usuários que começam, por exemplo, com a letra `A` ordenados pela data de nascimento para uma campanha de marketing que
 será realizada pelo site, esse problema pode ser resolvido pela seguinte sql:
