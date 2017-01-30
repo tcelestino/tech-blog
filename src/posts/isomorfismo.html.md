@@ -1,6 +1,6 @@
 ---
 title: Javascript Isomórfico
-date: 2016-08-29
+date: 2017-01-30
 category: front-end
 layout: post
 description: Novos frameworks são criados a todo momento e um novo nome está criando mais força no mundo Javascript: isomorfismo.
