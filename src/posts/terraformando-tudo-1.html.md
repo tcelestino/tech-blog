@@ -19,11 +19,11 @@ Esse post dá início a uma série de posts intitulada **Terraformando tudo**. N
 
 Mas o que seria *Infrastructure as Code* (ou *IaC* para os mais íntimos)? 
 
-Além de ser mais uma *buzzword*, *Infrastructure as Code* é o ato de gerenciar a infraestrutura (seja ela física ou virtual) e suas configurações. Tal gerenciamento deve ser feito através de código versionado, seja utilizando ferramentas desenvolvidas *in-house* ou de mercado. Esse processo é de grande importância para a cultura *DevOps*, possibilitando que todo o time de Engenharia possa ser responsável pela infraestrutura de suas aplicações e trazendo diversos benefícios:
+Além de ser mais uma *buzzword*, *Infrastructure as Code* é o ato de gerenciar a infraestrutura (seja ela física ou virtual) e suas configurações. Tal gerenciamento deve ser feito através de código versionado, seja utilizando ferramentas desenvolvidas *in-house* ou de mercado. Esse processo é de grande importância para a cultura *DevOps*, possibilitando que todo o time de Engenharia seja responsável pela infraestrutura de suas aplicações e trazendo diversos benefícios:
 * Velocidade: execução rápida, evitando processos manuais;
 * Padronizações: melhora a garantia de que os padrões definidos sejam seguidos;
 * Evita erros manuais: ao não ser necessário utilizar ferramentas interativas, diminui a chance de falhas;
-* Qualidade: Pode-se inserir no processo um *code review*, garantindo a qualidade do código/padrões;
+* Qualidade: pode-se inserir no processo um *code review*, garantindo a qualidade do código/padrões;
 * Fácil reprodutibilidade: é fácil escalar a infra ou cloná-la em outro datacenter.
 
 Pelos motivos supracitados e ainda outras vantagens, decidimos ter *IaC* aqui no Elo7 e, pelo título do post, é fácil ver que escolhemos o [**Terraform**](http://terraform.io) para nos ajudar nessa tarefa, certo? :-). Mas como fizemos essa escolha? Hype? Know-how prévio? Nome bonito? Ninguém sabe?!?
@@ -34,7 +34,7 @@ E é exatamente disso que se trata esse primeiro post, um comparativo das featur
 
 ## Um paralelo com o desenvolvimento das nossas aplicações
 
-Ao buscar codificar nossa infra, tinhamos como intuito utilizar o mesmo fluxo que nós utilizamos para o desenvolvimento de nossas aplicações. Para termos o máximo de qualidade em tudo que fazemos, temos um fluxo rígido de desenvolvimento, que consiste em:
+Ao buscar codificar nossa infra, tínhamos como intuito utilizar o mesmo fluxo que nós utilizamos para o desenvolvimento de nossas aplicações. Para termos o máximo de qualidade em tudo que fazemos, temos um fluxo rígido de desenvolvimento, que consiste em:
 
 Pair-programming (cada dev com seu monitor/teclado/mouse na mesma workstation) -> Testes -> Pull-request -> Review/Testes -> Fixes -> Review/Testes fixes -> Deploy (ESSA LINHA SERÁ UM FLUXOGRAMA)
 
@@ -59,7 +59,7 @@ Fizemos uma pré-seleção de algumas ferramentas para, dentre elas, escolher a 
 * [Terraform](https://www.terraform.io/);
 * [AWS CloudFormation](https://aws.amazon.com/cloudformation/);
 
-Vale citar que, do ponto de vista de *IaC*, todas elas seguem as mesmas práticas, que ajudam principalmente na curva de aprendizado para quem já teve experiência prévia com algumas delas, que era o caso do time responsável pela implementação desse projeto. As ferramentas são:
+Vale citar que, do ponto de vista de *IaC*, todas elas seguem as mesmas práticas, que ajudam principalmente na curva de aprendizado para quem já teve experiência prévia com algumas delas. As ferramentas são:
 * Declarativas;
 * Buscam um estado final para a infra que está sendo criada;
 * Controlam *recursos* da infra/configuração;
@@ -67,11 +67,11 @@ Vale citar que, do ponto de vista de *IaC*, todas elas seguem as mesmas prática
 
 Os próximos sub-tópicos discutem os motivos que foram importantes **para nós** na escolha do Terraform.
 
-### AWS Cloud-formation
+### AWS CloudFormation
 
-Não poderíamos deixar de analisar a ferramenta oferecida pela própria AWS para gerenciamento de infraestrutura como código. Por ser da própria AWS, já podíamos contar com suporte a todos os recursos existentes (EC2, S3, route53, redshift, lambda, etc), além de performance e confiabilidade no que está sendo executado.
+Não poderíamos deixar de analisar a ferramenta oferecida pela própria AWS para gerenciamento de infraestrutura como código. Por ser da própria AWS, já podíamos contar com suporte a todos os recursos existentes (EC2, S3, Route53, Redshift, Lambda, etc), além de performance e confiabilidade no que está sendo executado.
 
-O Cloud-formation utiliza a sintaxe JSON no seu código. Nesse exemplo criamos uma instância no EC2 (vários campos foram omitidos):
+O CloudFormation utiliza a sintaxe JSON no seu código. Nesse exemplo criamos uma instância no EC2 (vários campos foram omitidos):
 
 ```javascript
 {
@@ -86,7 +86,7 @@ O Cloud-formation utiliza a sintaxe JSON no seu código. Nesse exemplo criamos u
 }
 ```
 
-Apesar de não gostarmos da sintaxe JSON do Cloud Formation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O Cloud Formation só dá suporte à AWS (obviamente :P) e não gostamos de lock-ins. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o Cloud Formation da nossa lista.
+Apesar de não gostarmos da sintaxe JSON do CloudFormation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O CloudFormation só dá suporte à AWS (obviamente :P) e não gostamos de lock-ins. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o CloudFormation da nossa lista.
 
 ### Puppet e Chef
 
@@ -122,13 +122,13 @@ As duas ferramentas são de uma época 'pré-cloud' (pré popularizacão, no cas
 
 Para nós, as duas ficaram no mesmo balaio, além do escopo de atuação delas ser muito grande, o que elas nasceram para fazer, que é o gerenciamento de configurações (exemplo acima), não iríamos utilizar. A necessidade de ter um *client* nos servidores para execução das automações também não nos agrada muito.
 
-A quantidade de recursos nativos disponíveis também é pequena, com destaque para o Chef que nem a criação de insâncias no EC2 possui nativamente (por isso que o exemplo dele é diferente das outras ferramentas).
+A quantidade de recursos nativos disponíveis também é pequena, com destaque para o Chef que nem a criação de instâncias no EC2 possui nativamente (por isso que no exemplo é mostrada a criação de um ELB ao invés de uma instância EC2, como nos exemplos de outras ferramentas).
 
 #### Ansible
 
-O Ansible, escrito em *Python*, é uma ferramenta mais moderna que nasceu após a popularização da nuvem. Logo de cara, uma grande vantagem em cima das ferramentas já comentadas, é que não é necessário um *client* rodando nos servidores, pois ele utiliza *SSH* para executar os comandos remotamente.
+O Ansible, escrito em *Python*, é uma ferramenta mais moderna que nasceu após a popularização da nuvem. Logo de cara, uma grande vantagem em cima das ferramentas já comentadas é que não é necessário um *client* rodando nos servidores, pois ele utiliza *SSH* para executar os comandos remotamente.
 
-Um outro detalhe importante do Ansible, é a utilização da sintaxe `YAML` para escrita dos códigos, que pode ajudar bastante na curva de aprendizado. Segue o mesmo exemplo utilizado acima usando o Ansible:
+Um outro detalhe importante do Ansible é a utilização da sintaxe `YAML` para escrita dos códigos, que pode ajudar bastante na curva de aprendizado. Segue o mesmo exemplo utilizado acima usando o Ansible:
 
 ```python
 - name: Cria uma instância EC2
@@ -150,7 +150,7 @@ Ao analisar friamente o Terraform, separamos algumas características que chamar
 
 Primeiramente, o Terraform tem o suporte da *Hashicorp*, empresa que contribui com outros diversos projetos Opensource já conhecidos, como o Consul e Vault. É um projeto escrito em Golang com comunidade muito ativa e um ciclo de releases de aproximadamente 20 dias, com cada release sempre trazendo novas features e fixes importantes.
 
-Foi a ferramenta que coube exatamente no nosso escopo de criação de infra e somente infra, sem se preocupar com a aplicação. Dando suporte à AWS (suporte inclusive aos serviços menos utilizados, como o *Elastic Map Reduce*) e GCP, além de diversos outros providers como Azure e Openstack. 
+Foi a ferramenta que coube exatamente no nosso escopo de criação de infra e somente infra, sem se preocupar com a aplicação. Possui suporte à AWS (suporte inclusive aos serviços menos utilizados, como o *Elastic Map Reduce*) e GCP, além de diversos outros providers como Azure e Openstack. 
 
 A linguagem utilizada para criação da infra no Terraform é a HCL (*Hashicorp Configuration Language*), que é uma linguagem declarativa desenvolvida pela Hashicorp. Apesar de parecer um pouco estranha no início, nos acostumamos facilmente com ela. Segue um exemplo de criação de uma instância EC2 com o Terraform:
 
