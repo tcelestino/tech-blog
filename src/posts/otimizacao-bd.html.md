@@ -38,8 +38,8 @@ passa a deteriorar: A CPU fica perto de 100% e o banco não para de fazer leitur
 
 ## O comando EXPLAIN
 
-Para descobrirmos o que aconteceu, podemos pedir para o banco de dados mostrar o plano de execução da query, um estimativa do que vai ser feito
-quando a query for executada com os dados atuais:
+Para descobrirmos o que aconteceu, podemos pedir para o banco de dados mostrar o plano de execução da query, uma estimativa do que vai ser feito
+quando a query for executada com os dados atuais, utilizando o comando [EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/explain.html):
 
 ```sql
 EXPLAIN SELECT * FROM usuario WHERE nome LIKE 'A%' ORDER BY data_nascimento limit 20;
@@ -56,10 +56,10 @@ Essa é a saída do comando:
 Nessa saída temos duas colunas que ajudam a explicar a performance da query: `type` e `rows`.
 
 A coluna `type` indica o tipo de query que será executada, no caso ALL significa que todas as linhas da tabela precisam ser verificadas para produzir
-o resultado (esse comportamento é conhecido como full table scan). No caso em que a tabela é pequena, um full table scan não afeta a performance do sistema,
+o resultado (esse comportamento é conhecido como *full table scan*). No caso em que a tabela é pequena, um full table scan não afeta a performance do sistema,
 mas assim que a quantidade de informações cresce, o banco de dados é forçado a ler possivelmente milhões de registros para gerar o resultado da busca.
 
-Já a `rows` indica uma estimativa para o número de linhas que serão lidas pelo banco para atender a query. É importante ressaltar que o número é apenas
+Já `rows` indica uma estimativa para o número de linhas que serão lidas pelo banco para atender a query. É importante ressaltar que o número é apenas
 uma estimativa, que pode ser maior ou menor do que o número de linhas que serão de fato lidas quando a query for executada. Como o type da query é `ALL`,
 `rows` indicará o número aproximado de linhas da tabela usuario.
 
@@ -67,11 +67,12 @@ Pelas informações disponibilizadas pelo `EXPLAIN`, podemos ver que a performan
 
 ## Utilizando índices para melhorar a performance
 
-Agora que já entendemos o problema, podemos utilizar índices o banco de dados a executar as buscas. Índices são estruturas de dados que ajudam o banco de dados
-a executar alguns tipos de buscas. Os dois tipos de índices mais utilizados são:
+Agora que sabemos que o problema de performance da query é causado pelo full table scan em uma tabela muito grande, podemos otimizar a query utilizando índices.
 
- - Árvores B+ (BTREE): Esse índice mantém os dados indexados em orderm crescente, dessa forma ele consegue ajudar em buscas que contenham igualdades, intervalos
- (buscas utilizando >=, >, <=, < ou BETWEEN).
+Existem dois principais tipos de índice mais utilizados pelos bancos relacionais:
+
+ - Árvores B+ (BTREE): Esse índice mantém os dados indexados em orderm crescente, dessa forma ele pode ser utilizado em buscas que contenham condições de igualdades
+ ou intervalos (buscas utilizando >=, >, <=, < ou BETWEEN).
 
  - Hash: Esse índice mantém os dados em uma tabela de hash, portanto ele consegue ajudar apenas em buscas de igualdade.
 
@@ -104,7 +105,7 @@ scan, além disso, agora temos mais duas colunas interessantes:
  - key: Indica qual é a chave que será de fato utilizada na execução da busca, ou NULL para full table scan.
 
 Observe também que o valor da coluna `rows` agora é uma fração número de linhas da tabela, o que indica que agora o banco precisa ler menos
-registros para gerar o resultado final que será devolvido.
+registros para gerar o resultado final.
 
 ## Utilizando índices para a ordenação
 
@@ -112,8 +113,8 @@ Com a criação do índice, a query passou a scannear apenas as linhas que cont�
 mesmo essa busca menor ainda vai ser pesada, pois o resultado ainda precisa ser ordenado. Podemos verificar que o MySQL fará a ordenação da query pelo valor
 `Using filesort` da coluna `Extra` do comando `EXPLAIN`.
 
-Assim como as condições do `WHERE`, a ordenação também pode ser otimizada através de índices. Como os dados do índice do tipo BTREE são mantidos ordenados no
-banco de dados, essa ordenação ser utilizada pelo banco se as colunas do `order by` estiverem presentes no índice. No exemplo desse post, a ordenação é feita
+Assim como as condições do `WHERE`, a ordenação também pode ser otimizada através de índices. Como os dados do índice do tipo BTREE são mantidos ordenados,
+essa ordenação pode ser utilizada pelo banco se as colunas do `order by` estiverem presentes no índice. No exemplo desse post, a ordenação é feita
 pela coluna `data_nascimento`, então o índice precisa conter as colunas nome (para a condição do WHERE) e data_nascimento (para a ordenação).
 
 ```sql
@@ -121,9 +122,9 @@ DROP INDEX usuario_nome ON usuario;
 CREATE INDEX usuario_nome ON usuario (nome, data_nascimento);
 ```
 Depois dessa modificação, podemos verificar que a saída do EXPLAIN agora não contém o `Using filesort`, ou seja, o banco não precisa mais calcular a ordenação
-dos dados, ele pode apenas usar a ordenação do índice.
+dos dados, ele pode usar a ordenação do índice.
 
-Repare que as colunas do índice utilizado exemplo foram declaradas em uma ordem específica `nome` seguido por `data_nascimento`, essa ordem das colunas do índice
+Repare que as colunas do índice utilizado no exemplo foram declaradas em uma ordem específica `nome` seguido por `data_nascimento`, essa ordem das colunas do índice
 é importante, pois dependendo da ordem, o índice pode ou não ser utilizado. Para ilustrar isso, vamos recriar o índice invertendo a ordem dos campos:
 ```sql
 DROP INDEX usuario_nome ON usuario;
@@ -131,8 +132,8 @@ CREATE INDEX usuario_nome ON usuario (data_nascimento, nome);
 ```
 Ao executarmos o EXPLAIN nessa query, podemos ver que o índice agora não é mais utilizado, o banco volta a fazer o full table scan. Isso acontece pois, como mencionado
 anteriormente, os dados do índice são guardados ordenados, então teremos uma ordenação primária pela data de nascimento e uma secundária pelo nome. Como usuários que tem
-nome começando pela letra A podem nascer em qualquer momento do ano, para fazer a query o banco de dados teria que ler o índice inteiro. Como uma regra geral, os índices
-devem ser criados colocando-se primeiro os atributos utilizados para filtros e depois os da ordenação.
+nome começando pela letra A podem nascer em qualquer momento do ano, para fazer a query o banco de dados teria que ler o índice inteiro (equivalente ao full table scan).
+Como uma regra geral, os índices devem ser criados colocando-se primeiro os atributos utilizados para filtros e depois os da ordenação.
 
 ## Cuidados com índices
 
