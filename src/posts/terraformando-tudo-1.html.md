@@ -3,7 +3,7 @@ title: Terraformando tudo - parte 1
 date: 2016-12-26
 category: devops
 layout: post
-description: Início da série de posts 'Terraformando Tudo', que conta a nossa tragetória em busca da codificação da nossa infraestrutura. Esse primeiro post mostra nossas premissas para o projeto e como escolhemos o Terraform como ferramenta para nos auxiliar nesse caminho.
+description: Início da série de posts 'Terraformando Tudo', que conta a nossa trajetória em busca da codificação da nossa infraestrutura. Esse primeiro post mostra nossas premissas para o projeto e como escolhemos o Terraform como ferramenta para nos auxiliar nesse caminho.
 author: lucasvasconcelos
 tags:
   - devops
@@ -43,7 +43,7 @@ O processo de desenvolvimento do código responsável por nossa infra deveria se
 Além desse principal requisito, também temos algumas outras necessidades:
 * Suporte à [AWS](https://aws.amazon.com/);
 * *Opensource* (com comunidade ativa :P);
-* Foco em infra: nosso ambiente roda todo com [Docker](https://www.docker.com/) + [Fleet](https://github.com/coreos/fleet) (e no futuro [Kubernetes](https://github.com/coreos/fleet), teremos novidades aqui no *blog* huhuhu). Portanto, não iríamos fazer uso das *features* de automação de aplicações/configurações, por exemplo.
+* Foco em infra: nosso ambiente roda todo com [Docker](https://www.docker.com/) + [Fleet](https://github.com/coreos/fleet) (e no futuro [Kubernetes](https://kubernetes.io), teremos novidades aqui no *blog* huhuhu). Portanto, não iríamos fazer uso das *features* de automação de aplicações/configurações, por exemplo.
 
 E ainda contamos com alguns requisitos não tão importantes, mas desejáveis:
 * Curva de aprendizado curta;
