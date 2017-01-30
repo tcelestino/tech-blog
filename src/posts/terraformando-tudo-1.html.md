@@ -15,7 +15,7 @@ tags:
 
 ## Infrastructure as Code no Elo7
 
-Esse post dá início a uma série de posts intitulada **Terraformando tudo**. Nessa série iremos mostrar o caminho que trilhamos (e os percalços que tivemos) no **Elo7** e o que ainda falta para concluir nosso objetivo de ter **toda** nossa infraestrutura sendo gerenciada por código, ou seja, termos *Infrastructure as Code*.
+Esse *post* dá início a uma série de *posts* intitulada **Terraformando tudo**. Nessa série iremos mostrar o caminho que trilhamos (e os percalços que tivemos) no **Elo7** e o que ainda falta para concluir nosso objetivo de ter **toda** nossa infraestrutura sendo gerenciada por código, ou seja, termos *Infrastructure as Code*.
 
 Mas o que seria *Infrastructure as Code* (ou *IaC* para os mais íntimos)? 
 
@@ -26,7 +26,7 @@ Além de ser mais uma *buzzword*, *Infrastructure as Code* é o ato de gerenciar
 * Qualidade: pode-se inserir no processo um *code review*, garantindo a qualidade do código/padrões;
 * Fácil reprodutibilidade: é fácil escalar a infra ou cloná-la em outro datacenter.
 
-Pelos motivos supracitados e ainda outras vantagens, decidimos ter *IaC* aqui no Elo7 e, pelo título do post, é fácil ver que escolhemos o [**Terraform**](http://terraform.io) para nos ajudar nessa tarefa, certo? :-). Mas como fizemos essa escolha? Hype? Know-how prévio? Nome bonito? Ninguém sabe?!?
+Pelos motivos supracitados e ainda outras vantagens, decidimos ter *IaC* aqui no Elo7 e, pelo título do post, é fácil ver que escolhemos o [**Terraform**](http://terraform.io) para nos ajudar nessa tarefa, certo? :-). Mas como fizemos essa escolha? *Hype*? *Know-how* prévio? Nome bonito? Ninguém sabe?!?
 
 Negativo! Apesar de *ágeis e early adopters*, pesamos nossas decisões em diversos aspectos, como curva de aprendizado, escopo da resolução do problema, possíveis *lock-ins* e escala a longo prazo.
 
@@ -38,12 +38,12 @@ Ao buscar codificar nossa infra, tínhamos como intuito utilizar o mesmo fluxo q
 
 Pair-programming (cada dev com seu monitor/teclado/mouse na mesma workstation) -> Testes -> Pull-request -> Review/Testes -> Fixes -> Review/Testes fixes -> Deploy (ESSA LINHA SERÁ UM FLUXOGRAMA)
 
-O processo de desenvolvimento do código responsável por nossa infra deveria se encaixar nesse fluxo, ou pelo menos em grande parte dele. Principalmente nas etapas de pair-programming e review. 
+O processo de desenvolvimento do código responsável por nossa infra deveria se encaixar nesse fluxo, ou pelo menos em grande parte dele. Principalmente nas etapas de *pair-programming* e *review*. 
 
 Além desse principal requisito, também temos algumas outras necessidades:
 * Suporte à [AWS](https://aws.amazon.com/);
-* Opensource (com comunidade ativa :P);
-* Foco em infra: nosso ambiente roda todo com [Docker](https://www.docker.com/) + [Fleet](https://github.com/coreos/fleet) (e no futuro [Kubernetes](https://github.com/coreos/fleet), teremos novidades aqui no blog huhuhu). Portanto, não iríamos fazer uso das features de automação de aplicações/configurações, por exemplo.
+* *Opensource* (com comunidade ativa :P);
+* Foco em infra: nosso ambiente roda todo com [Docker](https://www.docker.com/) + [Fleet](https://github.com/coreos/fleet) (e no futuro [Kubernetes](https://github.com/coreos/fleet), teremos novidades aqui no *blog* huhuhu). Portanto, não iríamos fazer uso das *features* de automação de aplicações/configurações, por exemplo.
 
 E ainda contamos com alguns requisitos não tão importantes, mas desejáveis:
 * Curva de aprendizado curta;
@@ -52,7 +52,7 @@ E ainda contamos com alguns requisitos não tão importantes, mas desejáveis:
 
 ## Nossas opções
 
-Fizemos uma pré-seleção de algumas ferramentas para, dentre elas, escolher a que melhor cumpre os nossos requisitos. As ferramentas foram escolhidas baseando-se nas funcionalidades, know-how prévio e confiabilidade. Todas as ferramentas escolhidas possuem a capacidade de cumprir com os nossos requisitos principais. São elas:
+Fizemos uma pré-seleção de algumas ferramentas para, dentre elas, escolher a que melhor cumpre os nossos requisitos. As ferramentas foram escolhidas baseando-se nas funcionalidades, *know-how* prévio e confiabilidade. Todas as ferramentas escolhidas possuem a capacidade de cumprir com os nossos requisitos principais. São elas:
 * [Puppet](https://puppet.com/);
 * [Chef](https://www.chef.io/chef/);
 * [Ansible](https://www.ansible.com/);
@@ -86,7 +86,7 @@ O CloudFormation utiliza a sintaxe JSON no seu código. Nesse exemplo criamos um
 }
 ```
 
-Apesar de não gostarmos da sintaxe JSON do CloudFormation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O CloudFormation só dá suporte à AWS (obviamente :P) e não gostamos de lock-ins. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o CloudFormation da nossa lista.
+Apesar de não gostarmos da sintaxe JSON do CloudFormation, decidimos apostar na ferramenta. Mas, o feitiço pode voltar contra o feiticeiro. O que podia ser considerado uma vantagem pra nós, que é o fato da ferramenta estar dentro da AWS, também pode ser um ponto negativo. O CloudFormation só dá suporte à AWS (obviamente :P) e não gostamos de *lock-ins*. Temos planos futuros de rodar em um ambiente multi-cloud e essa característica tirou o CloudFormation da nossa lista.
 
 ### Puppet e Chef
 
@@ -118,7 +118,7 @@ aws_elastic_lb 'elb' do
 end
 ```
 
-As duas ferramentas são de uma época 'pré-cloud' (pré popularizacão, no caso), ou seja, foram inicialmente concebidas para automação de configurações em data-centers virtualizados/*bare-metal*. Atualmente, já suportam a criação de infraestrutura na nuvem. Portanto, possuem um arcabouço extenso de recursos de automação.
+As duas ferramentas são de uma época *'pré-cloud'* (pré popularizacão, no caso), ou seja, foram inicialmente concebidas para automação de configurações em data-centers virtualizados/*bare-metal*. Atualmente, já suportam a criação de infraestrutura na nuvem. Portanto, possuem um arcabouço extenso de recursos de automação.
 
 Para nós, as duas ficaram no mesmo balaio, além do escopo de atuação delas ser muito grande, o que elas nasceram para fazer, que é o gerenciamento de configurações (exemplo acima), não iríamos utilizar. A necessidade de ter um *client* nos servidores para execução das automações também não nos agrada muito.
 
@@ -146,11 +146,11 @@ Entretanto, é válido citar que de todas as ferramentas já comentadas, o Ansib
 
 ### Conclusão: Terraform
 
-Ao analisar friamente o Terraform, separamos algumas características que chamaram nosssa atenção. Todas elas se encaixam bem nos nossos requisitos, inclusive nos requisitos desejáveis.
+Ao analisar friamente o Terraform, separamos algumas características que chamaram nossa atenção. Todas elas se encaixam bem nos nossos requisitos, inclusive nos requisitos desejáveis.
 
-Primeiramente, o Terraform tem o suporte da *Hashicorp*, empresa que contribui com outros diversos projetos Opensource já conhecidos, como o Consul e Vault. É um projeto escrito em Golang com comunidade muito ativa e um ciclo de releases de aproximadamente 20 dias, com cada release sempre trazendo novas features e fixes importantes.
+Primeiramente, o Terraform tem o suporte da *Hashicorp*, empresa que contribui com outros diversos projetos *Opensource* já conhecidos, como o Consul e Vault. É um projeto escrito em Golang com comunidade muito ativa e um ciclo de *releases* de aproximadamente 20 dias, com cada *release* sempre trazendo novas *features* e *fixes* importantes.
 
-Foi a ferramenta que coube exatamente no nosso escopo de criação de infra e somente infra, sem se preocupar com a aplicação. Possui suporte à AWS (suporte inclusive aos serviços menos utilizados, como o *Elastic Map Reduce*) e GCP, além de diversos outros providers como Azure e Openstack. 
+Foi a ferramenta que coube exatamente no nosso escopo de criação de infra e somente infra, sem se preocupar com a aplicação. Possui suporte à AWS (suporte inclusive aos serviços menos utilizados, como o *Elastic Map Reduce*) e GCP, além de diversos outros *providers* como Azure e Openstack. 
 
 A linguagem utilizada para criação da infra no Terraform é a HCL (*Hashicorp Configuration Language*), que é uma linguagem declarativa desenvolvida pela Hashicorp. Apesar de parecer um pouco estranha no início, nos acostumamos facilmente com ela. Segue um exemplo de criação de uma instância EC2 com o Terraform:
 
@@ -163,9 +163,9 @@ resource "aws_instance" "tech-blog" {
 }
 ```
 
-Encontramos alguns posts sobre o *Terraform*, uns falando bem e outros falando mal, principalmente por ser uma ferramenta nova, que realmente carece de algumas funcionalidades. Fizemos validações e diversas simulações, principalmente de desastres. Estávamos muito precupados com comportamentos inesperados na hora de criar/destruir a nossa infra, principalmente mudanças críticas, como alteração de um registro DNS no *Route53*. Então, queríamos conhecer exatamente como a ferramenta se comporta em diversas situações.
+Encontramos alguns *posts* sobre o *Terraform*, uns falando bem e outros falando mal, principalmente por ser uma ferramenta nova, que realmente carece de algumas funcionalidades. Fizemos validações e diversas simulações, principalmente de desastres. Estávamos muito precupados com comportamentos inesperados na hora de criar/destruir a nossa infra, principalmente mudanças críticas, como alteração de um registro DNS no *Route53*. Então, queríamos conhecer exatamente como a ferramenta se comporta em diversas situações.
 
-Encontramos sim, alguns problemas com a nossa escolha. Tanto técnicos como na definição de um fluxo que seja capaz de ser implementado para todo o time da Engenharia Elo7. Um assunto polêmico que fez a gente pensar bastante foi como íamos tratar a infra já existente, criada na base do mouse... Mas esses serão assuntos para os próximos posts! :D
+Encontramos sim, alguns problemas com a nossa escolha. Tanto técnicos como na definição de um fluxo que seja capaz de ser implementado para todo o time da Engenharia Elo7. Um assunto polêmico que fez a gente pensar bastante foi como íamos tratar a infra já existente, criada na base do mouse... Mas esses serão assuntos para os próximos *posts*! :D
 
 Pretendemos voltar logo mais, nesse mesmo canal, com os próximos posts dessa série, dando exemplos práticos de como utilizamos o Terraform e como resolvemos problemas conhecidos e não conhecidos nessa nossa aventura de Terraformar tudo. 
 
