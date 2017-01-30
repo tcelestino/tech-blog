@@ -38,8 +38,6 @@ Ao buscar codificar nossa infra, tínhamos como intuito utilizar o mesmo fluxo q
 
 ![Fluxo de desenvolvimento](../images/terraformando-tudo-1-1.png)
 
-kpdoks<sup>sdsadasd</sup>
-
 O processo de desenvolvimento do código responsável por nossa infra deveria se encaixar nesse fluxo, ou pelo menos em grande parte dele. Principalmente nas etapas de *pair-programming* e *review*. 
 
 Além desse principal requisito, também temos algumas outras necessidades:
