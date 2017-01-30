@@ -24,7 +24,7 @@ Os elementos mais comuns que possuem *display: block* como padrão são: `<div>`
 <p data-height="300" data-theme-id="23784" data-slug-hash="egmXBo" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display Block" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/egmXBo/">Display Block</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) no <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Uma forma de conseguir posicionar elementos ao lado de um com *display: block* é usando propriedades que tiram o elemento do fluxo normal da página. Como por exemplo, `float` e `position: absolute`. Mas essas propriedades ficam como assunto para futuros posts.
+Uma forma de conseguir posicionar elementos ao lado de um elemento com *display: block* é usando propriedades que tiram o elemento do fluxo normal da página. Como por exemplo, `float` e `position: absolute`. Mas essas propriedades ficam como assunto para futuros posts.
 
 ## Inline
 
@@ -44,7 +44,7 @@ Uma diferença que causa bastante dúvida quando temos o `display: none`, é qua
 
 ## Inline-block
 
-Esses elementos possuem uma mistura de propriedades. Como o próprio nome diz, tem a característica de ser em linha como um elemento *inline* e de ser um elemento em bloco como o *block*. A diferença entre um elemento *inline* e um *inline-block* está em elementos *inline-block* respeitarem os tamanhos personalizáveis, como *width*, *height*, *padding*, *margin*… Enquanto os que são *inline* não respeitam, apenas levam em consideração o *line-height*. 
+Esses elementos possuem uma mistura de propriedades. Como o próprio nome diz, tem a característica de ser em linha como um elemento *inline* e de ser um elemento em bloco como o *block*. A diferença entre um elemento *inline* e um *inline-block* está em elementos *inline-block* respeitarem os tamanhos personalizáveis, como *width*, *height*… Enquanto os que são *inline* não respeitam, apenas levam em consideração o *line-height*. 
 
 <p data-height="300" data-theme-id="23784" data-slug-hash="GrgeQM" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display Inline-Block" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/GrgeQM/">Display Inline-Block</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
