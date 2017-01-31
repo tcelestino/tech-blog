@@ -3,7 +3,7 @@ title: 'HTTPS (título provisório)'
 date: 2017-01-30
 category: devops
 layout: post
-description: Logs são parte fundamental de qualquer aplicação, e sua importância é notada especialmente nos momentos mais difíceis. Neste artigo veremos como gerenciar esses dados de forma eficaz e versátil, provendo robustez e, ainda assim, facilitando o dia-a-dia de nossas colabores aqui no Elo7.
+description: (botar descrição aqui)
 author: edsonmarquezani
 tags:
   - https
