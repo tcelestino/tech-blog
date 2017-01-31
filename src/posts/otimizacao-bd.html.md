@@ -7,7 +7,7 @@ tags:
 author: victorkendy
 layout: post
 title: Otimização de queries lentas em bancos relacionais
-description: O banco relacional é uma das ferramentas mais utilizadas para o armazenamento de dados em aplicações, porém sem o devido cuidado, a performance dessas ferramentas pode sofrer caso os dados sejam inseridos sem o devido cuidado. Nesse post teremos uma introdução prática aos índices como uma forma de otimização de buscas.
+description: O banco relacional é uma das ferramentas mais utilizadas para o armazenamento de dados em aplicações, porém a performance dessas ferramentas pode sofrer caso os dados sejam inseridos sem o devido cuidado. Nesse post teremos uma introdução prática aos índices como uma forma de otimização de buscas.
 ---
 
 Quando começamos a desenvolver um novo sistema, a performance do banco de dados parece não ser um problema muito importante,
@@ -16,7 +16,7 @@ em milisegundos passam a demorar segundos ou até mesmo minutos para serem execu
 utilizar um exemplo simples.
 
 Imagine que precisamos desenvolver um cadastro simples de compradores para um comércio eletrônico, nesse caso, poderíamos
-utilizar a tabela gerada pelo seguinte comando (Todos os exemplos desse artigo serão feitos no mysql, mas os conceitos
+utilizar a tabela gerada pelo seguinte comando (Todos os exemplos desse artigo utilizam o mysql, mas os conceitos
 apresentados funcionam para qualquer banco relacional):
 
 ```sql
@@ -34,7 +34,7 @@ SELECT * FROM usuario WHERE nome LIKE 'A%' ORDER BY data_nascimento limit 20;
 ```
 Ao executarmos esse comando no banco de dados de desenvolvimento, que contém apenas 100 usuários, vimos que o tempo de execução é de 1ms e,
 portanto, colocamos essa query em produção. Mas assim que ela começa a ser utilizada com os dados reais, vemos que o estado do banco de dados
-passa a deteriorar: A CPU fica perto de 100% e o banco não para de fazer leituras do disco.
+passa a deteriorar: Tanto o uso de CPU quanto o número de leituras do disco aumentam.
 
 ## O comando EXPLAIN
 
@@ -71,7 +71,7 @@ Agora que sabemos que o problema de performance da query é causado pelo full ta
 
 Existem dois principais tipos de índice mais utilizados pelos bancos relacionais:
 
- - Árvores B+ (BTREE): Esse índice mantém os dados indexados em orderm crescente, dessa forma ele pode ser utilizado em buscas que contenham condições de igualdades
+ - Árvores B+ (BTREE): Esse índice mantém os dados indexados em ordem crescente, dessa forma ele pode ser utilizado em buscas que contenham condições de igualdades
  ou intervalos (buscas utilizando >=, >, <=, < ou BETWEEN).
 
  - Hash: Esse índice mantém os dados em uma tabela de hash, portanto ele consegue ajudar apenas em buscas de igualdade.
@@ -104,7 +104,7 @@ scan, além disso, agora temos mais duas colunas interessantes:
 
  - key: Indica qual é a chave que será de fato utilizada na execução da busca, ou NULL para full table scan.
 
-Observe também que o valor da coluna `rows` agora é uma fração número de linhas da tabela, o que indica que agora o banco precisa ler menos
+Observe também que o valor da coluna `rows` agora é uma fração do número de linhas da tabela, o que indica que agora o banco precisa ler menos
 registros para gerar o resultado final.
 
 ## Utilizando índices para a ordenação
