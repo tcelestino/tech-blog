@@ -30,11 +30,15 @@ Outra desvantagem é o custo: em geral, as autoridades certificadoras cobram pel
 
 De fato, a nova versão do protocolo _HTTP_, o [_HTTP/2_](https://http2.github.io/) já foi concebido como _SSL-only_, ou seja, nessa versão já nem sequer há mais a opção de trafegar _HTTP_ plano. Navegadores como o _Chrome_, por exemplo, já tem há um bom tempo em seus planos [classificar explicitamente páginas _HTTP_ como não seguras](https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure). Futuramente, toda página _HTTP_ deve ser exibida como abaixo (atualmente depende de habilitar uma _flag_ na configuração):
 
-![Chrome avisa: esse pudim não é seguro!](../images/https-1.png)
+![Esse pudim não é seguro!](../images/https-1.png)
 
-A partir da versão 56, o Chrome já exibe **por padrão** avisos para formulários de senha ou cartão de créditos em páginas _HTTP_.
+A partir da versão 56, o [Chrome Canary](https://www.google.com.br/chrome/browser/canary.html) (uma versão com os recursos mais recentos do navegador) já exibe **por padrão** avisos para formulários de senha ou cartão de créditos em páginas _HTTP_.
 
-**(inserir screenshot aqui)**
+![Aviso de segurança em formulário no Chrome](../images/https-2.png)
+
+Assim como Firefox.
+
+![Aviso de segurança em formulário no Firefox](../images/https-3.png)
 
 Todos os outros navegadores também apontam na mesma direção - a migração total para _HTTPS_ parece ser uma realidade inevitável.
 
