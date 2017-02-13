@@ -5,19 +5,19 @@ tags:
   - css
   - display
   - posicionamento
-author: FernandaBernardo
+author: fernandabernardo
 layout: post
 title: CSS Basics - Display
-description: Esse será o primeiro de uma série de posts sobre CSS Básico. A ideia desses posts é explicar como funciona cada uma das propriedades do CSS que na teoria "todo mundo conhece". Vamos entender como usar cada uma das propriedades sem ficar apenas "chutando" até descobrir o que funciona e nunca mais mexer. Nesse primeiro post falaremos sobre a propriedade display.
+description: O que cada um dos atributos da propriedade display realmente significa? O objetivo desse post é abordar qual o melhor lugar para usar cada um desses atributos e qual a mudança de layout em uma página no uso de cada um deles.
 ---
 
-Esse será o primeiro de uma série de posts sobre **CSS Básico**. A ideia desses posts é explicar como funciona cada uma das propriedades do CSS que na teoria "todo mundo conhece". Vamos entender como usar cada uma das propriedades sem ficar apenas "chutando" até descobrir o que funciona e nunca mais mexer. Nesse primeiro post falaremos sobre a propriedade **display**.
+Esse será o primeiro de uma série de posts sobre **CSS Básico**. A ideia desses posts é explicar como funciona cada uma das propriedades do CSS que na teoria "todo mundo conhece". Vamos entender como usar cada uma delas sem ficarmos apenas "chutando" até descobrir o que funciona e nunca mais mexer. Nesse primeiro post falaremos sobre a propriedade **display**.
 
 A propriedade *display* é bastante importante para o controle do layout, ela indica a caixa de renderização para cada elemento. Cada um dos elementos do HTML possui um valor padrão de *display*, sendo a maioria delas *block* ou *inline*.
 
-## Block 
+## Block
 
-Os elementos que possuem essa propriedade são considerados elementos de bloco. Esses elementos possuem uma quebra de linha (espaço em branco) antes e depois deles e não permitem que outros elementos HTML sejam posicionados ao lado deles. 
+Os elementos que possuem essa propriedade são considerados elementos de bloco. Esses elementos possuem uma quebra de linha (espaço em branco) antes e depois deles e não permitem que outros elementos HTML sejam posicionados ao lado deles.
 
 Os elementos mais comuns que possuem *display: block* como padrão são: `<div>`, `<p>`, `<form>` e as novas tags do HTML5: `<header>`, `<section>`, `<footer>`, entre outros.
 
@@ -44,17 +44,17 @@ Uma diferença que causa bastante dúvida quando temos o `display: none`, é qua
 
 ## Inline-block
 
-Esses elementos possuem uma mistura de propriedades. Como o próprio nome diz, tem a característica de ser em linha como um elemento *inline* e de ser um elemento em bloco como o *block*. A diferença entre um elemento *inline* e um *inline-block* está em elementos *inline-block* respeitarem os tamanhos personalizáveis, como *width*, *height*… Enquanto os que são *inline* não respeitam, apenas levam em consideração o *line-height*. 
+Esses elementos possuem uma mistura de propriedades. Como o próprio nome diz, tem a característica de ser em linha como um elemento *inline* e de ser um elemento em bloco como o *block*. A diferença entre um elemento *inline* e um *inline-block* está em elementos *inline-block* respeitarem os tamanhos personalizáveis, como *width*, *height*… Enquanto os que são *inline* não respeitam, apenas levam em consideração o *line-height*.
 
 <p data-height="300" data-theme-id="23784" data-slug-hash="GrgeQM" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display Inline-Block" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/GrgeQM/">Display Inline-Block</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 # Table
 
-Como o próprio nome já diz, é possível renderizar elementos como se fossem tabelas. É preciso tomar cuidado com essa propriedade, com o quesito acessibilidade. Se queremos estilizar um elemento como uma tabela, ela não deveria ser uma tabela na sua essência, ou seja, no HTMl? Por isso, cada caso deve ser analisado e pensado com cuidado. Existem alguns tipos de `display` capazes de estilizar elementos como tabelas, entre eles `table`, `table-row` e `table-cell` que se assemelham às tags `<table>`, `<tr>` e `<td>` do HTML.
+Como o próprio nome já diz, esse tipo de display serve para que um elemento se pareça como uma tabela. Apenas essa frase já é suficiente para perceber um problema: se estamos querendo mostrar um elemento qualquer como uma tabela, será que ele não deveria ser uma tabela de fato? Isso pode inclusive gerar um problema de acessibilidade, mas cada caso deve ser analisado isoladamente. Além do `display: table` que seria o semelhante à tag `<table>` do HTML, existem também os displays: `table-row` e `table-cell` que se comparam às tags `<tr>` e `<td>`.
 
 <p data-height="300" data-theme-id="23784" data-slug-hash="JEdxXv" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display table" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/JEdxXv/">Display table</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
-Nesse post, falamos um pouco de como funciona alguns atributos da propriedade `display` e sobre como usá-los. Nos próximos posts abordarei sobre outras propriedades comuns e também sobre novas especificações. 
+Nesse post, falamos um pouco de como funciona alguns atributos da propriedade `display` e sobre como usá-los. Nos próximos posts abordarei sobre outras propriedades comuns e também sobre novas especificações.
