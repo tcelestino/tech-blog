@@ -39,7 +39,7 @@ Analisando o código acima, podemos notar que existe uma expressão booleana, na
 
 Para deixarmos mais interessante nosso código, vamos adicionar mais uma expressão booleana. Com isso, vamos verificar duas situações:
 
-1. se valor da variável `menorIdade` é menor que 18;
+1. se o valor da variável `menorIdade` é menor que 18;
 2. se o valor da variável `menorIdade` é exatamente igual a 18.
 
 ```Java
@@ -56,11 +56,11 @@ public static void main(String[] args) {
 }
 ```
 
-Se alteramos o valor da variável `menorIdade` para 18, a condicional entrará no `else if` e se alteramos o valor para maior que 18?
+Se alteramos o valor da variável `menorIdade` para 18, a condicional entrará no `else if`, mas e se trocamos o valor para um número maior que "18", o que aconteceria?
 
 ### - while
 
-A palavra "***while***" no português pode ser traduzida pela palavra "enquanto". Na expressão booleana, podemos usar o `while` quando precisamos executar uma operação até que nossa expressão booleana se torne verdadeira. Para ficar mais claro, vamos ao exemplo básico de como utilizá-lo.
+A palavra "***while***", no português, pode ser traduzida pela palavra "enquanto". Na expressão booleana, podemos usar o `while` quando precisamos executar uma operação até que nossa expressão booleana se torne verdadeira. Para ficar mais claro, vamos ao exemplo básico de como utilizá-lo.
 
 ```Java
 public static void main(String[] args) {
@@ -73,21 +73,18 @@ public static void main(String[] args) {
 }
 ```
 
-A variável `numero` receberá novos valores até chegar ao valor ao qual está sendo comparada. Ou seja, enquanto a condição booleana for verdadeira (`true`), o código será executado, havendo a sobrescrita do valor anterior da variável `numero` somando o valor atual da variável mais 1. A execução do trecho do código entre as chaves do `while` só é finalizada quando o valor da variável chegar a exatamente 20. Vamos melhorar nosso o código, deixando um pouco mais interessante.
+A variável `numero` receberá novos valores até chegar ao valor ao qual está sendo comparada. Ou seja, enquanto a condição booleana for verdadeira (`true`), o código será executado, havendo a sobrescrita do valor anterior da variável `numero` somando o valor atual da variável mais 1. A execução do trecho do código entre as chaves do `while` só é finalizada quando o valor da variável chegar a exatamente 20. Vamos melhorar o nosso código, deixando-o um pouco mais interessante.
 
 ```Java
 public static void main(String[] args) {
-  int menorIdade = 15;
-
-  while(menorIdade < 20) {
-    if(menorIdade < 18) {
+  int i = 0;
+  while(i < 20) {
+    if(i < 18) {
       System.out.println("Você ainda é menor de idade!");
-    } else if(menorIdade == 18) {
+    } else if(i == 18) {
       System.out.println("Agora você é maior de idade.");
-    } else {
-      System.out.println("Reveja sua idade, parça!");
     }
-    menorIdade = menorIdade + 1;
+    i++;
   }
 }
 ```
@@ -96,12 +93,17 @@ Isso é apenas um exemplo de como podemos fazer uma combinação de várias expr
 
 ### - for
 
-O `for` tem o mesmo comportamento do `while`, porém podemos executar nossos códigos de maneira mais prática e mais legível. Veja o exemplo:
+O `for` tem o mesmo comportamento do `while`, porém podemos executar nossos códigos de maneira mais prática. Veja o exemplo:
 
 ```Java
 public static void main(String[] args) {
-  for (int i = 0; i < 20; i = i + 1) {
-    System.out.println("Executando: " + i);
+  for (int i = 0; i < 20; i++) {
+
+		if(i < 18) {
+			System.out.println("Você ainda é menor de idade!");
+		} else if(i == 18) {
+			System.out.println("Agora você é maior de idade.");
+		}
   }
 }
 ```
@@ -113,7 +115,15 @@ Agora que sabemos usar os loops, por que não aprender a controlá-los? Para fic
 
 ```Java
 public static void main(String[] args) {
-  String times[] = {"São Paulo", "Palmeiras", "Vitória", "Ferroviária", "Santos", "XV de Piracicaba"};
+  String times[] = {
+		"São Paulo",
+		"Palmeiras",
+		"Vitória",
+		"Ferroviária",
+		"Santos",
+		"XV de Piracicaba"
+	};
+
   for (int i = 0; i < times.length; i++) {
     if(times[i].equals("Vitória")) {
       System.out.println("Esse é o time do " + times[i]);
@@ -122,10 +132,9 @@ public static void main(String[] args) {
   }
 }
 ```
+Para usarmos o `for`, precisamos passar alguns paramêtros que fará o controle do nosso "loop". Na variável `i`, guardamos um valor padrão (no nosso caso, 0) e precisamos fazer uma comparação (expressão booleana)  entre o valor de `i` e o total de itens do nosso "array". Feito isso, o "loop" será executado até encontrar a palavra que estamos buscando (Vitória). Ao encontrar a palavra, o "loop" é finalizado, deixando de percorrer nosso "array" (o `break` é o responsável por essa finalização). Isso é bom para performance, já que não é preciso pecorrer todo o "array" para fazer a busca do valor.
 
-O código acima irá fazer o loop em nosso array de Strings até encontrar a palavra que estamos buscando, que no caso, "Vitória". Ao encontrar a palavra, o "loop" é finalizado, deixando de percorrer nosso array. Isso é bom para performance, já que não é preciso pecorrer todo o array para fazer a busca de valor. Claro, existem outras formas de fazer essa busca, utilizando programação funcional usando o Java 8. O Diego César escreveu um post bem explicativo sobre [programação funcional com o Java 8](http://engenharia.elo7.com.br/introducao-a-programacao-funcional-com-java8/). Vale a pena dar uma lida.
-
-Além do `break`, temos a palavra chave `continue`. Diferente do `break`, ao usar o `continue` fazemos nosso código parar de executar uma iteração e passar para outro bloco de nosso código. Vejamos o exemplo abaixo.
+Além do `break`, temos a palavra chave `continue`. Diferente do `break`, ao usar o `continue` fazemos nosso código parar de executar uma iteração e passar para a próxima iteração do nosso código.
 
 ```Java
 public static void main(String[] args) {
@@ -138,7 +147,9 @@ public static void main(String[] args) {
 }
 ```
 
-Se notar bem os números impressos nos seu terminal, vai notar que nem todos foram exibidos.
+Se notar bem os números impressos no seu terminal, vai notar que nem todos foram exibidos.
+
+Existem outras formas de recuperar valores de um "array". Se tiver interesse, o Diego César escreveu um post bem explicativo sobre [programação funcional com o Java 8](http://engenharia.elo7.com.br/introducao-a-programacao-funcional-com-java8/).
 
 ## Resumo
 
