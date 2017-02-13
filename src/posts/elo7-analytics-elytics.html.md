@@ -36,11 +36,11 @@ O dado que chega no Kafka ainda é um dado bruto que precisa ser lapidado antes 
 
 Os streams Flink consomem os dados do Kafka para transformar, filtrar, agregar e enriquecer o dado, deixando-o pronto para ser analisado.
 
-Para simplificar nossa vida, nosso cluster roda no [Amazon EMR](https://aws.amazon.com/pt/emr/), que nos ajuda providenciando as máquinas, o HDFS e o YARN.
+Para simplificar nossa vida, nosso cluster roda no [Amazon EMR](https://aws.amazon.com/pt/emr/), que nos ajuda providenciando as máquinas, o [Hadoop Distributed File System (HDFS)](http://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-hdfs/HdfsDesign.html) e o [Hadoop YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html).
 
 ## Armazenamento: Elasticsearch
 
-Com o dado pronto para ser analisado, o stream do Flink armazena o dado em índices no [Elasticsearch](https://www.elastic.co/products/elasticsearch). Apesar do que o nome possa sugerir, o Elasticsearch não é apenas um engine de busca, é também um sistema distribuído de alta performance com capacidades analíticas avançadas.
+Com o dado pronto para ser analisado, o stream do Flink armazena o dado em índices no [Elasticsearch](https://www.elastic.co/products/elasticsearch). Apesar do que o nome possa sugerir, o Elasticsearch não é apenas um motor de busca, é também um sistema distribuído de alta performance com capacidades analíticas avançadas.
 
 Quando o dado está no Elasticsearch, já conseguimos extrair métricas através do [Framework de Agregações](https://www.elastic.co/guide/en/elasticsearch/reference/current/search-aggregations.html). Aqui começa a diversão: dá pra fazer histogramas, agrupamentos por limites geográficos (!), somatórias, médias móveis, percentil e etc. Tudo isso em tempo real.
 
