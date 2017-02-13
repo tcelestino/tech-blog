@@ -15,7 +15,7 @@ mas com o aumento do número de usuários e, consequentemente, dos dados que pre
 em milisegundos passam a demorar segundos ou até mesmo minutos para serem executadas. Para ilustrar esse problema, vamos
 utilizar um exemplo simples.
 
-Imagine que precisamos desenvolver um cadastro simples de compradores para um comércio eletrônico, nesse caso, poderíamos
+Imagine que precisamos desenvolver um cadastro simples de compradores para um comércio eletrônico. Nesse caso, poderíamos
 utilizar a tabela gerada pelo seguinte comando (Todos os exemplos desse artigo utilizam o mysql, mas os conceitos
 apresentados funcionam para qualquer banco relacional):
 
@@ -28,7 +28,7 @@ CREATE TABLE usuario (
 ) ENGINE=InnoDB;
 ```
 Precisamos listar os 20 primeiros usuários que começam, por exemplo, com a letra `A` ordenados pela data de nascimento para uma campanha de marketing que
-será realizada pelo site, esse problema pode ser resolvido pela seguinte sql:
+será realizada pelo site. Esse problema pode ser resolvido pela seguinte sql:
 ```sql
 SELECT * FROM usuario WHERE nome LIKE 'A%' ORDER BY data_nascimento limit 20;
 ```
@@ -38,7 +38,7 @@ passa a deteriorar: Tanto o uso de CPU quanto o número de leituras do disco aum
 
 ## O comando EXPLAIN
 
-Para descobrirmos o que aconteceu, podemos pedir para o banco de dados mostrar o plano de execução da query, uma estimativa do que vai ser feito
+Para descobrirmos o que aconteceu, podemos pedir para o banco de dados mostrar o plano de execução da query, uma estimativa do que será feito
 quando a query for executada com os dados atuais, utilizando o comando [EXPLAIN](https://dev.mysql.com/doc/refman/5.7/en/explain.html):
 
 ```sql
@@ -56,7 +56,7 @@ Essa é a saída do comando:
 Nessa saída temos duas colunas que ajudam a explicar a performance da query: `type` e `rows`.
 
 A coluna `type` indica o tipo de query que será executada, no caso ALL significa que todas as linhas da tabela precisam ser verificadas para produzir
-o resultado (esse comportamento é conhecido como *full table scan*). No caso em que a tabela é pequena, um full table scan não afeta a performance do sistema,
+o resultado (esse comportamento é conhecido como *full table scan*). No caso em que a tabela é pequena, um *full table scan* não afeta a performance do sistema,
 mas assim que a quantidade de informações cresce, o banco de dados é forçado a ler possivelmente milhões de registros para gerar o resultado da busca.
 
 Já `rows` indica uma estimativa para o número de linhas que serão lidas pelo banco para atender a query. É importante ressaltar que o número é apenas
@@ -67,7 +67,7 @@ Pelas informações disponibilizadas pelo `EXPLAIN`, podemos ver que a performan
 
 ## Utilizando índices para melhorar a performance
 
-Agora que sabemos que o problema de performance da query é causado pelo full table scan em uma tabela muito grande, podemos otimizar a query utilizando índices.
+Agora que sabemos que o problema de performance da query é causado pelo *full table scan* em uma tabela muito grande, podemos otimizar a query utilizando índices.
 
 Existem dois principais tipos de índice mais utilizados pelos bancos relacionais:
 
@@ -102,7 +102,7 @@ scan, além disso, agora temos mais duas colunas interessantes:
 
  - possible_keys: Indica quais são os possíveis índices que o banco pode usar para realizar a busca.
 
- - key: Indica qual é a chave que será de fato utilizada na execução da busca, ou NULL para full table scan.
+ - key: Indica qual é a chave que será de fato utilizada na execução da busca, ou NULL para *full table scan*.
 
 Observe também que o valor da coluna `rows` agora é uma fração do número de linhas da tabela, o que indica que agora o banco precisa ler menos
 registros para gerar o resultado final.
@@ -110,7 +110,7 @@ registros para gerar o resultado final.
 ## Utilizando índices para a ordenação
 
 Com a criação do índice, a query passou a scannear apenas as linhas que contém usuários que começam com a letra 'A', mas se o banco tiver muitos usuários,
-mesmo essa busca menor ainda vai ser pesada, pois o resultado ainda precisa ser ordenado. Podemos verificar que o MySQL fará a ordenação da query pelo valor
+mesmo essa busca menor ainda será pesada, pois o resultado ainda precisa ser ordenado. Podemos verificar que o MySQL fará a ordenação da query pelo valor
 `Using filesort` da coluna `Extra` do comando `EXPLAIN`.
 
 Assim como as condições do `WHERE`, a ordenação também pode ser otimizada através de índices. Como os dados do índice do tipo BTREE são mantidos ordenados,
@@ -130,9 +130,9 @@ Repare que as colunas do índice utilizado no exemplo foram declaradas em uma or
 DROP INDEX usuario_nome ON usuario;
 CREATE INDEX usuario_nome ON usuario (data_nascimento, nome);
 ```
-Ao executarmos o EXPLAIN nessa query, podemos ver que o índice agora não é mais utilizado, o banco volta a fazer o full table scan. Isso acontece pois, como mencionado
+Ao executarmos o EXPLAIN nessa query, podemos ver que o índice agora não é mais utilizado, o banco volta a fazer o *full table scan*. Isso acontece pois, como mencionado
 anteriormente, os dados do índice são guardados ordenados, então teremos uma ordenação primária pela data de nascimento e uma secundária pelo nome. Como usuários que tem
-nome começando pela letra A podem nascer em qualquer momento do ano, para fazer a query o banco de dados teria que ler o índice inteiro (equivalente ao full table scan).
+nome começando pela letra A podem nascer em qualquer momento do ano, para fazer a query o banco de dados teria que ler o índice inteiro (equivalente ao *full table scan*).
 Como uma regra geral, os índices devem ser criados colocando-se primeiro os atributos utilizados para filtros e depois os da ordenação.
 
 ## Cuidados com índices
@@ -147,9 +147,9 @@ em seu uso:
  combinações possíveis de campos da tabela.
 
  - Utilize os campos mais a esquerda na declaração do índice em suas queries. O índice criado como exemplo nesse post, `CREATE INDEX usuario_nome ON usuario (nome, data_nascimento)`,
- pode ser utilizado para otimizar queries que filtram apenas `nome` ou `nome` e `data_nascimento`, mas se tentarmos filtrar apenas por `data_nascimento`, o banco fará um full table scan.
+ pode ser utilizado para otimizar queries que filtram apenas `nome` ou `nome` e `data_nascimento`, mas se tentarmos filtrar apenas por `data_nascimento`, o banco fará um *full table scan*.
 
  - O índice só é usado para ordenação quando todos os campos mais a esquerda na declaração do índice são utilizados como filtros na query. No exemplo, o índice pode ser utilizado em
- ordenações por `nome` em qualquer caso, ou por data_nascimento se o nome for utilizado no filtro.
+ ordenações por `nome` em qualquer caso, ou por `data_nascimento` se o nome for utilizado no filtro.
 
  - No MySQL, o índice não é utilizado em buscas em que a condição no campo do índice é <> (diferente). Por exemplo, se a condição fosse `nome <> 'Alberto'` o índice não seria utilizado.
