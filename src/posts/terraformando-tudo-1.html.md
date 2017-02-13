@@ -1,6 +1,6 @@
 ---
 title: Terraformando tudo - parte 1
-date: 2016-12-26
+date: 2017-02-13
 category: devops
 layout: post
 description: Início da série de posts 'Terraformando Tudo', que conta a nossa trajetória em busca da codificação da nossa infraestrutura. Esse primeiro post mostra nossas premissas para o projeto e como escolhemos o Terraform como ferramenta para nos auxiliar nesse caminho.
