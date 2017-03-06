@@ -1,5 +1,5 @@
 ---
-title: 'Nightfall - Injetando dependências no Spark (Parte 1)'
+title: Nightfall - Injetando dependências no Spark (Parte 1)
 date: 2016-11-07
 category: back-end
 layout: post
@@ -14,16 +14,14 @@ tags:
 ---
 
 ## O início
-Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real do site de forma assíncrona, evitando assim a necessidade de retirar métricas a partir do banco de dados utilizado pelo site, para isso enviamos eventos a partir do nosso **marketplace**, exemplo:
+Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real. Enviamos eventos assíncronos a partir do **marketplace** evitando assim a necessidade de retirar métricas a partir do banco de dados, exemplo:
 
-![Alt "Exemplo de arquitetura"](../images/nightfall-1.png)
+!["Exemplo de arquitetura"](../images/nightfall-1.png)
 
-Após a produção do eventos é necessário o desenvolvimento de consumidores, esses consumidores são os nossos `jobs` do _Spark_. Nossos `jobs` possuem várias _tasks_ que cada uma processa um tipo de evento de uma forma específica. Quando iniciamos o desenvolvimento dos nossos `jobs` o nosso código era mais ou menos assim:
+Após a produção dos eventos é necessário o desenvolvimento de consumidores, esses consumidores são os nossos *jobs* do _Spark_. Nossos *jobs* possuem várias *tasks* onde cada uma processa um tipo de evento de uma forma específica. O nosso código no início do desenvolvimento dos *jobs* era parecido com:
 - Job
 ```java
 public class MyJob {
-
-    private static final Logger LOGGER = LoggerFactory.getLogger(MyJob.class);
 
     public static void main(String[] args) {
     	MyJobConfiguration config = new MyJobConfiguration(args);
@@ -40,7 +38,6 @@ public class MyJob {
             context.start();
             context.awaitTermination();
         } catch (Exception e) {
-            LOGGER.error("Error while processing stream", e);
             throw e;
         } finally {
             if(context != null) {
@@ -51,8 +48,6 @@ public class MyJob {
 
     @SuppressWarnings("unchecked")
     private static JavaStreamingContext createContext(MyJobConfiguration config) {
-        LOGGER.info("Creating new Java Streaming Context");
-
         // Sparks configurations
         SparkConf sparkConf = new SparkConf();
         sparkConf.set("spark.streaming.stopGracefullyOnShutdown", "true");
@@ -90,7 +85,7 @@ public class MyJob {
 }
 ```
 
-Dessa forma possuíamos uma "injeção de dependência" de uma forma "rudimentar" para as configs do banco e do job. Mas e se quiséssemos injetar outras classes? Para "injetar" outras classes seria necessário fazer algo assim:
+Dessa forma, possuíamos uma "injeção de dependência" de uma forma "rudimentar" para as configurações do banco e do job. Mas, e se quiséssemos injetar outras classes? Para "injetar" outras classes seria necessário fazer algo assim:
 ```java
 	@SuppressWarnings("unchecked")
     private static JavaStreamingContext createContext(MyJobConfiguration config) {
@@ -128,10 +123,10 @@ Dessa forma possuíamos uma "injeção de dependência" de uma forma "rudimentar
 }
 ```
 
-Ou seja para cada nova classe que nossa _task_ utilize precisamos instancia-la no `Job` um pouco ruim não acham?
+Ou seja, para cada nova classe que nossa _task_ utilize, precisamos instancia-la no *Job* um pouco ruim não acham?
 
 ## Simplificando as coisas
-Para ajudar nosso problema de injeção de dependência criamos um projeto chamado **Nightfall** que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração, com isso fica muito mais simples a criação de novos `jobs`, reutilizamos o código de criação do **Spark Context** e por fim podemos injetar as classes necessárias diretamente na _task_ evitando instanciar **todas** as classes que precisamos no `Job`, não precisamos mais controlar o ciclo de vida das mesmas, deixando que o `guava` cuide disso. Exemplo de como fica o código com **Nightfall**:
+Para ajudar nosso problema de injeção de dependência criamos um projeto chamado **Nightfall**, que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com isso, fica muito mais simples a criação de novos *jobs*, reutilizamos o código de criação do **Spark Context**. Por fim podemos injetar as classes necessárias diretamente na *task* evitando instanciar todas as classes que precisamos no *job*, já que não precisamos mais controlar o ciclo de vida das mesmas, deixando essa tarefa para o *guava*. Exemplo de como fica o código com **Nightfall**:
 ```java
 @KafkaSimple
 public class KafkaSimpleTest {
@@ -141,11 +136,12 @@ public class KafkaSimpleTest {
     }
 }
 ```
-Muito mais simples não? O código acima provê um `Job` **SparkStream** que utiliza o `Simple API` do `Kafka`.
+Muito mais simples, não? O código acima provê um *job* **SparkStream** que utiliza o *Simple API* do _Kafka_.
 
 ## Criando um Stream
-Agora que já sabemos o que nos motivou a criar o projeto **Nightfall** podemos ver como utiliza-lo para facilitar nossa vida :D
-Digamos que temos um produtor de evento que envia um evento do tipo `ORDER_STARTED`
+Agora que já sabemos o que nos motivou a criar o projeto **Nightfall**, podemos ver como utilizá-lo para facilitar nossa vida :D
+
+Digamos que temos um produtor de evento que envia um evento do tipo *ORDER_STARTED*
 ```json
 {
 	"type": "OrderStarted",
@@ -170,7 +166,7 @@ Digamos que temos um produtor de evento que envia um evento do tipo `ORDER_START
 }
 ```
 
-Para consumir esse evento como um `Stream` ficaria mais ou menos assim:
+Abaixo, o código para consumir esse evento como um *Stream*:
 ```java
 @KafkaSimple
 public class OrderJob {
@@ -181,13 +177,11 @@ public class OrderJob {
 }
 
 ```
-Após a criação do nosso job precisamos criar a task para processar a mensagem, utilizarei a implementação que usa `DataPoint` que é um contrato que criamos para padronizar a estrutura das mensagens:
+Após a criação do nosso *job*, precisamos criar a *task* para processar a mensagem. Utilizarei a implementação que usa *DataPoint*, que é um contrato que criamos para padronizar a estrutura das mensagens:
 
 ```java
 @Task
 public class HelloWorldTask implements StreamTaskProcessor<DataPoint<String>> {
-	private static final long serialVersionUID = 1L;
-	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldTask.class);
 	private static final String ORDER_STARTED = "OrderStarted";
 
 	@Override
@@ -201,22 +195,19 @@ public class HelloWorldTask implements StreamTaskProcessor<DataPoint<String>> {
 				});
 	}
 
-	private void log(DataPoint<String> dataPoint) {
-		LOGGER.info("######################## \n Order Started processed: {} \n ######################## ", dataPoint);
-	}
 }
 ```
-Esse é um exemplo de task que processaria apenas os eventos de `OrderStarted`.
+Esse é um exemplo de *task* que processaria apenas os eventos de *OrderStarted*.
 
-Agora que já sabemos como ele funciona e porque o criamos vamos à alguns exemplos, para qualquer exemplo de `Stream` precisaremos do _Kafka_, se você quer um exemplo de **Batch** [clique aqui](#criando-um-batch)
+Agora que já sabemos como ele funciona e porque o criamos, vamos ver alguns exemplos. Primeiramente veremos um exemplo de *Stream*.
 
-- Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para :
-  1. Instalação e startup do mesmo. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
+- Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para:
+  1. Instalação e startup. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
   2. Crie um tópico no Kafka.
-  3. Envar mensagens para o tópico criado.
+  3. Enviar mensagens para o tópico criado.
 
-Agora que possuímos o tópico criado podemos criar um stream para consumir as mensagens, para isso podemos utilizar a estrutura do `nightfall` e adicionar a task que criamos acima no sub-módulo `examples`.
-Além de adicionar o `Job` e a `Task` precisaremos configurar o arquivo `nightfall.properties` também, ficaria mais ou menos assim:
+Agora que possuímos um tópico, podemos criar um stream para consumir as mensagens. Para isso, podemos utilizar a estrutura do **Nightfall** e adicionar a task que criamos acima no sub-módulo *examples*.
+Além de adicionar o *job* e a *task*, precisaremos configurar o arquivo `nightfall.properties`:
 ```properties
 # Kafka Consumer
 kafka.brokers=localhost:9092
@@ -244,14 +235,14 @@ reporter.enabled=false
 reporter.class=com.elo7.nightfall.di.providers.reporter.jmx.JMXReporterFactory
 ```
 
-Após a configuração do arquivo localizado em `examples/src/main/resources` podemos adicionar executar o `Job` através do comando:
+Após a configuração do arquivo localizado em `examples/src/main/resources` podemos executar o *job* através do comando:
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
-É possível verificar a execução do job a partir dos logs. Após o job ser startado podemos enviar um evento do tipo [ORDER_STARTED](#L149), se o job estiver correto será impresso o `json` nos logs do `job`, também poderá ser enviado outro tipo de evento e verificar que apenas o evento do tipo configurado na `Task` está sendo printado, se houver a necessidade de consumir um outro evento seria recomendado a criação de outra `Task`.
+Após o *job* ser iniciado podemos enviar um evento do tipo [ORDER_STARTED](#L149), se estiver correto será impresso o *json* nos logs, caso enviemos um outro tipo de evento ele não sera exibido 
 
 ## Criando um Batch
-Agora podemos criar nosso `Job`, `Task` e configurações para processar em `Batch` invés de `Stream` para isso precisaremos criar o seguinte job:
+Agora podemos criar nosso *job*, *task* e configurações para processar em *Batch* ao invés de *Stream*. Para isso, precisaremos criar o seguinte job:
 ```java
 @FileRDD
 public class BatchOrderJob {
@@ -266,8 +257,6 @@ Precisamos criar a task também:
 ```java
 @Task
 public class BatchHelloWorldTask implements BatchTaskProcessor<DataPoint<String>> {
-	private static final long serialVersionUID = 1L;
-	private static final Logger LOGGER = LoggerFactory.getLogger(HelloWorldTask.class);
 	private static final String ORDER_STARTED = "OrderStarted";
 
 	@Override
@@ -279,12 +268,9 @@ public class BatchHelloWorldTask implements BatchTaskProcessor<DataPoint<String>
 				);
 	}
 
-	private void log(DataPoint<String> dataPoint) {
-		LOGGER.info("######################## \n Order Started processed: {} \n ######################## ", dataPoint);
-	}
 }
 ```
-Não podemos esquecer de criar as configurações que ficará assim:
+Não podemos esquecer de criar as seguintes configurações:
 ```properties
 # Batch Configuration
 # File Configuration
@@ -304,12 +290,12 @@ batch.cassandra.keyspace=kafka
 batch.cassandra.datacenter=
 batch.history.ttl.days=7
 ```
-Por fim mas não menos importante precisaremos criar um arquivo compactado contendo os eventos para ser processado pelo `Batch`, pode ser um arquivo `txt` com os eventos e zipado, ele deve ser colocado no caminho especificado em `file.source`.
-Para executar o `Batch` executamos o seguinte comando:
+Por fim mas não menos importante precisaremos criar um arquivo compactado contendo os eventos que serão processados pelo *Batch*. Esse arquivo pode ser um *txt* zipado com os eventos, localizado no caminho igual ao especificado no *file.source*.
+Para executar o *Batch* executamos o seguinte comando:
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
 ```
-Podemos ver a impressão dos eventos que são do tipo `ORDER_STARTED` no log da aplicação :)
+Podemos ver a impressão dos eventos que são do tipo *ORDER_STARTED* no log da aplicação :)
 
 ### É hora da revisão
-Nesse post vimos o que nos motivou a criar o `Nightfall`, as configurações básicas para conseguir criar um `Stream` e um `Batch`. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do `Nigthfall`. Gostou? Se tiver algo para acrescentar/sugerir/duvida, deixe nos comentários e aguardem os próximos posts.
+Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/duvida, deixe nos comentários e aguardem os próximos posts.
