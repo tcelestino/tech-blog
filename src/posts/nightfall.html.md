@@ -126,7 +126,7 @@ Dessa forma, possuíamos uma "injeção de dependência rudimentar" para as conf
 Ou seja, para cada nova classe que nossa _task_ utilize, precisamos instancia-la no *Job* um pouco ruim não acham?
 
 ## Simplificando as coisas
-Para **resolver** nosso problema de injeção de dependência criamos um projeto chamado **Nightfall**, que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com isso, fica muito mais simples a criação de novos *jobs*. Por fim podemos injetar as classes necessárias diretamente na *task* evitando instanciar todas as classes que precisamos no *job*, já que não precisamos mais controlar o ciclo de vida das mesmas, deixando essa tarefa para o *guava*. Exemplo de como fica o código com **Nightfall**:
+Para **resolver** nosso problema de injeção de dependência criamos um projeto chamado **Nightfall**, que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com isso, fica muito mais simples a criação de novos *jobs*. Por fim possuímos injeção de dependência e inversão de controle nos nossos *jobs*. Exemplo de como fica o código com **Nightfall**:
 ```java
 @KafkaSimple
 public class KafkaSimpleTest {
