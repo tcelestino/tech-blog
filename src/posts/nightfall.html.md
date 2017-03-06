@@ -14,7 +14,7 @@ tags:
 ---
 
 ## O início
-Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real. Enviamos eventos assíncronos a partir do **marketplace** evitando assim a necessidade de retirar métricas a partir do banco de dados, exemplo:
+Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** que é o nosso principal sistema e consumimos em um sistema de agregação, removendo o acoplamento entre Métricas X Negócio 
 
 !["Exemplo de arquitetura"](../images/nightfall-1.png)
 
