@@ -1,5 +1,5 @@
 ---
-date: 2017-01-30
+date: 2017-03-06
 category: back-end
 tags:
   - analytics
@@ -9,7 +9,7 @@ tags:
   - kibana
 author: mikedias
 layout: post
-title: Elo7 + Analytics = Elytics  
+title: Elo7 + Analytics = Elytics
 description: Métricas, métricas, métricas! Aqui no Elo7, tanto as métricas de sistema (cpu, mémoria, disco, logs, etc) quanto as métricas de negócio (pedidos, carrinhos, mensagens) importam bastante. Tudo o que acontece no site é capturado, metrificado e monitorado em tempo real para que nós possamos saber se estamos indo bem ou mal e para onde devemos seguir. Para que isso seja possível nós criamos o Elytics (Elo7 + Analytics).
 ---
 
@@ -26,13 +26,13 @@ No Elytics, o fluxo de dados é dividido em quatro etapas, cada uma delas com um
 ## Coleta: Kafka
 
 A porta de entrada do Elytics é o [Apache Kafka](http://kafka.apache.org/).
-Tudo o que acontece em nossos sistemas gera um evento que é enviado para um tópico do Kafka, ficando imediatamente disponível para ser consumido por outros sistemas. 
+Tudo o que acontece em nossos sistemas gera um evento que é enviado para um tópico do Kafka, ficando imediatamente disponível para ser consumido por outros sistemas.
 
 Uma vez enviado para o Kafka, o histórico e a auditoria de cada evento está garantido, pois temos uma instância do [Secor](https://github.com/pinterest/secor) que faz o backup dos dados para o [Amazon S3](https://aws.amazon.com/pt/s3/).
 
 ## Processamento: Flink
 
-O dado que chega no Kafka ainda é um dado bruto que precisa ser lapidado antes de podermos analisá-lo. Para que isso possa ser feito em tempo real, escolhemos o [Apache Flink](http://flink.apache.org/) por sua natureza streaming e sua simplicidade. 
+O dado que chega no Kafka ainda é um dado bruto que precisa ser lapidado antes de podermos analisá-lo. Para que isso possa ser feito em tempo real, escolhemos o [Apache Flink](http://flink.apache.org/) por sua natureza streaming e sua simplicidade.
 
 Os streams Flink consomem os dados do Kafka para transformar, filtrar, agregar e enriquecer o dado, deixando-o pronto para ser analisado.
 
