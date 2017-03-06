@@ -19,7 +19,7 @@ Métricas, métricas, métricas! Aqui no **Elo7**, tanto as métricas de sistema
 
 O Elytics é um conjunto de ferramentas combinadas com o propósito de fornecer uma solução completa para a análise de dados e tomada de decisão em tempo real.
 
-Uma definição mais épica pode ser: um conceito que transcende o ferramental, remetendo a tudo o que está relacionado à metrificação. É comum ouvir as pessoas dizendo "enviar para o Elytics" ou "visualizar no Elytics" quando na verdade elas estão enviando para o Kafka e visualizando no Kibana.
+Uma definição mais épica pode ser: um conceito que transcende o ferramental, remetendo a tudo o que está relacionado à metrificação. É comum ouvir as pessoas dizendo "enviar para o Elytics" ou "visualizar no Elytics" quando na verdade estão enviando para o Kafka e visualizando no Kibana.
 
 No Elytics, o fluxo de dados é dividido em quatro etapas, cada uma delas com um componente chave: **Coleta (Kafka), Processamento (Flink), Armazenamento (Elasticsearch) e Visualização (Kibana)**
 
