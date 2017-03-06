@@ -209,12 +209,92 @@ O estado dos resources criados no exemplo anterior fica desse jeito (várias lin
 }
 ```
 
-É com esse estado que o Terraform decide o que ele deve fazer baseando-se no código e também no que já existe no *provider*. Também é possível gerar um estado de uma infra já existente no seu *provider* (mas isso ficará para um próximo *post* dessa série ;)).
+É com esse estado que o Terraform decide o que ele deve fazer baseando-se no código e também no que já existe no *provider* (no nosso caso, na AWS). Também é possível gerar um estado de uma infra já existente no seu *provider* (mas isso ficará para um próximo *post* dessa série ;)).
 
-O controle dos *resources* com esse mecanismo funciona muito bem, porém, logo de cara podemos ver um problema, certo? Vimos que ele gera um arquivo `terraform.tfstate` no diretório do *configuration* ao rodar o `terraform apply`, correto? Isso é gerado em *runtime* e se pensarmos de maneira distribuída, com vários desenvolvedores mexendo nos *configurations*, isso pode ser bem ruim. Afinal, se um outro desenvolvedor não possuir o estado atual dos *resources* de um determinado *configuration* ao executar um *apply*, para o Terraform aquela infra ainda não existe e ela será criada novamente (até onde for possível, pois existem valores únicos em alguns *resources*). E esse é um comportamento que queremos bem longe da gente.
+O controle dos *resources* com esse mecanismo funciona muito bem, porém, logo de cara podemos ver um problema, certo? Vimos que ele gera um arquivo `terraform.tfstate` no diretório do *configuration* ao rodar o `terraform apply`, correto? Isso é gerado em *runtime* e se pensarmos de maneira distribuída, com vários desenvolvedores mexendo nos *configurations*, isso pode ser bem ruim. Afinal, se um outro desenvolvedor não possuir o estado atual dos *resources* de um determinado *configuration* ao executar um *apply*, para o Terraform aquela infra ainda não existe e ela será criada novamente (até onde for possível, pois *resources* não permitem duplicidade). Isso pode causar catástrofes em alguns casos, como um registro de DNS sendo sobrescrito e indisponibilizando alguma aplicação. E esse é um comportamento que queremos bem longe da gente.
 
-A próxima seção discutirá sobre como mitigamos quase que totalmente esse problema. 
+A próxima seção discutirá sobre como mitigamos esse problema. 
 
 ## Estado centralizado
 
+Se estamos falando de um estado, logo esperamos que ele seja consistente. Para tal, o estado deve ser armazenado em um local centralizado. E é isso que fizemos para nos ajudar com os problema que foi citado anteriormente.
+
+A solução óbvia, baseando-se no que já foi visto - estamos lidando com código (IaC) e o estado do Terraform nada mais é que um JSON (ou seja, mais texto) - seria versionar o estado junto com o código da infraestrutura e assim ele ficar centralizado no repositório do nosso controle de versão. 
+Apesar de parecer uma ideia legal de início, ela oferece um grande problema pra nós: trabalhamos com *branches*, e caso dois desenvolvedores abrirem uma *branch* cada um de um mesmo *configuration*, ao fazer um teste ou aplicar o que está na *branch*, o estado entre elas e a *master* vai ficar inconsistente, ou seja, voltamos ao problema do estado distribuído. Mesmo em um caso onde exista apenas uma *branch*, ao modificar o estado nela e fazer um *merge* na *master*, estaremos nós mesmos modificando o estado do Terraform e isso é errado (lembrem-se que no começo do Post foi dito que o estado só deveria ser manipulado pelo próprio Terraform, né?).
+
+A melhor solução seria termos o estado do *configuration* guardado em um ponto central, onde independente da *branch* na qual os desenvolvedores estão fazendo alterações, um único estado será modificado. E o Terraform, como boa ferramenta que é, pode nos ajudar com isso.
+
+Ele possui a funcionalidade chamada [*Remote State*](https://www.terraform.io/docs/state/remote/index.html) que, como o nome já diz, permite com que o estado seja guardado em um local remoto centralizado. O Terraform dá suporte a algumas ferramentas para armazenar o estado, como o [Consul](https://www.consul.io) e o [S3](https://aws.amazon.com/s3/pricing/) da AWS. 
+
+Para nós, centralizar os estados dos *configurations* no S3 fez mais sentido. Conseguimos fazer isso rodando esse comando na raiz de um *configuration* (para facilitar nosso dia-a-dia temos *wrappers* em nossos ambientes que nos ajudam a criar/configurar novos *configurations*):
+
+```python
+$ terraform remote config \
+    -backend=s3 -backend-config="bucket=${S3_BUCKET}" \
+    -backend-config="key=${S3_OBJECT}" \
+    -backend-config="region=${S3_BUCKET_REGION}"
+``` 
+
+Um *plus* do comando acima, é que ele funciona tanto para um novo *configuration* e para um cujo estado foi criado acidentalmente na estação local.
+
+Com isso, automaticamente, a cada `plan` e/ou `apply` do Terraform nas estações de trabalho dos desenvolvedores um único arquivo de estado é modificado e conseguimos manter nosso estado em um local centralizado para cada *configuration*.
+
+Uma dica para quem for utilizar o S3 como local de armazenamento para os estados é que o *bucket* tenha a opção de versionamento ativada, isso pode ajudar a corrigir possíveis inconsistências nos estados.
+
+Uma outra grande vantagem que o uso de *Remote States* dá, é a possibilidade de referenciar os `outputs` de um *configuration* em outro sem correr riscos de alterações indevidas. Isso pode ser feito com o *resource terraform_remote_state*. 
+
+Um exemplo de como pegamos os IDs das zonas do Route53 para podermos criar novos registros em um *configuration*:
+
+```python
+data "terraform_remote_state" "route53" {
+    backend = "s3"
+    config {
+        bucket = "BUCKET_NAME"
+        key = "BUCKET_NAME/route53/route53.tfstate"
+        region = "BUCKET_REGION"
+    }
+}
+```
+Assim, conseguimos referenciar de maneira *read-only* o ID que precisamos para criação de um novo registro:
+
+```python
+resource "aws_route53_record" "dns-public-web-app" {  
+  zone_id = "${data.terraform_remote_state.route53.zone01.id}"
+  name = "public-web-app.elo7.com.br"
+  type = "A"
+  ttl = "300"
+  records = ["${aws_instance.public-web-app.private_ip}"]
+}
+```
+
+## Limitações
+
+Utilizar o *Remote State* com o Terraform alivia bastante os problemas de desenvolvimento paralelo dos *configurations* que foram citados até aqui. Porém, ainda devemos tomar alguns cuidados ao lidar com esse modelo. 
+
+Temos o seguinte cenário de exemplo:
+- *configuration*: `public-web-app`, que já possui uma série de *resources* criados, como instâncias, banco de dados, registros DNS, etc.
+
+Desenvolvedores criam as seguintes *branches*:
+- *Dev 1* cria branch: `adiciona-ALB`
+- *Dev 2* cria branch: `adiciona-discos-para-logs`
+
+Supondo que o *Dev 1* trabalhe em sua *branch* primeiro, e adiciona um ALB (Application Load Balancer) no *configuration* do `public-web-app`. Nesse momento, o estado desse *configuration* vai possuir informações sobre o ALB criado. 
+O *Dev 2*, por sua vez, vai fazer suas alterações. Porém, no momento que ele criou sua *branch*, o código do ALB criado pelo *Dev 1* ainda não existia, mas tais informações existem no estado. Então, o *Dev 2* vai fazer suas alterações, e vai executar o `terraform plan`. 
+O plano mostrado pelo Terraform para o *Dev 2*, dirá que os discos que ele adicionou serão provisionados e *attachados* nas instâncias pois, obviamente, tais *resources* não existiam no estado. Entretanto, algo estranho também aparecerá para o *Dev 2*: o Terraform o informará que irá remover um ALB, pois ele encontrou tal *resource* no estado e não no código. 
+
+E agora? Como fizemos?
+
+O Terraform não é capaz de controlar mudanças distribuídas (a Hashicorp possui uma versão Enterprise do Terraform que oferece esse controle centralizado). Então, a opção mais barata e direta é termos processos de uso da ferramenta:
+- Quebramos os nossos *configurations* por aplicações (as vezes uma aplicação possui mais de um *configuration*, caso ela tenha muitas dependências): isso diminui bastante as chances de existirem dois desenvolvedores alterando o mesmo *configuration* concomitantemente;
+- Caso a *branch* seja antiga, um *rebase* da *master* resolve o problema, pois novas alterações que já foram *mergeadas* são aplicadas na *branch* atual;
+- Em último caso, utilizamos o argumento `-target=` do Terraform, que permite com que passamos exatamente quais resources queremos que sejam modificados. No caso do exemplo anterior, o *Dev 2* poderia apontar os seus discos no `-target=` e rodar um `terraform apply`. Assim, seus discos seriam criados e o ALB continuaria intacto.
+- Vale salientar, também, que o que está sendo desenvolvido em uma *branch*, mesmo que aplicado, não é considerado "em produção". O ambiente de produção é considerado aquele que está na *master* do repositório, ou seja, um `terraform apply` na *master* não deve nunca causar nenhum dano às nossas aplicações.
+
+## Conclusões
+
+Nesse Post mostramos como o Terraform se organiza internamente com a infraestrutura que ele controla e como fazemos para trabalhar de uma maneira mais distribuída com ele. Também citamos alguns processo que usamos para diminuir os problemas que as limitações do modelo trazem. 
+
+Por enquanto o método de trabalho descrito aqui está nos atendendo muito bem. Mas temos em mente que podemos chegar numa escala que ele não nos irá nos atender muito bem, nesse caso vamos pensar em outras abordagens, como desenvolver uma ferramenta interna para controle de modificações em paralelo ou até mesmo contratar o serviço oferecido pela Hashicorp.
+
+Finalizamos, então, mais um Post da série Terraformando Tudo. Mas ela ainda não terminou! Voltaremos aqui em um próximo Post, mostrando como fazer com a infraestrutura que já existia! Podemos *"terraformá-la"*? Veremos!
 
