@@ -26,9 +26,9 @@ No Elytics, o fluxo de dados é dividido em quatro etapas, cada uma delas com um
 ## Coleta: Kafka
 
 A porta de entrada do Elytics é o [Apache Kafka](http://kafka.apache.org/).
-Tudo o que acontece nos nossos sistemas gera um evento que é enviado para um tópico do Kafka, ficando imediatamente disponível para ser consumido por outros sistemas. 
+Tudo o que acontece em nossos sistemas gera um evento que é enviado para um tópico do Kafka, ficando imediatamente disponível para ser consumido por outros sistemas. 
 
-Uma vez enviado para o Kafka, o histórico e a auditoria de cada evento está garantido, pois temos uma instancia do [Secor](https://github.com/pinterest/secor) que faz o backup dos dados para o [Amazon S3](https://aws.amazon.com/pt/s3/).
+Uma vez enviado para o Kafka, o histórico e a auditoria de cada evento está garantido, pois temos uma instância do [Secor](https://github.com/pinterest/secor) que faz o backup dos dados para o [Amazon S3](https://aws.amazon.com/pt/s3/).
 
 ## Processamento: Flink
 
@@ -52,7 +52,7 @@ Nós já conseguimos metrificar os dados através do Elasticsearch, mas é no [K
 
 !["Kibana Dashboard"](../images/elo7-analytics-elytics-1.jpg)
 
-Como nem tudo o que tem no Elasticsearch tem no Kibana, eles criaram um sistema de plugins onde você mesmo pode criar suas próprias análises customizadas no Kibana. Nós aqui do Elo7 gostamos muito de [análises de Cohort](https://en.wikipedia.org/wiki/Cohort_analysis), então nós também criamos o [nosso próprio plugin para análise de Cohort](https://github.com/elo7/cohort).
+Como nem tudo o que tem no Elasticsearch tem no Kibana, eles criaram um sistema de plugins onde você mesmo pode criar suas próprias análises customizadas no Kibana. Nós aqui do Elo7 gostamos muito de [análises de Cohort](https://en.wikipedia.org/wiki/Cohort_analysis), então criamos o [nosso próprio plugin para análise de Cohort](https://github.com/elo7/cohort).
 
 ## Conclusão
 
