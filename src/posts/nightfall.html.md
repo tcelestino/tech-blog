@@ -85,7 +85,7 @@ public class MyJob {
 }
 ```
 
-Dessa forma, possuíamos uma "injeção de dependência" de uma forma "rudimentar" para as configurações do banco e do job. Mas, e se quiséssemos injetar outras classes? Para "injetar" outras classes seria necessário fazer algo assim:
+Dessa forma, possuíamos uma "injeção de dependência rudimentar" para as configurações do banco e do job. Caso quiséssemos injetar outras classes seria necessário fazer algo assim:
 ```java
 	@SuppressWarnings("unchecked")
     private static JavaStreamingContext createContext(MyJobConfiguration config) {
@@ -126,7 +126,7 @@ Dessa forma, possuíamos uma "injeção de dependência" de uma forma "rudimenta
 Ou seja, para cada nova classe que nossa _task_ utilize, precisamos instancia-la no *Job* um pouco ruim não acham?
 
 ## Simplificando as coisas
-Para ajudar nosso problema de injeção de dependência criamos um projeto chamado **Nightfall**, que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com isso, fica muito mais simples a criação de novos *jobs*, reutilizamos o código de criação do **Spark Context**. Por fim podemos injetar as classes necessárias diretamente na *task* evitando instanciar todas as classes que precisamos no *job*, já que não precisamos mais controlar o ciclo de vida das mesmas, deixando essa tarefa para o *guava*. Exemplo de como fica o código com **Nightfall**:
+Para **resolver** nosso problema de injeção de dependência criamos um projeto chamado **Nightfall**, que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com isso, fica muito mais simples a criação de novos *jobs*. Por fim podemos injetar as classes necessárias diretamente na *task* evitando instanciar todas as classes que precisamos no *job*, já que não precisamos mais controlar o ciclo de vida das mesmas, deixando essa tarefa para o *guava*. Exemplo de como fica o código com **Nightfall**:
 ```java
 @KafkaSimple
 public class KafkaSimpleTest {
@@ -141,7 +141,7 @@ Muito mais simples, não? O código acima provê um *job* **SparkStream** que ut
 ## Criando um Stream
 Agora que já sabemos o que nos motivou a criar o projeto **Nightfall**, podemos ver como utilizá-lo para facilitar nossa vida :D
 
-Digamos que temos um produtor de evento que envia um evento do tipo *ORDER_STARTED*
+Digamos que temos um produtor de evento que envia um evento do tipo *OrderStarted*
 ```json
 {
 	"type": "OrderStarted",
@@ -239,7 +239,7 @@ Após a configuração do arquivo localizado em `examples/src/main/resources` po
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
-Após o *job* ser iniciado podemos enviar um evento do tipo [ORDER_STARTED](#L149), se estiver correto será impresso o *json* nos logs, caso enviemos um outro tipo de evento ele não sera exibido 
+Após o *job* ser iniciado podemos enviar um evento do tipo [OrderStarted](#L149), se estiver correto será impresso o *json* nos logs, caso enviemos um outro tipo de evento ele não sera exibido 
 
 ## Criando um Batch
 Agora podemos criar nosso *job*, *task* e configurações para processar em *Batch* ao invés de *Stream*. Para isso, precisaremos criar o seguinte job:
@@ -290,12 +290,12 @@ batch.cassandra.keyspace=kafka
 batch.cassandra.datacenter=
 batch.history.ttl.days=7
 ```
-Por fim mas não menos importante precisaremos criar um arquivo compactado contendo os eventos que serão processados pelo *Batch*. Esse arquivo pode ser um *txt* zipado com os eventos, localizado no caminho igual ao especificado no *file.source*.
+Por fim, mas não menos importante precisaremos criar um arquivo compactado contendo os eventos que serão processados pelo *Batch*. Esse arquivo pode ser um *txt* zipado com os eventos, localizado no caminho igual ao especificado no *file.source*.
 Para executar o *Batch* executamos o seguinte comando:
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
 ```
-Podemos ver a impressão dos eventos que são do tipo *ORDER_STARTED* no log da aplicação :)
+Podemos ver a impressão dos eventos que são do tipo *OrderStarted* no log da aplicação :)
 
 ### É hora da revisão
-Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/duvida, deixe nos comentários e aguardem os próximos posts.
+Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/dúvida, deixe nos comentários e aguardem os próximos posts.
