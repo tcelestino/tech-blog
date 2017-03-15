@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Elo7 Tech - {{document.title}}</title>
     <meta name='description' content='{{document.description}}'>
+    <meta name="google-site-verification" content="NqCILBTY8B8P-r_KF8BSZKH9kUQgQOEbXJvEMaB33vw" />
     <link rel='stylesheet' href='/reset.css'>
     <link rel='stylesheet' href='/main.css'>
     <link rel='stylesheet' href='/posts.css'>
