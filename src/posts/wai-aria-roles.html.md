@@ -1,5 +1,5 @@
 ---
-date: 2017-01-06
+date: 2017-03-13
 category: front-end
 tags:
   - HTML
@@ -8,7 +8,7 @@ tags:
 author: rapahaeru
 layout: post
 title: Os papéis do WAI-ARIA no HTML
-description: O ARIA se divide semanticamente em três partes: seus papéis (*roles*), estados (*states*) e suas propriedades (*properties*). Nesse post vamos focar nas *roles** (papéis) e entender o seu real papel no HTML.
+description: O ARIA se divide semanticamente em três partes: seus papéis (roles), estados (states) e suas propriedades (properties). Nesse post vamos focar nas roles (papéis) e entender o seu real papel no HTML.
 ---
 
 O ARIA se divide semanticamente em três partes: seus papéis (*roles*), estados (*states*) e suas propriedades (*properties*).
@@ -18,12 +18,12 @@ No [post anterior](http://engenharia.elo7.com.br/html-semantico-1/), demos uma i
 
 ## As roles
 
-O ARIA permite que os desenvolvedores declarem uma função semântica para um elemento que não possui ou possui uma semântica incorreta. Por exemplo, quando uma lista desordenada é usada para criar um "menu", o `<ul>` deve ser dado um papel(role) de menu e cada `<li>` deve ser dado um papel de "menuitem".
+O ARIA permite que os desenvolvedores declarem uma função semântica para um elemento que não possui ou possui uma semântica incorreta. Por exemplo, quando uma lista não ordenada é usada para criar um "menu", deve ser dado ao `<ul>` um papel (role) de "menu" e para cada `<li>` um papel de "menuitem".
 ```html
 <ul role="menu">
-    <li aria-role="menuitem">home</li>
-    <li aria-role="menuitem">posts</li>
-    <li aria-role="menuitem">contato</li>
+    <li role="menuitem">home</li>
+    <li role="menuitem">posts</li>
+    <li role="menuitem">contato</li>
 </ul>
 ```
 As roles são categorizadas em 4 tipos:
@@ -33,16 +33,16 @@ As roles são categorizadas em 4 tipos:
 3. Document Structures
 4. Landmarks
 
-Falarei sobre os **Widgets**, **Document Structure** e **Landmarks**, pois sinceramente não compreendi muito bem a utilidade real dos **Abstract roles**. Posso dizer que eles fazem o papel por trás das cenas, onde e os atributos(roles) herdam propriedades desses papéis abstratos, confuso né? Esse [diagrama de taxonomia](https://www.w3.org/TR/wai-aria/rdf_model.png) dá uma noção melhor da sua proposta.
+Falarei sobre os **Widgets**, **Document Structure** e **Landmarks**, pois sinceramente não compreendi muito bem a utilidade real dos **Abstract roles**. Posso dizer que eles fazem o papel por trás das cenas, onde os atributos (roles) herdam propriedades desses papéis abstratos, confuso né? Esse [diagrama de taxonomia](https://www.w3.org/TR/wai-aria/rdf_model.png) dá uma noção melhor da sua proposta.
 
-## Widgets
+## 1 - Widgets
 
 São widgets normais de interface, como caixas de alerta, botões, progress bar e etc.
 
-Exemplo:
+Seguem alguns exemplos:
 
-### Tooltips
-    É um popup que exibe informações relacionadas a um elemento quando recebe foco do teclado ou no mouse hover.
+### 1.1 - Tooltips
+É um popup que exibe informações relacionadas a um elemento quando recebe foco do teclado ou no mouse hover.
 
 1. O elemento que serve de container para o Tooltip deve possuir a *role* tooltip.
 2. O elemento que aciona o Tooltip é referenciado com o atributo `aria-describedby`
@@ -53,11 +53,12 @@ Exemplo:
 </div>
 ```
 
-Interação via teclado
+Interação com o widget, via teclado
+
 `ESC`: Fecha o Tooltip
 
-### Tabs
-    São um conjunto de seções que exibem um painel com conteúdos diferentes, por vez. Cada tab possui um elemento associado, que quando ativado, exibe o conteúdo correspondente.
+### 1.2 - Tabs
+São um conjunto de seções que exibem um painel com conteúdos diferentes, por vez. Cada tab possui um elemento associado, que quando ativado, exibe o conteúdo correspondente.
 
 ```html
 <div class="tabs">
@@ -81,7 +82,7 @@ Interação via teclado
 * `Tabpanel`: Contém o conteúdo associado a tab
 * `Aria-labelledby`: Serve para rotular o elemento associado (através do id)
 
-Suporte por teclado
+Interação com o widget, via teclado
 
 * `Tab`: move o foco da aba ativa
 * `Seta para esquerda`: move o foco para a aba anterior
@@ -89,9 +90,9 @@ Suporte por teclado
 * `Home`: move o foco para a primeira aba
 * `End`: move o foco para a última aba
 
-### Menu
+### 1.3 - Menu
 É  um tipo de widget (ferramenta) que oferece uma lista de opções para o usuário.
-A *role* "menu", é apropriada quando uma lista de *menuitems* é exibido de forma semelhante a uma aplicação de desktop, ou seja, é o simples menu que conhecemos.
+A *role* "menu" é apropriada quando uma lista de *menuitems* é exibido de forma semelhante a uma aplicação de desktop, ou seja, é o simples menu que conhecemos.
 
 ```html
 <div role="menubar">
@@ -105,11 +106,11 @@ A *role* "menu", é apropriada quando uma lista de *menuitems* é exibido de for
 
 Para ser acessível via teclado, o desenvolvedor terá que gerenciar o foco dos elementos.
 
-## Document Structures
+## 2 - Document Structures
 
 Como o nome diz, são estruturas que organizam o conteúdo em uma página
 
-### Article
+### 2.1 - Article
 É uma simples seção de uma página que forma uma parte independente de um documento.
 
 ```html
@@ -120,9 +121,9 @@ Como o nome diz, são estruturas que organizam o conteúdo em uma página
 Todos sabemos que já possuímos a tag "article", porém com esta *role*, podemos ampliar para qualquer elemento fazer parte de forma independente, sem que a tag "article" seja implementada de forma errônea.
 
 
-### Toolbar
-    um toolbar pode agrupar botões, links e caixas de seleção em uma única tabulação.
-    Neste caso, um toolbar bem simples com 3 botões para ilustrar a ideia:
+### 2.2 - Toolbar
+
+Um toolbar pode agrupar botões, links e caixas de seleção em uma única tabulação. Neste caso, um toolbar bem simples com 3 botões para ilustrar a ideia:
 
 ```html
 <div role="toolbar">
@@ -132,63 +133,57 @@ Todos sabemos que já possuímos a tag "article", porém com esta *role*, podemo
 </div>
 ```
 
-Suporte por teclado
+Interação com o widget, via teclado
 
 Os botões do menu podem ser acionados por meio da tecla *enter*, caso em algum deles tenha um popup (submenu), o mesmo pode ser acionado via *enter* ou seta para baixo (*down arrow*)
 * `Tab`: Move o foco para dentro e para fora do toolbar. Quando foco move para o toolbar, o primeiro controle habilitado recebe foco.
-* `Seta para esquerda`: Movo o foco para o controle anterior.
+* `Seta para esquerda`: Move o foco para o controle anterior.
 * `Seta para direita`: Move o foco para o controle seguinte.
 * `Home`: Move o foco para o primeiro controle.
 * `End`: Move o foco para o último controle.
 
-### Presentation
+### 2.3 - Presentation
 
 Sabemos que o ARIA é usado principalmente para expressar semântica dos elementos, porém há casos que ocultar a semântica de um elemento é importante e também ajuda algumas tecnologias assistivas.
 
-Exemplo de uma imagem
-
-Quando a `role=presentation` é aplicada a uma imagem, a imagem é completamente escondida das tecnologias assistivas, como se estivesse aplicado o estado de aria-hidden=true. Por outro lado, se o mesmo for aplicado a um cabeçalho, o valor semântico do elemento será removido mas o texto continua sendo exibido normalmente.
+Quando a `role=presentation` é aplicada a uma imagem, a imagem é completamente escondida das tecnologias assistivas, como se estivesse aplicado o estado de `aria-hidden=true`. Por outro lado, se o mesmo for aplicado a um cabeçalho, o valor semântico do elemento será removido mas o texto continua sendo exibido normalmente.
 
 ```html
 <h3>Exemplo de presentation</h3>
 <p>
     <a href="//link.to.com">primeiro link</a>
-    <img alt="descrição da imagem" src="//images.cdn.com"'>
+    <img role="presentation" alt="descrição da imagem" src="//images.cdn.com">
     <a href="//link.to.com">segundo link</a>
-    <img alt="descrição da imagem" src="//images.cdn.com"'>
+    <img role="presentation" alt="descrição da imagem" src="//images.cdn.com">
 </p>
 ```
 
 Veja como ficou a árvore de acessibilidade:
 
-h3
-    .[text] Exemplo de presentation
-p
-a
-    .[text] primeiro link
-a
-    .[text] segundo link
+**h3** .[*text*] Exemplo de presentation<br>
+**p**<br>
+&nbsp;&nbsp;&nbsp;&nbsp;**a** .[*text*] primeiro link<br>
+&nbsp;&nbsp;&nbsp;&nbsp;**a** .[text] segundo link
 
 A `role=presentation` remove o `<img>` da árvore de acessibilidade e com ele o atributo `alt`.
 
 
-## Landmarks
+## 3 - Landmarks
 
 Serve para marcar regiões importantes da página, como *forms*, *banners* e etc.
 
-### Complementary
+### 3.1 - Complementary
 
-Uma seção de suporte do documento, complementa o conteúdo principal em um nível similar na hierarquia DOM. Pode ser usado como artigos relacionados, arquivo de blogs por exemplo.
+Uma seção de suporte do documento, complementa o conteúdo principal em um nível similar na hierarquia DOM. Pode ser usado como artigos relacionados ou arquivo de blogs.
 
 ```html
 <aside role="complementary">
 ...
 </aside>
 ```
-### Banner
+### 3.2 - Banner
 
-O nome ja diz, é uma seção onde é incluído itens como o logotipo ou a identidade do patrocinador de um site.
-por exemplo, podemos aplicar em um *footer* com a lista de patrocinadores de um evento.
+O nome ja diz, é uma seção onde é incluído itens como o logotipo ou a identidade do patrocinador de um site, por exemplo, podemos aplicar em um *footer* com a lista de patrocinadores de um evento.
 
 ```html
 <footer>
@@ -201,15 +196,15 @@ por exemplo, podemos aplicar em um *footer* com a lista de patrocinadores de um 
 </footer>
 ```
 
-### Navigation
-    Agrupa elementos de navegação, que normalmente são links para navegar por um documento, ou um documento relacionado. Seria mais ou menos um mix do papel das tags `aside` e `nav`. Como podemos aplicar a qualquer elemento, genericamente poderia ficar assim.
+### 3.3 - Navigation
+Agrupa elementos de navegação, que normalmente são links para navegar por um documento ou um documento relacionado. Seria mais ou menos um mix do papel das tags `aside` e `nav`. Como podemos aplicar a qualquer elemento, genericamente poderia ficar assim.
 
 ```html
 <div role="navigation">
     ...
 </div>
 ```
-### Main
+### 3.4 - Main
 Onde fica o conteúdo principal do elemento.
 
 ```html
@@ -218,6 +213,7 @@ Onde fica o conteúdo principal do elemento.
 </section>
 ```
 
+Aqui vimos como aplicar de forma correta os papéis (*roles*) nos elementos com alguns exemplos básicos. Porém não só disso vive a acessibilidade no HTML. 
 No próximo post focaremos nos estados e propriedades dessas *roles*.
 Espero que tenha ficado claro o papel das *roles* no ARIA e conceitualmente o real propósito do seu uso.
 
