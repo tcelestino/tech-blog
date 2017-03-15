@@ -3,7 +3,7 @@ title: Introdução ao Java - parte 2
 date: 2017-01-16
 category: back-end
 layout: post
-description: Entenda como controlar o fluxo de funcionamento do seu código usando expressão booleana. Entenda o funcionamento do "if", "else", "for", "while" e de alguns operadores.
+description: Entenda como controlar o fluxo de funcionamento do seu código usando expressão booleana e do funcionamento do "if", "else", "for", "while" e de alguns operadores.
 author: tcelestino
 tags:
   - java básico
@@ -11,13 +11,13 @@ tags:
   - expressões booleanas
 ---
 
-No [primeiro post da série de introdução ao Java](http://engenharia.elo7.com.br/introducao-ao-java/), mostrei como configurar e executar nosso código Java. Continuando, nesse post vou apresentar alguns conceitos que serão necessários para lidarmos com o controle de fluxo na lógica de funcionamento dos nossos códigos. Sim, vamos continuar no básico, porém essencial para os próximos posts. Mas vamos deixar de conversa e partir para o que mais interessa: código!
+No [primeiro post da série de introdução ao Java](/introducao-ao-java/), mostrei como configurar e executar nosso código Java. Continuando, nesse post vou apresentar alguns conceitos que serão necessários para lidarmos com o controle de fluxo na lógica de funcionamento dos nossos códigos. Sim, vamos continuar no básico, porém essencial para os próximos posts. Mas vamos deixar de conversa e partir para o que mais interessa: código!
 
 ## Lidando com o controle de fluxo
 
 Se você já iniciou algum estudo em qualquer linguagem de programação, acredito que já tenha ouvido falar de "if", "else", "while" e "for". Essas palavras são usadas quando queremos criar alguma condicional, ou seja, controlar o fluxo de funcionamento dos nossos códigos.
 
-Para trabalharmos com condicionais, vamos precisar criar uma expressão booleana, que é uma expressão que retorna "true" (verdadeiro) ou "false" (falso). Para obter o resultado esperado, podemos usar os seguintes operadores: `<` (menor que), `>` (maior que), `<=` (menor ou igual a que), `>=` (maior ou igual a que), `==` (igual a), `!=` (diferente de), entre outros. Basicamente, podemos encontrar esses operadores em diversas outras linguagens como PHP, Ruby, Javascript entre outras.
+Para trabalharmos com condicionais, vamos precisar criar uma expressão booleana, que é uma expressão a qual retorna "true" (verdadeiro) ou "false" (falso). Para obter o resultado esperado, podemos usar os seguintes operadores: `<` (menor que), `>` (maior que), `<=` (menor ou igual a que), `>=` (maior ou igual a que), `==` (igual a), `!=` (diferente de), entre outros. Basicamente, podemos encontrar esses operadores em diversas outras linguagens como PHP, Ruby, Javascript entre outras.
 
 ### - if, else, else if
 
@@ -35,7 +35,7 @@ public static void main(String[] args) {
 }
 ```
 
-Analisando o código acima, podemos notar que existe uma expressão booleana, na qual verificamos se o valor da nossa variável `menorIdade` tem o valor menor que o número 18. Para executar o código acima, [tem a cola aqui](http://engenharia.elo7.com.br/introducao-ao-java/). Agora, se alteramos o valor da variável para um valor acima de 18, o que acontece? Execute o código e veja.
+Analisando o código acima, podemos notar que existe uma expressão booleana, na qual verificamos se o valor da nossa variável `menorIdade` tem o valor menor que o número 18. Para executar o código acima, [tem a cola aqui](/introducao-ao-java/). Agora, se alterarmos o valor da variável para um valor acima de 18, o que acontece? Execute o código e veja.
 
 Para deixarmos mais interessante nosso código, vamos adicionar mais uma expressão booleana. Com isso, vamos verificar duas situações:
 
@@ -56,11 +56,11 @@ public static void main(String[] args) {
 }
 ```
 
-Se alteramos o valor da variável `menorIdade` para 18, a condicional entrará no `else if`, mas e se trocamos o valor para um número maior que "18", o que aconteceria?
+Se alterarmos o valor da variável `menorIdade` para 18, a condicional entrará no `else if`, mas e se trocarmos o valor para um número maior que "18", o que aconteceria?
 
 ### - while
 
-A palavra "***while***", no português, pode ser traduzida pela palavra "enquanto". Na expressão booleana, podemos usar o `while` quando precisamos executar uma operação até que nossa expressão booleana se torne verdadeira. Para ficar mais claro, vamos ao exemplo básico de como utilizá-lo.
+A palavra "***while***", no português, pode ser traduzida pela palavra "enquanto". Na expressão booleana, podemos usar o `while` quando precisamos executar uma operação enquanto a nossa expressão booleana for verdadeira. Para ficar mais claro, vamos ao exemplo básico de como utilizá-lo.
 
 ```Java
 public static void main(String[] args) {
@@ -73,7 +73,7 @@ public static void main(String[] args) {
 }
 ```
 
-A variável `numero` receberá novos valores até chegar ao valor ao qual está sendo comparada. Ou seja, enquanto a condição booleana for verdadeira (`true`), o código será executado, havendo a sobrescrita do valor anterior da variável `numero` somando o valor atual da variável mais 1. A execução do trecho do código entre as chaves do `while` só é finalizada quando o valor da variável chegar a exatamente 20. Vamos melhorar o nosso código, deixando-o um pouco mais interessante.
+A variável `numero` receberá novos valores até chegar ao valor ao qual está sendo comparada. Ou seja, enquanto a condição booleana for verdadeira (`true`), o código será executado, sobrescrevendo o valor anterior da variável numero com a soma do valor atual mais 1. A execução do trecho do código entre as chaves do `while` só é finalizada quando o valor da variável chegar a exatamente 20. Vamos melhorar o nosso código, deixando-o um pouco mais interessante.
 
 ```Java
 public static void main(String[] args) {
@@ -132,7 +132,7 @@ public static void main(String[] args) {
   }
 }
 ```
-Para usarmos o `for`, precisamos passar alguns paramêtros que fará o controle do nosso "loop". Na variável `i`, guardamos um valor padrão (no nosso caso, 0) e precisamos fazer uma comparação (expressão booleana)  entre o valor de `i` e o total de itens do nosso "array". Feito isso, o "loop" será executado até encontrar a palavra que estamos buscando (Vitória). Ao encontrar a palavra, o "loop" é finalizado, deixando de percorrer nosso "array" (o `break` é o responsável por essa finalização). Isso é bom para performance, já que não é preciso pecorrer todo o "array" para fazer a busca do valor.
+Para usarmos o `for`, precisamos passar alguns paramêtros que fará o controle do nosso "loop". Na variável `i`, guardamos um valor padrão (no nosso caso, 0) e precisamos fazer uma comparação (expressão booleana) entre o valor de `i` e o total de itens do nosso "array". Feito isso, o "loop" será executado até encontrar a palavra que estamos buscando (Vitória). Ao encontrar a palavra, o "loop" é finalizado, deixando de percorrer nosso "array" (o `break` é o responsável por essa finalização). Isso é bom para performance, já que não é preciso pecorrer todo o "array" para fazer a busca do valor.
 
 Além do `break`, temos a palavra chave `continue`. Diferente do `break`, ao usar o `continue` fazemos nosso código parar de executar uma iteração e passar para a próxima iteração do nosso código.
 
@@ -149,8 +149,8 @@ public static void main(String[] args) {
 
 Se notar bem os números impressos no seu terminal, vai notar que nem todos foram exibidos.
 
-Existem outras formas de recuperar valores de um "array". Se tiver interesse, o Diego César escreveu um post bem explicativo sobre [programação funcional com o Java 8](http://engenharia.elo7.com.br/introducao-a-programacao-funcional-com-java8/).
+Existem outras formas de recuperar valores de um "array". Se tiver interesse, o Diego César escreveu um post bem explicativo sobre [programação funcional com o Java 8](/introducao-a-programacao-funcional-com-java8/).
 
 ## Resumo
 
-Nesses dois primeiros posts sobre Introdução ao Java ([leia o primeiro post](http://engenharia.elo7.com.br/introducao-ao-java/)), aprendemos como configurar o Java e como executar nosso código sem necessidade de uma IDE. Também descobrimos como que podemos utilizar expressões booleanas para criar fluxos em nosso código, controlando loops e criando condicionais. Agora, acredito que podemos evoluir nossos estudos, começando a estudar algo mais real, principalmente o grande princípio do Java: Orientação a Objetos. Preparados!?
+Nesses dois primeiros posts sobre Introdução ao Java ([leia o primeiro post](/introducao-ao-java/)), aprendemos como configurar o Java e como executar nosso código sem necessidade de uma IDE. Também descobrimos como que podemos utilizar expressões booleanas para criar fluxos em nosso código, controlando loops e criando condicionais. Agora, acredito que podemos evoluir nossos estudos, começando a estudar algo mais real, principalmente o grande princípio do Java: Orientação a Objetos. Preparados!?
