@@ -12,7 +12,7 @@ docpadConfig = function() {
                     },
 
                     dateAsText: function(date) {
-                        return moment(date).utcOffset("00:00").format('DD/MM/YYYY');
+                        return moment(date).utc().format('DD/MM/YYYY');
                     },
                     getCategories: function() {
                         return [

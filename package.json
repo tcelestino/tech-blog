@@ -3,15 +3,15 @@
   "version": "0.1.0",
   "description": "Tech Blog",
   "dependencies": {
-    "docpad": "6.78.6",
+    "docpad": "6.79.0",
     "docpad-plugin-autoprefix": "2.0.0",
     "docpad-plugin-cleanurls": "2.8.1",
     "docpad-plugin-ghpages": "2.4.4",
     "docpad-plugin-handlebars": "2.3.0",
-    "docpad-plugin-highlightjs": "2.3.0",
-    "docpad-plugin-markit": "2.3.0",
+    "docpad-plugin-highlightjs": "2.4.0",
+    "docpad-plugin-markit": "2.4.0",
     "docpad-plugin-nodesass": "2.8.2",
-    "moment": "2.13.0"
+    "moment": "2.17.1"
   },
   "main": "node_modules/.bin/docpad-server",
   "scripts": {
