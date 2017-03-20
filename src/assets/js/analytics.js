@@ -1,3 +1,27 @@
+if (typeof Object.assign != 'function') {
+  Object.assign = function(target, varArgs) {
+    'use strict';
+    if (target == null) {
+      throw new TypeError('Cannot convert undefined or null to object');
+    }
+
+    var to = Object(target);
+
+    for (var index = 1; index < arguments.length; index++) {
+      var nextSource = arguments[index];
+
+      if (nextSource != null) {
+        for (var nextKey in nextSource) {
+          if (Object.prototype.hasOwnProperty.call(nextSource, nextKey)) {
+            to[nextKey] = nextSource[nextKey];
+          }
+        }
+      }
+    }
+    return to;
+  };
+}
+
 window.ga = window.ga || function(){
   (ga.q = ga.q || []).push(arguments);
 };
@@ -19,8 +43,10 @@ var metrics = {
 };
 
 ga(function(tracker) {
-  var clientId = tracker.get('clientId');
-  tracker.set(dimensions.CLIENT_ID, clientId);
+  if (tracker) {
+    var clientId = tracker.get('clientId');
+    tracker.set(dimensions.CLIENT_ID, clientId);
+  }
 });
 
 var trackError = function(error, fieldsObj) {
@@ -44,9 +70,11 @@ window.addEventListener('error', function(event) {
 });
 
 var sendNavigationTimingMetrics = function() {
-  if (!(window.performance && window.performance.timing)) return;
+  if (!(window.performance && window.performance.timing)) {
+    return;
+  }
 
-  if (document.readyState != 'complete') {
+  if (document.readyState !== 'complete') {
     window.addEventListener('load', sendNavigationTimingMetrics);
     return;
   }
