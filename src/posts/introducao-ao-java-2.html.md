@@ -1,6 +1,6 @@
 ---
 title: Introdução ao Java - parte 2
-date: 2017-01-16
+date: 2017-03-20
 category: back-end
 layout: post
 description: Entenda como controlar o fluxo de funcionamento do seu código usando expressão booleana e do funcionamento do "if", "else", "for", "while" e de alguns operadores.
