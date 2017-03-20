@@ -17,9 +17,20 @@ echo "<url>
 rm $src_post.tmp
 rm $src_sitemap.tmp
 
-git add $src_post
-git add $src_sitemap
-git ci
-git ph
+git di
 
-./node_modules/.bin/docpad deploy-ghpages --env static
+echo "Você tem certeza que quer fazer esse deploy? (y/N)"
+read confirma
+
+if [ "$confirma" = "y" ]; then
+	git add $src_post
+	git add $src_sitemap
+	git ci
+	git ph
+
+	./node_modules/.bin/docpad deploy-ghpages --env static
+else
+	git co $src_post
+	git co $src_sitemap
+	echo "Deploy cancelado :("
+fi
