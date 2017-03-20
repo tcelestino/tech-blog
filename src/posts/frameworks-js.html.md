@@ -18,15 +18,15 @@ tags:
   - Vue.js
 ---
 
-Recenetemente, temos ouvido cada vez mais sobre novos frameworks js e os que já estão há algum tempo no mercado: [jQuery](https://jquery.com/), [Zepto](http://zeptojs.com/), [Ember](http://emberjs.com/), [Backbone](http://backbonejs.org/), [AngularJS](https://angular.io/), [React](https://facebook.github.io/react/), [Vue.js](https://vuejs.org/)... Mas será que precisamos usar algum deles? Se sim, qual devemos escolher para nossa aplicação? Neste post, vou apresentar porque no Elo7 decidimos por não adotar nenhum desses frameworks e quais as suas consequências.
+Recenetemente, temos ouvido cada vez mais sobre frameworks js, tanto os que já existem há algum tempo como os que acabaram de surgir: [jQuery](https://jquery.com/), [Zepto](http://zeptojs.com/), [Ember](http://emberjs.com/), [Backbone](http://backbonejs.org/), [AngularJS](https://angular.io/), [React](https://facebook.github.io/react/), [Vue.js](https://vuejs.org/)... Mas será que precisamos usar algum deles? Se sim, qual devemos escolher para nossa aplicação? Neste post, vou apresentar porque no Elo7 decidimos por não adotar nenhum desses frameworks e quais as suas consequências.
 
 ## O que são Frameworks js e para que servem?
 
-Com o desenvolvimento de diversos sites, os desenvolvedores front-end se depararam com diversos problemas em comum que precisavam ser resolvidos a cada novo projeto que se iniciava. Um exemplo disso é a necessidade de dar suporte a navegadores que possuem APIs javascript distintas.
+Com o desenvolvimento de diversos sites, os desenvolvedores front-end se depararam com diversos problemas em comum que precisavam ser resolvidos a cada novo projeto que se iniciava. Um exemplo disso é a necessidade de dar suporte a navegadores que possuem APIs JavaScript distintas.
 
 Para resolver este problema, um dos Frameworks mais famosos e mais utilizados no mercado surgiu: o jQuery. Além de permitir que o desenvolvedor escreva um código que funcione numa gama enorme de navegadores, ele também trouxe uma API mais amigável.
 
-A cada projeto, surgem novas necessidades para os desenvolvedores implementarem e, logo, novos problemas vão surgindo. E com isso, novos frameworks são criados para resolver determinados problemas. É por isso que tem aparecido novos frameworks a cada dia.
+Com o passar do tempo, o mercado altera junto com as necessidades do usuário. E dessa maneira, surgem novas necessidades para os desenvolvedores implementarem e, logo, novos problemas vão surgindo. Com isso, novos frameworks são criados para resolver determinados problemas. É por isso que tem aparecido novos frameworks a cada dia.
 
 ## Quais as desvantagens dos Frameworks js?
 
@@ -60,3 +60,24 @@ Ao iniciar um projeto, todo desenvolvedor pensa em qual a arquitetura deverá ut
 Como mencionado anteriormente, os Frameworks js foram desenvolvidos para resolver alguns problemas que vários sites se depararam. Mas não significa que todo o projeto vai ter os mesmos problemas. Então, eu acho que o mais justo é ver se o projeto vai ter algum problema antes de adotar qualquer framework, pois todo framework vai trazer uma queda de performance que nem sempre trará algum benefício em troca.
 
 ## A arquitetura no Elo7
+Um dos principais valores da empresa é o foco na satisfação e fidelização do cliente. E isso foi importante para a decisão da arquitetura front-end: desejamos criar um site robusto que todos os usuários possam utilizar e que a resposta do site seja o mais rápido possível.
+
+Para não depender do poder de processamento do device que nosso usuário está usando, decidimos que todo o conteúdo da página deve ser renderizado do lado do servidor. Além disso, o JavaScript da página só agrega a usabilidade do site, mas o usuário pode iteragir com os conteúdos da página antes mesmo do JavaScript carregar ou executar.
+
+E uma outra vantagem que ganhamos ao adotar a renderização no lado do servidor foi o SEO: apesar de alguns bots executarem JS simple, não dá para saber o quanto eles conseguem ler do conteúdo se o conteúdo é renderizado dinamicamente no lado do cliente.
+
+Como adotamos uma arquitetura baseada na renderização do lado do servidor, nós temos pouca lógica no JS da página. Assim, vários dos problemas que os projetos enfrentam, não apareceram no Elo7. E os problemas que surgiram foram tão pontuais que era mais vantajoso utilizar os conceitos de microframeworks do que um framework completo. No início, pesquisamos no site [microjs](http://microjs.com/) os microframeworks que resolvessem os pequenos problemas que encontramos, mas com o tempo fomos migrando para os nossos próprios frameworks para resolver os pequenos problemas que encontramos:
+
+- [async-define](https://github.com/elo7/async-define): Controle da execução dos JS assíncronos utilizando a arquitetura [AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition)
+- [doc-amd](https://github.com/elo7/doc-amd/): Manipulação do DOM
+- [tag-amd](https://github.com/elo7/tag-amd): Criação de tags dentro de um input
+- [format-amd](https://github.com/elo7/format-amd): Formatação de números
+- [events-amd](https://github.com/elo7/events-amd): Controle de eventos do navegador
+- [cookie-amd](https://github.com/elo7/cookie-amd): Controle de cookies do navegador
+- [ajax-amd](https://github.com/elo7/ajax-amd): Evento de ajax
+- [i18n-amd](https://github.com/elo7/i18n-amd): Internacionalização no lado do cliente
+- [form-amd](https://github.com/elo7/form-amd): Manipulação e validação de formulários
+
+Não vou descrever o que cada lib faz aqui para não ficar gigante o post, mas haverá posts futuros explicando com detalhes como cada lib funciona e você saberá se ela se encaixa no seu problema.
+
+## Conclusão
