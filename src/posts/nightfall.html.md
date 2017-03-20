@@ -14,14 +14,14 @@ tags:
 ---
 
 ## O início
-Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** que é o nosso principal sistema e consumimos em um sistema de agregação, removendo o acoplamento entre Métricas X Negócio 
+Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** que é o nosso principal sistema e consumimos em um sistema de agregação, removendo o acoplamento entre Métricas X Negócio
 
 !["Exemplo de arquitetura"](../images/nightfall-1.png)
 
 Após a produção dos eventos é necessário o desenvolvimento de consumidores, esses consumidores são os nossos *jobs* do _Spark_. Nossos *jobs* possuem várias *tasks* onde cada uma processa um tipo de evento de uma forma específica. O nosso código no início do desenvolvimento dos *jobs* era parecido com:
 - Job
 ```java
-public class MyJob {
+public class SparkJobExample {
 
     public static void main(String[] args) {
     	MyJobConfiguration config = new MyJobConfiguration(args);
@@ -46,69 +46,15 @@ public class MyJob {
         }
     }
 
-    @SuppressWarnings("unchecked")
-    private static JavaStreamingContext createContext(MyJobConfiguration config) {
-        // Sparks configurations
-        SparkConf sparkConf = new SparkConf();
-        sparkConf.set("spark.streaming.stopGracefullyOnShutdown", "true");
-        sparkConf.set("spark.streaming.receiver.writeAheadLog.enable", config.isWriteAheadLogEnabled());
-
-        // Spark stream configuration
-        JavaStreamingContext context = new JavaStreamingContext(sparkConf, config.getBatchInterval());
-        Optional<String> checkpoint = config.getSparkCheckpoint();
-
-        Type type = new TypeToken<DataPoint<String>>() {}.getType();
-
-        // Kafka connection
-        JavaDStream<DataPoint<String>> stream = KafkaUtils.createStream(
-                context,
-                config.getKafkaZookeeper(),
-                config.getKafkaGroupId(),
-                config.getKafkaTopics(),
-                StorageLevel.MEMORY_AND_DISK_SER())
-                .map(item -> (DataPoint<String>) JsonParser.fromJson(item._2(), type)).filter(item -> item != null)
-                .persist(StorageLevel.MEMORY_AND_DISK_SER());
-
-        // DB Configs
-        DataBaseConfiguration dbConfig = config.getDataBaseConfiguration();
-
-        // Tasks that my job will run
-        Arrays.asList(
-                new MyTask(config)
-        ).stream().forEach(processor -> processor.process(stream));
-
-        // Load checkpoint
-        checkpoint.ifPresent(context::checkpoint);
-
-        return context;
-    }
-}
+    [...]
 ```
+Para mais detalhes veja [aqui](https://github.com/gadsc/spark-samples/blob/master/jobs/spark/src/main/java/com/gadsc/spark/SparkJobExample.java)
 
 Dessa forma, possuíamos uma "injeção de dependência rudimentar" para as configurações do banco e do job. Caso quiséssemos injetar outras classes seria necessário fazer algo assim:
 ```java
 	@SuppressWarnings("unchecked")
     private static JavaStreamingContext createContext(MyJobConfiguration config) {
-        LOGGER.info("Creating new Java Streaming Context");
-
-        SparkConf sparkConf = new SparkConf();
-        sparkConf.set("spark.streaming.stopGracefullyOnShutdown", "true");
-        sparkConf.set("spark.streaming.receiver.writeAheadLog.enable", config.isWriteAheadLogEnabled());
-
-        JavaStreamingContext context = new JavaStreamingContext(sparkConf, config.getBatchInterval());
-        Optional<String> checkpoint = config.getSparkCheckpoint();
-
-        Type type = new TypeToken<DataPoint<String>>() {}.getType();
-        JavaDStream<DataPoint<String>> stream = KafkaUtils.createStream(
-                context,
-                config.getKafkaZookeeper(),
-                config.getKafkaGroupId(),
-                config.getKafkaTopics(),
-                StorageLevel.MEMORY_AND_DISK_SER())
-                .map(item -> (DataPoint<String>) JsonParser.fromJson(item._2(), type)).filter(item -> item != null)
-                .persist(StorageLevel.MEMORY_AND_DISK_SER());
-
-        DataBaseConfiguration dbConfig = config.getDataBaseConfiguration();
+        [...]
         MyFilter myFilter = new MyFilter(config);
 
         Arrays.asList(
@@ -239,7 +185,7 @@ Após a configuração do arquivo localizado em `examples/src/main/resources` po
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
-Após o *job* ser iniciado podemos enviar um evento do tipo [OrderStarted](#L149), se estiver correto será impresso o *json* nos logs, caso enviemos um outro tipo de evento ele não sera exibido 
+Após o *job* ser iniciado podemos enviar um evento do tipo [OrderStarted](#L149), se estiver correto será impresso o *json* nos logs, caso enviemos um outro tipo de evento ele não sera exibido
 
 ## Criando um Batch
 Agora podemos criar nosso *job*, *task* e configurações para processar em *Batch* ao invés de *Stream*. Para isso, precisaremos criar o seguinte job:
@@ -298,4 +244,5 @@ Para executar o *Batch* executamos o seguinte comando:
 Podemos ver a impressão dos eventos que são do tipo *OrderStarted* no log da aplicação :)
 
 ### É hora da revisão
-Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/dúvida, deixe nos comentários e aguardem os próximos posts.
+Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Aqui [vocês](https://github.com/gadsc/spark-samples) podem acessar o repositório contento todos os códigos mostrados aqui ;D
+Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/dúvida, deixe nos comentários e aguardem os próximos posts.
