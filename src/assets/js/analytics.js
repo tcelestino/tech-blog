@@ -2,7 +2,9 @@ window.ga = window.ga || function(){
   (ga.q = ga.q || []).push(arguments);
 };
 
-ga('create', 'UA-3692628-29', 'auto');
+ga('create', 'UA-3692628-29', 'auto', 'prod');
+ga('create', 'UA-3692628-30', 'auto', 'test');
+
 ga('set', 'transport', 'beacon');
 ga('send', 'pageview');
 
