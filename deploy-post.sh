@@ -1,15 +1,24 @@
 git fupum
 
-commitMerge=$(git log | grep Merge | head -n 1 | awk '{print $3}')
-srcPost=$(git log --name-status $commitMerge | grep '^A.*\.html\.md$' | head -n 1 | awk '{print $2}')
-echo $srcPost
-
+commit_merge=$(git log | grep Merge | head -n 1 | awk '{print $3}')
+src_post=$(git log --name-status $commit_merge | grep '^A.*\.html\.md$' | head -n 1 | awk '{print $2}')
+post_name=$(echo $src_post | sed -E "s/.*\/(.*).html.md/\1/")
+src_sitemap="src/public/sitemap.xml"
 today=$(date +"%Y-%m-%d")
 
-sed -i.tmp -E "s/(date: *).+/\1$today/" $srcPost
-rm $srcPost.tmp
+sed -i.tmp -E "s/(date: *).+/\1$today/" $src_post
+sed -i.tmp -E "/<\/urlset>/d" $src_sitemap
 
-git add $srcPost
+echo "<url>
+  <loc>http://engenharia.elo7.com.br/$post_name/</loc>
+</url>
+</urlset>" >> $src_sitemap
+
+rm $src_post.tmp
+rm $src_sitemap.tmp
+
+git add $src_post
+git add $src_sitemap
 git ci
 git ph
 
