@@ -35,7 +35,7 @@ A primeira coisa que vamos precisar adicionar o token obtido no [Original Trials
 <html>
   <head>
     <meta http-equiv="origin-trial" content="**aqui entra o token enviado por email**">
-    <title>Exemplo Web Share API</title>
+    <title>Usando a Web Share API</title>
   </head>
   <body>
     <a href='#share' title='Clique e compartilhe'>Compartilhar</a>
@@ -47,19 +47,19 @@ A primeira coisa que vamos precisar adicionar o token obtido no [Original Trials
 </html>
 ```
 
-Após adicionarmos a meta tag em nosso HTML, vamos precisar fazer a chamada ao objeto `navigator.share` com javascript.
+Após adicionarmos a meta tag em nosso HTML, vamos precisar fazer a chamada ao objeto `navigator.share` com javascript. Pegando nosso HTML anterior, vamos implementar a chamada para o Web Share API.
 
 ```html
 <html>
   <head>
     <meta http-equiv="origin-trial" content="**aqui entra o token enviado por email**">
-    <title>Exemplo Web Share API</title>
+    <title>Usando a Web Share API</title>
   </head>
   <body>
     <a href='#share' title='Clique e compartilhe' class='share'>Compartilhar</a>
     <script async src='https://raw.githubusercontent.com/elo7/async-define/master/async-define.min.js'></script>
     <script async src='https://raw.githubusercontent.com/elo7/events-amd/master/events-amd.min.js'></script>
-    <script src='https://raw.githubusercontent.com/elo7/doc-amd/master/doc.js'></script>
+    <script async src='https://raw.githubusercontent.com/elo7/doc-amd/master/doc.min.js'></script>
     <script>
       define(['doc'], function($) {
         $('.share').on('click', function(evt) {
@@ -80,8 +80,6 @@ Após adicionarmos a meta tag em nosso HTML, vamos precisar fazer a chamada ao o
   </body>
 </html>
 ```
-
-A primeira coisa que precisamos
 
 ## Fontes
 * https://blog.hospodarets.com/web-share-api
