@@ -14,7 +14,7 @@ description: O ARIA se divide semanticamente em três partes: seus papéis (role
 O ARIA se divide semanticamente em três partes: seus papéis (*roles*), estados (*states*) e suas propriedades (*properties*).
 As *roles* (papéis) descrevem widgets que não estão disponíveis no HTML 4, como sliders, barras de menus, guias e diálogos. As *properties* (propriedades) descrevem características desses widgets, como se eles são arrastáveis, têm um elemento necessário ou têm um popup associado a eles. Os *states* (estados) descrevem o estado de interação atual de um elemento, informando a tecnologia de assistência se ela estiver ocupada, desativada, selecionada ou ocultada.
 
-No [post anterior](http://engenharia.elo7.com.br/html-semantico-1/), demos uma introdução conceitual do uso do ARIA. Nesse segundo trataremos das *roles* com alguns estados e propriedades que são necessárias para o uso correto, e o próximo e último post será dedicado exclusivamente aos estados e propriedades.
+No [post anterior](http://engenharia.elo7.com.br/wai-aria-apanhado-geral/), demos uma introdução conceitual do uso do ARIA. Nesse segundo trataremos das *roles* com alguns estados e propriedades que são necessárias para o uso correto, e o próximo e último post será dedicado exclusivamente aos estados e propriedades.
 
 ## As roles
 
@@ -33,7 +33,7 @@ As roles são categorizadas em 4 tipos:
 3. Document Structures
 4. Landmarks
 
-Falarei sobre os **Widgets**, **Document Structure** e **Landmarks**, pois sinceramente não compreendi muito bem a utilidade real dos **Abstract roles**. Posso dizer que eles fazem o papel por trás das cenas, onde os atributos (roles) herdam propriedades desses papéis abstratos, confuso né? Esse [diagrama de taxonomia](https://www.w3.org/TR/wai-aria/rdf_model.png) dá uma noção melhor da sua proposta.
+Falarei sobre os **Widgets**, **Document Structures** e **Landmarks**, pois sinceramente não compreendi muito bem a utilidade real dos **Abstract roles**. Posso dizer que eles fazem o papel por trás das cenas, onde os atributos (roles) herdam propriedades desses papéis abstratos, confuso né? Esse [diagrama de taxonomia](https://www.w3.org/TR/wai-aria/rdf_model.png) dá uma noção melhor da sua proposta.
 
 ## 1 - Widgets
 
@@ -53,8 +53,9 @@ Seguem alguns exemplos:
 </div>
 ```
 
-Interação com o widget, via teclado
+Interação com o widget, via teclado:
 
+`TAB`: Abre o Tooltip. Chega-se ao elemento via tab, o que faz exibir o tooltip no foco.
 `ESC`: Fecha o Tooltip
 
 ### 1.2 - Tabs
@@ -75,14 +76,14 @@ São um conjunto de seções que exibem um painel com conteúdos diferentes, por
 </div>
 ```
 
- *Roles*, *States* e *Properties* do widget **Tab**
+ *Roles*, *States* e *Properties* do widget **Tab**.
 
 * `Tablist`: Serve de container para o conjunto dos tabs.
 * `Tab`: É o título da tab e exibe o painel (tabpanel) quando ativado.
 * `Tabpanel`: Contém o conteúdo associado a tab
 * `Aria-labelledby`: Serve para rotular o elemento associado (através do id)
 
-Interação com o widget, via teclado
+Interação com o widget, via teclado:
 
 * `Tab`: move o foco da aba ativa
 * `Seta para esquerda`: move o foco para a aba anterior
@@ -96,7 +97,7 @@ A *role* "menu" é apropriada quando uma lista de *menuitems* é exibido de form
 
 ```html
 <div role="menubar">
-    <ul role="menu">
+    <ul role="menu" tabindex="1">
         <li role="menuitem">Item 1</li>
         <li role="menuitem">Item 2</li>
         <li role="menuitem">Item 3</li>
@@ -104,11 +105,32 @@ A *role* "menu" é apropriada quando uma lista de *menuitems* é exibido de form
 </div>
 ```
 
-Para ser acessível via teclado, o desenvolvedor terá que gerenciar o foco dos elementos.
+Interação com o widget, via teclado:
+
+Se o foco estiver no `menubar`
+
+* `Seta para esquerda`: Item anterior do `menubar`
+* `Seta para direita`: próximo item do `menubar`
+* `Seta para cima` ou `Seta para baixo`: Abre o submenu do item do menu e seleciona o primeiro `menuitem`
+* `Enter` ou `Espaço`: Abre ou fecha o submenu do item do menu. Seleciona o primeiro `menuitem`, caso haja.
+
+Se o foco estiver no `menuitem`
+
+* `Seta para esquerda`: Abre submenu do menu anterior e seleciona primeiro item.
+* `Seta para direita`: Abre submenu do menu seguinte e seleciona primeiro item.
+* `Seta para cima`: seleciona menu item anterior.
+* `Seta para baixo`: seleciona menu item seguinte.
+* `Enter` e `esoaço`: Aciona item selecionado e fecha submenu.
+* `Esc`: Fecha o menu e retorna o foco para o menubar.
+
+`Tabindex`
+
+* Para os itens do menu receberem foco via teclado, o `tabindex` deve ser setado no elemento. 
+
 
 ## 2 - Document Structures
 
-Como o nome diz, são estruturas que organizam o conteúdo em uma página
+Como o nome diz, são estruturas que organizam o conteúdo em uma página.
 
 ### 2.1 - Article
 É uma simples seção de uma página que forma uma parte independente de um documento.
@@ -133,7 +155,7 @@ Um toolbar pode agrupar botões, links e caixas de seleção em uma única tabul
 </div>
 ```
 
-Interação com o widget, via teclado
+Interação com o widget, via teclado:
 
 Os botões do menu podem ser acionados por meio da tecla *enter*, caso em algum deles tenha um popup (submenu), o mesmo pode ser acionado via *enter* ou seta para baixo (*down arrow*)
 * `Tab`: Move o foco para dentro e para fora do toolbar. Quando foco move para o toolbar, o primeiro controle habilitado recebe foco.
@@ -174,7 +196,7 @@ Serve para marcar regiões importantes da página, como *forms*, *banners* e etc
 
 ### 3.1 - Complementary
 
-Uma seção de suporte do documento, complementa o conteúdo principal em um nível similar na hierarquia DOM. Pode ser usado como artigos relacionados ou arquivo de blogs.
+Uma seção de suporte do documento complementa o conteúdo principal em um nível similar na hierarquia DOM. Pode ser usado como artigos relacionados ou arquivo de blogs.
 
 ```html
 <aside role="complementary">
@@ -212,6 +234,8 @@ Onde fica o conteúdo principal do elemento.
     ...
 </section>
 ```
+
+## Concluindo...
 
 Aqui vimos como aplicar de forma correta os papéis (*roles*) nos elementos com alguns exemplos básicos. Porém não só disso vive a acessibilidade no HTML. 
 No próximo post focaremos nos estados e propriedades dessas *roles*.
