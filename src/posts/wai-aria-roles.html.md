@@ -14,7 +14,7 @@ description: O ARIA se divide semanticamente em três partes: seus papéis (role
 O ARIA se divide semanticamente em três partes: seus papéis (*roles*), estados (*states*) e suas propriedades (*properties*).
 As *roles* (papéis) descrevem widgets que não estão disponíveis no HTML 4, como sliders, barras de menus, guias e diálogos. As *properties* (propriedades) descrevem características desses widgets, como se eles são arrastáveis, têm um elemento necessário ou têm um popup associado a eles. Os *states* (estados) descrevem o estado de interação atual de um elemento, informando a tecnologia de assistência se ela estiver ocupada, desativada, selecionada ou ocultada.
 
-No [post anterior](http://engenharia.elo7.com.br/wai-aria-apanhado-geral/), demos uma introdução conceitual do uso do ARIA. Nesse segundo trataremos das *roles* com alguns estados e propriedades que são necessárias para o uso correto, e o próximo e último post será dedicado exclusivamente aos estados e propriedades.
+No [post anterior](/wai-aria-apanhado-geral/), demos uma introdução conceitual do uso do ARIA. Nesse segundo trataremos das *roles* com alguns estados e propriedades que são necessárias para o uso correto, e o próximo e último post será dedicado exclusivamente aos estados e propriedades.
 
 ## As roles
 
@@ -55,8 +55,8 @@ Seguem alguns exemplos:
 
 Interação com o widget, via teclado:
 
-`TAB`: Abre o Tooltip. Chega-se ao elemento via tab, o que faz exibir o tooltip no foco.
-`ESC`: Fecha o Tooltip
+* `Tab`: Abre o Tooltip. Chega-se ao elemento via tab, o que faz exibir o tooltip no foco.
+* `Esc`: Fecha o Tooltip
 
 ### 1.2 - Tabs
 São um conjunto de seções que exibem um painel com conteúdos diferentes, por vez. Cada tab possui um elemento associado, que quando ativado, exibe o conteúdo correspondente.
@@ -125,7 +125,7 @@ Se o foco estiver no `menuitem`
 
 `Tabindex`
 
-* Para os itens do menu receberem foco via teclado, o `tabindex` deve ser setado no elemento. 
+* Para os itens do menu receberem foco via teclado, o `tabindex` deve ser setado no elemento.
 
 
 ## 2 - Document Structures
@@ -237,7 +237,7 @@ Onde fica o conteúdo principal do elemento.
 
 ## Concluindo...
 
-Aqui vimos como aplicar de forma correta os papéis (*roles*) nos elementos com alguns exemplos básicos. Porém não só disso vive a acessibilidade no HTML. 
+Aqui vimos como aplicar de forma correta os papéis (*roles*) nos elementos com alguns exemplos básicos. Porém, não só disso vive a acessibilidade no HTML.
 No próximo post focaremos nos estados e propriedades dessas *roles*.
 Espero que tenha ficado claro o papel das *roles* no ARIA e conceitualmente o real propósito do seu uso.
 
