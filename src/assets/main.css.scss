@@ -10,20 +10,20 @@ body {
 }
 
 header.left-pane {
-    background-color: $yellow-default;
+    background-color: $yellow-light;
     text-align: center;
     position: relative;
 
     .social {
         width: 2em;
         height: 2em;
-        position: absolute;
         display: none;
     }
     .github {
         background-size: 2em 2em;
         background-repeat: no-repeat;
         background-image: url('images/github_icon.svg');
+        margin-bottom: 2em;
     }
 
 }
@@ -42,8 +42,9 @@ header.left-pane {
         -webkit-filter: brightness(100); /*REMOVER*/
     }
 }
+
 .navigation {
-    margin: 0 2em;
+    flex: 1;
     padding: 1em 0;
 
     .categories-switch {
@@ -118,6 +119,7 @@ header.left-pane {
 
         &:hover {
             color: darken($yellow-default, 20%);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.20);
         }
     }
 }
@@ -136,9 +138,12 @@ footer {
 }
 @media (min-width: 800px) {
     header.left-pane {
+        display: flex;
         height: 100%;
-        width: 15em;
         position: fixed;
+        padding: 0 2em;
+        flex-direction: column;
+        align-items: center;
 
         .social {
             display: block;
