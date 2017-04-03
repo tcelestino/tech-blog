@@ -1,5 +1,5 @@
 ---
-title: 'Migrando para HTTPS'
+title: Migrando para HTTPS
 date: 2017-03-06
 category: devops
 layout: post
@@ -26,7 +26,7 @@ Outra vantagem do _HTTPS_ é a comprovação de identidade, ou seja, poder ter c
 
 ![Navegador indicando que a identidade do site é verdadeira e o site é seguro](../images/https-6.png)
 
-Essa garantia de autenticidade é fundamental para sites que contém informações hiper sensíveis dos usuários, como entidadades finaceiras, serviços de email, entre outros, evitando que se caia em golpes (_phishing_).
+Essa garantia de autenticidade é fundamental para sites que contém informações hiper sensíveis dos usuários, como entidades finaceiras, serviços de email, entre outros, evitando que se caia em golpes (_phishing_).
 
 Uma das desvantagens do _HTTPS_ em relação ao _HTTP_ é o custo computacional maior para cliente e servidor, devido à série de cálculos que é necessário realizar para criptografar e descriptografar os dados. Entretanto, para o _hardware_ que temos nos dias de hoje, esse _overhead_ costuma ser desprezível perto da complexidade das aplicações em si, impactando muito pouco na carga do servidores ou tempo de resposta. Assim como para os _desktops_, cujos CPUs ficam ociosos boa parte do tempo.
 
@@ -40,11 +40,11 @@ Bem, o mundo pós-[_Snowden_](https://en.wikipedia.org/wiki/Edward_Snowden) enca
 
 Portanto, a pergunta que se fazia antes - "por que usar _HTTPS_?" - foi invertida para: **"por que não usar _HTTPS_?"**
 
-De fato, para a nova versão do protocolo _HTTP_, o [***HTTP/2***](https://http2.github.io/), os navegadores nem sequer dão mais suporte à versão não _SSL_. Ou, seja, na prática, pra poder usar os recursos da versão mais nova do _HTTP_, é obrigatório o uso de _HTTPS_. E não para por aí. Navegadores como o _Chrome_, por exemplo, já tem há um bom tempo em seus planos [classificar explicitamente páginas _HTTP_ como não seguras](https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure). Futuramente, toda página _HTTP_ deve ser exibida como abaixo (atualmente isso só exibido quando habilitada uma _flag_ específica na configuração):
+De fato, para a nova versão do protocolo _HTTP_, o [***HTTP/2***](https://http2.github.io/), os navegadores nem sequer dão mais suporte à versão não _SSL_. Ou seja, na prática, pra poder usar os recursos da versão mais nova do _HTTP_, é obrigatório o uso de _HTTPS_. E não para por aí. Navegadores como o _Chrome_, por exemplo, já tem há um bom tempo em seus planos [classificar explicitamente páginas _HTTP_ como não seguras](https://www.chromium.org/Home/chromium-security/marking-http-as-non-secure). Futuramente, toda página _HTTP_ deve ser exibida como abaixo (atualmente isso é só exibido quando habilitada uma _flag_ específica na configuração):
 
 ![Esse pudim não é seguro!](../images/https-1.png)
 
-A partir da versão 56, o [_Chrome Canary_](https://www.google.com.br/chrome/browser/canary.html) (uma versão com os recursos mais recentos do navegador) já exibe **por padrão** avisos para formulários de senha ou cartão de créditos em páginas não _HTTPS_.
+A partir da versão 56, o [_Chrome Canary_](https://www.google.com.br/chrome/browser/canary.html) (uma versão com os recursos mais recentes do navegador) já exibe **por padrão** avisos para formulários de senhas ou cartões de crédito em páginas não _HTTPS_.
 
 ![Aviso de segurança em formulário no Chrome](../images/https-2.png)
 
@@ -93,11 +93,11 @@ Consequências inesperadas como essa - o sumiço dos _bots_ - podem ocorrer, mas
 
 Algo muito importante para a indexação de qualquer site são os índices conhecidos como [_Sitemaps_](https://support.google.com/webmasters/answer/156184?hl=pt-BR), que orientam a navegação inicial dos _bots_ e permitem configurar alguns de seus comportamentos (por exemplo, desligar a indexação de parte das _URLs_, listar endereços que não estão _linkados_ em outras páginas, entre outras coisas), além de identificar de forma mais exata o tipo de conteúdo. Uma vez que o site seja migrado totalmente para _HTTPS_, **é muito importante que as _URLs_ listadas nos arquivos de sitemaps também sejam alteradas**.
 
-Outra ferramenta muito útil são as chamadas _Webmaster Tools_, painéis de controle oferecidos pelos indexadores, como [_Google_](https://www.google.com/webmasters/tools/home?hl=pt-BR) e [_Bing_](http://www.bing.com/toolbox/webmaster) onde é possível visualizar e administrar a indexação das páginas. Através dele é possível adicionar, por exemplo, o endereço inicial do site em _HTTPS_ para que seja indexado paralelamente, mesmo antes da migração definitiva, o que pode ser bastante útil para evitar maiores consequências no _ranking_.
+Outra ferramenta muito útil são as chamadas _Webmaster Tools_, painéis de controle oferecidos pelos indexadores, como [_Google_](https://www.google.com/webmasters/tools/home?hl=pt-BR) e [_Bing_](http://www.bing.com/toolbox/webmaster), onde é possível visualizar e administrar a indexação das páginas. Através dele é possível adicionar, por exemplo, o endereço inicial do site em _HTTPS_ para que seja indexado paralelamente, mesmo antes da migração definitiva, o que pode ser bastante útil para evitar maiores consequências no _ranking_.
 
-E, por final, não se desespere. É natural uma mudança de comportamento dos _bots_ após esse tipo de migração, e tomadas todas as precauções necessárias, muitas já mencionadas, é necessário aguardar até alguns dias para eles voltem ao normal. Além disso, é importante ficar atento, pois é possível que o site todo seja reindexado após essa mudança, aumentando significativamente a carga.
+E, por final, não se desespere. É natural uma mudança de comportamento dos _bots_ após esse tipo de migração, e tomadas todas as precauções necessárias, muitas já mencionadas, é necessário aguardar até alguns dias para que eles voltem ao normal. Além disso, é importante ficar atento, pois é possível que o site todo seja reindexado após essa mudança, aumentando significativamente a carga.
 
 ## Conclusão
-A migração para _HTTPS_ é inevitável e terá que ser feita por todos, mais cedo ou mais. Quanto antes possa ser feita, melhor. Não trata-se de algo complexo, mas, especialmente para sistemas grandes, pode haver um certo nível de esforço, sendo importante levar em considerações os pontos mencionados. Entretanto, tomados os devidos cuidados e sendo bem planejado, é plenamente possível de ser realizado sem qualquer indisponibilidade.
+A migração para _HTTPS_ é inevitável e terá que ser feita por todos, mais cedo ou mais tarde. Quanto antes possa ser feita, melhor. Não se trata de algo complexo, mas, especialmente para sistemas grandes, pode haver um certo nível de esforço, sendo importante levar em consideração os pontos mencionados. Entretanto, tomados os devidos cuidados e sendo bem planejado, é plenamente possível de ser realizado sem qualquer indisponibilidade.
 
 Dúvidas? Contribuições? Deixe um comentário!
