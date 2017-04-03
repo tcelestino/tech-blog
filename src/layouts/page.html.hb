@@ -49,8 +49,16 @@
             <span itemprop="copyrightHolder">engenharia.elo7.com.br © 2016</span>
         </a>
     </footer>
-
     <script async src="https://www.google-analytics.com/analytics.js"></script>
     <script async src="/js/analytics.js"></script>
+            ga('create', 'UA-3692628-29', 'auto');
+            ga('send', 'pageview');
+        </script>
+    {{/if}}
+    <script async src='/js/asyncDefine.js'></script>
+    <script async src='/js/eventsAmd.js'></script>
+    <script async src='/js/ajax.js'></script>
+    <script async src='/js/doc.js'></script>
+    <script async src='/js/postAvatar.js'></script>
 </body>
 </html>
