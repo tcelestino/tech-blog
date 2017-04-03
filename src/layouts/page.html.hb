@@ -3,9 +3,38 @@
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Elo7 Tech - {{document.title}}</title>
     <meta name='description' content='{{document.description}}'>
     <meta name="google-site-verification" content="NqCILBTY8B8P-r_KF8BSZKH9kUQgQOEbXJvEMaB33vw" />
+    <meta name="theme-color" content="#FDC24F">
+    <meta name="keywords" content="Elo7,tecnologia,post,desenvolvimento,blog,{{document.tags}}">
+    <meta name="language" content="pt-br">
+    <meta name="title" content="Elo7 Tech - {{document.title}}">
+    <meta name="apple-mobile-web-app-title" content="Elo7 Tech - {{document.title}}">
+    <meta name="mobile-web-app-capable" content=yes>
+
+    <meta property="fb:app_id" content="644444999041914">
+    <meta property="fb:admins" content="100003324447975" />
+
+    <meta property="og:site_name" content="Elo7 Tech">
+    <meta property="og:image" content="{{site.url}}/images/ico/elo7.png">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Elo7 Tech - {{document.title}}">
+    <meta property="og:url" content="{{site.url}}">
+    <meta property="og:description" content="{{document.description}}">
+
+    <meta name="twitter:widgets:csp" content="on">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" value="Elo7 Tech - {{document.title}}" />
+
+    <meta property="twitter:title" content="Elo7 Tech - {{document.title}}">
+    <meta property="twitter:domain" content="{{site.url}}">
+    <meta property="twitter:url" content="{{site.url}}">
+    <meta property="twitter:description" content="{{document.description}}">
+    <meta property="twitter:image" content="{{site.url}}/images/ico/elo7.png">
+
+    <link rel='canonical' href="{{site.url}}">
+
+    <title>Elo7 Tech - {{document.title}}</title>
     <link rel='stylesheet' href='/reset.css'>
     <link rel='stylesheet' href='/main.css'>
     <link rel='stylesheet' href='/posts.css'>
