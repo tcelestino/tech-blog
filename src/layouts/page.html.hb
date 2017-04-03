@@ -59,6 +59,6 @@
     <script async src='/js/eventsAmd.js'></script>
     <script async src='/js/ajax.js'></script>
     <script async src='/js/doc.js'></script>
-    <script async src='/js/postAvatar.js'></script>
+    <script async src='/js/post.js'></script>
 </body>
 </html>

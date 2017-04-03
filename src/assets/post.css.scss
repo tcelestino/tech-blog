@@ -51,8 +51,52 @@ autoprefix: true
         font-size: 0.9em;
     }
 }
+
+.share {
+  margin-bottom: 2em;
+  text-align: right;
+
+  .link-share {
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    text-indent: -9999px;
+    margin-left: 0.5em;
+    text-align: left;
+
+    &.facebook {
+      background-image: url('/images/ico/ic-facebook.svg');
+    }
+
+    &.twitter {
+      background-image: url('/images/ico/ic-twitter.svg');
+    }
+
+    &.copy {
+      background-image: url('/images/ico/ic-link.svg');
+    }
+  }
+
+  .link-input {
+    opacity: 0;
+    position: absolute;
+    left: -9999px;
+  }
+}
+
 @media (min-width: 800px) {
     .post-content {
         padding: 1em 23%;
+    }
+
+    .share {
+      position: fixed;
+      top: 21%;
+      right: 10%;
+
+      .link-share {
+        display: block;
+        margin-bottom: 0.5em;
+      }
     }
 }
