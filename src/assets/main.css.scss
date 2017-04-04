@@ -49,7 +49,7 @@ header.left-pane {
 
 .navigation {
     flex: 1;
-    padding: 1em 0;
+    padding: 1em;
 
     .categories-switch {
         display: none;
@@ -91,7 +91,7 @@ header.left-pane {
             display: block;
             position: absolute;
             bottom: .50em;
-            right: -.65em;
+            right: 0;
             border-top: .50em solid map-get($colors-border, white);
             border-left: .45em solid transparent;
             border-right: .45em solid transparent;
@@ -163,6 +163,8 @@ footer {
     }
 
     .navigation {
+				padding: 1em 0;
+
         .selectable {
             cursor: inherit;
 
