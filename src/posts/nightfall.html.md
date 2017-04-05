@@ -14,11 +14,17 @@ tags:
 ---
 
 ## O início
-Começamos a utilizar o _Spark_ no **Elo7** para extrair métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** que é o nosso principal sistema e consumimos em um sistema de agregação, removendo o acoplamento entre Métricas X Negócio
+Começamos a utilizar o [Spark](http://spark.apache.org/) no **Elo7** para processamento de métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** (que é o nossa principal aplicação) e consumimos em um sistema de agregação, removendo o acoplamento entre Métricas X Negócio
+
+### Mas o que é Spark?
+[Spark](http://spark.apache.org/) é uma plataforma para computação em distribuída, é desenhada para ser rápida e de propósito geral e extende o modelo MapReduce, incluindo queries iterativas e processamento em batch e streaming.
+
+### Por que Spark?
+Precisávamos de uma ferramenta para análise em tempo real, e tínhamos preferência por opções com recursos de machine learning (que pensamos em utilizar futuramente). Optamos pelo Spark, que além de atender esses requisitos, possui integração nativa com o [Apache Kafka](https://kafka.apache.org/) e o [Amazon Kinesis](https://aws.amazon.com/kinesis/), que eram ferramentas cogitadas para Streams de mensagem.
 
 !["Exemplo de arquitetura"](../images/nightfall-1.png)
 
-Após a produção dos eventos é necessário o desenvolvimento de consumidores, esses consumidores são os nossos *jobs* do _Spark_. Nossos *jobs* possuem várias *tasks* onde cada uma processa um tipo de evento de uma forma específica. O nosso código no início do desenvolvimento dos *jobs* era parecido com:
+Após a produção dos eventos, precisamos implementar/criar os consumidores para processá-los, que são nossos *jobs* do _Spark_. Nossos *jobs* possuem várias *tasks* onde cada uma processa um tipo de evento de uma forma específica. O nosso código no início do desenvolvimento dos *jobs* era parecido com:
 - Job
 ```java
 public class SparkJobExample {
@@ -50,9 +56,9 @@ public class SparkJobExample {
 ```
 Para mais detalhes veja [aqui](https://github.com/gadsc/spark-samples/blob/master/jobs/spark/src/main/java/com/gadsc/spark/SparkJobExample.java)
 
-Dessa forma, possuíamos uma "injeção de dependência rudimentar" para as configurações do banco e do job. Caso quiséssemos injetar outras classes seria necessário fazer algo assim:
+Dessa forma, tínhamos uma injeção de dependência para as configurações do banco e do job. Caso precisássemos fazer injeção em outras classes seria necessário fazer algo assim:
 ```java
-	@SuppressWarnings("unchecked")
+    @SuppressWarnings("unchecked")
     private static JavaStreamingContext createContext(MyJobConfiguration config) {
         [...]
         MyFilter myFilter = new MyFilter(config);
