@@ -19,16 +19,16 @@ A propriedade *display* é muito importante para o controle do layout, pois indi
 
 Os elementos que possuem essa propriedade são considerados elementos de bloco. Esses elementos possuem uma quebra de linha (espaço em branco) acima e abaixo, e não permitem que outros elementos sejam posicionados ao lado deles.
 
-Os elementos mais comuns que possuem *display: block* como padrão são: `<div>`, `<p>`, `<form>` e as novas tags do HTML5: `<header>`, `<section>`, `<footer>`, entre outros.
+Os elementos mais comuns que possuem `display: block` como padrão são: `<div>`, `<p>`, `<form>` e as novas tags do HTML5: `<header>`, `<section>`, `<footer>`, entre outros.
 
 <p data-height="300" data-theme-id="23784" data-slug-hash="egmXBo" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display Block" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/egmXBo/">Display Block</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) no <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Uma forma de posicionar elementos ao lado de um elemento com *display: block* é usando propriedades que tiram o elemento do fluxo normal da página. Como, por exemplo, `float` e `position: absolute`. Mas essas propriedades ficam como assunto para futuros posts.
+Uma forma de posicionar elementos ao lado de um elemento com `display: block` é usando propriedades que tiram o elemento do fluxo normal da página. Como, por exemplo, `float` e `position: absolute`. Mas essas propriedades ficam como assunto para futuros posts.
 
 ## Inline
 
-Os elementos que possuem essa propriedade são considerados elementos de linha. Os que possuem essa propriedade são considerados elementos de linha; isso significa que são renderizados dentro do bloco na mesma linha, ou seja, não tem quebra. `<span>` é o mais conhecido deles, junto com `<a>`, `<b>` e `<i>`. Esses elementos podem ser colocados dentro de um parágrafo (que é um bloco), sem quebrar seu fluxo.
+Os elementos que possuem essa propriedade são considerados elementos de linha. Isso significa que são renderizados dentro do bloco na mesma linha, ou seja, não tem quebra. `<span>` é o mais conhecido deles, junto com `<a>`, `<b>` e `<i>`. Esses elementos podem ser colocados dentro de um parágrafo (que é um bloco), sem quebrar seu fluxo.
 
 <p data-height="300" data-theme-id="23784" data-slug-hash="WRbmOK" data-default-tab="html,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display Inline" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/WRbmOK/">Display Inline</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
@@ -40,7 +40,7 @@ Este valor é usado para esconder algum elemento. Existem elementos que possuem 
 <p data-height="300" data-theme-id="23784" data-slug-hash="ygywPw" data-default-tab="html,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Display None" class="codepen">Veja o exemplo <a href="http://codepen.io/FernandaBernardo/pen/ygywPw/">Display None</a> by Fernanda Bernardo (<a href="http://codepen.io/FernandaBernardo">@FernandaBernardo</a>) on <a href="http://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
-Uma diferença que causa bastante dúvida quando temos o `display: none`, é quando esse é comparado com o `visibility: hidden`. A diferença entre eles é que o *display* realmente retira todo o elemento da tela, como se ele não existisse; já com visibility, o elemento não aparece mas continua ocupando o espaço como se estivesse visível.
+Uma diferença que causa bastante dúvida quando temos o `display: none`, é quando esse é comparado com o `visibility: hidden`. A diferença entre eles é que o *display* realmente retira todo o elemento da tela, como se ele não existisse; já com *visibility*, o elemento não aparece mas continua ocupando o espaço como se estivesse visível.
 
 ## Inline-block
 
@@ -57,4 +57,4 @@ Como o próprio nome já diz, esse tipo de display serve para que um elemento se
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 
-Nesse post, falamos um pouco sobre como funcionam alguns atributos da propriedade `display`, e como usá-los. Nos próximos posts abordarei outras propriedades comuns e também sobre novas especificações.
+Nesse post, falamos um pouco sobre como funcionam alguns atributos da propriedade `display`, e como usá-los. Nos próximos posts abordarei outras propriedades comuns e também novas especificações.
