@@ -89,7 +89,7 @@ CREATE INDEX usuario_nome ON usuario (nome);
 ```
 Esse comando criará um índice do tipo BTREE (padrão) na tabela usuario. Após a criação do índice, podemos executar novamente o explain:
 
-``` TODO
+```
 +----+-------------+---------+------+---------------+--------------+---------+-------+------+-----------------------------+
 | id | select_type | table   | type | possible_keys | key          | key_len | ref   | rows | Extra                       |
 +----+-------------+---------+------+---------------+--------------+---------+-------+------+-----------------------------+
@@ -124,16 +124,13 @@ CREATE INDEX usuario_nome ON usuario (nome, data_nascimento);
 Depois dessa modificação, podemos verificar que a saída do EXPLAIN agora não contém o `Using filesort`, ou seja, o banco não precisa mais calcular a ordenação
 dos dados, ele pode usar a ordenação do índice.
 
-Repare que as colunas do índice utilizado no exemplo foram declaradas em uma ordem específica `nome` seguido por `data_nascimento`, essa ordem das colunas do índice
-é importante, pois dependendo da ordem, o índice pode ou não ser utilizado. Para ilustrar isso, vamos recriar o índice invertendo a ordem dos campos:
-```sql
-DROP INDEX usuario_nome ON usuario;
-CREATE INDEX usuario_nome ON usuario (data_nascimento, nome);
 ```
-Ao executarmos o EXPLAIN nessa query, podemos ver que o índice agora não é mais utilizado, o banco volta a fazer o *full table scan*. Isso acontece pois, como mencionado
-anteriormente, os dados do índice são guardados ordenados, então teremos uma ordenação primária pela data de nascimento e uma secundária pelo nome. Como usuários que tem
-nome começando pela letra A podem nascer em qualquer momento do ano, para fazer a query o banco de dados teria que ler o índice inteiro (equivalente ao *full table scan*).
-Como uma regra geral, os índices devem ser criados colocando-se primeiro os atributos utilizados para filtros e depois os da ordenação.
++----+-------------+---------+------+---------------+--------------+---------+-------+------+-------------+
+| id | select_type | table   | type | possible_keys | key          | key_len | ref   | rows | Extra       |
++----+-------------+---------+------+---------------+--------------+---------+-------+------+-------------+
+|  1 | SIMPLE      | usuario | ref  | usuario_nome  | usuario_nome | 102     | const |    5 | Using where |
++----+-------------+---------+------+---------------+--------------+---------+-------+------+-------------+
+```
 
 ## Cuidados com índices
 
@@ -156,8 +153,5 @@ em seu uso:
  ```
  SELECT * FROM usuario WHERE data_nascimento > '2017-01-01';
  ```
-
- - O índice só é usado para ordenação quando todos os campos mais a esquerda na declaração do índice são utilizados como filtros na query. No exemplo, o índice pode ser utilizado em
- ordenações por `nome` em qualquer caso, ou por `data_nascimento` se o nome for utilizado no filtro.
 
  - No MySQL, o índice não é utilizado em buscas em que a condição no campo do índice é <> (diferente). Por exemplo, se a condição fosse `nome <> 'Alberto'` o índice não seria utilizado.
