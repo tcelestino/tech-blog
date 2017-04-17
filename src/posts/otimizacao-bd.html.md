@@ -147,7 +147,15 @@ em seu uso:
  combinações possíveis de campos da tabela.
 
  - Utilize os campos mais a esquerda na declaração do índice em suas queries. O índice criado como exemplo nesse post, `CREATE INDEX usuario_nome ON usuario (nome, data_nascimento)`,
- pode ser utilizado para otimizar queries que filtram apenas `nome` ou `nome` e `data_nascimento`, mas se tentarmos filtrar apenas por `data_nascimento`, o banco fará um *full table scan*.
+ pode ser utilizado para otimizar queries que filtram apenas `nome` ou `nome` e `data_nascimento`, mas se tentarmos filtrar apenas por `data_nascimento`, o banco fará um *full table scan*. Por exemplo, as seguintes queries conseguem utilizar o índice:
+ ```
+ SELECT * FROM usuario WHERE nome LIKE 'A%';
+ SELECT * FROM usuario WHERE nome LIKE 'A%' AND data_nascimento > '2017-01-01';
+ ```
+ mas a query abaixo, não:
+ ```
+ SELECT * FROM usuario WHERE data_nascimento > '2017-01-01';
+ ```
 
  - O índice só é usado para ordenação quando todos os campos mais a esquerda na declaração do índice são utilizados como filtros na query. No exemplo, o índice pode ser utilizado em
  ordenações por `nome` em qualquer caso, ou por `data_nascimento` se o nome for utilizado no filtro.
