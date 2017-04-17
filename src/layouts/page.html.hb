@@ -1,10 +1,10 @@
 <!doctype html>
-<html>
+<html lang="pt-br">
 <head>
     <meta charset='UTF-8'>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name='description' content='{{document.description}}'>
-    <meta name="google-site-verification" content="NqCILBTY8B8P-r_KF8BSZKH9kUQgQOEbXJvEMaB33vw" />
+    <meta name="google-site-verification" content="NqCILBTY8B8P-r_KF8BSZKH9kUQgQOEbXJvEMaB33vw">
     <meta name="theme-color" content="#FDC24F">
     <meta name="keywords" content="Elo7,tecnologia,post,desenvolvimento,blog,{{document.tags}}">
     <meta name="language" content="pt-br">
@@ -13,7 +13,7 @@
     <meta name="mobile-web-app-capable" content=yes>
 
     <meta property="fb:app_id" content="644444999041914">
-    <meta property="fb:admins" content="100003324447975" />
+    <meta property="fb:admins" content="100003324447975">
 
     <meta property="og:site_name" content="Elo7 Tech">
     <meta property="og:image" content="{{site.url}}/images/ico/elo7.png">
@@ -24,7 +24,7 @@
 
     <meta name="twitter:widgets:csp" content="on">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" value="Elo7 Tech - {{document.title}}" />
+    <meta name="twitter:title" value="Elo7 Tech - {{document.title}}">
 
     <meta property="twitter:title" content="Elo7 Tech - {{document.title}}">
     <meta property="twitter:domain" content="{{site.url}}">
@@ -84,10 +84,10 @@
             ga('send', 'pageview');
         </script>
     {{/if}}
-    <script async src='/js/asyncDefine.js'></script>
-    <script async src='/js/eventsAmd.js'></script>
-    <script async src='/js/ajax.js'></script>
-    <script async src='/js/doc.js'></script>
+    <script async src='/js/vendor/async-define.js'></script>
+    <script async src='/js/vendor/events-amd.js'></script>
+    <script async src='/js/vendor/ajax.js'></script>
+    <script async src='/js/vendor/doc.js'></script>
     <script async src='/js/post.js'></script>
 </body>
 </html>

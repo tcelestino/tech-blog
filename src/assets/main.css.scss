@@ -29,7 +29,7 @@ header.left-pane {
 }
 
 .hide {
-  display: none !important;
+    display: none !important;
 }
 
 .logo-container {
@@ -140,6 +140,7 @@ footer {
         font-size: 1.2em;
     }
 }
+
 @media (min-width: 800px) {
     header.left-pane {
         display: flex;
@@ -163,7 +164,7 @@ footer {
     }
 
     .navigation {
-				padding: 1em 0;
+        padding: 1em 0;
 
         .selectable {
             cursor: inherit;
