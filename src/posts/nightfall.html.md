@@ -75,10 +75,10 @@ Dessa forma, tínhamos uma injeção de dependência para as configurações do 
 }
 ```
 
-Ou seja, para cada nova classe que nossa _task_ utilize, precisamos instancia-la no *Job* um pouco ruim não acham?
+Ou seja, para cada nova classe que nossa _task_ (*Task* é a classe que efetivamente executa o processamento dos eventos; é uma classe Java simples anotada com [@Task](https://github.com/elo7/nightfall/wiki/how-to-use#dependency-injection-on-spark-jobs)) utilize, precisamos instancia-la no *Job*. Um pouco ruim não acham?
 
 ## Simplificando as coisas
-Para **resolver** nosso problema de injeção de dependência criamos um projeto chamado **Nightfall**, que utiliza [Netflix Governator](https://github.com/Netflix/governator/wiki) e [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com isso, fica muito mais simples a criação de novos *jobs*. Por fim possuímos injeção de dependência e inversão de controle nos nossos *jobs*. Exemplo de como fica o código com **Nightfall**:
+Para **resolver** nosso problema criamos um projeto chamado **Nightfall**, que utiliza o [Netflix Governator](https://github.com/Netflix/governator/wiki) e o [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com o **Nightfall**, simplificamos o código dos nossos novos jobs, utilizando inversão de controle e injeção de dependências. Um exemplo do código::
 ```java
 @KafkaSimple
 public class KafkaSimpleTest {
@@ -91,9 +91,9 @@ public class KafkaSimpleTest {
 Muito mais simples, não? O código acima provê um *job* **SparkStream** que utiliza o *Simple API* do _Kafka_.
 
 ## Criando um Stream
-Agora que já sabemos o que nos motivou a criar o projeto **Nightfall**, podemos ver como utilizá-lo para facilitar nossa vida :D
+Agora que já sabemos o que nos motivou a criar o **Nightfall**, vejamos como utilizá-lo para facilitar nossa vida :D
 
-Digamos que temos um produtor de evento que envia um evento do tipo *OrderStarted*
+Digamos que temos um produtor de evento que envia um payload como o json abaixo
 ```json
 {
 	"type": "OrderStarted",
@@ -129,7 +129,8 @@ public class OrderJob {
 }
 
 ```
-Após a criação do nosso *job*, precisamos criar a *task* para processar a mensagem. Utilizarei a implementação que usa *DataPoint*, que é um contrato que criamos para padronizar a estrutura das mensagens:
+Após a criação do nosso *job*, precisamos criar a *task* para processar a mensagem. Nossa task é uma classe Java simples, anotada com `@Task` (anotação fornecida pelo NightFall). Ao inicializar o NightfallApplication, é realizado um *classpath scan* para encontrar todas as classes que contem essa anotação.
+Utilizarei a implementação que usa *DataPoint* (*DataPoint é um objeto que criamos para representar o evento a ser processado, possuindo uma **data**, **tipo** e um **payload***), que é um contrato que criamos para padronizar a estrutura das mensagens:
 
 ```java
 @Task
@@ -149,16 +150,16 @@ public class HelloWorldTask implements StreamTaskProcessor<DataPoint<String>> {
 
 }
 ```
-Esse é um exemplo de *task* que processaria apenas os eventos de *OrderStarted*.
+Esse é um exemplo de *task* que processaria apenas os eventos do tipo *OrderStarted*.
 
-Agora que já sabemos como ele funciona e porque o criamos, vamos ver alguns exemplos. Primeiramente veremos um exemplo de *Stream*.
+Já sabemos porque o NightFall foi criado e como ele funciona, então vejamos mais alguns exemplos. Primeiramente veremos um exemplo de *Stream*.
 
 - Siga as intruções do [Quick Start Kafka](https://kafka.apache.org/082/documentation.html#quickstart) para:
   1. Instalação e startup. **OBS**: utilizar a versão 0.8.2 do _Kafka_.
   2. Crie um tópico no Kafka.
   3. Enviar mensagens para o tópico criado.
 
-Agora que possuímos um tópico, podemos criar um stream para consumir as mensagens. Para isso, podemos utilizar a estrutura do **Nightfall** e adicionar a task que criamos acima no sub-módulo *examples*.
+Uma vez que temos um tópico, podemos criar um stream para consumir as mensagens. Para isso, podemos utilizar o próprio projeto do **Nightfall** para adicionar a task que criamos acima, adicionando-a no sub-módulo *examples* do **Nightfall**.
 Além de adicionar o *job* e a *task*, precisaremos configurar o arquivo `nightfall.properties`:
 ```properties
 # Kafka Consumer
@@ -191,7 +192,7 @@ Após a configuração do arquivo localizado em `examples/src/main/resources` po
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
-Após o *job* ser iniciado podemos enviar um evento do tipo [OrderStarted](#L149), se estiver correto será impresso o *json* nos logs, caso enviemos um outro tipo de evento ele não sera exibido
+Após o *job* ser iniciado podemos enviar um evento do tipo **OrderStarted** (como no exemplo mais acima). Será impresso o *json* nos logs; caso enviemos um outro tipo de evento, ele não sera exibido.
 
 ## Criando um Batch
 Agora podemos criar nosso *job*, *task* e configurações para processar em *Batch* ao invés de *Stream*. Para isso, precisaremos criar o seguinte job:
@@ -242,7 +243,7 @@ batch.cassandra.keyspace=kafka
 batch.cassandra.datacenter=
 batch.history.ttl.days=7
 ```
-Por fim, mas não menos importante precisaremos criar um arquivo compactado contendo os eventos que serão processados pelo *Batch*. Esse arquivo pode ser um *txt* zipado com os eventos, localizado no caminho igual ao especificado no *file.source*.
+Como passamos para configuração `file.source` um arquivo local precisaremos criar o arquivo compactado contendo os eventos que serão processados pelo *Batch*. O arquivo que vamos utilizar é um txt (zipado) com os eventos, localizado no caminho especificado.
 Para executar o *Batch* executamos o seguinte comando:
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
@@ -250,5 +251,5 @@ Para executar o *Batch* executamos o seguinte comando:
 Podemos ver a impressão dos eventos que são do tipo *OrderStarted* no log da aplicação :)
 
 ### É hora da revisão
-Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Aqui [vocês](https://github.com/gadsc/spark-samples) podem acessar o repositório contento todos os códigos mostrados aqui ;D
-Por hoje é só pessoal mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/dúvida, deixe nos comentários e aguardem os próximos posts.
+Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Aqui [vocês](https://github.com/gadsc/spark-samples) podem acessar o repositório contendo todos os códigos mostrados aqui ;D
+Por hoje é só, pessoal, mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/dúvida, deixe nos comentários e aguardem os próximos posts.
