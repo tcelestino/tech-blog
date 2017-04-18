@@ -14,10 +14,10 @@ tags:
 ---
 
 ## O início
-Começamos a utilizar o [Spark](http://spark.apache.org/) no **Elo7** para processamento de métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** (que é o nossa principal aplicação) e consumimos em um sistema de agregação, removendo o acoplamento entre Métricas X Negócio
+Começamos a utilizar o [Spark](http://spark.apache.org/) no **Elo7** para processamento de métricas em tempo real. Enviamos eventos assíncronos a partir do nosso **Marketplace** (que é o nossa principal aplicação) e consumimos em um sistema de agregação, removendo o acoplamento entre métricas e negócio.
 
 ### Mas o que é Spark?
-[Spark](http://spark.apache.org/) é uma plataforma para computação em distribuída, é desenhada para ser rápida e de propósito geral e extende o modelo MapReduce, incluindo queries iterativas e processamento em batch e streaming.
+[Spark](http://spark.apache.org/) é uma plataforma para computação distribuída, que extende o modelo de MapReduce. É uma ferramenta de propósito geral e projetada para alta performance, incluindo queries iterativas e processamento em batch e streaming.
 
 ### Por que Spark?
 Precisávamos de uma ferramenta para análise em tempo real, e tínhamos preferência por opções com recursos de machine learning (que pensamos em utilizar futuramente). Optamos pelo Spark, que além de atender esses requisitos, possui integração nativa com o [Apache Kafka](https://kafka.apache.org/) e o [Amazon Kinesis](https://aws.amazon.com/kinesis/), que eram ferramentas cogitadas para Streams de mensagem.
@@ -78,7 +78,7 @@ Dessa forma, tínhamos uma injeção de dependência para as configurações do 
 Ou seja, para cada nova classe que nossa _task_ (*Task* é a classe que efetivamente executa o processamento dos eventos; é uma classe Java simples anotada com [@Task](https://github.com/elo7/nightfall/wiki/how-to-use#dependency-injection-on-spark-jobs)) utilize, precisamos instancia-la no *Job*. Um pouco ruim não acham?
 
 ## Simplificando as coisas
-Para **resolver** nosso problema criamos um projeto chamado **Nightfall**, que utiliza o [Netflix Governator](https://github.com/Netflix/governator/wiki) e o [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com o **Nightfall**, simplificamos o código dos nossos novos jobs, utilizando inversão de controle e injeção de dependências. Um exemplo do código::
+Para **resolver** nosso problema criamos um projeto chamado **Nightfall**, que utiliza o [Netflix Governator](https://github.com/Netflix/governator/wiki) e o [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com o **Nightfall**, simplificamos o código dos nossos novos jobs, utilizando inversão de controle e injeção de dependências. Um exemplo do código:
 ```java
 @KafkaSimple
 public class KafkaSimpleTest {
@@ -93,7 +93,7 @@ Muito mais simples, não? O código acima provê um *job* **SparkStream** que ut
 ## Criando um Stream
 Agora que já sabemos o que nos motivou a criar o **Nightfall**, vejamos como utilizá-lo para facilitar nossa vida :D
 
-Digamos que temos um produtor de evento que envia um payload como o json abaixo
+Digamos que temos um produtor de evento que envia um payload como o json abaixo:
 ```json
 {
 	"type": "OrderStarted",
@@ -251,5 +251,5 @@ Para executar o *Batch* executamos o seguinte comando:
 Podemos ver a impressão dos eventos que são do tipo *OrderStarted* no log da aplicação :)
 
 ### É hora da revisão
-Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. Aqui [vocês](https://github.com/gadsc/spark-samples) podem acessar o repositório contendo todos os códigos mostrados aqui ;D
+Nesse post vimos o que nos motivou a criar o *Nightfall*, as configurações básicas para conseguir criar um *Stream* e um *Batch*. [Aqui](https://github.com/gadsc/spark-samples) vocês podem acessar o repositório contendo todos os códigos mostrados nesse post ;D
 Por hoje é só, pessoal, mas iremos fazer uma série de posts para explicar mais usos do *Nigthfall*. Gostou? Se tiver algo para acrescentar/sugerir/dúvida, deixe nos comentários e aguardem os próximos posts.
