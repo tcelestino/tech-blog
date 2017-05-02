@@ -3,7 +3,7 @@ title: Migrando para HTTPS
 date: 2017-05-02
 category: devops
 layout: post
-description: Recentemente o Elo7 passou a ser servido unicamente em HTTPS. Essa mudança, que pode parecer simples à primeira vista, tem uma série de motivos e também implicações, que serão discutidas neste artigo.
+description: Recentemente, o Elo7 passou a ser servido unicamente em HTTPS. Essa mudança, que pode parecer simples à primeira vista, tem uma série de motivos e também implicações, que serão discutidas neste artigo.
 author: edsonmarquezani
 tags:
   - https
