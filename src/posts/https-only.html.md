@@ -1,6 +1,6 @@
 ---
 title: Migrando para HTTPS
-date: 2017-03-06
+date: 2017-05-02
 category: devops
 layout: post
 description: Recentemente o Elo7 passou a ser servido unicamente em HTTPS. Essa mudança, que pode parecer simples à primeira vista, tem uma série de motivos e também implicações, que serão discutidas neste artigo.
@@ -67,7 +67,7 @@ Toda migração precisa ser amigável para os usuários, portanto, um requisito 
 # Trecho de configuração que deve ir no server HTTP (porta 80)
 location / {
   return 302 https://${http_host}${request_uri};
-}  
+}
 ```
 
 Um ponto de atenção importante é com relação ao tipo de _redirect_ retornado. O protocolo _HTTP_ suporta, entre outros, dois tipos principais e mais usados de _redirect_:
