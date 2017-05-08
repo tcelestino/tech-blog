@@ -84,11 +84,11 @@ var sendNavigationTimingMetrics = function() {
       domLoaded = Math.round(performanceTiming.domContentLoadedEventStart - navStart),
       windowLoaded = Math.round(performanceTiming.loadEventStart - navStart);
 
-  var valuesIsValid = function(value) {
+  var _valuesIsValid = function(value) {
     return value > 0 && value < 1e6;
   };
 
-  if (valuesIsValid(responseEnd) && valuesIsValid(domLoaded) && valuesIsValid(windowLoaded)) {
+  if (_valuesIsValid(responseEnd) && _valuesIsValid(domLoaded) && _valuesIsValid(windowLoaded)) {
     ga('send', 'event', {
       eventCategory: 'Navigation Timing',
       eventAction: 'track',

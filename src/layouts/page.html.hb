@@ -11,7 +11,7 @@
     <link rel='stylesheet' href='/posts.css'>
     <link rel='stylesheet' href='/post.css'>
     <link rel="icon" type="image/png" href="/images/favicon.ico">
-    <script>addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+    <script>window.addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage">
     <header class="left-pane">
