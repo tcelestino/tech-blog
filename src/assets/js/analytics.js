@@ -32,12 +32,8 @@ window.ga = window.ga || function() {
   ga.q.push(arguments);
 };
 
-if (document.body.dataset.env === 'development') {
-  ga('create', 'UA-3692628-30', 'auto');
-} else if (document.body.dataset.env === 'production') {
-  ga('create', 'UA-3692628-29', 'auto');
-}
-
+var gaCode = document.body.dataset.gaCode;
+ga('create', gaCode, 'auto');
 ga('set', 'transport', 'beacon');
 
 var dimensions = {

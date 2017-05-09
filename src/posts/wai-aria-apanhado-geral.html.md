@@ -2,9 +2,9 @@
 date: 2017-04-03
 category: front-end
 tags:
-  - HTML
-  - semântica
-  - Acessibilidade
+  - html
+  - semantica
+  - acessibilidade
 authors: [rapahaeru]
 layout: post
 title: Um apanhado geral sobre o WAI-ARIA
@@ -79,8 +79,8 @@ Todos os widgets interativos devem ser preparados via script para responder as a
 
 Por exemplo, se estiver usando o `role="button"`, o elemento deve ser capaz de receber o foco e o usuário deve ser capaz de ativar a ação associada ao elemento usando a tecla **enter** (no Windows) ou o **retorno** (MAC OS) e a tecla de espaço.
 
-### Quarta: Só omita os elementos que realmente não estejam disponíveis para o usuário  
-Não use `aria-hidden="true"` se o elemento estiver visível. 
+### Quarta: Só omita os elementos que realmente não estejam disponíveis para o usuário
+Não use `aria-hidden="true"` se o elemento estiver visível.
 
 Isso é muito comum de ocorrer quando os estados são modificados via JavaScript.
 Se o elemento estiver escondido, estando com `aria-hidden="true"`, e for ordenada a sua exibição, o atributo `aria-hidden` deverá ser setado para *false* imediatamente.

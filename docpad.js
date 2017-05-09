@@ -1,37 +1,64 @@
-var moment = require('moment');
+const moment = require('moment'),
+	categories = require('./src/json/categories.json'),
+	categoriesTask = require('./src/tasks/categories'),
+	ampTask = require('./src/tasks/amp'),
+	sizeOf = require('image-size');
 
-docpadConfig = function() {
+const orderByDate = (postA, postB) => {
+	let dateA = postA.toJSON().date,
+		dateB = postB.toJSON().date;
+	return moment(dateB).unix() - moment(dateA).unix();
+};
+
+const docpadConfig = function() {
 	return {
-		documentsPaths: ['documents', 'posts', 'assets', 'publishers'],
+		documentsPaths: ['documents', 'posts', 'assets', 'publishers', 'amp'],
 
 		plugins: {
+			tags: {
+				injectDocumentHelper: function(document) {
+					document.setMeta({
+						layout: 'tags'
+					})
+				}
+			},
 			handlebars: {
 				helpers: {
-					getCollection: function(name) {
+					getCollection(name) {
 						return this.getCollection(name).toJSON();
 					},
 					getPagedCollection: function(name) {
 						return this.getPageCollection(name).toJSON();
 					},
-					dateAsText: function(date) {
+					getPostsWithTag(tagName) {
+						return this.getCollection('html')
+							.setComparator(orderByDate)
+							.findAll({
+								layout: 'post',
+								tags: {
+									$has: tagName
+								}
+							})
+							.toJSON();
+					},
+					getSlug(text) {
+						return text.toLowerCase().replace(/(\s|\.)/g, '-');
+					},
+					dateAsText(date) {
 						return moment(date).utc().format('DD/MM/YYYY');
 					},
-					getCategories: function() {
-						return [
-							{ category: "front-end" },
-							{ category: "back-end" },
-							{ category: "devops" },
-							{ category: "vagas" },
-							{ category: "mobile" },
-							{ category: "eventos" }
-						];
+					getCategories() {
+						return categories;
 					},
-					getEnvironment: function() {
-						return this.getEnvironment() === "static" ? "production" : "development";
+					getEnvironment() {
+						return this.getEnvironment() === 'static' ? 'production' : 'development';
 					},
-					contain: function(lvalue, rvalue, options) {
+					getGaCode() {
+						return this.getEnvironment() === 'static' ? 'UA-3692628-29' : 'UA-3692628-30';
+					},
+					contain(lvalue, rvalue, options) {
 						if (arguments.length < 3) {
-							throw new Error("Handlebars Helper equal needs 2 parameters");
+							throw new Error('Handlebars Helper equal needs 2 parameters');
 						}
 
 						if( lvalue.indexOf(rvalue) == -1 ) {
@@ -40,11 +67,10 @@ docpadConfig = function() {
 							return options.fn(this);
 						}
 					},
-					ellipsis: function (str, len) {
+					ellipsis(str, len) {
 						if (len > 0 && str.length > len) {
 							return str.substring(0, (len - 3)) + '...';
 						}
-
 						return str;
 					},
 					sum: function(number1, number2) {
@@ -59,7 +85,49 @@ docpadConfig = function() {
 					   } else {
 						  return options.fn(this);
 					   }
-				   },
+					},
+					replaceImagesToAmpTags(content) {
+						const matches = content.match(/<img[^>]+>/g),
+							fixedWidthSize = 272;
+							content = content.replace(/ style=['"][^"']+['"]/g, '');
+						if(!matches) return content;
+
+						let replacedContent = content;
+						matches.forEach((imgTag, index) => {
+							let imgSource = imgTag.match(/src=['"]([^'"]+)['"]/)[1],
+								alt = imgTag.match(/alt=['"]([^'"]+)['"]/)[1],
+								dimensions = sizeOf(`${__dirname}/src/assets/${imgSource.replace('../', '')}`),
+								ratio = fixedWidthSize/dimensions.width,
+								adjustedWidth = Math.round(dimensions.width * ratio),
+								adjustedHeight = Math.round(dimensions.height * ratio),
+								id = 'lightbox-' + index;
+							let ampImg = `<div class='post-image'><amp-img on='tap:${id}' role='button' tabindex='0' src='../${imgSource}' layout='fixed' height='${adjustedHeight}' width='${adjustedWidth}' alt='${alt}'></amp-img><amp-image-lightbox id='${id}' layout='nodisplay'></amp-image-lightbox></div>`;
+							replacedContent = replacedContent.replace(new RegExp(imgTag, 'g'), ampImg);
+						});
+						return replacedContent;
+					},
+					getCanonicalURI(uri) {
+						if (uri === 'amp-home') {
+							return '';
+						}
+						return uri.replace('amp-', '') + '/';
+					},
+					getAmpURI(uri) {
+						if (uri === 'index') {
+							return 'amp/home/';
+						}
+						return `amp/${uri}/`;
+					},
+					hasAmpPage(uri, options) {
+						if (arguments.length < 2) {
+							throw new Error('Handlebars Helper equal needs 1 parameters');
+						}
+						if(!uri.startsWith('tags-')) {
+							return options.fn(this);
+						} else {
+							return options.inverse(this);
+						}
+					},
 				}
 			},
 			cleanurls: {
@@ -76,7 +144,7 @@ docpadConfig = function() {
 
 		templateData: {
 			site: {
-				url: "http://localhost:9778"
+				url: 'http://localhost:9778'
 			}
 		},
 
@@ -84,9 +152,16 @@ docpadConfig = function() {
 			static: {
 				templateData: {
 					site: {
-						url: "http://engenharia.elo7.com.br"
+						url: 'http://engenharia.elo7.com.br'
 					}
 				}
+			}
+		},
+
+		events: {
+			populateCollectionsBefore: () => {
+				categoriesTask(categories);
+				ampTask(categories);
 			}
 		},
 
@@ -94,99 +169,29 @@ docpadConfig = function() {
 			var collections = {
 				posts : function() {
 					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
+								.findAll({layout: 'post'})
+								.setComparator(orderByDate);
 				},
-				frontend : function() {
+				postsAmp() {
 					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "front-end";
+								.findAll({
+									relativeOutDirPath: 'amp',
+									layout: 'post-amp'
 								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
-				backend : function() {
-					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "back-end";
-								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
-				devops : function() {
-					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "devops";
-								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
-				design : function() {
-					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "design";
-								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
-				vagas : function() {
-					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "vagas";
-								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
-				mobile : function() {
-					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "mobile";
-								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
-				eventos : function() {
-					return this.getCollection('html')
-								.findAllLive({layout: 'post'})
-								.setFilter('isCategory', function(model) {
-									return model.attributes.category == "eventos";
-								})
-								.setComparator(function(postA, postB) {
-									var dateA = postA.toJSON().date;
-									var dateB = postB.toJSON().date;
-									return moment(dateB).unix() - moment(dateA).unix();
-								});
-				},
+								.setComparator(orderByDate);
+				}
+			};
 
-			}
+			categories.forEach(category => {
+				collections[category.category] = function() {
+					return this.getCollection('html')
+						.findAll({layout: 'post'})
+						.setFilter('isCategory', function(model) {
+							return model.attributes.category === category.category;
+						})
+						.setComparator(orderByDate);
+				};
+			});
 			return collections;
 		}()
 	}

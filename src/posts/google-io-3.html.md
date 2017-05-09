@@ -54,12 +54,12 @@ O debug ficou muito melhor: antes, os breakpoints ficavam associados à linha qu
 
 Com o JavaScript ganhando novos recursos de programação (como, por exemplo, promises e async/await functions), o devtools também teve que melhorar. Agora podemos ver se estamos dentro de uma função que foi executada de maneira asynchronous no stack trace. Por exemplo:
 
-![stack](https://cloud.githubusercontent.com/assets/1116568/26766999/a3947874-4971-11e7-8bb0-11e5627e3052.png)
-![stack-promises](https://cloud.githubusercontent.com/assets/1116568/26767000/a3975788-4971-11e7-8198-c65f54aef461.png)
+![stack](../images/google-io-3-1.png)
+![stack-promises](../images/google-io-3-2.png)
 
 Além disso, o debug de arrow functions sempre foi um problema (já que podemos fazer tudo em uma linha de código), mas agora podemos inserir breakpoints por colunas e não apenas por linha como antes:
 
-![breakpoint-columns](https://cloud.githubusercontent.com/assets/1116568/26767010/c75354c4-4971-11e7-853b-666cc93b7f11.png)
+![breakpoint-columns](../images/google-io-3-3.png)
 
 Para quem gosta de debuggar seus projetos Node com o Chrome, também houve melhoria.
 
@@ -67,7 +67,7 @@ O novo painel de Performance vai nos ajudar a encontrar pontos no código que po
 
 Com a nova seção de Coverage dentro do painel Console, será possível ver exatamente qual parte do código e o quanto (em porcentagem) de nossos css/js está sendo realmente utilizado, e a ferramenta é inteligente o bastante para entender que alguns estilos e funções são aplicadas apenas se houver interações do usuário, de modo que essa porcentagem muda em tempo real conforme o uso da aplicação.
 
-![coverage](https://cloud.githubusercontent.com/assets/1116568/26767014/d7be09e4-4971-11e7-9a40-8be1f2c5bee0.png)
+![coverage](../images/google-io-3-4.png)
 
 Outros detalhes interessantes:
 - Screenshots de telas inteiras mesmo com barra de rolagem;
@@ -99,7 +99,7 @@ Tópicos recomendados para uma boa compreensão:
 
 ## Cloud / Firebase
 Diversas sessões sobre Firebase ocorreram durante o evento, focando principalmente em autenticação por número de telefone, hosting e realtime.
-![Cloud / Firebase](../images/google-io-3.png)
+![Cloud / Firebase](../images/google-io-3-5.png)
 - [https://firebase.google.com/](https://firebase.google.com/)
 
 ## Conclusão

@@ -32,6 +32,9 @@
 	<meta property="twitter:image" content="{{site.url}}/images/ico/elo7.png">
 
 	<link rel="canonical" href="{{site.url}}">
+	{{#hasAmpPage document.slug}}
+		<link rel='amphtml' href='{{site.url}}/{{getAmpURI document.slug}}' />
+	{{/hasAmpPage}}
 
 	<title>Elo7 Tech - {{document.title}}</title>
 	<link rel="stylesheet" href="/reset.css">
@@ -42,7 +45,7 @@
 	<script>window.addEventListener("error", window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 	<script src="/js/vendor/async-define.js"></script>
 </head>
-<body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}">
+<body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}" data-ga-code="{{getGaCode}}">
 	<header class="left-pane">
 		<div class="logo-container">
 			<a rel="home" itemprop="url" href="/" class="logo">{{site.title}}</a>

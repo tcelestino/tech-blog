@@ -8,7 +8,7 @@ authors: [rapahaeru]
 tags:
   - html
   - semantica
-  - SEO
+  - seo
   - acessibilidade
   - front-end
 ---

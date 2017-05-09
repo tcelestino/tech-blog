@@ -4,6 +4,8 @@ autoprefix: true
 
 @import 'colors';
 
+$left-panel-width: 215px;
+
 html {
     height: 100%;
     box-sizing: border-box;
@@ -14,6 +16,7 @@ body {
     font-weight: 300;
     min-height: 100%;
     position: relative;
+    background: linear-gradient(to bottom, #{$yellow-light} 200px, #{$lightly-dark-white} 200px) no-repeat #{$lightly-dark-white};
 }
 
 main {
@@ -21,7 +24,7 @@ main {
 }
 
 header.left-pane {
-    background-color: $yellow-light;
+    background-color: map-get($colors-background, gray);
     text-align: center;
     position: relative;
 
@@ -53,8 +56,6 @@ header.left-pane {
         height: 40px;
         text-indent: -9999px;
         display: inline-block;
-
-        -webkit-filter: brightness(100); /*REMOVER*/
     }
 }
 
@@ -124,7 +125,7 @@ header.left-pane {
     text-align: left;
 
     a {
-        color: map-get($colors-text, white);
+        color: map-get($colors-text, lightgray);
         text-decoration: none;
         padding: 0.5em 0.2em;
         display: block;
@@ -133,7 +134,7 @@ header.left-pane {
         font-weight: 100;
 
         &:hover {
-            color: darken($yellow-default, 20%);
+            color: map-get($colors-text, white);
             text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.20);
         }
     }
@@ -205,8 +206,9 @@ footer {
         padding: 0 2em;
         flex-direction: column;
         align-items: center;
-        width: 210px; /* Navigation pane size */
+        width: $left-panel-width;
         box-sizing: border-box;
+        top: 0;
 
         .social {
             display: block;
@@ -246,14 +248,10 @@ footer {
         }
     }
 
-    body {
-        background-color: $lightly-dark-white;
-    }
-
     footer {
         background-color: $lightly-dark-white;
         border-top: 1px solid map-get($colors-border, light-gray);
-        margin-left: 210px; /* Navigation pane size */
+        margin-left: $left-panel-width;
         background-color: map-get($colors-text, white);
         padding: 2em 1em;
 
@@ -263,18 +261,10 @@ footer {
             font-size: 1em;
         }
     }
-}
 
-::-webkit-scrollbar {
-    width: 0.5em;
-}
-
-::-webkit-scrollbar-track {
-    background-color: map-get($colors-text, white);
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: $yellow-default;
+    main {
+        margin-left: $left-panel-width;
+    }
 }
 
 @media(max-width: 500px) {

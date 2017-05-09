@@ -1,7 +1,7 @@
 ---
-layout: page
+layout: page-amp
 ---
-<article itemprop='blogPost' itemscope itemtype='http://schema.org/BlogPosting' class='post-content'>
+<article itemprop='blogPost' itemscope itemtype='http://schema.org/BlogPosting' class='post-card post-content'>
 	<h1 itemprop='name' class='title'>{{document.title}}</h1>
 	<div class='post-meta'>
 		<p class='date'>
@@ -11,26 +11,16 @@ layout: page
 
 		<article>
 			{{#each document.authors}}
-				<a data-author='{{this}}' itemprop='author' itemscope itemtype='http://schema.org/Person' rel='author' href='/{{this}}' class='author'>
-					<meta itemprop='url' content='/{{this}}'>
-					<img class='hide avatar' width='50px' height='50px' itemprop='image'>
-					<p itemprop='name' class='publisher' data-author='{{this}}'>@{{this}}</p>
+				<a data-author='{{this}}' itemprop='author' itemscope itemtype='http://schema.org/Person' rel='author' href='/amp/{{this}}' class='author'>
+					<meta itemprop='url' content='/amp/{{this}}'>
+					<span itemprop='name' class='publisher' data-author='{{this}}'>@{{this}}</span>
+					<meta itemprop='worksFor' content='Elo7 Serviços de Informática SA'>
 				</a>
 			{{/each}}
-
-			<meta itemprop='worksFor' content='Elo7 Serviços de Informática SA'>
 		</article>
 	</div>
-	<div itemprop='articleBody'>
+	<div class='content' itemprop='articleBody'>
 		{{{content}}}
-
-		<ul class='tag-list'>
-		{{#each document.tags}}
-			<li>
-				<a href='/tags/{{getSlug . }}'>{{.}}</a>
-			</li>
-		{{/each}}
-		</ul>
 		<section class='share'>
 			<a href='https://www.facebook.com/dialog/share?app_id=644444999041914&href={{site.url}}{{document.url}}&display=popup' rel='noopener' target='_blank' class='link-share facebook' title='Clique para compartilhar no Facebook'>
 				Compartilhar no facebook
@@ -38,11 +28,6 @@ layout: page
 			<a href='https://twitter.com/intent/tweet?text={{document.title}}&url={{site.url}}{{document.url}}&hashtags=elo7tech' rel='noopener' target='_blank' class='link-share twitter' title='Clique para compartilhar no Twitter'>
 				Compartilhar no twitter
 			</a>
-			<a href='{{site.url}}{{document.url}}' class='link-share hide copy' title='Clique para copiar a url'>
-				Copiar URL
-			</a>
-			<span class='copy-success'>Link copiado</span>
-			<input type='url' value='{{site.url}}{{document.url}}' class='link-input'>
 		</section>
 	</div>
 	<span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"> <!--Change for a post image-->
@@ -62,21 +47,4 @@ layout: page
 		</span>
 	</span>
 	<meta itemprop='mainEntityOfPage' content='Elo7 Serviços de Informática SA'/>
-
-	<div id='disqus_thread'></div>
-
-	<script>
-		var disqus_shortname = 'engenhariaelo7';
-		var disqus_identifier = '{{dateAsText document.date}}:{{document.url}}';
-		var disqus_url = '{{site.url}}{{document.url}}';
-
-		(function() {
-			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-		})();
-	</script>
-	<noscript>Habilite o JavaScript para ver os comentários</noscript>
 </article>
-<script async src="/js/post.js"></script>
-

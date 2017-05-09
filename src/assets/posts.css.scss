@@ -9,6 +9,14 @@ autoprefix: true
 		text-decoration: none;
 		color: map-get($colors-text, black);
 	}
+
+	> .title {
+		font-size: 2.5em;
+		color: map-get($colors-text, darker);
+		margin-top: 0.5em;
+		margin-bottom: 1em;
+	}
+
 	.post-card {
 		margin: 1em 0;
 		padding: 2em 0;
@@ -121,6 +129,8 @@ autoprefix: true
 
 @media (min-width: 800px) {
 	.posts-container {
+		padding: 1em 15%;
+
 		.post-card {
 			padding: 2em;
 			background-color: $white;

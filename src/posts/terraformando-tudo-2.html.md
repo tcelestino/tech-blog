@@ -8,8 +8,8 @@ authors: [lucasvasconcelos]
 tags:
   - devops
   - terraform
-  - IaC
-  - Infrastructure as Code
+  - iac
+  - infrastructure as code
   - infra
 ---
 

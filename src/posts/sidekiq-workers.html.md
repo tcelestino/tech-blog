@@ -6,9 +6,9 @@ layout: post
 category: back-end
 description: We use Sidekiq to process messages from images conversion to shipping tickets' generation...
 tags:
-  - amazon-elastic-compute-cloud
-  - amazon-web-services
-  - auto-scaling
+  - amazon elastic compute cloud
+  - amazon web services
+  - auto scaling
   - cloudwatch
   - netflix
 ---
