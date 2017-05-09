@@ -10,28 +10,17 @@ define(['doc', 'ajax'], function($, ajax) {
 		return 'execCommand' in document && document.queryCommandSupported('copy');
 	}
 
-	if(supportsCopy() && $copy) {
+	if(supportsCopy() && $copy.isPresent()) {
 		$copy.removeClass('hide');
 
 		$copy.on('click', function(evt) {
 			evt.preventDefault();
 
-			var $this = $(this);
-			$this.closest('.share').find('.link-input').first().select();
-
-			try {
-				if (document.execCommand('copy')) {
-					console.log('Copiado com sucesso');
-				} else {
-					console.log('Erro ao copiar');
-				}
-			} catch(e) {
-				console.log('Erro ao copiar');
-			}
+			$(this).closest('.share').find('.link-input').first().select();
 		});
 	}
 
-	if($author) {
+	if($author.isPresent()) {
 		ajax.get(GITHUB_URI + dataAuthor, {}, {
 			success: function(response, xhr) {
 				var userInfo = {

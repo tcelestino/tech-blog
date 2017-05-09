@@ -24,7 +24,7 @@
     "copy-doc-amd": "cp node_modules/elo7-doc-amd/doc.js src/assets/js/vendor/doc.js",
     "copy-async-amd": "cp node_modules/define-async/async-define.js src/assets/js/vendor/async-define.js",
     "copy-events-amd": "cp node_modules/elo7-events-amd/events-amd.js src/assets/js/vendor/events-amd.js",
-    "copy": "npm run copy-ajax-amd && npm run copy-events-amd && npm run copy-async-amd && npm run copy-doc-amd",
+    "copy": "mkdir -p src/assets/js/vendor && npm run copy-ajax-amd && npm run copy-events-amd && npm run copy-async-amd && npm run copy-doc-amd",
     "postinstall": "npm run copy"
   }
 }

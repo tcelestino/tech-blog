@@ -10,7 +10,7 @@ layout: page
 
       <article itemprop="author" itemscope itemtype="http://schema.org/Person">
         <a rel="author" itemprop="url" href="https://github.com/{{document.author}}" target="_blank" class="author">
-          <img class='hide avatar' width='50px' height='50px'/>
+          <img class="hide avatar" width="50px" height="50px"/>
           <p itemprop="publisher" data-author="{{document.author}}" class="publisher">@{{document.author}}</p>
         </a>
 
@@ -24,10 +24,10 @@ layout: page
       <a href="https://www.facebook.com/dialog/share?app_id=644444999041914&href={{site.url}}{{document.url}}&display=popup" rel="noopener" target="_blank" class="link-share facebook" title="Clique para compartilhar no Facebook">
         Compartilhar no facebook
       </a>
-      <a href='https://twitter.com/intent/tweet?text=Confira o post "{{document.title}}" que acabou de sair! &url={{site.url}}{{document.url}}&hashtags=techBlog7' rel="noopener" target="_blank" class="link-share twitter" title="Clique para compartilhar no Twitter">
+      <a href="https://twitter.com/intent/tweet?text=Confira o post "{{document.title}}" que acabou de sair! &url={{site.url}}{{document.url}}&hashtags=elo7tech" rel="noopener" target="_blank" class="link-share twitter" title="Clique para compartilhar no Twitter">
         Compartilhar no twitter
       </a>
-      <a href="{{site.url}}{{document.url}}" class="link-share hide copy" title="Clique copiar a url">
+      <a href="{{site.url}}{{document.url}}" class="link-share hide copy" title="Clique para copiar a url">
         Copiar URL
       </a>
       <input type="url" value="{{site.url}}{{document.url}}" class="link-input">
@@ -48,3 +48,4 @@ layout: page
   </script>
   <noscript>Habilite o JavaScript para ver os comentários</noscript>
 </article>
+<script async src="/js/post.js"></script>

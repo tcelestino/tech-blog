@@ -86,17 +86,21 @@ autoprefix: true
 
 @media (min-width: 800px) {
     .post-content {
-        padding: 1em 23%;
+      padding: 1em 23%;
     }
 
     .share {
       position: fixed;
-      top: 21%;
+      top: 3.5em;
       right: 10%;
 
       .link-share {
         display: block;
         margin-bottom: 0.5em;
+        opacity: 0.8;
+        &:hover {
+          opacity: 1;
+        }
       }
     }
 }
