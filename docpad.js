@@ -24,8 +24,8 @@ docpadConfig = function() {
                             { category: "eventos" }
                         ];
                     },
-                    isProduction: function() {
-                        return this.getEnvironment() === "static";
+                    getEnvironment: function() {
+                        return this.getEnvironment() === "static" ? "production" : "development";
                     },
                 }
             },

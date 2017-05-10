@@ -22,18 +22,30 @@ if (typeof Object.assign != 'function') {
   };
 }
 
-window.ga = window.ga || function(){
-  (ga.q = ga.q || []).push(arguments);
+// uuid function from https://gist.github.com/jed/982883
+function uuid(a){return a?(a^Math.random()*16>>a/4).toString(16):([1e7]+-1e3+-4e3+-8e3+-1e11).replace(/[018]/g,uuid)}
+
+window.ga = window.ga || function() {
+  if (!ga.q) {
+    ga.q = [];
+  }
+  ga.q.push(arguments);
 };
 
-ga('create', 'UA-3692628-29', 'auto', 'prod');
-ga('create', 'UA-3692628-30', 'auto', 'test');
+if (document.body.dataset.env === 'development') {
+  ga('create', 'UA-3692628-30', 'auto');
+} else if (document.body.dataset.env === 'production') {
+  ga('create', 'UA-3692628-29', 'auto');
+}
 
 ga('set', 'transport', 'beacon');
-ga('send', 'pageview');
 
 var dimensions = {
-  CLIENT_ID: 'dimension1'
+  CLIENT_ID: 'dimension1',
+  WINDOW_ID: 'dimension2',
+  HIT_ID: 'dimension3',
+  HIT_TIME: 'dimension4',
+  HIT_TYPE: 'dimension5',
 };
 
 var metrics = {
@@ -49,6 +61,18 @@ ga(function(tracker) {
   }
 });
 
+ga('set', dimensions.WINDOW_ID, uuid());
+
+ga(function(tracker) {
+  var originalBuildHitTask = tracker.get('buildHitTask');
+  tracker.set('buildHitTask', function(model) {
+    model.set(dimensions.HIT_ID, uuid(), true);
+    model.set(dimensions.HIT_TIME, String(+new Date), true);
+    model.set(dimensions.HIT_TYPE, model.get('hitType'), true);
+    originalBuildHitTask(model);
+  });
+});
+
 var trackError = function(error, fieldsObj) {
   ga('send', 'event', Object.assign({
     eventCategory: 'Script',
@@ -61,7 +85,8 @@ var trackError = function(error, fieldsObj) {
 var loadErrorEvents = window.__e && window.__e.q || [],
     fieldsObj = { eventAction: 'uncaught error' };
 
-for (var event of loadErrorEvents) {
+for (var i = 0; i < loadErrorEvents.length; i++) {
+  var event = loadErrorEvents[i];
   trackError(event.error, fieldsObj);
 }
 
@@ -84,20 +109,25 @@ var sendNavigationTimingMetrics = function() {
       domLoaded = Math.round(performanceTiming.domContentLoadedEventStart - navStart),
       windowLoaded = Math.round(performanceTiming.loadEventStart - navStart);
 
-  var _valuesIsValid = function(value) {
+  var _valueIsValid = function(value) {
     return value > 0 && value < 1e6;
   };
 
-  if (_valuesIsValid(responseEnd) && _valuesIsValid(domLoaded) && _valuesIsValid(windowLoaded)) {
-    ga('send', 'event', {
+  if (_valueIsValid(responseEnd) && _valueIsValid(domLoaded) && _valueIsValid(windowLoaded)) {
+    var eventData = {
       eventCategory: 'Navigation Timing',
       eventAction: 'track',
-      nonInteraction: true,
-      [metrics.RESPONSE_END_TIME]: responseEnd,
-      [metrics.DOM_LOAD_TIME]: domLoaded,
-      [metrics.WINDOW_LOAD_TIME]: windowLoaded,
-    });
+      nonInteraction: true
+    };
+
+    eventData[metrics.RESPONSE_END_TIME] = responseEnd;
+    eventData[metrics.DOM_LOAD_TIME] = domLoaded;
+    eventData[metrics.WINDOW_LOAD_TIME] = windowLoaded;
+
+    ga('send', 'event', eventData);
   }
 };
 
 sendNavigationTimingMetrics();
+
+ga('send', 'pageview');
