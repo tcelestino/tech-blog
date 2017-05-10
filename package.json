@@ -4,6 +4,7 @@
   "description": "Tech Blog",
   "dependencies": {
     "docpad": "6.79.0",
+    "define-async": "1.2.0",
     "docpad-plugin-autoprefix": "2.0.0",
     "docpad-plugin-cleanurls": "2.8.1",
     "docpad-plugin-ghpages": "2.4.4",
@@ -11,10 +12,19 @@
     "docpad-plugin-highlightjs": "2.4.0",
     "docpad-plugin-markit": "2.4.0",
     "docpad-plugin-nodesass": "2.8.2",
-    "moment": "2.17.1"
+    "moment": "2.17.1",
+    "elo7-ajax-amd": "1.3.2",
+    "elo7-doc-amd": "1.1.1",
+    "elo7-events-amd": "1.1.3"
   },
   "main": "node_modules/.bin/docpad-server",
   "scripts": {
-    "start": "node_modules/.bin/docpad-server"
+    "start": "node_modules/.bin/docpad-server",
+    "copy-ajax-amd": "cp node_modules/elo7-ajax-amd/ajax.js src/assets/js/vendor/ajax.js",
+    "copy-doc-amd": "cp node_modules/elo7-doc-amd/doc.js src/assets/js/vendor/doc.js",
+    "copy-async-amd": "cp node_modules/define-async/async-define.js src/assets/js/vendor/async-define.js",
+    "copy-events-amd": "cp node_modules/elo7-events-amd/events-amd.js src/assets/js/vendor/events-amd.js",
+    "copy": "mkdir -p src/assets/js/vendor && npm run copy-ajax-amd && npm run copy-events-amd && npm run copy-async-amd && npm run copy-doc-amd",
+    "postinstall": "npm run copy"
   }
 }

@@ -10,22 +10,26 @@ body {
 }
 
 header.left-pane {
-    background-color: $yellow-default;
+    background-color: $yellow-light;
     text-align: center;
     position: relative;
 
     .social {
         width: 2em;
         height: 2em;
-        position: absolute;
         display: none;
     }
     .github {
         background-size: 2em 2em;
         background-repeat: no-repeat;
         background-image: url('images/github_icon.svg');
+        margin-bottom: 2em;
     }
 
+}
+
+.hide {
+    display: none !important;
 }
 
 .logo-container {
@@ -42,9 +46,10 @@ header.left-pane {
         -webkit-filter: brightness(100); /*REMOVER*/
     }
 }
+
 .navigation {
-    margin: 0 2em;
-    padding: 1em 0;
+    flex: 1;
+    padding: 1em;
 
     .categories-switch {
         display: none;
@@ -86,7 +91,7 @@ header.left-pane {
             display: block;
             position: absolute;
             bottom: .50em;
-            right: -.65em;
+            right: 0;
             border-top: .50em solid map-get($colors-border, white);
             border-left: .45em solid transparent;
             border-right: .45em solid transparent;
@@ -118,6 +123,7 @@ header.left-pane {
 
         &:hover {
             color: darken($yellow-default, 20%);
+            text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.20);
         }
     }
 }
@@ -134,11 +140,15 @@ footer {
         font-size: 1.2em;
     }
 }
+
 @media (min-width: 800px) {
     header.left-pane {
+        display: flex;
         height: 100%;
-        width: 15em;
         position: fixed;
+        padding: 0 2em;
+        flex-direction: column;
+        align-items: center;
 
         .social {
             display: block;
@@ -154,6 +164,8 @@ footer {
     }
 
     .navigation {
+        padding: 1em 0;
+
         .selectable {
             cursor: inherit;
 
