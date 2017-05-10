@@ -25,7 +25,7 @@ read confirma
 if [ "$confirma" = "y" ]; then
 	git add $src_post
 	git add $src_sitemap
-	git commit
+	git commit -m "Publicando post $post_name"
 	git push origin HEAD
 
 	./node_modules/.bin/docpad deploy-ghpages --env static
