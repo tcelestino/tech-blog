@@ -34,7 +34,7 @@ Todo o post deve ser escrito na linguagem markdown. Abaixo seguem alguns exemplo
 * underline - ``_texto sublinhado_``
 * imagem - ``![Alt da imagem](url da imagem)``
 * link - ``[texto do link](url do link)``
-* código em bloco - 
+* código em bloco -
 
 \`\`\` nomedalinguagem
 
@@ -67,9 +67,12 @@ O PR pode passar pelas etapas de avaliação:
 * ``APPROVED`` - após um usuário diferente do dono do PR testar e não existir mais modificações a serem feitas, deve-se aprovar o PR. Apenas o dono da tarefa pode mergear com a master.
 
 ### Deploy
-Quando seu PR for aprovado, você deve mergear na master e rodar o seguinte comando:
+Existem dois tipos de deploy:
+- Deploy de Post
+``./deploy-post.sh``
 
-``docpad deploy-ghpages --env static``
+- Deploy de Enhancement
+``./deploy-enhancement.sh``
 
 ### Hospedagem
 
