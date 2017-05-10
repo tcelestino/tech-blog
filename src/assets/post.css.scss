@@ -82,6 +82,19 @@ autoprefix: true
     position: absolute;
     left: -9999px;
   }
+
+  .copy-success {
+    font-size: 0.75em;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    transition: opacity ease-in-out 250ms;
+    text-align: center;
+
+    &.active {
+      opacity: 1;
+    }
+  }
 }
 
 @media (min-width: 800px) {

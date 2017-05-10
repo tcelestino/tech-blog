@@ -79,10 +79,9 @@
     </footer>
     <script async src="https://www.google-analytics.com/analytics.js"></script>
     <script async src="/js/analytics.js"></script>
-            ga('create', 'UA-3692628-29', 'auto');
-            ga('send', 'pageview');
-        </script>
-    {{/if}}
+        ga('create', 'UA-3692628-29', 'auto');
+        ga('send', 'pageview');
+    </script>
     <script src="/js/vendor/async-define.js"></script>
     <script async src="/js/vendor/events-amd.js"></script>
     <script async src="/js/vendor/ajax.js"></script>

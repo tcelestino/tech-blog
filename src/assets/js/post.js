@@ -13,10 +13,21 @@ define(['doc', 'ajax'], function($, ajax) {
 	if(supportsCopy() && $copy.isPresent()) {
 		$copy.removeClass('hide');
 
+
 		$copy.on('click', function(evt) {
 			evt.preventDefault();
 
 			$(this).closest('.share').find('.link-input').first().select();
+
+			try {
+				if(document.execCommand('copy')) {
+					$('.copy-success').addClass('active');
+
+					setTimeout(function() {
+						$('.copy-success').removeClass('active');
+					}, 2000);
+				}
+			} catch(e) {}
 		});
 	}
 

@@ -30,6 +30,7 @@ layout: page
       <a href='{{site.url}}{{document.url}}' class='link-share hide copy' title='Clique para copiar a url'>
         Copiar URL
       </a>
+      <span class='copy-success'>Link copiado</span>
       <input type='url' value='{{site.url}}{{document.url}}' class='link-input'>
     </section>
   </div>
