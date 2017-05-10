@@ -4,7 +4,8 @@ define(['doc', 'ajax'], function($, ajax) {
 		$author = $('p[itemprop="publisher"]'),
 		dataAuthor = $author.data('author'),
 		$avatar = $('.avatar'),
-		$copy = $('.copy');
+		$copy = $('.copy'),
+		$copySuccess = $('.copy-success');
 
 	function supportsCopy() {
 		return 'execCommand' in document && document.queryCommandSupported('copy');
@@ -21,10 +22,10 @@ define(['doc', 'ajax'], function($, ajax) {
 
 			try {
 				if(document.execCommand('copy')) {
-					$('.copy-success').addClass('active');
+					$copySuccess.addClass('active');
 
 					setTimeout(function() {
-						$('.copy-success').removeClass('active');
+						$copySuccess.removeClass('active');
 					}, 2000);
 				}
 			} catch(e) {}
@@ -39,7 +40,7 @@ define(['doc', 'ajax'], function($, ajax) {
 					name: response.name
 				};
 
-				$avatar.removeClass('hide').first().src = userInfo.avatar;
+				$avatar.removeClass('hide').attr('src', userInfo.avatar);
 				$author.html(userInfo.name);
 			},
 

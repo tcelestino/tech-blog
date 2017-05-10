@@ -74,14 +74,11 @@
     </main>
     <footer>
         <a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" itemscope itemtype="http://schema.org/Organization">
-            <span itemprop="copyrightHolder">engenharia.elo7.com.br © 2016</span>
+            <span itemprop="copyrightHolder">engenharia.elo7.com.br © 2017</span>
         </a>
     </footer>
     <script async src="https://www.google-analytics.com/analytics.js"></script>
     <script async src="/js/analytics.js"></script>
-        ga('create', 'UA-3692628-29', 'auto');
-        ga('send', 'pageview');
-    </script>
     <script src="/js/vendor/async-define.js"></script>
     <script async src="/js/vendor/events-amd.js"></script>
     <script async src="/js/vendor/ajax.js"></script>
