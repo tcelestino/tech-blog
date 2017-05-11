@@ -19,7 +19,7 @@
     <meta property="og:image" content="{{site.url}}/images/ico/elo7.png">
     <meta property="og:type" content="website">
     <meta property="og:title" content="Elo7 Tech - {{document.title}}">
-    <meta property="og:url" content="{{site.url}}">
+    <meta property="og:url" content="{{site.url}}{{document.url}}">
     <meta property="og:description" content="{{document.description}}">
 
     <meta name="twitter:widgets:csp" content="on">
@@ -27,7 +27,7 @@
 
     <meta property="twitter:title" content="Elo7 Tech - {{document.title}}">
     <meta property="twitter:domain" content="{{site.url}}">
-    <meta property="twitter:url" content="{{site.url}}">
+    <meta property="twitter:url" content="{{site.url}}{{document.url}}">
     <meta property="twitter:description" content="{{document.description}}">
     <meta property="twitter:image" content="{{site.url}}/images/ico/elo7.png">
 
