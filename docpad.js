@@ -48,7 +48,7 @@ docpadConfig = function() {
             static: {
                 templateData: {
                     site: {
-                        url: "https://elo7.github.io/tech-blog"
+                        url: "http://engenharia.elo7.com.br"
                     }
                 }
             }
