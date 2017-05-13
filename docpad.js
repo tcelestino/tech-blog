@@ -2,7 +2,7 @@ var moment = require('moment');
 
 docpadConfig = function() {
     return {
-        documentsPaths: ['documents', 'posts', 'assets'],
+        documentsPaths: ['documents', 'posts', 'assets', 'authors'],
 
         plugins: {
             handlebars: {
@@ -10,7 +10,9 @@ docpadConfig = function() {
                     getCollection: function(name) {
                         return this.getCollection(name).toJSON();
                     },
-
+                    getAuthor: function(name) {
+                        return this.getCollection(name).toJSON();
+                    },
                     dateAsText: function(date) {
                         return moment(date).utc().format('DD/MM/YYYY');
                     },
@@ -75,6 +77,13 @@ docpadConfig = function() {
                                     var dateA = postA.toJSON().date;
                                     var dateB = postB.toJSON().date;
                                     return moment(dateB).unix() - moment(dateA).unix();
+                                });
+                },
+                author : function() {
+                    return this.getCollection('html')
+                                .findAll({layout: 'author'})
+                                .setFilter('isAuthor', function(model) {
+                                    return model.attributes.author == "luiz";
                                 });
                 },
                 backend : function() {
@@ -149,7 +158,6 @@ docpadConfig = function() {
                                     return moment(dateB).unix() - moment(dateA).unix();
                                 });
                 },
-
             }
             return collections;
         }()

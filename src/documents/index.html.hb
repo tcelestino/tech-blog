@@ -12,7 +12,7 @@ layout: page
                     </a>
                 </header>
                 <div class="post-meta">
-                    by <a href="https://github.com/{{author}}" target="_blank" class="author"><p>@{{author}}</p></a>
+                    by <a href="/{{author}}" target="_blank" class="author"><p>@{{author}}</p></a>
                     · <time datetime="{{dateAsText this.date}}" itemprop="datePublished" class="date">{{dateAsText this.date}}</time>
                 </div>
                 <p class="description">{{description}}</p>
