@@ -66,7 +66,7 @@ ou
 <input type="text" id="username">
 ```
 
-Isso foi explicado no primeiro post introdutório, confere lá<link para o primeiro post>.
+Isso foi explicado no primeiro post introdutório, confere [lá](/wai-aria-apanhado-geral/).
 
 * ### aria-activedescendant
 
@@ -105,7 +105,7 @@ No caso, o *button* que faz o papel da *tab*, é associado diretamente ao seu pa
 * ### has-popup
 
 Indica a disponibilidade de um elemento *pop-up*, como por exemplo, um *submenu* ou caixa de diálogo, sendo disparado por um elemento.
-Um elemento *pop-up* aparece como um bloco de conteúdo que está na frente de outros conteúdos em destaque. O autor deve ter certeza que o **container** do elemendo a ser exibido, seja um menu, caixa de listagem, árvore, *grid* ou caixa de diálogo e que o valor de `aria-haspopup` corresponde à função do conteiner *pop-up*.
+Um elemento *pop-up* aparece como um bloco de conteúdo que está na frente de outros conteúdos em destaque. O autor deve ter certeza que o contêiner do elemendo a ser exibido, seja um menu, caixa de listagem, árvore, *grid* ou caixa de diálogo e que o valor de `aria-haspopup` corresponde à função do contêiner *pop-up*.
 
 ```html
 <section aria-hidden="true">
@@ -136,7 +136,9 @@ Podemos utilizar o exemplo anterior, imaginando um efeito *toogle* de abrir e fe
 
 <button aria-haspopup="true">+</button>
 ```
-Ao clicar no botão, o estado `aria-expanded` será trocado por **true**, via JavaScript e o inverso também se repete.* ### aria-hidden
+Ao clicar no botão, o estado `aria-expanded` será trocado por **true**, via JavaScript e o inverso também se repete.
+
+* ### aria-hidden
 Indica quando o elemento está disponível na árvore de acessibilidade, aplicando **true** ou **false**.
 Por exemplo, ele oculta para leitores de tela e ferramentas semelhantes. Isso é útil para componentes que são usados puramente por formatação e não contêm conteúdo relevante.
 
@@ -157,7 +159,7 @@ Por exemplo, ele oculta para leitores de tela e ferramentas semelhantes. Isso é
 O exemplo acima, apesar de grosseiro, se aplica a sites que fornecem limite de conteúdo para não assinantes.
 O conteúdo informativo deste modal é irrelevante para o leitor, principalmente se ele for assinante.
 
-No caso de ocorrer uma mudança de estado, que nessa situação seria o nosso usuário atingir o limite de visualizações no site, o `aria-hidden` deve ser setado como `true`via JavaScript, além claro da exibição em tela ser administrado via CSS.
+No caso de ocorrer uma mudança de estado, que nessa situação seria o nosso usuário atingir o limite de visualizações no site, o `aria-hidden` deve ser setado como `false`via JavaScript, além claro da exibição em tela ser administrado via CSS.
 
 
 ## Validando seu código
