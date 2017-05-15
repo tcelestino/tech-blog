@@ -1,0 +1,27 @@
+.avatar {
+	border-radius: 50%;
+	vertical-align: middle;
+}
+
+.publisher {
+	display: inline-block;
+	vertical-align: middle;
+	margin-left: 1em;
+	color: #888;
+}
+
+.time {
+	&:before {
+		content: '';
+		background-image: url("/images/ico/ic-facebook.svg");
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+	}
+}
+
+@media (min-width: 800px) {
+	.publisher-info {
+	    padding: 1em 23%;
+	}
+}

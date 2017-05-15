@@ -9,7 +9,7 @@ layout: page
       </p>
 
       <article itemprop='author' itemscope itemtype='http://schema.org/Person'>
-        <a rel='author' itemprop='url' href='https://github.com/{{document.author}}' target='_blank' class='author'>
+        <a rel='author' itemprop='url' href='/{{document.author}}' target='_blank' class='author'>
           <img class='hide avatar' width='50px' height='50px'/>
           <p itemprop='publisher' data-author='{{document.author}}' class='publisher'>@{{document.author}}</p>
         </a>

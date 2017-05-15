@@ -2,7 +2,7 @@ var moment = require('moment');
 
 docpadConfig = function() {
     return {
-        documentsPaths: ['documents', 'posts', 'assets', 'authors'],
+        documentsPaths: ['documents', 'posts', 'assets', 'publishers'],
 
         plugins: {
             handlebars: {
@@ -28,6 +28,15 @@ docpadConfig = function() {
                     },
                     getEnvironment: function() {
                         return this.getEnvironment() === "static" ? "production" : "development";
+                    },
+                    equal: function(lvalue, rvalue, options) {
+                        if (arguments.length < 3)
+                            throw new Error("Handlebars Helper equal needs 2 parameters");
+                        if( lvalue!=rvalue ) {
+                            return options.inverse(this);
+                        } else {
+                            return options.fn(this);
+                        }
                     },
                 }
             },
@@ -77,13 +86,6 @@ docpadConfig = function() {
                                     var dateA = postA.toJSON().date;
                                     var dateB = postB.toJSON().date;
                                     return moment(dateB).unix() - moment(dateA).unix();
-                                });
-                },
-                author : function() {
-                    return this.getCollection('html')
-                                .findAll({layout: 'author'})
-                                .setFilter('isAuthor', function(model) {
-                                    return model.attributes.author == "luiz";
                                 });
                 },
                 backend : function() {
@@ -157,8 +159,8 @@ docpadConfig = function() {
                                     var dateB = postB.toJSON().date;
                                     return moment(dateB).unix() - moment(dateA).unix();
                                 });
-                },
-            }
+                }
+            };
             return collections;
         }()
     }
