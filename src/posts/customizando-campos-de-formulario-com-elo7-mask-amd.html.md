@@ -1,0 +1,175 @@
+---
+date: 2017-03-28
+category: front-end
+layout: post
+title: Customizando campos de formulário com o elo7-mask-amd
+description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem como único objetivo, formatar os campos do seu formulário.
+author: rapahaeru
+tags:
+  - html
+  - JavaScript
+  - front-end
+  - libs
+---
+
+Sempre procuramos uma biblioteca que seja bem focada no problema que queremos resolver, e normalmente encontramos aqueles pacotes com várias funcionalidades. Normalmente, utilizamos apenas um (ou alguns) recurso da biblioteca que escolhemos utilizar. Importante mencionar o peso inútil no final do carregamento da página, agora imagine quando você utiliza várias bibliotecas em seu site.
+
+Esse tipo de situação é muito comum, e pensando nesse problema, nós do Elo7, resolvemos escrever nossas próprias bibliotecas, diretas no que necessitamos na casa, e isso vem sendo bem bacana, pois além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
+
+Nesse post, iniciando um trabalho de demonstração dessas bibliotecas, vou apresentar a [mask-amd](https://github.com/elo7/mask-amd), que foca exclusivamente em customizar os campos de um formulário.
+
+## Quando a biblioteca mask-amd é útil?
+
+Sabe quando o formulário possui aqueles campos de medida (como peso em quilos ou distância em quilômetros)?
+
+O **mask-amd** permite que você formate esses inputs da maneira que achar necessário, apenas adicionando um novo atributo com o pattern desejado. Antes dos exemplos práticos, vou demonstrar como incluir o mask-amd no seu projeto.
+
+## Onde encontrar
+Você pode baixar diretamente do nosso [repositório](https://github.com/elo7/mask-amd), ou através do gerenciador de pacotes [NPM](https://www.npmjs.com/package/elo7-mask-amd).
+
+Para instalar através do NPM:
+
+```
+$ npm install mask-amd
+```
+
+Agora inclua o arquivo “mask-amd.js” no HTML de sua aplicação.
+
+```html
+<script src='mask-amd.js'></script>
+```
+
+Lembrando que este arquivo originalmente virá no **node_modules/elo7-mask-amd/mask-amd.js**, recomendo que mova esse arquivo. No exemplo acima, o arquivo foi movido para a raiz do projeto.
+
+Ficando, por completo, assim:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8">
+		<title>Mask-amd implementation examples</title>
+		<style>
+			label {
+				display: block;
+			}
+		</style>
+	</head>
+	<body>
+		<h1>Mask-amd implementation examples</h1>
+		<form action="#">
+			<fieldset>
+				<!-- monetary -->
+				<label for="monetary-1">
+					Monetary (#0.00):
+					<input type="text" id='monetary-1' mask-number='#0.00' placeholder='0.00'>
+				</label>
+				.
+				.
+				.
+			</fieldset>
+		</form>
+
+		<script src='node_modules/define-async/async-define.js'></script>
+		<script async src='node_modules/elo7-events-amd/events-amd.js'></script>
+		<script async src='node_modules/elo7-doc-amd/doc.js'></script>
+		<script async src='mask-amd.js'></script>
+	</body>
+</html>
+```
+
+## Compreendendo as dependências
+
+Uma dependência do projeto é a [doc-amd](https://github.com/elo7/doc-amd/), que é uma biblioteca desenvolvida pela equipe de front-end do Elo7 para manipulação do DOM. O `doc-amd` merece um post à parte, que futuramente publicaremos aqui.
+
+### Mas por que o AMD?
+
+O *elo7-mask-amd* foi projetado para trabalhar com módulos assíncronos ([AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition)), não é o objetivo desse post explicar o AMD em detalhes, mas o que é importante para nós nesse ponto é que o AMD permite carregar nosso código em módulos, e definir as dependências necessárias para o nosso projeto ser executado.
+
+No caso da *elo7-mask-amd*, definimos que este módulo só será executado caso o `doc-amd` esteja disponível na aplicação.
+
+```javaScript
+define('mask', ['doc'], function($) {
+```
+Aqui estamos definindo que o nome do nosso módulo é "mask" e ele depende do módulo *doc-amd*, que originalmente é chamado por "doc".
+
+## Implementação no código
+
+Básicamente a biblioteca utiliza hoje dois tipos de atributos nos campos do HTML, o `mask-number` e o `mask`.
+
+* ### O atributo mask-number
+
+Esse atributo deve ser utilizado nos campos onde você deseja receber apenas formatação numérica.
+
+A biblioteca suporta um **pattern** dinâmico, para suportar grande variedade de casos de uso.
+Imagine seu campo assim:
+
+```html
+<label for="peso">
+	Peso (00.0):
+	<input type="text" id='peso'>
+</label>
+```
+Pensando exatamente como a `label` supõe, precisamos que:
+* Sejam apenas números;
+* possuam no máximo 3 números;
+* e que o caracter separador seja um ponto.
+
+
+```html
+<label for="peso">
+	Peso (00.0):
+	<input type="text" id='peso' mask-number='00.0'>
+</label>
+```
+Apenas adicionamos o atributo `mask-number` com o **pattern** desejado.
+
+Mas, e se eu quiser inserir no mínimo 2 caracteres e também queira ter no máximo 3?
+Deixando claro:
+
+* Obrigatoriedade de 2 caracteres no mínimo;
+* máximo de 3 caracteres;
+* e que sejam apenas números.
+
+```html
+<label for="peso">
+	Peso (00.0):
+	<input type="text" id='peso' mask-number='#0.0'>
+</label>
+```
+Adicionando uma "#" ao conteúdo do atributo, o input fica aguardando um terceiro caracter porém sem a obrigatoriedade. Se inserir apenas os 2, ok, mas caso seja inserido 3, tudo bem também.
+
+* ### O atributo mask
+
+Este atributo é mais focado nas formatações de formulário, como telefones, datas e até mesmo cpf.
+
+Vamos pensar em uma data agora?
+
+```html
+<label for="data">
+	Data (10/10/2010):
+	<input type="text" id='data' mask='99/99/9999'>
+</label>
+```
+Repare que o atributo mudou, agora é apenas `mask`.
+
+E no caso de nós, brasileiros, um CPF?
+```html
+<label for='cpf-1'>
+	CPF (999.999.999-99):
+	<input type='text' id='cpf-1' mask='999.999.999-99'>
+</label>
+```
+
+E caso precise criar um **pattern** customizado?
+
+```html
+Inventado (88.99-00): <input type='text' mask='99.999-99'>
+```
+Também funciona. Fique livre para mascarar da forma que bem entender.
+
+Caso queira um teste *live*, basta acessar o nosso gh-pages [aqui](https://elo7.github.io/mask-amd/).
+
+Bom chegamos ao fim! Espero que este artigo tenha sido útil para você e gostaria de reforçar que estamos sempre abertos a sugestões/melhorias para nossa biblioteca!
+
+Obrigado =]
