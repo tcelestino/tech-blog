@@ -24,7 +24,7 @@ Precisávamos de uma ferramenta para análise em tempo real, e tínhamos prefer�
 
 !["Exemplo de arquitetura"](../images/nightfall-1.png)
 
-Após a produção dos eventos, precisamos implementar/criar os consumidores para processá-los, que são nossos *jobs* do _Spark_. Nossos *jobs* possuem várias *tasks* onde cada uma processa um tipo de evento de uma forma específica. O nosso código no início do desenvolvimento dos *jobs* era parecido com:
+Após a produção dos eventos, precisamos criar os consumidores para processá-los, que são nossos *jobs* do _Spark_. Nossos *jobs* possuem várias *tasks* onde cada uma processa um tipo de evento de uma forma específica. O nosso código no início do desenvolvimento dos *jobs* era parecido com:
 - Job
 ```java
 public class SparkJobExample {
@@ -75,7 +75,7 @@ Dessa forma, tínhamos uma injeção de dependência para as configurações do 
 }
 ```
 
-Ou seja, para cada nova classe que nossa _task_ (*Task* é a classe que efetivamente executa o processamento dos eventos; é uma classe Java simples anotada com [@Task](https://github.com/elo7/nightfall/wiki/how-to-use#dependency-injection-on-spark-jobs)) utilize, precisamos instanciá-la no *Job*. Um pouco ruim não acham?
+Ou seja, para cada nova classe que nossa _task_ (a classe que efetivamente executa o processamento dos eventos) utilize, precisamos instanciá-la no *Job*. Um pouco ruim não acham?
 
 ## Simplificando as coisas
 Para **resolver** nosso problema, criamos um projeto chamado **Nightfall**, que utiliza o [Netflix Governator](https://github.com/Netflix/governator/wiki) e o [Google Guava](https://github.com/google/guava/wiki) para prover o contexto do **Spark**, injeção de dependência e configuração. Com o **Nightfall**, simplificamos o código dos nossos novos jobs, utilizando inversão de controle e injeção de dependências. Um exemplo do código:
@@ -129,7 +129,7 @@ public class OrderJob {
 }
 
 ```
-Após a criação do nosso *job*, precisamos criar a *task* para processar a mensagem. Nossa task é uma classe Java simples, anotada com `@Task` (anotação fornecida pelo NightFall). Ao inicializar o NightfallApplication, é realizado um *classpath scan* para encontrar todas as classes que contem essa anotação.
+Após a criação do nosso *job*, precisamos criar a *task* para processar a mensagem. Nossa task é uma classe Java simples, anotada com [@Task](https://github.com/elo7/nightfall/wiki/how-to-use#dependency-injection-on-spark-jobs) (anotação fornecida pelo NightFall). Ao inicializar o NightfallApplication, é realizado um *classpath scan* para encontrar todas as classes que contem essa anotação.
 Utilizarei a implementação que usa *DataPoint* (*DataPoint é um contrato criado para padronizar a estrutura das mensagens, representando o evento a ser processado, possuindo uma **data**, **tipo** e um **payload***):
 
 ```java
@@ -243,7 +243,7 @@ batch.cassandra.keyspace=kafka
 batch.cassandra.datacenter=
 batch.history.ttl.days=7
 ```
-Como passamos para configuração `file.source` um arquivo local, precisaremos criar o arquivo compactado contendo os eventos que serão processados pelo *Batch*. O arquivo que vamos utilizar é um txt (zipado) com os eventos, localizado no caminho especificado.
+Como passamos na configuração `file.source` um arquivo local, precisaremos criar o arquivo compactado contendo os eventos que serão processados pelo *Batch*. O arquivo que vamos utilizar é um txt (zipado) com os eventos, localizado no caminho especificado.
 Para executar o *Batch* executamos o seguinte comando:
 ```shell
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
