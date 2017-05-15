@@ -161,7 +161,7 @@ Já sabemos porque o NightFall foi criado e como ele funciona, então vejamos ma
 
 Uma vez que temos um tópico, podemos criar um stream para consumir as mensagens. Para isso, podemos utilizar o próprio projeto do **Nightfall** para adicionar a task que criamos acima, adicionando-a no sub-módulo *examples* do **Nightfall**.
 Além de adicionar o *job* e a *task*, precisaremos configurar o arquivo `nightfall.properties`:
-```properties
+```bash
 # Kafka Consumer
 kafka.brokers=localhost:9092
 kafka.topics=${NOME_DO_TÓPICO_CRIADO}
@@ -189,7 +189,7 @@ reporter.class=com.elo7.nightfall.di.providers.reporter.jmx.JMXReporterFactory
 ```
 
 Após a configuração do arquivo localizado em `examples/src/main/resources` podemos executar o *job* através do comando:
-```shell
+```bash
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.OrderJob"
 ```
 Após o *job* ser iniciado podemos enviar um evento do tipo **OrderStarted** (como no exemplo mais acima). Será impresso o *json* nos logs; caso enviemos um outro tipo de evento, ele não será exibido.
@@ -224,7 +224,7 @@ public class BatchHelloWorldTask implements BatchTaskProcessor<DataPoint<String>
 }
 ```
 Não podemos esquecer de criar as seguintes configurações:
-```properties
+```bash
 # Batch Configuration
 # File Configuration
 file.s3.access.key=
@@ -245,7 +245,7 @@ batch.history.ttl.days=7
 ```
 Como passamos na configuração `file.source` um arquivo local, precisaremos criar o arquivo compactado contendo os eventos que serão processados pelo *Batch*. O arquivo que vamos utilizar é um txt (zipado) com os eventos, localizado no caminho especificado.
 Para executar o *Batch* executamos o seguinte comando:
-```shell
+```bash
 ./gradlew 'jobs/example':run -PmainClass="${JOB_PACKAGE}.BatchOrderJob"
 ```
 Podemos ver a impressão dos eventos que são do tipo *OrderStarted* no log da aplicação :)
