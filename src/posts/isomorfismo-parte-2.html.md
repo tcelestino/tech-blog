@@ -1,6 +1,6 @@
 ---
 title: Javascript Isomórfico - parte 2
-date: 2017-01-02
+date: 2017-05-15
 category: front-end
 layout: post
 description: Continuando com a série de posts sobre javascript isomórfico, agora falando um pouco mais sobre frameworks e onde usá-los.
@@ -10,7 +10,7 @@ tags:
   - isomorfico
 ---
 
-Continuando o post sobre [Javascript isomórfico](./isomorfismo), depois de explicar toda a história e o conceito de isomorfismo, vamos entrar em uma parte mais prática. Quais empresas usam, o resultado da implementação e alguns frameworks existentes no mercado serão alguns dos tópicos desse post.
+Continuando o post sobre [Javascript isomórfico](/isomorfismo), depois de explicar toda a história e o conceito de isomorfismo, vamos entrar em uma parte mais prática. Quais empresas usam, o resultado da implementação e alguns frameworks existentes no mercado serão alguns dos tópicos desse post.
 
 # Quem usa?
 Algumas empresas como [Airbnb](https://www.airbnb.com.br/), [Facebook](https://www.facebook.com/), [PayPal](https://www.paypal.com/br/), [Walmart](https://www.walmart.com.br/), [Netflix](https://www.netflix.com/br/), [Autodesk](http://www.autodesk.com.br/), além do próprio [Elo7](http://www.elo7.com.br/).
@@ -18,9 +18,9 @@ Algumas empresas como [Airbnb](https://www.airbnb.com.br/), [Facebook](https://w
 # Como tudo começou?
 Em 2011, Charlie Robbins, da Nodejitsu, escreveu [um post apresentando a arquitetura isomórfica](https://blog.nodejitsu.com/scaling-isomorphic-javascript-code/). Porém, teve uma adoção bem lenta, além de ter várias discussões a respeito do nome *isomórfico*.
 
-Recomendo a leitura desses outros dois posts contando [sobre a implementação da arquitetura isomórfica no Airbnb](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/) e [na Netflix](http://techblog.netflix.com/2015/08/making-netflixcom-faster.html). O Airbnb reconstruiu todo seu site mobile web para melhorar o tempo de carregamento da página e melhorar a usabilidade para o usuário. Com isso, lançaram sua própria biblioteca isomórfica, o [Rendr](http://rendrjs.github.io/) (falarei dele mais para frente). Já o Netflix trocou sua estrutura feita em Java, Struts e Tiles, no back, e Javascript (com jQuery), no front, por uma estrutura só com React. Isso rendeu uma melhora de 70% no TTI (*Time to Interact*).
+Recomendo a leitura desses outros dois posts contando [sobre a implementação da arquitetura isomórfica no Airbnb](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/) e [na Netflix](http://techblog.netflix.com/2015/08/making-netflixcom-faster.html). O Airbnb reconstruiu todo seu site mobile para melhorar o tempo de carregamento da página e melhorar a usabilidade para o usuário. Com isso, lançaram sua própria biblioteca isomórfica, o [Rendr](http://rendrjs.github.io/) (falarei dele mais para frente). Já o Netflix trocou sua estrutura feita em Java, Struts e Tiles, no back-end, e Javascript (com jQuery), no front-end, por uma estrutura só com React. Isso rendeu uma melhora de 70% no TTI (*Time to Interact*).
 
-No Elo7, nós temos um servidor de componentes. Ele funciona da seguinte forma: quando um usuário entra em uma página, é feita uma requisição ao marketplace, que faz uma outra requisição para o servidor de componentes, que retorna o JSON para o marketplace, que, por sua vez, retorna a página em HTML ao cliente.
+No Elo7, temos um servidor de componentes. Ele funciona da seguinte forma: quando um usuário entra em uma página, é feita uma requisição ao marketplace, que faz uma outra requisição para o servidor de componentes, que retorna o JSON para o marketplace, que, por sua vez, retorna a página em HTML ao cliente.
 
 ![Fluxo da primeira requisição](/images/isomorfismo-parte-2-1.png)
 
@@ -31,15 +31,15 @@ Após o carregamento da página, são feitas novas requisições para carregar o
 
 # Fatos sobre isomorfismo
 Falar sobre prós e contras é um pouco complicado, já que depende muito do objetivo da aplicação. Logo, vou falar sobre fatos que o uso do isomorfismo pode trazer que percebi ao longo do meu estudo e o que vários posts sobre o assunto comentavam:
-* Menos duplicação de código, mais fácil de dar manutenção
-* Menos tempo gasto para escrever código no servidor e no cliente.
-* Cuidado para levar em conta onde o código será executado
-* Primeiro request é rápido e os outros ainda mais.
-* Mais simples de funcionar sem JS, servidor consegue retornar o HTML.
-* Debug é mais complicado, já que temos um código que funciona no cliente e no servidor
-* Evitar expor dados sensíveis. Não podemos expor dados que colocaríamos apenas no back end, como chaves de acesso por exemplo.
-* Os frameworks mudam muito rápido e quebram rápido também
-* Se sua página não tiver muita atualização dinâmica, você irá implementar muito código para pouco benefício
+* Menos duplicação de código, mais fácil de dar manutenção;
+* Menos tempo gasto para escrever código no servidor e no cliente;
+* Cuidado para levar em conta onde o código será executado;
+* Primeiro request é rápido e os outros ainda mais;
+* Mais simples de funcionar sem JS, servidor consegue retornar o HTML;
+* Debug é mais complicado, já que temos um código que funciona no cliente e no servidor;
+* Evitar expor dados sensíveis. Não podemos expor dados que colocaríamos apenas no back-end, como chaves de acesso por exemplo;
+* Os frameworks mudam muito rápido e quebram rápido também;
+* Se sua página não tiver muita atualização dinâmica, você irá implementar muito código para pouco benefício.
 
 # Frameworks e Bibliotecas
 Vou colocar aqui os links dos frameworks e bibliotecas mais conhecidas e vou entrar em detalhes de apenas algumas. Segue a lista:
@@ -59,7 +59,7 @@ Vou colocar aqui os links dos frameworks e bibliotecas mais conhecidas e vou ent
 Não coloquei o [Mojito](https://github.com/yahoo/mojito) na lista acima pelo fato de estar com o build quebrado na última versão e o último *commit* ser de 2014. Mas acredito que vale a pena falar dele, já que foi a primeira biblioteca isomórfica open source, desenvolvida em abril de 2012, pelo Yahoo.
 
 # Meteor
-O Meteor já tem um conceito um pouco diferente dos outros que falarei aqui. Ele é uma plataforma open source usada para desenvolver aplicações web e mobile. Ele é fullstack, ou seja, apresenta soluções desde o back end (como banco de dados, por exemplo) até o front end. Listarei algumas características que percebi ao usá-lo para desenvolver uma aplicação básica, que pode ser encontrada nesse [repositório com um projeto simples de `To Do` usando o Meteor](https://github.com/FernandaBernardo/meteor-simple-todos).
+O Meteor já tem um conceito um pouco diferente dos outros que falarei aqui. Ele é uma plataforma open source usada para desenvolver aplicações web e mobile. Ele é fullstack, ou seja, apresenta soluções desde o back-end (como banco de dados, por exemplo) até o front-end. Listarei algumas características que percebi ao usá-lo para desenvolver uma aplicação básica, que pode ser encontrada nesse [repositório com um projeto simples de `To Do` usando o Meteor](https://github.com/FernandaBernardo/meteor-simple-todos).
 * O desenvolvimento é em tempo real. Ou seja, em qualquer mudança no banco de dados ou em qualquer arquivo, os componentes são atualizados em tempo real.
 * A parte de configurações é bem simples. Não é necessário configurar dependências (como o Gulp). Além disso, já vem com [EcmaScript6](http://es6-features.org/) e [MongoDB](https://www.mongodb.com/) funcionando.
 * Um projeto bem básico, como um *Hello World*, por exemplo, é muito pesado. Possui mais de 50 scripts importados, sem que esteja usando nenhum no projeto.
