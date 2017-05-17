@@ -53,7 +53,7 @@
             </label>
             <ul class="nav-list nav-category">
                 {{#each (getCategories)}}
-                    <li><a itemprop="url" href="/{{category}}">{{category}}</a></li>
+                    <li><a itemprop="url" href="/{{category}}/">{{category}}</a></li>
                 {{/each}}
             </ul>
             <input id="more-switch" type="checkbox" class="more-switch">
