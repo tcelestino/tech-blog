@@ -7,6 +7,10 @@ category: vagas
 description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Temos a seguinte vaga para o time da engenharia...
 tags:
   - data scientist
+  - deep learning
+  - big data
+  - machine learning
+  - python
 ---
 
 O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos.
