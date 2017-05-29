@@ -1,6 +1,6 @@
 ---
 title: Nightfall - Injetando dependências no Spark (Parte 1)
-date: 2016-11-07
+date: 2017-05-29
 category: back-end
 layout: post
 description: Conheça o Nightfall, um projeto criado pela Engenharia do Elo7 para simplificar a criação de streams e batches no Spark, fornecendo injeção de dependências, configuração e facilidades na criação de tasks.
