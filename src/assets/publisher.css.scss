@@ -1,21 +1,22 @@
 @import 'colors';
 
 .publisher-info {
+	display: flex;
+	justify-content: flex-start;
+	flex-wrap: wrap;
 	padding-top: 1em;
 	padding-bottom: 1em;
 }
 
 .avatar {
-	width: 100px;
-	max-width: 25%;
-	float: right;
 	padding-right: 1em;
 	box-sizing: border-box;
+	min-width: 100px;
 
 	img {
 		border-radius: 50%;
 		height: auto;
-		width: 100%;
+		max-width: 100%;
 	}
 }
 
@@ -23,62 +24,69 @@
 	padding-left: 1em;
 	padding-right: 1em;
 	box-sizing: border-box;
+	flex: 1 0 50%;
 
 	.name {
 		display: block;
 		color: #333;
 		font-size: 1.8em;
 		font-weight: 500;
-		margin-bottom: 0.5em;	
-	}
-
-	.description {
-		margin-top: 1em;
-		color: map-get($colors-text, gray);
+		margin-bottom: 0.5em;
 	}
 
 	.social {
 		content: '';
-		width: 20px;
-		height: 20px;
+		width: 25px;
+		height: 25px;
 		display: inline-block;
 		background-position: center;
 		text-indent: -9999px;
 		margin-right: 0.5em;
+		background-size: contain;
 
 		&.twitter {
-			background-image: url('/images/ico/ic-twitter.svg');	
+			background-image: url('/images/ico/ic-twitter.svg');
 		}
 
 		&.github {
 			background-image: url('/images/github_icon.svg');
 			background-color: black;
-		}	
+			border-radius: 50%;
+		}
 	}
+}
 
+.description {
+	margin-top: 1em;
+	color: map-get($colors-text, gray);
+	padding-left: 1em;
+	padding-right: 1em;
+	text-align: justify;
+	line-height: 1.2em;
+	width: 100%;
 }
 
 @media (min-width: 800px) {
 	.publisher-info {
-	    padding-left: 10%;
-	    padding-right: 10%;
-        margin-left: 210px; /* Navigation pane size */
-	    background-color: white;
+		padding-left: 15%;
+		padding-right: 15%;
+		margin-left: 210px; /* Navigation pane size */
+		background-color: white;
+		flex-direction: row-reverse;
 	}
 
 	.info {
 		display: inline-block;
 		padding-right: 0;
-		max-width: 85%;
+	}
 
-		.name {
-			margin-bottom: 1em;
-		}
+	.description {
+		padding-left: 0;
+		padding-right: 0;
 	}
 
 	.avatar {
-		max-width: 15%;
-		float: left;
+		width: 15%;
 		padding-right: 0;
 	}
 }

@@ -107,8 +107,8 @@ autoprefix: true
 
 @media (min-width: 800px) {
     .posts-container {
-        padding: 1em 10%;
-        margin-left: 210px;
+        padding: 1em 15%;
+        margin-left: 210px; /* Navigation pane size */
 
         .post-card {
             padding: 2em;

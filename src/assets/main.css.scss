@@ -145,7 +145,7 @@ footer {
     position: absolute;
     right: 0;
     bottom: 0;
-    left: 0;    
+    left: 0;
 
     a {
         display: block;
@@ -164,7 +164,7 @@ footer {
         padding: 0 2em;
         flex-direction: column;
         align-items: center;
-        width: 210px;
+        width: 210px; /* Navigation pane size */
         box-sizing: border-box;
 
         .social {
