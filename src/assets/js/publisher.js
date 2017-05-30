@@ -2,11 +2,11 @@ define(['doc', 'ajax'], function($, ajax) {
 
 	var GITHUB_URI = 'https://api.github.com/users/',
 		$author = $('h1[itemprop="publisher"]'),
-		dataAuthor = $author.data('author'),
+		dataGitHubAuthor = $('.github').text(),
 		$avatar = $('.avatar');
 
 	if($author.isPresent()) {
-		ajax.get(GITHUB_URI + dataAuthor, {}, {
+		ajax.get(GITHUB_URI + dataGitHubAuthor, {}, {
 			success: function(response, xhr) {
 				var userInfo = {
 					avatar: response.avatar_url + '&size=100',

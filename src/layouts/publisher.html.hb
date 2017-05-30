@@ -14,7 +14,9 @@ layout: page
 	<figure class='hide avatar'>
 		<img width='100px' height='100px'/>
 	</figure>
-	<p class='description'>{{document.description}}</p>
+	{{#document.description}}
+		<p class='description'>{{.}}</p>
+	{{/document.description}}
 </article>
 
 <section class="posts-container">
