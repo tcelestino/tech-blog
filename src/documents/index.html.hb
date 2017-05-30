@@ -2,9 +2,13 @@
 title: Home
 description: Blog de tecnologia do Elo7, mantido pelo nosso time de Engenharia, compartilhando conhecimento e mostrando como é o dia a dia de um colaborador fora de série.
 layout: page
+isPaged: true
+pagedCollection: 'posts'
+pageSize: 10
 ---
+
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">
-	{{#each (getCollection "posts")}}
+	{{#each (getPagedCollection "posts")}}
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">
 				<header>
 					<a href="{{../site.baseUrl}}{{url}}" class="link">

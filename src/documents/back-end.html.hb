@@ -2,9 +2,13 @@
 title: Back End
 description: Confira todos os nossos posts sobre back-end e tecnologias de servidor, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
+isPaged: true
+pagedCollection: 'backend'
+pageSize: 10
 ---
+
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">
-	{{#each (getCollection "backend")}}
+	{{#each (getPagedCollection "backend")}}
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">
 				<header>
 					<a href="{{../site.baseUrl}}{{url}}" class="link">

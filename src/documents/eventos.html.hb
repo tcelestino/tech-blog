@@ -2,9 +2,13 @@
 title: Eventos
 description: Confira todos os nossos posts sobre eventos de tecnologia onde o time de Engenharia do Elo7 esteve presente!
 layout: page
+isPaged: true
+pagedCollection: 'eventos'
+pageSize: 10
 ---
+
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">
-	{{#each (getCollection "eventos")}}
+	{{#each (getPagedCollection "eventos")}}
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">
 				<header>
 					<a href="{{../site.baseUrl}}{{url}}" class="link">
