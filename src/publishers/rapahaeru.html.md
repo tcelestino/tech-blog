@@ -1,7 +1,8 @@
 ---
-publisher: rapahaeru
+title: Raphael Alves de Oliveira
+publisher: Raphael Alves de Oliveira
 layout: publisher
-twitter: blabla
-github: bleble
-description: Cael do Borel.
+twitter: rapahaeru
+github: rapahaeru
+description:
 ---

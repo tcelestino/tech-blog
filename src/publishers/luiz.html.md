@@ -1,5 +1,6 @@
 ---
-publisher: luiz
+title: Luiz Fernando Oliveira Corte Real
+publisher: Luiz Fernando Oliveira Corte Real
 layout: publisher
 twitter: srsaude
 github: luiz
