@@ -38,8 +38,8 @@
     <link rel="stylesheet" href="/main.css">
     <link rel="stylesheet" href="/posts.css">
     <link rel="stylesheet" href="/post.css">
-    <link rel="stylesheet" href="/author.css">
-    <!-- TODO: importar so no author -->
+    <link rel="stylesheet" href="/publisher.css">
+    <!-- TODO: importar so no publisher -->
     <link rel="icon" type="image/png" href="/images/favicon.ico">
     <script>window.addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 </head>

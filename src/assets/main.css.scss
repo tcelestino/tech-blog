@@ -4,9 +4,20 @@ autoprefix: true
 
 @import 'colors';
 
+html {
+    height: 100%;
+    box-sizing: border-box;
+}
+
 body {
     font-family: "museo_sans", sans-serif;
     font-weight: 300;
+    min-height: 100%;
+    position: relative;
+}
+
+main {
+    padding-bottom: 81px; /*Footer Size*/
 }
 
 header.left-pane {
@@ -131,6 +142,10 @@ header.left-pane {
 footer {
     background-color: $yellow-default;
     padding: 3em 1em;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    left: 0;    
 
     a {
         display: block;
@@ -149,6 +164,8 @@ footer {
         padding: 0 2em;
         flex-direction: column;
         align-items: center;
+        width: 210px;
+        box-sizing: border-box;
 
         .social {
             display: block;
@@ -183,12 +200,14 @@ footer {
         }
     }
 
-    main {
-        margin-left: 15em;
+    body {
+        background-color: #f8f8f8;
     }
+
     footer {
+        background-color: #f8f8f8;
         border-top: 1px solid map-get($colors-border, light-gray);
-        margin-left: 15em;
+        margin-left: 210px; /* Navigation pane size */
         background-color: map-get($colors-text, white);
         padding: 2em 1em;
 

@@ -1,6 +1,7 @@
 ---
 publisher: alinelee
 layout: publisher
-time: Martell
+twitter: blabla
+github: bleble
 description: Aline Lee.
 ---

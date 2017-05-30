@@ -1,0 +1,84 @@
+@import 'colors';
+
+.publisher-info {
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+.avatar {
+	width: 100px;
+	max-width: 25%;
+	float: right;
+	padding-right: 1em;
+	box-sizing: border-box;
+
+	img {
+		border-radius: 50%;
+		height: auto;
+		width: 100%;
+	}
+}
+
+.info {
+	padding-left: 1em;
+	padding-right: 1em;
+	box-sizing: border-box;
+
+	.name {
+		display: block;
+		color: #333;
+		font-size: 1.8em;
+		font-weight: 500;
+		margin-bottom: 0.5em;	
+	}
+
+	.description {
+		margin-top: 1em;
+		color: map-get($colors-text, gray);
+	}
+
+	.social {
+		content: '';
+		width: 20px;
+		height: 20px;
+		display: inline-block;
+		background-position: center;
+		text-indent: -9999px;
+		margin-right: 0.5em;
+
+		&.twitter {
+			background-image: url('/images/ico/ic-twitter.svg');	
+		}
+
+		&.github {
+			background-image: url('/images/github_icon.svg');
+			background-color: black;
+		}	
+	}
+
+}
+
+@media (min-width: 800px) {
+	.publisher-info {
+	    padding-left: 10%;
+	    padding-right: 10%;
+        margin-left: 210px; /* Navigation pane size */
+	    background-color: white;
+	}
+
+	.info {
+		display: inline-block;
+		padding-right: 0;
+		max-width: 85%;
+
+		.name {
+			margin-bottom: 1em;
+		}
+	}
+
+	.avatar {
+		max-width: 15%;
+		float: left;
+		padding-right: 0;
+	}
+}

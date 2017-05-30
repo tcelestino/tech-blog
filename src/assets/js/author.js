@@ -13,7 +13,8 @@ define(['doc', 'ajax'], function($, ajax) {
 					name: response.name
 				};
 
-				$avatar.removeClass('hide').attr('src', userInfo.avatar);
+				$avatar.removeClass('hide');
+				$avatar.find('img').attr('src', userInfo.avatar);
 				$author.html(userInfo.name);
 			},
 

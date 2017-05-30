@@ -1,20 +1,18 @@
 ---
 layout: page
 ---
-<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-content">
-  <div itemprop="articleBody">
-    {{{content}}}
-  </div>
-</article>
+
 
 <article class='publisher-info'>
-  <a rel='author' itemprop='url' href='https://github.com/{{document.author}}' target='_blank' class='author'>
-    <img class='hide avatar' width='100px' height='100px'/>
-    <h1 itemprop='publisher' data-author='{{document.publisher}}' class='publisher'>@{{document.publisher}}</h1>
-  </a>
-  <h2 class='time'>{{document.time}}</h2>
-  <p>{{document.description}}</p>
-  <p>Confira os posts escritos por <strong>{{document.publisher}}</strong></p>
+  <figure class='hide avatar'>
+    <img width='100px' height='100px'/>
+  </figure>
+  <section class='info'>
+    <h1 class='name' itemprop='publisher' data-author='{{document.publisher}}' class='publisher'>@{{document.publisher}}</h1>
+    <a href='https://github.com/{{document.github}}' class='social github' title='Conheça meu github'>{{document.github}}</a>
+    <a href='https://twitter.com/{{document.twitter}}' class='social twitter' title='Conheça meu twitter'>{{document.twitter}}</a>
+    <p class='description'>{{document.description}}</p>
+  </section>
 </article>
 
 <section class="posts-container">

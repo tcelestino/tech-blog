@@ -1,6 +1,7 @@
 ---
 publisher: rapahaeru
 layout: publisher
-time: Nymeros
+twitter: blabla
+github: bleble
 description: Cael do Borel.
 ---

@@ -107,10 +107,12 @@ autoprefix: true
 
 @media (min-width: 800px) {
     .posts-container {
-        padding: 1em 23%;
+        padding: 1em 10%;
+        margin-left: 210px;
 
         .post-card {
-            padding: 2em 0;
+            padding: 2em;
+            background-color: white;
         }
     }
 }
