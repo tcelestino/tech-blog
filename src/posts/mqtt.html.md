@@ -82,13 +82,23 @@ Uma das vantagens do Pub/Sub é o desacoplamento que ela gera, o publisher não 
 
 ### Quality of Service (QoS) 
 QoS é o nivel de garantia de entrega das mensagens entre cliente e servidor. 
+
 Existem 3 niveis:	
+
 QoS 0 - At most once 
+
 Garante o menor nivel de entrega, tambem chamado de fire and forget é o mais rapido, consome menos banda porem representa a menor garantia de entrega entre todos. O ciclo de vida é composto apenas pelo cliente enviar uma mensagem para o broker.
 ![qos0](http://www.hivemq.com/wp-content/uploads/publish_qos0_flow.png)
 
 QoS 1 - At last once
 ![qos1](http://www.hivemq.com/wp-content/uploads/publish_qos1_flow.png)
+Garante que a mensagem sera enviada pelo menos uma vez ao broker. Após a mensagem ser enviada o cliente guarda essa mensagem até receber o PUBACK do broker, caso o PUBACK não seja recebido em um determinado tempo o cliente envia outro PUBLISH. Pelo lado do broker quando ele recebe um PUBLISH com QoS 1 a mensagem é processada de imediato enviando para todos os SUBs e respondendo para o cliente com o PUBACK.
+O cliente utiliza o packetId que é retornado no PUBACK para fazer a associação entre PUBLISH e PUBACK
+
 
 QoS 2 - Exacly once
 ![qos2](http://www.hivemq.com/wp-content/uploads/publish_qos2_flow.png)
+Garante que cada mensagem é recebida pelo menos uma vez pelo outro lado, entre todos é que tem a maior garantia de entrega porem o mais lento. 
+
+
+Tenha em mente que quanto maior o QoS mais trocas de mensagens são feitas, isso afeta o tempo que a mensagem é efetivamente entregue, faz mais banda, processamento e bateria serem consumidos.
