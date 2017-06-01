@@ -2,8 +2,8 @@
 date: 2017-04-18
 category: MQTT
 layout: post
-title: Criando um chat realtime com MQTT
-description: Clojure é uma linguagem funcional e dinâmica que roda na JVM e que vem crescendo bastante no mercado de trabalho, com ajuda de algumas bibliotecas. Aprenda como subir uma API REST em 10 minutos!
+title: Arquiteturas para aplicações realtime utilizando MQTT
+description: Vamos descrever os diferentes tipos de arquitetua para criação de aplicações realtime e suas vantagens e desvantagem em relação ao MQTT
 author: cristianoperez
 tags:
   - MQTT
@@ -11,7 +11,7 @@ tags:
   - Arquitetura
 ---
 Nesse post vamos explicar alguns modelos arquiteturais para se criar um chat em realtime que deve atender as seguintes especificações.
-* Mensagem 1-1 (Deve ser atualizado apenas para o usuário que recebeu a mensagem e se ele estiver na tela da conversa sendo atualizada)
+* Mensagem 1-N (Apenas o usuário que recebeu a mensagem deve receber a notificação (callback) de nova mensagem)
 * Realtime (O chat do destinatario deve ser atualizado sem nenhuma ação por parte do usuário)
 * Lightspeed (Todo o processo de enviar a mensagem e o recebimento deve ser rapido, consumir o minimo de banda e processamento do remetente, destinatario e servidor)
 
@@ -28,8 +28,8 @@ while(true){
 }
 ```
 
-Simples, facil e rapido. Porem qual o problema? Gera um enorme overhead no servidor, o clinte fica batendo no servidor mesmo que não tenha nada de novo.
-Isso torna a solução bem dificil de escalar, imagine o seguinte cenario, 10mil usuários online no site o servidor ira receber 10mil request por segundos apenas por os usuários estarem com a pagina aberta, agora imagine que cada usuário esta com 3 abas abertas, 10k * 3 = 30K Req/s (1.8 millhoes Req/min). Resultado DDoS em nós mesmos.
+Simples, facil e rapido. Porem qual o problema? Gera um enorme overhead no servidor, o clinte fica batendo no servidor mesmo que não tenha nada de novo, não é performatico.
+Isso torna a solução bem dificil de escalar, imagine o seguinte cenario, 10mil usuários online no site, o servidor ira receber 10mil request por segundos apenas por os usuários estarem com a pagina aberta, agora imagine que cada usuário esta com 3 abas abertas, 10k * 3 = 30K Req/s (1.8 millhoes Req/min). Resultado DDoS em nós mesmos.
 
 # WebSocket + HTTP
 
@@ -78,4 +78,17 @@ Uma das vantagens do Pub/Sub é o desacoplamento que ela gera, o publisher não 
 [Lista de borkers](https://github.com/mqtt/mqtt.github.io/wiki/brokers)
 
 ### Client
-É a lib que vai ficar dentro da sua aplicação
+É a lib que vai ficar dentro da sua aplicação, é a responsavel por se conectar, enviar e receber as mensagens dos broker. Os clients estão [disponiveis em varias linguagens](https://github.com/mqtt/mqtt.github.io/wiki/libraries) como java, javascript, .NET, C++, Go, IOS, etc. Isso quer dizer que é possivel enviar e receber mensagens desde aplicações web até pequenos dispositivos IOT como sensores de temperatura. O cliente se conecta com o broker enviando uma mensagem de ´CONNECT´ e o broker deve responder com ´CONNACK´, após a conexão estabelecida ela é mantida aberta até o cliente se desconectar ou perder a conexão.
+
+### Quality of Service (QoS) 
+QoS é o nivel de garantia de entrega das mensagens entre cliente e servidor. 
+Existem 3 niveis:	
+QoS 0 - At most once 
+Garante o menor nivel de entrega, tambem chamado de fire and forget é o mais rapido, consome menos banda porem representa a menor garantia de entrega entre todos. O ciclo de vida é composto apenas pelo cliente enviar uma mensagem para o broker.
+![qos0](http://www.hivemq.com/wp-content/uploads/publish_qos0_flow.png)
+
+QoS 1 - At last once
+![qos1](http://www.hivemq.com/wp-content/uploads/publish_qos1_flow.png)
+
+QoS 2 - Exacly once
+![qos2](http://www.hivemq.com/wp-content/uploads/publish_qos2_flow.png)
