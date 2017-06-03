@@ -15,7 +15,8 @@ layout: page
 		<img itemprop='contentUrl' width='100px' height='100px'/>
 	</figure>
 	{{#document.description}}
-		<p class='publisher-description' itemprop='description'>{{.}}</p>
+		<p class='publisher-description'>{{.}}</p>
+		<meta itemprop='description' content='{{ellipsis . 110}}' >
 	{{/document.description}}
 </article>
 
@@ -25,7 +26,7 @@ layout: page
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">
 				<header>
 						<a href="{{../site.baseUrl}}{{url}}" class="link">
-								<h2 itemprop='name' class="title">{{title}}</h2>
+							<h2 itemprop='name' class="title">{{title}}</h2>
 						</a>
 				</header>
 				<div class="post-meta">
@@ -40,7 +41,13 @@ layout: page
 					</time>
 				</div>
 
-				<p class="description" itemprop='headline'>{{description}}</p>
+				{{#description}}
+					<p class="description">
+						{{.}}
+					</p>
+					<meta itemprop='headline' content='{{ellipsis . 110}}' >
+				{{/description}}
+
 				<a href="/{{category}}" class="category {{category}}">{{category}}</a>
 				<a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
 

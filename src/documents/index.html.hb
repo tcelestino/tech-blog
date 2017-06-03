@@ -22,7 +22,12 @@ layout: page
 						<meta itemprop="datePublished" content='{{this.date}}'/>
 					</time>
 				</div>
-				<p class="description" itemprop='headline'>{{description}}</p>
+				{{#description}}
+					<p class="description">
+						{{.}}
+					</p>
+					<meta itemprop='headline' content='{{ellipsis . 110}}' >
+				{{/description}}
 				<a href="/{{category}}" class="category {{category}}">{{category}}</a>
 				<a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
 
