@@ -1,7 +1,7 @@
 define(['doc', 'ajax'], function($, ajax) {
 
 	var GITHUB_URI = 'https://api.github.com/users/',
-		$author = $('h1[itemprop="publisher"]'),
+		$author = $('h1.name'),
 		dataGitHubAuthor = $('.github').text(),
 		$avatar = $('.avatar');
 
