@@ -53,7 +53,11 @@
 			</label>
 			<ul class="nav-list nav-category">
 				{{#each (getCategories)}}
-					<li><a itemprop="url" href="/{{category}}">{{category}}</a></li>
+					<li itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<a itemprop="url" href="/{{category}}">
+							<span itemprop='name'>{{category}}</span>
+						</a>
+					</li>
 				{{/each}}
 			</ul>
 			<input id="more-switch" type="checkbox" class="more-switch">
@@ -61,10 +65,26 @@
 				<h2 class="nav-title">Veja também</h2>
 			</label>
 			<ul class="nav-list nav-more">
-				<li><a itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">A engenharia</a></li>
-				<li><a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">Carreiras</a></li>
-				<li><a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">Nossos eventos</a></li>
-				<li><a itemprop="url" href="http://elo7.com.br/" target="_blank">Elo7</a></li>
+				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<a itemprop='url' href="http://carreira.elo7.com.br/engenharia/" target="_blank">
+						<span itemprop='name'>A engenharia</span>
+					</a>
+				</li>
+				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">
+						<span itemprop='name'>Carreiras</span>
+					</a>
+				</li>
+				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">
+						<span itemprop='name'>Nossos eventos</span>
+					</a>
+				</li>
+				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
+					<a itemprop="url" href="http://elo7.com.br/" target="_blank">
+						<span itemprop='name'>Elo7</span>
+					</a>
+				</li>
 			</ul>
 		</nav>
 		<a rel="external" itemprop="url" href="https://github.com/elo7/tech-blog" class="social github"></a>
@@ -72,10 +92,11 @@
 	<main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
 		{{{content}}}
 	</main>
-	<footer>
-		<a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" itemscope itemtype="http://schema.org/Organization">
-			<span itemprop="copyrightHolder">engenharia.elo7.com.br © 2017</span>
+	<footer itemscope itemtype="http://schema.org/Organization">
+		<a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" >
+			engenharia.elo7.com.br © 2017
 		</a>
+		<meta itemprop="name" content='Elo7 Serviços de Informática SA'/>
 	</footer>
 	<script async src="https://www.google-analytics.com/analytics.js"></script>
 	<script async src="/js/analytics.js"></script>

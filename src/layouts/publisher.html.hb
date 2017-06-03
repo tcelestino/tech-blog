@@ -6,13 +6,13 @@ layout: page
 <article class='publisher-info' itemscope itemtype='http://schema.org/Person'>
 	<section class='info'>
 		<h1 class='name' itemprop='name' data-author='{{document.publisher}}' class='publisher'>{{document.publisher}}</h1>
-		<a href='https://github.com/{{document.github}}' class='social github' target='_blank' title='Conheça meu github'>{{document.github}}</a>
+		<a itemprop='url' href='https://github.com/{{document.github}}' class='social github' target='_blank' title='Conheça meu github'>{{document.github}}</a>
 		{{#document.twitter}}
-			<a href='https://twitter.com/{{.}}' class='social twitter' target='_blank' title='Conheça meu twitter'>{{.}}</a>
+			<a itemprop='url' href='https://twitter.com/{{.}}' class='social twitter' target='_blank' title='Conheça meu twitter'>{{.}}</a>
 		{{/document.twitter}}
 	</section>
-	<figure class='hide avatar'>
-		<img itemprop=image' width='100px' height='100px'/>
+	<figure class='hide avatar' itemprop='image' itemscope itemtype="http://schema.org/ImageObject">
+		<img itemprop='contentUrl' width='100px' height='100px'/>
 	</figure>
 	{{#document.description}}
 		<p class='publisher-description' itemprop='description'>{{.}}</p>
@@ -30,27 +30,35 @@ layout: page
 				</header>
 				<div class="post-meta">
 					by 
-					<a href="https://github.com/{{author}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
+					<a href="/{{author}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
 						<p itemprop='name'>@{{author}}</p>
 					</a>
 					· 
 					<time datetime="{{dateAsText this.date}}" class="date">
 						{{dateAsText this.date}}
-						<span itemprop="datePublished" class='hide'>{{this.date}}</span>
+						<meta itemprop="datePublished" content='{{this.date}}'/>
 					</time>
 				</div>
 
 				<p class="description" itemprop='headline'>{{description}}</p>
 				<a href="/{{category}}" class="category {{category}}">{{category}}</a>
 				<a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
-				<span class='hide'>
-					<img itemprop='image' width='100px' height='100px' src="{{../site.baseUrl}}/images/ico/elo7.png"/> /*Change for a post image*/
-					<p itemprop='mainEntityOfPage'>Elo7</p>
-					<span itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
-						<p itemprop='name'>Elo7 Tech</p>
-						<img itemprop='logo' src="//images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg"/>
+
+				<span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"> <!--Change for a post image-->
+					<link href="{{../site.baseUrl}}/images/ico/elo7.png" itemprop="url"/>
+					<meta itemprop='width' content='100px'/>
+					<meta itemprop='height' content='100px'/>
+				</span>
+				<meta itemprop='mainEntityOfPage' content='Elo7 Serviços de Informática SA'/>
+				<span itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
+					<meta itemprop='name' content='Elo7 Tech'/>
+					<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
+						<link href="https://images.elo7.com.br/assets/v3/desktop/png/logo-elo7.png" itemprop="url"/>
+						<meta itemprop='width' content='100px'/>
+						<meta itemprop='height' content='100px'/>
 					</span>
 				</span>
+
 			</article>
 		{{/equal}}
 	{{/each}}
