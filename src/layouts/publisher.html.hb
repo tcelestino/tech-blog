@@ -15,7 +15,7 @@ layout: page
 		<img itemprop=image' width='100px' height='100px'/>
 	</figure>
 	{{#document.description}}
-		<p class='description' itemprop='description'>{{.}}</p>
+		<p class='publisher-description' itemprop='description'>{{.}}</p>
 	{{/document.description}}
 </article>
 
