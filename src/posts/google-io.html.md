@@ -12,6 +12,8 @@ tags:
 
 ***Inteligência artificial*** foi um dos grandes temas da conferência. Atualmente, todos os produtos da Google estão utilizando algum tipo de camada de inteligência artificial e vão usar cada vez mais no futuro.
 
+No geral o Google I/O 2017 foi bem denso em conteúdo. Ocorreram 155 sessões, 100 office hours, 85 code labs e 19 sandboxes!
+
 ## Mobile First to AI First
 
 ![Mobile First To AI First](../images/google-io-1.jpg)
@@ -53,7 +55,6 @@ Mirando no próximo bilhão usuários on-line para a plataforma está sendo dese
 - [Android for Entry-Level Devices https://www.youtube.com/watch?v=CHKfKChZSE0](https://www.youtube.com/watch?v=CHKfKChZSE0)
 
 Também ocorreram algumas outras novidades, como **YouTube 360**, nova versão do **Google Tango** e o lançamento do **Google for jobs**.
-No geral o Google I/O 2017 foi bem denso em conteúdo. Ocorreram 155 sessões, 100 office hours, 85 code labs e 19 sandboxes!
 
 ## API.AI
 
