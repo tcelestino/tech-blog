@@ -3,14 +3,14 @@ title: Google I/O - Inteligência Artificial
 date: 2017-06-01
 category: back-end
 layout: post
-description: Inteligência artificial foi um dos grandes temas do Google I/O. Todos os produtos da Google estão utilizando algum tipo de camada de inteligência artificial agora e vão usar cada vez mais no futuro.
+description: Inteligência artificial foi um dos grandes temas do Google I/O. Atualmente, todos os produtos da Google estão utilizando algum tipo de camada de inteligência artificial e vão usar cada vez mais no futuro.
 author: davidrobert
 tags:
   - google io
   - inteligência artificial
 ---
 
-***Inteligência artificial*** foi um dos grandes temas da conferência. Todos os produtos da Google estão utilizando algum tipo de camada de inteligência artificial agora e vão usar cada vez mais no futuro.
+***Inteligência artificial*** foi um dos grandes temas da conferência. Atualmente, todos os produtos da Google estão utilizando algum tipo de camada de inteligência artificial e vão usar cada vez mais no futuro.
 
 ## Mobile First to AI First
 
