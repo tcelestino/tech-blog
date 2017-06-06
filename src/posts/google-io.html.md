@@ -46,9 +46,7 @@ A versão 2 do **Google Home** foi apresentada. Os principais novos recursos:
 
 O Google Photos recebeu uma série de novos recursos. Incluindo melhor compartilhamento de álbuns com pessoas que aparecem nas fotos (utilizando reconhecimento facial) e no futuro irá permitir a remoção de itens indesejados das fotos como, por exemplo, uma grade que atrapalha a imagem onde aparece de uma pessoa ao fundo. Também foi lançado uma feature para impressão de fotos.
 
-O lançamento da versão beta do **Android O** ocorreu durante o evento. Foi revelado que a contagem de dispositivos ativos do Android ultrapassa 2 bilhões mensais. A nova versão do Android tem as principais características com foco em segurança, otimizações (de consumo de bateria) e ferramentas para desenvolvimento (este foco foi denominado Vitals).
-
-- [https://developer.android.com/topic/performance/vitals/index.html](https://developer.android.com/topic/performance/vitals/index.html)
+O lançamento da versão beta do **Android O** ocorreu durante o evento. Foi revelado que a contagem de dispositivos ativos do Android ultrapassa 2 bilhões mensais. A nova versão do Android tem as principais características com foco em segurança, otimizações (de consumo de bateria) e ferramentas para desenvolvimento (este foco foi denominado [Vitals](https://developer.android.com/topic/performance/vitals/index.html)).
 
 Mirando no próximo bilhão usuários on-line para a plataforma está sendo desenvolvida a versão Android Go. Que tem como objetivo conseguir funcionar em celulares com poucos recursos e deverá ser lançada em 2018. 
 
