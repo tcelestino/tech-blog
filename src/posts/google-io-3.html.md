@@ -50,17 +50,38 @@ Continuando no tema foi apresentado o resultado de uma pesquisa sobre transaçõ
 - [https://g.co/PayAppIntegration](https://g.co/PayAppIntegration)
 - [https://g.co/PaymentRequestCodeLab](https://g.co/PaymentRequestCodeLab)
 
+
+Como eu escrevi esse trecho no metro tomei a liberdade de reescrever, peçam para o mestre Lima revisar com carinho:
+
 ## DevTools
+
+Debugar ficou muito melhor, antes os breakpoints ficavam associados à linha que eles foram adicionados, e quando havia alguma alteração no código eles ficavam no lugar errado, mas agora é associado ao código, claro uma grande refatoração vai fazer com que ele se perca mas isso já é uma grande melhora.
+
+Com o JavaScript ganhando novas maneiras de se programar como por exemplo promises e async/await functions, o devtools também teve que melhorar, agora podemos ver se estamos dentro de uma função que foi executada de maneira asynchronou no stack trace por exemplo:
+
+![stack](https://cloud.githubusercontent.com/assets/1116568/26766999/a3947874-4971-11e7-8bb0-11e5627e3052.png)
+![stack-promises](https://cloud.githubusercontent.com/assets/1116568/26767000/a3975788-4971-11e7-8198-c65f54aef461.png)
+
+Além disso, debuggar arrow functions sempre foi um problema já que podemos fazer tudo numa linha de código, mas agora podemos inserir breakpoints por colunas e não apenas por linha como antes:
+
+![breakpoint-columns](https://cloud.githubusercontent.com/assets/1116568/26767010/c75354c4-4971-11e7-853b-666cc93b7f11.png)
+
+Para quem gosta de debuggar seus projetos Node com o Chrome também sentiram a melhoria.
+
+O novo painel de Performance vai nos ajudar a encontrar pontos no código quem pode ser melhorados, basicamente ele é uma junção dos painéis Network e Profile, com isso conseguiremos ver por exemplo onde um arquivo JavaScript terminou de ser carregado e quando começou a sua execução (Evaluate Script), outro exemplo foi o carregamento de uma fonte customizada e como ela impactou na experiência dos usuários, tudo isso com screenshots onde conseguiremos ver se o carregamento/execução dos assets.
+
+Com a nova seção de Coverage dentro do painel Console, vamos conseguir ver exatamente qual parte do código e o quanto (em porcentagem) de nossos css/js está sendo realmente utilizado, e não se preocupem eles sabem que alguns estilos e funções são aplicadas apenas se houver interessões do usuário, e por isso que essa porcetagem muda em tempo real conforme o uso da aplicação.
+
+![coverage](https://cloud.githubusercontent.com/assets/1116568/26767014/d7be09e4-4971-11e7-9a40-8be1f2c5bee0.png)
+
+Outros detalhes interessantes:
+- Screenshots de telas inteiras mesmo com barra de rolagem;
+- Finalmente poderemos editar os cookies, sem a necessidade de extensões de terceiros;
+- Com o Chrome headless poderemos fazer varias ações na linha de comando, como por exemplo screenshots e ações que só eram possíveis antes 
+com selenium [https://developers.google.com/web/updates/2017/04/headless-chrome](https://developers.google.com/web/updates/2017/04/headless-chrome);
+- [DevTools: State of the Union 2017 (Google I/O '17) https://youtu.be/PjjlwAvV8Jg](https://youtu.be/PjjlwAvV8Jg)
+- [Chrome 59 - What's New in DevTools](https://youtu.be/4mx1m7UbBR0)
 - A ferramenta **Lighthouse** foi integrada ao DevTools do Chrome [https://www.chromestatus.com/features](https://www.chromestatus.com/features)
-- O debug ficou melhor, agora da pra debugar promises, arrow functions e async/await functions;
-- Breakpoint mais inteligente mesmo com a alteração do código agora ele mantém o breakpoint no lugar que você colocou e não na linha;
-- Agora existe um novo painel de Performance, bem legal também juntando network e profiles, é possível ver, por exemplo, quando um js termina de carregar e faz o evaluated, ou até quando uma fonte customizada termina o carregamento faz o recálculo do layout e começa a mostrar o texto para os usuários;
-- Coverage: mostra quantos % e o trecho do código específico de js/css que está sendo usado, e muda essas informações em tempo real conforme você executa ações na tela;
-- Agrupamento dos assets baseado no domínio usando uma badge (assim podemos ver se algum domínio em específico está travando nosso carregamento);
-- Screenshots, edição de cookie (adeus EditThisCookie);
-- Chrome headless [https://developers.google.com/web/updates/2017/04/headless-chrome](https://developers.google.com/web/updates/2017/04/headless-chrome);
-- Melhorias bem interessantes no debug do node.js.
-- [DevTools: State of the Union 2017 (Google I/O '17) https://www.youtube.com/watch?v=PjjlwAvV8Jg](https://www.youtube.com/watch?v=PjjlwAvV8Jg)
 - Web Components -> Lançamento do Polymer 2.0 [https://www.polymer-project.org/](https://www.polymer-project.org/)
 - [https://developers.google.com/web/tools/lighthouse/](https://developers.google.com/web/tools/lighthouse/)
 
