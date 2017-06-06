@@ -98,9 +98,9 @@ Tópicos recomendados para uma boa compreensão:
 - [Orinoco](https://v8project.blogspot.com.br/2016/04/jank-busters-part-two-orinoco.html);
 - [Speedometer 2](http://browserbench.org/Speedometer/);
 - Otimizações: Generators, Async e Await.
-
-- [https://v8project.blogspot.com.br/2017/05/launching-ignition-and-turbofan.html](https://v8project.blogspot.com.br/2017/05/launching-ignition-and-turbofan.html)
 - [https://nodejs.org/en/blog/release/v8.0.0/#say-hello-to-v8-5-8](https://nodejs.org/en/blog/release/v8.0.0/#say-hello-to-v8-5-8)
+- [https://v8project.blogspot.com.br/2017/05/launching-ignition-and-turbofan.html](https://v8project.blogspot.com.br/2017/05/launching-ignition-and-turbofan.html)
+
 
 
 ## Cloud / Firebase
