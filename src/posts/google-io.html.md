@@ -37,7 +37,7 @@ Além disso, novos recursos estão tornando o assistente mais conversacional:
 
 - [https://blog.google/products/assistant/your-assistant-getting-better-on-google-home-and-your-phone/](https://blog.google/products/assistant/your-assistant-getting-better-on-google-home-and-your-phone/)
 
-A versão 2 do **Google Home** foi apresentada. As principais novos recursos:
+A versão 2 do **Google Home** foi apresentada. Os principais novos recursos:
 
 - Chamadas telefônicas gratuitas para os Estados Unidos e Canadá. Por padrão, o Google irá usar um número privado para esse recurso - mas você tem a opção de vinculá-lo ao seu próprio número de telefone celular (similar ao que já faz o Amazon Echo);
 - Integração com HBO Now, Hulu, SoundCloud, Deezer e outros;
