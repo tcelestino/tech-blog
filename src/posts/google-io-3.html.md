@@ -42,9 +42,9 @@ O time do [Alipay & Alibaba](https://www.alipay.com/webpay) apresentaram um caso
 
 A integração de pagamento com Web Payments com PaymentRequest é feita de maneira simples utilizando uma API JavaScript cross-browser. Navegadores que tem suporte a API: Chrome, IE, Samsung Internet e, em breve, Firefox. 
 
-Por enquanto o número de parceiros de pagamento é limitado: PayPal, Samsung Pay e Alipay. Entretanto outras alternativas serão adicionadas em breve. 🚨 O Android Pay chegará ao Brasil até o fim de 2017.
+Por enquanto o número de parceiros de pagamento é limitado: PayPal, Samsung Pay e Alipay. Entretanto, outras alternativas serão adicionadas em breve. O Android Pay chegará ao Brasil até o fim de 2017.
 
-Continuando no tema foi apresentado o resultado de uma pesquisa sobre transações mobile. Cerca de 80% das transações de compra no mobile só possuem 1 produto. E apresentar a opção para o usuário "Buy Now" ao além de "Add to Cart" aumenta significativamente a conversão.
+Continuando no tema, foi apresentado o resultado de uma pesquisa sobre transações mobile. Cerca de 80% das transações de compra no mobile só possuem 1 produto. E apresentar a opção para o usuário "Buy Now" além de "Add to Cart" aumenta significativamente a conversão.
 
 - [https://g.co/PaymentRequesgtGuide](https://g.co/PaymentRequesgtGuide)
 - [https://g.co/PayAppIntegration](https://g.co/PayAppIntegration)
