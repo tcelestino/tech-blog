@@ -3,14 +3,14 @@ title: Google I/O - Android
 date: 2017-06-01
 category: mobile
 layout: post
-description: A principal novidade sobre a plataforma Android foi o suporte a linguagem de programação Kotlin. 
+description: A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação Kotlin. 
 author: davidrobert
 tags:
   - google io
   - android
 ---
 
-A principal novidade sobre a plataforma Android foi o suporte a linguagem de programação **Kotlin**. 
+A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação **Kotlin**. 
 
 ![Android](../images/google-io-2.png)
 
