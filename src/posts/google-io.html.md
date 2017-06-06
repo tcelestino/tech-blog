@@ -42,7 +42,7 @@ A versão 2 do **Google Home** foi apresentada. Os principais novos recursos:
 - Chamadas telefônicas gratuitas para os Estados Unidos e Canadá. Por padrão, o Google irá usar um número privado para esse recurso - mas você tem a opção de vinculá-lo ao seu próprio número de telefone celular (similar ao que já faz o Amazon Echo);
 - Integração com HBO Now, Hulu, SoundCloud, Deezer e outros;
 - Mais proativo (utilizando inteligência artificial) para sugerir algo;
-- Respostas visuais integração com smart TVs ou **Chromecast**. Exemplos: "OK Google, mostre o meu calendário para hoje" e o Google Home pode exibir instantaneamente os eventos do seu dia em uma TV conectada ao Chromecast. Peça a Home para obter instruções sobre um local ou evento e enviará as direções diretamente para o aplicativo do Google Maps em seu telefone.
+- Respostas visuais na integração com smart TVs ou **Chromecast**. Exemplos: "OK Google, mostre o meu calendário para hoje" e o Google Home pode exibir instantaneamente os eventos do seu dia em uma TV conectada ao Chromecast. Peça ao Home para obter instruções sobre um local ou evento, e as direções serão enviadas diretamente para o aplicativo do Google Maps em seu telefone.
 
 O Google Photos recebeu uma série de novos recursos. Incluindo melhor compartilhamento de álbuns com pessoas que aparecem nas fotos (utilizando reconhecimento facial) e no futuro irá permitir a remoção de itens indesejados das fotos como, por exemplo, uma grade que atrapalha a imagem onde aparece de uma pessoa ao fundo. Também foi lançado uma feature para impressão de fotos.
 
