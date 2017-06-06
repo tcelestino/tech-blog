@@ -14,7 +14,7 @@ tags:
   - devtools
 ---
 
-Durante diversas sessões os palestrantes incentivaram fortemente o uso de AMP e PWA. Além de reforçarem que Mobile Web é mainstream.
+Durante diversas sessões, os palestrantes incentivaram fortemente o uso de **AMP** ([Accelerated Mobile Pages](https://www.ampproject.org)) e **PWA** ([Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)). Além de reforçarem que Mobile Web é mainstream.
 
 Um Product Manager do Twitter apresentou casos de sucesso com PWA, onde seu uso incrementou 65% de pages/sessions e 75% mais tweets.
 
