@@ -82,7 +82,7 @@ Durante o evento foi anunciado o **TensorFlow Lite** uma versão do TensorFlow p
 
 ## Cloud TPUs
 
-Durante as sessões foi apresentado a Cloud de TPUs. Aparentemente bem poderosa, mas ainda na versão Alpha. A cloud pode se integrar com um conjunto de clusters heterogêneos, e diversas otimizações de performance para aplicações de machine learning já vem por padrão.
+Durante as sessões foi apresentado a Cloud de TPUs. Aparentemente bem poderosa, mas ainda na versão Alpha, a cloud pode se integrar com um conjunto de clusters heterogêneos, e diversas otimizações de performance para aplicações de machine learning já vem por padrão.
 
 - [https://cloud.google.com/tpu/](https://cloud.google.com/tpu/)
 - [https://www.tensorflow.org/performance/xla/developing_new_backend](https://www.tensorflow.org/performance/xla/developing_new_backend)
