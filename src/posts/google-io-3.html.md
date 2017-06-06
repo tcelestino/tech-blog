@@ -1,13 +1,17 @@
 ---
 title: Google I/O - Web
 date: 2017-06-01
-category: back-end
+category: front-end
 layout: post
 description: Durante diversas sessões os palestrantes incentivaram fortemente o uso de AMP e PWA. Além de reforçarem que Mobile Web é mainstream.
 author: davidrobert
 tags:
   - google io
   - web
+  - pwa
+  - amo
+  - chrome
+  - devtools
 ---
 
 Durante diversas sessões os palestrantes incentivaram fortemente o uso de AMP e PWA. Além de reforçarem que Mobile Web é mainstream.
@@ -24,9 +28,6 @@ A versão com PWA teve cerca de 30% mais conversão que o app nativo. 20% das re
 
 Outros tópicos relevantes:
 
-- A ferramenta **Lighthouse** foi integrada ao DevTools do Chrome [https://www.chromestatus.com/features](https://www.chromestatus.com/features)
-- Web Components -> Lançamento do Polymer 2.0 [https://www.polymer-project.org/](https://www.polymer-project.org/)
-- [https://developers.google.com/web/tools/lighthouse/](https://developers.google.com/web/tools/lighthouse/)
 - [https://www.chromestatus.com/features](https://www.chromestatus.com/features)
 - [https://developers.google.com/web](https://developers.google.com/web)
 - [http://bit.ly/pwa-media](http://bit.ly/pwa-media)
@@ -50,6 +51,7 @@ Continuando no tema foi apresentado o resultado de uma pesquisa sobre transaçõ
 - [https://g.co/PaymentRequestCodeLab](https://g.co/PaymentRequestCodeLab)
 
 ## DevTools
+- A ferramenta **Lighthouse** foi integrada ao DevTools do Chrome [https://www.chromestatus.com/features](https://www.chromestatus.com/features)
 - O debug ficou melhor, agora da pra debugar promises, arrow functions e async/await functions;
 - Breakpoint mais inteligente mesmo com a alteração do código agora ele mantém o breakpoint no lugar que você colocou e não na linha;
 - Agora existe um novo painel de Performance, bem legal também juntando network e profiles, é possível ver, por exemplo, quando um js termina de carregar e faz o evaluated, ou até quando uma fonte customizada termina o carregamento faz o recálculo do layout e começa a mostrar o texto para os usuários;
@@ -59,6 +61,8 @@ Continuando no tema foi apresentado o resultado de uma pesquisa sobre transaçõ
 - Chrome headless [https://developers.google.com/web/updates/2017/04/headless-chrome](https://developers.google.com/web/updates/2017/04/headless-chrome);
 - Melhorias bem interessantes no debug do node.js.
 - [DevTools: State of the Union 2017 (Google I/O '17) https://www.youtube.com/watch?v=PjjlwAvV8Jg](https://www.youtube.com/watch?v=PjjlwAvV8Jg)
+- Web Components -> Lançamento do Polymer 2.0 [https://www.polymer-project.org/](https://www.polymer-project.org/)
+- [https://developers.google.com/web/tools/lighthouse/](https://developers.google.com/web/tools/lighthouse/)
 
 ## V8
 
@@ -75,9 +79,10 @@ Tópicos recomendados para uma boa compreensão:
 - Otimizações: Generators, Async e Await.
 
 - [https://v8project.blogspot.com.br/2017/05/launching-ignition-and-turbofan.html](https://v8project.blogspot.com.br/2017/05/launching-ignition-and-turbofan.html)
+- [https://nodejs.org/en/blog/release/v8.0.0/#say-hello-to-v8-5-8](https://nodejs.org/en/blog/release/v8.0.0/#say-hello-to-v8-5-8)
 
 
 ## Cloud / Firebase
-Diversas sessões sobre Firebase ocorreram durante o evento. Focando principalmente em Autenticação por número de telefone, hosting e realtime.
+Diversas sessões sobre Firebase ocorreram durante o evento. Focando principalmente em autenticação por número de telefone, hosting e realtime.
 ![Cloud / Firebase](../images/google-io-3.png)
 - [https://firebase.google.com/](https://firebase.google.com/)
