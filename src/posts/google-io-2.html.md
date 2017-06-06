@@ -65,7 +65,7 @@ A versão 3.0 do **Android Studio** recebeu uma série de melhorias:
 
 - Incorporação de profilers: CPU, Memoria e Rede; 
     - Com o Network Profiler é possível analisar e investigar cada request individualmente;
-    - Com o Memory Profiler é possível acompanhar a alocação de memória feita pelo app ao longo do tempo. Facilitando a identificação de pontos de alto consumo de memória ou mesmo leaks de memória. Esse profiler com certeza ajudará os desenvolvedores a implementarem melhores apps;
+    - Com o Memory Profiler é possível acompanhar a alocação de memória feita pelo app ao longo do tempo, facilitando a identificação de pontos de alto consumo de memória ou mesmo leaks de memória. Esse profiler com certeza ajudará os desenvolvedores a implementarem melhores apps;
 - Melhoria significativa no tempo de build do app;
 - Android Debug APK;
 - Google Play Store está disponível na imagem do Android O.
@@ -76,7 +76,7 @@ A versão 3.0 do **Android Studio** recebeu uma série de melhorias:
 
 ## Notificações no Android
 
-Ocorreram mudanças significativas no modelo de **notificações no Android O**. Antes de apresentar as mudança, tanto de comportamento quando de usabilidade, foram apresentados dados e resultados de uma grande pesquisa que conduziram sobre notificações.
+Ocorreram mudanças significativas no modelo de **notificações no Android O**. Antes de apresentar as mudança, tanto de comportamento quando de usabilidade, foram apresentados dados e resultados de uma grande pesquisa conduzida pela Google.
 
 - [https://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html](https://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html)
 - [Notifications UX: What's New for Android O (Google I/O '17) https://www.youtube.com/watch?v=vwZi56I0Mi0](https://www.youtube.com/watch?v=vwZi56I0Mi0)
