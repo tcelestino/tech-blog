@@ -18,7 +18,7 @@ tags:
 
 A empresa está lançando uma nova iniciativa chamada [**Google.ai**](https://google.ai) para compartilhar documentos de pesquisa, ferramentas e diversos outros tópicos sobre inteligência artificial.
 
-Um dos grandes lançamentos foi a segunda geração do **Tensor Processing Units (TPU)**. Um processador projetado especificamente para aprendizado de máquina utilizado principalmente no produto Tensor Flow. Com esse novo parque de equipamentos a Google espera conseguir entregar 180 teraflops de performance.
+Um dos grandes lançamentos foi a segunda geração do **Tensor Processing Units (TPU)**. Um processador projetado especificamente para aprendizado de máquina utilizado principalmente no produto TensorFlow. Com esse novo parque de equipamentos a Google espera conseguir entregar 180 teraflops de performance.
 
 A Google está efetivamente transformando sua plataforma de computação em nuvem para dar total suporte a Inteligência Artificial.
 
@@ -68,14 +68,14 @@ Em 2016 a Google adquiriu a [Api.ai](https://api.ai) uma plataforma de conversa�
 
 Diversos produtos do Google utilizam TensorFlow, incluindo Search, Gmail, Translate, Maps, Android, Photos, Speech, YouTube, Play e muitos outros.
 
-O foco no Tensor Flow esta bastante elevado:
+O foco no TensorFlow esta bastante elevado:
 
 - Ocorreram mais de 17500 commits desde Nov 2015;
 - +475 contribuidores não-Google;
 - +6400 repositorios com "TensorFlow" (no github);
 - +5000 perguntas respondidas no Stack Overflow.
 
-O suporte a novas linguagens de programação foi incorporado ao Tensor Flow. Suportando agora Haskell, C++, Java, Python, Go, etc. 
+O suporte a novas linguagens de programação foi incorporado ao TensorFlow. Suportando agora Haskell, C++, Java, Python, Go, etc. 
 
 Durante o evento foi anunciado o **TensorFlow Lite** uma versão do TensorFlow para mobile.
 
