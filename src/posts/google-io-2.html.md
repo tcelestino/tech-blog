@@ -42,7 +42,7 @@ Algumas novas características do Android O:
 - Suporte a fonts via XML (disponível também na support library); 
 - TextView com Auto-Sizing;
 - Adaptative icons;
-- findViewById agora retorna uma instancia genérica de classes que estendem View o famoso Bounded Type;
+- findViewById agora retorna uma instancia genérica de classes que estendem View (o famoso Bounded Type);
 - ANDROID_ID será diferente para cada app;
 - Melhorias no gerenciador de dependências;
 - Mudanças nas solicitações sobre locations & scan WIFI pelos apps com objetivo de melhorar o consumo de bateria;
@@ -91,10 +91,10 @@ Caso o usuário tenha muitas notificações pode gerar um "scroll de notificaç�
 
 Outra característica é que notificações poderão ser postergadas de acordo com um ação do usuário. Por exemplo adiar 1 hora. Se for postergado mais do que X vezes as notificações não serão entregues mais. 
 
-Do ponto de vista do Firebase/GCM existem dois níveis de prioridade agora: High Priority e Normal Priority.
+Do ponto de vista do Firebase/GCM, passam a existir dois níveis de prioridade: High Priority e Normal Priority.
 
 ### Questões em aberto: 
-- Notificações poderão ser postergadas de acordo com o contexto? (Ex.: Android perceber que o usuário está dirigindo e só mostrar a notificação mais tarde)?
+- Notificações poderão ser postergadas de acordo com o contexto (ex.: Android perceber que o usuário está dirigindo e só mostrar a notificação mais tarde)?
 - Firebase/GCM receberá a informação de quando uma notificação foi bloqueada/despriorizada?
 
 ## Instant App
@@ -109,15 +109,15 @@ Zillow, CastBox, Twitter e outras empresas apresentaram casos sobre o uso de Ins
 
 ## Melhores Práticas para aplicativos
 
-Fluxos críticos no mobile, como logins, pagamentos e outros formulários foram temas explorados no evento. Novas ferramentas como **Smart lock**, **Autofill** e **Backup/Restore**, foram apresentados como solução em temas que envolvem facilidade em fluxos de gerenciamento de logins e pagamentos.
+Fluxos críticos de usabilidade no mobile foram temas explorados no evento. Novas ferramentas como **Smart lock**, **Autofill** e **Backup/Restore** foram apresentadas como soluções em cenários de gerenciamento de logins e pagamentos.
 
 - [Best Practices to Improve Sign-In, Payments, and Forms in Your Apps (Google I/O '17) https://www.youtube.com/watch?v=oZxwTiMH0FM](https://www.youtube.com/watch?v=oZxwTiMH0FM)
 
-O suporte ao **Android Autofill** foi incorporado ao Android O e já é usado por alguma empresas (Keeper, LastPass, iPassword, dashlane, etc). O Autofill permite que os usuários economizem tempo preenchendo os formulários usando o preenchimento automático em seus devices. O Android O torna mais fácil o preenchimento de formulários de cartões de crédito e de contas. Na prática o Autofill Framework gerencia a comunicação entre o aplicativo  e um serviço de preenchimento automático. A recomendação oficial é otimizar os apps para utilizar Autofill.
+O suporte ao **Android Autofill** foi incorporado ao Android O e já é usado por algumas empresas (Keeper, LastPass, iPassword, dashlane, etc). O Autofill permite que os usuários economizem tempo preenchendo os formulários, usando o preenchimento automático em seus devices. O Android O torna mais fácil o preenchimento de formulários de cartões de crédito e de contas. Na prática, o Autofill Framework gerencia a comunicação entre o aplicativo  e um serviço de preenchimento automático. A recomendação oficial é otimizar os apps para utilizar Autofill.
 
 - [https://developer.android.com/preview/features/autofill.html](https://developer.android.com/preview/features/autofill.html)
 
-A utilização do serviço **Smart Lock** possibilita o gerenciamento pelo Google das credenciais do usuário em diferentes ambientes (site e aplicativo). Possibilitando que em diferentes plataformas do mesmo aplicativo as credenciais do usuário sejam providas de uma forma automática.
+A utilização do serviço **Smart Lock** possibilita o gerenciamento pelo Google das credenciais do usuário em diferentes ambientes (site e aplicativo). Esse recurso possibilita que, em diferentes plataformas do mesmo aplicativo, as credenciais do usuário sejam providas de uma forma automática.
 
 - [https://developers.google.com/identity/smartlock-passwords/android/](https://developers.google.com/identity/smartlock-passwords/android/)
 
