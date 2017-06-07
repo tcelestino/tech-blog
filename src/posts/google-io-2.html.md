@@ -25,7 +25,7 @@ Aplicativos como Pinterest, Flipboard e Expedia já migraram para Kotlin.
 Além disso, diversas novas APIs e features foram disponibilizadas do Java 8, como:
 - `java.lang.annotation.Repeatable`
 - `AnnotatedElement.getAnnotationsByType(Class)`
-- `java.util.stream
+- `java.util.stream`
 - `java.lang.FunctionalInterface`
 - `java.lang.reflect.Method.isDefault()`
 - `java.util.function`
