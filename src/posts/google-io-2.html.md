@@ -23,12 +23,12 @@ O suporte oficial a linguagem **Kotlin** está disponível no Android Studio a p
 Aplicativos como Pinterest, Flipboard e Expedia já migraram para Kotlin.
 
 Além disso, diversas novas APIs e features foram disponibilizadas do Java 8, como:
-- java.lang.annotation.Repeatable
-- AnnotatedElement.getAnnotationsByType(Class)
-- java.util.stream
-- java.lang.FunctionalInterface
-- java.lang.reflect.Method.isDefault()
-- java.util.function
+- `java.lang.annotation.Repeatable`
+- `AnnotatedElement.getAnnotationsByType(Class)`
+- `java.util.stream
+- `java.lang.FunctionalInterface`
+- `java.lang.reflect.Method.isDefault()`
+- `java.util.function`
 
 Todos com suporte de versão mínima do Android API 24 ou superior. E features como:
 - Default and static interface methods
