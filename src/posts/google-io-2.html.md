@@ -18,11 +18,11 @@ A principal novidade sobre a plataforma Android foi o suporte à linguagem de pr
 - [https://kotlinlang.org/](https://kotlinlang.org/)
 - [Introduction to Kotlin (Google I/O '17) https://www.youtube.com/watch?v=X1RVYt2QKQE](https://www.youtube.com/watch?v=X1RVYt2QKQE)
 
-O suporte oficial a linguagem **Kotlin** está disponível no Android Studio a partir da versão 3.0. Disponibilizando o suporte nativo da IDE as linguagens Java e Kotlin com 100% de interoperabilidade provida pelo compilador do Kotlin e conversão de código legado Java (para aqueles que gostam de se aventurar).
+O suporte oficial à linguagem **Kotlin** está disponível no Android Studio a partir da versão 3.0. Essa versão disponibiliza o suporte nativo da IDE ao Kotlin, com 100% de interoperabilidade com Java (provida pelo compilador do Kotlin) e conversão de código legado (para aqueles que gostam de se aventurar).
 
 Aplicativos como Pinterest, Flipboard e Expedia já migraram para Kotlin.
 
-Além disso, diversas novas APIs e features foram disponibilizadas do Java 8, como:
+Além disso, diversas novas APIs e features do Java 8 foram disponibilizadas, como:
 - `java.lang.annotation.Repeatable`
 - `AnnotatedElement.getAnnotationsByType(Class)`
 - `java.util.stream`
