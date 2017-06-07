@@ -8,6 +8,20 @@ author: davidrobert
 tags:
   - google io
   - inteligência artificial
+  - ai
+  - mobile
+  - google.ai
+  - google assistent
+  - google lens
+  - google home
+  - android o
+  - api.ai
+  - tensorflow
+  - tensorflow lite
+  - tensor processing units
+  - tpu
+  - cloud tpus
+  - google tango
 ---
 
 No geral o Google I/O 2017 foi bem denso em conteúdo. Ocorreram 155 sessões, 100 office hours, 85 code labs e 19 sandboxes!
