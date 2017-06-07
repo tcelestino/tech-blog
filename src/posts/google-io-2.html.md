@@ -44,12 +44,12 @@ Algumas novas características do Android O:
 - Adaptative icons;
 - findViewById agora retorna uma instancia genérica de classes que estendem View o famoso Bounded Type;
 - ANDROID_ID será diferente para cada app;
-- Melhorias no gerenciador de dependencias;
+- Melhorias no gerenciador de dependências;
 - Mudanças nas solicitações sobre locations & scan WIFI pelos apps com objetivo de melhorar o consumo de bateria;
 - Novas restrições a serviços que rodam em background com objetivo de reduzir o consumo de bateria;
-- AlarmManager, SyncAdapter e JobScheduler ainda não possuem limitação nesta API;
+- AlarmManager, SyncAdapter e JobScheduler ainda não possuem limitações nesta versão da API. Mas foi anunciado que provavelmente existirão limitações de uso em versões futuras;
 - SYSTEM_ALERT_WINDOW agora é ordenado de acordo com o app em foreground;
-- Melhorias no APK Analyser: Otimizador de APK com objetivo de diminuir o tamanho dos APKs;
+- Melhorias no APK Analyser: Otimizador de APK com objetivo de diminuir o tamanho dos APKs.
 
 - **Android Vitals**
     - [https://developer.android.com/topic/performance/vitals/index.html](https://developer.android.com/topic/performance/vitals/index.html)
@@ -58,7 +58,7 @@ Além disso, foi feito o lançamento do **Google Play Protect**:
 - [https://www.android.com/play-protect/](https://www.android.com/play-protect/)
 - [https://blog.google/products/android/google-play-protect/](https://blog.google/products/android/google-play-protect/)
 
-No futuro (ainda está em review) o usuário poderá definir o limite de agressividade do app no consumo de bateria - podendo facilmente pausar serviços em background. Deverão ser incorporados limites para consumo de bluetooth, wifi, etc
+No futuro (ainda está em review), o usuário poderá definir o limite de agressividade do app no consumo de bateria - podendo facilmente pausar serviços em background. Deverão ser incorporados limites para consumo de bluetooth, wifi, etc.
 
 ## Android Studio
 A versão 3.0 do **Android Studio** recebeu uma série de melhorias:
@@ -76,16 +76,16 @@ A versão 3.0 do **Android Studio** recebeu uma série de melhorias:
 
 ## Notificações no Android
 
-Ocorreram mudanças significativas no modelo de **notificações no Android O**. Antes de apresentar as mudança, tanto de comportamento quando de usabilidade, foram apresentados dados e resultados de uma grande pesquisa conduzida pela Google.
+Ocorreram mudanças significativas no modelo de **notificações no Android O**. Antes de apresentar as mudanças, tanto de comportamento quando de usabilidade, foram apresentados dados e resultados de uma grande pesquisa conduzida pela Google.
 
 - [https://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html](https://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html)
 - [Notifications UX: What's New for Android O (Google I/O '17) https://www.youtube.com/watch?v=vwZi56I0Mi0](https://www.youtube.com/watch?v=vwZi56I0Mi0)
 
-O novo modelo de notificações tem como base entender o que é prioridade para o usuário e qual é o melhor momento para ele recebê-las. O principal componente do novo modelo são os channels, os quais possuem níveis de prioridade (Min, Low, Default e High). Os channels e seus níveis de prioridade serão utilizados para definir quando e como uma notificação será apresentada para o usuário. 
+O novo modelo de notificações tem como base entender o que é prioridade para o usuário e qual é o melhor momento para ele recebê-las. O principal componente do novo modelo são os channels, que serão utilizados para definir quando e como uma notificação será apresentada para o usuário, baseado em diferentes níveis de prioridade que os channels podem possuir (Min, Low, Default e High). 
 
 **System notifications settings for an app**: O usuário irá poder definir quais notificações deseja continuar recebendo, de determinado aplicativo, e quais serão as prioridades para cada tipo de notificação. Desta maneira, todos os desenvolvedores (ou fornecedor) de aplicativos serão obrigados a implementar suporte a configurações de notificações por channel (ou as notificações serão removidas em uma versão futura).
 
-A apresentação das notificações também será atualizada. Existirá uma hierarquia visual, onde o mais crítico vai aparecer primeiro e no topo. Notificações poderão aparecer em uma single line se tiverem prioridade inferior às demais.
+A apresentação das notificações também será atualizada. Existirá uma hierarquia visual, onde a mais crítica vai aparecer primeiro e no topo. Notificações poderão aparecer em uma single line se tiverem prioridade inferior às demais.
 
 Caso o usuário tenha muitas notificações pode gerar um "scroll de notificações". Sendo que durante o scroll os ícones dos aplicativos acabam fornecendo uma relevância adicional para notificações.
 
