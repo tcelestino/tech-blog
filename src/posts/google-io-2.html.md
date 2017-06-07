@@ -8,6 +8,15 @@ author: davidrobert
 tags:
   - google io
   - android
+  - android o
+  - android studio
+  - kotlin
+  - java
+  - instant app
+  - smart lock
+  - android vitals
+  - autofill
+  - auto backup
 ---
 
 A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação **Kotlin**. 
