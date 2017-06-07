@@ -9,7 +9,7 @@ tags:
   - google io
   - web
   - pwa
-  - amo
+  - amp
   - chrome
   - devtools
 ---
@@ -20,7 +20,7 @@ Um Product Manager do Twitter apresentou casos de sucesso com PWA, onde seu uso 
 
 Forbes, Expedia, Pinterest, Lyft, Airbnb, Trivago, Lacôme, entre outros já utilizam PWAs. Sendo que a Lacôme teve um incremento de 53% de tempo de sessão após a adoção da tecnologia.
 
-O Trivago pergunta se o usuário deseja adicionar um atalho na home apresentando de maneira idêntica a um app aplicativo nativo.
+O Trivago pergunta se o usuário deseja adicionar um atalho na home apresentando de maneira idêntica a um aplicativo nativo.
 
 O Head de Web Products do [Olacabs](https://www.olacabs.com/) apresentou um caso de sucesso do uso de PWA com web components. Sendo que atualmente o Olacabs tem mais de 1 milhão de corridas diárias, em mais de 110 cidades, com mais de 600 mil motoristas.
 
@@ -50,14 +50,11 @@ Continuando no tema, foi apresentado o resultado de uma pesquisa sobre transaç�
 - [https://g.co/PayAppIntegration](https://g.co/PayAppIntegration)
 - [https://g.co/PaymentRequestCodeLab](https://g.co/PaymentRequestCodeLab)
 
-
-Como eu escrevi esse trecho no metro tomei a liberdade de reescrever, peçam para o mestre Lima revisar com carinho:
-
 ## DevTools
 
 Debugar ficou muito melhor, antes os breakpoints ficavam associados à linha que eles foram adicionados, e quando havia alguma alteração no código eles ficavam no lugar errado, mas agora é associado ao código, claro uma grande refatoração vai fazer com que ele se perca mas isso já é uma grande melhora.
 
-Com o JavaScript ganhando novas maneiras de se programar como por exemplo promises e async/await functions, o devtools também teve que melhorar, agora podemos ver se estamos dentro de uma função que foi executada de maneira asynchronou no stack trace por exemplo:
+Com o JavaScript ganhando novas maneiras de se programar como por exemplo promises e async/await functions, o devtools também teve que melhorar, agora podemos ver se estamos dentro de uma função que foi executada de maneira asynchronous no stack trace por exemplo:
 
 ![stack](https://cloud.githubusercontent.com/assets/1116568/26766999/a3947874-4971-11e7-8bb0-11e5627e3052.png)
 ![stack-promises](https://cloud.githubusercontent.com/assets/1116568/26767000/a3975788-4971-11e7-8198-c65f54aef461.png)
@@ -68,9 +65,9 @@ Além disso, debuggar arrow functions sempre foi um problema já que podemos faz
 
 Para quem gosta de debuggar seus projetos Node com o Chrome também sentiram a melhoria.
 
-O novo painel de Performance vai nos ajudar a encontrar pontos no código quem pode ser melhorados, basicamente ele é uma junção dos painéis Network e Profile, com isso conseguiremos ver por exemplo onde um arquivo JavaScript terminou de ser carregado e quando começou a sua execução (Evaluate Script), outro exemplo foi o carregamento de uma fonte customizada e como ela impactou na experiência dos usuários, tudo isso com screenshots onde conseguiremos ver se o carregamento/execução dos assets.
+O novo painel de Performance vai nos ajudar a encontrar pontos no código que podem ser melhorados, basicamente ele é uma junção dos painéis Network e Profile, com isso conseguiremos ver por exemplo onde um arquivo JavaScript terminou de ser carregado e quando começou a sua execução (Evaluate Script), outro exemplo foi o carregamento de uma fonte customizada e como ela impactou na experiência dos usuários, tudo isso com screenshots onde conseguiremos ver o carregamento/execução dos assets.
 
-Com a nova seção de Coverage dentro do painel Console, vamos conseguir ver exatamente qual parte do código e o quanto (em porcentagem) de nossos css/js está sendo realmente utilizado, e não se preocupem eles sabem que alguns estilos e funções são aplicadas apenas se houver interessões do usuário, e por isso que essa porcetagem muda em tempo real conforme o uso da aplicação.
+Com a nova seção de Coverage dentro do painel Console, vamos conseguir ver exatamente qual parte do código e o quanto (em porcentagem) de nossos css/js está sendo realmente utilizado, e não se preocupem eles sabem que alguns estilos e funções são aplicadas apenas se houver interações do usuário, e por isso que essa porcentagem muda em tempo real conforme o uso da aplicação.
 
 ![coverage](https://cloud.githubusercontent.com/assets/1116568/26767014/d7be09e4-4971-11e7-9a40-8be1f2c5bee0.png)
 
@@ -107,3 +104,5 @@ Tópicos recomendados para uma boa compreensão:
 Diversas sessões sobre Firebase ocorreram durante o evento. Focando principalmente em autenticação por número de telefone, hosting e realtime.
 ![Cloud / Firebase](../images/google-io-3.png)
 - [https://firebase.google.com/](https://firebase.google.com/)
+
+Nesse post vimos algumas das novidades anunciadas durante o Google I/O focadas em Web. O que acharam? Gostaram das mudanças? Deixe seu comentário!
