@@ -40,11 +40,11 @@ Além disso, diversas novas APIs e features do Java 8 foram disponibilizadas, co
 - `java.util.function`
 
 Todos com suporte de versão mínima do Android API 24 ou superior. E features como:
-- Default and static interface methods
-- Repeating annotations
+- Métodos default e static em interface 
+- Anotações repetivéis (utilizando @Repeatable)
 - Type Annotations
 - Method References
-- Lambda expressions
+- Expressões Lambda
 
 Algumas novas características do Android O:
 
