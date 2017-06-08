@@ -94,7 +94,7 @@ O novo modelo de notificações tem como base entender o que é prioridade para 
 
 **System notifications settings for an app**: O usuário irá poder definir quais notificações deseja continuar recebendo, de determinado aplicativo, e quais serão as prioridades para cada tipo de notificação. Desta maneira, todos os desenvolvedores (ou fornecedor) de aplicativos serão obrigados a implementar suporte a configurações de notificações por channel (ou as notificações serão removidas em uma versão futura).
 
-A apresentação das notificações também será atualizada. Existirá uma hierarquia visual, onde a mais crítica vai aparecer primeiro e no topo. Notificações poderão aparecer em uma single line se tiverem prioridade inferior às demais.
+A apresentação das notificações também será atualizada. Existirá uma hierarquia visual, onde a mais prioritária vai aparecer primeiro e no topo. Notificações poderão aparecer em uma single line se tiverem prioridade inferior às demais.
 
 Caso o usuário tenha muitas notificações pode gerar um "scroll de notificações". Sendo que durante o scroll os ícones dos aplicativos acabam fornecendo uma relevância adicional para notificações.
 
