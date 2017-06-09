@@ -1,6 +1,6 @@
 ---
 title: Google I/O - Inteligência Artificial
-date: 2017-06-01
+date: 2017-06-09
 category: back-end
 layout: post
 description: Inteligência artificial foi um dos grandes temas do Google I/O. Atualmente, todos os produtos da Google estão utilizando alguma camada de inteligência artificial, e vão usar cada vez mais no futuro.
