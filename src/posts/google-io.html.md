@@ -45,9 +45,9 @@ O **Google Assistent** teve melhorias significativas. O Google Assistent começo
 Além disso, novos recursos estão tornando o assistente mais conversacional:
 
 - Outros idiomas estão sendo incorporados a plataforma (inclusive o Português);
-- Agora é possível pode digitar uma consulta em vez de dizê-la em voz alta;
+- Agora é possível digitar uma consulta em vez de dizê-la em voz alta;
 - O Google Assistent foi lançado também para a plataforma iOS (uma alternativa ao Siri);
-- Será possível usar o Google Assistent para enviar dinheiro para outras pessoa (inclusive dentro de um chat);
+- Será possível usar o Google Assistent para enviar dinheiro para outras pessoas (inclusive dentro de um chat);
 - Integração com o Google Home e outros devices;
 - Disponibilização do Google Assistent SDK.
 
