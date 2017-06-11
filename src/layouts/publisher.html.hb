@@ -10,6 +10,9 @@ layout: page
 		{{#document.twitter}}
 			<a itemprop='url' href='https://twitter.com/{{.}}' class='social twitter' target='_blank' title='Conheça meu twitter'>{{.}}</a>
 		{{/document.twitter}}
+		{{#document.linkedin}}
+			<a itemprop='url' href='https://www.linkedin.com/in/{{.}}' class='social linkedin' target='_blank' title='Conheça meu linkedin'>{{.}}</a>
+		{{/document.linkedin}}
 	</section>
 	<figure class='hide avatar' itemprop='image' itemscope itemtype="http://schema.org/ImageObject">
 		<img itemprop='contentUrl' width='100px' height='100px'/>

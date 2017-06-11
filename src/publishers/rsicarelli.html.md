@@ -4,5 +4,6 @@ publisher: Rodrigo Sicarelli
 layout: publisher
 twitter: rsicarelli
 github: rsicarelli
+linkedin: rodrigosicarelli
 description:
 ---

@@ -49,10 +49,12 @@
 			background-image: url('/images/ico/ic-twitter.svg');
 		}
 
+		&.linkedin {
+			background-image: url('/images/ico/ic-linkedin.svg');
+		}
+
 		&.github {
-			background-image: url('/images/github_icon.svg');
-			background-color: black;
-			border-radius: 50%;
+			background-image: url('/images/ico/ic-github.svg');
 		}
 	}
 }

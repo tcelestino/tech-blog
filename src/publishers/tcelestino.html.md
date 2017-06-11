@@ -4,5 +4,6 @@ publisher: Tiago Celestino
 layout: publisher
 twitter:
 github: tcelestino
+linkedin: tcelestino
 description:
 ---
