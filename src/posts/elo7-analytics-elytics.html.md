@@ -7,7 +7,7 @@ tags:
   - flink
   - elasticsearch
   - kibana
-author: mikedias
+authors: [mikedias]
 layout: post
 title: Elo7 + Analytics = Elytics
 description: Métricas, métricas, métricas! Aqui no Elo7, tanto as métricas de sistema (cpu, mémoria, disco, logs, etc) quanto as métricas de negócio (pedidos, carrinhos, mensagens) importam bastante. Tudo o que acontece no site é capturado, metrificado e monitorado em tempo real para que nós possamos saber se estamos indo bem ou mal e para onde devemos seguir. Para que isso seja possível nós criamos o Elytics (Elo7 + Analytics).

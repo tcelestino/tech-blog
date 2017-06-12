@@ -18,9 +18,10 @@ autoprefix: true
 	}
 
 	.author {
-		display: block;
+		display: inline-block;
 		text-decoration: none;
 		color: map-get($colors-text, gray);
+		margin-right: 1em;
 		transition: color 0.3s;
 
 		.publisher {

@@ -4,7 +4,7 @@ date: 2017-03-20
 category: back-end
 layout: post
 description: Entenda como controlar o fluxo de funcionamento do seu código usando expressão booleana e do funcionamento do "if", "else", "for", "while" e de alguns operadores.
-author: tcelestino
+authors: [tcelestino]
 tags:
   - java básico
   - controle de fluxo

@@ -4,7 +4,7 @@ date: 2016-02-15
 category: back-end
 layout: post
 description: Quando se fala em cobertura de testes, pode vir a mente a idéia de relatórios contendo números de várias métricas de software em busca de apresentar a qualidade geral de um sistema. Muitos já devem ter se perguntado qual o verdadeiro valor desses números...
-author: adolfoweloy
+authors: [adolfoweloy]
 tags:
   - tests
   - eclemma

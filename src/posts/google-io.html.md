@@ -4,7 +4,7 @@ date: 2017-06-09
 category: back-end
 layout: post
 description: Inteligência artificial foi um dos grandes temas do Google I/O. Atualmente, todos os produtos da Google estão utilizando alguma camada de inteligência artificial, e vão usar cada vez mais no futuro.
-author: davidrobert
+authors: [davidrobert]
 tags:
   - google io
   - inteligência artificial
@@ -40,7 +40,7 @@ A Google está efetivamente transformando sua plataforma de computação em nuve
 
 - [https://blog.google/topics/google-cloud/google-cloud-offer-tpus-machine-learning/](https://blog.google/topics/google-cloud/google-cloud-offer-tpus-machine-learning/)
 
-O **Google Assistent** teve melhorias significativas. O Google Assistent começou no celular Pixel e já está em mais de 100 milhões de dispositivos Android. A nova versão do assistente agora pode analisar o mundo à sua volta com a ajuda da câmera do smartphone. Usando tecnologia **Google Lens**, o assistente irá analisar o seu entorno e exibir conteúdo relevante na tela do dispositivo. Será possível ver a classificação de um restaurante ao direcionar a câmera do telefone para a loja, apontar para uma flor e identificar a espécie, ou até encontrar a música de uma banda ou vídeos apontando Lens para um cartaz de show. Um outro exemplo apresentado foi reconhecer as credenciais de login WiFi em uma imagem e o assistente usar essa informação para fazer login na rede. 
+O **Google Assistent** teve melhorias significativas. O Google Assistent começou no celular Pixel e já está em mais de 100 milhões de dispositivos Android. A nova versão do assistente agora pode analisar o mundo à sua volta com a ajuda da câmera do smartphone. Usando tecnologia **Google Lens**, o assistente irá analisar o seu entorno e exibir conteúdo relevante na tela do dispositivo. Será possível ver a classificação de um restaurante ao direcionar a câmera do telefone para a loja, apontar para uma flor e identificar a espécie, ou até encontrar a música de uma banda ou vídeos apontando Lens para um cartaz de show. Um outro exemplo apresentado foi reconhecer as credenciais de login WiFi em uma imagem e o assistente usar essa informação para fazer login na rede.
 
 Além disso, novos recursos estão tornando o assistente mais conversacional:
 
@@ -64,7 +64,7 @@ O Google Photos recebeu uma série de novos recursos, incluindo melhorias no com
 
 O lançamento da versão beta do **Android O** ocorreu durante o evento. Foi revelado que a contagem de dispositivos ativos do Android ultrapassa 2 bilhões. A nova versão do Android tem como principais características o foco em segurança, otimizações (de consumo de bateria) e ferramentas para desenvolvimento (este foco foi denominado [Vitals](https://developer.android.com/topic/performance/vitals/index.html)).
 
-Mirando no próximo bilhão usuários on-line para a plataforma, está sendo desenvolvida a versão Android Go. Essa versão tem como objetivo conseguir funcionar em celulares com poucos recursos e deverá ser lançada em 2018. 
+Mirando no próximo bilhão usuários on-line para a plataforma, está sendo desenvolvida a versão Android Go. Essa versão tem como objetivo conseguir funcionar em celulares com poucos recursos e deverá ser lançada em 2018.
 
 - [Android for Entry-Level Devices https://www.youtube.com/watch?v=CHKfKChZSE0](https://www.youtube.com/watch?v=CHKfKChZSE0)
 
@@ -74,10 +74,10 @@ Também ocorreram algumas outras novidades, como **YouTube 360**, nova versão d
 
 Em 2016, a Google adquiriu a [Api.ai](https://api.ai), uma plataforma de conversação, que facilita a criação de bots, incluindo compreensão de linguagem natural em diversos idiomas e aprendizado de máquina. A plataforma evoluiu, e agora disponibiliza um SDK bem maduro para facilitar a integração.
 
-- [https://developers.google.com/actions/apiai/](https://developers.google.com/actions/apiai/) 
+- [https://developers.google.com/actions/apiai/](https://developers.google.com/actions/apiai/)
 - [https://developers.google.com/actions/apiai/tutorials/getting-started](https://developers.google.com/actions/apiai/tutorials/getting-started)
 
-## TensorFlow 
+## TensorFlow
 
 Diversos produtos do Google utilizam TensorFlow, incluindo Search, Gmail, Translate, Maps, Android, Photos, Speech, YouTube, Play e muitos outros.
 
@@ -88,7 +88,7 @@ O foco no TensorFlow está bastante elevado:
 - +6400 repositorios com "TensorFlow" (no github);
 - +5000 perguntas respondidas no Stack Overflow.
 
-O suporte a novas linguagens de programação foi incorporado ao TensorFlow, incluindo agora Haskell, C++, Java, Python, Go, etc. 
+O suporte a novas linguagens de programação foi incorporado ao TensorFlow, incluindo agora Haskell, C++, Java, Python, Go, etc.
 
 Durante o evento foi anunciado o **TensorFlow Lite**, uma versão do TensorFlow para mobile.
 

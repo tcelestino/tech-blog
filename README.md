@@ -16,7 +16,7 @@ tags:
   - java
   - mockito
   - tdd
-author: seugithub
+authors: [seugithub,outrogithubsetiver]
 layout: post
 title: Título do post
 description: Alguma descrição do post que irá aparecer na home...

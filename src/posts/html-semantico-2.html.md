@@ -4,7 +4,7 @@ category: front-end
 layout: post
 title: A importância da semântica no HTML - parte II
 description: Neste segundo post da série sobre a importância da semântica para os usuários e desenvolvedores, trataremos sobre como podemos melhorar nosso conteúdo de forma que os buscadores entendam o que realmente estamos oferecendo, com a menor possibilidade de ruídos de informação possível. Saberemos de maneira prática como podemos melhorar a disponibilidade de nosso conteúdo.
-author: rapahaeru
+authors: [rapahaeru]
 tags:
   - HTML
   - semântica

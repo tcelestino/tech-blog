@@ -6,7 +6,7 @@ tags:
   - android
   - dependency-inversion
   - dagger2
-author: rsicarelli
+authors: [rsicarelli]
 layout: post
 title: Desmistificando o Dagger 2
 description: Uma das bibliotecas mais famosas e mais faladas no Android e também é a que gera mais dúvidas em sua implementação. Iremos tornar fácil a compreensão dessa poderosa ferramenta.

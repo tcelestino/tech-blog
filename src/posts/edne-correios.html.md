@@ -1,7 +1,7 @@
 ---
 title: e-DNE Correios
 date: 2013-07-23
-author: brunobuccoloelo7
+authors: [brunobuccoloelo7]
 layout: post
 category: back-end
 description: O e-DNE é um banco de dados que contém todos os CEPs do Brasil. No entanto, essa base é disponibilizada apenas para download. Então criamos uma ferramenta para importar...

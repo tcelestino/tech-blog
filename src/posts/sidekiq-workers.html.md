@@ -1,7 +1,7 @@
 ---
 title: Auto scale Sidekiq workers on Amazon EC2
 date: 2013-06-24
-author: pablocantero
+authors: [pablocantero]
 layout: post
 category: back-end
 description: We use Sidekiq to process messages from images conversion to shipping tickets' generation...

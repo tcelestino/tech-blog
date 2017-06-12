@@ -1,7 +1,7 @@
 ---
 title: Tech Talks Elo7
 date: 2014-09-04
-author: erikatakahara
+authors: [erikatakahara]
 layout: post
 category: front-end
 description: No Elo7 temos uma série de iniciativas legais que realizamos em nosso dia-a-dia: Tech Talks, Dojos, Grupos de estudos, café da manhã com vendedores, craft day, além de aplicar...

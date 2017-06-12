@@ -5,7 +5,7 @@ tags:
   - HTML
   - semântica
   - acessibilidade
-author: rapahaeru
+authors: [rapahaeru]
 layout: post
 title: Os papéis do WAI-ARIA no HTML
 description: O ARIA se divide semanticamente em três partes: seus papéis (roles), estados (states) e suas propriedades (properties). Nesse post vamos focar nas roles (papéis) e entender o seu real papel no HTML.
