@@ -22,21 +22,19 @@ Esta passagem da minha história neste mercado é mais comum do que parece, ent�
 
 ## Começando com testes automatizados
 
-Ninguém (ou a maioria dos desenvolvedores que conheço) gosta de testar software pelo simples fato de que executar uma bateria de testes de forma manual é extremamente cansativo. Com isso, nós desenvolvedores criamos o péssimo hábito de testar superficialmente tudo que produzimos, e pela força dos processos inseridos nas empresas acabamos delegando para um terceiro a responsabilidade de testar o que acabamos de desenvolver. Mudar essa realidade é complicado, mais não impossível, e certamente a melhor maneira de resolver isto é tornar isso um processo natural e agradável ao desenvolvedor. Agora meu caro eu te pergunto: que tal utilizar o seu melhor skill (que é programar) para tornar os processos de teste manuais em rotinas automatizadas? Parece uma boa não? Pois bem, esse será nosso desafio daqui para frente.
+Ninguém (ou a maioria dos desenvolvedores que conheço) gosta de testar software pelo simples fato de que executar uma bateria de testes de forma manual é extremamente cansativo. Com isso, nós desenvolvedores criamos o péssimo hábito de testar superficialmente tudo que produzimos, e pela força dos processos inseridos nas empresas acabamos delegando para um terceiro a responsabilidade de testar o que acabamos de desenvolver. Mudar essa realidade é complicado, mais não impossível, e certamente a melhor maneira de resolver isto é torná-la um processo natural e agradável ao desenvolvedor. Agora meu caro eu te pergunto: que tal utilizar o seu melhor skill (que é programar) para tornar os processos de teste manuais em rotinas automatizadas? Parece uma boa não? Pois bem, esse será nosso desafio daqui para frente.
 
-Para quem está iniciando nesta jornada, a curva de aprendizado pode parecer um tanto que assutadora, e o maior desafio sem dúvida neste ponto é equalizar a sua aparente **falta de conhecimento sobre o tema** a uma nova **filosofia que guiará todo o seu processo de trabalho** daqui para frente. Somado a isso, surgirão uma série de decisões que você precisará tomar para sua saída do que eu costumo chamar de "zero absoluto". As perguntas que certamente vem a tona neste momento são: **por onde eu devo começar?** e **por qual caminho eu devo seguir?**
+Para quem está iniciando nesta jornada, a curva de aprendizado pode parecer um tanto que assutadora e o maior desafio sem dúvida neste ponto é equalizar a sua aparente **falta de conhecimento sobre o tema** a uma nova **filosofia que guiará todo o seu processo de trabalho**. Somado a isso, surgirão uma série de decisões que você precisará tomar para a saída do que eu costumo chamar de "zero absoluto". As perguntas que certamente vem a tona neste momento são: **por onde devemos começar e qual caminho deve-se seguir???**
 
-Pois bem, após um bucado de pesquisas que fiz a respeito do assunto eu consegui mapear as **perguntas** que precisavam de **respostas** para que meu primeiro grande objetivo fosse alcançado. Minha meta era simples, dadas as perguntas, as respostas iriam nortear como eu deveria configurar corretamente uma **stack mínima para rodar meus testes**:
+Bom eu acredito que o principal objetivo inicialmente seja conseguir configurar corretamente uma **stack mínima para rodar seus testes**. Para isso, existe uma quantidade razoável de **perguntas** que precisam **respostas** afim de nortear o que deve ser feito. Veja se elas fazem sentido para você:
 
 - Que tipo de teste eu preciso para o meu software? **Unitário**, de **Integração** ou de **Aceitação**?
 
 - Qual mindset eu deveria utilizar para guiar os meus testes? **TDD**, **BDD** ou um **misto de ambos**?
 
-- Qual biblioteca para **expect/should/assertion** deveria ser empregada?
+- Qual biblioteca para de asserção (**expect/should/assertion**) deveria ser empregada?
 
-- E testes que dependiam de **respostas assíncronas**? Como tratar estes casos? **Spies, stubs e mocks** seriam uma opção?
-
-- Se sim, qual ferramenta então eu deveria utilizar?
+- E testes que dependem de **respostas assíncronas**? Como tratar estes casos? **Spies, stubs e mocks** seriam uma opção?
 
 - Será que além dos testes, seria interessante ter uma idéia sobre o **percentual de cobertura** de tudo que estava sendo testado?
 
@@ -50,17 +48,18 @@ Analisando as perguntas e as prováveis respostas, eu consegui encontrar muitas 
 
 - **Istanbul.js**, **Blanket.js**, **JsCover**, ... (para code coverage)
 
-Bom, chegando neste ponto, eu percebi o quanto eu estava enrascado. Pois uma mudança de estratégia, depois das escolahs feitas e que todos os os testes estivessem escritos seria um tanto que desastrosa.
+Hummm... bom chegando neste ponto, deu para perceber que existe um certo nível de complexidade para configurar este stack. O simples fato de decidir quais ferramentas utilizar (caso alguma escolha não seja a mais acertada) pode trazer consequências futuras para a manutenabilidade dessa stack, umav ez que trocar uma peça que não funcione tão bem pode impactar em uma quantidade significativa de testes já escritos.
+
 
 ## Nossa que complexo, quero desistir!
 
-É meu amigo, se você chegou até esse ponto deste post, já deve ter sacado o tamanho da dor que é simplemente configurar o seu stack de testes. Com tantas opções e decisões para serem tomadas, isso por si só já seria o suficiente para ser postergado ao infinito e tornar-se então o famoso débito técnico do seu projeto.
+É meu amigo, se você chegou até esse ponto deste post, já deve ter sacado o tamanho da dor que é simplemente configurar um stack para testes. Com tantas opções e decisões para serem tomadas, isso por si só já seria o suficiente para ser postergado ao infinito e tornar-se então o famoso débito técnico do seu projeto.
 
-A parte boa, é que era exatamente isso que você precisava fazer até ontem, pois o hoje é belo e você já tem opções bem mais elegantes para executar os seus testes. Então não desista, pois daqui pra frente você vai poder focar no melhor do seu trabalho, que é escrever testes e produzir código de qualidade!
+A parte boa, é que era exatamente isso que você precisava fazer até ontem, pois o hoje é um belo dia e você já tem opções bem mais elegantes para execução dos seus testes. Então não desista, pois daqui pra frente você vai poder focar no melhor do seu trabalho, que é escrever testes e produzir código de qualidade, sem se preocupar com essa barrreira de entrada!
 
 ## Jest FTW!
 
-Jest é um projeto open-source para testes Javascript mantido pelo Facebook, que nasceu com uma filosofia ímpar: prover a seus usuários  uma stack completa de testes com zero esforço de configuração.
+Jest é um projeto open-source para testes Javascript mantido pelo Facebook, que nasceu com uma filosofia ímpar: prover a seus usuários uma stack completa de testes com zero esforço de configuração.
 
 Além desta marcante característica, ele possui algumas outras, como:
 
@@ -78,29 +77,29 @@ Parece bom demais pra ser verdade né!? Mais acredite, isso vai facilitar e muit
 
 Começar a escrever seus testes com Jest é realmente muito fácil. A seguir vou lhe descrever os passos necessários para deixar tudo funcionando.
 
-Vamos começar, **instalando o Jest**. Neste ponto é importante que você entenda que o Jest é distruído como um pacote da plataforma **node.js**. Portanto é vital certificar-se que este último está instalado. Você pode abrir seu terminal e digitar o seguinte comando para isso:
+Vamos começar, **instalando o Jest**. Neste ponto é importante que você entenda que o Jest é distruído como um módulo da plataforma **node.js**. Portanto é vital certificar-se que este último está instalado. Você pode abrir seu terminal e digitar o seguinte comando para isso:
 
 ```bash
 node -v
 ```
 
-Se tudo estiver certo o número versão instalada do **node.js** no seu computador será exibida! Caso negativo, você pode dar uma olhadinha neste site (https://nodejs.org/en/download/) e proceder com o processo de instalação.
+Se tudo estiver certo o número versão instalada do **node.js** no seu computador será exibida! Caso negativo, você pode dar uma olhadinha neste site (https://nodejs.org/en/download/) e proceder com o processo de instalação de acordo com o seu sistema operacional preferido.
 
-Neste ponto temos duas opções, podemos usar o bom e velho **npm** ou o novissímo **yarn**. Independente da escolha, saiba que ambas opções tem o mesmo papel, que é o gerenciamento dos módulos do **node.js**.
+Além da plataforma instalada, precisamos de outra ferramenta para gerenciamento dos módulos. Aqui temos 2 opções, o bom e velho **npm** ou o novissímo **yarn**.
 
-Neste post, nossa opção para gerenciamento será o **yarn**. Antes de continuar, você precisa garantir que ele esteja instalado no seu ambiente, processo que é muito simples, bastando rodar o seguinte comando (caso você for usuário da plataforma macOS):
+Neste post, nossa opção para gerenciamento dos módulos será feita pelo **yarn**. Então antes de continuarmos, você precisa garantir que ele esteja instalado no seu ambiente, processo que é muito simples, bastando rodar o seguinte comando (caso você for usuário da plataforma macOS):
 
 ```bash
 brew install yarn
 ```
 
-**Dica 1**: o **yarn** está disponível para todas os principais sistemas operacionais. Caso você seja usuário desses sistemas pode conferir o processo de instalação neste site (https://yarnpkg.com/pt-BR/docs/install)
-
-**Dica 2**: caso você seja usuário macOS e mesmo assim não tenha o **Homebrew** instalado em seu ambiante, você pode executar o seguinte comando:
+**Dica 1**: caso você seja usuário macOS e não tenha o **Homebrew** instalado em seu ambiente a intrução anterior falhará. Caso isto ocorra, rode o seguinte comando e tente novamente:
 
 ```bash
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
+
+**Dica 2**: caso você não seja um usuário macOS, sabia que o **yarn** está disponível para todas os principais sistemas operacionais. Caso você seja usuário de outras plataformas confira o processo de instalação neste site (https://yarnpkg.com/pt-BR/docs/install)
 
 Ufa! Agora sim, vamos finalmente instalar o Jest!
 
@@ -128,9 +127,9 @@ Após rodar este comando, você pode conferir o conteúdo deste diretório e enc
 └── node_modules
 ```
 
-Feito isso, vamos alterar nosso arquivo `package.json`, adicionando a seguinte seção scripts dentro do mesmo, ele deve ficar com esta forma:
+Feito isso, vamos alterar nosso arquivo `package.json`, adicionando a chave `test` com o valor `jest` dentro do objeto `scripts`. Desta forma:
 
-```javascript
+```json
 {
   "scripts": {
     "test": "jest"
@@ -140,3 +139,5 @@ Feito isso, vamos alterar nosso arquivo `package.json`, adicionando a seguinte s
   }
 }
 ```
+
+Essa alteração importante no `package.json` serve para registrar uma espécie de atalho para execução dos seus testes. Ele será bastante útil logo abaixo!
