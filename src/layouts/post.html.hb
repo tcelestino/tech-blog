@@ -69,3 +69,4 @@ layout: page
 	<noscript>Habilite o JavaScript para ver os comentários</noscript>
 </article>
 <script async src="/js/post.js"></script>
+

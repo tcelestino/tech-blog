@@ -101,6 +101,7 @@
 	<script async src="https://www.google-analytics.com/analytics.js"></script>
 	<script async src="/js/analytics.js"></script>
 	<script src="/js/vendor/async-define.js"></script>
+	<script async src="/js/github.js"></script>
 	<script async src="/js/vendor/events-amd.js"></script>
 	<script async src="/js/vendor/ajax.js"></script>
 	<script async src="/js/vendor/doc.js"></script>

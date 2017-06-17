@@ -7,50 +7,50 @@ autoprefix: true
 @import 'code';
 
 .post-content {
-		padding: 1em 5%;
-		background-color: #fff;
+	padding: 1em 5%;
+	background-color: $white;
 
-		.title {
-				font-size: 2.1em;
-				margin-bottom: 0;
-				line-height: 1.2;
-				color: map-get($colors-text, darker);
+	.title {
+		font-size: 2.1em;
+		margin-bottom: 0;
+		line-height: 1.2;
+		color: map-get($colors-text, darker);
+	}
+
+	.author {
+		display: block;
+		text-decoration: none;
+		color: map-get($colors-text, gray);
+		transition: color 0.3s;
+
+		.publisher {
+			display: inline-block;
+			vertical-align: bottom;
 		}
 
-		.author {
-				display: block;
-				text-decoration: none;
-				color: map-get($colors-text, gray);
-				transition: color 0.3s;
-
-				.publisher {
-					display: inline-block;
-					vertical-align: bottom;
-				}
-
-				.avatar {
-					border-radius: 50%;
-					margin: 0 1em 0 0;
-					display: inline-block;
-				}
-
-				&:hover {
-						color: $yellow-default;
-				}
-		}
-		.date {
-				color: map-get($colors-text, gray);
-				font-size: 0.8em;
-				margin-top: 0.5em;
-				margin-bottom: 0.5em;
-				display: inline-block;
+		.avatar {
+			border-radius: 50%;
+			margin: 0 1em 0 0;
+			display: inline-block;
 		}
 
-		.post-meta {
-				color: map-get($colors-text, gray);
-				font-weight: 300;
-				font-size: 0.9em;
+		&:hover {
+			color: $yellow-default;
 		}
+	}
+	.date {
+		color: map-get($colors-text, gray);
+		font-size: 0.8em;
+		margin-top: 0.5em;
+		margin-bottom: 0.5em;
+		display: inline-block;
+	}
+
+	.post-meta {
+		color: map-get($colors-text, gray);
+		font-weight: 300;
+		font-size: 0.9em;
+	}
 }
 
 .share {
@@ -101,29 +101,29 @@ autoprefix: true
 }
 
 @media (min-width: 800px) {
-		.post-content {
-			padding: 1em 15%;
-			margin-left: 210px;
-		}
+	.post-content {
+		padding: 1em 15%;
+		margin-left: 210px;
+	}
 
-		.share {
-			position: fixed;
-			top: 3.5em;
-			right: 10%;
+	.share {
+		position: fixed;
+		top: 3.5em;
+		right: 10%;
 
-			.link-share {
-				display: block;
-				margin-bottom: 0.5em;
-				opacity: 0.8;
-				&:hover {
-					opacity: 1;
-				}
-			}
-
-			.copy-success {
-				left: 0;
-				right: auto;
-				top: auto;
+		.link-share {
+			display: block;
+			margin-bottom: 0.5em;
+			opacity: 0.8;
+			&:hover {
+				opacity: 1;
 			}
 		}
+
+		.copy-success {
+			left: 0;
+			right: auto;
+			top: auto;
+		}
+	}
 }

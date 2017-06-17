@@ -23,7 +23,7 @@ layout: page
 					</time>
 				</div>
 				{{#description}}
-					<p class="description">
+					<p class="description" itemprop="description">
 						{{.}}
 					</p>
 					<meta itemprop='headline' content='{{ellipsis . 110}}' >
@@ -40,7 +40,7 @@ layout: page
 				<span itemprop='publisher' itemscope itemtype="http://schema.org/Organization">
 					<meta itemprop='name' content='Elo7 Tech'/>
 					<span itemprop="logo" itemscope itemtype="http://schema.org/ImageObject">
-						<link href="https://images.elo7.com.br/assets/v3/desktop/png/logo-elo7.png" itemprop="url"/>
+						<link href="{{../site.baseUrl}}/images/ico/logo-elo7.png" itemprop="url"/>
 						<meta itemprop='width' content='100px'/>
 						<meta itemprop='height' content='100px'/>
 					</span>

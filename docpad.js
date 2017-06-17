@@ -10,9 +10,6 @@ docpadConfig = function() {
 					getCollection: function(name) {
 						return this.getCollection(name).toJSON();
 					},
-					getAuthor: function(name) {
-						return this.getCollection(name).toJSON();
-					},
 					dateAsText: function(date) {
 						return moment(date).utc().format('DD/MM/YYYY');
 					},
@@ -31,18 +28,16 @@ docpadConfig = function() {
 					},
 					equal: function(lvalue, rvalue, options) {
 						if (arguments.length < 3)
-							throw new Error("Handlebars Helper equal needs 2 parameters");
-						if( lvalue!=rvalue ) {
+							throw new Error("Handlebars Helper equal needs 3 parameters");
+						if( lvalue.toUpperCase() != rvalue.toUpperCase() ) {
 							return options.inverse(this);
 						} else {
 							return options.fn(this);
 						}
 					},
 					ellipsis: function (str, len) {
-						var realSize = len - 3;
 						if (len > 0 && str.length > len) {
-							var compactText = str.substring(0, (len - 3));
-							return compactText + '...';
+							return str.substring(0, (len - 3)) + '...';
 						}
 
 						return str;

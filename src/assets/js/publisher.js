@@ -1,25 +1,9 @@
-define(['doc', 'ajax'], function($, ajax) {
+define(['doc', 'github'], function($, github) {
 
-	var GITHUB_URI = 'https://api.github.com/users/',
-		$author = $('h1.name'),
-		dataGitHubAuthor = $('.github').text(),
-		$avatar = $('.avatar');
+	var $avatar = $('.avatar');
 
-	if($author.isPresent()) {
-		ajax.get(GITHUB_URI + dataGitHubAuthor, {}, {
-			success: function(response, xhr) {
-				var userInfo = {
-					avatar: response.avatar_url + '&size=100',
-					name: response.name
-				};
-
-				$avatar.removeClass('hide');
-				$avatar.find('img').attr('src', userInfo.avatar);
-				$author.html(userInfo.name);
-			},
-
-			error: function(response, xhr) {},
-			complete: function(xhr) {}
-		})
+	if($avatar.isPresent()) {
+		$avatar.removeClass('hide');
+		github.updateAvatar([{imgElement: $avatar.find('img'), size: 100, userName: $('.github').text()}]);
 	}
 });

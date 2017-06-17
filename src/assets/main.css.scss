@@ -201,11 +201,11 @@ footer {
     }
 
     body {
-        background-color: #f8f8f8;
+        background-color: $lightly-dark-white;
     }
 
     footer {
-        background-color: #f8f8f8;
+        background-color: $lightly-dark-white;
         border-top: 1px solid map-get($colors-border, light-gray);
         margin-left: 210px; /* Navigation pane size */
         background-color: map-get($colors-text, white);

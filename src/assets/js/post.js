@@ -1,9 +1,6 @@
-define(['doc', 'ajax'], function($, ajax) {
+define(['doc', 'github'], function($, github) {
 
-	var GITHUB_URI = 'https://api.github.com/users/',
-		$author = $('p.publisher'),
-		dataAuthor = $author.data('author'),
-		$avatar = $('.avatar'),
+	var $avatar = $('img.avatar'),
 		$copy = $('.copy'),
 		$copySuccess = $('.copy-success');
 
@@ -13,7 +10,6 @@ define(['doc', 'ajax'], function($, ajax) {
 
 	if(supportsCopy() && $copy.isPresent()) {
 		$copy.removeClass('hide');
-
 
 		$copy.on('click', function(evt) {
 			evt.preventDefault();
@@ -32,20 +28,8 @@ define(['doc', 'ajax'], function($, ajax) {
 		});
 	}
 
-	if($author.isPresent()) {
-		ajax.get(GITHUB_URI + dataAuthor, {}, {
-			success: function(response, xhr) {
-				var userInfo = {
-					avatar: response.avatar_url + '&size=50',
-					name: response.name
-				};
-
-				$avatar.removeClass('hide').attr('src', userInfo.avatar);
-				$author.html(userInfo.name);
-			},
-
-			error: function(response, xhr) {},
-			complete: function(xhr) {}
-		})
+	if($avatar.isPresent()) {
+		$avatar.removeClass('hide');
+		github.updateAvatar([{imgElement: $avatar, size:50, userName: $('p.publisher').data('author')}]);
 	}
 });
