@@ -53,7 +53,7 @@ Além disso, precisamos pensar na execução: todo código vai ocupar memória e
 
 E se você deseja que o conteúdo do seu site seja indexado pelos sites de busca (SEO), o conteúdo precisa estar disponível mesmo que o JavaScript da página não rode. Assim, você não depende dos "bots" conseguirem rodar JavaScript para ser possível ler o conteúdo do seu site. Lembrando que o tempo de carregamento é um critério de SEO. Ou seja, quanto mais tempo demorar para carregar a página, menor a chance do seu site aparecer na busca.
 
-## Quando devemos utilizar um Framework js e qual escolher?
+## Quando devemos utilizar um framework js e qual escolher?
 
 Ao iniciar um projeto, todo desenvolvedor pensa em qual a arquitetura deverá utilizar junto com os frameworks. Essa escolha geralmente é feita seguindo alguma das seguintes formas: utilizar a mesma arquitetura do projeto anterior, escolher a arquitetura que é mais utilizada no momento ou a última arquitetura comentada na comunidade. Mas será que essas são as melhores formas de escolher a base do projeto?
 
@@ -81,3 +81,6 @@ Com essa arquitetura, nós temos pouca lógica no JS da página. Assim, vários 
 Não vou descrever o que cada lib faz aqui para o post não ficar gigante, mas haverá posts futuros explicando com detalhes como cada lib funciona e você saberá se ela se encaixa no seu problema.
 
 ## Conclusão
+Nenhuma arquitetura ou framework é melhor que outra. Cada um foi pensando em resolver um conjunto de problemas em específico. Não é só porque há uma empresa grande utilizando a arquitetura que ela é a bala de prata para todos.
+
+Então, antes de escolher uma arquitetura, indentifique quais os seus problemas atuais e os que estão para vir de acordo com o seu produto, para só então decidir se vale a pena ou não usar um framework e qual é o melhor para você.
