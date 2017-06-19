@@ -1,6 +1,6 @@
 ---
 title: Google I/O - Android
-date: 2017-06-01
+date: 2017-06-19
 category: mobile
 layout: post
 description: A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação Kotlin. 
