@@ -3,7 +3,7 @@ title: Google I/O - Android
 date: 2017-06-19
 category: mobile
 layout: post
-description: A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação Kotlin. 
+description: A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação Kotlin.
 author: davidrobert
 tags:
   - google io
@@ -13,13 +13,13 @@ tags:
   - kotlin
   - java
   - instant app
-  - smart lock
+  - smart lock
   - android vitals
   - autofill
   - auto backup
 ---
 
-A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação **Kotlin**. 
+A principal novidade sobre a plataforma Android foi o suporte à linguagem de programação **Kotlin**.
 
 ![Android](../images/google-io-2.png)
 
@@ -40,7 +40,7 @@ Além disso, diversas novas APIs e features do Java 8 foram disponibilizadas, co
 - `java.util.function`
 
 Todos com suporte de versão mínima do Android API 24 ou superior. E features como:
-- Métodos default e static em interface 
+- Métodos default e static em interface
 - Anotações repetivéis (utilizando @Repeatable)
 - Type Annotations
 - Method References
@@ -48,7 +48,7 @@ Todos com suporte de versão mínima do Android API 24 ou superior. E features c
 
 Algumas novas características do Android O:
 
-- Suporte a fonts via XML (disponível também na support library); 
+- Suporte a fonts via XML (disponível também na support library);
 - TextView com Auto-Sizing;
 - Adaptative icons;
 - findViewById agora retorna uma instancia genérica de classes que estendem View (o famoso Bounded Type);
@@ -72,7 +72,7 @@ No futuro (ainda está em review), o usuário poderá definir o limite de agress
 ## Android Studio
 A versão 3.0 do **Android Studio** recebeu uma série de melhorias:
 
-- Incorporação de profilers: CPU, Memoria e Rede; 
+- Incorporação de profilers: CPU, Memoria e Rede;
     - Com o Network Profiler é possível analisar e investigar cada request individualmente;
     - Com o Memory Profiler é possível acompanhar a alocação de memória feita pelo app ao longo do tempo, facilitando a identificação de pontos de alto consumo de memória ou mesmo leaks de memória. Esse profiler com certeza ajudará os desenvolvedores a implementarem melhores apps;
 - Melhoria significativa no tempo de build do app;
@@ -90,7 +90,7 @@ Ocorreram mudanças significativas no modelo de **notificações no Android O**.
 - [https://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html](https://android-developers.googleblog.com/2017/05/whats-new-in-android-o-developer.html)
 - [Notifications UX: What's New for Android O (Google I/O '17) https://www.youtube.com/watch?v=vwZi56I0Mi0](https://www.youtube.com/watch?v=vwZi56I0Mi0)
 
-O novo modelo de notificações tem como base entender o que é prioridade para o usuário e qual é o melhor momento para ele recebê-las. O principal componente do novo modelo são os channels, que serão utilizados para definir quando e como uma notificação será apresentada para o usuário, baseado em diferentes níveis de prioridade que os channels podem possuir (Min, Low, Default e High). 
+O novo modelo de notificações tem como base entender o que é prioridade para o usuário e qual é o melhor momento para ele recebê-las. O principal componente do novo modelo são os channels, que serão utilizados para definir quando e como uma notificação será apresentada para o usuário, baseado em diferentes níveis de prioridade que os channels podem possuir (Min, Low, Default e High).
 
 **System notifications settings for an app**: O usuário irá poder definir quais notificações deseja continuar recebendo, de determinado aplicativo, e quais serão as prioridades para cada tipo de notificação. Desta maneira, todos os desenvolvedores (ou fornecedor) de aplicativos serão obrigados a implementar suporte a configurações de notificações por channel (ou as notificações serão removidas em uma versão futura).
 
@@ -98,11 +98,11 @@ A apresentação das notificações também será atualizada. Existirá uma hier
 
 Caso o usuário tenha muitas notificações pode gerar um "scroll de notificações". Sendo que durante o scroll os ícones dos aplicativos acabam fornecendo uma relevância adicional para notificações.
 
-Outra característica é que notificações poderão ser postergadas de acordo com um ação do usuário. Por exemplo adiar 1 hora. Se for postergado mais do que X vezes as notificações não serão entregues mais. 
+Outra característica é que notificações poderão ser postergadas de acordo com um ação do usuário. Por exemplo adiar 1 hora. Se for postergado mais do que X vezes as notificações não serão entregues mais.
 
 Do ponto de vista do Firebase/GCM, passam a existir dois níveis de prioridade: High Priority e Normal Priority.
 
-### Questões em aberto: 
+### Questões em aberto:
 - Notificações poderão ser postergadas de acordo com o contexto (ex.: Android perceber que o usuário está dirigindo e só mostrar a notificação mais tarde)?
 - Firebase/GCM receberá a informação de quando uma notificação foi bloqueada/despriorizada?
 
@@ -130,10 +130,10 @@ A utilização do serviço **Smart Lock** possibilita o gerenciamento pelo Googl
 
 - [https://developers.google.com/identity/smartlock-passwords/android/](https://developers.google.com/identity/smartlock-passwords/android/)
 
-Diversos exemplos de empresas que usam Smart Lock: 
+Diversos exemplos de empresas que usam Smart Lock:
 - [https://g.co/SmartLockCaseStudies](https://g.co/SmartLockCaseStudies)
 
-O Pinterest afirmou que o uso do Smart Lock melhorou significativamente seus apps. 
+O Pinterest afirmou que o uso do Smart Lock melhorou significativamente seus apps.
 - [https://developers.google.com/identity](https://developers.google.com/identity)
 - [https://developers.google.com/identity/smartlock-passwords/android/overview](https://developers.google.com/identity/smartlock-passwords/android/overview)
 - [https://developers.google.com/android/reference/com/google/android/gms/auth/api/credentials/package-summary](https://developers.google.com/android/reference/com/google/android/gms/auth/api/credentials/package-summary)
@@ -145,5 +145,5 @@ O Pinterest afirmou que o uso do Smart Lock melhorou significativamente seus app
 - [https://developer.android.com/guide/topics/data/autobackup.html](https://developer.android.com/guide/topics/data/autobackup.html)
 - [https://developer.android.com/guide/topics/data/keyvaluebackup.html](https://developer.android.com/guide/topics/data/keyvaluebackup.html)
 
-Documento com links sobre Autofill, Smart Lock e Auto Backup: 
+Documento com links sobre Autofill, Smart Lock e Auto Backup:
 - [https://docs.google.com/document/d/15Krx0ml8qRPH5RfzgabHUYd3UqUOE11wYfOJ2PPb5QI/pub](https://docs.google.com/document/d/15Krx0ml8qRPH5RfzgabHUYd3UqUOE11wYfOJ2PPb5QI/pub)
