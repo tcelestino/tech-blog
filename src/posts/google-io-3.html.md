@@ -3,7 +3,7 @@ title: Google I/O - Web
 date: 2017-06-01
 category: front-end
 layout: post
-description: Durante diversas sessões os palestrantes incentivaram fortemente o uso de AMP e PWA. Além de reforçarem que Mobile Web é mainstream.
+description: Durante diversas sessões os palestrantes incentivaram fortemente o uso de AMP e PWA, além de reforçarem que Mobile Web é mainstream.
 author: davidrobert
 tags:
   - google io
@@ -14,15 +14,15 @@ tags:
   - devtools
 ---
 
-Durante diversas sessões, os palestrantes incentivaram fortemente o uso de **AMP** ([Accelerated Mobile Pages](https://www.ampproject.org)) e **PWA** ([Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)). Além de reforçarem que Mobile Web é mainstream.
+Durante varias sessões, os palestrantes incentivaram fortemente o uso de **AMP** ([Accelerated Mobile Pages](https://www.ampproject.org)) e **PWA** ([Progressive Web Apps](https://developers.google.com/web/progressive-web-apps)). Além de reforçarem que Mobile Web é mainstream.
 
 Um Product Manager do Twitter apresentou casos de sucesso com PWA, onde seu uso incrementou 65% de pages/sessions e 75% mais tweets.
 
-Forbes, Expedia, Pinterest, Lyft, Airbnb, Trivago, Lacôme, entre outros já utilizam PWAs. Sendo que a Lacôme teve um incremento de 53% de tempo de sessão após a adoção da tecnologia.
+Forbes, Expedia, Pinterest, Lyft, Airbnb, Trivago, Lacôme, entre outros já utilizam PWAs. A Lacôme teve um incremento de 53% de tempo de sessão após a adoção da tecnologia.
 
-O Trivago pergunta se o usuário deseja adicionar um atalho na home apresentando de maneira idêntica a um aplicativo nativo.
+No caso de uso do Trivago, é perguntado ao usuário se deseja adicionar um atalho na home, que é apresentado de maneira idêntica a um aplicativo nativo.
 
-O Head de Web Products do [Olacabs](https://www.olacabs.com/) apresentou um caso de sucesso do uso de PWA com web components. Sendo que atualmente o Olacabs tem mais de 1 milhão de corridas diárias, em mais de 110 cidades, com mais de 600 mil motoristas.
+O Head de Web Products do [Olacabs](https://www.olacabs.com/) apresentou um caso de sucesso do uso de PWA com web components. Atualmente, o Olacabs tem mais de 1 milhão de corridas diárias, em mais de 110 cidades, com mais de 600 mil motoristas.
 
 A versão com PWA teve cerca de 30% mais conversão que o app nativo. 20% das reservas usando PWA foram de usuários que tinham desinstalado o app. 
 
