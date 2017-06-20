@@ -10,17 +10,17 @@ tags:
   - isomorfico
 ---
 
-Continuando o post sobre [Javascript isomórfico](/isomorfismo), depois de explicar toda a história e o conceito de isomorfismo, vamos entrar em uma parte mais prática. Quais empresas usam, o resultado da implementação e alguns frameworks existentes no mercado serão alguns dos tópicos desse post.
+Continuando o post sobre [Javascript isomórfico](/isomorfismo), depois de explicar toda a história e o conceito de isomorfismo, vamos entrar em uma parte mais prática. Quais empresas usam, o resultado da implementação e alguns frameworks existentes no mercado serão alguns dos tópicos deste post.
 
 # Quem usa?
-Algumas empresas como [Airbnb](https://www.airbnb.com.br/), [Facebook](https://www.facebook.com/), [PayPal](https://www.paypal.com/br/), [Walmart](https://www.walmart.com.br/), [Netflix](https://www.netflix.com/br/), [Autodesk](http://www.autodesk.com.br/), além do próprio [Elo7](http://www.elo7.com.br/).
+Algumas empresas como [Airbnb](https://www.airbnb.com.br/), [Facebook](https://www.facebook.com/), [PayPal](https://www.paypal.com/br/), [Walmart](https://www.walmart.com.br/), [Netflix](https://www.netflix.com/br/), [Autodesk](https://www.autodesk.com.br/), além do próprio [Elo7](https://www.elo7.com.br/).
 
 # Como tudo começou?
 Em 2011, Charlie Robbins, da Nodejitsu, escreveu [um post apresentando a arquitetura isomórfica](https://blog.nodejitsu.com/scaling-isomorphic-javascript-code/). Porém, teve uma adoção bem lenta, além de ter várias discussões a respeito do nome *isomórfico*.
 
 Recomendo a leitura desses outros dois posts contando [sobre a implementação da arquitetura isomórfica no Airbnb](http://nerds.airbnb.com/isomorphic-javascript-future-web-apps/) e [na Netflix](http://techblog.netflix.com/2015/08/making-netflixcom-faster.html). O Airbnb reconstruiu todo seu site mobile para melhorar o tempo de carregamento da página e melhorar a usabilidade para o usuário. Com isso, lançaram sua própria biblioteca isomórfica, o [Rendr](http://rendrjs.github.io/) (falarei dele mais para frente). Já o Netflix trocou sua estrutura feita em Java, Struts e Tiles, no back-end, e Javascript (com jQuery), no front-end, por uma estrutura só com React. Isso rendeu uma melhora de 70% no TTI (*Time to Interact*).
 
-No Elo7, temos um servidor de componentes. Ele funciona da seguinte forma: quando um usuário entra em uma página, é feita uma requisição ao marketplace; o marketplace faz um `POST` com um JSON para o servidor de componentes; o servidor de componentes junta o JSON dos dados com o template e retorna o HTML compilado para o marketplace, que retorna a página em HTML ao cliente.
+No Elo7 temos um servidor de componentes que funciona da seguinte forma: quando um usuário entra em uma página, é feita uma requisição ao marketplace; o marketplace faz um `POST` com um JSON para o servidor de componentes; o servidor de componentes junta o JSON dos dados com o template e retorna o HTML compilado para o marketplace, que retorna a página em HTML ao cliente.
 
 ![Fluxo da primeira requisição](/images/isomorfismo-parte-2-1.png)
 
@@ -56,10 +56,10 @@ Vou colocar aqui os links dos frameworks e bibliotecas mais conhecidas e vou ent
 * entre muitos outros ...
 
 # Mojito
-Não coloquei o [Mojito](https://github.com/yahoo/mojito) na lista acima pelo fato de estar com o build quebrado na última versão e o último *commit* ser de 2014. Mas acredito que vale a pena falar dele, já que foi a primeira biblioteca isomórfica open source, desenvolvida em abril de 2012, pelo Yahoo.
+Não coloquei o [Mojito](https://github.com/yahoo/mojito) na lista acima pelo fato da última versão estar com o *build* quebrado e o último *commit* ser de 2014. Mas acredito que vale a pena comentar sobre ele, já que foi a primeira biblioteca isomórfica *open source*, desenvolvida em abril de 2012, pelo Yahoo.
 
 # Meteor
-O Meteor já tem um conceito um pouco diferente dos outros que falarei aqui. Ele é uma plataforma open source usada para desenvolver aplicações web e mobile. Ele é fullstack, ou seja, apresenta soluções desde o back-end (como banco de dados, por exemplo) até o front-end. Listarei algumas características que percebi ao usá-lo para desenvolver uma aplicação básica, que pode ser encontrada nesse [repositório com um projeto simples de `To Do` usando o Meteor](https://github.com/FernandaBernardo/meteor-simple-todos).
+O Meteor já tem um conceito um pouco diferente dos outros que falarei aqui. É uma plataforma *open source* usada para desenvolver aplicações web e mobile e também é *fullstack*, ou seja, apresenta soluções desde o back-end (como banco de dados, por exemplo) até o front-end. Listarei algumas características que percebi ao usá-lo para desenvolver uma aplicação básica, que pode ser encontrada nesse [repositório com um projeto simples de `To Do` usando o Meteor](https://github.com/FernandaBernardo/meteor-simple-todos).
 * O desenvolvimento é em tempo real. Ou seja, em qualquer mudança no banco de dados ou em qualquer arquivo, os componentes são atualizados em tempo real;
 * A parte de configurações é bem simples. Não é necessário configurar dependências (como o Gulp). Além disso, já vem com [EcmaScript6](http://es6-features.org/) e [MongoDB](https://www.mongodb.com/) funcionando;
 * Um projeto bem básico, como um *Hello World*, por exemplo, é muito pesado. Possui mais de 50 scripts importados, sem que esteja usando nenhum no projeto;
@@ -72,7 +72,7 @@ O [React](https://facebook.github.io/react/), biblioteca desenvolvida pelo Faceb
 No React, é usado [a linguagem JSX](https://jsx.github.io/), em que todo o código HTML é escrito no meio do código Javascript. Logo, no caso, não existem arquivos `.html`, existem somente `.js`. E um problema (ou não) do React é que ele não dá suporte, e nem pretende, ao Internet Explorer 8 e mais antigos.
 
 # Marko
-Passando rapidamente pelo [Marko](https://github.com/marko-js/marko), ele é uma linguagem de template desenvolvida pelo Ebay. Ela é conhecida por ser uma das mais rápidas linguagens de template. Diferentemente do React, ela tenta fazer o HTML ser mais parecido com o Javascript. Existem alguns *benchmarks* [comparando o Marko com outras linguagens](https://github.com/marko-js/templating-benchmarks) e um específico [comparando ele com React](https://github.com/patrick-steele-idem/marko-vs-react).
+Passando rapidamente pelo [Marko](https://github.com/marko-js/marko), ele é uma linguagem de template desenvolvida pelo Ebay. Ela é conhecida por ser uma das mais rápidas linguagens de template. Diferente do React, ela tenta fazer o HTML ser mais parecido com o Javascript. Existem alguns *benchmarks* [comparando o Marko com outras linguagens](https://github.com/marko-js/templating-benchmarks) e um específico [comparando ele com React](https://github.com/patrick-steele-idem/marko-vs-react).
 
 # Support Libs
 Para finalizar, acredito que não poderia falar de isomorfismo sem falar das bibliotecas que permitem ele ser possível. Uma delas é o [browserify](http://browserify.org/), que permite ao *browser* suportar o *require*. Outra bem famosa é o [webpack](https://webpack.github.io/), que transforma módulos com dependências em *assets* estáticos. Quando se trata de Javascript isomórfico, essas duas bibliotecas geralmente aparecem, então é bom saber que elas existem e onde são utilizadas, como por exemplo no projeto [CommonJs](http://www.commonjs.org/). Outro exemplo, é o React, que está preparado para ser usado com essas duas bibliotecas.
