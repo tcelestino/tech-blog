@@ -1,5 +1,5 @@
 ---
-title: Frameworks JavaScript
+title: Frameworks JavaScript: quando e qual usar
 date: 2017-06-26
 category: front-end
 layout: post
@@ -17,6 +17,8 @@ tags:
   - React
   - Vue.js
 ---
+
+![Frameworks JavaScript](../images/frameworks-javascript.jpg)
 
 Recentemente, temos ouvido cada vez mais sobre frameworks JavaScript, tanto os que já existem há algum tempo como os que acabaram de surgir: [jQuery](https://jquery.com/), [Zepto](http://zeptojs.com/), [Ember](http://emberjs.com/), [Backbone](http://backbonejs.org/), [AngularJS](https://angular.io/), [React](https://facebook.github.io/react/), [Vue.js](https://vuejs.org/)... mas será que precisamos usar algum deles? Se sim, qual devemos escolher para nossa aplicação? Neste post, vou apresentar porque no Elo7 decidimos por não adotar nenhum desses frameworks, e quais foram as consequências dessa decisão.
 
