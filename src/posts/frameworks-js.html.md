@@ -1,6 +1,6 @@
 ---
 title: Frameworks JavaScript
-date: 2017-06-20
+date: 2017-06-26
 category: front-end
 layout: post
 description: será que realmente precisamos usar um framework JavaScript? E como decidir qual devemos usar no projeto?
@@ -77,6 +77,7 @@ Com essa arquitetura, nós temos pouca lógica no JavaScript da página. Assim, 
 - [ajax-amd](https://github.com/elo7/ajax-amd): Evento de ajax
 - [i18n-amd](https://github.com/elo7/i18n-amd): Internacionalização no lado do cliente
 - [form-amd](https://github.com/elo7/form-amd): Manipulação e validação de formulários
+- [mask-amd](https://github.com/elo7/mask-amd): Máscara para campos de dados
 
 Não vou descrever o que cada lib faz aqui para o post não ficar gigante, mas serão escritos posts explicando com detalhes como cada lib funciona e você saberá se ela se encaixa no seu problema.
 
