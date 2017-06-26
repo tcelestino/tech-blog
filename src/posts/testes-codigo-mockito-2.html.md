@@ -5,7 +5,7 @@ tags:
   - java
   - mockito
   - tdd
-author: tiagolimaelo7
+author: ljtfreitas
 layout: post
 title: Testes de código com Mockito (2) - Novidades da nova versão
 description: Há algum tempo, escrevi sobre o funcionamento e os principais recursos do Mockito. Neste post, vamos conhecer as novidades da nova versão do framework.
@@ -356,4 +356,4 @@ A saída no console:
 ```
 
 ## Conclusão
-O Mockito é uma das principais, e talvez a mais utilizada, ferramentas para mock disponíveis na linguagem Java, muito devido à simplicidade na sua utilização e grande número de recursos. A versão 2.x manteve essa linha de implementação, além de trazer novos e interessantes recursos para ajudar os desenvolvedores a escrever mais e melhores testes. Nesse post, cobri as principais mudanças e funcionalidades da nova versão. Espero que tenha gostado, e que este post seja útil para você. Em caso de dúvidas ou críticas, sinta-se à vontade para utilizar a caixa de comentários!
+O Mockito é um dos principais, e talvez o mais utilizado, frameworks para mocks disponíveis na linguagem Java, muito devido à simplicidade na sua utilização e grande número de recursos. A versão 2.x manteve essa linha de implementação, além de trazer novos e interessantes funcionalidades para ajudar os desenvolvedores a escrever mais e melhores testes. Nesse post, cobri as principais mudanças e novidades da nova versão. Espero que tenha gostado, e que este post seja útil para você. Em caso de dúvidas ou críticas, sinta-se à vontade para utilizar a caixa de comentários!
