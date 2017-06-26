@@ -1,6 +1,6 @@
 ---
 title: Google I/O - Web
-date: 2017-06-01
+date: 2017-06-26
 category: front-end
 layout: post
 description: Durante diversas sessões os palestrantes incentivaram fortemente o uso de AMP e PWA, além de reforçarem que Mobile Web é mainstream.
