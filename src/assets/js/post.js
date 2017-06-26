@@ -2,7 +2,10 @@ define(['doc', 'github'], function($, github) {
 
 	var $avatar = $('img.avatar'),
 		$copy = $('.copy'),
-		$copySuccess = $('.copy-success');
+		$copySuccess = $('.copy-success'),
+		$user = $('.author [itemprop=name]'),
+		userName = $('.author .publisher').data('author'),
+		listOfInfo = github.getInfoFromUsers('50', [userName]);
 
 	function supportsCopy() {
 		return 'execCommand' in document && document.queryCommandSupported('copy');
@@ -28,8 +31,16 @@ define(['doc', 'github'], function($, github) {
 		});
 	}
 
-	if($avatar.isPresent()) {
-		$avatar.removeClass('hide');
-		github.updateAvatar([{imgElement: $avatar, size:50, userName: $('p.publisher').data('author')}]);
-	}
+	listOfInfo.forEach(function(currentUser) {
+		if (currentUser.user == userName) {
+			if ($avatar.isPresent()) {
+				$avatar.removeClass('hide');
+				$avatar.attr('src', currentUser.avatarUrl);
+			}
+
+			if ($user.isPresent() && currentUser.name) {
+				$user.text(currentUser.name);
+			}
+		}
+	});
 });

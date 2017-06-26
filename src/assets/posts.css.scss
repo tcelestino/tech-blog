@@ -5,114 +5,116 @@ autoprefix: true
 @import 'colors';
 
 .posts-container {
-    padding: 1em 5%;
+	padding: 1em 5%;
 
-    > a {
-        text-decoration: none;
-        color: map-get($colors-text, black);
-    }
-    .post-card {
-        border-bottom: 1px solid map-get($colors-border, light-gray);
-        margin: 1em 0;
-        padding: 2em 0;
-        position: relative;
-        overflow: auto;
+	> a {
+		text-decoration: none;
+		color: map-get($colors-text, black);
+	}
+	.post-card {
+		margin: 1em 0;
+		padding: 2em 0;
+		position: relative;
+		overflow: auto;
 
-        &:last-of-type {
-            border-bottom: none;
-        }
+		&:not(:first-of-type) {
+			border-top: 1px solid map-get($colors-border, light-gray);
+		}
 
-        .post-meta {
-            color: map-get($colors-text, gray);
-            font-weight: 300;
-            font-size: 0.9em;
-        }
+		.post-meta {
+			color: map-get($colors-text, gray);
+			font-weight: 300;
+			font-size: 0.9em;
+		}
 
-        .date {
-            font-size: 0.9em;
-            color: map-get($colors-text, gray);
-        }
+		.date {
+			font-size: 0.9em;
+			color: map-get($colors-text, gray);
+		}
 
-        .category {
-            background-color: map-get($colors-background, green);
-            color: map-get($colors-text, white);
-            text-decoration: none;
-            font-size: 0.8em;
-            padding: .5em;
-            border-radius: 3px;
-            display: inline-block;
-            margin-top: 2.3em;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            font-weight: 300;
+		.category {
+			background-color: map-get($colors-background, green);
+			color: map-get($colors-text, white);
+			text-decoration: none;
+			font-size: 0.8em;
+			padding: .5em;
+			border-radius: 3px;
+			display: inline-block;
+			margin-top: 2.3em;
+			cursor: pointer;
+			transition: background-color 0.3s;
+			font-weight: 300;
 
-            &:hover {
-                background-color: darken(map-get($colors-background, green), 10);
-            }
-        }
-        .title {
-            color: map-get($colors-text, darker);
-            display: inline-block;
-            font-size: 1.8em;
-            text-decoration: none;
-            line-height: 1.2;
+			&:hover {
+				background-color: darken(map-get($colors-background, green), 10);
+			}
+		}
+		.title {
+			color: map-get($colors-text, darker);
+			display: inline-block;
+			font-size: 1.8em;
+			text-decoration: none;
+			line-height: 1.2;
 
-            &:hover {
-                text-decoration: underline;
-            }
-        }
-        .author{
-            text-decoration: none;
-            color: map-get($colors-text, gray);
-            transition: color 0.3s;
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+		.author{
+			text-decoration: none;
+			color: map-get($colors-text, gray);
+			transition: color 0.3s;
 
-            p {
-                display: inline-block;
-                padding-top: 0.6em;
-            }
+			p {
+				display: inline-block;
+				padding-top: 0.6em;
+			}
 
-            &:hover {
-                color: darken($yellow-default, 10);
-            }
-        }
-        .description {
-            margin-top: 1.5em;
-            font-weight: lighter;
-            line-height: 1.8;
-        }
-        .link {
-            text-decoration: none;
-            color: map-get($colors-text, black);
-        }
-        .post-link {
-            border: 1px solid darken($yellow-default, 10);
-            border-radius: 3px;
-            color: darken($yellow-default, 10);
-            display: inline-block;
-            float: right;
-            margin-top: 1em;
-            padding: 0.8em;
-            text-align: center;
-            transition: background-color 0.3s, color 0.3s;
-            font-size: 0.9em;
+			&:hover {
+				color: darken($yellow-default, 10);
+			}
+		}
+		.description {
+			margin-top: 1.5em;
+			font-weight: lighter;
+			line-height: 1.8;
+		}
+		.link {
+			text-decoration: none;
+			color: map-get($colors-text, black);
+		}
+		.post-link {
+			border: 1px solid darken($yellow-default, 10);
+			border-radius: 3px;
+			color: darken($yellow-default, 10);
+			display: inline-block;
+			float: right;
+			margin-top: 1em;
+			padding: 0.8em;
+			text-align: center;
+			transition: background-color 0.3s, color 0.3s;
+			font-size: 0.9em;
 
-            &:hover {
-                background-color: darken($yellow-default, 10);
-                color: map-get($colors-text, white);
-            }
-        }
-    }
+			&:hover {
+				background-color: darken($yellow-default, 10);
+				color: map-get($colors-text, white);
+			}
+		}
+	}
 
 }
 
 @media (min-width: 800px) {
-    .posts-container {
-        padding: 1em 15%;
-        margin-left: 210px; /* Navigation pane size */
+	.posts-container {
+		padding: 1em 15%;
+		margin-left: 210px; /* Navigation pane size */
 
-        .post-card {
-            padding: 2em;
-            background-color: $white;
-        }
-    }
+		.post-card {
+			padding: 2em;
+			background-color: $white;
+			&:not(:first-of-type) {
+				border-top: none;
+			}
+		}
+	}
 }

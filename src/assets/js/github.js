@@ -6,30 +6,27 @@ define('github', ['doc', 'ajax'], function($, ajax) {
 		ajax.get(GITHUB_URI + user, {}, {
 			success: function(response, xhr) {
 				userInfo = {
-					avatar: response.avatar_url + '&size=' + size
+					avatar: response.avatar_url + '&size=' + size,
+					name: response.name,
 				};
-			},
-
-			error: function(response, xhr) {},
-			complete: function(xhr) {}
+			}
 		})
 
-		return userInfo;	
-	};
-
-	var update = function($avatar, size, user) {
-		var userInfo = getUserInfo(size, user);
-
-		if (userInfo && userInfo.avatar) {
-			$avatar.attr('src', userInfo.avatar);
-		}
+		return userInfo;
 	};
 
 	return {
-		updateAvatar: function(listOfAvatar) {
-			listOfAvatar.forEach( function(currentValue) {
-				update(currentValue.imgElement, currentValue.size, currentValue.userName);
+		getInfoFromUsers: function(size, listOfUsers) {
+			var listOfInfo = [];
+			listOfUsers.forEach( function(currentValue) {
+				var userInfo = getUserInfo(size, currentValue);
+
+				if (userInfo) {
+					listOfInfo.push({user: currentValue, avatarUrl: userInfo.avatar, name: userInfo.name});
+				}
 			});
+
+			return listOfInfo;
 		}
 	}
 });

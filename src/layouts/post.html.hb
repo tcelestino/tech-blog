@@ -6,12 +6,14 @@ layout: page
 	<div class='post-meta'>
 			<p class='date'>
 				Publicado em: <time datetime='{{dateAsText document.date}}' itemprop='datePublished'>{{dateAsText document.date}}</time>
+				<meta itemprop='dateModified' content='{{dateAsText document.date}}'>
 			</p>
 
 			<article itemprop='author' itemscope itemtype='http://schema.org/Person'>
 				<a rel='author' itemprop='url' href='/{{document.author}}' class='author'>
 					<img class='hide avatar' width='50px' height='50px' itemprop='image'/>
-					<p itemprop='name' data-author='{{document.author}}' class='publisher'>@{{document.author}}</p>
+					<p data-author='{{document.author}}' class='publisher'>@{{document.author}}</p>
+					<meta itemprop='name' content='{{document.author}}'>
 				</a>
 
 				<meta itemprop='worksFor' content='Elo7 Serviços de Informática SA'>

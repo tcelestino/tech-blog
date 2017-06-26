@@ -33,11 +33,11 @@ layout: page
 						</a>
 				</header>
 				<div class="post-meta">
-					by 
+					by
 					<a href="/{{author}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
 						<p itemprop='name'>@{{author}}</p>
 					</a>
-					· 
+					·
 					<time datetime="{{dateAsText this.date}}" class="date">
 						{{dateAsText this.date}}
 						<meta itemprop="datePublished" content='{{dateAsText this.date}}'/>

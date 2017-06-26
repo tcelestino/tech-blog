@@ -1,9 +1,20 @@
 define(['doc', 'github'], function($, github) {
 
-	var $avatar = $('.avatar');
+	var $avatar = $('.avatar'),
+		userName = $('.github').text(),
+		$user = $('.info .name'),
+		listOfInfo = github.getInfoFromUsers('100', [userName]);
 
-	if($avatar.isPresent()) {
-		$avatar.removeClass('hide');
-		github.updateAvatar([{imgElement: $avatar.find('img'), size: 100, userName: $('.github').text()}]);
-	}
+	listOfInfo.forEach(function(currentUser) {
+		if (currentUser.user == userName) {
+			if($avatar.isPresent() && userName) {
+				$avatar.removeClass('hide');
+				$avatar.find('img').attr('src', currentUser.avatarUrl);
+			}
+
+			if ($user.isPresent() && currentUser.name) {
+				$user.text(currentUser.name);
+			}
+		}
+	});
 });
