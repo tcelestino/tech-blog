@@ -12,7 +12,7 @@ tags:
   - tdd
 ---
 
-Trabalhar com desenvolvimento de software é algo que está longe de ser fácil, pois além da parte técnica (que evolui a passadas largas), todo profissional precisa estar minimamente antenado a ponto de perceber qual das suas posturas em relação a execução de suas atividades podem literalmente travá-lo (dentro da carreira) ou levá-lo a outro patamar. Dentre as muitas características valorizadas atualmente pelo mercado, uma importantissíma é ser um profissional adepto a mudanças, pelo simples fato que **o mundo muda** muito rapidamente, e o jeito que trabalhavámos no passado já não serve e/ou se encaixa com o presente.
+Trabalhar com desenvolvimento de software é algo que está longe de ser fácil, pois além da parte técnica (que evolui a passadas largas), todo profissional precisa estar minimamente antenado a ponto de perceber qual das suas posturas em relação a execução de suas atividades podem literalmente travá-lo (dentro da carreira) ou levá-lo a outro patamar. Dentre as muitas características valorizadas atualmente pelo mercado, uma importantissíma é ser um profissional adepto a mudanças, pelo simples fato que **o mundo muda muito rapidamente**, e o jeito que trabalhavámos no passado já não serve e/ou se encaixa com o presente.
 
 Fazendo uma breve reflexão sobre isso, eu me lembro de uma época onde a minha maior gana era produzir o máximo de código que conseguisse por dia. Para mim a efetividade do trabalho e percepção de valor do mesmo estava intrinsecamente ligada a **quantidade de código** que eu escrevia e não exatamente a **qualidade deste código**.
 
@@ -22,7 +22,7 @@ Esta passagem da minha história neste mercado é mais comum do que parece, ent�
 
 ## Começando com testes automatizados
 
-Ninguém (ou a maioria dos desenvolvedores que conheço) gosta de testar software pelo simples fato de que executar uma bateria de testes de forma manual é extremamente cansativo. Com isso, nós desenvolvedores criamos o péssimo hábito de testar superficialmente tudo que produzimos, e pela força dos processos inseridos nas empresas acabamos delegando para um terceiro a responsabilidade de testar o que acabamos de desenvolver. Mudar essa realidade é complicado, mais não impossível, e certamente a melhor maneira de resolver isto é torná-la um processo natural e agradável ao desenvolvedor. Agora meu caro eu te pergunto: que tal utilizar o seu melhor skill (que é programar) para tornar os processos de teste manuais em rotinas automatizadas? Parece uma boa não? Pois bem, esse será nosso desafio daqui para frente.
+Ninguém (ou a grande maioria dos desenvolvedores que conheço) gosta de testar software pelo simples fato de que executar uma bateria de testes de forma manual é extremamente cansativo. Com isso, nós desenvolvedores criamos o péssimo hábito de testar superficialmente tudo que produzimos, e pela força dos processos inseridos nas empresas acabamos delegando para um terceiro a responsabilidade de testar o que acabamos de desenvolver. Mudar essa realidade é complicado, mais não impossível, e certamente a melhor maneira de resolver isto é torná-la um processo natural e agradável ao desenvolvedor. Agora meu caro eu te pergunto: que tal utilizar o seu melhor skill (que é programar) para tornar os processos de teste manuais em rotinas automatizadas? Parece uma boa não? Pois bem, esse será nosso desafio daqui para frente.
 
 Para quem está iniciando nesta jornada, a curva de aprendizado pode parecer um tanto que assutadora e o maior desafio sem dúvida neste ponto é equalizar a sua aparente **falta de conhecimento sobre o tema** a uma nova **filosofia que guiará todo o seu processo de trabalho**. Somado a isso, surgirão uma série de decisões que você precisará tomar para a saída do que eu costumo chamar de "zero absoluto". As perguntas que certamente vem a tona neste momento são: **por onde devemos começar e qual caminho deve-se seguir???**
 
@@ -36,7 +36,7 @@ Bom eu acredito que o principal objetivo inicialmente seja conseguir configurar 
 
 - E testes que dependem de **respostas assíncronas**? Como tratar estes casos? **Spies, stubs e mocks** seriam uma opção?
 
-- Será que além dos testes, seria interessante ter uma idéia sobre o **percentual de cobertura** de tudo que estava sendo testado?
+- Será que além dos testes, seria interessante ter uma idéia sobre o **percentual de cobertura** de tudo que esta sendo testado?
 
 Analisando as perguntas e as prováveis respostas, eu consegui encontrar muitas ferramentas que usuria para responder cada uma delas:
 
@@ -48,12 +48,11 @@ Analisando as perguntas e as prováveis respostas, eu consegui encontrar muitas 
 
 - **Istanbul.js**, **Blanket.js**, **JsCover**, ... (para code coverage)
 
-Hummm... bom chegando neste ponto, deu para perceber que existe um certo nível de complexidade para configurar este stack. O simples fato de decidir quais ferramentas utilizar (caso alguma escolha não seja a mais acertada) pode trazer consequências futuras para a manutenabilidade dessa stack, umav ez que trocar uma peça que não funcione tão bem pode impactar em uma quantidade significativa de testes já escritos.
-
+Hummm... bom chegando neste ponto, deu para perceber que existe um certo nível de complexidade para configurar este stack. O simples fato de decidir quais ferramentas utilizar (caso alguma escolha não seja a mais acertada) pode trazer consequências futuras para a manutenabilidade dessa stack, uma vez que trocar uma peça que não funcione tão bem pode impactar em uma quantidade significativa de testes já escritos.
 
 ## Nossa que complexo, quero desistir!
 
-É meu amigo, se você chegou até esse ponto deste post, já deve ter sacado o tamanho da dor que é simplemente configurar um stack para testes. Com tantas opções e decisões para serem tomadas, isso por si só já seria o suficiente para ser postergado ao infinito e tornar-se então o famoso débito técnico do seu projeto.
+É meu amigo, se você chegou até esse ponto deste post, já deve ter sacado o tamanho da dor que é simplemente configurar um stack para testes. Com tantas opções e decisões para serem tomadas, isso por si só já seria o suficiente para que esta tarefa seja postergada ao infinito e tornar-se então o famoso débito técnico do seu projeto.
 
 A parte boa, é que era exatamente isso que você precisava fazer até ontem, pois o hoje é um belo dia e você já tem opções bem mais elegantes para execução dos seus testes. Então não desista, pois daqui pra frente você vai poder focar no melhor do seu trabalho, que é escrever testes e produzir código de qualidade, sem se preocupar com essa barrreira de entrada!
 
@@ -65,11 +64,11 @@ Além desta marcante característica, ele possui algumas outras, como:
 
 - **Feedback instantâneo** - monitora alteração nos seus arquivos, e assim que percebe uma mudança dispara os testes
 
-- **Geração de snapshots** - em aplicações escritas em React, snapshots podem ser gerados para confrontar mudanças que quebrem a interface final do usuário
+- **Geração de snapshots** - em aplicações escritas em React, snapshots de código podem ser gerados/atualizados para confrontar mudanças que podem quebrar os componentes que compõe a interface final do usuário
 
-- **Ultra Rápido** - testes rodam paralelamente sem interferir um nos outros
+- **Ultra Rápido** - testes rodam paralelamente sem interferir um nos outros \o/
 
-- **Code Coverage** - no Jest, o relatório de cobertura de código é embutido e habilitado através de uma simples flag
+- **Code Coverage** - no Jest, o relatório de cobertura de código é embutido e habilitado através de uma simples flag, que pode ser facilmente adicionada utilizando npm scripts.
 
 Parece bom demais pra ser verdade né!? Mais acredite, isso vai facilitar e muito a sua vida.
 
@@ -140,4 +139,128 @@ Feito isso, vamos alterar nosso arquivo `package.json`, adicionando a chave `tes
 }
 ```
 
-Essa alteração importante no `package.json` serve para registrar uma espécie de atalho para execução dos seus testes. Ele será bastante útil logo abaixo!
+Essa alteração importante no `package.json` serve para registrar uma espécie de atalho para execução dos seus testes. Logo abaixo, chegará o momento em que vamos utilizá-lo.
+
+Vamos agora escrever nosso primeiro teste. Utilizaremos o mantra do TDD, que será o seguinte:
+
+1 - RED: escreva um teste que falhe;
+2 - GREEN: construa um código que funcione;
+3 - REFACTOR: melhore seu código, eliminando a redundância;
+
+Seguindo a temática do Elo7, vamos supor que você tenha como missão implementar uma das rotinas mais básicas do sistema, que é adicionar um ou mais produtos no carrinho. Para isto além do `Carrinho`, vamos precisar de um `Produto`. Vamos começar criando o arquivo `carrinho.test.js`:
+
+```js
+const Carrinho = require('./carrinho');
+
+test('deve verificar se um carrinho está vazio', () => {
+  const carrinho = new Carrinho();
+  expect( carrinho.totalDeItens() ).toBe(0);
+});
+```
+
+É bem fácil entender este teste. Primeiramente importamos o arquivo `carrinho.js` utilizando a função `require`. Nosso teste simplesmente vai verificar que uma vez instânciado um `Carrinho`, se o número `totalDeItens` é estritamente igual a `0`.
+
+Já podemos rodá-lo, utilizando o seguinte comando no terminal:
+
+```bash
+yarn run test
+```
+O resultado será o seguinte:
+
+![Alt "Falha 1"](../images/fail1.png)
+
+Bom deu para perceber que algo não deu certo, o teste falhou pois não conseguimos importar o módulo `carrinho.js`. Cabe aqui já deixar avisado, que o papel final deste arquivo é criar um objeto que representará um carrinho. Então utilizaremos aqui um padrão já bastante conhecido para isto, o `Constructor Pattern`:
+
+```js
+function Carrinho() {
+
+}
+
+module.exports = Carrinho;
+```
+
+Agora é rodar o teste de novo com `yarn run test` para ver o resultado:
+
+![Alt "Falha 2"](../images/fail2.png)
+
+Hummm, contínuamos com uma falha. Ela está ocorrendo pois ainda não implementamos o método que vai obter o `totalDeItens` do `Carrinho`. Vamos alterar o arquivo `carrinho.js` de novo:
+
+```js
+function Carrinho() {
+  this.itens = [];
+}
+
+Carrinho.prototype.totalDeItens = function() {
+  return this.itens.length;
+}
+
+module.exports = Carrinho;
+```
+
+Fizemos uma alteração simples aqui. Adicionamos no construtor do objeto `Carrinho` a propriedade `itens` como uma lista vazia. Futuramente teremos uma forma de `adicionar` itens a esta lista, mais no momento o que precisamos realmente é saber a quantidade `totalDeItens` da mesma. Já implementamos isso, simplesmente retornando o `length` da propriedade `itens` do `Carrinho`. Vamos rodar os testes de novo usando `yarn run test` e ver se deu tudo certo:
+
+![Alt "Sucesso 3"](../images/success3.png)
+
+Muito bom! Nosso primeiro teste está rodando. Então vamos vamos passar para o próximo. Nossa missão agora é verificar se ao adicionar um `Produto` no `Carrinho` sua quantidade `totalDeItens` será alterada. Seguindo as práticas do TDD, vamos adicionar um novo teste, rodá-lo e seguir os feedbacks até que tudo esteja OK. Abra novamente o arquivo `carinho.test.js`:
+
+```js
+const Carrinho = require('./carrinho');
+const Produto = require('./produto'); // aqui importamos o Produto
+
+test('deve verificar se um carrinho está vazio', () => {
+  const carrinho = new Carrinho();
+  expect( carrinho.totalDeItens() ).toBe(0);
+});
+
+// abaixo adicionamos um novo teste
+test('deve adicionar um produto ao carrinho', () => {
+  let produto = new Produto('Convite Passaporte', 7.50, 5);
+  let carrinho = new Carrinho();
+  carrinho.adicionar(produto);
+  expect( carrinho.totalDeItens() ).toBe(1);
+});
+
+```
+
+Uma vez implementado, vamos rodar os testes com `yarn run test`. O resultado será o seguinte:
+
+![Alt "Falha 4"](../images/fail4.png)
+
+Bom conforme esperado, o novo teste está quebrando. Isso ocorreu pois uma nova dependência foi adicionada, o módulo `produto.js`. Bom essa é mole de resolver, vamos implementá-lo:
+
+```js
+function Produto(nome, preco, qtd) {
+  this.nome = nome;
+  this.preco = preco;
+  this.qtd = qtd;
+}
+
+module.exports = Produto;
+```
+
+Já aproveitei para adicionar ao construtor de `Produto` as propriedades `nome`, `preco` e `qtd`. Já que são estes dados iniciais que representam um produto (além de poderem ser utilizados futuramente em novos testes). Rodando os testes novamente temos:
+
+![Alt "Falha 5"](../images/fail5.png)
+
+Os testes falharam novamente, agora o problema é que o nosso `Carrinho` não implementa o método de `adicionar`. Vamos resolver isso abrindo o arquivo `carrinho.js`:
+
+```js
+function Carrinho() {
+  this.itens = [];
+}
+
+Carrinho.prototype.totalDeItens = function() {
+  return this.itens.length;
+}
+
+// adicionamos aqui o método adicionar
+Carrinho.prototype.adicionar = function(produto) {
+  return this.itens.push(produto);
+}
+
+module.exports = Carrinho;
+```
+
+Ahaaa! Bom trabalho, agora os testes estão rodando 100% novamente:
+
+![Alt "Sucesso 6"](../images/success6.png)
