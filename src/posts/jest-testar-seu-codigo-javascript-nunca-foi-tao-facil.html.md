@@ -1,6 +1,6 @@
 ---
 title: 'Jest - Testar seu código Javascript nunca foi tão fácil!'
-date: 2017-30-05
+date: 2017-06-27
 category: front-end
 layout: post
 description:
@@ -82,7 +82,7 @@ Vamos começar, **instalando o Jest**. Neste ponto é importante que você enten
 node -v
 ```
 
-Se tudo estiver certo o número versão instalada do **node.js** no seu computador será exibida! Caso negativo, você pode dar uma olhadinha neste site (https://nodejs.org/en/download/) e proceder com o processo de instalação de acordo com o seu sistema operacional preferido.
+Se tudo estiver certo o número versão instalada do **node.js** no seu computador será exibida! Caso negativo, você pode dar uma olhadinha neste site ([https://nodejs.org/en/download/](https://nodejs.org/en/download/)) e proceder com o processo de instalação de acordo com o seu sistema operacional preferido.
 
 Além da plataforma instalada, precisamos de outra ferramenta para gerenciamento dos módulos. Aqui temos 2 opções, o bom e velho **npm** ou o novissímo **yarn**.
 
@@ -98,7 +98,8 @@ brew install yarn
 /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 ```
 
-**Dica 2**: caso você não seja um usuário macOS, sabia que o **yarn** está disponível para todas os principais sistemas operacionais. Caso você seja usuário de outras plataformas confira o processo de instalação neste site (https://yarnpkg.com/pt-BR/docs/install)
+**Dica 2**: caso você não seja um usuário macOS, sabia que o **yarn** está disponível para todas os principais sistemas operacionais. Caso você seja usuário de outras plataformas confira o processo de instalação neste site
+([https://yarnpkg.com/pt-BR/docs/install](https://yarnpkg.com/pt-BR/docs/install))
 
 Ufa! Agora sim, vamos finalmente instalar o Jest!
 
@@ -141,11 +142,15 @@ Feito isso, vamos alterar nosso arquivo `package.json`, adicionando a chave `tes
 
 Essa alteração importante no `package.json` serve para registrar uma espécie de atalho para execução dos seus testes. Logo abaixo, chegará o momento em que vamos utilizá-lo.
 
+## Escrevendo nossos testes
+
 Vamos agora escrever nosso primeiro teste. Utilizaremos o mantra do TDD, que será o seguinte:
 
-1 - RED: escreva um teste que falhe;
-2 - GREEN: construa um código que funcione;
-3 - REFACTOR: melhore seu código, eliminando a redundância;
+![Alt "TDD"](../images/tdd.png)
+
+1. RED: escreva um teste que falhe;
+2. GREEN: construa um código que funcione;
+3. REFACTOR: melhore seu código, eliminando a redundância;
 
 Seguindo a temática do Elo7, vamos supor que você tenha como missão implementar uma das rotinas mais básicas do sistema, que é adicionar um ou mais produtos no carrinho. Para isto além do `Carrinho`, vamos precisar de um `Produto`. Vamos começar criando o arquivo `carrinho.test.js`:
 
@@ -264,3 +269,41 @@ module.exports = Carrinho;
 Ahaaa! Bom trabalho, agora os testes estão rodando 100% novamente:
 
 ![Alt "Sucesso 6"](../images/success6.png)
+
+## Truques finais
+
+Para finalizar, vamos adicionar 2 pequenos detalhes em nosso arquivo `package.json` para deixar o `Jest` mais esperto.
+
+```json
+{
+  "scripts": {
+    "test": "jest --watch",
+    "coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "jest": "^20.0.4"
+  }
+}
+```
+
+Conforme você deve ter percebido, adicionamos o flag `--watch` no script de `test`. A vantagem dessa flag é que a partir de agora, quando novos testes forem adicionados e/ou modificamos (bem como os arquivos) os testes rodaram automaticamente. Inclusive através dessa flag, alguns atalhos (letras `p`, `t`, `q`) para filtrar arquivos e testes específicos, finalizar os testes ou rodá-los simplesmente pressionando a tecla `Enter`. Rode novamente no terminal `yarn run test` para ver a diferença:
+
+![Alt "Watch Mode"](../images/watch.png)
+
+Outro recurso bacana é a flag `--coverage`. Ela exibe na tela uma grade indicando todos os arquivos cobertos pelos testes do seu projeto, e o percentual de cobertura de cada um. Rode `yarn run coverage` para conferir o resultado:
+
+![Alt "Coverage Mode"](../images/coverage.png)
+
+Ah e você pode conferir outros recursos também visitando a documentação: ([Jest CLI Options](https://facebook.github.io/jest/docs/en/cli.html))
+
+## Conclusão
+
+Procurei te guiar até aqui para poder mostrar que testes de software além de necessários podem ser divertidos. Superada a primeira barreira de entrada, que é configurar a stack de testes (e o Jest foi campeão neste ponto), o próximo desafio é adquirir uma mentalidade para este fim. As práticas de TDD podem ser uma boa para quem está iniciando, e a minha dica sempre é para que você tente a partir dessa base adicionar novos testes para praticar. Vou deixar de brinde alguns desafios aqui:
+
+1. *Adicione um teste para calcular a o subtotal de cada produto adicionado ao carrinho. Para isto basta fazer uma multiplicação simples do preço vezes a quantidade.*
+
+2. *Adicione 3 produtos no carrinho com preços e quantidade diferentes, e calcule o preço total do carrinho a partir dos subtotais de cada produto.*
+
+3. *Adicione um novo objeto para representar o frete de envio, e faça um novo teste considerando o total do carrinho mais o preço do frete.*
+
+Bom acho que é isso, a mensagem final é **não deixe a peteca cair**. Caso tenha gostado, compartilhe essa publicação! Ah e não deixe de nos contar suas experiências, comentando no formulário abaixo:
