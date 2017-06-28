@@ -42,33 +42,35 @@
     <script>window.addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}">
-    <header class="left-pane">
+    <section class="left-pane">
         <div class="logo-container">
             <a rel="home" itemprop="url" href="/" class="logo">{{site.title}}</a>
         </div>
-        <nav aria-label="Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement" class="navigation">
+        <div itemscope itemtype="http://schema.org/SiteNavigationElement" class="navigation">
             <input id="categories-switch" type="checkbox" class="categories-switch">
             <label for="categories-switch" class="selectable">
                 <h2 class="nav-title">Categorias</h2>
             </label>
-            <ul class="nav-list nav-category">
+            <nav aria-label="Navegue pelas categorias do nosso blog" class="nav-list nav-category">
                 {{#each (getCategories)}}
-                    <li><a itemprop="url" href="/{{category}}/">{{category}}</a></li>
+                    <a itemprop="url" href="/{{category}}/">{{category}}</a>
                 {{/each}}
-            </ul>
+            </nav>
+        </div>
+        <div class="navigation">
             <input id="more-switch" type="checkbox" class="more-switch">
             <label for="more-switch" class="selectable">
                 <h2 class="nav-title">Veja também</h2>
             </label>
-            <ul class="nav-list nav-more">
-                <li><a itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">A engenharia</a></li>
-                <li><a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">Carreiras</a></li>
-                <li><a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">Nossos eventos</a></li>
-                <li><a itemprop="url" href="http://elo7.com.br/" target="_blank">Elo7</a></li>
-            </ul>
-        </nav>
+            <nav class="nav-list nav-more" aria-label="Navegue pelos links relacionados ao Elo7">
+                <a itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">A engenharia</a>
+                <a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">Carreiras</a>
+                <a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">Nossos eventos</a>
+                <a itemprop="url" href="http://elo7.com.br/" target="_blank">Elo7</a>
+            </nav>
+        </div>
         <a rel="external" itemprop="url" href="https://github.com/elo7/tech-blog" class="social github"></a>
-    </header>
+    </section>
     <main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
         {{{content}}}
     </main>
