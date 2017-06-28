@@ -44,7 +44,7 @@
 <body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}">
     <section class="left-pane">
         <div class="logo-container">
-            <a rel="home" itemprop="url" href="/" class="logo">{{site.title}}</a>
+            <a rel="home" itemprop="url" href="/" class="logo">Tech Blog Elo7</a>
         </div>
         <div itemscope itemtype="http://schema.org/SiteNavigationElement" class="navigation">
             <input id="categories-switch" type="checkbox" class="categories-switch">
@@ -69,7 +69,7 @@
                 <a itemprop="url" href="http://elo7.com.br/" target="_blank">Elo7</a>
             </nav>
         </div>
-        <a rel="external" itemprop="url" href="https://github.com/elo7/tech-blog" class="social github"></a>
+        <a title="Github do Elo7" rel="external" itemprop="url" href="https://github.com/elo7" class="social github">Github do Elo7</a>
     </section>
     <main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
         {{{content}}}

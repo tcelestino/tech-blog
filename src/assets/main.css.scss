@@ -24,6 +24,8 @@ body {
         background-repeat: no-repeat;
         background-image: url('images/github_icon.svg');
         margin-bottom: 2em;
+        overflow: hidden;
+        text-indent: -100%;
     }
 
 }
@@ -41,9 +43,9 @@ body {
         background-size: 100px 40px;
         width: 100px;
         height: 40px;
-        text-indent: -9999px;
         display: inline-block;
-
+        overflow: hidden;
+        text-indent: -300%;
         -webkit-filter: brightness(100); /*REMOVER*/
     }
 }
