@@ -4,7 +4,7 @@ date: 2016-02-15
 category: back-end
 layout: post
 description: Quando se fala em cobertura de testes, pode vir a mente a idéia de relatórios contendo números de várias métricas de software em busca de apresentar a qualidade geral de um sistema. Muitos já devem ter se perguntado qual o verdadeiro valor desses números...
-author: adolfoeloy
+author: adolfoweloy
 tags:
   - tests
   - eclemma
@@ -17,7 +17,7 @@ Quando se fala em cobertura de testes, pode vir a mente a idéia de relatório
 Ainda considerando a métrica de cobertura de testes, nem mesmo 100% de cobertura pode garantir a qualidade dos testes e do código sendo desenvolvido. Como falarei mais adiante, há situações onde esse tipo de métrica pode ser bem útil.
 
 Para aqueles que já se depararam com alguma situação ou projeto onde era necessário ter uma alta cobertura de testes, tal experiência pode ter sido frustrante.
-  
+
 Essa frustração pode levar muitos desenvolvedores a abandonarem ferramentas de cobertura, deixando de aproveitar alguns benefícios interessantes.
 
 O objetivo desse _post_ é justamente mostrar quando é útil uma ferramenta de cobertura de testes (e quando não). Nesse post, não vou explicar como utilizar uma ferramenta de cobertura de testes nem como funcionam, pois já existe material suficiente na web e alguns estão disponíveis através de links no final do post.
