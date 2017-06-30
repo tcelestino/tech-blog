@@ -3,8 +3,8 @@
   "version": "0.1.0",
   "description": "Tech Blog",
   "dependencies": {
-    "docpad": "6.79.0",
     "define-async": "1.2.0",
+    "docpad": "6.79.0",
     "docpad-plugin-autoprefix": "2.0.0",
     "docpad-plugin-cleanurls": "2.8.1",
     "docpad-plugin-ghpages": "2.4.4",
@@ -12,10 +12,11 @@
     "docpad-plugin-highlightjs": "2.4.0",
     "docpad-plugin-markit": "2.4.0",
     "docpad-plugin-nodesass": "2.8.2",
-    "moment": "2.17.1",
+    "docpad-plugin-sitemap": "2.4.0",
     "elo7-ajax-amd": "1.3.2",
     "elo7-doc-amd": "1.1.1",
-    "elo7-events-amd": "1.1.3"
+    "elo7-events-amd": "1.1.3",
+    "moment": "2.17.1"
   },
   "main": "node_modules/.bin/docpad-server",
   "scripts": {
