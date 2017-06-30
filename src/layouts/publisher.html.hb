@@ -1,25 +1,46 @@
 ---
-title: Eventos
-description: Todos os posts da categoria eventos
 layout: page
 ---
+<link rel="stylesheet" href="/publisher.css">
+
+<article class='publisher-info' itemscope itemtype='http://schema.org/Person'>
+	<section class='info'>
+		<h1 class='name' itemprop='name' data-author='{{document.publisher}}' class='publisher'>{{document.publisher}}</h1>
+		<a itemprop='url' href='https://github.com/{{document.github}}' class='social github' target='_blank' title='Conheça meu github'>{{document.github}}</a>
+		{{#document.twitter}}
+			<a itemprop='url' href='https://twitter.com/{{.}}' class='social twitter' target='_blank' title='Conheça meu twitter'>{{.}}</a>
+		{{/document.twitter}}
+		{{#document.linkedin}}
+			<a itemprop='url' href='https://www.linkedin.com/in/{{.}}' class='social linkedin' target='_blank' title='Conheça meu linkedin'>{{.}}</a>
+		{{/document.linkedin}}
+	</section>
+	<figure class='hide avatar' itemprop='image' itemscope itemtype="http://schema.org/ImageObject">
+		<img itemprop='contentUrl' width='100px' height='100px'/>
+	</figure>
+	{{#document.description}}
+		<p class='publisher-description'>{{.}}</p>
+		<meta itemprop='description' content='{{ellipsis . 110}}' >
+	{{/document.description}}
+</article>
+
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">
-	{{#each (getCollection "eventos")}}
+	{{#each (getCollection "posts")}}
+		{{#equal author ../document.github}}
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">
 				<header>
-					<a href="{{../site.baseUrl}}{{url}}" class="link">
-						<h2 itemprop='name' class="title">{{title}}</h2>
-					</a>
+						<a href="{{../site.baseUrl}}{{url}}" class="link">
+							<h2 itemprop='name' class="title">{{title}}</h2>
+						</a>
 				</header>
 				<div class="post-meta">
-					by 
+					by
 					<a href="/{{author}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
 						<p itemprop='name'>@{{author}}</p>
 					</a>
-					· 
+					·
 					<time datetime="{{dateAsText this.date}}" class="date">
 						{{dateAsText this.date}}
-						<meta itemprop="datePublished" content='{{this.date}}'/>
+						<meta itemprop="datePublished" content='{{dateAsText this.date}}'/>
 					</time>
 				</div>
 
@@ -29,6 +50,7 @@ layout: page
 					</p>
 					<meta itemprop='headline' content='{{ellipsis . 110}}' >
 				{{/description}}
+
 				<a href="/{{category}}" class="category {{category}}">{{category}}</a>
 				<a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
 
@@ -46,6 +68,9 @@ layout: page
 						<meta itemprop='height' content='100px'/>
 					</span>
 				</span>
+
 			</article>
+		{{/equal}}
 	{{/each}}
 </section>
+<script async src="/js/publisher.js"></script>

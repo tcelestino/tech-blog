@@ -1,11 +1,11 @@
-define(['doc', 'ajax'], function($, ajax) {
+define(['doc', 'github'], function($, github) {
 
-	var GITHUB_URI = 'https://api.github.com/users/',
-		$author = $('p[itemprop="publisher"]'),
-		dataAuthor = $author.data('author'),
-		$avatar = $('.avatar'),
+	var $avatar = $('img.avatar'),
 		$copy = $('.copy'),
-		$copySuccess = $('.copy-success');
+		$copySuccess = $('.copy-success'),
+		$user = $('.author [itemprop=name]'),
+		userName = $('.author .publisher').data('author'),
+		listOfInfo = github.getInfoFromUsers('50', [userName]);
 
 	function supportsCopy() {
 		return 'execCommand' in document && document.queryCommandSupported('copy');
@@ -13,7 +13,6 @@ define(['doc', 'ajax'], function($, ajax) {
 
 	if(supportsCopy() && $copy.isPresent()) {
 		$copy.removeClass('hide');
-
 
 		$copy.on('click', function(evt) {
 			evt.preventDefault();
@@ -32,20 +31,16 @@ define(['doc', 'ajax'], function($, ajax) {
 		});
 	}
 
-	if($author.isPresent()) {
-		ajax.get(GITHUB_URI + dataAuthor, {}, {
-			success: function(response, xhr) {
-				var userInfo = {
-					avatar: response.avatar_url + '&size=50',
-					name: response.name
-				};
+	listOfInfo.forEach(function(currentUser) {
+		if (currentUser.user == userName) {
+			if ($avatar.isPresent()) {
+				$avatar.removeClass('hide');
+				$avatar.attr('src', currentUser.avatarUrl);
+			}
 
-				$avatar.removeClass('hide').attr('src', userInfo.avatar);
-				$author.html(userInfo.name);
-			},
-
-			error: function(response, xhr) {},
-			complete: function(xhr) {}
-		})
-	}
+			if ($user.isPresent() && currentUser.name) {
+				$user.text(currentUser.name);
+			}
+		}
+	});
 });
