@@ -31,14 +31,14 @@ define(['doc', 'github'], function($, github) {
 	if($authors.isPresent()) {
 		$authors.each(function(author) {
 			var $author = $(author),
-				dataAuthor = $author.data('author'),
 				$avatar = $author.find('img.avatar'),
-				$publisher = $author.find('.publisher'),
-				userName = $publisher.data('author'),
-				listOfInfo = github.getInfoFromUsers('50', [userName]),
-				info = listOfInfo[0];
 
 			if ($avatar.isPresent()) {
+				var $publisher = $author.find('.publisher'),
+					userName = $publisher.data('author'),
+					listOfInfo = github.getInfoFromUsers('50', [userName]),
+					info = listOfInfo[0];
+
 				$avatar.removeClass('hide');
 				$avatar.attr('src', info.avatarUrl);
 			}

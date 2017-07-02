@@ -4,7 +4,7 @@ layout: page
 <article itemprop='blogPost' itemscope itemtype='http://schema.org/BlogPosting' class='post-content'>
 	<h1 itemprop='name' class='title'>{{document.title}}</h1>
 	<div class='post-meta'>
-		<p class='date'>	
+		<p class='date'>
 			Publicado em: <time datetime='{{dateAsText document.date}}' itemprop='datePublished'>{{dateAsText document.date}}</time>
 			<meta itemprop='dateModified' content='{{dateAsText document.date}}'>
 		</p>
@@ -12,9 +12,8 @@ layout: page
 		<article itemprop='author' itemscope itemtype='http://schema.org/Person'>
 			{{#each document.authors}}
 				<a data-author='{{this}}' rel='author' itemprop='url' href='/{{this}}' class='author'>
-					<img class='hide avatar' width='50px' height='50px' itemprop='image'/>
+					<img class='hide avatar' width='50px' height='50px' itemprop='image'>
 					<p itemprop='name' class='publisher' data-author='{{this}}'>@{{this}}</p>
-					<meta itemprop='name' content='{{this}}'>
 				</a>
 			{{/each}}
 
@@ -57,7 +56,7 @@ layout: page
 
 	<div id='disqus_thread'></div>
 
-	<script async>
+	<script>
 		var disqus_shortname = 'engenhariaelo7';
 		var disqus_identifier = '{{dateAsText document.date}}:{{document.url}}';
 		var disqus_url = '{{site.url}}{{document.url}}';

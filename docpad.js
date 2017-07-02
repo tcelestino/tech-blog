@@ -36,8 +36,10 @@ docpadConfig = function() {
 						}
 					},
 					contain: function(lvalue, rvalue, options) {
-						if (arguments.length < 3)
+						if (arguments.length < 3) {
 							throw new Error("Handlebars Helper equal needs 2 parameters");
+						}
+
 						if( lvalue.indexOf(rvalue) == -1 ) {
 							return options.inverse(this);
 						} else {
