@@ -4,7 +4,6 @@ docpadConfig = function() {
 	return {
 		documentsPaths: ['documents', 'posts', 'assets', 'publishers'],
 
-<<<<<<< HEAD
 		plugins: {
 			handlebars: {
 				helpers: {

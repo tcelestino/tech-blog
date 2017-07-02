@@ -43,7 +43,6 @@
 	<script src="/js/vendor/async-define.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}">
-<<<<<<< HEAD
 	<header class="left-pane">
 		<div class="logo-container">
 			<a rel="home" itemprop="url" href="/" class="logo">{{site.title}}</a>
@@ -94,27 +93,27 @@
 	<main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
 		{{{content}}}
 
-        {{#if document.isPaged}}
-            {{#over document.page.count 1}}
-                <nav class="pagination" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
-                    {{#if hasPrevPage}}
-                        <a class='back btn' href="{{site.baseUrl}}{{../getPrevPage}}">anterior</a>
-                    {{else}}
-                        <span class="back disabled">anterior</span>
-                    {{/if}}
+		{{#if document.isPaged}}
+			{{#over document.page.count 1}}
+				<nav class="container pagination" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
+					{{#if hasPrevPage}}
+						<a class='back btn' href="{{site.baseUrl}}{{../getPrevPage}}">anterior</a>
+					{{else}}
+						<span class="back disabled">anterior</span>
+					{{/if}}
 
-                    <span>
-                        Página {{sum document.page.number 1}} de {{document.page.count}}
-                    </span>
+					<span>
+						Página {{sum document.page.number 1}} de {{document.page.count}}
+					</span>
 
-                    {{#if hasNextPage}}
-                        <a class='next btn' href="{{site.baseUrl}}{{../getNextPage}}">próximo</a>
-                    {{else}}
-                        <span class="next disabled">próximo</span>
-                    {{/if}}
-                </nav>
-            {{/over}}
-        {{/if}}
+					{{#if hasNextPage}}
+						<a class='next btn' href="{{site.baseUrl}}{{../getNextPage}}">próximo</a>
+					{{else}}
+						<span class="next disabled">próximo</span>
+					{{/if}}
+				</nav>
+			{{/over}}
+		{{/if}}
 	</main>
 	<footer itemscope itemtype="http://schema.org/Organization">
 		<a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" >

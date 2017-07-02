@@ -139,9 +139,13 @@ header.left-pane {
     }
 }
 
+.container {
+    padding: 1em 5%;
+}
+
 .pagination {
     text-align: center;
-    margin-bottom: 1em;
+    margin-bottom: 3em;
 
     > * {
         display: inline-block;
@@ -163,16 +167,16 @@ header.left-pane {
         &:hover {
             background-color: map-get($colors-background, green);
         }
+    }
 
-        &.next:after {
-            content: "\203A";
-            margin-left: 0.5em;
-        }
+    .next:after {
+        content: "\203A";
+        margin-left: 0.5em;
+    }
 
-        &.back:before {
-            content: "\2039";
-            margin-right: 0.5em;
-        }
+    .back:before {
+        content: "\2039";
+        margin-right: 0.5em;
     }
 }
 
@@ -215,6 +219,11 @@ footer {
         .logo-container {
             padding-top: 2em;
         }
+    }
+
+    .container {
+        padding: 1em 10%;
+        margin-left: 210px; /* Navigation pane size */
     }
 
     .navigation {
@@ -269,29 +278,37 @@ footer {
 }
 
 @media(max-width: 500px) {
+    .container {
+        padding: 1em 15%;
+    }
+
     .pagination {
-        .btn {
+        padding: 0;
+
+        .back {
+            padding-right: 0.5em;
+            margin: 0;
+
+            &:before {
+                content: "\2039\2039";
+                text-indent: 0;
+                float: left;
+            }
+        }
+
+        .next {
+            padding-left: 0.5em;
+            margin: 0;
+
+            &:after {
+                content: "\203A\203A";
+                float: left;
+                text-indent: 0;
+            }
+        }
+
+        .btn, .disabled {
             text-indent: -9999px;
-
-            &.back {
-                padding-right: 0.5em;
-
-                &:before {
-                    content: "\2039\2039";
-                    text-indent: 0;
-                    float: left;
-                }
-            }
-
-            &.next {
-                padding-left: 0.5em;
-
-                &:after {
-                    content: "\203A\203A";
-                    float: left;
-                    text-indent: 0;
-                }
-            }
         }
     }
 }

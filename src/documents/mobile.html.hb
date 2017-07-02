@@ -7,7 +7,7 @@ pagedCollection: 'mobile'
 pageSize: 10
 ---
 
-<section class="posts-container" itemscope itemtype="http://schema.org/Blog">
+<section class="container posts-container" itemscope itemtype="http://schema.org/Blog">
 	{{#each (getPagedCollection "mobile")}}
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">
 				<header>
