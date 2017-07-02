@@ -1,6 +1,6 @@
 ---
 title: Back End
-description: Todos os posts da categoria back-end
+description: Confira todos os nossos posts da categoria back-end, escrito pela engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">

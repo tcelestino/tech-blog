@@ -1,6 +1,6 @@
 ---
 title: Eventos
-description: Todos os posts da categoria eventos
+description: Confira todos os nossos posts sobre eventos, escritos pela engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">

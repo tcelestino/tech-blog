@@ -4,7 +4,7 @@ date: 2016-04-15
 authors: [davidrobert]
 layout: post
 category: vagas
-description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Temos a seguinte vaga para o time da engenharia...
+description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos a procura de desenvolvedores Java para fazer parte do nosso time.
 tags:
   - java
   - back-end

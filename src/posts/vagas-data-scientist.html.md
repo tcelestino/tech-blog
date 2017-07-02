@@ -4,7 +4,7 @@ date: 2017-05-24
 authors: [davidrobert]
 layout: post
 category: vagas
-description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Temos a seguinte vaga para o time da engenharia...
+description: O Elo7, maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos a procura de profissionais de pesquisa e desenvolvimento para nosso time de Data Science.
 tags:
   - data scientist
   - deep learning
