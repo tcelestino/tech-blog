@@ -271,7 +271,7 @@ public class HttpRequestWithHeaders {
 		this.builder = builder;
 	}
 
-	public String execute(String uri) {
+	public String request(String uri) {
 		return builder.withUrl(uri)
 				.withHeader("Content-type: application/json")
 				.withHeader("Authorization: Bearer")
@@ -294,8 +294,8 @@ public class SomeTest {
 
   		String response = "StatusCode: 200";
 
-		//permite configurar apenas o método execute do mock, pois cada método utilizado devolve a mesma instância
-  		when(builder.execute()).thenReturn(response);
+		//permite configurar apenas o método "request" do mock, pois cada método utilizado devolve a mesma instância
+  		when(builder.request()).thenReturn(response);
 
   		assertThat(requester.request("URI")).isEqualTo(response);
 	}
@@ -431,7 +431,28 @@ public class DocumentGeneratorTest {
 }
 ```
 
-No Mockito 2.x, podemos criar um spy a partir de uma classe abstrata, e o teste inicial (exemplo anterior) rodaria sem problemas. A única restrição é que a classe abstrata **deve ter um construtor padrão (sem argumentos)**.
+No Mockito 2.x, podemos criar um spy a partir de uma classe abstrata, e o teste inicial (exemplo anterior) rodaria sem problemas. No exemplo, a criação foi feita com a anotação @Spy; nesse caso, a única restrição é que a classe abstrata **deve ter um construtor padrão (sem argumentos)**. Se não for o caso, você ainda pode utilizar a [API programática do Mockito](http://static.javadoc.io/org.mockito/mockito-core/2.8.47/org/mockito/Mockito.html#spying_abstract_classes):
+
+```java
+public class SomeAbstractType {
+
+	private final String arg;
+	private final int otherArg;
+
+	public SomeAbstractType(String arg, int otherArg) {
+		this.arg = arg;
+		this.otherArg = otherArg;
+	}
+}
+
+public class SomeAbstractTypeTest {
+
+	@Test
+	public void anyTest() {
+		SomeAbstractType spy = mock(SomeAbstractType.class, withSettings().useConstructor("arg1", 123).defaultAnswer(Answers.CALLS_REAL_METHODS));
+	}
+}
+```
 
 ## Verificação de métodos
 A verificação de métodos dos mocks (realizada pelo método [Mockito.verify](http://static.javadoc.io/org.mockito/mockito-core/2.8.47/org/mockito/Mockito.html#verify(T))) consiste em **confirmar que os mocks foram invocados adequadamente**, e é extremamente importante em alguns cenários de teste (em outros, nem tanto). Uma melhoria introduzida na versão 2 do Mockito é a possibilidade de verificação "lazy". Abaixo, um exemplo dessa funcionalidade:
@@ -654,4 +675,4 @@ A saída no console:
 ```
 
 ## Conclusão
-O Mockito é um frameworks para mocks mais utilizados na linguagem Java, muito devido à simplicidade na sua utilização e grande número de recursos. A versão 2.x manteve essa linha de implementação, além de trazer novas e interessantes funcionalidades para ajudar os desenvolvedores a escrever mais e melhores testes. Nesse post, cobri as principais mudanças e novidades da nova versão. Espero que tenha gostado! Em caso de dúvidas ou qualquer outra coisa, sinta-se à vontade para usar a caixa de comentários!
+O Mockito é um dos frameworks de mocks mais utilizados na linguagem Java, muito devido à simplicidade na sua utilização e grande número de recursos. A versão 2.x manteve essa linha de implementação, além de trazer novas e interessantes funcionalidades para ajudar os desenvolvedores a escrever mais e melhores testes. Nesse post, cobri as principais mudanças e novidades da nova versão. Espero que tenha gostado! Em caso de dúvidas ou qualquer outra coisa, sinta-se à vontade para usar a caixa de comentários!
