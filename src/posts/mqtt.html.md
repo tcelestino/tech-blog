@@ -87,14 +87,14 @@ Existem 3 niveis:
 
 QoS 0 - At most once
 
-![qos0](../assets/images/mqtt-qos-0.png)
+![qos0](../images/mqtt-qos-0.png)
 
 Garante o menor nivel de entrega, tambem chamado de fire and forget é o mais rapido, consome menos banda porem representa a menor garantia de entrega entre todos. O ciclo de vida é composto apenas pelo cliente enviar uma mensagem para o broker.
 
 
 QoS 1 - At last once
 
-![qos1](../assets/images/mqtt-qos-1.png)
+![qos1](../images/mqtt-qos-1.png)
 
 Garante que a mensagem sera enviada pelo menos uma vez ao broker. Após a mensagem ser enviada o cliente guarda essa mensagem até receber o PUBACK do broker, caso o PUBACK não seja recebido em um determinado tempo o cliente envia outro PUBLISH. Pelo lado do broker quando ele recebe um PUBLISH com QoS 1 a mensagem é processada de imediato enviando para todos os SUBs e respondendo para o cliente com o PUBACK.
 O cliente utiliza o packetId que é retornado no PUBACK para fazer a associação entre PUBLISH e PUBACK
@@ -102,7 +102,7 @@ O cliente utiliza o packetId que é retornado no PUBACK para fazer a associaçã
 
 QoS 2 - Exacly once
 
-![qos2](../assets/images/mqtt-qos-0.png)
+![qos2](../images/mqtt-qos-2.png)
 
 Garante que cada mensagem é recebida pelo menos uma vez pelo outro lado, entre todos é que tem a maior garantia de entrega porem o mais lento.
 
@@ -112,7 +112,7 @@ Tenha em mente que quanto maior o QoS mais trocas de mensagens são feitas, isso
 
 ## Arquitetura real time da Elo7
 
-![Arquitetura mqtt elo7](../assets/images/mqtt-elo7.png)
+![Arquitetura mqtt elo7](../images/mqtt-elo7.png)
 
 A imagem acima é um resumo de como utilizamos o MQTT + WebSocket.
 Quando o comprador enviam uma mensagem sobre o pedido existe a necessidade de realizar diversas operações secundarias (enviar metricas, capturar eventos, enviar push, notificar o mosquitto) afim de não comprometer a operação principal que seria apenas salvar a mensagem no banco. Nosso evento de notificar o mosquitto é realizado de forma assíncrona, uma mensagem é enviada para uma fila no SQS, temos um worker que fica escutando essa fila que é quem efetivamente vai notificar o topico da conversa no mosquitto. Pelo outro lado temos o vendedor que ao abrir a conversa se conecta por WebSocket ao topico daquela conversa no mosquitto utilizando o client MQTT (pahoJS no nosso caso), com isso ao receber uma nova mensagem do comprador a conversa é atualizada sem nenhuma interação (Ex: refresh na página) por parte do vendedor.
