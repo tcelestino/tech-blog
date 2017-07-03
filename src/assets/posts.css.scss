@@ -101,7 +101,13 @@ autoprefix: true
 			}
 		}
 	}
+}
 
+@media (max-width: 500px) {
+	.posts-container .date {
+		display: block;
+		margin-top: 1em;
+	}
 }
 
 @media (min-width: 800px) {

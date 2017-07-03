@@ -26,15 +26,6 @@ docpadConfig = function() {
 					getEnvironment: function() {
 						return this.getEnvironment() === "static" ? "production" : "development";
 					},
-					equal: function(lvalue, rvalue, options) {
-						if (arguments.length < 3)
-							throw new Error("Handlebars Helper equal needs 3 parameters");
-						if( lvalue.toUpperCase() != rvalue.toUpperCase() ) {
-							return options.inverse(this);
-						} else {
-							return options.fn(this);
-						}
-					},
 					contain: function(lvalue, rvalue, options) {
 						if (arguments.length < 3) {
 							throw new Error("Handlebars Helper equal needs 2 parameters");

@@ -31,7 +31,7 @@ define(['doc', 'github'], function($, github) {
 	if($authors.isPresent()) {
 		$authors.each(function(author) {
 			var $author = $(author),
-				$avatar = $author.find('img.avatar'),
+				$avatar = $author.find('img.avatar');
 
 			if ($avatar.isPresent()) {
 				var $publisher = $author.find('.publisher'),
@@ -39,8 +39,10 @@ define(['doc', 'github'], function($, github) {
 					listOfInfo = github.getInfoFromUsers('50', [userName]),
 					info = listOfInfo[0];
 
-				$avatar.removeClass('hide');
-				$avatar.attr('src', info.avatarUrl);
+				if (info.avatarUrl) {
+					$avatar.removeClass('hide');
+					$avatar.attr('src', info.avatarUrl);
+				}
 			}
 		});
 	}
