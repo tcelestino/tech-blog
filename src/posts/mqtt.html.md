@@ -80,25 +80,44 @@ Uma das vantagens do Pub/Sub é o desacoplamento que ela gera, o publisher não 
 ### Client
 É a lib que vai ficar dentro da sua aplicação, é a responsavel por se conectar, enviar e receber as mensagens dos broker. Os clients estão [disponiveis em varias linguagens](https://github.com/mqtt/mqtt.github.io/wiki/libraries) como java, javascript, .NET, C++, Go, IOS, etc. Isso quer dizer que é possivel enviar e receber mensagens desde aplicações web até pequenos dispositivos IOT como sensores de temperatura. O cliente se conecta com o broker enviando uma mensagem de ´CONNECT´ e o broker deve responder com ´CONNACK´, após a conexão estabelecida ela é mantida aberta até o cliente se desconectar ou perder a conexão.
 
-### Quality of Service (QoS) 
-QoS é o nivel de garantia de entrega das mensagens entre cliente e servidor. 
+### Quality of Service (QoS)
+QoS é o nivel de garantia de entrega das mensagens entre cliente e servidor.
 
-Existem 3 niveis:	
+Existem 3 niveis:
 
-QoS 0 - At most once 
+QoS 0 - At most once
+
+![qos0](../assets/images/mqtt-qos-0.png)
 
 Garante o menor nivel de entrega, tambem chamado de fire and forget é o mais rapido, consome menos banda porem representa a menor garantia de entrega entre todos. O ciclo de vida é composto apenas pelo cliente enviar uma mensagem para o broker.
-![qos0](http://www.hivemq.com/wp-content/uploads/publish_qos0_flow.png)
+
 
 QoS 1 - At last once
-![qos1](http://www.hivemq.com/wp-content/uploads/publish_qos1_flow.png)
+
+![qos1](../assets/images/mqtt-qos-1.png)
+
 Garante que a mensagem sera enviada pelo menos uma vez ao broker. Após a mensagem ser enviada o cliente guarda essa mensagem até receber o PUBACK do broker, caso o PUBACK não seja recebido em um determinado tempo o cliente envia outro PUBLISH. Pelo lado do broker quando ele recebe um PUBLISH com QoS 1 a mensagem é processada de imediato enviando para todos os SUBs e respondendo para o cliente com o PUBACK.
 O cliente utiliza o packetId que é retornado no PUBACK para fazer a associação entre PUBLISH e PUBACK
 
 
 QoS 2 - Exacly once
-![qos2](http://www.hivemq.com/wp-content/uploads/publish_qos2_flow.png)
-Garante que cada mensagem é recebida pelo menos uma vez pelo outro lado, entre todos é que tem a maior garantia de entrega porem o mais lento. 
+
+![qos2](../assets/images/mqtt-qos-0.png)
+
+Garante que cada mensagem é recebida pelo menos uma vez pelo outro lado, entre todos é que tem a maior garantia de entrega porem o mais lento.
 
 
 Tenha em mente que quanto maior o QoS mais trocas de mensagens são feitas, isso afeta o tempo que a mensagem é efetivamente entregue, faz mais banda, processamento e bateria serem consumidos.
+
+
+## Arquitetura real time da Elo7
+
+![Arquitetura mqtt elo7](../assets/images/mqtt-elo7.png)
+
+A imagem acima é um resumo de como utilizamos o MQTT + WebSocket.
+Quando o comprador enviam uma mensagem sobre o pedido existe a necessidade de realizar diversas operações secundarias (enviar metricas, capturar eventos, enviar push, notificar o mosquitto) afim de não comprometer a operação principal que seria apenas salvar a mensagem no banco. Nosso evento de notificar o mosquitto é realizado de forma assíncrona, uma mensagem é enviada para uma fila no SQS, temos um worker que fica escutando essa fila que é quem efetivamente vai notificar o topico da conversa no mosquitto. Pelo outro lado temos o vendedor que ao abrir a conversa se conecta por WebSocket ao topico daquela conversa no mosquitto utilizando o client MQTT (pahoJS no nosso caso), com isso ao receber uma nova mensagem do comprador a conversa é atualizada sem nenhuma interação (Ex: refresh na página) por parte do vendedor.
+
+## Conclusão
+
+Foi demonstrado que existem certas vantagens ao se adotar o mqtt com WebSocket, porem nem tudo são unicornios e arco-íris realtime na sua janela os custos para manter esse tipo de arquitetura é maior tanto de infra como manutenção, tempo de desenvolvimento e complexidade são maires. Caso decida por MQTT é necessario ter um bom conhecimento do broker escolhido, conhecer suas vontagens e desvantagens em relação aos outros, como você vai escalar ele no futuro, como trabalhar com brokers distribuidos, segurança, afinal não vamos querer usuários que não façam parte da conversa  fazendo sub no topico da conversa que não pertence a ele.
+A escolha por cada tipo de arquitetura vai depender de uma analise do seu negócio, se vale a pena o investimento/retorno, se faz sentido determinada funcionalidade ser realtime, entre muitas outras coisas.
