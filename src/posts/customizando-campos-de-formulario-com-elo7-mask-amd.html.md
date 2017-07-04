@@ -7,7 +7,7 @@ description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada dir
 author: rapahaeru
 tags:
   - html
-  - JavaScript
+  - javaScript
   - front-end
   - libs
 ---
