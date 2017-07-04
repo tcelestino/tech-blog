@@ -75,6 +75,13 @@ autoprefix: true
                 color: darken($yellow-default, 10);
             }
         }
+
+        .author + .date::before {
+            content: '·';
+            margin-left: 0.1em;
+            margin-right: 0.3em;
+        }
+
         .description {
             margin-top: 1.5em;
             font-weight: lighter;

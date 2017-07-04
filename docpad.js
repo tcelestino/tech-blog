@@ -1,4 +1,5 @@
 var moment = require('moment');
+moment.locale('pt-BR');
 
 docpadConfig = function() {
     return {
@@ -14,6 +15,11 @@ docpadConfig = function() {
                     dateAsText: function(date) {
                         return moment(date).utc().format('DD/MM/YYYY');
                     },
+
+                    formatDate: function(date, format) {
+                        return moment(date).utc().format(format);
+                    },
+
                     getCategories: function() {
                         return [
                             { category: "front-end" },

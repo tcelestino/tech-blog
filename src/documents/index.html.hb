@@ -12,8 +12,8 @@ layout: page
                     </a>
                 </header>
                 <div class="post-meta">
-                    by <a href="https://github.com/{{author}}" target="_blank" class="author"><p>@{{author}}</p></a>
-                    · <time datetime="{{dateAsText this.date}}" itemprop="datePublished" class="date">{{dateAsText this.date}}</time>
+                    <a href="https://github.com/{{author}}" target="_blank" class="author"><p>by @{{author}}</p></a>
+                    <time datetime="{{formatDate this.date ''}}" itemprop="datePublished" class="date">{{formatDate this.date 'LL'}}</time>
                 </div>
                 <p class="description">{{description}}</p>
                 <a href="/{{category}}" class="category {{category}}">{{category}}</a>
