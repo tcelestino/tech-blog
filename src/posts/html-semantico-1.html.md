@@ -63,4 +63,4 @@ Com isso, o HTML faz com que o conteúdo seja mais "apresentável" para leitores
 
 Saber como expor seus dados ao mundo é fundamental. Saber da forma correta é ainda melhor.
 
-Por enquanto é só, mas este tema continuará no próximo post.
+Por enquanto é só, mas este tema continuará no próximo [post](/html-semantico-2/).

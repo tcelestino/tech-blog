@@ -17,7 +17,7 @@ tags:
 
 Neste segundo post da série sobre a importância da semântica para os usuários e desenvolvedores, trataremos sobre como podemos melhorar nosso conteúdo de forma que os buscadores entendam o que realmente estamos oferecendo, com a menor possibilidade de ruídos de informação possível. Saberemos de maneira prática como podemos melhorar a disponibilidade de nosso conteúdo.
 
-Caso não tenha lido o nosso primeiro post, basta acessar [aqui](http://engenharia.elo7.com.br/html-semantico-1/).
+Caso não tenha lido o nosso primeiro post, basta acessar [aqui](/html-semantico-1/).
 
 ## Dando significado ao HTML
 
