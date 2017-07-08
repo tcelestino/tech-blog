@@ -30,12 +30,12 @@ Se você ainda não tem a sua página de autor, crie um arquivo ``<seugithub>.ht
 O template para esse arquivo deve ser:
 ```html
 ---
-title: Fernanda Bernardo
-publisher: Fernanda Bernardo
+title: <seu nome - title (meta) da página>
+publisher: <seu nome - h1 da página>
 layout: publisher
-twitter: Feh_Bernardo <seu twitter sem @>
-github: fernandabernardo <seu github sem @>
-linkedin: fernandabernardo <seu linkedin>
+twitter: <seu twitter sem @>
+github: <seu github sem @>
+linkedin: <seu linkedin>
 description: Aqui você pode descrever uma minibio sua :)
 ---
 ```
