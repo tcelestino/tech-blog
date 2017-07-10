@@ -67,7 +67,7 @@ Comando do    |        Tipo de        |         ID do resource
             de import             no Terraform
 ```
 
-Ao executar o comando, temos um saída dizendo que tudo correu bem:
+Ao executar o comando, temos uma saída dizendo que tudo correu bem:
 
 ```python
 $ terraform import aws_instance.elo7-ec2-example i-a1b2c3
@@ -172,7 +172,7 @@ Temos duas opções:
 - Escrever o código manualmente;
 - Gerar o código utilizando a ferramenta [terraforming](https://github.com/dtan4/terraforming).
 
-De cara a escolha que parece mais correta é utilizar uma ferramenta que vai fazer o trabalho para nós, mas por questões didáticas, também vamos mostrar o processo de escrita manual do código.
+A escolha mais correta é utilizar uma ferramenta que vai fazer o trabalho para nós mas, por questões didáticas, vamos mostrar o processo de escrita manual do código.
 
 Para fazer isso, devemos pegar as informações relevantes do estado e gerar um *configuration*. Nesse caso, estamos importando uma instância EC2 e vamos precisar retirar do estado as seguintes informações:
 - **Nome do resource:** `elo7-ec2-example`
@@ -204,7 +204,7 @@ resource aws_instance "elo7-ec2-example" {
 }
 ```
 
-Podemos testar nosso código executando o comando `plan`. O sucesso da importação se dá quando esse comando indica que nenhuma mudança será feita, que nos indica que não há inconsistências entre código e estado:
+Podemos testar nosso código executando o comando `plan`. O sucesso da importação se dá quando esse comando indica que nenhuma mudança será feita, nos dizendo que não há inconsistências entre código e estado:
 
 ```python
 $ terraform plan
@@ -226,7 +226,7 @@ No dia-a-dia, com certeza iremos preferir utilizar a ferramenta `terraforming` c
 
 Esperamos ter respondido com clareza a resposta da pergunta "E o legado?" quando se trata de Infraestrutura como Código e Terraform.
 
-É recomendado que, ao utilizar o comando `import`, o usuário já possua alguma vivência com o Terraform e conheça bem os conceitos dos `resources` que serão importados, pois existem pontos do procedimento nos quais os estados são inconsistentes e um comando errado pode causar catástrofes. Muito cuidado com `resources` como registros de DNS e LoadBalancers de produção.
+É recomendado que, ao utilizar o comando `import`, o usuário já possua alguma vivência com o Terraform e conheça bem os conceitos dos `resources` que serão importados, pois existem pontos do procedimento nos quais os estados são inconsistentes e um comando errado pode causar catástrofes. Cuidado com `resources` como registros de DNS e LoadBalancers.
 
 Um outro detalhe foi que aqui no Elo7 não saímos importando tudo que já existia de uma vez, decidimos fazer por demanda. Assim, quando uma mudança na infra de uma aplicação era necessária, aproveitamos e fazemos o `import`.
 
