@@ -42,7 +42,7 @@ Em arquiteturas basedas em SOA, frequentemente (mas não unicamente) esses servi
 
 Existem muitas semelhanças entre o SOA e o modelo arquitetural dos microserviços, mas acreditamos que eles mais se diferem do que se parecem. Os conceitos de microserviços têm se afastado das idéias do SOA que descrevemos acima, especialmente no que se refere à coesão e tamanho dos serviços, e na maneira como as funcionalidades são expostas. Ao invés da orquestração via ESB, microserviços têm preferido a [coreografia de múltiplas aplicações](https://www.thoughtworks.com/de/insights/blog/scaling-microservices-event-stream); ao invés de web services baseados em SOAP, microserviços têm preferido a exposição de API's diretamente sobre HTTP.
 
-A respeito da maneira como as funcionalides do serviço são expostas, um detalhe que tem caracterizado os microserviços é a escolha do [REST](https://pt.wikipedia.org/wiki/REST) como estilo arquitetural. O conceito-chave do REST é a utilização do *recurso* como principal elemento de abstração do serviço. Sendo um modelo arquitetural, REST não é sobre protocolos, mas é mais comumente utilizado sobre o HTTP. Queremos nos concentrar nesse último detalhe em particular (a maneira como os serviços são expostos), que normalmente é reforçado como uma vantagem dos microserviços REST sobre os web services SOAP: expor uma API diretamente sobre HTTP é melhor?
+A respeito da maneira como as funcionalidades do serviço são expostas, um detalhe que tem caracterizado os microserviços é a escolha do [REST](https://pt.wikipedia.org/wiki/REST) como estilo arquitetural. O conceito-chave do REST é a utilização do *recurso* como principal elemento de abstração do serviço. Sendo um modelo arquitetural, REST não é sobre protocolos, mas é mais comumente utilizado sobre o HTTP. Queremos nos concentrar nesse último detalhe em particular (a maneira como os serviços são expostos), que normalmente é reforçado como uma vantagem dos microserviços REST sobre os web services SOAP: expor uma API diretamente sobre HTTP é melhor?
 
 Em nossa opinião, SIM, e é a opinião que a indústria de software têm adotado nos últimos anos. Mas é o suficiente? Se sim, qual formato de dados devemos utilizar? Utilizar [JSON](http://www.json.org/json-pt.html) é o mais indicado para todas as situações? Estamos implementando corretamente o principal conceito do REST (a idéia do *recurso*)? Ou estamos apenas usando HTTP para expor URIs que trafegam JSON, e chamando isso de "API REST"?
 
@@ -58,7 +58,7 @@ Essa é uma diferença fundamental, e a partir disto podemos (ousadamente) estab
 
 Embora o termo "RPC" traga à lembrança protocolos pesados como SOAP e o uso de ferramentas SOA complexas, existem protocolos mais leves e muito utilizados como [XML-RPC](https://pt.wikipedia.org/wiki/XML-RPC) ou [JSON-RPC](https://pt.wikipedia.org/wiki/JSON-RPC). Na verdade, é muito mais comum encontrar uma API "RPC-like" do que utilizando as idéias do REST (não acredita? Continue lendo!).
 
-Como exemplo, vamos imaginar um (micro)serviço que seja responsável pelo gerenciamento de um catálogo de produtos. Para listar todos os produtos, faríamos uma requisição HTTP no formato abaixo:
+Como exemplo, vamos imaginar um (micro)serviço que seja responsável pelo gerenciamento de um catálogo de produtos. Para listar todos os produtos, faremos uma requisição HTTP no formato abaixo:
 
 ```
 GET /product/list HTTP/1.1
