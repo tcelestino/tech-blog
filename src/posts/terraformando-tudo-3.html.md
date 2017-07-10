@@ -34,7 +34,7 @@ Com esses pontos em mente, vamos ver como podemos utilizar o `import`.
 
 ## Usando o `import`
 
-Para o import, devemos ter em mãos três informações (mais informações sobre o *pattern* do Terraform [no segundo post](/terraformando-tudo-2/):
+Para o import, devemos ter em mãos três informações (mais informações sobre o *pattern* do Terraform [no segundo post](/terraformando-tudo-2/)):
 - Tipo do recurso
 - Nome do recurso
 - ID do recurso na AWS
