@@ -3,7 +3,7 @@ title: Serverless e AWS Lambda
 date: 2017-07-10
 category: back-end
 layout: post
-description: Serverless. O que é? Onde vide? Do que se alimenta?
+description: Serverless. O que é? Onde vive? Do que se alimenta?
 author: cristianoperez
 tags:
   - serverless
