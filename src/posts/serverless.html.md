@@ -65,7 +65,7 @@ Caso vocês já tenha um sistema e precise chamar uma função o próprio SDK da
 
 ### Segurança
 
-Como em todos os produtos da amazon é possível utilizar roles e VPS específicas para cada função.
+Como em todos os produtos da amazon é possível utilizar roles e VPC específicas para cada função.
 
 ### Precificação
 
