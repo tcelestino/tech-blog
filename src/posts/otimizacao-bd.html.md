@@ -4,7 +4,7 @@ category: back-end
 tags:
   - sql
   - optimization
-author: victorkendy
+authors: [victorkendy]
 layout: post
 title: Otimização de queries lentas em bancos relacionais
 description: O banco relacional é uma das ferramentas mais utilizadas para o armazenamento de dados em aplicações, porém a performance dessas ferramentas pode sofrer caso os dados sejam inseridos sem o devido cuidado. Nesse post teremos uma introdução prática aos índices como uma forma de otimização de buscas.
