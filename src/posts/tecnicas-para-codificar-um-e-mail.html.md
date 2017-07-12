@@ -8,7 +8,7 @@ tags:
   - marketing
   - transacional
   - layout
-author: erikatakahara
+authors: [erikatakahara]
 layout: post
 title: Técnicas para codificar um e-mail
 description: Todo front-end já passou por problemas ao codificar um e-mail, principalmente quando se trata de compatibilidade com todos os clientes de e-mail, como o Yahoo, Gmail, Outlook, etc. Neste post iremos abordar algumas técnicas e com o que devemos nos preocupar ao desenvolver um layout de e-mail.
