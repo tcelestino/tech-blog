@@ -104,6 +104,8 @@
 		<div class='social'>
 			<a title="Github do Elo7" rel="external" itemprop="url" href="https://github.com/elo7" target="_blank" class="github">Github do Elo7</a>
 			<a title="Twitter do Elo7" rel="external" itemprop="url" href="https://twitter.com/elo7tech" target="_blank" class="twitter">Twitter do Elo7</a>
+			<a title='RSS do Elo7' rel="external" itemprop="url" href="{{site.url}}/rss.xml" target="_blank" class="rss">RSS do Elo7</a>
+			<a title='Newsletter do Elo7' rel="external" itemprop="url" href="http://eepurl.com/cVUwvH" target="_blank" class="email">Newsletter do Elo7</a>
 		</div>
 	</header>
 	<main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
@@ -136,6 +138,12 @@
 			engenharia.elo7.com.br © 2017
 		</a>
 		<meta itemprop="name" content="Elo7 Serviços de Informática SA"/>
+		<section class='footer-social'>
+			<a title='Github do Elo7' rel='external' itemprop='url' href='https://github.com/elo7' target='_blank' class='github'>Github do Elo7</a>
+			<a title='Twitter do Elo7' rel='external' itemprop='url' href='https://twitter.com/elo7tech' target='_blank' class='twitter'>Twitter do Elo7</a>
+			<a title='RSS do Elo7' rel='external' itemprop='url' href='{{site.url}}/rss.xml' target='_blank' class='rss'>RSS do Elo7</a>
+			<a title='Newsletter do Elo7' rel='external' itemprop='url' href='http://eepurl.com/cVUwvH' target='_blank' class='email'>Newsletter do Elo7</a>
+		</section>
 	</footer>
 	<script async src="https://www.google-analytics.com/analytics.js"></script>
 	<script async src="/js/analytics.js"></script>

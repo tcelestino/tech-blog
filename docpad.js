@@ -4,8 +4,6 @@ const moment = require('moment'),
 	ampTask = require('./src/tasks/amp'),
 	sizeOf = require('image-size');
 
-moment.locale('pt-BR');
-
 const orderByDate = (postA, postB) => {
 	let dateA = postA.toJSON().date,
 		dateB = postB.toJSON().date;
@@ -50,10 +48,16 @@ const docpadConfig = function() {
 						return text.toLowerCase().replace(/(\s|\.)/g, '-');
 					},
 					dateAsText(date) {
-						return moment(date).utc().format('DD/MM/YYYY');
+						return moment(date).locale('pt-BR').utc().format('DD/MM/YYYY');
 					},
 					formatDate: function(date, format) {
-						return moment(date).utc().format(format);
+						return moment(date).locale('pt-BR').utc().format(format);
+					},
+					today() {
+						return moment(new Date()).locale('en').utc().format('ddd, DD MMM YYYY HH:mm:ss ZZ');
+					},
+					dateAsRFC(date) {
+						return moment(date).locale('en').utc().format('ddd, DD MMM YYYY HH:mm:ss ZZ');
 					},
 					getCategories() {
 						return categories;
@@ -136,6 +140,9 @@ const docpadConfig = function() {
 							return options.inverse(this);
 						}
 					},
+					encodeURI(uri) {
+						return encodeURI(uri);
+					}
 				}
 			},
 			cleanurls: {
