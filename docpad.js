@@ -67,6 +67,9 @@ docpadConfig = function() {
 			},
 			markit: {
 				html: true
+			},
+			paged: {
+				prefix: 'page'
 			}
 		},
 

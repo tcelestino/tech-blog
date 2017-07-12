@@ -23,7 +23,7 @@ layout: page
 	{{/document.description}}
 </article>
 
-<section class="posts-container" itemscope itemtype="http://schema.org/Blog">
+<section class="container posts-container" itemscope itemtype="http://schema.org/Blog">
 	{{#each (getCollection "posts")}}
 		{{#contain authors ../document.github}}
 			<article itemprop="blogPost" itemscope itemtype="http://schema.org/BlogPosting" class="post-card card-{{category}}">

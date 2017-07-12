@@ -107,9 +107,15 @@ autoprefix: true
 }
 
 @media (max-width: 500px) {
-	.posts-container .date {
-		display: block;
-		margin-top: 1em;
+	.posts-container {
+		.date {
+			display: block;
+			margin-top: 1em;
+		}
+
+		.post-card:first-child {
+			padding-top: 0;
+		}
 	}
 }
 
@@ -118,6 +124,7 @@ autoprefix: true
 		.post-card {
 			padding: 2em;
 			background-color: $white;
+
 			&:not(:first-of-type) {
 				border-top: none;
 			}
