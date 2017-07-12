@@ -5,7 +5,7 @@ tags:
   - java
   - mockito
   - tdd
-author: ljtfreitas
+authors: [ljtfreitas]
 layout: post
 title: Testes de código com Mockito (2) - Novidades da nova versão
 description: Há algum tempo, escrevi sobre o funcionamento e os principais recursos do Mockito. Neste post, vamos conhecer as novidades da nova versão do framework.
