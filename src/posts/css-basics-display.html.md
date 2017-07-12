@@ -5,7 +5,7 @@ tags:
   - css
   - display
   - posicionamento
-author: fernandabernardo
+authors: [fernandabernardo]
 layout: post
 title: CSS Basics - Display
 description: O que cada um dos atributos da propriedade display realmente significa? O objetivo deste post é abordar qual é o melhor uso para cada um deles, e quais são as mudanças de layout causadas por cada possível valor.
