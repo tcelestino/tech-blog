@@ -1,6 +1,6 @@
 ---
-title: Fernanda Moraes Bernardo
-publisher: Fernanda Moraes Bernardo
+title: Fernanda Bernardo
+publisher: Fernanda Bernardo
 layout: publisher
 twitter: Feh_Bernardo
 github: fernandabernardo

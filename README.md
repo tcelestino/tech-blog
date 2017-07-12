@@ -25,6 +25,23 @@ description: Alguma descrição do post que irá aparecer na home...
 
 Para adicionar imagens ao seu post, adicione cada uma das imagens na pasta ``src/assets/images``. Sua imagem deve ser ``.png`` ou ``.jpg`` e o nome deve seguir o padrão: ``<nomedopost>-<numerodaimagem>.<extensão>``. Para referenciá-las no post, use URLs absolutas como ``/images/titulo-post-1.png``.
 
+## Criando sua página de autor
+Se você ainda não tem a sua página de autor, crie um arquivo ``<seugithub>.html.md`` na pasta ``src/publishers/``. 
+O template para esse arquivo deve ser:
+```html
+---
+title: <seu nome - title (meta) da página>
+publisher: <seu nome - h1 da página>
+layout: publisher
+twitter: <seu twitter sem @>
+github: <seu github sem @>
+linkedin: <seu linkedin>
+description: Aqui você pode descrever uma minibio sua :)
+---
+```
+
+Dessa forma você poderá acessar a sua página de autor nessa url: ``localhost:9778/<seugithub>``
+
 ## Markdown
 Todo o post deve ser escrito na linguagem markdown. Abaixo seguem alguns exemplos da marcação (apenas para demonstração, todas as marcações do markdown funcionam :) ):
 * h2 - ``## Título de segundo nível``
@@ -54,9 +71,8 @@ trecho do código
 - Para rodar o projeto na sua máquina, é necessário ter instalado o npm e seguir os seguintes passos:
 
 ```
-sudo npm install -g docpad
-sudo npm install
-docpad run
+npm install
+npm start
 ```
 
 ### Labels do PR
