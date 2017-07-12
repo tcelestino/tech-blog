@@ -5,7 +5,7 @@ tags:
   - e-mail
   - html
   - css
-author: erikatakahara
+authors: [erikatakahara]
 layout: post
 title: Técnicas para codificar um e-mail - parte 3
 description: Já teve problemas ao visualizar um e-mail no celular? Por exemplo, aquelas letras pequenas, scroll lateral e colunas quebras? Nesse post iremos abordar como criar colunas nos e-mails e como deixá-las responsivas para melhor visualização em seu dispositivo móvel.
