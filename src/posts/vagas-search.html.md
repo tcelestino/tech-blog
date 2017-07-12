@@ -4,7 +4,7 @@ date: 2017-06-14
 authors: [fernandabernardo]
 layout: post
 category: vagas
-description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Temos a seguinte vaga para o time da engenharia...
+description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos à procura de desenvolvedores especialistas em busca para fazer parte do nosso time.
 tags:
   - search
   - back-end

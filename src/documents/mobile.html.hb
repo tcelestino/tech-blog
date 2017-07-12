@@ -1,6 +1,6 @@
 ---
 title: Mobile
-description: Todos os posts da categoria mobile
+description: Confira todos os nossos posts sobre desenvolvimento mobile, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">

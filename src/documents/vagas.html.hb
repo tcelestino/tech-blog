@@ -1,6 +1,6 @@
 ---
 title: Vagas
-description: Todos os posts da categoria vagas
+description: Confira todos os nossos posts com as oportunidades de emprego e desenvolvimento de carreira na Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">

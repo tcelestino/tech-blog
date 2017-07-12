@@ -1,6 +1,6 @@
 ---
 title: Eventos
-description: Todos os posts da categoria eventos
+description: Confira todos os nossos posts sobre eventos de tecnologia onde o time de Engenharia do Elo7 esteve presente!
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">
