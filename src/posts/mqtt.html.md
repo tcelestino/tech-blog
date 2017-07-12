@@ -4,7 +4,7 @@ category: MQTT
 layout: post
 title: Arquiteturas para aplicações realtime utilizando MQTT
 description: Vamos descrever os diferentes tipos de arquitetua para criação de aplicações realtime e suas vantagens e desvantagem em relação ao MQTT
-author: cristianoperez
+authors: [cristianoperez]
 tags:
   - MQTT
   - WebSocket
