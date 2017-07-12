@@ -4,7 +4,7 @@ date: 2016-04-04
 authors: [sardinha]
 layout: post
 category: vagas
-description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos a procura de desenvolvedores DevOps para fazer parte do nosso time.
+description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos à procura de desenvolvedores DevOps para fazer parte do nosso time.
 tags:
   - devops
   - back-end

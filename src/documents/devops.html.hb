@@ -1,6 +1,6 @@
 ---
 title: Devops
-description: Confira todos os nossos posts da categoria devops, escrito pela engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
+description: Confira todos os nossos posts sobre cultura e práticas DevOps, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">

@@ -1,6 +1,6 @@
 ---
 title: Front End
-description: Confira todos os nossos posts da categoria front-end, escritos pela engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
+description: Confira todos os nossos posts sobre front-end, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">

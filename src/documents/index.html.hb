@@ -1,6 +1,6 @@
 ---
 title: Home
-description: Blog de tecnologia do Elo7, com postagens dos próprios colaboradores mostrando como é o dia a dia de um colaborador fora de série.
+description: Blog de tecnologia do Elo7, mantido pelo nosso time de Engenharia, compartilhando conhecimento e mostrando como é o dia a dia de um colaborador fora de série.
 layout: page
 ---
 <section class="posts-container" itemscope itemtype="http://schema.org/Blog">
