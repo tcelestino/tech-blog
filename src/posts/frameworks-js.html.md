@@ -4,7 +4,7 @@ date: 2017-06-26
 category: front-end
 layout: post
 description: será que realmente precisamos usar um framework JavaScript? E como decidir qual devemos usar no projeto?
-author: williammizuta
+authors: [williammizuta]
 tags:
   - JavaScript
   - Frameworks JavaScript
