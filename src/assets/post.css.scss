@@ -18,9 +18,10 @@ autoprefix: true
 	}
 
 	.author {
-		display: block;
+		display: inline-block;
 		text-decoration: none;
 		color: map-get($colors-text, gray);
+		margin-right: 1em;
 		transition: color 0.3s;
 
 		.publisher {
@@ -30,7 +31,7 @@ autoprefix: true
 
 		.avatar {
 			border-radius: 50%;
-			margin: 0 1em 0 0;
+			margin: 0 0.3em 0 0;
 			display: inline-block;
 		}
 

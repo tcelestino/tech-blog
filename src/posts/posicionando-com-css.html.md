@@ -8,7 +8,7 @@ tags:
 	- alinhamento vertical
 	- css
 	- posicionamento
-author: alinelee
+authors: [alinelee]
 layout: post
 title: Posicionando elementos com CSS
 description: Posicionando elementos na tela com css utilizando diferentes técnicas e ponderando pontos positivos e negativos de cada uma.

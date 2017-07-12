@@ -4,7 +4,7 @@ category: mobile
 layout: post
 title: 'iOS - Vamos falar um pouco de arquitetura'
 description: Nós, aqui na Elo7, acabamos de tirar do forno nossa primeira versão do aplicativo para iOS (iPhones) para compradores. Já tínhamos a versão web mobile do Elo7, durante o desenvolvimento do aplicativo  iOS, levantamos algumas perguntas que nos levaram a decidir adotar uma arquitetura híbrida...
-author: aterribili
+authors: [aterribili]
 tags:
   - ios
   - objective-c

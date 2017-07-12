@@ -5,7 +5,7 @@ tags:
   - HTML
   - semântica
   - Acessibilidade
-author: rapahaeru
+authors: [rapahaeru]
 layout: post
 title: Um apanhado geral sobre o WAI-ARIA
 description: O que o desenvolvedor atual está fazendo para tornar seu conteúdo mais acessível para pessoas com algum tipo de deficiência? Com a evolução da web, a usabilidade melhorou muito, porém usuários de tecnologias assistivas correm risco de serem excluídos por conta das lacunas de acessibilidade que surgem com as páginas mais dinâmicas. Como leitores de tela normalmente sofrem com JavaScript, surge uma nova maneira de criar interfaces dinâmicas que são acessíveis a mais usuários.

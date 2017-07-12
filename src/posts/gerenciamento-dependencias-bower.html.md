@@ -1,7 +1,7 @@
 ---
 title: Gerenciamento de dependências front-end com bower
 date: 2015-03-05
-author: williammizuta
+authors: [williammizuta]
 layout: post
 category: front-end
 description: Durante o desenvolvimento de um projeto, nos deparamos com diversos problemas que não são exclusivos do mesmo. Muitos destes problemas, como persistência de dados, troca de mensagens assíncronas, transação e segurança, já possuem soluções que foram compiladas em bibliotecas para facilitar o nosso dia-a-dia ao resolver diversos problemas, tanto no back-end quando no front-end.

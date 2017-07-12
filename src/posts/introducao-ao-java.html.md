@@ -4,7 +4,7 @@ date: 2016-09-26
 category: back-end
 layout: post
 description: O primeiro post de uma série sobre como começar a codificar algo em Java. Nesse primeiro post você vai entender como que funciona a execução do Java no computador, além de entender sobre tipos primitivos.
-author: tcelestino
+authors: [tcelestino]
 tags:
   - java
 ---

@@ -4,7 +4,7 @@ date: 2016-10-10
 category: devops
 layout: post
 description: Logs são parte fundamental de qualquer aplicação, e sua importância é notada especialmente nos momentos mais difíceis. Neste artigo veremos como gerenciar esses dados de forma eficaz e versátil, provendo robustez e, ainda assim, facilitando o dia-a-dia de nossas colabores aqui no Elo7.
-author: edsonmarquezani
+authors: [edsonmarquezani]
 tags:
   - logs
   - graylog

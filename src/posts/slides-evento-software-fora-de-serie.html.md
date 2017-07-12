@@ -4,7 +4,7 @@ date: 2016-06-14
 category: eventos
 layout: post
 description: Em 11 de junho de 2016 ocorreu o evento Software Fora de Série onde diferentes times da engenharia do Elo7 palestraram. Nesse post se encontram todos as apresentações utilizados no evento.
-author: davidrobert
+authors: [davidrobert]
 tags:
   - agile
   - Amazon Elastic Compute Cloud

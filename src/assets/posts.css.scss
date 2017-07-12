@@ -73,6 +73,11 @@ autoprefix: true
 			&:hover {
 				color: darken($yellow-default, 10);
 			}
+
+			+ .author:before {
+				content: '·';
+				display: inline-block;
+			}
 		}
 		.description {
 			margin-top: 1.5em;
@@ -101,7 +106,13 @@ autoprefix: true
 			}
 		}
 	}
+}
 
+@media (max-width: 500px) {
+	.posts-container .date {
+		display: block;
+		margin-top: 1em;
+	}
 }
 
 @media (min-width: 800px) {

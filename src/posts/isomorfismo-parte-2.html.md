@@ -4,7 +4,7 @@ date: 2017-07-10
 category: front-end
 layout: post
 description: Continuando com a série de posts sobre javascript isomórfico, agora falando um pouco mais sobre frameworks e onde usá-los.
-author: fernandabernardo
+authors: [fernandabernardo]
 tags:
   - javascript
   - isomorfico

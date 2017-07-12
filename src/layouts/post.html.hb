@@ -4,21 +4,22 @@ layout: page
 <article itemprop='blogPost' itemscope itemtype='http://schema.org/BlogPosting' class='post-content'>
 	<h1 itemprop='name' class='title'>{{document.title}}</h1>
 	<div class='post-meta'>
-			<p class='date'>
-				Publicado em: <time datetime='{{dateAsText document.date}}' itemprop='datePublished'>{{dateAsText document.date}}</time>
-				<meta itemprop='dateModified' content='{{dateAsText document.date}}'>
-			</p>
+		<p class='date'>
+			Publicado em: <time datetime='{{dateAsText document.date}}' itemprop='datePublished'>{{dateAsText document.date}}</time>
+			<meta itemprop='dateModified' content='{{dateAsText document.date}}'>
+		</p>
 
-			<article itemprop='author' itemscope itemtype='http://schema.org/Person'>
-				<a rel='author' itemprop='url' href='/{{document.author}}' class='author'>
-					<img class='hide avatar' width='50px' height='50px' itemprop='image'/>
-					<p data-author='{{document.author}}' class='publisher'>@{{document.author}}</p>
-					<meta itemprop='name' content='{{document.author}}'>
+		<article>
+			{{#each document.authors}}
+				<a data-author='{{this}}' itemprop='author' itemscope itemtype='http://schema.org/Person' rel='author' href='/{{this}}' class='author'>
+					<meta itemprop='url' content='/{{this}}'>
+					<img class='hide avatar' width='50px' height='50px' itemprop='image'>
+					<p itemprop='name' class='publisher' data-author='{{this}}'>@{{this}}</p>
 				</a>
+			{{/each}}
 
-				<meta itemprop='worksFor' content='Elo7 Serviços de Informática SA'>
-			</article>
-
+			<meta itemprop='worksFor' content='Elo7 Serviços de Informática SA'>
+		</article>
 	</div>
 	<div itemprop='articleBody'>
 		{{{content}}}
@@ -36,7 +37,6 @@ layout: page
 			<input type='url' value='{{site.url}}{{document.url}}' class='link-input'>
 		</section>
 	</div>
-
 	<span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"> <!--Change for a post image-->
 		<link href="{{../site.baseUrl}}/images/ico/elo7.png" itemprop="url"/>
 		<meta itemprop='width' content='100px'/>
@@ -57,16 +57,16 @@ layout: page
 
 	<div id='disqus_thread'></div>
 
-	<script async>
-			var disqus_shortname = 'engenhariaelo7';
-			var disqus_identifier = '{{dateAsText document.date}}:{{document.url}}';
-			var disqus_url = '{{site.url}}{{document.url}}';
+	<script>
+		var disqus_shortname = 'engenhariaelo7';
+		var disqus_identifier = '{{dateAsText document.date}}:{{document.url}}';
+		var disqus_url = '{{site.url}}{{document.url}}';
 
-			(function() {
-					var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-					dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
-					(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-			})();
+		(function() {
+			var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+			dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+			(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+		})();
 	</script>
 	<noscript>Habilite o JavaScript para ver os comentários</noscript>
 </article>

@@ -4,7 +4,7 @@ category: front-end
 layout: post
 title: 'A importância da semântica no HTML - parte I'
 description: 'Para fazer seu conteúdo ser encontrado com a quantidade de informações geradas nos dias de hoje, se torna fundamental sabermos utilizar o conceito da semântica.'
-author: rapahaeru
+authors: [rapahaeru]
 tags:
   - html
   - semantica

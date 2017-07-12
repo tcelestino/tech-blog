@@ -12,11 +12,11 @@ layout: page
 					</a>
 				</header>
 				<div class="post-meta">
-					by 
-					<a href="/{{author}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
-						<p itemprop='name'>@{{author}}</p>
-					</a>
-					· 
+					{{#each authors}}
+						<a href="/{{this}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
+							<p itemprop='name'>@{{this}}</p>
+						</a>
+					{{/each}}
 					<time datetime="{{dateAsText this.date}}" class="date">
 						{{dateAsText this.date}}
 						<meta itemprop="datePublished" content='{{this.date}}'/>

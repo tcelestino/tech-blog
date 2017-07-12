@@ -5,7 +5,7 @@ tags:
   - HTML
   - semântica
   - acessibilidade
-author: rapahaeru
+authors: [rapahaeru]
 layout: post
 title: As "states" e "properties" do atributo role no WAI-ARIA
 description: Os termos "estados" e "propriedades" referem-se a características semelhantes. Ambos fornecem informações específicas sobre um objeto, e ambos fazem parte da definição da natureza das roles. Verificaremos como e quando utilizadar cada atributo.

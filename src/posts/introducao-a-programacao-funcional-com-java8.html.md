@@ -4,7 +4,7 @@ date: 2016-12-05
 category: back-end
 layout: post
 description: Disponível desde 2014, o Java 8 ainda deixa muitas dúvidas, principalmente quanto às novidades em relação à sua versão anterior. Nesse post vou falar sobre as principais novidades do Java 8.
-author: diegocesar
+authors: [diegocesar]
 tags:
   - java
   - java8

@@ -1,7 +1,7 @@
 ---
 title: Vaga Mobile Developer
 date: 2017-06-14
-author: fernandabernardo
+authors: [fernandabernardo]
 layout: post
 category: vagas
 description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Temos a seguinte vaga para o time da engenharia...
