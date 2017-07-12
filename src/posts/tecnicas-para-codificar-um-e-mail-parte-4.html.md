@@ -5,7 +5,7 @@ tags:
   - e-mail
   - html
   - css
-author: erikatakahara
+authors: [erikatakahara]
 layout: post
 title: Técnicas para codificar um e-mail - parte 4
 description: Já teve que fazer um layout de e-mail com uma fonte diferente do padrão? Neste post iremos abordar como é possível fazer isso, além de comentar sobre algumas dicas gerais.
