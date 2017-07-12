@@ -5,7 +5,7 @@ tags:
   - e-mail
   - html
   - css
-author: erikatakahara
+authors: [erikatakahara]
 layout: post
 title: Técnicas para codificar um e-mail - parte 2
 description: Continuando com a série de posts sobre codificar e-mails, você já teve problemas para adicionar espaçamentos? Ou com cliente de e-mail que não lê corretamente o que foi codificado? Nesse segundo post, vamos abordar diversas técnicas.
