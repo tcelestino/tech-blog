@@ -24,7 +24,7 @@ Assim como o time de Engenharia, a equipe de design de produto também segue mé
 Esta prática permite que os conceitos discutidos na equipe de produto (e posteriormente desenhados pelo nosso time) tenham tempo de maturação, iterações e, eventualmente, que sejam testados diretamente com os usuários.
 
 ## Discussões conceituais
-Sempre que detectamos possíveis melhorias para o produto, ou mesmo quando planejamos uma nova funcionalidade, isso é inicialmente discutido com profissionais de várias áreas do Elo7, em uma reunião estratégica semanal. Se decidimos que vamos seguir em frente com a idéia, começamos a esboçar quais telas e casos de uso serão necessários, e colocamos a mão na massa.
+Sempre que detectamos possíveis melhorias para o produto, ou mesmo quando planejamos uma nova funcionalidade, isso é inicialmente discutido com profissionais de várias áreas do Elo7, em uma reunião estratégica semanal. Se decidimos que vamos seguir em frente com a ideia, começamos a esboçar quais telas e casos de uso serão necessários, e colocamos a mão na massa.
 
 ## Mockups em alta fidelidade
 ![Mockups em alta fidelidade](../images/design-de-produto-no-elo7-2.png)
@@ -37,9 +37,9 @@ Normalmente a mesma tarefa precisa de mockups para todas as plataformas - deskto
 ## Pesquisas com usuários
 Mensalmente, nós realizamos algumas pesquisas com usuários sobre as principais funcionalidades que pretendemos lançar ou melhorar. Para isso escrevemos um roteiro de perguntas, e criamos os protótipos que serão apresentados.
 
-Nossas pesquisas são feitas de forma presencial: ao longo da semana, nossos usuários são convidados a visitar o Elo7 e a conversar a respeito das funcionalidades abordadas na pesquisa, recolhendo feedback do que pode ser melhorado no nosso produto. Essa conversa é conduzida pelas perguntas do roteiro (que comentei antes) e interação em protótipos de alta fidelidade, para que o usuário vivencie uma situação quase real de uso.
+Nossas pesquisas são feitas de forma presencial: ao longo da semana, nossos usuários são convidados a visitar o Elo7 e a conversar a respeito das funcionalidades abordadas na pesquisa, colhendo feedback do que pode ser melhorado no nosso produto. Essa conversa é conduzida pelas perguntas do roteiro (que comentei antes) e interação em protótipos de alta fidelidade, para que o usuário vivencie uma situação quase real de uso.
 
-Após o fim de cada bateria de pesquisas (que costuma ter cerca de 6 entrevistados), nós compilamos os resultados e apresentamos à equipe de produto, para podermos entender as melhorias a serem feitas nas funcionalidades testadas.
+Após o fim de cada bateria de pesquisas (que costuma ter cerca de 5 entrevistados), nós compilamos os resultados e apresentamos à equipe de produto, para podermos entender as melhorias a serem feitas nas funcionalidades testadas.
 
 ## Conclusão
 Esses são os principais pilares da equipe de design de produto do Elo7, mas existem ramos menores que surgem conforme a necessidade do produto. Ao longo dos posts falaremos com mais detalhes sobre cada um desses tópicos e sobre vários outros!
