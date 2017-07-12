@@ -4,7 +4,7 @@ category: front-end
 layout: post
 title: Customizando campos de formulário com o elo7-mask-amd
 description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem como único objetivo, formatar os campos do seu formulário.
-author: rapahaeru
+authors: [rapahaeru]
 tags:
   - html
   - javaScript
