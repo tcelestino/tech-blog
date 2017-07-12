@@ -4,7 +4,7 @@ date: 2017-06-27
 category: front-end
 layout: post
 description:
-author: leonardosouza
+authors: [leonardosouza]
 tags:
   - javascript
   - front-end
