@@ -4,7 +4,7 @@ date: 2017-07-10
 category: devops
 layout: post
 description: Terceiro post da série 'Terraformando Tudo', que conta a nossa trajetória em busca da codificação da nossa infraestrutura. Neste post mostraremos como "terraformar" uma infra já existente.
- author: lucasvasconcelos
+authors: [lucasvasconcelos]
 tags:
   - devops
   - terraform
@@ -13,7 +13,7 @@ tags:
   - infra
 ---
 
-Olár! 
+Olár!
 
 Como foi prometido no [segundo post](/terraformando-tudo-2/), estamos aqui novamente. Agora, para responder uma das perguntas que sempre são feitas na hora de adotar uma nova ferramenta: "E o legado?"
 
@@ -75,7 +75,7 @@ aws_instance.elo7-ec2-example: Importing from ID "i-a1b2c3"...
 aws_instance.elo7-ec2-example: Import complete!
   Imported aws_instance (ID: i-a1b2c3)
 aws_instance.frenzy-co-prod: Refreshing state... (ID: i-a1b2c3)
- 
+
 Import success! The resources imported are shown above. These are
 now in your Terraform state. Import does not currently generate
 configuration, so you must do this next. If you do not create configuration
@@ -146,21 +146,21 @@ $ terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but
 will not be persisted to local or remote state storage.
- 
+
 aws_instance.elo7-ec2-example: Refreshing state... (ID: i-a1b2c3)
- 
+
 The Terraform execution plan has been generated and is shown below.
 Resources are shown in alphabetical order for quick scanning. Green resources
 will be created (or destroyed and then created if an existing resource
 exists), yellow resources are being changed in-place, and red resources
 will be destroyed. Cyan entries are data sources to be read.
- 
+
 Note: You didn't specify an "-out" parameter to save this plan, so when
 "apply" is called, Terraform can't guarantee this is what will execute.
- 
+
 - aws_instance.elo7-ec2-example
- 
- 
+
+
 Plan: 0 to add, 0 to change, 1 to destroy.
 ```
 
@@ -196,7 +196,7 @@ resource aws_instance "elo7-ec2-example" {
     subnet_id = "subnet-674f3556"
     vpc_security_group_ids = [ "sg-8f38de4" ]
     iam_instance_profile = "example-web-app"
- 
+
     tags {
         Name = "web-app"
         env = "test"
@@ -211,9 +211,9 @@ $ terraform plan
 Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but
 will not be persisted to local or remote state storage.
- 
+
 aws_instance.frenzy-co-prod: Refreshing state... (ID: i-a1b2c3)
- 
+
 No changes. Infrastructure is up-to-date. This means that Terraform
 could not detect any differences between your configuration and
 the real physical resources that exist. As a result, Terraform
