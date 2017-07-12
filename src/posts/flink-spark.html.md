@@ -5,18 +5,18 @@ tags:
   - spark
   - flink
   - big data
-author: mikedias
+authors: [mikedias]
 layout: post
 title: Flink vs Spark
 description: O título do post é polêmico para chamar sua atenção mas a idéia deste post é mostrar um pouco da nossa visão sobre essas duas excelentes ferramentas: Apache Flink e Apache Spark.
 ---
 
-O título do post é polêmico para chamar sua atenção mas a idéia deste post é mostrar um pouco da nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia-a-dia. 
+O título do post é polêmico para chamar sua atenção mas a idéia deste post é mostrar um pouco da nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia-a-dia.
 Se você não conhece o Flink nem o Spark, na homepage dos projetos tem uma introdução bacana sobre cada um deles.
 
 ## Flink
 
-O Flink é um projeto que nasceu com a mentalidade **streaming-first**, isto é, 
+O Flink é um projeto que nasceu com a mentalidade **streaming-first**, isto é,
 o objetivo principal da plataforma é processar dados que são produzidos de maneira contínua e infinita:
 
 ![Flink Stream](../images/flink-spark-1.png)
@@ -42,7 +42,7 @@ Mas tem outra coisa que sobra no Spark e não tem o lado negativo: **métricas e
 
 Uma característica que nos incomodou bastante no Spark foi a maneira como os **checkpoints** foram implementados: as classes envolvidas no job são serializadas e armazenadas no checkpoint. O problema é que se as classes deste job forem atualizadas, não é possível fazer o deploy dessa nova versão sem excluir o checkpoint com a serialização das classes antigas...
 
-Por fim, um dos principais diferenciais do Spark é a sua **comunidade**: Desde 2009, mais de 1000 desenvolvedores já contribuiram ao projeto! Essa comunidade faz com que o ecossistema em torno do Spark seja muito rico, especialmente no que se refere a machine learning e processamento em batch. 
+Por fim, um dos principais diferenciais do Spark é a sua **comunidade**: Desde 2009, mais de 1000 desenvolvedores já contribuiram ao projeto! Essa comunidade faz com que o ecossistema em torno do Spark seja muito rico, especialmente no que se refere a machine learning e processamento em batch.
 
 ## Conclusão
 
