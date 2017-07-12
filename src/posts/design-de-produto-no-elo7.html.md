@@ -1,7 +1,7 @@
 ---
 title: Design de Produto no Elo7
 date: 2017-03-22
-author: macadantas
+authors: [macadantas]
 layout: post
 category: design
 description: Conheça o trabalho do time de design de produto no Elo7
