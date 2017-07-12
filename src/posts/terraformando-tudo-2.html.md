@@ -4,7 +4,7 @@ date: 2017-01-30
 category: devops
 layout: post
 description: Segundo post da série 'Terraformando Tudo', que conta a nossa trajetória em busca da codificação da nossa infraestrutura. Neste post contamos o que fizemos para mitigar possíveis desastres e como controlamos N desenvolvedores alterando N Terraform configurations. Vamos lá?
-author: lucasvasconcelos
+authors: [lucasvasconcelos]
 tags:
   - devops
   - terraform
@@ -48,7 +48,7 @@ data "aws_ami" "coreos-stable-latest" {
     name = "virtualization-type"
     values = ["hvm"]
   }
-  # ID do owner da AMI no AWS AMI Marketplace 
+  # ID do owner da AMI no AWS AMI Marketplace
   # (colocado hardcoded aqui para facilitar este exemplo)
   owners = ["595879546273"]
 }
@@ -108,7 +108,7 @@ Um outro detalhe é que, para ajudar na organização, poderíamos definir os *r
 
 Para aplicar o que está descrito no código são necessários 2 comandos:
 
-`terraform plan`: Mostra um plano de execução, ou seja, diz o que será adicionado, o que será modificado e o que será removido da sua infra baseado no *configuration* encontrado no diretório onde esse comando é executado. Esse comando é opcional, mas de extrema importância para sabermos se a mudança é realmente o que estamos esperando. 
+`terraform plan`: Mostra um plano de execução, ou seja, diz o que será adicionado, o que será modificado e o que será removido da sua infra baseado no *configuration* encontrado no diretório onde esse comando é executado. Esse comando é opcional, mas de extrema importância para sabermos se a mudança é realmente o que estamos esperando.
 `terraform apply`: Aplica as mudanças de fato. Se não houve nenhuma modificação desde o momento do *plan*, as mudanças que foram mostradas por ele serão aplicadas neste momento.
 
 ## Estado de um *resource*
