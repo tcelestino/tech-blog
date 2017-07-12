@@ -97,7 +97,7 @@ A AWS quer que você utiliza o Lambda porém sem canibalizar seus outros produto
 
 1. Memória
 
-Deve ser configurada manualmente para cada função, não é elástica. Quantas vezes você criou uma função sabendo quanto de memória ela consumia? Lembre-se quanto maior a memória alocada para executar aquela função, mais caro você para. Facilitaria muito a vida se cada função tivesse memória elástica e pudéssemos apenas limitar o tamanho máximo que ela pode consumir. Os limites de memória no geral são o suficiente para executar funções de propósito geral porém se for necessário algo mais pesado talvez seja melhor subir uma instância EC2 de uma máquina mais potente.
+Deve ser configurada manualmente para cada função, não é elástica. Quantas vezes você criou uma função sabendo quanto de memória ela consumia? Lembre-se quanto maior a memória alocada para executar aquela função, mais caro você para. Facilitaria muito a vida se cada função tivesse memória elástica sendo cobrado com base no uso de memória e não na quantidade alocada podendo apenas limitar o tamanho máximo que ela pode consumir. Os limites de memória no geral são o suficiente para executar funções de propósito geral porém se for necessário algo mais pesado talvez seja melhor subir uma instância EC2 de uma máquina mais potente.
 
 2. Tempo
 
