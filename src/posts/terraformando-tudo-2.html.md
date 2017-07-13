@@ -19,9 +19,9 @@ Estamos aqui novamente para dar continuidade na série de *posts* *Terraformando
 
 ## Terraform configurations
 
-Seguindo a nomenclatura supracitada, a partir deste ponto, vamos chamar um código do Terraform de *configuration* (apesar de internamente chamarmos de 'módulo', pra facilitar :P).
+Seguindo a nomenclatura supracitada, a partir deste ponto, vamos chamar um código do Terraform de *configuration* (apesar de aqui no Elo7 chamarmos de 'módulo', pra facilitar :P).
 
-Conforme foi citado no [primeiro post](http://engenharia.elo7.com.br/terraformando-tudo-1/), o Terraform utiliza uma linguagem proprietária chamada HCL (*Hashicorp Configuration Language*). A seguir, temos um exemplo de *configuration* mínimo que pode ser executado com o Terraform. Alguns detalhes estão em formato de comentário no código:
+Conforme foi citado no [primeiro post](/terraformando-tudo-1/), o Terraform utiliza uma linguagem proprietária chamada HCL (*Hashicorp Configuration Language*). A seguir, temos um exemplo de *configuration* mínimo que pode ser executado com o Terraform. Alguns detalhes estão em formato de comentário no código:
 
 `main.tf`
 ```python
@@ -108,8 +108,8 @@ Um outro detalhe é que, para ajudar na organização, poderíamos definir os *r
 
 Para aplicar o que está descrito no código são necessários 2 comandos:
 
-`terraform plan`: Mostra um plano de execução, ou seja, diz o que será adicionado, o que será modificado e o que será removido da sua infra baseado no *configuration* encontrado no diretório onde esse comando é executado. Esse comando é opcional, mas de extrema importância para sabermos se a mudança é realmente o que estamos esperando.
-`terraform apply`: Aplica as mudanças de fato. Se não houve nenhuma modificação desde o momento do *plan*, as mudanças que foram mostradas por ele serão aplicadas neste momento.
+- `terraform plan`: Mostra um plano de execução, ou seja, diz o que será adicionado, o que será modificado e o que será removido da sua infra baseado no *configuration* encontrado no diretório onde esse comando é executado. Esse comando é opcional, mas de extrema importância para sabermos se a mudança é realmente o que estamos esperando.
+- `terraform apply`: Aplica as mudanças de fato. Se não houve nenhuma modificação desde o momento do *plan*, as mudanças que foram mostradas por ele serão aplicadas neste momento.
 
 ## Estado de um *resource*
 
@@ -213,7 +213,7 @@ O estado dos resources criados no exemplo anterior fica desse jeito (várias lin
 
 É com esse estado que o Terraform decide o que deve ser feito, baseando-se no código e também no que já existe no *provider* (no nosso caso, na AWS). Também é possível gerar o estado de uma infra já existente no seu *provider*... (mas isso ficará para um próximo *post* dessa série ;)).
 
-Com esse mecanismo, o controle dos *resources* funciona muito bem, porém, logo de cara podemos ver um problema, certo? Vimos que ele gera um arquivo `terraform.tfstate` no diretório do *configuration* ao rodar o `terraform apply`. Isso é gerado em *runtime*, e se pensarmos de maneira distribuída, com vários desenvolvedores alterando os *configurations*, isso pode ser bem ruim. Afinal, se algum desenvolvedor não possuir o estado atual dos *resources* de um determinado *configuration* ao executar um *apply*, a infra será recriada pelo Terraform (até onde for possível, pois alguns *resources* não permitem duplicidade). Isso pode causar catástrofes em alguns casos, como um registro de DNS sendo sobrescrito e indisponibilizando alguma aplicação. E essa é uma situação que queremos bem longe da gente.
+Com esse mecanismo, o controle dos *resources* funciona muito bem, porém, detectamos um problema. O Terraform gera um arquivo `terraform.tfstate` no diretório do *configuration* ao rodar o `terraform apply`. Isso é gerado em *runtime*, e se pensarmos de maneira distribuída, com vários desenvolvedores alterando os *configurations*, isso pode ser bem ruim. Afinal, se algum desenvolvedor não possuir o estado atual dos *resources* de um determinado *configuration* ao executar um *apply*, a infra será recriada pelo Terraform (até onde for possível, pois alguns *resources* não permitem duplicidade). Isso pode causar catástrofes em alguns casos, como um registro de DNS sendo sobrescrito e indisponibilizando alguma aplicação. E essa é uma situação que queremos bem longe da gente.
 
 A próxima seção discutirá sobre como mitigar esse problema.
 
@@ -222,7 +222,8 @@ A próxima seção discutirá sobre como mitigar esse problema.
 Se estamos falando de um estado, logo esperamos que ele seja consistente. Para tal, o estado deve ser armazenado em um local centralizado. E foi isso que fizemos para nos ajudar com o problema que foi citado anteriormente.
 
 A solução óbvia, baseando-se no que já foi visto - estamos lidando com código (IaC) e o estado do Terraform nada mais é que um JSON (ou seja, mais texto) - seria versionar o estado junto com o código da infraestrutura, e assim mantê-lo centralizado no repositório do nosso controle de versão.
-Inicialmente isso pode parecer uma boa ideia, mas ela oferece um grande problema pra nós: trabalhamos com *branches*, e caso dois desenvolvedores abram uma *branch*, cada um de um mesmo *configuration*, ao fazer um teste ou aplicar o que está na *branch*, o estado entre elas e a *master* vai ficar inconsistente, ou seja, voltamos ao problema do estado distribuído. Mesmo em um caso onde exista apenas uma *branch*, ao modificar seu estado e fazer um *merge* na *master*, estaremos nós mesmos modificando o estado do Terraform e isso é errado (lembrem-se que no começo do Post foi dito que o estado só deveria ser manipulado pelo próprio Terraform, né?).
+
+Inicialmente isso pode parecer uma boa ideia, mas ela oferece um grande problema pra nós: trabalhamos com *branches*, e caso dois desenvolvedores abram uma *branch*, cada um de um mesmo *configuration*, ao fazer um teste ou aplicar o que está na *branch*, o estado entre elas e a *master* vai ficar inconsistente, ou seja, voltamos ao problema do estado distribuído. Mesmo em um caso onde exista apenas uma *branch*, ao modificar seu estado e fazer um *merge* na *master*, estaremos nós mesmos modificando o estado do Terraform e isso é errado (lembram-se que no começo do post foi dito que o estado só deveria ser manipulado pelo próprio Terraform, né?).
 
 A melhor solução seria termos o estado do *configuration* guardado em um ponto central, onde, independente da *branch* na qual os desenvolvedores estão fazendo alterações, um único estado será modificado. E o Terraform, como boa ferramenta que é, pode nos ajudar com isso.
 
@@ -245,7 +246,7 @@ terraform {
 
 Com isso, automaticamente, a cada `plan` e/ou `apply` do Terraform nas estações de trabalho dos desenvolvedores, um único arquivo de estado é modificado, e conseguimos manter nosso estado em um local centralizado para cada *configuration*.
 
-Uma dica para quem for utilizar o S3 como local de armazenamento para os estados é que o *bucket* tenha a opção de versionamento ativada, isso pode ajudar a corrigir possíveis inconsistências nos estados.
+Uma dica para quem for utilizar o S3 como local de armazenamento para os estados é que o *bucket* tenha a opção de versionamento ativada, pois isso pode ajudar a corrigir possíveis inconsistências nos estados.
 
 Uma outra grande vantagem que o uso de *Remote States* oferece é a possibilidade de referenciar os `outputs` de um *configuration* em outro sem correr riscos de alterações indevidas. Isso pode ser feito com o *resource terraform_remote_state*.
 
@@ -288,7 +289,7 @@ Supondo que o *Dev 1* trabalhe em sua *branch* primeiro, e adiciona um ALB (Appl
 O *Dev 2*, por sua vez, vai fazer suas alterações. Porém, no momento que ele criou sua *branch*, o código do ALB criado pelo *Dev 1* ainda não existia, mas tais informações existem no estado. Então, o *Dev 2* vai fazer suas alterações, e vai executar o `terraform plan`.
 O plano mostrado pelo Terraform para o *Dev 2* dirá que os discos que ele adicionou serão provisionados e *attachados* nas instâncias pois, obviamente, tais *resources* não existiam no estado. Entretanto, algo estranho também aparecerá para o *Dev 2*: o Terraform o informará que irá remover um ALB, pois ele encontrou tal *resource* no estado e não no código.
 
-E agora? Como fizemos?
+E agora? Como lidamos com as limitações?
 
 O Terraform não é capaz de controlar mudanças distribuídas (a Hashicorp possui uma versão Enterprise do Terraform que oferece esse controle centralizado). Então, a opção mais barata e direta é termos processos de uso da ferramenta:
 - Quebramos os nossos *configurations* por aplicações (às vezes uma aplicação possui mais de um *configuration*, caso ela tenha muitas dependências): isso diminui bastante as chances de existirem dois desenvolvedores alterando o mesmo *configuration* simultaneamente;
@@ -298,9 +299,9 @@ O Terraform não é capaz de controlar mudanças distribuídas (a Hashicorp poss
 
 ## Conclusões
 
-Neste Post mostramos como o Terraform se organiza internamente com a infraestrutura que ele controla, e como trabalhamos de maneira distribuída com os *configurations*. Também citamos alguns procedimentos que usamos para diminuir os problemas que as limitações do modelo trazem.
+Nesse post mostramos como o Terraform se organiza internamente com a infraestrutura que ele controla, e como trabalhamos de maneira distribuída com os *configurations*. Também citamos alguns procedimentos que usamos para diminuir os problemas que as limitações do modelo trazem.
 
 Por enquanto o método de trabalho descrito aqui está nos atendendo muito bem. Mas temos em mente que podemos chegar a uma escala em que esse método não será suficiente. Quando isso ocorrer, vamos pensar em outras abordagens, como desenvolver uma ferramenta interna para controle de modificações em paralelo ou até mesmo contratar o serviço oferecido pela Hashicorp.
 
-Finalizamos, então, mais um Post da série Terraformando Tudo. Mas ela ainda não terminou! Voltaremos aqui em um próximo Post, mostrando como fazer com a infraestrutura já existente! Podemos *"terraformá-la"*? Veremos!
+Finalizamos, então, mais um post da série Terraformando Tudo. Mas ela ainda não terminou! Voltaremos aqui em um próximo post, mostrando o que fazer com a infraestrutura já existente! Podemos *"terraformá-la"*? Veremos!
 
