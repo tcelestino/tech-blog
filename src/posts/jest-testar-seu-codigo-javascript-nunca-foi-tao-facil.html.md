@@ -1,13 +1,12 @@
 ---
-title: 'Jest - Testar seu código Javascript nunca foi tão fácil!'
-date: 2017-06-27
+title: Jest - Testar seu código Javascript nunca foi tão fácil!
+date: 2017-07-13
 category: front-end
 layout: post
-description:
+description: Ninguém (ou a grande maioria dos desenvolvedores que conheço) gosta de testar software pelo simples fato de que executar uma bateria de testes de forma manual é extremamente cansativo. Com isso, nós desenvolvedores criamos o péssimo hábito de testar superficialmente tudo que produzimos, e pela força dos processos inseridos nas empresas acabamos delegando para um terceiro a responsabilidade de testar o que acabamos de desenvolver. Mudar essa realidade é complicado, mais não impossível, e certamente a melhor maneira de resolver isto é torná-la um processo natural e agradável ao desenvolvedor...
 authors: [leonardosouza]
 tags:
   - javascript
-  - front-end
   - tests
   - tdd
 ---
