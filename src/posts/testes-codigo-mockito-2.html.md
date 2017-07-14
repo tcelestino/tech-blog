@@ -127,7 +127,7 @@ Por outro lado, a mudança que realizamos acima também poderia ser uma refatora
 
 Se executarmos novamente nosso DictionaryTest (após a mudança acima na classe Dictionary), teríamos como saída do teste:
 
-![mockito-2-output-unused-stub](../images/mockito-2-output-unused-stub.png)
+![mockito-2-output-unused-stub](../images/testes-codigo-mockito-2-1.png)
 
 O teste irá passar, mas será exibido no relatório do Junit a seguinte mensagem:
 
