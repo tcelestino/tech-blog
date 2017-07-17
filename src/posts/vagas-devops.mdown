@@ -1,0 +1,23 @@
+---
+title: Vaga Engenheiro de Software/DevOps
+date: 2017-07-17
+authors: [jlmfonseca]
+layout: post
+category: vagas
+description: O Elo7, o maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos à procura de engenheiros de Software/DevOps para fazer parte do nosso time.
+tags:
+  - devops
+  - back-end
+---
+
+Elo7 é o maior site da América Latina de compra e venda de produtos criativos e autorais. Aqui você compra diretamente de milhares de pessoas que transformam ideias criativas em produtos únicos e diferenciados. Além de comprar ou vender, você pode também apreciar o trabalho criativo de artesãos, artistas, designers e todos aqueles que criam manualmente produtos diferenciados e de qualidade.
+
+Utilizamos práticas ágeis de desenvolvimento e gostamos de ter um ambiente bem descontraído.
+
+Atualmente temos um cenário com diversas tecnologias (AWS, Docker, CoreOS) e linguagens (Java, Ruby, Go, Python) que nos leva à necessidade de possuir profissionais versáteis, capazes de utilizar essas ferramentas com boas práticas, autonomia e algumas vezes antes de elas serem amadurecidas no mercado.
+
+Buscamos profissionais para colaborar com a evolução e crescimento de nossa plataforma e infraestrutura. Ter experiência em automação de sistemas, Docker e a utilização de containers é fundamental. Conhecimentos de Kubernetes, Apache Mesos, TerraForm e CoreOS é bem vinda.
+
+O nosso regime é CLT com benefícios (vale refeição, plano de saúde e odontológico, seguro de vida, gym pass, auxílio creche). O trabalho é presencial, com fácil acesso (estação de trem a poucos metros).
+
+**Curtiu o desafio? Quer fazer parte deste time #foradesérie? Envie um e-mail com o título: Engenheiro de Software/DevOps para: jobs+devops@elo7.com**
