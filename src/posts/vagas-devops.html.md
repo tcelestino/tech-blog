@@ -1,6 +1,6 @@
 ---
 title: Vaga Engenheiro de Software/DevOps
-date: 2017-07-17
+date: 2017-07-18
 authors: [jlmfonseca]
 layout: post
 category: vagas
