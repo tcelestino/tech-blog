@@ -6,7 +6,7 @@ tags:
   - rest
   - rpc
   - arquitetura-de-software
-authors: [tiagolimaelo7,newton-beck]
+authors: [ljtfreitas,newton-beck]
 layout: post
 title: Microserviços e REST (sério?)
 description: Microserviços e REST estão na moda. Vamos discutir um pouco sobre essas duas palavrinhas.
