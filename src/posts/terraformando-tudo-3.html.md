@@ -43,7 +43,7 @@ Vamos ver como funciona o `import` de uma instância EC2?
 
 ### Importando um `resource`
 
-O exemplo a seguir, mostra o import de uma instância existente na AWS. Primeiro, vamos nomear nossas variáveis:
+O exemplo a seguir mostra o import de uma instância existente na AWS. Primeiro, vamos nomear nossas variáveis:
 - **Tipo do recurso:** `aws_instance`
 - **Nome do recurso:** `elo7-ec2-example`
 - **ID do recurso na AWS:** `i-a1b2c3` (Como a instância já existe na AWS, temos o ID dela)
