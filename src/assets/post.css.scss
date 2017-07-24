@@ -39,6 +39,7 @@ autoprefix: true
 			color: $yellow-default;
 		}
 	}
+
 	.date {
 		color: map-get($colors-text, gray);
 		font-size: 0.8em;
@@ -51,6 +52,13 @@ autoprefix: true
 		color: map-get($colors-text, gray);
 		font-weight: 300;
 		font-size: 0.9em;
+	}
+
+	p code {
+		padding: 0.2em;
+		color: map-get($colors-text, marron);
+		background-color: map-get($colors-background, light-gray);
+		border: 1px solid map-get($colors-border, gray);
 	}
 }
 
