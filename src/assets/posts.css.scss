@@ -126,6 +126,10 @@ autoprefix: true
 			&:not(:first-of-type) {
 				border-top: none;
 			}
+
+			.author + time:before {
+				content: '·';
+			}
 		}
 	}
 }
