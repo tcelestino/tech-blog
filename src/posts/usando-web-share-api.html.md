@@ -1,17 +1,18 @@
 ---
-date: 2017-07-12
+date: 2017-07-24
 category: front-end
 tags:
   - javascript
   - google chrome
   - web
+  - share api
 authors: [tcelestino]
 layout: post
 title: Usando a Web Share API para compartilhar conteúdo da web com app nativos
-description: Aprenda como usar a Web Share API e utilizar compartilhamento nativo sem necessidade de adicionar plugins de terceiros em seu projeto.
+description: Aprenda como usar a Web Share API e utilizar compartilhamento nativo do sistema operacional sem necessidade de utilizar plugins de terceiros em seu projeto.
 ---
 
-Hoje vivemos no mundo aonde o conteúdo é compartilhado em diversos canais, sejam em redes sociais, programas de mensagens (What's App, Telegram, Slack, etc...) ou até mesmo via email. Você como desenvolvedor web, provavelmente já precisou adicionar em algum projeto recursos de compartilhamento desses serviços, adicionando uma quantidade bem grande de código de terceiros no qual não tinha nenhum controle. Aqui no Elo7, apostamos nessa forma de interação com os usuários, utilizando o compartilhamento via URL que é baseada em *query string*.
+Hoje vivemos no mundo aonde o conteúdo é compartilhado em diversos canais, sejam em redes sociais, programas de mensagens (What's App, Telegram, Slack, etc...) ou até mesmo via email. Você como desenvolvedor web, provavelmente já precisou adicionar em algum projeto recursos de compartilhamento desses serviços adicionando uma quantidade bem grande de código de terceiros no qual não tem nenhum controle. Aqui no Elo7, apostamos nessa forma de interação com os usuários, utilizando o compartilhamento via URL que é baseada em *query string*.
 
 ```html
 <section class="share-modal" id="share-modal-no-icons" data-match-webcode="no-icons">
@@ -34,21 +35,21 @@ Hoje vivemos no mundo aonde o conteúdo é compartilhado em diversos canais, sej
 </section>
 ```
 
-Além disso, resolvemos implementar de forma experimental a [Web Share API](https://developers.google.com/web/updates/2016/10/navigator-share), que por enquanto apenas está sendo implementado no Chrome para Android e deve ser lançado na versão 61 do navegador.
+E se existisse a possibilidade de compartilhar conteudo via Web para aplicativos instalados no seu sistema operacional? Sim, isso é possível usando uma nova API Javascript chamada de [Web Share API](https://developers.google.com/web/updates/2016/10/navigator-share), que no momento apenas na versão 61 do Chrome para Android já está confirmada a implementação, mas isso não quer dizer que você não possa implementar para o futuro próximo.
 
 ## Um resumo da história
 
-Antes de surgir a ideia da Web Share API, existia uma API chamada Web Intent, que servia para a mesma ideia, porém sua implementacão era complexa. Para facilitar a implementação desse recurso sem causar uma grande estranheza, o time do Google Chrome resolveu criar uma nova abordagem, assim surgindo a ideia do Web Share API.
+Antes de surgir a ideia da Web Share API, era possível fazer a mesma implementação usando uma API chamada Web Intent, porém sua implementacão era complexa. Para facilitar a implementação desse recurso sem causar uma grande estranheza, o time do Google Chrome resolveu criar uma nova abordagem, assim surgindo a ideia da Web Share API.
 
 A Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) e sua implementação é bem simples.
 
 ## Implementando Web Share API
 
-Como já falei anteriormente, aqui no Elo7 implementamos o compartilhamento via URL como **fallback** para a Web Share API. Antes de implementarmos a Web Share API, criamos nosso próprio recurso de compartilhamento, algo que pode ser visto no vídeo abaixo.
+Como falei anteriormente, aqui no Elo7 implementamos o compartilhamento via *query strings* e usamos como **fallback** para a Web Share API, que na época da implementação estava disponível fazendo parte do programa [Original Trials](https://github.com/GoogleChrome/OriginTrials/). Antes de implementarmos a Web Share API, criamos nosso próprio recurso de compartilhamento. Como você pode ver o funcionamento na GIF abaixo:
 
-[adicionar vídeo do antes da web share api]
+<div style='text-align: center'><iframe src="https://giphy.com/embed/26zz3WzwwLTbnYXUk" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
-Para implementar o recurso é bem simples. Vamos criar um arquivo chamado `index.html` com o seguinte código:
+Para usar a Web Share API é bem simples. Vamos criar um arquivo chamado `index.html` com o seguinte código:
 
 ```html
 <html>
@@ -63,9 +64,10 @@ Para implementar o recurso é bem simples. Vamos criar um arquivo chamado `index
     <script>
       define(['doc'], function($) {
         $('.share').on('click', function(evt) {
-          if(navigator.share) {
+          if (navigator.share) {
             navigator.share({
               title: document.title,
+              text: 'Usando a Web Share API'
               url: window.location.href
             }).then(function() {
               console.log('Funcionou!!');
@@ -81,19 +83,19 @@ Para implementar o recurso é bem simples. Vamos criar um arquivo chamado `index
 </html>
 ```
 
-No código acima, estou usando o [doc-amd](https://github.com/elo7/doc-amd), [events-amd](https://github.com/elo7/events-amd) e o [async-define](https://github.com/elo7/async-define), projetos open-source do Elo7 e que utilizamos no desenvolvimento front-end e que você pode utilizar em seus projetos e também contribuir, mas você utilizar javascript nativo ou qualquer outra biblioteca.
+No código acima, estou usando o [doc-amd](https://github.com/elo7/doc-amd), [events-amd](https://github.com/elo7/events-amd) e o [async-define](https://github.com/elo7/async-define), projetos *open sources* do Elo7 e que utilizamos na nossa stack de desenvolvimento front-end e que você pode utilizar em seus projetos e contribuir. Fique a vontade para usar a biblioteca que você preferir, inclusive javascript nativo.
 
-Ao clicar no campo compartilhar, irá abrir o compartilhamento nativo do sistema operacional, como você pode ver no vídeo da execução no Elo7.
+Ao clicar no campo compartilhar, irá abrir o compartilhamento nativo do sistema operacional, como você pode ver na GIF abaixo:
 
-[Adicionar vídeo web share api elo7]
+<div style='text-align: center'><iframe src="https://giphy.com/embed/26zza3FAMBhksoHFC" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe></div>
 
-Pois bem, vamos as explicações.
+## Explicando o nosso código.
 
 ```javascript
 if(navigator.share) {
   navigator.share({
-    title: document.title,
-    url: window.location.href
+    title: 'Usando a Web Share API',
+    url: 'http://tech.elo7.com.br'
   }).then(function() {
     console.log('Funcionou!!');
   }).catch(function(error) {
@@ -104,7 +106,7 @@ if(navigator.share) {
 }
 ```
 
-O Web Share API está disponível no `navigator.share` e precisamos verificar se está disponível no navegador, por isso usamos o  `if`, caso não tenha chamamos nosso fallback. Pois bem. Feito isso, temos as seguinte estrutura:
+A Web Share API está disponível no `navigator.share` e precisamos verificar se está disponível no navegador, por isso usamos o  `if`, caso não tenha chamamos nosso fallback.
 
 ```javascript
 navigator.share({
@@ -113,10 +115,21 @@ navigator.share({
 })
 ```
 
-Passamos para a API qual será o titulo e a URL que será exibida quando o usuário compartilhar entre os aplicativos instalados no Android. Como já falei anteriormente, a Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), então podemos fazer dois "comportamentos". Caso o compartilhamento seja feito com sucesso é chamado o `then` e podemos implementar algo. No Elo7 por exemplo, enviamos essa informação para o Google Analytics. Mas caso tenha um erro, o `catch` será chamado e podemos implementar algo como uma mensagem de erro. Vale lembrar, que o `catch` não tem nenhuma relação com o erro para caso a API não esteja disponível no navegador do usuário.
+Passamos para a API qual será o titulo e a URL que será exibida quando o usuário compartilhar entre os aplicativos instalados no Android. Como já falei anteriormente, a Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), então podemos ter dois "comportamentos". Caso o compartilhamento seja feito com sucesso é chamado o `then`. No Elo7 por exemplo, enviamos essa informação para o Google Analytics. Mas caso aconteça um erro, o `catch` será chamado e podemos implementar algo como uma mensagem de erro. Vale lembrar, que o `catch` não tem nenhuma relação com o erro para caso a API não esteja disponível no navegador do usuário. Se você ainda não entendeu muito sobre Promise, recomendo ler o [documento](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) no Mozilla Developer Network (MDN)
 
-No momento que escrevo esse post a Web Share API não está disponível para o Google Chrome no Android, porém já tem previsão para ser [lançada definitivamente na versão 61](https://twitter.com/malyw/status/882334161998159873).
+## Notas
+
+Apesar da implementação ser simples, para usar a API é preciso ter algumas atenções:
+
+- Seu servidor precisa ter HTTPS habilitado;
+- You need to supply at least one of text or url but may supply both if you like; (ver traduzir)
+- Os valores passados para API precisam ser no formato de texto.
+
+## Em fase de implementação
+
+No momento que escrevo esse post a Web Share API não está mais disponível para o Google Chrome no Android, porém já tem previsão para ser [lançada definitivamente na versão 61](https://twitter.com/malyw/status/882334161998159873).
 
 ## Para mais informações
-* https://blog.hospodarets.com/web-share-api
-* https://developers.google.com/web/updates/2016/10/navigator-share
+
+* [Introducing the Web Share API](https://developers.google.com/web/updates/2016/10/navigator-share)
+* [Web Share API brings the native sharing capabilities to the browser](https://blog.hospodarets.com/web-share-api)
