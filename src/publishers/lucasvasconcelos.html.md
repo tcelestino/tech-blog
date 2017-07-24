@@ -2,8 +2,8 @@
 title: Lucas Vasconcelos
 publisher: Lucas Vasconcelos
 layout: publisher
-twitter:
+twitter: lukssauro
 github: lucasvasconcelos
 linkedin: lucasvsantana
-description:
+description:  Trabalha no time Beyond the Wall ajudando o Elo7 a se manter com a cultura DevOps
 ---
