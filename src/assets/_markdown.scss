@@ -86,4 +86,9 @@
     em {
         font-style: italic;
     }
+
+    table td, table th{
+        border: 1px solid map-get($colors-border, light-gray);
+        padding: 0.5em;
+    }
 }
