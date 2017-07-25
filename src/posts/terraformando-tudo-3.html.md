@@ -18,7 +18,8 @@ Olár!
 Como foi prometido no [segundo post](/terraformando-tudo-2/), estamos aqui novamente. Agora, para responder uma das perguntas que sempre são feitas na hora de adotar uma nova ferramenta: "E o legado?"
 
 No contexto de Infraestrutura como Código, o legado é a infra já existente. No caso do Elo7, são todos os recursos criados "na base do mouse" pelo console da AWS.
-Também é válido lembrar que esse cenário não ocorre apenas com ambientes legados, ele pode ocorrer em uma situação de emergência, onde o plantonista ou time responsável é obrigado a fazer alguma alteração na infra via console/interface web para corrigir algum problema. Nesse caso também teremos inconsistências entre o estado encontrado no código e no *provider*.
+
+Também é válido lembrar que esse cenário não ocorre apenas com ambientes legados. Ele pode ocorrer em uma situação de emergência, onde o plantonista ou time responsável é obrigado a fazer alguma alteração na infra via console/interface web para corrigir algum problema. Nesse caso também teremos inconsistências entre o estado encontrado no código e no *provider*.
 
 ## O caminho inverso
 
@@ -27,14 +28,14 @@ Se até agora o Terraform gerou estados baseados no código, agora vamos fazer o
 O Terraform vai nos ajudar na primeira parte do caminho, gerando os estados da infra existente através do [comando `import`](https://www.terraform.io/docs/import/index.html).
 
 Antes das demonstrações, devemos nos atentar às limitações dessa funcionalidade:
-- Os `resources` suportados pelo `import` do Terraform não são os mesmos que temos à disposição para criar do zero no Terraform. Ou seja, nem todos recursos que podem ser criados através do código podem ser importados. A boa notícia é que a cada nova release do Terraform (que possui ciclo de vida de aproximadamente 20 dias) novos recursos para importação são adicionados. Em um caso onde o recurso (Redshift, Lambda, etc) não for suportado pelo import, pode-se criar um estado manualmente ou utilizar ferramentas de terceiros. Uma lista dos `resources` suportados atualmente pode ser vista [aqui](https://www.terraform.io/docs/import/importability.html). E, caso quiser, é relativamente fácil fazer com que um `resource` seja "importável", como pode ser visto nesse [PR](https://github.com/hashicorp/terraform/pull/15237/files);
+- Os `resources` suportados pelo `import` do Terraform não são os mesmos que temos à disposição para criar do zero no Terraform. Ou seja, nem todos recursos que podem ser criados através do código podem ser importados. A boa notícia é que a cada nova *release* do Terraform (que possui ciclo de vida de aproximadamente 20 dias) novos recursos para importação são adicionados. Em um caso onde o recurso (Redshift, Lambda, etc) não for suportado pelo `import`, pode-se criar um estado manualmente ou utilizar ferramentas de terceiros. [Uma lista dos `resources` suportados atualmente pode ser vista aqui](https://www.terraform.io/docs/import/importability.html). E, caso quiser, é relativamente fácil fazer com que um `resource` seja "importável", como pode ser visto nesse [PR](https://github.com/hashicorp/terraform/pull/15237/files);
 - O `import` não gera código! Ele gera o estado daquele recurso apenas, cabendo a nós a escrita do código referente ao estado gerado.
 
 Com esses pontos em mente, vamos ver como podemos utilizar o `import`.
 
 ## Usando o `import`
 
-Para o import, devemos ter em mãos três informações (mais informações sobre o *pattern* do Terraform [no segundo post](/terraformando-tudo-2/)):
+Para o `import`, devemos ter em mãos três informações (mais informações sobre o *pattern* do Terraform [no segundo post](/terraformando-tudo-2/)):
 - Tipo do recurso
 - Nome do recurso
 - ID do recurso na AWS
@@ -43,7 +44,7 @@ Vamos ver como funciona o `import` de uma instância EC2?
 
 ### Importando um `resource`
 
-O exemplo a seguir mostra o import de uma instância existente na AWS. Primeiro, vamos nomear nossas variáveis:
+O exemplo a seguir mostra o `import` de uma instância existente na AWS. Primeiro, vamos nomear nossas variáveis:
 - **Tipo do recurso:** `aws_instance`
 - **Nome do recurso:** `elo7-ec2-example`
 - **ID do recurso na AWS:** `i-a1b2c3` (Como a instância já existe na AWS, temos o ID dela)
@@ -54,7 +55,7 @@ Agora, vamos rodar o `import` (sim! É apenas um comando!):
 $ terraform import aws_instance.elo7-ec2-example i-a1b2c3
 ```
 
-Onde,
+Onde
 
 ```python
 $ terraform  import  aws_instance.elo7-ec2-example  i-a1b2c3
@@ -69,12 +70,12 @@ Comando do    |        Tipo de        |         ID do resource
 
 Ao executar o comando, temos uma saída dizendo que tudo correu bem:
 
-```python
+```
 $ terraform import aws_instance.elo7-ec2-example i-a1b2c3
 aws_instance.elo7-ec2-example: Importing from ID "i-a1b2c3"...
 aws_instance.elo7-ec2-example: Import complete!
   Imported aws_instance (ID: i-a1b2c3)
-aws_instance.frenzy-co-prod: Refreshing state... (ID: i-a1b2c3)
+aws_instance.elo7-ec2-example: Refreshing state... (ID: i-a1b2c3)
 
 Import success! The resources imported are shown above. These are
 now in your Terraform state. Import does not currently generate
@@ -139,7 +140,7 @@ Pronto! Já rodamos o `import` e possuímos nossa infra criada manualmente no id
 
 Mas lembram que isso é só a primeira parte do caminho? Esse comando não gera o código, e isso pode trazer consequências gravíssimas, pois **podemos destruir a infra que acabamos de importar**.
 
-Sim. Isso é possível. Porque no momento em que um `apply` for executado, o Terraform irá tentar destruir a infra que não existe em seu código e existe em seu estado que, [como já vimos](/terraformando-tudo-1/), é o comportamento esperado. Para provar esse ponto, vejamos a saída de um `terraform plan`:
+Sim, isso é possível. Porque, no momento em que um `apply` for executado, o Terraform irá tentar destruir a infra que não existe em seu código e existe em seu estado que, [como já vimos](/terraformando-tudo-1/), é o comportamento esperado. Para provar esse ponto, vejamos a saída de um `terraform plan`:
 
 ```python
 $ terraform plan
@@ -212,7 +213,7 @@ Refreshing Terraform state in-memory prior to plan...
 The refreshed state will be used to calculate this plan, but
 will not be persisted to local or remote state storage.
 
-aws_instance.frenzy-co-prod: Refreshing state... (ID: i-a1b2c3)
+aws_instance.elo7-ec2-example: Refreshing state... (ID: i-a1b2c3)
 
 No changes. Infrastructure is up-to-date. This means that Terraform
 could not detect any differences between your configuration and
@@ -220,15 +221,15 @@ the real physical resources that exist. As a result, Terraform
 doesn't need to do anything.
 ```
 
-No dia-a-dia, com certeza iremos preferir utilizar a ferramenta `terraforming` citada acima. Nós já usamos ela bastante por aqui e não tivemos problemas. Mais informações sobre como utilizá-la podem ser vistas [aqui](https://github.com/dtan4/terraforming).
+No dia-a-dia, com certeza iremos preferir utilizar a ferramenta `terraforming` citada acima. Nós já usamos ela bastante por aqui e não tivemos problemas. Mais informações sobre como utilizá-la podem ser vistas [na página da ferramenta](https://github.com/dtan4/terraforming).
 
 ## Conclusões
 
 Esperamos ter respondido com clareza a resposta da pergunta "E o legado?" quando se trata de Infraestrutura como Código e Terraform.
 
-É recomendado que, ao utilizar o comando `import`, o usuário já possua alguma vivência com o Terraform e conheça bem os conceitos dos `resources` que serão importados, pois existem pontos do procedimento nos quais os estados são inconsistentes e um comando errado pode causar catástrofes. Cuidado com `resources` como registros de DNS e LoadBalancers.
+É recomendado que, ao utilizar o comando `import`, o usuário já possua alguma vivência com o Terraform e conheça bem os conceitos dos `resources` que serão importados, pois existem pontos do procedimento nos quais os estados são inconsistentes e um comando errado pode causar catástrofes. Cuidado com `resources` como registros de DNS e *load balancers*.
 
-Um outro detalhe foi que aqui no Elo7 não saímos importando tudo que já existia de uma vez, decidimos fazer por demanda. Assim, quando uma mudança na infra de uma aplicação era necessária, aproveitamos e fazemos o `import`.
+Um outro detalhe foi que, aqui no Elo7, não saímos importando tudo que já existia de uma vez, decidimos fazer por demanda. Assim, quando uma mudança na infra de uma aplicação era necessária, aproveitávamos e fazíamos o `import`.
 
 Logo voltamos com mais posts sobre Terraform! Obrigado! :D
 
