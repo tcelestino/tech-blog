@@ -11,7 +11,7 @@ tags:
   - tdd
 ---
 
-Trabalhar com desenvolvimento de software é algo que está longe de ser fácil, pois além da parte técnica (que evolui a passadas largas), todo profissional precisa estar minimamente antenado a ponto de perceber qual das suas posturas em relação a execução de suas atividades podem literalmente travá-lo (dentro da carreira) ou levá-lo a outro patamar. Dentre as muitas características valorizadas atualmente pelo mercado, uma importantissíma é ser um profissional adaptável a mudanças, pelo simples fato que **o mundo muda muito rapidamente**, e o jeito que trabalhavámos no passado já não serve e/ou se encaixa com o presente.
+Trabalhar com desenvolvimento de software é algo que está longe de ser fácil, pois além da parte técnica (que evolui a passadas largas), todo profissional precisa estar minimamente antenado a ponto de perceber qual das suas posturas em relação à execução de suas atividades podem literalmente travá-lo (dentro da carreira) ou levá-lo a outro patamar. Dentre as muitas características valorizadas atualmente pelo mercado, uma importantissíma é ser um profissional adaptável a mudanças, pelo simples fato que **o mundo muda muito rapidamente**, e o jeito que trabalhavámos no passado já não serve e/ou se encaixa com o presente.
 
 Fazendo uma breve reflexão sobre isso, eu me lembro de uma época onde a minha maior gana era produzir o máximo de código que conseguisse por dia. Para mim a efetividade do trabalho e percepção de valor do mesmo estava intrinsecamente ligada à **quantidade**, e não à **qualidade**, do código que eu escrevia.
 
@@ -53,7 +53,7 @@ Hummm... bom, chegando nesse ponto, deu para perceber que existe um certo nível
 
 É, meu amigo, se você chegou até esse ponto, já deve ter sacado o tamanho da dor que é simplemente configurar uma stack para testes. Com tantas opções e decisões para serem tomadas, isso por si só já seria o suficiente para que essa tarefa seja postergada ao infinito e tornando-se então o famoso [**débito técnico**](https://agilecoachninja.wordpress.com/2016/03/08/debito-tecnico-divida-tecnica/) do seu projeto.
 
-Era exatamente isso que você precisava fazer...até ontem.A boa notícia é que hoje é um belo dia e você já tem opções bem mais elegantes para execução dos seus testes. Então não desista, pois daqui pra frente você vai poder focar no melhor do seu trabalho, que é escrever testes e produzir código de qualidade, sem se preocupar com essa barrreira de entrada!
+Era exatamente isso que você precisava fazer...até ontem. A boa notícia é que hoje é um belo dia e você já tem opções bem mais elegantes para execução dos seus testes. Então não desista, pois daqui pra frente você vai poder focar no melhor do seu trabalho, que é escrever testes e produzir código de qualidade, sem se preocupar com essa barrreira de entrada!
 
 ## Rumo a vitória com Jest!
 
@@ -67,7 +67,7 @@ Além dessa marcante característica, ele possui algumas outras, como:
 
 - **Ultra Rápido** - testes rodam paralelamente sem interferir um nos outros \o/
 
-- **Code Coverage** - no [**Jest**](https://facebook.github.io/jest/), o relatório de cobertura de código é embutido e habilitado através de uma simples configuração, que pode ser facilmente adicionada utilizando `npm scripts.
+- **Code Coverage** - no [**Jest**](https://facebook.github.io/jest/), o relatório de cobertura de código é embutido e habilitado através de uma simples configuração, que pode ser facilmente adicionada utilizando `npm scripts`.
 
 Parece bom demais pra ser verdade, né!? Mas acredite, isso vai facilitar e muito a sua vida.
 
@@ -229,7 +229,7 @@ Uma vez implementado, vamos rodar os testes com `yarn run test`. O resultado ser
 
 ![Alt "Falha 4"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-5.png)
 
-Bom, conforme esperado, o novo teste está quebrando. Isso ocorreu pois uma nova dependência foi adicionada, o módulo `produto.js`. Bom essa é mole de resolver, vamos implementá-lo:
+Conforme esperado, o novo teste está quebrando. Isso ocorreu pois uma nova dependência foi adicionada, o módulo `produto.js`. Bom essa é mole de resolver, vamos implementá-lo:
 
 ```js
 function Produto(nome, preco, qtd) {
@@ -284,7 +284,7 @@ Para finalizar, vamos adicionar 2 pequenos detalhes em nosso arquivo `package.js
 }
 ```
 
-Conforme você deve ter percebido, adicionamos o flag `--watch` no script de `test`. A vantagem dessa flag é que, a partir de agora, quando novos testes forem adicionados e/ou modificados (bem como os arquivos) os testes rodarão automaticamente. Inclusive, alguns atalhos serão habilitados (letras `p`, `t`, `q`) facilitando dessa forma a filtragem de arquivos e testes específicos, permitindo ainda que esses testes possam ser facilmente finalizados ou até mesmo rodados outra vez simplesmente pressionando a tecla `Enter`. Rode novamente no terminal `yarn run test` para ver a diferença:
+Conforme você deve ter percebido, adicionamos a flag `--watch` no script de `test`. A vantagem dessa flag é que, a partir de agora, quando novos testes forem adicionados e/ou modificados (bem como os arquivos) os testes rodarão automaticamente. Inclusive, alguns atalhos serão habilitados (letras `p`, `t`, `q`) facilitando a filtragem de arquivos e testes específicos, permitindo ainda que esses testes possam ser facilmente finalizados ou até mesmo rodados outra vez simplesmente pressionando a tecla `Enter`. Rode novamente no terminal `yarn run test` para ver a diferença:
 
 ![Alt "Watch Mode"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-8.png)
 
@@ -296,7 +296,7 @@ Ah e você pode conferir outros recursos também visitando a documentação na p
 
 ## Conclusão
 
-Procurei te guiar até aqui para poder mostrar que testes de software, além de necessários, podem ser divertidos. Superada a primeira barreira de entrada, que é configurar a stack de testes (e o [**Jest**](https://facebook.github.io/jest/) foi campeão neste ponto), o próximo desafio é adquirir uma mentalidade para este fim. As práticas de TDD podem ser uma boa para quem está iniciando, e a minha dica sempre é para que você tente a partir dessa base adicionar novos testes para praticar. Vou deixar de brinde alguns desafios aqui:
+Procurei te guiar até aqui para poder mostrar que testes de software, além de necessários, podem ser divertidos. Superada a primeira barreira de entrada, que é configurar a stack de testes (e o [**Jest**](https://facebook.github.io/jest/) foi campeão neste ponto), o próximo desafio é adquirir uma mentalidade para esse fim. As práticas de TDD podem ser uma boa para quem está iniciando, e a minha dica sempre é para que você tente a partir dessa base adicionar novos testes para praticar. Vou deixar de brinde alguns desafios aqui:
 
 1. Adicione um teste para calcular o subtotal de cada produto adicionado ao carrinho. Para isso basta fazer uma multiplicação simples do preço vezes a quantidade.
 
@@ -308,4 +308,4 @@ Bom, acho que é isso. A mensagem final é:
 
 > ***testar seu software**, além de necessário é **sua responsabilidade**, portanto, não delegue-o a terceiros!*
 
-Caso este artigo tenha sido útil para você, por favor **colabore compartilhando-o** em suas redes sociais! Ah e não deixe de nos contar suas experiências nos comentários logo abaixo:
+Caso este artigo tenha sido útil para você, por favor **colabore compartilhando-o** em suas redes sociais! Ah e não deixe de nos contar suas experiências nos comentários logo abaixo!
