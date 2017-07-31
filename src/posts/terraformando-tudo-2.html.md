@@ -1,6 +1,6 @@
 ---
 title: Terraformando tudo - parte 2
-date: 2017-01-30
+date: 2017-07-31
 category: devops
 layout: post
 description: Segundo post da série 'Terraformando Tudo', que conta a nossa trajetória em busca da codificação da nossa infraestrutura. Neste post contamos o que fizemos para mitigar possíveis desastres e como controlamos N desenvolvedores alterando N Terraform configurations. Vamos lá?
