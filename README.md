@@ -26,7 +26,7 @@ description: Alguma descrição do post que irá aparecer na home...
 Para adicionar imagens ao seu post, adicione cada uma das imagens na pasta ``src/assets/images``. Sua imagem deve ser ``.png`` ou ``.jpg`` e o nome deve seguir o padrão: ``<nomedopost>-<numerodaimagem>.<extensão>``. Para referenciá-las no post, use URLs absolutas como ``/images/titulo-post-1.png``.
 
 ## Criando sua página de autor
-Se você ainda não tem a sua página de autor, crie um arquivo ``<seugithub>.html.md`` na pasta ``src/publishers/``. 
+Se você ainda não tem a sua página de autor, crie um arquivo ``<seugithub>.html.md`` na pasta ``src/publishers/``.
 O template para esse arquivo deve ser:
 ```html
 ---
@@ -83,12 +83,11 @@ O PR pode passar pelas etapas de avaliação:
 * ``APPROVED`` - após um usuário diferente do dono do PR testar e não existir mais modificações a serem feitas, deve-se aprovar o PR. Apenas o dono da tarefa pode mergear com a master.
 
 ### Deploy
-Existem dois tipos de deploy:
-- Deploy de Post
-``./deploy-post.sh``
-
-- Deploy de Enhancement
-``./deploy-enhancement.sh``
+Para deployar:
+- pegue o post mais antigo aprovado
+- atualize a data do post para o dia de hoje (commit e push)
+- mergeie o post
+- rode o ``./deploy.sh``
 
 ### Hospedagem
 
