@@ -3,7 +3,7 @@ title: Frameworks e bibliotecas JavaScript: quando e qual usar
 date: 2017-06-26
 category: front-end
 layout: post
-description: será que realmente precisamos usar um framework ou uma biblioteca JavaScript? E como decidir qual devemos usar no projeto?
+description: Será que realmente precisamos usar um framework ou uma biblioteca JavaScript? E como decidir qual devemos usar no projeto?
 authors: [williammizuta]
 tags:
   - JavaScript
@@ -22,13 +22,13 @@ Os desenvolvedores front-end se deparam com muitos problemas comuns que precisam
 
 Para resolver este problema, surgiu o jQuery, que se tornou uma das bibliotecas mais famosas e mais utilizadas no mercado. Além de permitir que o desenvolvedor escreva um código que funcione numa gama enorme de navegadores, ele também trouxe uma API mais amigável.
 
-O mercado, junto com as necessidades dos usuários, muda com o passar do tempo. Para acompanhar essas mudanças, os desenvolvedores têm implementado novos frameworks e bibliotecas para suprir as necessidades do momento. Esta mudança é contínua, e por isso, novos frameworks e bibliotecas têm surgido a cada dia.
+O mercado, junto com as necessidades dos usuários, muda com o passar do tempo. Para acompanhar essas mudanças, os desenvolvedores têm implementado novos frameworks e bibliotecas a fim de suprir as necessidades do momento. Esta mudança é contínua, e por isso, novos frameworks e bibliotecas têm surgido a cada dia.
 
 ## Quais as desvantagens dos frameworks/bibliotecas JavaScript?
 
-Como toda decisão técnica que tomamos, a escolha de um framework ou uma biblioteca traz suas vantagens e desvantagens. Uma das principais vantagens é podermos utilizar uma solução pronta e testada para problemas comuns, ou seja, não precisamos reinventar a roda para cada projeto. Mas os frameworks e bibliotecas também tem suas desvantagens.
+Como toda decisão técnica que tomamos, a escolha de um framework ou uma biblioteca traz suas vantagens e desvantagens. Uma das principais vantagens é podermos utilizar uma solução pronta e testada para problemas comuns, ou seja, não precisamos reinventar a roda para cada projeto. Mas os frameworks e bibliotecas também têm suas desvantagens.
 
-Um dos principais pontos negativos é o acréscimo em _kbytes_ no carregamento da página. Para visualizar um site, o navegador do usuário precisa baixar todo o conteúdo necessário para a visualização (o próprio html, arquivos css e js, fontes, imagens, etc). O framework e a biblioteca serão um arquivo a mais a ser baixado, aumentando o consumo de rede. Muitas vezes, a página fica em branco ou inoperante enquanto o framework ou a biblioteca não é carregado e executado.
+Um dos principais pontos negativos é o acréscimo em _kbytes_ no carregamento da página. Para visualizar um site, o navegador do usuário precisa baixar todo o conteúdo necessário: o próprio html, arquivos css e js, fontes, imagens, etc. O framework e a biblioteca serão um arquivo a mais a ser baixado, aumentando o consumo de rede. Muitas vezes, a página fica em branco ou inoperante enquanto o framework ou a biblioteca não é carregado e executado.
 
 Por exemplo, a versão minificada com compressão gzip do [jQuery 3.1.1](https://code.jquery.com/jquery-3.1.1.min.js) tem 34.6kb; do [AngularJS 1.6.1](https://ajax.googleapis.com/ajax/libs/angularjs/1.6.1/angular.min.js), 56.9kb e do [React 15.4.0](https://unpkg.com/react@15.4.0/dist/react.min.js) junto com o [React DOM 15.4.0](https://unpkg.com/react-dom@15.4.0/dist/react-dom.min.js), 44,3kb. Isso se não adicionarmos nenhum plugin e sem contar o código JavaScript que precisamos adicionar para executar a nossa lógica.
 
