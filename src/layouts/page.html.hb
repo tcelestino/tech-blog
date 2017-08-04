@@ -39,7 +39,7 @@
 	<link rel="stylesheet" href="/posts.css">
 	<link rel="stylesheet" href="/post.css">
 	<link rel="icon" type="image/png" href="/images/favicon.ico">
-	<script>window.addEventListener('error', window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
+	<script>window.addEventListener("error", window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 	<script src="/js/vendor/async-define.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}">
@@ -56,7 +56,7 @@
 				{{#each (getCategories)}}
 					<li itemscope itemtype="http://schema.org/SiteNavigationElement">
 						<a itemprop="url" href="/{{category}}">
-							<span itemprop='name'>{{category}}</span>
+							<span itemprop="name">{{category}}</span>
 						</a>
 					</li>
 				{{/each}}
@@ -67,23 +67,23 @@
 			</label>
 			<ul class="nav-list nav-more">
 				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-					<a itemprop='url' href="http://carreira.elo7.com.br/engenharia/" target="_blank">
-						<span itemprop='name'>A engenharia</span>
+					<a itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">
+						<span itemprop="name">A engenharia</span>
 					</a>
 				</li>
 				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
 					<a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">
-						<span itemprop='name'>Carreiras</span>
+						<span itemprop="name">Carreiras</span>
 					</a>
 				</li>
 				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
 					<a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">
-						<span itemprop='name'>Nossos eventos</span>
+						<span itemprop="name">Nossos eventos</span>
 					</a>
 				</li>
 				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
 					<a itemprop="url" href="http://elo7.com.br/" target="_blank">
-						<span itemprop='name'>Elo7</span>
+						<span itemprop="name">Elo7</span>
 					</a>
 				</li>
 			</ul>
@@ -97,7 +97,7 @@
 			{{#over document.page.count 1}}
 				<nav class="container pagination" role="navigation" itemscope itemtype="http://schema.org/SiteNavigationElement">
 					{{#if hasPrevPage}}
-						<a class='back btn' href="{{site.baseUrl}}{{../getPrevPage}}">anterior</a>
+						<a class="back btn" href="{{site.baseUrl}}{{../getPrevPage}}">anterior</a>
 					{{else}}
 						<span class="back disabled">anterior</span>
 					{{/if}}
@@ -107,7 +107,7 @@
 					</span>
 
 					{{#if hasNextPage}}
-						<a class='next btn' href="{{site.baseUrl}}{{../getNextPage}}">próximo</a>
+						<a class="next btn" href="{{site.baseUrl}}{{../getNextPage}}">próximo</a>
 					{{else}}
 						<span class="next disabled">próximo</span>
 					{{/if}}
@@ -119,7 +119,7 @@
 		<a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" >
 			engenharia.elo7.com.br © 2017
 		</a>
-		<meta itemprop="name" content='Elo7 Serviços de Informática SA'/>
+		<meta itemprop="name" content="Elo7 Serviços de Informática SA"/>
 	</footer>
 	<script async src="https://www.google-analytics.com/analytics.js"></script>
 	<script async src="/js/analytics.js"></script>
