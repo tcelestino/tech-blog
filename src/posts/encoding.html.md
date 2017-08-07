@@ -70,9 +70,10 @@ Aqui o problema é outro. Como o *ISO-8859-1* só usa 1 byte para representar ca
 Em páginas web além do encoding usado para salvar o arquivo ainda temos que nos atentar ao cabeçalho `<meta>`, usado pelos navegadores para "adivinhar" qual o encoding da página sempre precisamos sincronizar o conteúdo desta tag com o encoding do arquivo html:
 
 ```html
+<!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta charset="UTF-8">
 	</head>
 	<body>
 		olá, este arquivo foi salvo como ISO-8859-1.
@@ -86,9 +87,10 @@ A página acima é exibida no navegador com problemas:
 Ao mudar o conteúdo da tag `<meta>` para o encoding correto, o problema desaparece:
 
 ```html
+<!DOCTYPE html>
 <html>
 	<head>
-		<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+		<meta charset="ISO-8859-1">
 	</head>
 	<body>
 		olá, este arquivo foi salvo como ISO-8859-1.
