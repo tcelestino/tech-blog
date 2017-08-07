@@ -1,6 +1,6 @@
 ---
 title: Frameworks e bibliotecas JavaScript: quando e qual usar
-date: 2017-06-26
+date: 2017-08-07
 category: front-end
 layout: post
 description: Será que realmente precisamos usar um framework ou uma biblioteca JavaScript? E como decidir qual devemos usar no projeto?
