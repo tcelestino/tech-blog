@@ -7,8 +7,8 @@ tags:
   - web
 authors: [tcelestino]
 layout: post
-title: Utilizando Web Share API
-description: Aprenda como usar a Web Share API e utilizar compartilhamento nativo do sistema operacional sem necessidade de utilizar plugins de terceiros em seu projeto.
+title: Web Share API
+description: Conheça mais uma API JavaScript que pretende melhorar a experiência do usuário quando precisar compartilhar links da Web para aplicativos nativos.
 ---
 
 Hoje vivemos no mundo dos compartilhamentos, seja através das redes sociais, programas de mensagens (WhatsApp, Telegram, Slack, etc...) entre outros meios. Através deles, podemos compartilharmos link para uma notícia, para um produto em uma loja, etc.... Você como desenvolvedor web, provavelmente já precisou usar algum recurso de compartilhamento de alguns desses serviços em algum projeto. Muita das vezes, a quantidade de código é tanta que é "impossível" fazer manutenção ou ter controle do funcionamento desses códigos. Aqui no Elo7, já usamos plugins (Facebook Share, por exemplo), mas hoje utilizamos o compartilhamento via URL que é baseada em *query string*.
@@ -123,7 +123,7 @@ Muitos sites utilizam um dominio especifico (http://m.site.com.br, por exemplo) 
 <html>
   <head>
     <title>Usando a Web Share API</title>
-    <link rel="canonical" href="https://engenharia.elo7.com.br/usando-web-share-api">
+    <link rel="canonical" href="https://engenharia.elo7.com.br/web-share-api">
   </head>
   <body>
     <a href='#share' title='Clique e compartilhe' class='share'>Compartilhar</a>
