@@ -10,6 +10,32 @@ autoprefix: true
 	padding: 1em 5%;
 	background-color: $white;
 
+	table {
+		max-width: 100%;
+		width: 100%;
+	}
+
+	thead th,
+	tbody td {
+		padding: 0.75em;
+		text-align: left;
+	}
+
+	thead th {
+		font-weight: bold;
+		vertical-align: bottom;
+	}
+
+	tbody {
+		> tr:nth-child(odd) {
+			background-color: #f9f9f9;
+		}
+
+		td {
+			border-top: 1px solid #ddd;
+		}
+	}
+
 	.title {
 		font-size: 2.1em;
 		margin-bottom: 0;
