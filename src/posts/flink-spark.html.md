@@ -5,19 +5,18 @@ tags:
   - spark
   - flink
   - big data
-authors: [mikedias]
+authors: [mikedias,gmcoringa] esse aqui
 layout: post
 title: Flink vs Spark
-description: O título do post é polêmico para chamar sua atenção mas a idéia deste post é mostrar um pouco da nossa visão sobre essas duas excelentes ferramentas: Apache Flink e Apache Spark.
+description: O título do post é polêmico para chamar sua atenção, mas a idéia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: Apache Flink e Apache Spark.
 ---
 
-O título do post é polêmico para chamar sua atenção mas a idéia deste post é mostrar um pouco da nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia-a-dia.
-Se você não conhece o Flink nem o Spark, na homepage dos projetos tem uma introdução bacana sobre cada um deles.
+O título do post é polêmico para chamar sua atenção, mas a ideia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia a dia.
+Se você não conhece o [Flink](http://flink.apache.org/) nem o [Spark](http://spark.apache.org/), na homepage dos projetos há uma introdução bacana sobre cada um deles.
 
 ## Flink
 
-O Flink é um projeto que nasceu com a mentalidade **streaming-first**, isto é,
-o objetivo principal da plataforma é processar dados que são produzidos de maneira contínua e infinita:
+O Flink é um projeto que nasceu com a mentalidade **streaming-first**, isto é, o objetivo principal da plataforma é processar dados que são produzidos de maneira contínua e infinita:
 
 ![Flink Stream](../images/flink-spark-1.png)
 
@@ -40,10 +39,10 @@ Falando em configuração, isso é o que não falta no Spark: existem muitas e *
 
 Mas tem outra coisa que sobra no Spark e não tem o lado negativo: **métricas e estatísticas**. A interface padrão possui informações sobre basicamente tudo o que esta acontecendo no cluster durante a execução de um job, o que ajuda bastante na hora de encontrar um possível gargalo no processamento.
 
-Uma característica que nos incomodou bastante no Spark foi a maneira como os **checkpoints** foram implementados: as classes envolvidas no job são serializadas e armazenadas no checkpoint. O problema é que se as classes deste job forem atualizadas, não é possível fazer o deploy dessa nova versão sem excluir o checkpoint com a serialização das classes antigas...
+Uma característica que nos incomodou bastante no Spark foi a maneira como os **checkpoints** foram implementados: as classes envolvidas no job são serializadas e armazenadas no checkpoint. O problema é que, se as classes deste job forem atualizadas, não é possível fazer o deploy dessa nova versão sem excluir o checkpoint com a serialização das classes antigas...
 
-Por fim, um dos principais diferenciais do Spark é a sua **comunidade**: Desde 2009, mais de 1000 desenvolvedores já contribuiram ao projeto! Essa comunidade faz com que o ecossistema em torno do Spark seja muito rico, especialmente no que se refere a machine learning e processamento em batch.
+Por fim, um dos principais diferenciais do Spark é a sua **comunidade**: desde 2009, mais de 1000 desenvolvedores já contribuiram ao projeto! Essa comunidade faz com que o ecossistema em torno do Spark seja muito rico, especialmente no que se refere a machine learning e processamento em batch.
 
 ## Conclusão
 
-Ambas as ferramentas tem seus pontos positivos e negativos, mas na nossa avaliação o Flink leva a vantagem quando o quesito é processamento de streams. Aqui no Elo7 nós usamos o Flink na nossa [pipeline analítica](/elo7-analytics-elytics/) mas também utilizamos Spark em alguns projetos internos com a ajuda do [Nightfall](/nightfall/).
+Ambas as ferramentas tem seus pontos positivos e negativos, mas na nossa avaliação o Flink leva vantagem quando o quesito é processamento de streams. Aqui no Elo7 nós usamos o Flink na nossa [pipeline analítica](/elo7-analytics-elytics/) mas também utilizamos Spark em alguns projetos internos com a ajuda do [Nightfall](/nightfall/).
