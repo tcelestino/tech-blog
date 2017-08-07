@@ -16,11 +16,11 @@ Já reparou como é difícil fazer acentos, emojis e outros caracteres estranhos
 
 ## Um pouco de história
 
-No início, havia o [ASCII](http://www.robelle.com/library/smugbook/ascii.html), uma tabela de 7 bits que representava _"todos"_ os caracteres 128 caracteres _"necessários"_, e ainda sobrava 1 bit de espaço. Claro, isso falando da lingua inglesa, que não possui acentos, por exemplo. Quando os computadores começaram a se tornar populares em terras não dominadas pela Rainha ou pelo Tio Sam, esses 128 símbolos não eram suficientes para todas as letras de outros alfabetos, como grego, árabe, chinês, etc. Mas como havia um bit sobrando, cada país/fabricante de computador acabou criando seu própio mapa de caracteres usando o espaço restante, o que resultou em vários [code pages](http://www.i18nguy.com/unicode/codepages.html#msftdos). Apesar de solucionar parcialmente o problema (idiomas como o chinês que possuem muito mais de 256 caracteres/símbolos continuaram não suportados), ainda era muito difícil usar caracteres de dois code pages diferentes no mesmo arquivo (por exemplo, uma letra grega ∑ e o caracter de ¡ do espanhol).
+No início, havia o [ASCII](http://www.robelle.com/library/smugbook/ascii.html), uma tabela de 7 bits que representava _"todos"_ os 128 caracteres _"necessários"_, e ainda sobrava 1 bit de espaço. Claro, isso falando da lingua inglesa, que não possui acentos, por exemplo. Quando os computadores começaram a se tornar populares em terras não dominadas pela Rainha ou pelo Tio Sam, esses 128 símbolos não eram suficientes para todas as letras de outros alfabetos, como grego, árabe, chinês, etc. Mas como havia um bit sobrando, cada país/fabricante de computador acabou criando seu própio mapa de caracteres usando o espaço restante, o que resultou em vários [code pages](http://www.i18nguy.com/unicode/codepages.html#msftdos). Apesar de solucionar parcialmente o problema (idiomas como o chinês que possuem muito mais de 256 caracteres/símbolos continuaram não suportados), ainda era muito difícil usar caracteres de dois code pages diferentes no mesmo arquivo (por exemplo, uma letra grega ∑ e o caracter de ¡ do espanhol).
 
 ## O Unicode
 
-Para organizar essa bagunça, surgiu o [Unicode](http://www.unicode.org/), uma espécie de mapa que inclui todos os caracteres de qualquer sistema de escrita usado em todas as linguas, e que ainda pode ser extendido para novos símbolos conforme estes forem surgindo. Um dos pontos mais importantes a se entender quando estamos falando de encoding é que **o Unicode não é um encoding**, já que ele não indica a forma binária de representação dos símbolos. O Unicode é um mapa do caractere para um **code point**, uma representação no formato *U+0000*. Por exemplo, o caractere **á** é o code point *U+00E1*, já o **ç** é o *U+00E7*. Repare que os codepoints estão em base hexadecimal, e podem ter quantos números forem necessários, como em *U+1F60E*, que representa o emoji 😎.
+Para organizar essa bagunça, surgiu o [Unicode](http://www.unicode.org/), uma espécie de mapa que inclui todos os caracteres de qualquer sistema de escrita usado em todas as linguas, e que ainda pode ser extendido para novos símbolos conforme estes forem surgindo. Um dos pontos mais importantes a se entender quando estamos falando de encoding é que **o Unicode não é um encoding**, já que ele não indica a forma binária de representação dos símbolos. O Unicode é um mapa do caractere para um **code point**, uma representação no formato *U+0000*. Por exemplo, o caractere **á** é o code point *U+00E1*, já o **ç** é o *U+00E7*. Repare que os codepoints estão em base hexadecimal, e podem ter quantos números forem necessários, como em *U+1F60E*, que representa o emoji 😎 .
 
 ## Encodings
 
@@ -34,13 +34,13 @@ A forma binária varia de encoding para encoding. Começaremos com um bem famili
 
 ![Tabela com a palavra olá em hexadecimal e binário em ISO-8859-1](/images/encoding-1.png)
 
-Olhando na [tabela de caracteres do ISO-8859-1](https://cs.stanford.edu/people/miles/iso8859.html) dá pra ver que o byte *e1*(225) é o que representa o caractere **á**. Um ponto bem importante a se notar é que o *ISO-8859-1* é um encoding de **byte único**, ou seja, cada caractere sempre ocupa 1 byte, e sendo assim, só consegue representar até 256 caracteres diferentes.
+Olhando na [tabela de caracteres do ISO-8859-1](https://cs.stanford.edu/people/miles/iso8859.html) dá pra ver que o byte *e1* é o que representa o caractere **á**. Um ponto bem importante a se notar é que o *ISO-8859-1* é um encoding de **byte único**, ou seja, cada caractere sempre ocupa 1 byte, e sendo assim, só consegue representar até 256 caracteres diferentes.
 
-Vamos mudar a forma de armazenar nosso texto, usando um outro encoding bem famoso, o **UTF-8**:
+Agora vamos mudar a forma de armazenar nosso texto, usando um outro encoding bem famoso, o **UTF-8**:
 
 ![Tabela com a palavra olá em hexadecimal e binário em UTF-8](/images/encoding-2.png)
 
-Veja que interessante, o mesmo texto que antes conseguia ser representado em 3 bytes, agora está ocupando 4 bytes de espaço! E pra piorar, os últimos bytes nem são iguais! Antes de entrar em detalhes de como o *UTF-8* funciona, podemos criar dois arquivos com o mesmo texto em encodings diferentes e consultando o tamanho deles no disco:
+Veja que interessante, o mesmo texto que antes conseguia ser representado em 3 bytes, agora está ocupando 4 bytes de espaço! E para piorar, os últimos bytes nem são iguais! Antes de entrar em detalhes de como o *UTF-8* funciona, podemos criar dois arquivos com o mesmo texto em encodings diferentes e consultando o tamanho deles no disco:
 
 ![Tamanho dos arquivos no sistema operacional](/images/encoding-3.png)
 
@@ -76,7 +76,7 @@ Em páginas web além do encoding usado para salvar o arquivo ainda temos que no
 		<meta charset="UTF-8">
 	</head>
 	<body>
-		olá, este arquivo foi salvo como ISO-8859-1.
+		<p>olá, este arquivo foi salvo como ISO-8859-1.</p>
 	</body>
 </html>
 ```
@@ -93,7 +93,7 @@ Ao mudar o conteúdo da tag `<meta>` para o encoding correto, o problema desapar
 		<meta charset="ISO-8859-1">
 	</head>
 	<body>
-		olá, este arquivo foi salvo como ISO-8859-1.
+		<p>olá, este arquivo foi salvo como ISO-8859-1.</p>
 	</body>
 </html>
 ```
