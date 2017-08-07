@@ -16,11 +16,11 @@ tags:
   - PUB/SUB
 ---
 Neste post vamos explicar alguns modelos arquiteturais para desenvolver um chat em *realtime* que deve atender às seguintes especificações:
-* Mensagem 1-N: Apenas o usuário que recebeu a mensagem deve receber a notificação de nova mensagem
-* *realtime*: O chat do destinatário deve ser atualizado sem nenhuma ação por parte do usuário
-* *Lightspeed*: Todo o processo de envio e recebimento deve ser rápido e consumir o mínimo possível de recursos de todos os componentes (remetente, destinatário e servidor);
+* Mensagem 1-N: apenas o usuário que recebeu a mensagem deve receber a notificação de nova mensagem;
+* *Realtime*: o chat do destinatário deve ser atualizado sem nenhuma ação por parte do usuário;
+* *Lightspeed*: todo o processo de envio e recebimento deve ser rápido e consumir o mínimo possível de recursos de todos os componentes (remetente, destinatário e servidor);
 
-Quando temos como objetivo o desenvolvimento de uma aplicação *realtime* com essas características, com rápidas pesquisas (ou no caso de um leitor mais experiente, que verá essas opções como óbvias), podemos encontrar dois modelos arquiteturais, o *WebSocket* e o *Long Pooling*. A seguir discutiremos as vantagens e desvantagens de cada um:
+Quando temos como objetivo o desenvolvimento de uma aplicação *realtime* com essas características, com rápidas pesquisas (ou no caso de um leitor mais experiente, que verá essas opções como óbvias), podemos encontrar alguns modelos arquiteturais, como *Short polling*, *WebSocket* e *Long Polling*. A seguir discutiremos as vantagens e desvantagens de cada um:
 
 # Short Polling
 
@@ -35,22 +35,22 @@ while (true) {
 }
 ```
 
-Simples, fácil e rápido. Porém gera um enorme *overhead* tanto no servidor como no cliente, o cliente fica batendo no servidor mesmo que não tenha nada de novo, não é performático.
-Imagine o seguinte cenário, 10mil usuários online, supondo que cada usuário possua uma média de 3 conversas abertas, o servidor receberá 30 mil requisições por segundo (1.8 milhões req/min). Sendo que a maioria delas não irá resultar em nada. Assim, no cenário descrito e com o uso de *Long pooling*, vamos precisar contar com bastantes recursos para atender esse grande número de requisições ou nossos servidores irão ficar indisponíveis (ataque DDoS em nós mesmos).
+Simples, fácil e rápido. Porém gera um enorme *overhead*, tanto no servidor como no cliente, já que o cliente fica batendo no servidor mesmo que este não tenha nada de novo, o que acaba não sendo performático!
+Imagine agora o cenário onde cerca de 10 mil usuários estão conectados a sua aplicação. Supondo que cada usuário possua em média 3 conversas abertas, teremos o equivalente a 30 mil requisições por segundo sendo enviadas ao servidor (ou 1.8 milhões de requisições por minuto), sendo que a maioria delas não resultará em nada. Assim, no cenário descrito e com o uso de *Long polling*, precisaremos contar com muitos recursos para atender a essa enorme quantidade de requisições ou nossos servidores ficarão indisponíveis (uma espécie de ataque DDoS, só que a nós mesmos).
 
 # Long polling
 
-É parecido com o short polling, porém nesse cenário o servidor em vez de retornar respostas vazias quando não há nada de novo, o servidor segura a requisição com a conexão aberta até ter algo novo. Apesar de funcionar bem e do menor número de requisição, você pode acabar sem recursos (CPU/memória/threads) no servidor rapidamente.
+É muito parecido com o Short Polling, porém nesse cenário o servidor em vez de retornar respostas vazias as requisições quando não há nada novo, segura cada requisição, mantendo-a aberta até efetivamente ter algo novo. Apesar de funcionar muito bem ter um número menor de requisições, você pode acabar rapidamente com os recursos (CPU/memória/threads) do servidor.
 
 # WebSocket + HTTP
 
-Como o HTTP 1.X é um protocolo stateless e de apenas uma via, fica difícil para o servidor informar o cliente do usuário que um determinado evento ocorreu e é necessário um refresh em parte ou no todo da página. Para isso existe o protocolo *WebSocket*, que resolve esse problema estabelecendo e mantendo uma conexão entre cliente e servidor. O WebSocket específica como conectar, mas não especifica como mandar mensagens (não é um protocolo de transporte). Então, podemos usar o protocolo HTTP para mandar mensagens por meio de uma conexão WebSocket.
+Como o protocolo HTTP 1.X é stateless e de via única, fica difícil para o servidor informar o cliente que um determinado evento ocorreu e é necessário um refresh parcial ou em toda a página. Para isso existe o protocolo *WebSocket*, que resolve esse problema estabelecendo uma conexão entre cliente e o servidor. O WebSocket especifica como conectar, mas não como mandar mensagens (não é um protocolo de transporte). Então, podemos usar o protocolo HTTP para mandar mensagens por meio de uma conexão WebSocket.
 
-Assim, o servidor consegue comunicar-se com o browser, e o browser reagir sem intervenção do usuário a cada mensagem que o servidor manda.
+Assim, o servidor consegue comunicar-se com o browser, e o browser reagir sem intervenção do usuário a cada mensagem que o servidor enviar.
 
-Porém, no HTTP temos um *overhead* de headers.
+Porém, no protocolo HTTP temos um *overhead* de headers.
 ![Lista com mais de vinte cabeçalhos enviados e recebidos numa requisição HTTP](../images/mqtt-6.png)
-Um dos nossos requisitos é que ele seja *Lightspeed*. Esse *overhead* aumenta o tamanho da mensagem, consome mais banda e bateria no caso de *apps mobile*. Segundo um [estudo do google](http://dev.chromium.org/spdy/spdy-whitepaper), os requests variam entre 200 bytes até 2kb, com a maioria na casa dos 700-800 bytes.
+Bastante coisa não!? Um dos requisitos para desenvolvermos aplicações realtime é elas sejam *Lightspeed*. Esse *overhead* portanto é prejudicial, já que aumenta consideravelmente o tamanho da mensagem e consegue mais banda e bateria que o necessário (principalmente se considerarmos o desenvolvimento de *mobile apps*). Segundo um estudo do google, a maior parte das aplicações transporta nos headers de suas requests cerca de 200 bytes à 2KB (na média esse valor mantém-se entre 700 ~ 800 bytes)
 ```
 ~ $ curl -s -w \%{size_header} -o /dev/null www.elo7.com.br
 438 bytes
@@ -59,17 +59,17 @@ Um dos nossos requisitos é que ele seja *Lightspeed*. Esse *overhead* aumenta o
 # WebSocket + MQTT
 
 
-MQTT é um protocolo de transporte que utiliza o *pattern* [publisher/subscriber](https://en.wikipedia.org/wiki/Publish%E2%80%93subscribe_pattern). Leve, aberto, simples e desenhado para ser fácil de implementar. Essas características fazem dele a melhor escolha quando se trata de comunicação Machine to Machine (M2M) e Internet das coisas (IoT, do termo em inglês *Internet of Things*).
+MQTT é um protocolo de transporte que utiliza o pattern publisher/subscriber. Leve, aberto, simples e desenhado para ser fácil de implementar, fazem dele a melhor escolha quando se trata de comunicação Machine to Machine (M2M) e Internet das Coisas (IoT, do termo em inglês Internet of Things).
 
-Foi criado em 1999 por um engenheiro da IBM com o intuito de conectar dutos de óleo a satélites, com o objetivo de enviar métricas, possibilitando gerenciar remotamente os dutos. Os requisitos para o desenvolvimento do MQTT dizem que ele deve ser/ter:
-* Simples de implementar
-* Garantia de entrega (QoS)
-* Leve e utilização eficiente da banda
-* *Data Agnostic* (Os dados podem ser enviados e recebidos independente da linguagem)
-* *Continuous Session Awareness* (o estado da sessão deve ser preservado no *disconnect/reconnect*)
-* *Pub/Sub*
+Esta tecnologia foi criada em 1999 por um engenheiro da IBM, com o intuito de conectar dutos de óleo a satélites, com o objetivo de enviar métricas, possibilitando gerenciar remotamente esses dutos. Os requisitos para o desenvolvimento utilizando o protocolo MQTT dizem que ele deve ser e/ou ter:
+* Simples de implementar;
+* Garantia de entrega (QoS);
+* Leve e utilização eficiente da banda;
+* *Data Agnostic* (Os dados podem ser enviados e recebidos independente da linguagem);
+* *Continuous Session Awareness* (o estado da sessão deve ser preservado no *disconnect/reconnect*);
+* *Pub/Sub*;
 
-O MQTT resolve o problema do overhead de headers que temos no HTTP. É possível enviar uma mensagem com um header de apenas 2 bytes. Abaixo temos o formato de como deve ser a requisição:
+O MQTT resolve o problema do *overhead* de headers que temos no HTTP. É possível enviar uma mensagem com um header de apenas 2 bytes. Abaixo temos o formato de como deve ser a requisição:
 
 ![Esquema do cabeçalho de uma mensagem no protocolo MQTT](../images/mqtt-7.jpg)
 
@@ -84,7 +84,7 @@ Na tabela abaixo temos uma comparação entre MQTT e HTTP [fonte](https://pt.sli
 
 ## Pub/Sub
 
-Uma das vantagens do Pub/Sub é o desacoplamento que ele gera, o *publisher* não precisa saber para quem ou quantos clientes ele está enviando a mensagem. Isso é possível graças ao MQTT Broker. O *broker* filtra as mensagens baseado em tópicos. Cada cliente pode se inscrever em um ou mais tópicos. Quando uma mensagem é enviada, ela é destinada a um tópico específico, e todos os clientes inscritos no tópico de destino recebem a mensagem.
+Uma das vantagens do Pub/Sub é o desacoplamento que ele gera, uma vez que o *publisher* não precisa saber para quem ou quantos clientes ele está enviando a mensagem. Isso é possível graças ao MQTT Broker. O *broker* filtra as mensagens baseado em tópicos. Cada cliente pode se inscrever em um ou mais tópicos. Quando uma mensagem é enviada, ela é destinada a um tópico específico, e todos os clientes inscritos no tópico de destino recebem a mensagem.
 
 ![Esquema de funcionamento da arquitetura pub/sub](../images/mqtt-8.png)
 
@@ -123,7 +123,7 @@ QoS 2 - *Exactly once* (Exatamente uma vez)
 
 Garante que cada mensagem é recebida pelo menos uma vez pelo destinatário. Dos três tipos descritos é o que possui a maior garantia de entrega com o porém de ser mais lento.
 
-Devemos ter em mente que, quanto maior o nível de QoS, mais trocas de mensagens são feitas. Isso afeta o tempo que a mensagem leva para ser efetivamente entregue, e gasta mais banda de rede e bateria em dispositivos móveis
+Devemos ter em mente que, quanto maior o nível de QoS, mais trocas de mensagens são feitas. Isso afeta o tempo que a mensagem leva para ser efetivamente entregue, e gasta mais banda de rede e bateria em dispositivos móveis.
 
 ## Arquitetura realtime do Elo7
 
