@@ -59,6 +59,8 @@ A presença desse arquivo irá sobrescrever o [MockMaker](http://static.javadoc.
 
 Com a configuração acima, o Mockito irá utilizar uma implementação especialmente projetada para usar uma combinação de subclasses e instrumentação (através de um Java Agent). Mas não se preocupe: essas complexidades de baixo nível são invisíveis para o teste, e finalmente seremos capazes de mockar nossas classes e métodos *final* (como o exemplo acima) sem recorrer a outras bibliotecas!
 
+Uma maneira simplificada de utilizar esse recurso é incluir a dependência *mockito-inline* no seu classpath. Esse artefato irá configurar o arquivo org.mockito.plugins.MockMaker como demonstrado acima.
+
 Para mais detalhes: [Mock the unmockable](http://static.javadoc.io/org.mockito/mockito-core/2.8.47/org/mockito/Mockito.html#Mocking_Final)
 
 ## Stubs não utilizados
@@ -673,6 +675,8 @@ A saída no console:
  1. translator.translate("ola");
   -> at com.elo7.mockito.sample.SomeTest.test(SomeTest.java:17)
 ```
+
+* Se você está utilizando o Mockito no Android, a versão 2 traz algumas customizações de geração de bytecode específicas para a JVM do Android. Para utilizar, basta importar o artefato *mockito-android*.
 
 ## Conclusão
 O Mockito é um dos frameworks de mocks mais utilizados na linguagem Java, muito devido à simplicidade na sua utilização e grande número de recursos. A versão 2.x manteve essa linha de implementação, além de trazer novas e interessantes funcionalidades para ajudar os desenvolvedores a escrever mais e melhores testes. Nesse post, cobri as principais mudanças e novidades da nova versão. Espero que tenha gostado! Em caso de dúvidas ou qualquer outra coisa, sinta-se à vontade para usar a caixa de comentários!
