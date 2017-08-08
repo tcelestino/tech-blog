@@ -133,6 +133,90 @@ Quando testamos esta versão, o tempo de processamento ficou em ~ 10 horas.
 
 ### Procurando uma solução
 
-Após 2 horas procurando por alguma solução para o problema, não achamos nenhum solução pronta. Mas um tipo de problema similar me chamou a atenção: In
+Após duas horas procurando no Google por alguma biblioteca que fizesse a procura, percebemos que estavamos indo pelo caminho errado. Com certeza a biblioteca padrão do Python já teria solução !!! 
+
+Começamos a (re)ler todos os módulos do Python e achamos o que precisavamos: o módulo [bisect](https://docs.python.org/3.0/library/bisect.html) !
+
+Bisect é um método relacionado com a busca binária, para achar raizes de funções. No caso da biblioteca do Python, ele é usado com um objetivo um pouco diferente: "... provides support for maintaining a list in sorted order without having to sort the list after each insertion. For long lists of items with expensive comparison operations, this can be an improvement over the more common approach. The module is called bisect because it uses a basic bisection algorithm to do its work"
+
+Como o bisect pode ajudar a procura em listas? O processo que usamos foi:
+
+- Pegar o começo de cada faixa e colocar em ordem crescente.
+
+```
+faixas_ceps_divisa = []
+
+# PSEUDO CODIGO: carrega os inícios das faixas de cep:
+for cep_origem_inicio in open( 'faixas_ceps.txt','r'):
+	faixas_ceps_divisa.append(cep_origem_inicio)
+
+
+faixas_ceps_divisa = sorted(se(faixas_ceps_divisa))
+
+# é necessário converter de list para tuple por causa do bisect
+faixas_ceps_divisa =tuple(faixas_ceps_divisa)
+```
+
+- Em seguida criamos um dicionário, sendo a chave o cep inicial da faixa de valores e o valor do dicionário uma lista de possiveis faixas com aquela cep inicial
+
+```
+faixas_ceps_divisa_dict = collections.defaultdict(list)
+
+# PSEUDO CODIGO: carrega os inícios das faixas de cep:
+for cep_origem_inicio, cep_origem_fim, cep_destino_inicio, cep_destino_fim, categoria in open( 'faixas_ceps.txt','r'):
+        faixas_ceps_divisa_dict[cep_origem_inicio].append((cep_origem_fim, categoria))
+```
+
+- Dado dois ceps (origem e destino) a serem procurados, usamos o bisect na lista de ceps para achar a faixa inicial. Se não encontrado, a faixa não existe:
+
+```
+def is_cep_divisa(cep1,cep2):
+    i = bisect.bisect_right(faixas_ceps_divisa, cep1)
+    if not i:
+        return False
+    inicio = faixas_ceps_divisa[i-1] 
+    ...
+```    
+
+- Se encontramos o inicio da faixa, basta usar o dicionário para resgatar as faixas com este inicio e fazer uma busca por força bruta. Uma análise rápida mostrou que estas subfaixas tem em média 44 itens, tendo a maior 135 elementos. Um ganho sobre os 25.000 registros iniciais !
+
+```
+    sub_faixas = faixas_ceps_divisa_dict[inicio]
+    for sf in sub_faixas:
+        if cep1 <= sf[0] and sf[1]<= cep2 <= sf[2]:
+            return sf[3]
+```  
+
+A versão completa ficou:
+
+```
+def is_cep_divisa(cep1,cep2):
+    i = bisect.bisect_right(faixas_ceps_divisa, cep1)
+    if not i:
+        return False
+    inicio = faixas_ceps_divisa[i-1] 
+    sub_faixas = faixas_ceps_divisa_dict[inicio]
+    for sf in sub_faixas:
+        if cep1 <= sf[0] and sf[1]<= cep2 <= sf[2]:
+            return sf[3]
+        
+    return False
+```
+
+### Resultados
+
+O tempo de procura ficou em:
+
+```
+%timeit is_cep_divisa(57935000,53520001)
+1.54 µs ± 3.05 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+```
+
+```
+%timeit  is_cep_divisa(32000000,12345001)
+1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
+```
+
+E o processamento total de 10 horas para 4 minutos !
 
 
