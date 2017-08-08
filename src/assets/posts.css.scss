@@ -5,6 +5,8 @@ autoprefix: true
 @import 'colors';
 
 .posts-container {
+	padding: 1em 5%;
+
 	> a {
 		text-decoration: none;
 		color: map-get($colors-text, black);
@@ -115,15 +117,9 @@ autoprefix: true
 }
 
 @media (max-width: 500px) {
-	.posts-container {
-		.date {
-			display: block;
-			margin-top: 1em;
-		}
-
-		.post-card:first-child {
-			padding-top: 0;
-		}
+	.posts-container .date {
+		display: block;
+		margin-top: 1em;
 	}
 }
 
