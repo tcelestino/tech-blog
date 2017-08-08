@@ -8,11 +8,11 @@ tags:
 authors: [mikedias,gmcoringa]
 layout: post
 title: Flink vs Spark
-description: O título do post é polêmico para chamar sua atenção, mas a idéia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: Apache Flink e Apache Spark.
+description: O título do post é polêmico para chamar sua atenção, mas a ideia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: Apache Flink e Apache Spark.
 ---
 
 O título do post é polêmico para chamar sua atenção, mas a ideia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia a dia.
-Se você não conhece o [Flink](http://flink.apache.org/) nem o [Spark](http://spark.apache.org/), na homepage dos projetos há uma introdução bacana sobre cada um deles.
+Se você não conhece o [Flink](http://flink.apache.org/) ou o [Spark](http://spark.apache.org/), na *homepage* dos projetos há uma introdução bacana sobre cada um deles.
 
 ## Flink
 
@@ -20,13 +20,13 @@ O Flink é um projeto que nasceu com a mentalidade **streaming-first**, isto é,
 
 ![Flink Stream](../images/flink-spark-1.png)
 
-Essa arquitetura permite que o job que processa o *stream* seja mais rápido e resiliente. Mais rápido porque os eventos são processados assim que eles chegam e mais resiliente porque os eventuais picos de eventos (também conhecidos como *back pressure*) são gerenciados de [maneira automática](https://data-artisans.com/blog/how-flink-handles-backpressure) pelo Flink.
+Essa arquitetura permite que o *job* que processa o *stream* seja mais rápido e resiliente. Mais rápido porque os eventos são processados assim que eles chegam e mais resiliente porque os eventuais picos de eventos (também conhecidos como *back pressure*) são gerenciados de [maneira automática](https://data-artisans.com/blog/how-flink-handles-backpressure) pelo Flink.
 
-No Flink, os *streams* podem ser tratados como finitos ou infinitos. Com isso é possível emular um *stream* usando o *backup* dos dados do Kafka e reprocessar o histórico usando **exatamente o mesmo código** implementado sobre a API de *streams*. Isso nos dá o poder de olhar para o passado sempre que for necessário sem nenhum esforço adicional.
+No Flink, os *streams* podem ser tratados como finitos ou infinitos. Com isso é possível emular um *stream* usando o *backup* dos dados do [Apache Kafka](https://kafka.apache.org/) e reprocessar o histórico usando **exatamente o mesmo código** implementado sobre a API de *streams*. Isso nos dá o poder de olhar para o passado sempre que for necessário sem nenhum esforço adicional.
 
-A garantia **exactly-once** na computação de estado do Flink nos dão a segurança de que os resultados dos *streams* estarão corretos, mesmo em cenários de falha. Como esse estado é persistido utilizando o mecanismo de *[savepoints](https://data-artisans.com/blog/turning-back-time-savepoints)*, é possível fazer o deploy de novas versões do *stream* sem perder o estado atual computado.
+A garantia **exactly-once** na computação de estado do Flink nos dá a segurança de que os resultados dos *streams* estarão corretos, mesmo em cenários de falha. Como esse estado é persistido utilizando o mecanismo de *[savepoints](https://data-artisans.com/blog/turning-back-time-savepoints)*, é possível fazer o *deploy* de novas versões do *stream* sem perder o estado atual computado.
 
-O ponto fraco do Flink é a sua **comunidade** que ainda é pequena. Isso faz com que o ecossistema não seja tão rico, o que leva à falta de conectores para outras ferramentas. Por exemplo, para conseguirmos utilizar o Flink na nossa *pipeline*, nós mesmos adicionamos o [suporte para o Elasticsearch 5.x](https://github.com/apache/flink/pull/2767).
+O ponto fraco do Flink é a sua **comunidade**, que ainda é pequena. Isso faz com que o ecossistema não seja tão rico, o que leva à falta de integrações para outras ferramentas. Por exemplo, para conseguirmos utilizar o Flink na nossa *pipeline*, nós mesmos adicionamos o [suporte para o Elasticsearch 5.x](https://github.com/apache/flink/pull/2767).
 
 ## Spark
 
@@ -35,9 +35,9 @@ Já o Spark possui uma mentalidade **batch-first**. Isso acontece porque o proje
 
 Para nós isso não faz muita diferença, afinal, os dados serão processados de maneira semelhante a um stream mesmo com um pouco mais de latência. O problema desta implementação é que o tamanho da *window* e o tamanho do *microbatch* precisam estar muito bem configurados para conseguir sobreviver a um volume de eventos maior do que o esperado. Uma dessas configurações é a ``spark.streaming.backpressure.enabled=true`` que faz com que o Spark analise os tempos de processamentos de *micro-batches* anteriores para se adaptar a flutuações em micro-batches subsequentes.
 
-Falando em **[configuração](https://spark.apache.org/docs/latest/configuration.html)**, o Spark possuí diversas, inclusive algumas não documentadas. Isso pode ser uma vantagem ou uma desvantagem: é possível otimizar o Spark para se encaixar com suas necessidades mas, ao mesmo tempo, exigirá mais esforço para dominar tais configurações.
+Falando em **[configuração](https://spark.apache.org/docs/latest/configuration.html)**, o Spark possui diversas, inclusive algumas não documentadas. Isso pode ser uma vantagem ou uma desvantagem: é possível otimizar o Spark para se encaixar com suas necessidades mas, ao mesmo tempo, exigirá mais esforço para dominar tais configurações.
 
-Um dos pontos positivos no Spark é a diversidade de **métricas** e uma interface web que mostra muitas informações sobre o estado de um job, como tempos de processamento, utização de memória e disco:
+Um dos pontos positivos no Spark é a diversidade de **métricas** e uma interface *web* que mostra muitas informações sobre o estado de um *job*, como tempos de processamento, utilização (ou uso) de memória e disco:
 
 ![Spark UI](../images/flink-spark-3.png)
 
@@ -45,7 +45,7 @@ A partir da versão 2.x do Spark, é possível fazer o **deploy de atualizaçõe
 
 Uma das grandes inovações da versão 2.x do Spark foi o **[Structured Streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)**, o qual utiliza a mesma API tanto para *batch* quanto para *streams*. Porém esta não é a única vantagem desta nova API, que conta com garantias *exactly-once*, além de diversas otimizações.
 
-Por fim, um dos principais diferenciais do Spark é a sua **comunidade**: desde 2009, mais de 1000 desenvolvedores já contribuiram ao projeto! Essa comunidade faz com que o ecossistema em torno do Spark seja muito rico, especialmente no que se refere a *machine learning* e processamento em *batch*.
+Por fim, um dos principais diferenciais do Spark é a sua **comunidade**: desde 2009, mais de 1000 desenvolvedores já contribuíram ao projeto! Essa comunidade faz com que o ecossistema em torno do Spark seja muito rico, especialmente no que se refere a *machine learning* e processamento em *batch*.
 
 ## Conclusão
 
