@@ -10,6 +10,9 @@ docpadConfig = function() {
 					getCollection: function(name) {
 						return this.getCollection(name).toJSON();
 					},
+					getPagedCollection: function(name) {
+						return this.getPageCollection(name).toJSON();
+					},
 					dateAsText: function(date) {
 						return moment(date).utc().format('DD/MM/YYYY');
 					},
@@ -44,6 +47,19 @@ docpadConfig = function() {
 
 						return str;
 					},
+					sum: function(number1, number2) {
+						return number1 + number2;
+					},
+					over: function(lvalue, rvalue, options) {
+					   if (arguments.length < 3) {
+						   throw new Error("Handlebars Helper equal needs 2 parameters");
+					   }
+					   if(parseInt(lvalue) <= parseInt(rvalue)) {
+						   return options.inverse(this);
+					   } else {
+						  return options.fn(this);
+					   }
+				   },
 				}
 			},
 			cleanurls: {
@@ -52,6 +68,9 @@ docpadConfig = function() {
 			},
 			markit: {
 				html: true
+			},
+			paged: {
+				prefix: 'page'
 			}
 		},
 
@@ -75,7 +94,7 @@ docpadConfig = function() {
 			var collections = {
 				posts : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setComparator(function(postA, postB) {
 									var dateA = postA.toJSON().date;
 									var dateB = postB.toJSON().date;
@@ -84,7 +103,7 @@ docpadConfig = function() {
 				},
 				frontend : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "front-end";
 								})
@@ -96,7 +115,7 @@ docpadConfig = function() {
 				},
 				backend : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "back-end";
 								})
@@ -108,7 +127,7 @@ docpadConfig = function() {
 				},
 				devops : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "devops";
 								})
@@ -120,7 +139,7 @@ docpadConfig = function() {
 				},
 				design : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "design";
 								})
@@ -132,7 +151,7 @@ docpadConfig = function() {
 				},
 				vagas : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "vagas";
 								})
@@ -144,7 +163,7 @@ docpadConfig = function() {
 				},
 				mobile : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "mobile";
 								})
@@ -156,7 +175,7 @@ docpadConfig = function() {
 				},
 				eventos : function() {
 					return this.getCollection('html')
-								.findAll({layout: 'post'})
+								.findAllLive({layout: 'post'})
 								.setFilter('isCategory', function(model) {
 									return model.attributes.category == "eventos";
 								})
@@ -165,8 +184,9 @@ docpadConfig = function() {
 									var dateB = postB.toJSON().date;
 									return moment(dateB).unix() - moment(dateA).unix();
 								});
-				}
-			};
+				},
+
+			}
 			return collections;
 		}()
 	}
