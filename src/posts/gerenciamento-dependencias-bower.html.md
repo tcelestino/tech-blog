@@ -8,7 +8,7 @@ description: Durante o desenvolvimento de um projeto, nos deparamos com diversos
 tags:
   - bower
   - front-end
-  - gerenciamento de dependências
+  - gerenciamento de dependencias
   - produtividade
 ---
 

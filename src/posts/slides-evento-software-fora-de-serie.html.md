@@ -7,24 +7,22 @@ description: Em 11 de junho de 2016 ocorreu o evento Software Fora de Série ond
 authors: [davidrobert]
 tags:
   - agile
-  - Amazon Elastic Compute Cloud
+  - amazon elastic compute cloud
   - android
   - arquitetura de software
-  - AWS
+  - aws
   - back-end
   - big data
   - design
-  - elo7tech
-  - Front End
+  - front-end
   - ios
   - mobile
   - produtividade
-  - programação
+  - programacao
   - software
-  - software fora de série
   - talk7
-  - UX
-  - Web Services
+  - ux
+  - web services
 ---
 
 Todos os slides do evento **_Software Fora de Série:_**

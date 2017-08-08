@@ -60,6 +60,33 @@ autoprefix: true
 		background-color: map-get($colors-background, light-gray);
 		border: 1px solid map-get($colors-border, gray);
 	}
+
+	.tag-list {
+		list-style-type: none;
+		margin-left: 0;
+		margin-top: 1em;
+		margin-bottom: 1em;
+
+		li {
+			display: inline-block;
+		}
+
+		a {
+			background-color: map-get($colors-background, green);
+			border-radius: 5px;
+			color: white;
+			display: inline-block;
+			padding: 0.2em 0.5em;
+			margin-bottom: 0.5em;
+			margin-right: 0.5em;
+			text-decoration: none;
+			transition: background-color ease-in 200ms;
+
+			&:hover {
+				background-color: darken(map-get($colors-background, green), 20);
+			}
+		}
+	}
 }
 
 .share {
@@ -72,19 +99,24 @@ autoprefix: true
 		width: 30px;
 		height: 30px;
 		text-indent: -9999px;
-		margin-left: 0.5em;
 		text-align: left;
+		padding: 0.2em;
+		background-position: center center;
+		background-repeat: no-repeat;
 
 		&.facebook {
 			background-image: url('/images/ico/ic-facebook.svg');
+			background-color: map-get($vendor-colors, facebook);
 		}
 
 		&.twitter {
 			background-image: url('/images/ico/ic-twitter.svg');
+			background-color: map-get($vendor-colors, twitter);
 		}
 
 		&.copy {
 			background-image: url('/images/ico/ic-link.svg');
+			background-color: map-get($colors-background, dark-green);
 		}
 	}
 
@@ -111,19 +143,26 @@ autoprefix: true
 
 @media (min-width: 800px) {
 	.post-content {
-		padding: 1em 15%;
-		margin-left: 210px;
+		padding: 2em;
+		margin: 2em 15%;
+
+		> .title {
+			margin-top: 0;
+		}
+
+		.post-meta {
+			margin-bottom: 3em;
+		}
 	}
 
 	.share {
 		position: fixed;
-		top: 3.5em;
-		right: 10%;
+		top: 2em;
+		left: calc(215px + (100% - 215px) * 0.85);
 
 		.link-share {
 			display: block;
-			margin-bottom: 0.5em;
-			opacity: 0.8;
+
 			&:hover {
 				opacity: 1;
 			}
@@ -133,6 +172,23 @@ autoprefix: true
 			left: 0;
 			right: auto;
 			top: auto;
+			padding: 0.5em;
+			background-color: rgba(0,0,0,0.5);
+			white-space: nowrap;
+			color: white;
+			margin-top: 0.5em;
+			border-radius: 0.3em;
+
+			&:before {
+				content: '';
+				border: 5px solid transparent;
+				border-bottom: 5px solid rgba(0,0,0,0.5);
+				width: 0;
+				height: 0;
+				display: block;
+				position: absolute;
+				bottom: 100%;
+			}
 		}
 	}
 }

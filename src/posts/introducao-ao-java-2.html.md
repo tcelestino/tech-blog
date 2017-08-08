@@ -6,9 +6,9 @@ layout: post
 description: Entenda como controlar o fluxo de funcionamento do seu código usando expressão booleana e do funcionamento do "if", "else", "for", "while" e de alguns operadores.
 authors: [tcelestino]
 tags:
-  - java básico
+  - java basico
   - controle de fluxo
-  - expressões booleanas
+  - expressoes booleanas
 ---
 
 No [primeiro post da série de introdução ao Java](/introducao-ao-java/), mostrei como configurar e executar nosso código Java. Continuando, nesse post vou apresentar alguns conceitos que serão necessários para lidarmos com o controle de fluxo na lógica de funcionamento dos nossos códigos. Sim, vamos continuar no básico, porém essencial para os próximos posts. Mas vamos deixar de conversa e partir para o que mais interessa: código!

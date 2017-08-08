@@ -1,5 +1,6 @@
 $colors-text: (
 	darker: #333,
+	lightgray: #dcdcdc,
 	gray: #888,
 	light-gray: #bcbab7,
 	link: #359C9C,
@@ -17,7 +18,14 @@ $colors-border: (
 
 $colors-background: (
 	green: #73bebe,
+	dark-green: #359c9c,
 	light-gray: #f7f7f9,
+	gray: #4a4a4a,
+);
+
+$vendor-colors: (
+	facebook: #3b5998,
+	twitter: #55acee,
 );
 
 $yellow-default: #FDB933;

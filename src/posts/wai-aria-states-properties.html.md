@@ -2,8 +2,8 @@
 date: 2017-06-12
 category: front-end
 tags:
-  - HTML
-  - semântica
+  - html
+  - semantica
   - acessibilidade
 authors: [rapahaeru]
 layout: post

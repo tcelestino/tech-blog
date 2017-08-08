@@ -5,7 +5,7 @@ tags:
   - microservices
   - rest
   - rpc
-  - arquitetura-de-software
+  - arquitetura de software
 authors: [ljtfreitas,newton-beck]
 layout: post
 title: Microserviços e REST (sério?)

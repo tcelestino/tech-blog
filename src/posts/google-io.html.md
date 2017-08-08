@@ -7,7 +7,7 @@ description: Inteligência artificial foi um dos grandes temas do Google I/O. At
 authors: [davidrobert]
 tags:
   - google io
-  - inteligência artificial
+  - inteligencia artificial
   - ai
   - mobile
   - google.ai

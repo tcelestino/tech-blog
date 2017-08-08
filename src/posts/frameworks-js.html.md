@@ -6,10 +6,10 @@ layout: post
 description: Será que realmente precisamos usar um framework ou uma biblioteca JavaScript? E como decidir qual devemos usar no projeto?
 authors: [williammizuta]
 tags:
-  - JavaScript
-  - Frameworks JavaScript
-  - Bibliotecas JavaScript
-  - Performace front-end
+  - javascript
+  - frameworks javascript
+  - bibliotecas javascript
+  - performace front-end
 ---
 
 ![Frameworks e bibliotecas JavaScript](../images/frameworks-js-1.jpg)
