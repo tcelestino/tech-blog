@@ -122,7 +122,7 @@ const docpadConfig = function() {
 						if (arguments.length < 2) {
 							throw new Error('Handlebars Helper equal needs 1 parameters');
 						}
-						if(!uri.startsWith('tags-')) {
+						if(!uri.startsWith('tags-') && !uri.startsWith('page-')) {
 							return options.fn(this);
 						} else {
 							return options.inverse(this);
