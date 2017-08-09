@@ -2,7 +2,7 @@
 date: 2015-11-16
 category: back-end
 layout: post
-title: 'Optimização de de busca por faixas'
+title: 'Otimização de de busca por faixas'
 description: 
 authors: [ftfarias]
 tags:
@@ -13,9 +13,9 @@ tags:
 
 #Procura de valores em faixas (ranges) de valores
 
-Recentemente minha equipe fez algumas análises de fretes e um dos desafios foi classificar todos os fretes de 2016 nas faixas do correio. 
+Recentemente nossa equipe fez algumas análises de fretes. Um dos desafios foi classificar todos os fretes de 2016 de acordo com as faixas do correio. 
 
-Os correios separam as regiões do Brasil em várias categorias: Locais, Divisa, Capitais, Interior. Cada um destes é subdividido em grupos, de 1 a 4 ou de 1 a 6
+Os correios separam as regiões do Brasil em várias categorias: Locais, Divisa, Capitais, Interior. Cada um destes é subdividido em grupos, sendo de 1 a 4 ou de 1 a 6.
 
 Para descobrir qual a categoria de um frete, temos que consultar diversas tabelas, em geral em um formato csv ou planilha:
 
@@ -30,13 +30,13 @@ SP,SUMARE,13170-001,13182-999,MG,EXTREMA,37640-000,37649-999,L3
 
 ```
 
-Esta tabelas tem entre 15 mil e 25 mil entradas, cada entrada com um faixa de CEPs de entrada e uma faixa de CEPs de saída. 
+Estas tabelas têm entre 15 mil e 25 mil registros, cada registro com um faixa de CEPs de entrada e uma faixa de CEPs de saída. 
 
-O problem foi processar todos do dados de 2016 e classificar todos os fretes nas faixas acima. Estamos falando de alguns milhões de pedidos...
+Nosso problema foi processar todos do dados de 2016 e classificar todos os fretes nas faixas acima. Estamos falando de alguns milhões de pedidos...
 
 ### Os dados
 
-O carregamento dos dados é trivial, diretamento do CSV:
+O carregamento dos dados é simples, diretamente do CSV:
 
 ```
 # faixas_ceps_divisa é um dicionário, com as faixas como chave e o código como valor
@@ -46,9 +46,6 @@ with open('divisas.csv','r', encoding='utf_8') as input_file:
     next(input_file)
     input_csv = csv.reader(input_file, delimiter=',', quotechar='"')
     for i,t in enumerate(input_csv):
-#         if i > 10:
-#             break
-#         print(t)
         f1_inicio = int(t[2].replace('-',''))
         f1_fim = int(t[3].replace('-',''))
         f2_inicio = int(t[6].replace('-',''))
@@ -74,7 +71,7 @@ faixas_ceps_divisa[(75430000, 75439999, 70000001, 72799999)]
 
 ### Força bruta
 
-A primeira abordagem foi simples: carregamos as tabelas em memória e faziamos uma busca por força bruta:
+A primeira abordagem foi carregarmos as tabelas em memória e fazer uma busca por força bruta:
 
 ```
 def is_cep_divisa(cep1,cep2):
@@ -99,7 +96,7 @@ assert is_cep_divisa(32000000,12345001) == None
 6.37 ms ± 602 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
-Como vemos, a performance não é tão ruim para um caso, mas estamos interando a lista inteira. Poderiamos parar assim que encontramos um faixa de frete
+Como vemos, a performance não é tão ruim para um caso. Contudo, estamos iterando a lista inteira e, então, uma possível melhoria seria parar assim que encontrámos um faixa de frete:
 
 
 ### Força bruta 2
@@ -127,7 +124,7 @@ assert is_cep_divisa(32000000,12345001) == None
 5.83 ms ± 245 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
-Como vemos, a performance melhora um pouco, mas depende muito da posição na lista e vamos processar milhões de registros. 
+É possível ver que a performance melhora um pouco, mas depende muito da posição na lista. Então, vamos precisar processar milhões de registros. 
 
 Quando testamos esta versão, o tempo de processamento ficou em ~ 10 horas.
 
@@ -141,7 +138,7 @@ Bisect é um método relacionado com a busca binária, para achar raizes de fun�
 
 Como o bisect pode ajudar a procura em listas? O processo que usamos foi:
 
-- Pegar o começo de cada faixa e colocar em ordem crescente.
+- Pegar o começo de cada faixa e colocar em ordem crescente:
 
 ```
 faixas_ceps_divisa = []
@@ -157,7 +154,7 @@ faixas_ceps_divisa = sorted(se(faixas_ceps_divisa))
 faixas_ceps_divisa =tuple(faixas_ceps_divisa)
 ```
 
-- Em seguida criamos um dicionário, sendo a chave o cep inicial da faixa de valores e o valor do dicionário uma lista de possiveis faixas com aquela cep inicial
+- Em seguida criamos um dicionário, sendo a chave o CEP inicial da faixa de valores e o valor do dicionário uma lista de possiveis faixas com aquela CEP inicial:
 
 ```
 faixas_ceps_divisa_dict = collections.defaultdict(list)
@@ -167,7 +164,7 @@ for cep_origem_inicio, cep_origem_fim, cep_destino_inicio, cep_destino_fim, cate
         faixas_ceps_divisa_dict[cep_origem_inicio].append((cep_origem_fim, categoria))
 ```
 
-- Dado dois ceps (origem e destino) a serem procurados, usamos o bisect na lista de ceps para achar a faixa inicial. Se não encontrado, a faixa não existe:
+- Dado dois CEPs (origem e destino) a serem procurados, usamos o bisect na lista de CEPs para achar a faixa inicial. Como o bisect é implementado em C, esta procura é muito rápida.
 
 ```
 def is_cep_divisa(cep1,cep2):
@@ -213,10 +210,10 @@ O tempo de procura ficou em:
 ```
 
 ```
-%timeit  is_cep_divisa(32000000,12345001)
+%timeit is_cep_divisa(32000000,12345001)
 1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-E o processamento total de 10 horas para 4 minutos !
+E o processamento total reduziu de 10 horas para 4 minutos! Existe espaço para melhoria, mas 4 minutos já é um excelente tempo e prefirimos parar por aqui. 
 
 
