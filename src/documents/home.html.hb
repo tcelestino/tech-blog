@@ -14,7 +14,7 @@ layout: page-amp
 			</header>
 			<div class='post-meta'>
 				{{#each authors}}
-					<a href='/amp/{{this}}' class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+					<a href='/amp/{{this}}/' class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
 						<span itemprop='name'>@{{this}}</span>
 					</a>
 				{{/each}}

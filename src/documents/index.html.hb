@@ -17,7 +17,7 @@ pageSize: 10
 				</header>
 				<div class="post-meta">
 					{{#each authors}}
-						<a href="/{{this}}" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
+						<a href="/{{this}}/" class="author" itemprop='author' itemscope itemtype="http://schema.org/Person">
 							<p itemprop='name'>@{{this}}</p>
 						</a>
 					{{/each}}
@@ -32,7 +32,7 @@ pageSize: 10
 					</p>
 					<meta itemprop='headline' content='{{ellipsis . 110}}' >
 				{{/description}}
-				<a href="/{{category}}" class="category {{category}}">{{category}}</a>
+				<a href="/{{category}}/" class="category {{category}}">{{category}}</a>
 				<a href="{{../site.baseUrl}}{{url}}" class="link post-link">Continue lendo</a>
 
 				<span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"> <!--Change for a post image-->
