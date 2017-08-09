@@ -19,7 +19,7 @@ Os correios separam as regiões do Brasil em várias categorias: Locais, Divisa,
 
 Para descobrir qual a categoria de um frete, temos que consultar diversas tabelas, em geral em um formato csv ou planilha:
 
-```
+``` csv
 AC,ACRELANDIA,69945-000,69949-999,AC,ACRELANDIA,69945-000,69949-999,L4
 AC,ASSIS BRASIL,69935-000,69939-999,AC,ASSIS BRASIL,69935-000,69939-999,L4
 AC,BRASILEIA,69932-000,69933-999,AC,BRASILEIA,69932-000,69933-999,L4
@@ -38,7 +38,7 @@ Nosso problema foi processar todos do dados de 2016 e classificar todos os frete
 
 O carregamento dos dados é simples, diretamente do CSV:
 
-```
+``` python
 # faixas_ceps_divisa é um dicionário, com as faixas como chave e o código como valor
 faixas_ceps_divisa = {}
 with open('divisas.csv','r', encoding='utf_8') as input_file:
@@ -54,17 +54,17 @@ with open('divisas.csv','r', encoding='utf_8') as input_file:
         faixas_ceps_divisa[(f1_inicio,f1_fim,f2_inicio,f2_fim)] = faixa  
 ```
 
-```
+``` python
 print(len(faixas_ceps_divisa))
 24304
 ```
 
-```
+``` python
 print(list(faixas_ceps_divisa)[:10])
 [(75430000, 75439999, 70000001, 72799999), (19800001, 19819999, 87110001, 87119999), (86730000, 86749999, 12200001, 12249999), (87560000, 87564999, 12630000, 12689999), (37890000, 37899999, 17200001, 17229999), (37472000, 37473999, 7400001, 7499999), (87780000, 87789999, 11600000, 11629999), (27300001, 27399999, 37200000, 37209999), (87380000, 87389999, 13160000, 13164999), (89250001, 89269999, 83000001, 83189999)]
 ```
 
-```
+``` python
 faixas_ceps_divisa[(75430000, 75439999, 70000001, 72799999)]
 'E4'
 ```
@@ -73,7 +73,7 @@ faixas_ceps_divisa[(75430000, 75439999, 70000001, 72799999)]
 
 A primeira abordagem foi carregarmos as tabelas em memória e fazer uma busca por força bruta:
 
-```
+``` python
 def is_cep_divisa(cep1,cep2):
     r = [y for x,y in faixas_ceps_divisa.items() if x[0]<= cep1 <=x[1] and x[2]<= cep2 <=x[3]] 
     if len(r) == 1:
@@ -86,12 +86,12 @@ assert is_cep_divisa(57935000,53520001) == 'E4'
 assert is_cep_divisa(32000000,12345001) == None
 ```
 
-```
+``` python
 %timeit is_cep_divisa(57935000,53520001)
 7.66 ms ± 539 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
-```
+``` python
 %timeit is_cep_divisa(32000000,12345001)
 6.37 ms ± 602 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
@@ -101,7 +101,7 @@ Como vemos, a performance não é tão ruim para um caso. Contudo, estamos itera
 
 ### Força bruta 2
 
-```
+``` python
 def is_cep_divisa(cep1,cep2):
     for x,v in faixas_ceps_divisa.items():
         if x[0]<= cep1 <=x[1] and x[2]<= cep2 <=x[3]:
@@ -114,12 +114,12 @@ assert is_cep_divisa(57935000,53520001) == 'E4'
 assert is_cep_divisa(32000000,12345001) == None
 ```
 
-```
+``` python
 %timeit is_cep_divisa(57935000,53520001)
 3.66 ms ± 183 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
-```
+``` python
 %timeit is_cep_divisa(32000000,12345001)
 5.83 ms ± 245 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
@@ -140,7 +140,7 @@ Como o bisect pode ajudar a procura em listas? O processo que usamos foi:
 
 - Pegar o começo de cada faixa e colocar em ordem crescente:
 
-```
+``` python
 faixas_ceps_divisa = []
 
 # PSEUDO CODIGO: carrega os inícios das faixas de cep:
@@ -156,7 +156,7 @@ faixas_ceps_divisa =tuple(faixas_ceps_divisa)
 
 - Em seguida criamos um dicionário, sendo a chave o CEP inicial da faixa de valores e o valor do dicionário uma lista de possiveis faixas com aquela CEP inicial:
 
-```
+``` python
 faixas_ceps_divisa_dict = collections.defaultdict(list)
 
 # PSEUDO CODIGO: carrega os inícios das faixas de cep:
@@ -166,7 +166,7 @@ for cep_origem_inicio, cep_origem_fim, cep_destino_inicio, cep_destino_fim, cate
 
 - Dado dois CEPs (origem e destino) a serem procurados, usamos o bisect na lista de CEPs para achar a faixa inicial. Como o bisect é implementado em C, esta procura é muito rápida.
 
-```
+``` python
 def is_cep_divisa(cep1,cep2):
     i = bisect.bisect_right(faixas_ceps_divisa, cep1)
     if not i:
@@ -177,7 +177,7 @@ def is_cep_divisa(cep1,cep2):
 
 - Se encontramos o inicio da faixa, basta usar o dicionário para resgatar as faixas com este inicio e fazer uma busca por força bruta. Uma análise rápida mostrou que estas subfaixas tem em média 44 itens, tendo a maior 135 elementos. Um ganho sobre os 25.000 registros iniciais !
 
-```
+``` python
     sub_faixas = faixas_ceps_divisa_dict[inicio]
     for sf in sub_faixas:
         if cep1 <= sf[0] and sf[1]<= cep2 <= sf[2]:
@@ -186,7 +186,7 @@ def is_cep_divisa(cep1,cep2):
 
 A versão completa ficou:
 
-```
+``` python
 def is_cep_divisa(cep1,cep2):
     i = bisect.bisect_right(faixas_ceps_divisa, cep1)
     if not i:
@@ -204,12 +204,12 @@ def is_cep_divisa(cep1,cep2):
 
 O tempo de procura ficou em:
 
-```
+``` python
 %timeit is_cep_divisa(57935000,53520001)
 1.54 µs ± 3.05 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-```
+``` python
 %timeit is_cep_divisa(32000000,12345001)
 1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
