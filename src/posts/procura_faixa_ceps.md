@@ -2,22 +2,20 @@
 date: 2015-11-16
 category: back-end
 layout: post
-title: 'Otimização de de busca por faixas'
+title: 'Otimização de busca por faixas'
 description: 
 authors: [ftfarias]
 tags:
-  - algorítimos
+  - Algoritmo
   - back-end
   - tech-talk
 ---
 
 #Procura de valores em faixas (ranges) de valores
 
-Recentemente nossa equipe fez algumas análises de fretes. Um dos desafios foi classificar todos os fretes de 2016 de acordo com as faixas do correio. 
+Recentemente nossa equipe fez algumas análises de frete e um dos desafios foi classificar todos os fretes de 2016 de acordo com as faixas dos Correios, que separam as regiões do Brasil em várias categorias: Locais, Divisa, Capitais e Interior. Cada um destas é subdividido em grupos, sendo de 1 a 4 ou de 1 a 6.
 
-Os correios separam as regiões do Brasil em várias categorias: Locais, Divisa, Capitais, Interior. Cada um destes é subdividido em grupos, sendo de 1 a 4 ou de 1 a 6.
-
-Para descobrir qual a categoria de um frete, temos que consultar diversas tabelas, em geral em um formato csv ou planilha:
+Para descobrir qual a categoria de um frete, temos que consultar diversas tabelas, em geral em um formato CSV ou planilha:
 
 ``` csv
 AC,ACRELANDIA,69945-000,69949-999,AC,ACRELANDIA,69945-000,69949-999,L4
@@ -214,6 +212,6 @@ O tempo de procura ficou em:
 1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-E o processamento total reduziu de 10 horas para 4 minutos! Existe espaço para melhoria, mas 4 minutos já é um excelente tempo e prefirimos parar por aqui. 
+E o processamento total reduziu de 10 horas para 4 minutos! Existe espaço para melhoria, mas 4 minutos já é um excelente tempo e preferimos parar por aqui. 
 
 
