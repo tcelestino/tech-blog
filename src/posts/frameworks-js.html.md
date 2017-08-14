@@ -9,7 +9,7 @@ tags:
   - javascript
   - frameworks javascript
   - bibliotecas javascript
-  - performace front-end
+  - performance front-end
 ---
 
 ![Frameworks e bibliotecas JavaScript](../images/frameworks-js-1.jpg)
