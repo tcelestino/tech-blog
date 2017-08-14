@@ -6,6 +6,12 @@
     },
 
     {
+        "category": "design",
+        "title": "Design",
+        "description": "Confira todos os nossos posts sobre design escritos pelo time de Design de Produto do Elo7, o maior marketplace de produtos criativos da América Latina."
+    },
+
+    {
         "category": "devops",
         "title": "Devops",
         "description": "Confira todos os nossos posts sobre cultura e práticas DevOps, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina."
@@ -33,12 +39,5 @@
         "category": "vagas",
         "title": "Vagas",
         "description": "Confira todos os nossos posts com as oportunidades de emprego e desenvolvimento de carreira na Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina."
-    },
-
-    {
-        "category": "design",
-        "title": "Design",
-        "description": "Confira todos os nossos posts sobre design escritos pelo time de Design de Produto do Elo7, o maior marketplace de produtos criativos da América Latina."
     }
-
 ]
