@@ -1,6 +1,6 @@
 ---
 title: Design de Produto no Elo7
-date: 2017-03-22
+date: 2017-08-14
 authors: [macadantas]
 layout: post
 category: design
