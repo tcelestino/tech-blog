@@ -11,19 +11,18 @@ autoprefix: true
 	background-color: $white;
 
 	table {
-		max-width: 100%;
 		width: 100%;
 	}
 
 	thead th,
 	tbody td {
 		padding: 0.7em;
-		text-align: left;
 	}
 
 	thead th {
-		font-weight: bold;
+		font-weight: map-get($font-weight, bold);
 		vertical-align: bottom;
+		text-align: left;
 	}
 
 	tbody {
