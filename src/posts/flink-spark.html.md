@@ -12,7 +12,7 @@ description: O título do post é polêmico para chamar sua atenção, mas a ide
 ---
 
 O título do post é polêmico para chamar sua atenção, mas a ideia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia a dia.
-Se você não conhece o [Flink](http://flink.apache.org/) ou o [Spark](http://spark.apache.org/), na *homepage* dos projetos há uma introdução bacana sobre cada um deles.
+Se você não conhece o Flink] ou o Spark, na *homepage* dos projetos há uma introdução bacana sobre cada um deles.
 
 ## Flink
 
@@ -23,6 +23,10 @@ O Flink é um projeto que nasceu com a mentalidade **streaming-first**, isto é,
 Essa arquitetura permite que o *job* que processa o *stream* seja mais rápido e resiliente. Mais rápido porque os eventos são processados assim que eles chegam e mais resiliente porque os eventuais picos de eventos (também conhecidos como *back pressure*) são gerenciados de [maneira automática](https://data-artisans.com/blog/how-flink-handles-backpressure) pelo Flink.
 
 No Flink, os *streams* podem ser tratados como finitos ou infinitos. Com isso é possível emular um *stream* usando o *backup* dos dados do [Apache Kafka](https://kafka.apache.org/) e reprocessar o histórico usando **exatamente o mesmo código** implementado sobre a API de *streams*. Isso nos dá o poder de olhar para o passado sempre que for necessário sem nenhum esforço adicional.
+
+As *windows* são uma maneira dividir um *stream* contínuo em pequenos agrupamentos para efetuar algum processamento. Este conceito é relativamente comum em sistemas de processamento contínuo, porém o Flink possum um tipo especial de *window* que muito útil em cenários do dia a dia chamado **Session Window**. Com ela é possível agrupar eventos subsequentes cujo o intervalo de tempo entre eles não exceda um determinado valor, criando uma espécie de sessão do usuário:
+
+![Session Window](../images/flink-spark-4.png)
 
 A garantia **exactly-once** na computação de estado do Flink nos dá a segurança de que os resultados dos *streams* estarão corretos, mesmo em cenários de falha. Como esse estado é persistido utilizando o mecanismo de *[savepoints](https://data-artisans.com/blog/turning-back-time-savepoints)*, é possível fazer o *deploy* de novas versões do *stream* sem perder o estado atual computado.
 
