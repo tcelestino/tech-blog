@@ -12,7 +12,7 @@ description: O título do post é polêmico para chamar sua atenção, mas a ide
 ---
 
 O título do post é polêmico para chamar sua atenção, mas a ideia deste post é mostrar a nossa visão sobre essas duas excelentes ferramentas: [Apache Flink](http://flink.apache.org/) e [Apache Spark](http://spark.apache.org/). Nós não entraremos em detalhes profundos de cada ferramenta, nem faremos qualquer tipo de benchmark. Nós vamos apenas apontar as características que são relevantes para o nosso dia a dia.
-Se você não conhece o Flink] ou o Spark, na *homepage* dos projetos há uma introdução bacana sobre cada um deles.
+Se você não conhece o Flink ou o Spark, na *homepage* dos projetos há uma introdução bacana sobre cada um deles.
 
 ## Flink
 
@@ -37,7 +37,7 @@ O ponto fraco do Flink é a sua **comunidade**, que ainda é pequena. Isso faz c
 Já o Spark possui uma mentalidade **batch-first**. Isso acontece porque o projeto foi criado com o propósito de ser mais rápido e eficiente do que o *MapReduce*, principal técnica de processamento na época. Influenciado por essa mentalidade, o Spark Streaming foi criado para resolver o problema de fluxos contínuos utilizando **microbatches**, aproveitando a implementação fundamental de *batches* do Spark (os famosos *RDDs*):
 ![Spark Microbatches](../images/flink-spark-2.png)
 
-Para nós isso não faz muita diferença, afinal, os dados serão processados de maneira semelhante a um stream mesmo com um pouco mais de latência. O problema desta implementação é que o tamanho da *window* e o tamanho do *microbatch* precisam estar muito bem configurados para conseguir sobreviver a um volume de eventos maior do que o esperado. Uma dessas configurações é a ``spark.streaming.backpressure.enabled=true`` que faz com que o Spark analise os tempos de processamentos de *micro-batches* anteriores para se adaptar a flutuações em micro-batches subsequentes.
+Para nós isso não faz muita diferença, afinal, os dados serão processados de maneira semelhante a um *stream* mesmo com um pouco mais de latência. O problema desta implementação é que o tamanho da *window* e o tamanho do *microbatch* precisam estar muito bem configurados para conseguir sobreviver a um volume de eventos maior do que o esperado. Uma dessas configurações é a ``spark.streaming.backpressure.enabled=true`` que faz com que o Spark analise os tempos de processamentos de *micro-batches* anteriores para se adaptar a flutuações em micro-batches subsequentes.
 
 Falando em **[configuração](https://spark.apache.org/docs/latest/configuration.html)**, o Spark possui diversas, inclusive algumas não documentadas. Isso pode ser uma vantagem ou uma desvantagem: é possível otimizar o Spark para se encaixar com suas necessidades mas, ao mesmo tempo, exigirá mais esforço para dominar tais configurações.
 
