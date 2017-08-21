@@ -734,7 +734,7 @@ String zipCode = person.getZipCode();
 
 Agora estamos encapsulando melhor a estrutura interna de cada objeto, de modo que nosso código cliente desconhece que existe um objeto Address e um objeto ZipCode; apenas sabemos que Person tem um código postal no formato String. O RETURN\_DEEP\_STUBS não é mais necessário.
 
-O ponto que gostaria de reforçar com o exemplo acima é: sempre que um mock precise javaretornar outro mock, repense o design do seu código e avalie se isso é realmente necessário. A documentação do Mockito é um pouco mais explícita: <a href="http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html#RETURNS_DEEP_STUBS" target="_blank">sempre que um mock devolve outro mock, uma fada morre</a>.
+O ponto que gostaria de reforçar com o exemplo acima é: sempre que um mock precise retornar outro mock, repense o design do seu código e avalie se isso é realmente necessário. A documentação do Mockito é um pouco mais explícita: <a href="http://site.mockito.org/mockito/docs/current/org/mockito/Mockito.html#RETURNS_DEEP_STUBS" target="_blank">sempre que um mock devolve outro mock, uma fada morre</a>.
 
 ##### Respostas customizadas
 
@@ -1236,7 +1236,7 @@ public class UserPasswordServiceTest {
 
 O matcher _refEq_ também resolve nosso problema, mas é desencorajado pelo Mockito porque seu uso pode obscurecer o propósito do teste (está claro pra você como a igualdade do objeto é resolvida?).
 
-Um terceiro modo seria criarmos nosso próprio argument matcher para tjavaermos acesso à instância de Email enviada ao método send:
+Um terceiro modo seria criarmos nosso próprio argument matcher para termos acesso à instância de Email enviada ao método send:
 
 ``` java
 import static org.mockito.Matchers.*;
@@ -1318,7 +1318,7 @@ import static org.mockito.Matchers.*;
 import static org.mockito.Mockito.*;
 import static org.junit.Assert.*;
 
-import org.junit.Test;java
+import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InOrder;
 import org.mockito.InjectMocks;
@@ -1357,8 +1357,8 @@ Sempre que precisar dessa garantia, ou quiser deixar explícito no teste que o c
 
 Além dos mocks, outro personagem bastante comum em testes é o objeto **spy**. Não vou me concentrar aqui nas diferenças teóricas entre um mock e um spy, mas uma pequena explicação conceitual (superficial, admito) pode nos ajudar: um spy é essencialmente um objeto que "engole" uma **instância real** do tipo "espionado", de modo que podemos utilizar normalmente esse objeto com o seu comportamento verdadeiro (é uma diferença fundamental em relação ao mock, que apenas sabe fazer o que lhe é "ensinado"). O termo "espião" se refere justamente a esse detalhe: podemos observar como nosso teste interagiu com esse objeto (como fizemos mais acima com as verificações), apesar de estarmos utilizando o seu real comportamento. Além disso, o spy também pode ter seus métodos configurados para devolver respostas pré-fabricadas, assim como os mocks.
 
-Ou seja, com um spy podemos utilizar tanto o comportamento real do objeto quanto configurar ("mockar") os métodos que forem necessários para o nosso teste. Isso é chamado de "partial mock", e javaé assim que o Mockito se refere a estes objetos.
-java
+Ou seja, com um spy podemos utilizar tanto o comportamento real do objeto quanto configurar ("mockar") os métodos que forem necessários para o nosso teste. Isso é chamado de "partial mock", e é assim que o Mockito se refere a estes objetos.
+
 #### Criando um Spy no Mockito
 
 Para entendermos o funcionamento do spy (e demonstrar melhor a explicação acima), vamos utilizar objetos conhecidos da api do Java: List e ArrayList.
@@ -1385,7 +1385,7 @@ public class SpySampleTest {
 
         assertEquals(2, spyList.size()); // o objeto spy é alterado
 
-        javaassertEquals(0, list.size()); // o objeto real NÃO é alterado. Por que?
+        assertEquals(0, list.size()); // o objeto real NÃO é alterado. Por que?
     }
 }
 ```
@@ -1406,7 +1406,7 @@ public class SpySampleTest {
     @Test
     public void test() {
         ...
-    }java
+    }
 }
 ```
 
@@ -1427,7 +1427,7 @@ public class SpySampleTest {
 
     @Test
     public void test() {
-        javawhen(spyList.get(0)).thenReturn("element"); //configurando com o método when, idêntico a como fizemos com os mocks
+        when(spyList.get(0)).thenReturn("element"); //configurando com o método when, idêntico a como fizemos com os mocks
 
         String value = spyList.get(0);
 
