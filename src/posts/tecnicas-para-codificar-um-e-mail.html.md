@@ -80,11 +80,15 @@ A solução é simples: podemos fazer como na web, onde o container ocupa o quan
 </td>
 ```
 
+O `max-width` é uma propriedade aceita na maior parte dos clientes de e-mails utilizados hoje, dos testes que fiz, o único que não apresentou o layout como desejado foi o Outlook 2007, 2010 e 2013.
+
 ## Centralizar o corpo do e-mail
 
 O nosso container ainda não está alinhado no centro, como podemos fazer isso? Usar o clássico `margin: 0 auto`, que faz com que o navegador calcule automaticamente as distâncias em volta do e-mail e alinhe no centro? Mas isso funciona em todos os clientes de e-mail?
 
-A forma mais simples e aceita nos clientes de e-mail é usando o atributo `align` na `td` que envolve nosso container. Isso faz com que o navegador entenda como deve centralizar os textos e elementos internos. No nosso exemplo ficaria assim:
+O `margin: 0 auto` já funciona nos clientes de e-mail mais recentes, o único problema
+
+A forma mais aceita nos clientes de e-mail é usando o atributo `align` na `td` que envolve nosso container. Isso faz com que o navegador entenda como deve centralizar os textos e elementos internos. No nosso exemplo ficaria assim:
 
 ```HTML
 <td align="center">
@@ -100,19 +104,35 @@ Podemos também utilizar a tag `<center>` para envelopar a nossa `table` que ser
 
 Essas técnicas apresentadas funcionam nos seguintes clientes de email:
 
-- Chrome
-    - Gmail
-    - Inbox
-    - Outlook
-    - Yahoo
-- Internet Explorer 10
-    - Outlook
-    - Yahoo
-- Android
-    - Gmail App
-    - Inbox App
-    - Yahoo App
-    - Outlook App
+Web
+
+|             | Gmail | Inbox | Outlook | Yahoo |
+|-------------|:-----:|:-----:|:-------:|:-----:|
+| Chrome      |   ✓   |   ✓   |    ✓    |   ✓   |
+| Safari      |   ✓   |   ✓   |    ✓    |   ✓   |
+| Firefox     |   ✓   |   ✓   |    ✓    |   ✓   |
+| IE11        |   ✓   |   -   |    ✓    |   ✓   |
+| Edge        |   ✓   |   ✓   |    ✓    |   ✓   |
+| Chrome App  |   ✓   |   -   |    ✓    |   ✓   |
+| Firefox App |   ✓   |   -   |    ✓    |   ✓   |
+| Safari App  |   ✓   |   -   |    ✓    |   ✓   |
+| Edge App    |   ✓   |   -   |    ✓    |   ✓   |
+
+Mobile
+
+|                   | Gmail App | Inbox App | Outlook App | Yahoo App |
+|-------------------|:---------:|:---------:|:-----------:|:---------:|
+| Android           |     ✓     |     ✓     |      ✓      |     ✓     |
+| iOS               |     ✓     |     ✓     |      ✓      |     ✓     |
+| Windows Phone     |     -     |     -     |      ✓      |     -     |
+
+Aplicativo Outlook
+
+|        | 2007 | 2010 | 2011 | 2013 | 2015 |
+|--------|:----:|:----:|:----:|:----:|:----:|
+| Oulook |  ✗¹  |  ✗¹  |   ✓  |  ✗¹  |   ✓  |
+
+¹ Não funciona a propriedade `max-width`
 
 Esta é a primeira parte de uma série de posts sobre como codificar um e-mail. Neste primeiro, aprendemos a criar a base, no próximo iremos falar sobre as diversas formas para lidar com espaçamentos.
 
