@@ -24,7 +24,7 @@ Essa arquitetura permite que o *job* que processa o *stream* seja mais rápido e
 
 No Flink, os *streams* podem ser tratados como finitos ou infinitos. Com isso é possível emular um *stream* usando o *backup* dos dados do [Apache Kafka](https://kafka.apache.org/) e reprocessar o histórico usando **exatamente o mesmo código** implementado sobre a API de *streams*. Isso nos dá o poder de olhar para o passado sempre que for necessário sem nenhum esforço adicional.
 
-As *windows* são uma maneira dividir um *stream* contínuo em pequenos agrupamentos para efetuar algum processamento. Este conceito é relativamente comum em sistemas de processamento contínuo, porém o Flink possum um tipo especial de *window* que muito útil em cenários do dia a dia chamado **[Session Window](https://ci.apache.org/projects/flink/flink-docs-release-1.3/dev/windows.html#session-windows)**. Com ela é possível agrupar eventos subsequentes cujo o intervalo de tempo entre eles não exceda um determinado valor, criando uma espécie de sessão do usuário:
+As *windows* são uma maneira dividir um *stream* contínuo em pequenos agrupamentos para efetuar algum processamento. Este conceito é relativamente comum em sistemas de processamento contínuo, porém o Flink possui um tipo especial de *window* que é muito útil em cenários do dia a dia chamado **[Session Window](https://ci.apache.org/projects/flink/flink-docs-release-1.3/dev/windows.html#session-windows)**. Com ela é possível agrupar eventos subsequentes cujo o intervalo de tempo entre eles não exceda um determinado valor, criando uma espécie de sessão do usuário:
 
 ![Session Window](../images/flink-spark-4.png)
 
