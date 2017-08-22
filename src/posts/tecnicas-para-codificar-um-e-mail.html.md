@@ -80,15 +80,13 @@ A solução é simples: podemos fazer como na web, onde o container ocupa o quan
 </td>
 ```
 
-O `max-width` é uma propriedade aceita na maior parte dos clientes de e-mails utilizados hoje, dos testes que fiz, o único que não apresentou o layout como desejado foi o Outlook 2007, 2010 e 2013.
+O `max-width` é uma propriedade aceita na maior parte dos clientes de e-mails utilizados hoje, dos testes que fiz, os únicos que não apresentaram o layout como desejado foram os Outlook 2007, 2010 e 2013.
 
 ## Centralizar o corpo do e-mail
 
 O nosso container ainda não está alinhado no centro, como podemos fazer isso? Usar o clássico `margin: 0 auto`, que faz com que o navegador calcule automaticamente as distâncias em volta do e-mail e alinhe no centro? Mas isso funciona em todos os clientes de e-mail?
 
-O `margin: 0 auto` já funciona nos clientes de e-mail mais recentes, o único problema
-
-A forma mais aceita nos clientes de e-mail é usando o atributo `align` na `td` que envolve nosso container. Isso faz com que o navegador entenda como deve centralizar os textos e elementos internos. No nosso exemplo ficaria assim:
+O `margin: 0 auto` já é bem aceito nos clientes mais modernos. Os únicos que não dão suporte, dentre os que foram testados, são os Outlook 2007, 2010, 2013 e no app nativo do Windows Phone. Mas para dar suporte a todos, a forma mais aceita ainda é usar o atributo `align` na `td` que envolve nosso container. Isso faz com que o navegador entenda como deve centralizar os textos e elementos internos. No nosso exemplo ficaria assim:
 
 ```HTML
 <td align="center">
