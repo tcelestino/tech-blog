@@ -10,6 +10,31 @@ autoprefix: true
 	padding: 1em 5%;
 	background-color: $white;
 
+	table {
+		width: 100%;
+	}
+
+	thead th,
+	tbody td {
+		padding: 0.7em;
+	}
+
+	thead th {
+		font-weight: map-get($font-weight, bold);
+		vertical-align: bottom;
+		text-align: left;
+	}
+
+	tbody {
+		> tr:nth-child(odd) {
+			background-color: $lightly-dark-white;
+		}
+
+		td {
+			border-top: 1px solid map-get($colors-border, gray);
+		}
+	}
+
 	.title {
 		font-size: 2.1em;
 		margin-bottom: 0;
