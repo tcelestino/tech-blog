@@ -1,6 +1,6 @@
 ---
 title: Jest - Testar seu código Javascript nunca foi tão fácil!
-date: 2017-07-24
+date: 2017-08-28
 category: front-end
 layout: post
 description: A grande maioria dos desenvolvedores que conheço não gosta de testar software pelo simples fato de que executar uma bateria de testes de forma manual é extremamente cansativo. Com isso, nós desenvolvedores criamos o péssimo hábito de testar superficialmente tudo que produzimos...
