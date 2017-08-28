@@ -171,7 +171,7 @@ Plan: 0 to add, 0 to change, 1 to destroy.
 
 Temos duas opções:
 - Escrever o código manualmente;
-- Gerar o código utilizando a ferramenta [terraforming](https://github.com/dtan4/terraforming).
+- Gerar o código utilizando a ferramenta [terraforming](https://github.com/dtan4/terraforming) (essa ferramenta é específica para recursos na AWS).
 
 A escolha mais correta é utilizar uma ferramenta que vai fazer o trabalho para nós mas, por questões didáticas, vamos mostrar o processo de escrita manual do código.
 
