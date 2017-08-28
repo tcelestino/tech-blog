@@ -2,18 +2,18 @@
 date: 2015-11-16
 category: back-end
 layout: post
-title: 'Otimização de busca por faixas'
-description: 
+title: 'Otimização de busca em faixas de valores'
+description: Explicamos a maneira como utilizamos um método de bissecção para otimizar a busca de valores em uma coleção de faixas de CEP, aumentando em mais de 100 vezes a performance do algorítimo.
 authors: [ftfarias]
 tags:
-  - Algoritmo
+  - algoritmo
   - back-end
-  - tech-talk
+  - python
+  - otimização
+  - busca
 ---
 
-#Procura de valores em faixas (ranges) de valores
-
-Recentemente nossa equipe fez algumas análises de frete e um dos desafios foi classificar todos os fretes de 2016 de acordo com as faixas dos Correios, que separam as regiões do Brasil em várias categorias: Locais, Divisa, Capitais e Interior. Cada um destas é subdividido em grupos, sendo de 1 a 4 ou de 1 a 6.
+Recentemente, nossa equipe fez algumas análises de frete e um dos desafios foi classificar todos os fretes de 2016 de acordo com as faixas dos Correios, que separam as regiões do Brasil em várias categorias: Locais, Divisa, Capitais e Interior. Cada categoria é subdividida em grupos, sendo de 1 a 4 ou de 1 a 6.
 
 Para descobrir qual a categoria de um frete, temos que consultar diversas tabelas, em geral em um formato CSV ou planilha:
 
