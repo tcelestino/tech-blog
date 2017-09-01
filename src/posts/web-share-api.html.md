@@ -32,9 +32,9 @@ A Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/We
 
 ## Implementando Web Share API
 
-Como falei anteriormente, aqui no Elo7 implementamos o compartilhamento via *query strings*. Na discussão do time de front-end sobre a implementação da Web Share API, concluimos que seria melhor manter a abordagem da *query string* como *fallback* para caso o navegador não tenha suporte a Web Share API. Na época da implementação, era possível utilizar a API participando do programa [Original Trials](https://github.com/GoogleChrome/OriginTrials/), mas que não está mais disponível. Se você tiver curioso, existem outras API's interessantes poderão ser lançadas em breve (WebUSB, WebVR e getInstalledRelatedApps). Vale a pena conferir!
+Como falei anteriormente, aqui no Elo7 implementamos o compartilhamento via *query strings*. Na discussão do time de front-end sobre a adoção da Web Share API, concluímos que seria melhor mantermos a implementação atual (utilizando *query strings*) como *fallback* para os casos onde os navegadores não tenham suporte nativo a Web Share API. Quando implementamos a funcionalidade da primeira vez era possível utilizá-la participando do programa Origin Trials do Google Chrome (que não está mais disponível). Caso você esteja curioso, saiba que existem outras API's interessantes que podem ser lançadas em breve, como: WebUSB, WebVR, getInstalledRelatedApps, entre outros. Vale a pena conferir!
 
-Para usar a Web Share API é bem simples. Vamos criar um arquivo e chama-lo de `index.html` e vamos ter o seguinte código:
+Utilizar a Web Share API é bem simples! Vamos criar um arquivo, chamá-lo de index.html contendo o seguinte código:
 
 ```html
 <html>
@@ -70,17 +70,17 @@ Para usar a Web Share API é bem simples. Vamos criar um arquivo e chama-lo de `
 </html>
 ```
 
-No código acima, estou usando o [doc-amd](https://github.com/elo7/doc-amd), [events-amd](https://github.com/elo7/events-amd) e o [async-define](https://github.com/elo7/async-define), projetos *open sources* do Elo7 e que utilizamos na nossa stack de desenvolvimento front-end. Fique a vontade para usar a biblioteca que você preferir, ou usar JavaScript "puro".
+No código acima, utilizei o [doc-amd](https://github.com/elo7/doc-amd), [events-amd](https://github.com/elo7/events-amd) e o [async-define](https://github.com/elo7/async-define), projetos *open sources* do Elo7 e que utilizamos na nossa stack de desenvolvimento front-end. Fique a vontade para usar a biblioteca de sua preferência ou reimplementá-la utilizando apenas JavaScript.
 
 Ao clicar no link compartilhar, teremos a seguinte tela:
 
 <div style='text-align: center; font-style: italic;'><iframe src="https://giphy.com/embed/26zza3FAMBhksoHFC" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>Compartilhamento usando Web Share API</div>
 
-## Entendendo o código.
+## Entendendo o código
 
 Vamos entender um pouco mais sobre como que funciona nosso código de exemplo.
 
-A Web Share API está disponível no `navigator.share` e precisamos verificar se está disponível no navegador, por isso usamos o  `if`, caso não esteja disponível, chamamos nosso *fallback*.
+A Web Share API está disponível através do método share do objeto navigator (sua ref. pode ser obtida utilizando `navigator.share`). Precisamos verificar se ela está disponível no navegador, por isso usamos, por isso usamos o  `if`, caso não esteja disponível, chamamos nosso *fallback*.
 
 ```javascript
 if(navigator.share) {
@@ -98,9 +98,9 @@ if(navigator.share) {
 }
 ```
 
-Como falei anteriormente, a Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), então podemos ter dois "comportamentos". Caso o compartilhamento seja realizado com sucesso é chamado o trecho do bloco de código que está dentro do `then`. Aqui no Elo7 por exemplo, enviamos essa informação para o nosso GA. Mas caso aconteça um erro, o `catch` será executado e assim podemos implementar um *feedback* para o usuário. Só lembrando que o `catch` não tem nenhuma relação em relação a disponibilidade de API no navegador do usuário.
+Como falei anteriormente, a Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), então ao compartilhar uma informação temos dois "comportamentos" mapeados. Caso o compartilhamento seja realizado com sucesso, é executado o trecho de código implementado no método `then`. A título de exemplo, quando isso ocorre no Elo7 enviamos essa informação para o nosso Google Analytics. Caso aconteça um erro durante o processo, o que está implementado dentro do método catch será executado e assim podemos adicionar uma estratégia de fallback para o usuário. Vale ressaltar aqui, que o `catch` não tem nenhuma relação com a disponibilidade da Web Share API no navegador do usuário.
 
-Hoje em dia, grande parte das novas APIs JavaScript estão baseadas em Promise, logo, recomendo você começar a ler sobre e até mesmo implementar em seus projetos.
+Hoje em dia, grande parte das novas APIs JavaScript são baseadas no uso de Promises, portanto recomendo que você comece a estudar sobre e implementá-la em seus projetos.
 
 Passando pela verificação, caso o navegador tenha suporte, passamos para a API um objeto com os seguintes valores:
 
@@ -119,7 +119,7 @@ navigator.share({
 
 ## Usando canonical URL
 
-Muitos sites utilizam um dominio especifico (http://m.site.com.br, por exemplo) para ser acessado em dispositivos móveis ou até mesmo URL's baseadas no contexto do usuário. Com isso, é preciso pensar bastante na URL que será compartilhada para entregar uma boa experiência para o usuário. Existe a possibilidade de compartilhar o link correto usando [canonical URL](https://en.wikipedia.org/wiki/Canonical_link_element). Atualizando nosso `index.html`, ficaria assim:
+Muitos sites utilizam um domínio específico (http://m.site.com.br) para ser acessado em dispositivos móveis ou até mesmo URL's baseadas no contexto do usuário. Com isso, é preciso pensar bastante na URL que será compartilhada para entregar uma boa experiência para o usuário. Existe a possibilidade de compartilhar o link correto usando [canonical URL](https://en.wikipedia.org/wiki/Canonical_link_element). Atualizando nosso `index.html`, ficaria assim:
 
 ```html
 <html>
@@ -138,10 +138,10 @@ Muitos sites utilizam um dominio especifico (http://m.site.com.br, por exemplo) 
         define(['doc'], function($) {
 
           var url = document.location.href;
-          var canonical = $('link[rel=canonical]');
+          var $canonical = $('link[rel=canonical]');
 
-          if(canonical !== undefined) {
-              url = canonical.href;
+          if($canonical.isPresent()) {
+              url = $canonical.attr('href');
           }
 
           $('.share').on('click', function(evt) {
@@ -178,9 +178,7 @@ Apesar da implementação ser simples, para usar a API é preciso ter algumas at
 
 ## Conclusão
 
-A Web Share API com certeza será usada por diversos desenvolvedores para entregar uma melhor experiência para os usuários, inclusive com o crescimento no desenvolvimento de Web Apps que utilizam o conceito de [Progressive Web Apps (PWA)](https://developers.google.com/web/progressive-web-apps/),  com certeza manterá a fluidez que um app nativo possui. Sem contar que não haverá a necessidade (se não quiser fazer um *fallback*) de usar códigos de terceiros para compartilhar conteudo.
-
-Logo, logo, o Chrome 61 estará entre nós e acredito que os outros navegadores estarão implementando a API, mesmo que em fase beta. Esperar pra ver!
+A Web Share API com certeza será usada por diversos desenvolvedores para entregar uma melhor experiência para os usuários, inclusive com o crescimento no desenvolvimento de Web Apps que utilizam o conceito de [Progressive Web Apps (PWA)](https://developers.google.com/web/progressive-web-apps/),  com certeza manterá a fluidez que um app nativo possui. Sem contar que não haverá a necessidade (se não quiser fazer um *fallback*) de usar códigos de terceiros para compartilhar conteúdo.
 
 ## Referências
 
