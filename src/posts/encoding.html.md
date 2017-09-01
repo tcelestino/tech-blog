@@ -12,7 +12,7 @@ description: Já reparou como é difícil fazer acentos, emojis e outros caracte
 
 Já reparou como é difícil fazer acentos, emojis e outros caracteres estranhos serem exibidos corretamente nos seus programas? Vamos entender um pouco sobre como funciona o armazenamento de caracteres e como fazer software que suporte múltiplas línguas da maneira correta. Sim, é muito mais que termos vários arquivos com as mensagens traduzidas...
 
-*Encoding* é o mecanismo que define como representamos diversos símbolos e letras de diferentes alfabetos de maneira binária. Não tem nada haver com idiomas, só com os símbolos. O mesmo caractere **á** pode ser representado de diversas maneiras, com 1, 2 ou mais bytes, dependendo do encoding usado. Mas por que isso é assim?
+*Encoding* é o mecanismo que define como representamos diversos símbolos e letras de diferentes alfabetos de maneira binária. Não tem nada a ver com idiomas, só com os símbolos. O mesmo caractere **á** pode ser representado de diversas maneiras, com 1, 2 ou mais bytes, dependendo do encoding usado. Mas por que isso é assim?
 
 ## Um pouco de história
 
@@ -40,7 +40,7 @@ Agora, vamos mudar a forma de armazenar nosso texto, usando um outro encoding be
 
 ![Tabela com a palavra olá em hexadecimal e binário em UTF-8](/images/encoding-2.png)
 
-Veja que interessante, o mesmo texto que antes conseguia ser representado em 3 bytes, agora está ocupando 4 bytes de espaço! E para piorar, os últimos bytes nem são iguais! Antes de entrar em detalhes de como o *UTF-8* funciona, podemos criar dois arquivos com o mesmo texto em encodings diferentes e consultando o tamanho deles no disco:
+Veja que interessante, o mesmo texto que antes conseguia ser representado em 3 bytes, agora está ocupando 4 bytes de espaço, e para piorar, os últimos bytes nem são iguais! Antes de entrar em detalhes de como o *UTF-8* funciona, podemos criar dois arquivos com o mesmo texto em encodings diferentes e consultar o tamanho deles no disco:
 
 ![Tamanho dos arquivos no sistema operacional](/images/encoding-3.png)
 
@@ -67,7 +67,7 @@ Aqui o problema é outro. Como o *ISO-8859-1* só usa 1 byte para representar ca
 
 ## Mas e na prática?
 
-Em páginas web além do encoding usado para salvar o arquivo ainda temos que nos atentar ao cabeçalho `<meta>`, usado pelos navegadores para "adivinhar" qual o encoding da página. Sempre precisamos sincronizar o conteúdo desta tag com o encoding do arquivo html:
+Em páginas web, além do encoding usado para salvar o arquivo, ainda temos que nos atentar ao cabeçalho `<meta>`, usado pelos navegadores para "adivinhar" qual o encoding da página. Sempre precisamos sincronizar o conteúdo desta tag com o encoding do arquivo html:
 
 ```html
 <!DOCTYPE html>
