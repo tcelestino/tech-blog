@@ -26,13 +26,13 @@ E se existisse a possibilidade de compartilhar conteúdo diretamente da web para
 
 ## Um pouco de história
 
-Antes de surgir a ideia da Web Share API, era possível implementar o compartilhamento utilizando recursos específicos para cada sistema operacional. Por exemplo, no Android, o Chrome 18 utilizava [Web Intents](https://www.chromium.org/developers/web-intents-in-chrome). No iOS, usando [Custom URL Schemes](https://css-tricks.com/create-url-scheme/) e no Firefox OS era possível usar [Web Activies](https://developer.mozilla.org/en-US/docs/Archive/Firefox_OS/API/Web_Activities). Como pode notar, existiam diversas formas de implementação que sem dúvidas demandava tempo e paciência do desenvolvedor. Para facilitar a implementação desse recurso, o time do Google Chrome resolveu criar uma nova abordagem, assim surgindo a ideia da Web Share API.
+Por exemplo, no Android o Chrome 18 utilizavámos o [Web Intents](https://www.chromium.org/developers/web-intents-in-chrome). Já no iOS, a implementação utilizava [Custom URL Schemes](https://css-tricks.com/create-url-scheme/). E no Firefox OS, a tecnologia era a dos [Web Activies](https://developer.mozilla.org/en-US/docs/Archive/Firefox_OS/API/Web_Activities). Como pode notar, Como pode notar, existiam diversas formas de implementação que demandavam muito tempo e paciência do desenvolvedor. Pensando em facilitar a implementação desse recurso, o time do Google Chrome resolveu criar uma nova abordagem, assim surgindo a ideia da Web Share API.
 
-A Web Share API é baseada em [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise) e sua implementação é bem simples.
+A Web Share API é baseada no uso de [Promise](https://developer.mozilla.org/en/docs/Web/JavaScript/Reference/Global_Objects/Promise), e sua implementação é realmente bem simples!
 
 ## Implementando Web Share API
 
-Como falei anteriormente, aqui no Elo7 implementamos o compartilhamento via *query strings*. Na discussão do time de front-end sobre a adoção da Web Share API, concluímos que seria melhor mantermos a implementação atual (utilizando *query strings*) como *fallback* para os casos onde os navegadores não tenham suporte nativo a Web Share API. Quando implementamos a funcionalidade da primeira vez era possível utilizá-la participando do programa Origin Trials do Google Chrome (que não está mais disponível). Caso você esteja curioso, saiba que existem outras API's interessantes que podem ser lançadas em breve, como: WebUSB, WebVR, getInstalledRelatedApps, entre outros. Vale a pena conferir!
+Como falei anteriormente, aqui no Elo7 implementamos em nossas páginas o compartilhamento utilizando *query strings*. Na discussão do time de front-end sobre a adoção da Web Share API, concluímos que seria melhor mantermos a implementação atual (utilizando *query strings*) como *fallback* para os casos onde os navegadores não tenham suporte nativo a Web Share API. Quando implementamos a funcionalidade da primeira vez era possível utilizá-la participando do programa Origin Trials do Google Chrome (que não está mais disponível). Caso você esteja curioso, saiba que existem outras API's interessantes que podem ser lançadas em breve, como: WebUSB, WebVR, getInstalledRelatedApps, entre outros. Vale a pena conferir!
 
 Utilizar a Web Share API é bem simples! Vamos criar um arquivo, chamá-lo de index.html contendo o seguinte código:
 
@@ -173,7 +173,8 @@ Apesar da implementação ser simples, para usar a API é preciso ter algumas at
 
 * Seu servidor precisa ter HTTPS habilitado;
 * Você precisa passar um `text` ou uma `url`. Ou pode usar os dois (como no exemplo);
-* Os valores passados para API precisam ser no formato de texto.
+* Os valores passados para API precisam ser no formato de texto;
+* Você só pode executar a API a partir de uma ação do usuário. E não pode chama-la no `onload` da página.
 
 
 ## Conclusão
