@@ -2,21 +2,23 @@
 date: 2017-03-28
 category: front-end
 layout: post
-title: Customizando campos de formulário com o elo7-mask-amd
+title: Customizando campos de formulário com o mask-amd
 description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem como único objetivo, formatar os campos do seu formulário.
 authors: [rapahaeru]
 tags:
   - html
-  - javaScript
+  - javascript
   - front-end
   - libs
 ---
 
-Sempre procuramos uma biblioteca que seja bem focada no problema que queremos resolver, e normalmente encontramos aqueles pacotes com várias funcionalidades. Normalmente, utilizamos apenas um (ou alguns) recurso da biblioteca que escolhemos utilizar. Importante mencionar o peso inútil no final do carregamento da página, agora imagine quando você utiliza várias bibliotecas em seu site.
+Sempre procuramos uma biblioteca que seja bem focada no problema que queremos resolver e frequentemente encontramos aqueles pacotes com várias funcionalidades. Normalmente, utilizamos apenas um recurso (ou alguns) da biblioteca que escolhemos utilizar.
 
-Esse tipo de situação é muito comum, e pensando nesse problema, nós do Elo7, resolvemos escrever nossas próprias bibliotecas, diretas no que necessitamos na casa, e isso vem sendo bem bacana, pois além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
+Importante mencionar o peso inútil no final do carregamento da página, agora imagine quando você utiliza várias bibliotecas em seu site.
 
-Nesse post, iniciando um trabalho de demonstração dessas bibliotecas, vou apresentar a [mask-amd](https://github.com/elo7/mask-amd), que foca exclusivamente em customizar os campos de um formulário.
+Esse tipo de situação é muito comum e, pensando nesse problema, nós do Elo7, resolvemos escrever nossas próprias bibliotecas, diretas no que necessitamos na casa, e isso vem sendo bem bacana pois, além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
+
+Nesse post, iniciando um trabalho de demonstração dessas bibliotecas, vou apresentar a [mask-amd](https://github.com/elo7/mask-amd), que foca exclusivamente em facilitar a entrada de valores em campos de formulário seguindo uma formatação pré-determinada.
 
 ## Quando a biblioteca mask-amd é útil?
 
@@ -30,7 +32,7 @@ Você pode baixar diretamente do nosso [repositório](https://github.com/elo7/ma
 Para instalar através do NPM:
 
 ```
-$ npm install mask-amd
+$ npm install elo7-mask-amd
 ```
 
 Agora inclua o arquivo “mask-amd.js” no HTML de sua aplicação.
@@ -39,7 +41,7 @@ Agora inclua o arquivo “mask-amd.js” no HTML de sua aplicação.
 <script src='mask-amd.js'></script>
 ```
 
-Lembrando que este arquivo originalmente virá no **node_modules/elo7-mask-amd/mask-amd.js**, recomendo que mova esse arquivo. No exemplo acima, o arquivo foi movido para a raiz do projeto.
+Lembrando que este arquivo originalmente virá no **node_modules/elo7-mask-amd/mask-amd.js**. Recomendo que mova esse arquivo. No exemplo acima, o arquivo foi movido para a raiz do projeto.
 
 Ficando, por completo, assim:
 
@@ -80,13 +82,24 @@ Ficando, por completo, assim:
 
 ## Compreendendo as dependências
 
-Uma dependência do projeto é a [doc-amd](https://github.com/elo7/doc-amd/), que é uma biblioteca desenvolvida pela equipe de front-end do Elo7 para manipulação do DOM. O `doc-amd` merece um post à parte, que futuramente publicaremos aqui.
+Observando o código acima, nota-se que existem chamadas externas de scripts além do `mask-amd`.
+
+```html
+		<script src='node_modules/define-async/async-define.js'></script>
+		<script async src='node_modules/elo7-events-amd/events-amd.js'></script>
+		<script async src='node_modules/elo7-doc-amd/doc.js'></script>
+```
+
+São dependências importantes para que o `mask-amd` possa funcionar corretamente.
+Portanto, ao instalar o `mask-amd` via npm, esses outros scripts serão baixados juntos. Basta chamar em seu html.
+
+Uma dessas dependências é a [doc-amd](https://github.com/elo7/doc-amd/), que é uma biblioteca desenvolvida pela equipe de front-end do Elo7 para manipulação do DOM. O `doc-amd` merece um post à parte, que futuramente publicaremos aqui.
 
 ### Mas por que o AMD?
 
-O *elo7-mask-amd* foi projetado para trabalhar com módulos assíncronos ([AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition)), não é o objetivo desse post explicar o AMD em detalhes, mas o que é importante para nós nesse ponto é que o AMD permite carregar nosso código em módulos, e definir as dependências necessárias para o nosso projeto ser executado.
+O *mask-amd* foi projetado para trabalhar com módulos assíncronos ([AMD](https://en.wikipedia.org/wiki/Asynchronous_module_definition)). Não é o objetivo desse post explicar o AMD em detalhes, mas o que é importante para nós nesse ponto é que o AMD permite carregar nosso código em módulos, e definir as dependências necessárias para o nosso projeto ser executado.
 
-No caso da *elo7-mask-amd*, definimos que este módulo só será executado caso o `doc-amd` esteja disponível na aplicação.
+No caso da *mask-amd*, definimos que este módulo só será executado caso o `doc-amd` esteja disponível na aplicação.
 
 ```javaScript
 define('mask', ['doc'], function($) {
@@ -95,13 +108,13 @@ Aqui estamos definindo que o nome do nosso módulo é "mask" e ele depende do m�
 
 ## Implementação no código
 
-Básicamente a biblioteca utiliza hoje dois tipos de atributos nos campos do HTML, o `mask-number` e o `mask`.
+Basicamente a biblioteca utiliza hoje dois tipos de atributos nos campos do HTML, o `mask-number` e o `mask`:
 
 * ### O atributo mask-number
 
 Esse atributo deve ser utilizado nos campos onde você deseja receber apenas formatação numérica.
 
-A biblioteca suporta um **pattern** dinâmico, para suportar grande variedade de casos de uso.
+A biblioteca adota um **pattern** dinâmico, para suportar grande variedade de casos de uso.
 Imagine seu campo assim:
 
 ```html
@@ -137,11 +150,11 @@ Deixando claro:
 	<input type="text" id='peso' mask-number='#0.0'>
 </label>
 ```
-Adicionando uma "#" ao conteúdo do atributo, o input fica aguardando um terceiro caracter porém sem a obrigatoriedade. Se inserir apenas os 2, ok, mas caso seja inserido 3, tudo bem também.
+Adicionando uma "#" ao conteúdo do atributo `mask-number` o input fica aguardando um terceiro caracter, porém sem a obrigatoriedade. Se inserir apenas os dois, ok, mas caso seja inserido três, tudo bem também.
 
 * ### O atributo mask
 
-Este atributo é mais focado nas formatações de formulário, como telefones, datas e até mesmo cpf.
+Este atributo é mais focado nas formatações de formulário, como telefones, datas e até mesmo CPF.
 
 Vamos pensar em uma data agora?
 
@@ -164,12 +177,13 @@ E no caso de nós, brasileiros, um CPF?
 E caso precise criar um **pattern** customizado?
 
 ```html
-Inventado (88.99-00): <input type='text' mask='99.999-99'>
+Inventado (99.999-99): <input type='text' mask='99.999-99'>
 ```
 Também funciona. Fique livre para mascarar da forma que bem entender.
 
-Caso queira um teste *live*, basta acessar o nosso gh-pages [aqui](https://elo7.github.io/mask-amd/).
+Caso queira um teste *live*, basta acessar o [nosso gh-pages](https://elo7.github.io/mask-amd/).
 
-Bom chegamos ao fim! Espero que este artigo tenha sido útil para você e gostaria de reforçar que estamos sempre abertos a sugestões/melhorias para nossa biblioteca!
+Bom, chegamos ao fim! Espero que este artigo tenha sido útil e gostaria de reforçar que estamos sempre abertos a sugestões/melhorias para nossa biblioteca.
+Fiquem à vontade para colaborar conosco no [Github](https://github.com/elo7/mask-amd) com Issues e Pull Requests.
 
 Obrigado =]
