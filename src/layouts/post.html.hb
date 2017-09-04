@@ -32,17 +32,20 @@ layout: page
 		{{/each}}
 		</ul>
 		<section class='share'>
-			<a href='https://www.facebook.com/dialog/share?app_id=644444999041914&href={{site.url}}{{document.url}}&display=popup' rel='noopener' target='_blank' class='link-share facebook' title='Clique para compartilhar no Facebook'>
-				Compartilhar no facebook
-			</a>
-			<a href='https://twitter.com/intent/tweet?text={{document.title}}&url={{site.url}}{{document.url}}&hashtags=elo7tech' rel='noopener' target='_blank' class='link-share twitter' title='Clique para compartilhar no Twitter'>
-				Compartilhar no twitter
-			</a>
-			<a href='{{site.url}}{{document.url}}' class='link-share hide copy' title='Clique para copiar a url'>
-				Copiar URL
-			</a>
-			<span class='copy-success'>Link copiado</span>
-			<input type='url' value='{{site.url}}{{document.url}}' class='link-input'>
+			<a href='#share' class='share-post' title='Clique aqui para compartilhar esse post'>Compartilhe</a>
+			<div class='social-share hide'>
+				<a href='https://www.facebook.com/dialog/share?app_id=644444999041914&href={{site.url}}{{document.url}}&display=popup' rel='noopener' target='_blank' class='link-share facebook' title='Clique para compartilhar no Facebook'>
+					Compartilhar no facebook
+				</a>
+				<a href='https://twitter.com/intent/tweet?text={{document.title}}&url={{site.url}}{{document.url}}&hashtags=elo7tech' rel='noopener' target='_blank' class='link-share twitter' title='Clique para compartilhar no Twitter'>
+					Compartilhar no twitter
+				</a>
+				<a href='{{site.url}}{{document.url}}' class='link-share hide copy' title='Clique para copiar a url'>
+					Copiar URL
+				</a>
+				<span class='copy-success'>Link copiado</span>
+				<input type='url' value='{{site.url}}{{document.url}}' class='link-input'>
+			</div>
 		</section>
 	</div>
 	<span itemprop="image" itemscope itemtype="http://schema.org/ImageObject"> <!--Change for a post image-->

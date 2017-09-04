@@ -1,4 +1,21 @@
 define(['doc', 'github'], function($, github) {
+	'use strict';
+
+	var $sharePost = $('.share > .share-post');
+
+	if(navigator.share) {
+		$sharePost.on('click', function() {
+			var $title = $("meta[property='og:title']"),
+				$canonicalURL = $('link["rel=canonical"]');
+			navigator.share({
+				title: $title.isPresent() ? $title.attr('content') : $('.post-content > .title').html(),
+				url: $canonicalURL.isPresent() ? canonicalURL.attr('href') : document.location.href
+			}).then(() => console.log('Compartilhado com sucesso!')).catch((e) => console.error('Falha ao compartilhar', e));
+		});
+	} else {
+		$sharePost.addClass('hide');
+		$('.social-share').removeClass('hide');
+	}
 
 	var $authors = $('.author'),
 		$copy = $('.copy'),
