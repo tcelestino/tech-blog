@@ -522,7 +522,7 @@
 		<ul>
 			{{#each (getCategories)}}
 				<li itemscope itemtype='http://schema.org/SiteNavigationElement'>
-					<a itemprop='url' href='/amp/{{category}}'>
+					<a itemprop='url' href='/amp/{{category}}/'>
 						<span itemprop='name'>{{category}}</span>
 					</a>
 				</li>

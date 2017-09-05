@@ -13,7 +13,7 @@ layout: page-amp
 			</header>
 			<div class='post-meta'>
 				{{#each authors}}
-					<a href='/amp/{{this}}' class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
+					<a href='/amp/{{this}}/' class='author' itemprop='author' itemscope itemtype='http://schema.org/Person'>
 						<span itemprop='name'>@{{this}}</span>
 					</a> ·
 				{{/each}}
@@ -30,7 +30,7 @@ layout: page-amp
 				<meta itemprop='headline' content='{{ellipsis . 110}}' >
 			{{/description}}
 
-			<a href='/amp/{{category}}' class='category {{category}}'>{{category}}</a>
+			<a href='/amp/{{category}}/' class='category {{category}}'>{{category}}</a>
 			<a href='{{../site.baseUrl}}/amp{{url}}' class='link post-link'>Continue lendo</a>
 
 			<span itemprop='image' itemscope itemtype='http://schema.org/ImageObject'> <!--Change for a post image-->

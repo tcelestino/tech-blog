@@ -11,7 +11,7 @@ layout: page-amp
 
 		<article>
 			{{#each document.authors}}
-				<a data-author='{{this}}' itemprop='author' itemscope itemtype='http://schema.org/Person' rel='author' href='/amp/{{this}}' class='author'>
+				<a data-author='{{this}}' itemprop='author' itemscope itemtype='http://schema.org/Person' rel='author' href='/amp/{{this}}/' class='author'>
 					<meta itemprop='url' content='/amp/{{this}}'>
 					<span itemprop='name' class='publisher' data-author='{{this}}'>@{{this}}</span>
 					<meta itemprop='worksFor' content='Elo7 Serviços de Informática SA'>

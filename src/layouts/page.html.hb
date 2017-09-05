@@ -58,7 +58,7 @@
 			<ul class="nav-list nav-category">
 				{{#each (getCategories)}}
 					<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<a itemprop="url" href="/{{category}}">
+						<a itemprop="url" href="/{{category}}/">
 							<span itemprop="name">{{category}}</span>
 						</a>
 					</li>
