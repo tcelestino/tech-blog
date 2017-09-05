@@ -117,8 +117,10 @@ Esse atributo deve ser utilizado nos campos onde você deseja receber apenas for
 A biblioteca adota um **pattern** dinâmico, para suportar grande variedade de casos de uso.
 Imagine seu campo assim:
 
+![Imagem demonstrativa do funcionamento da biblioteca com máscara de 3 caracteres obrigatórios](../images/elo7-mask-amd-weight-01.gif)
+
 ```html
-<label for="peso">
+<label>
 	Peso (00.0):
 	<input type="text" id='peso'>
 </label>
@@ -128,9 +130,10 @@ Pensando exatamente como a `label` supõe, precisamos que:
 * possuam no máximo 3 números;
 * e que o caracter separador seja um ponto.
 
+![Imagem demonstrativa do funcionamento da biblioteca com máscara de 3 caracteres obrigatórios](../images/elo7-mask-amd-weight-01.gif)
 
 ```html
-<label for="peso">
+<label>
 	Peso (00.0):
 	<input type="text" id='peso' mask-number='00.0'>
 </label>
@@ -140,14 +143,16 @@ Apenas adicionamos o atributo `mask-number` com o **pattern** desejado.
 Mas, e se eu quiser inserir no mínimo 2 caracteres e também queira ter no máximo 3?
 Deixando claro:
 
-* Obrigatoriedade de 2 caracteres no mínimo;
-* máximo de 3 caracteres;
+* Obrigatoriedade de 3 caracteres no mínimo;
+* máximo de 4 caracteres;
 * e que sejam apenas números.
 
+![Imagem demonstrativa do funcionamento da biblioteca com máscara de 3 caracteres mínimos obrigatórios](../images/elo7-mask-amd-weight-02.gif)
+
 ```html
-<label for="peso">
-	Peso (00.0):
-	<input type="text" id='peso' mask-number='#0.0'>
+<label>
+	Peso (0.00):
+	<input type="text" id='peso' mask-number='#0.00'>
 </label>
 ```
 Adicionando uma "#" ao conteúdo do atributo `mask-number` o input fica aguardando um terceiro caracter, porém sem a obrigatoriedade. Se inserir apenas os dois, ok, mas caso seja inserido três, tudo bem também.
@@ -158,8 +163,10 @@ Este atributo é mais focado nas formatações de formulário, como telefones, d
 
 Vamos pensar em uma data agora?
 
+![Imagem demonstrativa do funcionamento da biblioteca com máscara de data](../images/elo7-mask-amd-date.gif)
+
 ```html
-<label for="data">
+<label>
 	Data (10/10/2010):
 	<input type="text" id='data' mask='99/99/9999'>
 </label>
@@ -168,7 +175,7 @@ Repare que o atributo mudou, agora é apenas `mask`.
 
 E no caso de nós, brasileiros, um CPF?
 ```html
-<label for='cpf-1'>
+<label>
 	CPF (999.999.999-99):
 	<input type='text' id='cpf-1' mask='999.999.999-99'>
 </label>
@@ -182,6 +189,8 @@ Inventado (99.999-99): <input type='text' mask='99.999-99'>
 Também funciona. Fique livre para mascarar da forma que bem entender.
 
 Caso queira um teste *live*, basta acessar o [nosso gh-pages](https://elo7.github.io/mask-amd/).
+
+Importante deixar claro que o `mask-amd` não valida os valores do formulário, caso interesse, sugiro a nossa biblioteca [form-amd](https://github.com/elo7/form-amd) que é específica para isso.
 
 Bom, chegamos ao fim! Espero que este artigo tenha sido útil e gostaria de reforçar que estamos sempre abertos a sugestões/melhorias para nossa biblioteca.
 Fiquem à vontade para colaborar conosco no [Github](https://github.com/elo7/mask-amd) com Issues e Pull Requests.
