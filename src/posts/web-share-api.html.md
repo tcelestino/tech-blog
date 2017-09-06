@@ -159,7 +159,7 @@ Apesar da implementação ser simples, para usar a API é preciso ter algumas at
 
 ## Conclusão
 
-A Web Share API tem um enorme potencial e certamente será utilizada pelos desenvolvedores para entregar uma experiência aprimorada a seus usuários. Essa tendência deve ser puxada pelo desenvolvimento de Web Apps que utilizam o conceito [Progressive Web Apps (PWA)](http://engenharia.elo7.com.br/a-tecnologia-por-tras-de-progressive-web-apps/), para entregar em mobile browsers a mesma fluidez que os Apps Nativos possuem. Outra vantagem é que através de sua utilização, não haverá mais a necessidade de utilizar códigos de terceiros (a não ser que você precise implementar uma estratégia de *fallback*) para compartilhar de conteúdo na web.
+A Web Share API tem um enorme potencial e certamente será utilizada pelos desenvolvedores para entregar uma experiência aprimorada a seus usuários. Essa tendência deve ser puxada pelo desenvolvimento de Web Apps que utilizam o [conceito Progressive Web Apps (PWA)](/a-tecnologia-por-tras-de-progressive-web-apps/), para entregar em mobile browsers a mesma fluidez que os Apps Nativos possuem. Outra vantagem é que através de sua utilização, não haverá mais a necessidade de utilizar códigos de terceiros (a não ser que você precise implementar uma estratégia de *fallback*) para compartilhar de conteúdo na web.
 
 ## Referências
 
