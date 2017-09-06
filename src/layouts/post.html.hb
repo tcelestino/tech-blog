@@ -32,8 +32,8 @@ layout: page
 		{{/each}}
 		</ul>
 		<section class='share'>
-			<a href='#share' class='share-post' title='Clique aqui para compartilhar esse post'>Compartilhe</a>
-			<div class='social-share hide'>
+			<a href='#share' class='share-post hide' title='Clique aqui para compartilhar esse post'>Compartilhe</a>
+			<div class='social-share'>
 				<a href='https://www.facebook.com/dialog/share?app_id=644444999041914&href={{site.url}}{{document.url}}&display=popup' rel='noopener' target='_blank' class='link-share facebook' title='Clique para compartilhar no Facebook'>
 					Compartilhar no facebook
 				</a>

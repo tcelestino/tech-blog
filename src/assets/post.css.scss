@@ -142,6 +142,10 @@ autoprefix: true
 		}
 	}
 
+	.share-post:not(.hide) ~ .social-share {
+		display: none;
+	}
+
 	.link-share {
 		display: inline-block;
 		width: 30px;
@@ -210,6 +214,10 @@ autoprefix: true
 
 		.share-post {
 			display: none;
+		}
+
+		.share-post:not(.hide) ~ .social-share, .social-share {
+			display: block;
 		}
 
 		.link-share {
