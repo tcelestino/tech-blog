@@ -1,5 +1,5 @@
 ---
-date: 2017-08-07
+date: 2017-09-06
 category: front-end
 tags:
   - javascript
@@ -18,7 +18,7 @@ Vivemos atualmente a era da informação, onde estamos conectados o tempo todo a
 ```
 <div style='text-align: center; font-style: italic'>Código de exemplo de como usamos o compartilhamento vira query string no Facebook</div>
 
-E se existisse a possibilidade de compartilhar conteúdo diretamente da web para aplicativos nativos? Sim, isso é possível usando uma nova API Javascript chamada [Web Share API](https://wicg.github.io/web-share/) que, no exato momento em que escrevo esse post, já está [confirmado para estrear na versão 61 do Chrome](https://www.chromestatus.com/features/5668769141620736) para Android, macOS, Linux, Chrome OS e Windows. Firefox e Safari pretendem implementá-la em breve, enquanto a Microsoft ainda não se pronunciou sobre a adoção no Edge. Isso não quer dizer que você não possa implementar para o futuro próximo.
+E se existisse a possibilidade de compartilhar conteúdo diretamente da web para aplicativos nativos? Sim, isso é possível usando uma nova API Javascript chamada [Web Share API](https://wicg.github.io/web-share/), que já está [disponível na última versão do Chrome para Android](https://developers.google.com/web/updates/2017/09/nic61). Firefox e Safari pretendem implementá-la em breve, enquanto a Microsoft ainda não se pronunciou sobre a adoção no Edge. Isso não quer dizer que você não possa implementar para o futuro próximo.
 
 <div style='text-align: center; font-style: italic'><iframe src="https://giphy.com/embed/26zz3WzwwLTbnYXUk" width="270" height="480" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><br><br>Compartilhando um link usando URL Intent</div>
 
