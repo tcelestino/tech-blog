@@ -208,6 +208,10 @@ autoprefix: true
 		top: 2em;
 		left: calc(215px + (100% - 215px) * 0.85);
 
+		.share-post {
+			display: none;
+		}
+
 		.link-share {
 			display: block;
 

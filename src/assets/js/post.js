@@ -4,6 +4,7 @@ define(['doc', 'github'], function($, github) {
 	var $sharePost = $('.share > .share-post');
 
 	if(navigator.share) {
+		$sharePost.removeClass('hide');
 		$sharePost.on('click', function() {
 			var $title = $("meta[property='og:title']"),
 				$canonicalURL = $('link["rel=canonical"]');
@@ -13,7 +14,6 @@ define(['doc', 'github'], function($, github) {
 			}).then(() => console.log('Compartilhado com sucesso!')).catch((e) => console.error('Falha ao compartilhar', e));
 		});
 	} else {
-		$sharePost.addClass('hide');
 		$('.social-share').removeClass('hide');
 	}
 
