@@ -121,14 +121,19 @@ autoprefix: true
 
 
 	.share-post {
-		border: 2px solid map-get($colors-border, dark-gray);
+		background-color: darken($yellow-default, 10);
+		border: 1px solid darken($yellow-default, 10);
+		color: map-get($colors-text, white);
 		border-radius: 5px;
-		color: map-get($colors-text, dark-gray);
 		display: block;
 		padding: 0.55em 0;
 		text-align: center;
 		text-decoration: none;
 		width: 100%;
+
+		&:focus, &:hover {
+			color: map-get($colors-text, white);
+		}
 
 		&:before {
 			background-image: url('/images/ico/ic-share.svg');
@@ -211,14 +216,6 @@ autoprefix: true
 		position: fixed;
 		top: 2em;
 		left: calc(215px + (100% - 215px) * 0.85);
-
-		.share-post {
-			display: none;
-		}
-
-		.share-post:not(.hide) ~ .social-share, .social-share {
-			display: block;
-		}
 
 		.link-share {
 			display: block;

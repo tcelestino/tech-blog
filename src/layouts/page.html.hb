@@ -31,7 +31,7 @@
 	<meta property="twitter:description" content="{{document.description}}">
 	<meta property="twitter:image" content="{{site.url}}/images/ico/elo7.png">
 
-	<link rel="canonical" href="{{site.url}}">
+	<link rel="canonical" href="{{site.url}}{{document.url}}">
 	{{#hasAmpPage document.slug}}
 		<link rel='amphtml' href='{{site.url}}/{{getAmpURI document.slug}}' />
 	{{/hasAmpPage}}

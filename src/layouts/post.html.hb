@@ -40,11 +40,11 @@ layout: page
 				<a href='https://twitter.com/intent/tweet?text={{document.title}}&url={{site.url}}{{document.url}}&hashtags=elo7tech' rel='noopener' target='_blank' class='link-share twitter' title='Clique para compartilhar no Twitter'>
 					Compartilhar no twitter
 				</a>
-				<a href='{{site.url}}{{document.url}}' class='link-share hide copy' title='Clique para copiar a url'>
+				<a href='{{site.url}}{{document.url}}?utm_source=share&utm_medium=copy' class='link-share hide copy' title='Clique para copiar a url'>
 					Copiar URL
 				</a>
 				<span class='copy-success'>Link copiado</span>
-				<input type='url' value='{{site.url}}{{document.url}}' class='link-input'>
+				<input type='url' value='{{site.url}}{{document.url}}?utm_source=share&utm_medium=copy' class='link-input'>
 			</div>
 		</section>
 	</div>
