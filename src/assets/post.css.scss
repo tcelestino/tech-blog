@@ -119,6 +119,38 @@ autoprefix: true
 	position: relative;
 	text-align: right;
 
+
+	.share-post {
+		background-color: darken($yellow-default, 10);
+		border: 1px solid darken($yellow-default, 10);
+		color: map-get($colors-text, white);
+		border-radius: 5px;
+		display: block;
+		padding: 0.55em 0;
+		text-align: center;
+		text-decoration: none;
+		width: 100%;
+
+		&:focus, &:hover {
+			color: map-get($colors-text, white);
+		}
+
+		&:before {
+			background-image: url('/images/ico/ic-share.svg');
+			background-repeat: no-repeat;
+			background-size: contain;
+			content: '';
+			display: inline-block;
+			height: 15px;
+			vertical-align: middle;
+			width: 25px;
+		}
+	}
+
+	.share-post:not(.hide) ~ .social-share {
+		display: none;
+	}
+
 	.link-share {
 		display: inline-block;
 		width: 30px;
