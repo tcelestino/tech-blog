@@ -24,13 +24,16 @@
   },
   "main": "node_modules/.bin/docpad-server",
   "scripts": {
-    "start": "node_modules/.bin/docpad run",
-    "copy-ajax-amd": "cp node_modules/elo7-ajax-amd/ajax.js src/assets/js/vendor/ajax.js",
-    "copy-doc-amd": "cp node_modules/elo7-doc-amd/doc.js src/assets/js/vendor/doc.js",
-    "copy-async-amd": "cp node_modules/define-async/async-define.js src/assets/js/vendor/async-define.js",
-    "copy-events-amd": "cp node_modules/elo7-events-amd/events-amd.js src/assets/js/vendor/events-amd.js",
-    "copy": "mkdir -p src/assets/js/vendor && npm run copy-ajax-amd && npm run copy-events-amd && npm run copy-async-amd && npm run copy-doc-amd",
+    "copy:ajax-amd": "cp node_modules/elo7-ajax-amd/ajax.js src/assets/js/vendor/ajax.js",
+    "copy:doc-amd": "cp node_modules/elo7-doc-amd/doc.js src/assets/js/vendor/doc.js",
+    "copy:async-amd": "cp node_modules/define-async/async-define.js src/assets/js/vendor/async-define.js",
+    "copy:events-amd": "cp node_modules/elo7-events-amd/events-amd.js src/assets/js/vendor/events-amd.js",
+    "precopy": "mkdir -p src/assets/js/vendor",
+    "copy": "npm run copy:ajax-amd && npm run copy:events-amd && npm run copy:async-amd && npm run copy:doc-amd",
     "postinstall": "npm run copy",
-    "clean": "rm -rf out && rm -rf src/documents/amp"
+    "clean": "rm -rf out && rm -rf src/documents/amp",
+    "start": "docpad run",
+    "test": "docpad generate --silent --env static",
+    "deploy": "docpad deploy-ghpages --silent --env static"
   }
 }
