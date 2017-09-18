@@ -34,7 +34,7 @@ Nosso problema foi processar todos do dados de 2016 e classificar todos os frete
 
 ### Os dados
 
-O carregamento dos dados é simples, diretamente do CSV:
+Toda a nossa solução foi implementada em Python. O carregamento dos dados é simples, diretamente do CSV:
 
 ``` python
 # faixas_ceps_divisa é um dicionário, com as faixas como chave e o código como valor
@@ -58,8 +58,10 @@ print(len(faixas_ceps_divisa))
 ```
 
 ``` python
-print(list(faixas_ceps_divisa)[:10])
-[(75430000, 75439999, 70000001, 72799999), (19800001, 19819999, 87110001, 87119999), (86730000, 86749999, 12200001, 12249999), (87560000, 87564999, 12630000, 12689999), (37890000, 37899999, 17200001, 17229999), (37472000, 37473999, 7400001, 7499999), (87780000, 87789999, 11600000, 11629999), (27300001, 27399999, 37200000, 37209999), (87380000, 87389999, 13160000, 13164999), (89250001, 89269999, 83000001, 83189999)]
+print(list(faixas_ceps_divisa)[:3])
+[ (75430000, 75439999, 70000001, 72799999), 
+  (19800001, 19819999, 87110001, 87119999), 
+  (86730000, 86749999, 12200001, 12249999) ]
 ```
 
 ``` python
@@ -88,6 +90,7 @@ assert is_cep_divisa(32000000,12345001) == None
 %timeit is_cep_divisa(57935000,53520001)
 7.66 ms ± 539 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
+A chamada %timeit automaticamente faz um teste de performance para uma dada função. Neste caso a função is_cep_divisa() foi executada repetidamente por 7 rodadas (runs), cada rodada com 100 repetição, e para cada rodada (100 chamadas) uma média foi calculada. No fim das 7 rodadas a média final (7.66 milisegundos) e o desvio padrão (+/- 539 microsegundos) são mostrados.
 
 ``` python
 %timeit is_cep_divisa(32000000,12345001)
@@ -121,10 +124,9 @@ assert is_cep_divisa(32000000,12345001) == None
 %timeit is_cep_divisa(32000000,12345001)
 5.83 ms ± 245 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
+Neste segundo teste, o cep de destino "12345001" não existe, forçando o loop da função a testar todos os 40 mil registros, o que faz o teste mais lento que no primeiro caso. De maneira é possível ver que a performance melhora um pouco, mas depende muito da posição na lista. 
 
-É possível ver que a performance melhora um pouco, mas depende muito da posição na lista. Então, vamos precisar processar milhões de registros. 
-
-Quando testamos esta versão, o tempo de processamento ficou em ~ 10 horas.
+Quando testamos esta versão, o tempo de processamento ficou em aproximadamente 10 horas.
 
 ### Procurando uma solução
 
