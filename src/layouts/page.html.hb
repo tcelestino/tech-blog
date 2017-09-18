@@ -41,7 +41,7 @@
 	<link rel="stylesheet" href="/main.css">
 	<link rel="stylesheet" href="/posts.css">
 	<link rel="stylesheet" href="/post.css">
-	<link rel="icon" type="image/png" href="/images/favicon.ico">
+	<link rel="icon" type="image/png" href="/images/favicon.png">
 	<script>window.addEventListener("error", window.__e=function f(e){f.q=f.q||[];f.q.push(e)});</script>
 	<script src="/js/vendor/async-define.js"></script>
 </head>
