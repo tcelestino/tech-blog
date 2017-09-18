@@ -140,7 +140,7 @@ Pensando exatamente como a `label` supõe, precisamos que:
 ```
 Apenas adicionamos o atributo `mask-number` com o **pattern** desejado.
 
-Mas, e se eu quiser inserir no mínimo 2 caracteres e também queira ter no máximo 3?
+Mas, e se eu quiser inserir no mínimo 3 caracteres e também queira ter no máximo 4?
 Deixando claro:
 
 * Obrigatoriedade de 3 caracteres no mínimo;
