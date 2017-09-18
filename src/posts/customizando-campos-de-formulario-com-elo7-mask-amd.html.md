@@ -1,9 +1,9 @@
 ---
-date: 2017-03-28
+date: 2017-09-18
 category: front-end
 layout: post
 title: Customizando campos de formulário com o mask-amd
-description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem como único objetivo, formatar os campos do seu formulário.
+description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem como único objetivo: formatar os campos do seu formulário.
 authors: [rapahaeru]
 tags:
   - html
@@ -14,9 +14,9 @@ tags:
 
 Sempre procuramos uma biblioteca que seja bem focada no problema que queremos resolver e frequentemente encontramos aqueles pacotes com várias funcionalidades. Normalmente, utilizamos apenas um recurso (ou alguns) da biblioteca que escolhemos utilizar.
 
-Importante mencionar o peso inútil no final do carregamento da página, agora imagine quando você utiliza várias bibliotecas em seu site.
+É importante mencionar o peso inútil no final do carregamento da página, agora imagine quando você utiliza várias bibliotecas em seu site.
 
-Esse tipo de situação é muito comum e, pensando nesse problema, nós do Elo7, resolvemos escrever nossas próprias bibliotecas, diretas no que necessitamos na casa, e isso vem sendo bem bacana pois, além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
+Esse tipo de situação é muito comum e, pensando nesse problema, nós do Elo7 resolvemos escrever nossas próprias bibliotecas, diretas no que necessitamos na casa, e isso vem sendo bem bacana pois, além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
 
 Nesse post, iniciando um trabalho de demonstração dessas bibliotecas, vou apresentar a [mask-amd](https://github.com/elo7/mask-amd), que foca exclusivamente em facilitar a entrada de valores em campos de formulário seguindo uma formatação pré-determinada.
 
@@ -190,7 +190,7 @@ Também funciona. Fique livre para mascarar da forma que bem entender.
 
 Caso queira um teste *live*, basta acessar o [nosso gh-pages](https://elo7.github.io/mask-amd/).
 
-Importante deixar claro que o `mask-amd` não valida os valores do formulário, caso interesse, sugiro a nossa biblioteca [form-amd](https://github.com/elo7/form-amd) que é específica para isso.
+Importante deixar claro que o `mask-amd` não valida os valores do formulário. Caso tenha essa necessidade sugiro a nossa biblioteca [form-amd](https://github.com/elo7/form-amd) que é específica para isso.
 
 Bom, chegamos ao fim! Espero que este artigo tenha sido útil e gostaria de reforçar que estamos sempre abertos a sugestões/melhorias para nossa biblioteca.
 Fiquem à vontade para colaborar conosco no [Github](https://github.com/elo7/mask-amd) com Issues e Pull Requests.
