@@ -17,7 +17,7 @@ Acessibilidade é um tema que tem ganho cada vez mais atenção. Vemos cada vez 
 
 Começamos a abordar a questão de acessibilidade por iniciativa de alguns indivíduos do time. A [Aline Lee](/alinelee/) usou o *hackday* (tempo reservado em cada sprint para o time de engenharia se aperfeiçoar e inovar) para investigar e melhorar a acessibilidade por teclado no cabeçalho do site.
 
-![Cabeçalho do site do Elo7 com o foco do teclado no componente de busca](../images/testando-acessibilidade-2.png)
+![Cabeçalho do site do Elo7 com o foco do teclado no componente de busca](../images/testando-acessibilidade-1.png)
 
 O [Raphael Oliveira](/rapahaeru/) escreveu diversos posts sobre técnicas relacionadas a acessibilidade, tais como [WAI-ARIA](/wai-aria-apanhado-geral/) e [HTML semântico](/html-semantico-1/). E, desde então, estamos estudando e compartilhando conteúdo sobre acessibilidade de forma contínua dentro do time. Mas entre a teoria e a prática existe um grande abismo, não é?
 
@@ -70,7 +70,7 @@ Chegamos a cogitar a coleta de métricas sobre o uso de leitores de tela em noss
 
 Tecnicamente, o Javascript da página tem acesso à API de acessibilidade do navegador. Essa API é o ponto de contato entre o navegador e o leitor de tela, mas ela não expõe nada sobre o leitor de tela para o código Javascript. Assim, não temos como coletar métricas dessa forma.
 
-![Diagrama de funcionamento da API de acessibilidade do navegador. O leitor de tela e o Javascript têm acesso a ela, mas não conhecem um ao outro diretamente!](../images/testando-acessibilidade-3.png)
+![Diagrama de funcionamento da API de acessibilidade do navegador. O leitor de tela e o Javascript têm acesso a ela, mas não conhecem um ao outro diretamente!](../images/testando-acessibilidade-2.png)
 
 Além da dificuldade técnica, tirar métricas com o objetivo de definir alvos de teste pode ser considerado invasivo pelos usuários, afinal expor o uso de um leitor de tela pode ser comparado com expor uma deficiência do usuário, uma característica pessoal dele. Por fim, dependendo dos resultados colhidos, podemos deixar de testar justamente nos cenários em que a usabilidade é pior e, por isso, tem menos usuários. Uma discussão mais ampla sobre esse aspecto pode ser encontrada no artigo [*Detecting screen readers in analytics*](https://www.powermapper.com/blog/accessibility-analytics/), de Heather Burns.
 
