@@ -23,7 +23,7 @@ main {
     padding-bottom: 81px; /*Footer Size*/
 }
 
-header.left-pane {
+.left-pane {
     background-color: map-get($colors-background, gray);
     text-align: center;
     position: relative;
@@ -38,6 +38,8 @@ header.left-pane {
         background-repeat: no-repeat;
         background-image: url('images/github_icon.svg');
         margin-bottom: 2em;
+        overflow: hidden;
+        text-indent: -100%;
     }
 
 }
@@ -48,14 +50,16 @@ header.left-pane {
 
 .logo-container {
     padding-top: 1em;
+    margin-bottom: 1em;
 
     .logo {
         background: url('//images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg') no-repeat;
         background-size: 100px 40px;
         width: 100px;
         height: 40px;
-        text-indent: -9999px;
         display: inline-block;
+        overflow: hidden;
+        text-indent: -300%;
     }
 }
 
@@ -116,7 +120,6 @@ header.left-pane {
         font-weight: 500;
         margin-bottom: 0.5em;
         text-align: left;
-        margin-top: 1.5em;
     }
 }
 
@@ -199,7 +202,7 @@ footer {
 }
 
 @media (min-width: 800px) {
-    header.left-pane {
+    .left-pane {
         display: flex;
         height: 100%;
         position: fixed;

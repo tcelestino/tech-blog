@@ -64,53 +64,46 @@
 	<script src="/js/vendor/async-define.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}" data-ga-code="{{getGaCode}}">
-	<header class="left-pane">
+	<section class="left-pane">
 		<div class="logo-container">
-			<a rel="home" itemprop="url" href="/" class="logo">{{site.title}}</a>
+			<a rel="home" itemprop="url" href="/" class="logo">Tech Blog Elo7</a>
 		</div>
-		<nav aria-label="Navigation" itemscope itemtype="http://schema.org/SiteNavigationElement" class="navigation">
+		<div itemscope itemtype="http://schema.org/SiteNavigationElement" class="navigation">
 			<input id="categories-switch" type="checkbox" class="categories-switch">
 			<label for="categories-switch" class="selectable">
 				<h2 class="nav-title">Categorias</h2>
 			</label>
-			<ul class="nav-list nav-category">
+			<nav aria-label="Navegue pelas categorias do nosso blog" class="nav-list nav-category">
 				{{#each (getCategories)}}
-					<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<a itemprop="url" href="/{{category}}/">
-							<span itemprop="name">{{category}}</span>
-						</a>
-					</li>
+					<a itemprop="url" href="/{{category}}/" itemscope itemtype="http://schema.org/SiteNavigationElement">
+						<span itemprop="name">{{category}}</span>
+					</a>
 				{{/each}}
-			</ul>
+			</nav>
+		</div>
+		<div class="navigation">
 			<input id="more-switch" type="checkbox" class="more-switch">
 			<label for="more-switch" class="selectable">
 				<h2 class="nav-title">Veja também</h2>
 			</label>
-			<ul class="nav-list nav-more">
-				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-					<a itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">
-						<span itemprop="name">A engenharia</span>
-					</a>
-				</li>
-				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-					<a itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">
-						<span itemprop="name">Carreiras</span>
-					</a>
-				</li>
-				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-					<a itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">
-						<span itemprop="name">Nossos eventos</span>
-					</a>
-				</li>
-				<li itemscope itemtype="http://schema.org/SiteNavigationElement">
-					<a itemprop="url" href="http://elo7.com.br/" target="_blank">
-						<span itemprop="name">Elo7</span>
-					</a>
-				</li>
-			</ul>
-		</nav>
-		<a rel="external" itemprop="url" href="https://github.com/elo7/tech-blog" class="social github"></a>
-	</header>
+			<nav class="nav-list nav-more" aria-label="Navegue pelos links relacionados ao Elo7">
+				<a itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="url" href="http://carreira.elo7.com.br/engenharia/" target="_blank">
+					<span itemprop="name">A engenharia</span>
+				</a>
+				<a itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="url" href="http://carreira.elo7.com.br/" target="_blank">
+					<span itemprop="name">Carreiras</span>
+				</a>
+				<a itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="url" href="http://eventos.elo7.com.br/" target="_blank">
+					<span itemprop="name">Nossos eventos</span>
+				</a>
+				<a itemscope itemtype="http://schema.org/SiteNavigationElement" itemprop="url" href="http://elo7.com.br/" target="_blank">
+					<span itemprop="name">Elo7</span>
+				</a>
+			</nav>
+		</div>
+		<a title="Github do Elo7" rel="external" itemprop="url" href="https://github.com/elo7" class="social github">Github do Elo7</a>
+	</div>
+	</section>
 	<main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
 		{{{content}}}
 

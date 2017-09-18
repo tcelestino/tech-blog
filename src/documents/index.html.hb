@@ -21,7 +21,7 @@ pageSize: 10
 							<p itemprop='name'>@{{this}}</p>
 						</a>
 					{{/each}}
-					<time datetime="{{dateAsText this.date}}" class="date">
+					<time datetime="{{formatDate this.date ''}}" class="date" aria-label="{{formatDate this.date 'LL'}}">
 						{{dateAsText this.date}}
 						<meta itemprop="datePublished" content='{{this.date}}'/>
 					</time>

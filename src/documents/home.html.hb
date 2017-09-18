@@ -18,9 +18,9 @@ layout: page-amp
 						<span itemprop='name'>@{{this}}</span>
 					</a>
 				{{/each}}
-				<time datetime='{{dateAsText this.date}}' class='date'>
+				<time datetime="{{formatDate this.date ''}}" class="date" aria-label="{{formatDate this.date 'LL'}}">
 					{{dateAsText this.date}}
-					<meta itemprop='datePublished' content='{{this.date}}'/>
+					<meta itemprop="datePublished" content='{{this.date}}'/>
 				</time>
 			</div>
 
