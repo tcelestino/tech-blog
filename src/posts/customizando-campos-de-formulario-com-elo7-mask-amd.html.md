@@ -3,7 +3,7 @@ date: 2017-09-18
 category: front-end
 layout: post
 title: Customizando campos de formulário com o mask-amd
-description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem como único objetivo: formatar os campos do seu formulário.
+description: Que tal otimizar seu tempo e seu HTML com uma biblioteca focada diretamente no que é preciso? Direto ao ponto, a mask-amd tem um único objetivo: formatar os campos do seu formulário.
 authors: [rapahaeru]
 tags:
   - html
