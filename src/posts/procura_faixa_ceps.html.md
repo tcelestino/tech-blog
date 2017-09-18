@@ -97,8 +97,9 @@ A chamada %timeit automaticamente faz um teste de performance para uma dada fun�
 6.37 ms ± 602 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
-Como vemos, a performance não é tão ruim para um caso. Contudo, estamos iterando a lista inteira e, então, uma possível melhoria seria parar assim que encontrámos um faixa de frete:
+Como vemos, a performance não é tão ruim para uma chamada de is_cep_divisa(). Contudo, vamos ter que realizara esta chamada para todos os registros de 2016, então algumas optimizações podem ajudar.
 
+Uma possível melhoria seria parar assim que encontrámos um faixa de frete correspondente a nossa procura já sairmos do loop de procura, reduzindo o número de comparações:
 
 ### Força bruta 2
 
@@ -124,19 +125,17 @@ assert is_cep_divisa(32000000,12345001) == None
 %timeit is_cep_divisa(32000000,12345001)
 5.83 ms ± 245 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
-Neste segundo teste, o cep de destino "12345001" não existe, forçando o loop da função a testar todos os 40 mil registros, o que faz o teste mais lento que no primeiro caso. De maneira é possível ver que a performance melhora um pouco, mas depende muito da posição na lista. 
+No primeiro caso a performance é melhor, porem no segundo teste o cep de destino "12345001" não existe, forçando o loop da função a testar todos os 40 mil registros, o que faz o teste mais lento que no primeiro caso. Em geral é possível ver que a performance melhora um pouco, mas depende muito da posição na lista. 
 
 Quando testamos esta versão, o tempo de processamento ficou em aproximadamente 10 horas.
 
 ### Procurando uma solução
 
-Após duas horas procurando no Google por alguma biblioteca que fizesse a procura, percebemos que estavamos indo pelo caminho errado. Com certeza a biblioteca padrão do Python já teria solução !!! 
+Após algumas horas procurando no Google por alguma biblioteca que fizesse a procura, percebemos que estávamos indo pelo caminho errado. Com certeza a biblioteca padrão do Python já teria solução!!! 
 
-Começamos a (re)ler todos os módulos do Python e achamos o que precisavamos: o módulo [bisect](https://docs.python.org/3.0/library/bisect.html) !
+Começamos a (re)ler todos os módulos do Python e achamos o que precisavamos: o módulo [bisect!](https://docs.python.org/3.0/library/bisect.html)
 
-Bisect é um método relacionado com a busca binária, para achar raizes de funções. No caso da biblioteca do Python, ele é usado com um objetivo um pouco diferente: "... provides support for maintaining a list in sorted order without having to sort the list after each insertion. For long lists of items with expensive comparison operations, this can be an improvement over the more common approach. The module is called bisect because it uses a basic bisection algorithm to do its work"
-
-Como o bisect pode ajudar a procura em listas? O processo que usamos foi:
+Bisect é um método relacionado à busca binária, para achar raizes de funções. No caso da biblioteca do Python, ele é usado com um objetivo um pouco diferente. Seu objetivo é encontrar o ponto de inserção de um novo valor em uma lista já ordenada para que ela continue ordenada após a inclusão do novo valor. Mas como o bisect pode ajudar a procura em listas? O processo que usamos foi:
 
 - Pegar o começo de cada faixa e colocar em ordem crescente:
 
@@ -151,7 +150,7 @@ for cep_origem_inicio in open( 'faixas_ceps.txt','r'):
 faixas_ceps_divisa = sorted(se(faixas_ceps_divisa))
 
 # é necessário converter de list para tuple por causa do bisect
-faixas_ceps_divisa =tuple(faixas_ceps_divisa)
+faixas_ceps_divisa = tuple(faixas_ceps_divisa)
 ```
 
 - Em seguida criamos um dicionário, sendo a chave o CEP inicial da faixa de valores e o valor do dicionário uma lista de possiveis faixas com aquela CEP inicial:
