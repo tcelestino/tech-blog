@@ -153,7 +153,7 @@ faixas_ceps_divisa = sorted(se(faixas_ceps_divisa))
 faixas_ceps_divisa = tuple(faixas_ceps_divisa)
 ```
 
-- Em seguida criamos um dicionário, sendo a chave o CEP inicial da faixa de valores e o valor do dicionário uma lista de possiveis faixas com aquela CEP inicial:
+- Em seguida criamos um dicionário, sendo a chave o CEP inicial da faixa de valores e o valor uma lista de possíveis faixas com aquele CEP inicial:
 
 ``` python
 faixas_ceps_divisa_dict = collections.defaultdict(list)
@@ -174,7 +174,7 @@ def is_cep_divisa(cep1,cep2):
     ...
 ```    
 
-- Se encontramos o inicio da faixa, basta usar o dicionário para resgatar as faixas com este inicio e fazer uma busca por força bruta. Uma análise rápida mostrou que estas subfaixas tem em média 44 itens, tendo a maior 135 elementos. Um ganho sobre os 25.000 registros iniciais !
+- Se encontramos o início da faixa, basta usar o dicionário para resgatar as faixas com este inicio e fazer uma busca por força bruta. Uma análise rápida mostrou que estas subfaixas tem em média 44 itens, tendo a maior 135 elementos. Um ganho sobre os 25.000 registros iniciais!
 
 ``` python
     sub_faixas = faixas_ceps_divisa_dict[inicio]
@@ -213,6 +213,7 @@ O tempo de procura ficou em:
 1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-E o processamento total reduziu de 10 horas para 4 minutos! Existe espaço para melhoria, mas 4 minutos já é um excelente tempo e preferimos parar por aqui. 
+E o processamento total reduziu de 10 horas para 4 minutos! Existe espaço para melhoria , mas esta performance é excelente e preferimos parar as otimizações por aqui.
+
 
 
