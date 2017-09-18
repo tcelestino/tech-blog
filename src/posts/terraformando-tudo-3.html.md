@@ -1,6 +1,6 @@
 ---
 title: Terraformando tudo - parte 3
-date: 2017-07-10
+date: 2017-09-18
 category: devops
 layout: post
 description: Terceiro post da série 'Terraformando Tudo', que conta a nossa trajetória em busca da codificação da nossa infraestrutura. Neste post mostraremos como "terraformar" uma infra já existente.
