@@ -91,7 +91,7 @@ Observando o código acima, nota-se que existem chamadas externas de scripts al�
 ```
 
 São dependências importantes para que o `mask-amd` possa funcionar corretamente.
-Portanto, ao instalar o `mask-amd` via npm, esses outros scripts serão baixados juntos. Basta chamar em seu html.
+Portanto, ao instalar o `mask-amd` via npm, esses outros scripts serão baixados juntos. Basta chamá-los em seu html.
 
 Uma dessas dependências é a [doc-amd](https://github.com/elo7/doc-amd/), que é uma biblioteca desenvolvida pela equipe de front-end do Elo7 para manipulação do DOM. O `doc-amd` merece um post à parte, que futuramente publicaremos aqui.
 
@@ -105,6 +105,7 @@ No caso da *mask-amd*, definimos que este módulo só será executado caso o `do
 define('mask', ['doc'], function($) {
 ```
 Aqui estamos definindo que o nome do nosso módulo é "mask" e ele depende do módulo *doc-amd*, que originalmente é chamado por "doc".
+O "$" é a representação do módulo importado `doc`.
 
 ## Implementação no código
 
@@ -117,7 +118,7 @@ Esse atributo deve ser utilizado nos campos onde você deseja receber apenas for
 A biblioteca adota um **pattern** dinâmico, para suportar grande variedade de casos de uso.
 Imagine seu campo assim:
 
-![Imagem demonstrativa do funcionamento da biblioteca com máscara de 3 caracteres obrigatórios](../images/elo7-mask-amd-weight-01.gif)
+![Demonstração do funcionamento da biblioteca com máscara de 3 caracteres obrigatórios](../images/elo7-mask-amd-weight-01.gif)
 
 ```html
 <label>
@@ -127,10 +128,10 @@ Imagine seu campo assim:
 ```
 Pensando exatamente como a `label` supõe, precisamos que:
 * Sejam apenas números;
-* possuam no máximo 3 números;
+* possuam exatamente 3 números;
 * e que o caracter separador seja um ponto.
 
-![Imagem demonstrativa do funcionamento da biblioteca com máscara de 3 caracteres obrigatórios](../images/elo7-mask-amd-weight-01.gif)
+![Demonstração do funcionamento da biblioteca com máscara de 3 caracteres obrigatórios](../images/elo7-mask-amd-weight-01.gif)
 
 ```html
 <label>
@@ -147,7 +148,7 @@ Deixando claro:
 * máximo de 4 caracteres;
 * e que sejam apenas números.
 
-![Imagem demonstrativa do funcionamento da biblioteca com máscara de 3 caracteres mínimos obrigatórios](../images/elo7-mask-amd-weight-02.gif)
+![Demonstração do funcionamento da biblioteca com máscara de 3 caracteres mínimos obrigatórios](../images/elo7-mask-amd-weight-02.gif)
 
 ```html
 <label>
@@ -155,7 +156,7 @@ Deixando claro:
 	<input type="text" id='peso' mask-number='#0.00'>
 </label>
 ```
-Adicionando uma "#" ao conteúdo do atributo `mask-number` o input fica aguardando um terceiro caracter, porém sem a obrigatoriedade. Se inserir apenas os dois, ok, mas caso seja inserido três, tudo bem também.
+Adicionando uma "#" ao conteúdo do atributo `mask-number`, o input fica aguardando um terceiro caracter, porém sem a obrigatoriedade. Se inserir apenas os dois, ok, mas caso seja inserido três, tudo bem também.
 
 * ### O atributo mask
 
@@ -163,7 +164,7 @@ Este atributo é mais focado nas formatações de formulário, como telefones, d
 
 Vamos pensar em uma data agora?
 
-![Imagem demonstrativa do funcionamento da biblioteca com máscara de data](../images/elo7-mask-amd-date.gif)
+![Demonstração do funcionamento da biblioteca com máscara de data](../images/elo7-mask-amd-date.gif)
 
 ```html
 <label>
@@ -190,7 +191,7 @@ Também funciona. Fique livre para mascarar da forma que bem entender.
 
 Caso queira um teste *live*, basta acessar o [nosso gh-pages](https://elo7.github.io/mask-amd/).
 
-Importante deixar claro que o `mask-amd` não valida os valores do formulário. Caso tenha essa necessidade sugiro a nossa biblioteca [form-amd](https://github.com/elo7/form-amd) que é específica para isso.
+Importante deixar claro que o `mask-amd` não valida os valores do formulário. Caso tenha essa necessidade, sugiro a nossa biblioteca [form-amd](https://github.com/elo7/form-amd), que é específica para isso.
 
 Bom, chegamos ao fim! Espero que este artigo tenha sido útil e gostaria de reforçar que estamos sempre abertos a sugestões/melhorias para nossa biblioteca.
 Fiquem à vontade para colaborar conosco no [Github](https://github.com/elo7/mask-amd) com Issues e Pull Requests.
