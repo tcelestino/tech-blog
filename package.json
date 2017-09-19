@@ -12,8 +12,8 @@
     "docpad-plugin-highlightjs": "2.5.0",
     "docpad-plugin-markit": "2.4.0",
     "docpad-plugin-nodesass": "2.8.2",
-    "docpad-plugin-sitemap": "2.4.0",
     "docpad-plugin-paged": "2.5.0",
+    "docpad-plugin-sitemap": "2.4.0",
     "docpad-plugin-tags": "2.1.0",
     "elo7-ajax-amd": "1.3.5",
     "elo7-doc-amd": "1.2.0",
@@ -31,7 +31,7 @@
     "precopy": "mkdir -p src/assets/js/vendor",
     "copy": "npm run copy:ajax-amd && npm run copy:events-amd && npm run copy:async-amd && npm run copy:doc-amd",
     "postinstall": "npm run copy",
-    "clean": "rm -rf out && rm -rf src/documents/amp",
+    "clean": "docpad clean && rm -rf out && rm -rf src/documents/amp",
     "start": "docpad run",
     "test": "docpad generate --silent --env static",
     "deploy": "docpad deploy-ghpages --silent --env static"
