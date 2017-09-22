@@ -144,7 +144,7 @@ Essa alteração importante no `package.json` serve para registrar uma espécie 
 
 Vamos agora escrever nosso primeiro teste. Utilizaremos o mantra do TDD, que será o seguinte:
 
-![Alt "TDD"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-1.png)
+![Alt "TDD"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-1.png)
 
 1. RED: escreva um teste que falhe;
 2. GREEN: construa um código que funcione;
@@ -170,7 +170,7 @@ yarn run test
 ```
 O resultado será o seguinte:
 
-![Alt "Falha 1"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-2.png)
+![Alt "Falha 1"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-2.png)
 
 Bom, deu para perceber que algo não deu certo. O teste falhou pois não conseguimos importar o módulo `carrinho.js`. Cabe aqui já deixar avisado que o papel final desse arquivo é criar um objeto que representará um carrinho. Então utilizaremos aqui um padrão já bastante conhecido para isto, o [`Constructor Pattern`](https://addyosmani.com/resources/essentialjsdesignpatterns/book/#constructorpatternjavascript):
 
@@ -184,7 +184,7 @@ module.exports = Carrinho;
 
 Agora, é rodar o teste de novo com `yarn run test` para ver o resultado:
 
-![Alt "Falha 2"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-3.png)
+![Alt "Falha 2"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-3.png)
 
 Hummm, continuamos com uma falha. Ela está ocorrendo pois ainda não implementamos o método que vai obter o `totalDeItens` do `Carrinho`. Vamos alterar o arquivo `carrinho.js` de novo:
 
@@ -202,7 +202,7 @@ module.exports = Carrinho;
 
 Fizemos uma alteração simples aqui. Adicionamos no construtor do objeto `Carrinho` a propriedade `itens` como uma lista vazia. Futuramente, teremos uma forma de `adicionar` itens a esta lista, mais no momento o que precisamos realmente é saber a quantidade `totalDeItens` da mesma. Já implementamos isso, simplesmente retornando o `length` da propriedade `itens` do `Carrinho`. Vamos rodar os testes de novo usando `yarn run test` e ver se deu tudo certo:
 
-![Alt "Sucesso 3"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-4.png)
+![Alt "Sucesso 3"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-4.png)
 
 Muito bom! Nosso primeiro teste está rodando. Então vamos vamos passar para o próximo. Nossa missão agora é verificar se, ao adicionar um `Produto` no `Carrinho`, sua quantidade `totalDeItens` será alterada. Seguindo as práticas do TDD, vamos adicionar um novo teste, rodá-lo e seguir os feedbacks até que tudo esteja OK. Abra novamente o arquivo `carinho.test.js`:
 
@@ -227,7 +227,7 @@ test('deve adicionar um produto ao carrinho', () => {
 
 Uma vez implementado, vamos rodar os testes com `yarn run test`. O resultado será o seguinte:
 
-![Alt "Falha 4"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-5.png)
+![Alt "Falha 4"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-5.png)
 
 Conforme esperado, o novo teste está quebrando. Isso ocorreu pois uma nova dependência foi adicionada, o módulo `produto.js`. Bom essa é mole de resolver, vamos implementá-lo:
 
@@ -243,7 +243,7 @@ module.exports = Produto;
 
 Já aproveitei para adicionar ao construtor de `Produto` as propriedades `nome`, `preco` e `qtd`. Já que são esses dados iniciais que representam um produto (além de poderem ser utilizados futuramente em novos testes). Rodando os testes novamente temos:
 
-![Alt "Falha 5"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-6.png)
+![Alt "Falha 5"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-6.png)
 
 Os testes falharam novamente, agora o problema é que o nosso `Carrinho` não implementa o método de `adicionar`. Vamos resolver isso abrindo o arquivo `carrinho.js`:
 
@@ -266,7 +266,7 @@ module.exports = Carrinho;
 
 Ahaaa! Bom trabalho, agora os testes estão rodando 100% novamente:
 
-![Alt "Sucesso 6"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-7.png)
+![Alt "Sucesso 6"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-7.png)
 
 ## Truques finais
 
@@ -286,11 +286,11 @@ Para finalizar, vamos adicionar 2 pequenos detalhes em nosso arquivo `package.js
 
 Conforme você deve ter percebido, adicionamos a flag `--watch` no script de `test`. A vantagem dessa flag é que, a partir de agora, quando novos testes forem adicionados e/ou modificados (bem como os arquivos) os testes rodarão automaticamente. Inclusive, alguns atalhos serão habilitados (letras `p`, `t`, `q`) facilitando a filtragem de arquivos e testes específicos, permitindo ainda que esses testes possam ser facilmente finalizados ou até mesmo rodados outra vez simplesmente pressionando a tecla `Enter`. Rode novamente no terminal `yarn run test` para ver a diferença:
 
-![Alt "Watch Mode"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-8.png)
+![Alt "Watch Mode"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-8.png)
 
 Outro recurso bacana é a flag `--coverage`. Ela exibe na tela uma grade indicando todos os arquivos cobertos pelos testes do seu projeto, e o percentual de cobertura de cada um. Rode `yarn run coverage` para conferir o resultado:
 
-![Alt "Coverage Mode"](/images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-9.png)
+![Alt "Coverage Mode"](../images/jest-testar-seu-codigo-javascript-nunca-foi-tao-facil-9.png)
 
 Ah e você pode conferir outros recursos também visitando a documentação na página do [**Jest CLI Options**](https://facebook.github.io/jest/docs/en/cli.html).
 
