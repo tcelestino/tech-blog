@@ -1,5 +1,5 @@
 ---
-date: 2017-09-18
+date: 2017-09-25
 category: front-end
 layout: post
 title: Customizando campos de formulário com o mask-amd
