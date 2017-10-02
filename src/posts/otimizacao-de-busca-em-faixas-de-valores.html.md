@@ -2,14 +2,14 @@
 date: 2015-11-16
 category: back-end
 layout: post
-title: 'Otimização de busca em faixas de valores'
-description: Explicamos a maneira como utilizamos um método de bissecção para otimizar a busca de valores em uma coleção de faixas de CEP, aumentando em mais de 100 vezes a performance do algorítimo.
+title: Otimização de busca em faixas de valores
+description: Explicamos como utilizamos um método de bissecção para otimizar a busca de valores em uma coleção de faixas de CEP, aumentando em mais de 100 vezes a performance do algoritimo.
 authors: [ftfarias]
 tags:
   - algoritmo
   - back-end
   - python
-  - otimização
+  - otimizacao
   - busca
 ---
 
@@ -28,7 +28,7 @@ SP,SUMARE,13170-001,13182-999,MG,EXTREMA,37640-000,37649-999,L3
 
 ```
 
-Estas tabelas têm entre 15 mil e 25 mil registros, cada registro com um faixa de CEPs de entrada e uma faixa de CEPs de saída. 
+Estas tabelas têm entre 15 mil e 25 mil registros, cada registro com um faixa de CEPs de entrada e uma faixa de CEPs de saída.
 
 Nosso problema foi processar todos do dados de 2016 e classificar todos os fretes nas faixas acima. Estamos falando de alguns milhões de pedidos...
 
@@ -49,7 +49,7 @@ with open('divisas.csv','r', encoding='utf_8') as input_file:
         f2_inicio = int(t[6].replace('-',''))
         f2_fim = int(t[7].replace('-',''))
         faixa = t[8]
-        faixas_ceps_divisa[(f1_inicio,f1_fim,f2_inicio,f2_fim)] = faixa  
+        faixas_ceps_divisa[(f1_inicio,f1_fim,f2_inicio,f2_fim)] = faixa
 ```
 
 ``` python
@@ -59,8 +59,8 @@ print(len(faixas_ceps_divisa))
 
 ``` python
 print(list(faixas_ceps_divisa)[:3])
-[ (75430000, 75439999, 70000001, 72799999), 
-  (19800001, 19819999, 87110001, 87119999), 
+[ (75430000, 75439999, 70000001, 72799999),
+  (19800001, 19819999, 87110001, 87119999),
   (86730000, 86749999, 12200001, 12249999) ]
 ```
 
@@ -75,7 +75,7 @@ A primeira abordagem foi carregarmos as tabelas em memória e fazer uma busca po
 
 ``` python
 def is_cep_divisa(cep1,cep2):
-    r = [y for x,y in faixas_ceps_divisa.items() if x[0]<= cep1 <=x[1] and x[2]<= cep2 <=x[3]] 
+    r = [y for x,y in faixas_ceps_divisa.items() if x[0]<= cep1 <=x[1] and x[2]<= cep2 <=x[3]]
     if len(r) == 1:
             return r[0]
     else:
@@ -90,16 +90,16 @@ assert is_cep_divisa(32000000,12345001) == None
 %timeit is_cep_divisa(57935000,53520001)
 7.66 ms ± 539 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
-A chamada %timeit automaticamente faz um teste de performance para uma dada função. Neste caso a função is_cep_divisa() foi executada repetidamente por 7 rodadas (runs), cada rodada com 100 repetição, e para cada rodada (100 chamadas) uma média foi calculada. No fim das 7 rodadas a média final (7.66 milisegundos) e o desvio padrão (+/- 539 microsegundos) são mostrados.
+A chamada %timeit automaticamente faz um teste de performance para uma dada função. Nesse caso a função is_cep_divisa() foi executada repetidamente por 7 rodadas (runs), cada rodada com 100 repetições, e para cada rodada (100 chamadas) uma média foi calculada. No fim das 7 rodadas, a média final (7.66 milisegundos) e o desvio padrão (+/- 539 microsegundos) são mostrados.
 
 ``` python
 %timeit is_cep_divisa(32000000,12345001)
 6.37 ms ± 602 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
 
-Como vemos, a performance não é tão ruim para uma chamada de is_cep_divisa(). Contudo, vamos ter que realizara esta chamada para todos os registros de 2016, então algumas optimizações podem ajudar.
+Como vemos, a performance não é tão ruim para uma chamada de is_cep_divisa(). Contudo, vamos ter que realizar esta chamada para todos os registros de 2016, então algumas otimizações podem ajudar.
 
-Uma possível melhoria seria parar assim que encontrámos um faixa de frete correspondente a nossa procura já sairmos do loop de procura, reduzindo o número de comparações:
+Uma possível melhoria seria parar a execução assim que encontrássemos um faixa de frete correspondente a nossa procura (saindo do loop), reduzindo o número de comparações.
 
 ### Força bruta 2
 
@@ -125,17 +125,18 @@ assert is_cep_divisa(32000000,12345001) == None
 %timeit is_cep_divisa(32000000,12345001)
 5.83 ms ± 245 µs per loop (mean ± std. dev. of 7 runs, 100 loops each)
 ```
-No primeiro caso a performance é melhor, porem no segundo teste o cep de destino "12345001" não existe, forçando o loop da função a testar todos os 40 mil registros, o que faz o teste mais lento que no primeiro caso. Em geral é possível ver que a performance melhora um pouco, mas depende muito da posição na lista. 
+
+No primeiro caso a performance é melhor, porém no segundo teste o cep de destino "12345001" não existe, forçando o loop da função a testar todos os 40 mil registros, o que torna o teste mais lento que o primeiro caso. Em geral é possível ver que a performance melhora um pouco, mas depende muito da posição na lista.
 
 Quando testamos esta versão, o tempo de processamento ficou em aproximadamente 10 horas.
 
 ### Procurando uma solução
 
-Após algumas horas procurando no Google por alguma biblioteca que fizesse a procura, percebemos que estávamos indo pelo caminho errado. Com certeza a biblioteca padrão do Python já teria solução!!! 
+Após algumas horas procurando no Google por alguma biblioteca que fizesse a procura, percebemos que estávamos indo pelo caminho errado. Com certeza a biblioteca padrão do Python já teria solução!!!
 
 Começamos a (re)ler todos os módulos do Python e achamos o que precisavamos: o módulo [bisect!](https://docs.python.org/3.0/library/bisect.html)
 
-Bisect é um método relacionado à busca binária, para achar raizes de funções. No caso da biblioteca do Python, ele é usado com um objetivo um pouco diferente. Seu objetivo é encontrar o ponto de inserção de um novo valor em uma lista já ordenada para que ela continue ordenada após a inclusão do novo valor. Mas como o bisect pode ajudar a procura em listas? O processo que usamos foi:
+Bisect é um método relacionado à busca binária, para achar raizes de funções. No caso da biblioteca do Python, ele é usado de um modo um pouco diferente. Seu objetivo é encontrar o ponto de inserção de um novo valor em uma lista já ordenada para que ela continue ordenada após a inclusão do novo valor. Mas como o bisect pode ajudar a procura em listas? O processo que usamos foi:
 
 - Pegar o começo de cada faixa e colocar em ordem crescente:
 
@@ -170,18 +171,18 @@ def is_cep_divisa(cep1,cep2):
     i = bisect.bisect_right(faixas_ceps_divisa, cep1)
     if not i:
         return False
-    inicio = faixas_ceps_divisa[i-1] 
+    inicio = faixas_ceps_divisa[i-1]
     ...
-```    
+```
 
-- Se encontramos o início da faixa, basta usar o dicionário para resgatar as faixas com este inicio e fazer uma busca por força bruta. Uma análise rápida mostrou que estas subfaixas tem em média 44 itens, tendo a maior 135 elementos. Um ganho sobre os 25.000 registros iniciais!
+- Se encontramos o início da faixa, basta usar o dicionário para resgatar as faixas com este início e fazer uma busca por força bruta. Uma análise rápida mostrou que estas subfaixas têm em média 44 itens, tendo a maior 135 elementos. Um ganho sobre os 25.000 registros iniciais!
 
 ``` python
     sub_faixas = faixas_ceps_divisa_dict[inicio]
     for sf in sub_faixas:
         if cep1 <= sf[0] and sf[1]<= cep2 <= sf[2]:
             return sf[3]
-```  
+```
 
 A versão completa ficou:
 
@@ -190,12 +191,12 @@ def is_cep_divisa(cep1,cep2):
     i = bisect.bisect_right(faixas_ceps_divisa, cep1)
     if not i:
         return False
-    inicio = faixas_ceps_divisa[i-1] 
+    inicio = faixas_ceps_divisa[i-1]
     sub_faixas = faixas_ceps_divisa_dict[inicio]
     for sf in sub_faixas:
         if cep1 <= sf[0] and sf[1]<= cep2 <= sf[2]:
             return sf[3]
-        
+
     return False
 ```
 
@@ -213,7 +214,4 @@ O tempo de procura ficou em:
 1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-E o processamento total reduziu de 10 horas para 4 minutos! Existe espaço para melhoria , mas esta performance é excelente e preferimos parar as otimizações por aqui.
-
-
-
+E o processamento total foi reduziado de 10 horas para 4 minutos! Existe espaço para melhoria, mas essa performance é excelente e preferimos parar as otimizações por aqui.
