@@ -86,6 +86,9 @@ No início, utilizamos pequenas bibliotecas que pesquisamos no site [microjs](ht
 Não vou descrever o que cada biblioteca faz aqui para o post não ficar gigante, mas serão escritos posts explicando com detalhes como cada biblioteca funciona e você saberá se ela se encaixa no seu problema. Além disso, elas estão abertas para que todos possam contribuir. Sintam-se a vontade.
 
 ## Conclusão
-Nenhuma arquitetura ou framework é melhor que outra. Cada uma foi pensanda em resolver um conjunto de problemas em específico. Não é só porque há uma empresa grande utilizando uma determinada arquitetura que ela é a bala de prata para todos.
+Nenhuma arquitetura ou framework é melhor que outra. Cada uma foi pensada em resolver um conjunto de problemas em específico. Não é só porque há uma empresa grande utilizando uma determinada arquitetura que ela é a bala de prata para todos.
 
 Então, antes de escolher uma arquitetura, identifique quais os seus problemas atuais e os que estão para vir de acordo com o seu produto, para só então decidir se vale a pena ou não usar um framework ou biblioteca e qual é o melhor para você.
+
+## Atualização
+- Leia também o [post sobre a biblioteca de máscaras de campos de dados (mask-amd)](/customizando-campos-de-formulario-com-elo7-mask-amd/).

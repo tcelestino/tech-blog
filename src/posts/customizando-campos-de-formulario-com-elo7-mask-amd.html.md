@@ -16,7 +16,7 @@ Sempre procuramos uma biblioteca que seja bem focada no problema que queremos re
 
 É importante mencionar o peso inútil no final do carregamento da página, agora imagine quando você utiliza várias bibliotecas em seu site.
 
-Esse tipo de situação é muito comum e, pensando nesse problema, nós do Elo7 resolvemos escrever nossas próprias bibliotecas, diretas no que necessitamos na casa, e isso vem sendo bem bacana pois, além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
+Esse tipo de situação é muito comum e, pensando nesse problema, nós do Elo7 [resolvemos escrever nossas próprias bibliotecas](/frameworks-js/), diretas no que necessitamos na casa, e isso vem sendo bem bacana pois, além de otimizar nossas aplicações, ainda as disponibilizamos para comunidade.
 
 Nesse post, iniciando um trabalho de demonstração dessas bibliotecas, vou apresentar a [mask-amd](https://github.com/elo7/mask-amd), que foca exclusivamente em facilitar a entrada de valores em campos de formulário seguindo uma formatação pré-determinada.
 
