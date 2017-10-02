@@ -29,13 +29,13 @@ O *fleet* nos atendia bem e todo o time de Engenharia se habituou facilmente com
 
 Nessa ocasião, começamos a analisar as demais ferramentas existentes e ver qual delas poderia se adequar melhor ao nosso cenário. Dentre as que foram analisadas, ficamos com o [Kubernetes](https://kubernetes.io). 
 
-Vamos descrever brevemente cada uma delas, fazendo um paralelo com o Kubernetes e mostrando o(s) motivo(s) pelos quais as ferramentas não serviram para nós (esse tipo de escolha depende muito do momento e cenário de cada empresa). Vamos fazer o possível para trazer uma ótica mais atual possível mas, em alguns pontos, mostramos a ótica do momento em que fizemos esses estudos, que datam de mais de 1 ano atrás. Entretanto, mesmo com as mudanças que presenciamos como, por exemplo, o [Mesos+Marathon virarem DC/OS](https://dcos.io/) e o [Docker Swarm](https://docs.docker.com/engine/swarm/) ficar mais estável, nossa decisão não mudaria.
+Vamos descrever brevemente cada uma delas, fazendo um paralelo com o Kubernetes e mostrando o(s) motivo(s) pelos quais as ferramentas não serviram **para nós** (esse tipo de escolha depende muito do momento e cenário de cada empresa). Vamos fazer o possível para trazer uma ótica mais atual possível mas, em alguns pontos, mostramos a ótica do momento em que fizemos esses estudos, que datam de mais de 1 ano atrás. Entretanto, mesmo com as mudanças que presenciamos como, por exemplo, o [Mesos+Marathon virarem DC/OS](https://dcos.io/) e o [Docker Swarm](https://docs.docker.com/engine/swarm/) ficar mais estável, nossa decisão não mudaria.
 
 Após a análise, entraremos em mais detalhes do Kubernetes.
 
 ## [ECS (Amazon EC2 Container Service)](https://aws.amazon.com/pt/ecs/)
 
-Como já foi dito em posts anteriores, nossa infraestrutura está 100% situada na AWS. Então, sempre faz sentido para nós olhar para os serviços internos da própria provedora de serviços de cloud. 
+Como já foi dito em posts anteriores, nossa infraestrutura está 100% situada na AWS. Então, sempre faz sentido olhar para os serviços internos da própria provedora de serviços de *cloud*. 
 
 Uma grande vantagem do ECS é a integração nativa com os outros serviços da AWS, como IAM, ELB e CloudWatch. Entretanto, o *lock-in* com o serviço é muito grande, fazendo com que a opção fosse descartada rapidamente.
 
@@ -67,7 +67,7 @@ O Mesos também demonstrava capacidade de lidar com *clusters* maiores: 10.000 n
 
 Porém, 99% das nossas aplicações estavam rodando em *containers* e não iríamos ter 1.000 nós em produção em um futuro próximo. E uma outra funcionalidade já existente no Kubernetes que o Mesos não nos ofereceria, era a capacidade de gerenciar discos no [EBS (Elastic Block Storage)](https://aws.amazon.com/ebs/) da AWS, de muito interesse para nós. 
 
-Recentemente, a empresa que encabeça o desenvolvimento do Mesos, a [Mesosphere](https://mesosphere.com/), apresentou o DC/OS. Uma *stack* em cima do Mesos que inclui diversas funcionalidades nativas, como orquestração de *containers* e gerenciamento de pacotes. Porém, a Mesosphere está diretamente relacionada com a ferramenta e decide os rumos dela, o que pode se tornar um problema.
+Recentemente, a empresa que encabeça o desenvolvimento do Mesos, a [Mesosphere](https://mesosphere.com/), apresentou o [DC/OS](https://dcos.io/). Uma *stack* em cima do Mesos que inclui diversas funcionalidades nativas, como orquestração de *containers* e gerenciamento de pacotes. Porém, a Mesosphere está diretamente relacionada com a ferramenta e decide os rumos dela, o que pode se tornar um problema.
 
 Por fim, vimos que a comunidade não era atrativa, endossando ainda mais a escolha do Kubernetes.
 
@@ -102,7 +102,7 @@ Para ambientes de produção, é extremamente importante que os componentes este
 
 É desejável que os usuários estejam familiarizados com *containers*, afinal por mais que o Kubernetes ofereça muitas abstrações, a aplicação será executada em *containers* e estará sujeita às limitações desse ambiente.
 
-Mudança de paradigma: mesmo que o time já esteja habituado com *containers* (nosso caso), o Kubernetes oferece um modelo que entra a fundo no conceito [Pets vs. Cattle](https://www.slideshare.net/gmccance/cern-data-centre-evolution/17). Isso pode causar uma certa desconfiança, pois o usuário não irá mais acessar "dar um *ssh*" na máquina onde seu *container* está rodando (com o *fleet*, isso ainda acaba acontecendo bastante).
+Mudança de paradigma: mesmo que o time já esteja habituado com *containers* (nosso caso), o Kubernetes oferece um modelo que entra a fundo no conceito [Pets vs. Cattle](https://www.slideshare.net/gmccance/cern-data-centre-evolution/17). Isso pode causar uma certa desconfiança, pois o usuário não irá mais "dar um *ssh*" na máquina onde seu *container* está rodando (com o *fleet*, isso ainda acaba acontecendo bastante).
 
 A passagem de conhecimento para outros times é importantíssima na implantação do Kubernetes. Ele possui diversos termos e conceitos próprios (Pods, Services, Deployments, etc) e leva um tempo para os usuários se acostumarem com os termos e entender o propósito de cada um deles. O uso do *resource* certo na hora certa é crucial para o bom uso da ferramenta e para o sucesso da migração.
 
