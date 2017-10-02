@@ -20,7 +20,7 @@ layout: page-amp
 				{{/each}}
 				<time datetime="{{formatDate this.date ''}}" class="date" aria-label="{{formatDate this.date 'LL'}}">
 					{{dateAsText this.date}}
-					<meta itemprop="datePublished" content='{{this.date}}'/>
+					<meta itemprop='datePublished' content='{{this.date}}'/>
 				</time>
 			</div>
 

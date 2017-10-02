@@ -101,8 +101,10 @@
 				</a>
 			</nav>
 		</div>
-		<a title="Github do Elo7" rel="external" itemprop="url" href="https://github.com/elo7" class="social github">Github do Elo7</a>
-	</div>
+		<div class='social'>
+			<a title="Github do Elo7" rel="external" itemprop="url" href="https://github.com/elo7" target="_blank" class="github">Github do Elo7</a>
+			<a title="Twitter do Elo7" rel="external" itemprop="url" href="https://twitter.com/elo7tech" target="_blank" class="twitter">Twitter do Elo7</a>
+		</div>
 	</section>
 	<main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
 		{{{content}}}

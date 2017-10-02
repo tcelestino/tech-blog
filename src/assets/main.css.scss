@@ -27,21 +27,31 @@ main {
     background-color: map-get($colors-background, gray);
     text-align: center;
     position: relative;
+}
 
-    .social {
-        width: 2em;
-        height: 2em;
-        display: none;
-    }
-    .github {
+.social {
+    width: 150px;
+    height: 2em;
+    display: none;
+    flex: 1;
+    margin-bottom: 2em;
+
+    a {
         background-size: 2em 2em;
         background-repeat: no-repeat;
-        background-image: url('images/github_icon.svg');
-        margin-bottom: 2em;
+        width: 2em;
+        height: 2em;
         overflow: hidden;
         text-indent: -100%;
+        display: inline-block;
     }
 
+    .github {
+        background-image: url('images/github_icon.svg');
+    }
+    .twitter {
+        background-image: url('images/ico/ic-twitter.svg');
+    }
 }
 
 .hide {
@@ -215,10 +225,14 @@ footer {
 
         .social {
             display: block;
-        }
 
-        .github {
-            left: 2em;
+            .github {
+                left: 2em;
+            }
+
+            .twitter {
+                left: 2em;
+            }
         }
 
         .logo-container {
