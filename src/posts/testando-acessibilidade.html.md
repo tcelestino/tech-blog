@@ -11,7 +11,7 @@ title: Testando acessibilidade
 description: Acessibilidade é um tema que tem ganho cada vez mais atenção. Vemos cada vez mais conteúdo e dicas sobre como tornar sua aplicação mais acessível. Mas como garantir que nossas medidas para incluir acessibilidade estão surtindo efeito?
 ---
 
-Acessibilidade é um tema que tem ganho cada vez mais atenção. Vemos cada vez mais conteúdo e dicas sobre como tornar sua aplicação mais acessível. Mas como garantir que nossas medidas para incluir acessibilidade estão surtindo efeito? Foi o problema que encontramos aqui, no Elo7, quando começamos a inserir acessibilidade no nosso dia a dia de desenvolvimento.
+Acessibilidade é um tema que tem ganho cada vez mais atenção. Vemos cada vez mais conteúdo e dicas sobre como tornar sua aplicação mais acessível, o que é muito bom! Temos cada vez mais orientação e, portanto, facilidade para adotar boas práticas de acessibilidade em nossos projetos. Porém, um tema que merece atenção especial é: como garantir que nossas medidas para incluir acessibilidade estão surtindo efeito? Foi o problema que encontramos aqui, no Elo7, quando começamos a inserir acessibilidade no nosso dia a dia de desenvolvimento.
 
 ## Acessibilidade: o início
 
@@ -23,7 +23,7 @@ O [Raphael Oliveira](/rapahaeru/) escreveu diversos posts sobre técnicas relaci
 
 ## Primeiros testes
 
-O time todo foi ganhando consciência da importância de tornar o site do Elo7 mais acessível, e o assunto surgiu em uma retrospectiva. O time todo tendo uma noção básica do que era acessibilidade, decidimos partir para a prática. E, para garantir que entregaríamos telas mais acessíveis, colocamos mais um ponto no nosso *critério de pronto*: a tarefa tinha que ser testada no quesito acessibilidade também.
+O time todo foi ganhando consciência da importância de tornar o site do Elo7 mais acessível, e o assunto surgiu em uma retrospectiva. O time todo tendo uma noção básica do que era acessibilidade, decidimos partir para a prática. E, para garantir que entregaríamos telas mais acessíveis, colocamos mais um tópico no nosso *critério de pronto*: a tarefa tinha que ser testada no quesito acessibilidade também.
 
 E aí começaram os problemas: como testar? Como saber se está realmente acessível? Será que os usuários vão usar dessa forma? Como corrigir esse caso complicado? Quando realmente colocamos nosso conhecimento à prova, vimos que **acessibilidade não é tão simples como parece**.
 
