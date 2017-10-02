@@ -13,7 +13,7 @@ stages:
 
 jobs:
   include:
-    - stage: TRAVIS_PULL_REQUEST
+    - stage: test
       script:
         - npm test
     - stage: deploy
