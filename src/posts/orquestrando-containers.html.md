@@ -1,6 +1,6 @@
 ---
 title: Orquestrando containers
-date: 2017-08-21
+date: 2017-10-02
 category: devops
 layout: post
 description: Neste post mostraremos como decidimos utilizar o Kubernetes para orquestrar nossos containers e quais os pontos de atenção ao utilizar uma ferramenta desse tipo.
