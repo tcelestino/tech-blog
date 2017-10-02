@@ -13,6 +13,10 @@ tags:
   - infra
 ---
 
+Veja os outros *posts* da série:
+- [Terraformando tudo - parte 1](/terraformando-tudo-1/)
+- [Terraformando tudo - parte 3](/terraformando-tudo-3/)
+
 Olá!
 
 Estamos aqui novamente para dar continuidade na série de *posts* *Terraformando Tudo*. Nesse segundo *post* da série (se não leu o primeiro, leia [aqui](/terraformando-tudo-1/)), vamos falar mais um pouco sobre os códigos do [Terraform](https://terraform.io), ou *Terraform configuration* (como o próprio projeto chama uma porção de código executável do Terraform). Também vamos mostrar como o Terraform controla o estado de seus *resources* e como mitigar as chances de desastres em um cenário onde podem haver diversas pessoas trabalhando no mesmo repositório de *configurations*

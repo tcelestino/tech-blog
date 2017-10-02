@@ -13,6 +13,10 @@ tags:
   - infra
 ---
 
+Veja os outros *posts* da série:
+- [Terraformando tudo - parte 1](/terraformando-tudo-1/)
+- [Terraformando tudo - parte 2](/terraformando-tudo-2/)
+
 Olár!
 
 Como foi prometido no [segundo post](/terraformando-tudo-2/), estamos aqui novamente. Agora, para responder uma das perguntas que sempre são feitas na hora de adotar uma nova ferramenta: "E o legado?"

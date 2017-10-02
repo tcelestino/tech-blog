@@ -13,6 +13,10 @@ tags:
   - infra
 ---
 
+Veja os outros *posts* da série:
+- [Terraformando tudo - parte 2](/terraformando-tudo-2/)
+- [Terraformando tudo - parte 3](/terraformando-tudo-3/)
+
 ## Infrastructure as Code no Elo7
 
 Esse *post* dá início a uma série de *posts* intitulada **Terraformando tudo**. Nessa série iremos mostrar o caminho que trilhamos (e os percalços que tivemos) no **Elo7** e o que ainda falta para concluir nosso objetivo de ter **toda** nossa infraestrutura sendo gerenciada por código, ou seja, termos *Infrastructure as Code*.
