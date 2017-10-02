@@ -17,13 +17,13 @@ Quando entrei no Elo7, estávamos engatinhando no mundo dos aplicativos, tínham
 
 *Semelhante = códigos que fazem exatamente a mesma coisa, porém em linguagens diferentes (Android = Java, iOS = Objective-C)
 
-Com essas informações, definimos que iríamos minimizar esse código dúplicado, com a premissa de criar aplicativos nativos. Fomos atrás de material na internet e encontramos o [djinni](https://github.com/dropbox/djinni), do Dropbox, que tinha uma proposta alinhada com algo que procurávamos, porém apenas a camada de UI (*User Interface*), teria que ser escrita em cada plataforma. Fizemos algumas provas de conceito e o resultado não foi o que esperávamos, o código escrito usando o Djinni era em C++, não abstraía a camada de UI e ainda assim era complexo de integrar com apps já existentes. Então assumimos que a melhor maneira de construir aplicativos na época, era manter a abordagem que já estava dando certo, cada plataforma com o seu código.
+Com essas informações, definimos que iríamos minimizar esse código dúplicado, com a premissa de criar aplicativos nativos. Fomos atrás de material na internet e encontramos o [Djinni](https://github.com/dropbox/djinni), do Dropbox, que tinha uma proposta alinhada com algo que procurávamos, porém apenas a camada de UI (*User Interface*), teria que ser escrita em cada plataforma. Fizemos algumas provas de conceito e o resultado não foi o que esperávamos, o código escrito usando o Djinni era em C++, não abstraía a camada de UI e ainda assim era complexo de integrar com *apps* já existentes. Então assumimos que a melhor maneira de construir aplicativos na época, era manter a abordagem que já estava dando certo, cada plataforma com o seu código.
 
 ## Meio
-Novamente, olhando o *roadmap*, vimos que desenvolveríamos mais dois aplicativos destinados aos vendedores que, por sua vez, teriam algumas features já presentes nos aplicativos dos compradores (já mencionados). Nessa época, decidimos modularizar o que seria semelhante em mais de um aplicativo. Lembrando que ainda nesse ponto, **não** compartilhávamos código entre plataformas (Android e iOS).
+Novamente, olhando o *roadmap*, vimos que desenvolveríamos mais dois aplicativos destinados aos vendedores que, por sua vez, teriam algumas *features* já presentes nos aplicativos dos compradores (já mencionados). Nessa época, decidimos modularizar o que seria semelhante em mais de um aplicativo. Lembrando que ainda nesse ponto, **não** compartilhávamos código entre plataformas (Android e iOS).
 Dividimos as aplicações em *libraries* do iOS e Android:
 módulo de mensagens - responsável por abstrair **quase** tudo que tem relação com o nosso fluxo de troca de mensagens;
-módulo *commons* - responsável por abstrair fluxo de login, tela de perfil e tudo que considerávamos comum entre os aplicativos;
+módulo *commons* - responsável por abstrair fluxo de *login*, tela de perfil e tudo que considerávamos comum entre os aplicativos;
 módulo *networking* - responsável por abstrair nossa camada HTTP;
 
 Segue uma descrição resumida do cenário do Android, visto que do iOS é **muito** semelhante, ele será omitido:
@@ -38,17 +38,17 @@ Elo7 consome as *libraries*:
   - módulo *commons*
   - módulo *networking*
 
-Com essa estrutura e a famosa [Clean Architecture](https://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/), alcançamos um reaproveitamento de código legal, com todas aquelas vantagens de evitar código duplicado que todo mundo já conhece, tem até uma [palestra minha com o Thiago Pilon](https://www.youtube.com/watch?v=HK0fZRCJfYw) que falamos bastante a respeito da arquitetura que adotamos na época.
+Com essa estrutura e a famosa [Clean Architecture](https://fernandocejas.com/2014/09/03/architecting-android-the-clean-way/), alcançamos um reaproveitamento de código legal, com todas aquelas vantagens de evitar código duplicado que todo mundo já conhece, tem até uma [palestra minha com o Thiago Pilon](https://www.youtube.com/watch?v=HK0fZRCJfYw) que falamos bastante a respeito da arquitetura que adotamos na época. ([Thiago Pilon](https://github.com/Pilon))
 
 ## Fim (pelo menos até agora)
 Eis que algumas [pessoas/empresas](https://facebook.github.io/react-native/showcase.html) não paravam de falar que o React-Native (RN) era uma solução **elegante** para compartilhamento de código entre plataformas, que é uma ferramenta que permite escrever aplicativos nativos usando [React](https://facebook.github.io/react/) e Javascript e tem como diretiva: aprenda uma vez e escreva aplicativos para as duas plataformas (Android e iOS, eventualmente até aplicações [WPF/Phone para Windows](https://github.com/Microsoft/react-native-windows)). 
 
 A proposta do RN é ambiciosa, gerar código nativo, componentes de UI nativos, integração com código já existente, [toolset](https://facebook.github.io/react-native/docs/debugging.html) bem completo e até possibilidade de [atualização de aplicativos já instalados](https://microsoft.github.io/code-push/). 
 
-Esses dois últimos pontos chamaram bastante nossa atenção, poderiamos colocar o RN na nossa base de código sem reescrever todo o projeto, uma vez que a integração com a parte "nativa" era possível e também poderíamos subir uma correção de bug sem a necessidade de passar por todo o processo de review/aprovação da apple, isso sem falar que teríamos nossa base inteira atualizada em pouco tempo. <3
+Esses dois últimos pontos chamaram bastante nossa atenção, poderiamos colocar o RN na nossa base de código sem reescrever todo o projeto, uma vez que a integração com a parte nativa era possível e também poderíamos subir uma correção de *bug* sem a necessidade de passar por todo o processo de *review*/aprovação da Apple, isso sem falar que teríamos nossa base inteira atualizada em pouco tempo. <3
 
 ### Prova de conceito
-Concluímos que a proposta do RN casava muito bem com aquela premissa lá do começo do post, de evitar código duplicado entre as plataformas (Android e iOS), então decidimos avaliar. Fizemos nossa prova de conceito e obtivemos sucesso, porém a integração deu bastante trabalho, e até que chegássemos à uma solução *production-ready*, investimos muito esforço. O problema era que os mantenedores do RN estão acostumados com uma estrutura de pastas diferente da que temos aqui, e não gostaríamos de mudar nossa estrutura atual, não queríamos encher o saco do time inteiro, mudando a forma como todos trabalham. Então, tomamos a ousada decisão de fazer a integração de uma forma bem diferente da [sugerida](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html).
+Concluímos que a proposta do RN casava muito bem com aquela premissa lá do começo do post, de evitar código duplicado entre as plataformas (Android e iOS), então decidimos avaliar. Fizemos nossa prova de conceito e obtivemos sucesso, porém a integração deu bastante trabalho, e até que chegássemos à uma solução *production-ready*, investimos muito esforço. O problema era que os mantenedores do RN estão acostumados com uma estrutura de diretórios diferente da que temos aqui e não queríamos mudar nossa estrutura atual, afetando a produtividade do time modificando a maneira de trabalhar.. Então, tomamos a ousada decisão de fazer a integração de uma forma bem diferente da [sugerida](https://facebook.github.io/react-native/docs/integration-with-existing-apps.html).
 
 Estrutura de diretórios sugerida:
 ```
@@ -69,7 +69,7 @@ Talk7 consome as libraries:
   - lib *networking*
   - **lib react native**
 
-Após um tempo investido, aproximadamente 1 mês, alcançamos esse objetivo. O único incomodo causado para a parte do time que não estava totalmente envolvida com essa integração, era a instalação do [NPM](https://www.npmjs.com), para podermos gerar o *bundle* com os componentes escritos em RN. Acredito que a explicação de como integramos o RN nos aplicativos daqui vale um outro *post*, pois é um tema bem extenso e não está no escopo do tema deste *post*.
+Após um tempo investido, aproximadamente 1 mês, alcançamos esse objetivo. O único incômodo causado para a parte do time que não estava totalmente envolvida com essa integração, era a instalação do [NPM](https://www.npmjs.com) para podermos gerar o *bundle* com os componentes escritos em RN. Acredito que a explicação de como integramos o RN nos aplicativos daqui vale um outro *post*, pois é um tema bem extenso e não está no escopo do tema deste *post*.
 
 ## Hoje
 No Elo7, o RN vem cumprindo seu objetivo, por isso já temos diversas *features* feitas inteiramente em RN, que se comunicam com o nosso *backend* e são exibidas nas plataformas Android e iOS, compartilhando código Javascript de fácil manutenção.
@@ -83,5 +83,5 @@ Aqui vai um exemplo de código em React Native, bem simples, com o objetivo de e
 
 Caso tenha dúvidas ou sugestões, pode comentar abaixo. (:
 
-Obrigado Thiago Pilon pela revisão e sugestões!
+Obrigado [Thiago Pilon](https://github.com/Pilon) pela revisão e sugestões!
 
