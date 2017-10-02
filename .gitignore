@@ -1,8 +1,11 @@
 node_modules
+package-lock.json
+
 out
 src/assets/js/vendor
 amp/
 .DS_Store
+
 back-end.html.hb
 devops.html.hb
 eventos.html.hb
@@ -10,4 +13,3 @@ front-end.html.hb
 mobile.html.hb
 vagas.html.hb
 design.html.hb
-package-lock.json

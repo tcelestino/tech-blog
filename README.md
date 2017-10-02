@@ -87,7 +87,6 @@ Para deployar:
 - pegue o post mais antigo aprovado
 - atualize a data do post para o dia de hoje (commit e push)
 - mergeie o post
-- rode o ``./deploy.sh``
 
 ### Hospedagem
 
