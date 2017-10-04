@@ -148,7 +148,7 @@ for cep_origem_inicio in open( 'faixas_ceps.txt','r'):
 	faixas_ceps_divisa.append(cep_origem_inicio)
 
 
-faixas_ceps_divisa = sorted(se(faixas_ceps_divisa))
+faixas_ceps_divisa = sorted(set(faixas_ceps_divisa))
 
 # é necessário converter de list para tuple por causa do bisect
 faixas_ceps_divisa = tuple(faixas_ceps_divisa)
