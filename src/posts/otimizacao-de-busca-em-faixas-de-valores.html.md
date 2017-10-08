@@ -1,5 +1,5 @@
 ---
-date: 2015-11-16
+date: 2017-10-09
 category: back-end
 layout: post
 title: Otimização de busca em faixas de valores
