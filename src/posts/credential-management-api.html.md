@@ -13,11 +13,11 @@ Nos dias atuais, passamos bastante tempo navegando em nossos navegadores seja at
 
 Pois bem!
 
-Sabemos que os navegadores possuem o recurso de gerenciamento de dados de autenticação, mas e como que fazemos para informar esses dados para eles? Como que consigo integrar meu sistema de login com o navegador? Para facilitar essa interação entre website > navegador, que surgiu a proposta da Credential Management API. No momento, apenas o Google Chrome, tanto na versão mobile quanto na versão desktop já existe a implementação da API, mas isso não quer dizer que já não podemos adicionar em nossos projetos.
+Sabemos que os navegadores possuem o recurso de gerenciamento de dados de autenticação, mas e como que fazemos para informar esses dados para os navegadores? Como que consigo integrar meu sistema de login com o navegador? Para facilitar essa interação entre website > navegador, que surgiu a proposta da [Credential Management API](https://www.w3.org/TR/credential-management-1/). No momento, apenas o Google Chrome (para Android e desktop) tem a API implementada. Isso não quer dizer você não possao implementar em seu projeto.
 
 ## Caso Elo7
 
-Aqui no Elo7, já utilizamos a Credential Management API no sistema de login na versão mobile do marketplace (conto logo, logo o problema com a implementação na versão desktop) há algum tempo e segundo dados que obtemos através do Google Analytics, ficou nítido que a implementação facilitou esse processo de autenticação.
+Aqui no Elo7, já utilizamos a Credential Management API no sistema de login na versão mobile do marketplace (conto logo, logo o problema com a implementação na versão desktop) há algum tempo e segundo dados que obtemos através do Google Analytics, observamos que muitos usuários estão usando o recurso, que facilita bastante o processo de autenticação em nosso sistema.
 
 
 ## Nem tudo são flores
