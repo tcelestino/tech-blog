@@ -45,11 +45,11 @@ Nesta abordagem, adicionamos uma célula antes e outra após a célula que cont�
 </table>
 ```
 
-// TODO inserir algo visual: template
+![Espaçamento com colunas](../images/tecnicas-para-codificar-um-e-mail-parte-2-2.png)
 
-## Cellspacing
+## Cellspadding
 
-Nesta técnica, utilizamos o atributo `cellspacing`, responsável pelo espaçamento interno da célula, para criar o espaço desejado:
+Nesta técnica, utilizamos o atributo `cellpadding`, responsável pelo espaçamento interno da célula, para criar o espaço desejado:
 
 ```HTML
 <table bgcolor="#E2D6C7" width="100%" cellpadding="15" cellspacing="0">
@@ -63,7 +63,7 @@ Nesta técnica, utilizamos o atributo `cellspacing`, responsável pelo espaçame
 
 O problema dessa abordagem é que não permite definir diferentes espaçamentos, o valor será sempre igual para todas as direções (`top`, `left`, `bottom` e `right`).
 
-// TODO inserir algo visual: o que é possível e o que não é possível
+![Espaçamento com cellspadding](../images/tecnicas-para-codificar-um-e-mail-parte-2-3.png)
 
 
 ## Padding
@@ -100,7 +100,7 @@ Uma outra forma é adicionar uma margem para os lados no nosso texto:
 
 Com os espaçamentos feitos, precisamos alterar a fonte para que fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. Também precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização entre os clientes se mantenha igual:
 
-![Espaçamento no e-mail](../images/tecnicas-para-codificar-um-e-mail-parte-2-2.png)
+![Espaçamento no e-mail](../images/tecnicas-para-codificar-um-e-mail-parte-2-4.png)
 
 ```HTML
 <table bgcolor="#E2D6C7" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 15px; padding-right: 15px">
