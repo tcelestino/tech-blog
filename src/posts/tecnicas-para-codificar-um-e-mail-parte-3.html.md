@@ -8,12 +8,12 @@ tags:
 authors: [erikatakahara]
 layout: post
 title: Técnicas para codificar um e-mail - parte 3
-description: Já teve problemas ao visualizar um e-mail no celular? Por exemplo, aquelas letras pequenas, scroll lateral e colunas quebras? Nesse post iremos abordar como criar colunas nos e-mails e como deixá-las responsivas para melhor visualização em seu dispositivo móvel.
+description: Já teve problemas ao visualizar um e-mail no celular? Por exemplo, aquelas letras pequenas, scroll lateral e colunas quebradas? Nesse post iremos abordar como criar colunas nos e-mails e como deixá-las responsivas para melhor visualização em seu dispositivo móvel.
 ---
 
-No [segundo post da série](/tecnicas-para-codificar-um-e-mail-parte-2/), aprendemos a lidar com espaçamento nos e-mails. Neste, iremos abordar como criar conteúdo em colunas e como deixá-las responsivas.
+No [segundo post da série](/tecnicas-para-codificar-um-e-mail-parte-2/), aprendemos a lidar com espaçamento nos e-mails. Neste, iremos abordar como criar conteúdo em colunas e como deixá-las <a href='https://tableless.com.br/introducao-ao-responsive-web-design/' rel='nofollow' target='_blank'>responsivas</a>.
 
-Neste post, finalmente chegamos no conteúdo! Para começar, vamos criar uma nova tabela para isso, se preferir é possível usar a mesma tabela do container e alterar o `bgcolor` para alterar a cor da célula ao invés da tabela. Mas aconselho a criar uma nova para evitar problemas com o `colspan` e `rowspan` porque os mesmos causam problemas a medida que são criadas novas células.
+Finalmente chegamos ao conteúdo! Para começar, vamos criar uma nova tabela. É possível usar a mesma tabela do container e alterar o `bgcolor` para mudar a cor da célula ao invés da tabela. Mas aconselho a criar uma nova para evitar problemas com o `colspan` e `rowspan`, porque essas propriedades causam problemas para manter a estrutura correta a medida que são criadas novas células.
 
 Para montar o conteúdo, vamos usar as mesmas técnicas citadas nos posts anteriores:
 
