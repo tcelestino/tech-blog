@@ -17,7 +17,7 @@ Recentemente, nossa equipe fez algumas análises de frete e um dos desafios foi 
 
 Para descobrir qual a categoria de um frete, temos que consultar diversas tabelas, em geral em um formato CSV ou planilha:
 
-``` csv
+```
 AC,ACRELANDIA,69945-000,69949-999,AC,ACRELANDIA,69945-000,69949-999,L4
 AC,ASSIS BRASIL,69935-000,69939-999,AC,ASSIS BRASIL,69935-000,69939-999,L4
 AC,BRASILEIA,69932-000,69933-999,AC,BRASILEIA,69932-000,69933-999,L4
