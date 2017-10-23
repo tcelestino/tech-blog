@@ -214,4 +214,4 @@ O tempo de procura ficou em:
 1.43 µs ± 119 ns per loop (mean ± std. dev. of 7 runs, 1000000 loops each)
 ```
 
-E o processamento total foi reduziado de 10 horas para 4 minutos! Existe espaço para melhoria, mas essa performance é excelente e preferimos parar as otimizações por aqui.
+E o processamento total foi reduzido de 10 horas para 4 minutos! Existe espaço para melhoria, mas essa performance é excelente e preferimos parar as otimizações por aqui.
