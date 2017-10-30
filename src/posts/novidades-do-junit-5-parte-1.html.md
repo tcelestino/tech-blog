@@ -79,7 +79,9 @@ Como dito acima, a anotação `@Test` continua sendo a maneira de dizermos ao JU
 import org.junit.jupiter.api.Test;
 
 @Test
-public interface @IntegrationTest {
+@Retention(RetentionPolicy.RUNTIME)
+@Target(ElementType.METHOD)
+public @interface IntegrationTest {
 }
 
 ...
@@ -240,7 +242,7 @@ public void myFirstJUnit5Test() {
 //Unexpected exception type thrown ==> expected: <java.lang.IllegalArgumentException> but was: <java.lang.RuntimeException>
 ```
 
-Eventualmente, você pode querer capturar a exceção lançada para implementar alguma validação, como verificar se a mensagem está correta ou se alguma informação adicional que seu código deve incluir na exceção está mesmo sendo enviada. No JUnit 4, poderíamos usar a classe [ExpectedException](http://junit.org/junit4/javadoc/latest/org/junit/rules/ExpectedException.html]) para esse propósito, mas no JUnit 5 o método `assertThrows` é o suficiente para atender essa necessidade:
+Eventualmente, você pode querer capturar a exceção lançada para implementar alguma validação, como verificar se a mensagem está correta ou se alguma informação adicional que seu código deve incluir na exceção está mesmo sendo enviada. No JUnit 4, poderíamos usar a classe [ExpectedException](http://junit.org/junit4/javadoc/latest/org/junit/rules/ExpectedException.html) para esse propósito, mas no JUnit 5 o método `assertThrows` é o suficiente para atender essa necessidade:
 
 ```java
 @Test
