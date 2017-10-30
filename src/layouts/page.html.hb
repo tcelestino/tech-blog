@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<meta name="description" content="{{document.description}}">
 	<meta name="google-site-verification" content="NqCILBTY8B8P-r_KF8BSZKH9kUQgQOEbXJvEMaB33vw">
+	<meta name="google-site-verification" content="cKh-stJM3_ENNfMjaBIIyYiDgMXZFpRkoH8eQTcPwhM" />
 	<meta name="theme-color" content="#FDC24F">
 	<meta name="keywords" content="Elo7,tecnologia,post,desenvolvimento,blog,{{document.tags}}">
 	<meta name="language" content="pt-br">
