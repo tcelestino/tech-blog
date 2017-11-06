@@ -68,7 +68,7 @@ public class NossaActivity extends AppCompatActivity {
 ```
 
 Para testar fica super fácil. 
-Vamos usar o <a href="http://junit.org/junit4/" target="_blank">**JUnit**</a> e o <a href="http://mockito.org/" target="_blank">**Mockito**</a> para isso. Caso não esteja familirializado com o **Mockito**, <a href="http://engenharia.elo7.com.br/testes-codigo-mockito/" target="_blank">sugiro dar uma lida nesse post incrível do nosso engenheiro Tiago Lima sobre o assunto</a>
+Vamos usar o <a href="http://junit.org/junit4/" target="_blank">**JUnit**</a> e o <a href="http://mockito.org/" target="_blank">**Mockito**</a> para isso. Caso não esteja familirializado com o **Mockito**, <a href="https://engenharia.elo7.com.br/testes-codigo-mockito/" target="_blank">sugiro dar uma lida nesse post incrível do nosso engenheiro Tiago Lima sobre o assunto</a>
 
 ```
 public class TestandoNossaClasse {

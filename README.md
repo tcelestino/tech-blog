@@ -90,4 +90,4 @@ Para deployar:
 
 ### Hospedagem
 
-Blog hospedado no [github-pages](https://elo7.github.io/tech-blog) ou [engenharia.elo7.com.br](http://engenharia.elo7.com.br)
+Blog hospedado no [github-pages](https://elo7.github.io/tech-blog) ou [engenharia.elo7.com.br](https://engenharia.elo7.com.br)
