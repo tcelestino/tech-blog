@@ -1,5 +1,5 @@
 ---
-date: 2017-10-12
+date: 2017-11-13
 category: front-end
 tags:
   - javascript
@@ -9,43 +9,64 @@ layout: post
 title: Credential Managament API
 description:
 ---
-Nos dias atuais, passamos bastante tempo navegando em nossos navegadores seja através dos nossos smartphones ou no computador de mesa. Na grande maioria dos serviços que usamos, de certa forma existem o "controle de acesso" para utiliza-los. Geralmente, precisamos digitar um login (nome de usuário ou email) e uma senha. Isso a gente já sabe. Mas também sabemos o quanto é "chato" ter que ficar sempre digitando essas informações. Existem diversos serviços/aplicativos que auxiliam no gerenciamento de nossos dados, posso citar alguns como o LastPass, 1Password, bitwarden e principalmente os navegadores. Sim, os navegadores já oferecem gerenciamento de dados. Claro, acredito que você já sabia disso!
 
-Pois bem!
+Nos dias atuais, passamos bastante tempo navegando em nossos navegadores, hoje principalmente nos dispostivos móveis. E grande parte dos serviços possuem algum controle de acesso. Normalmente precisamos digitar um login (nome de usuário ou email) e uma senha. O principal fato aqui é que grande parte desse processo pode ser "chata" e ter que sempre ficar digitando essas informações. Existem diversos serviços/aplicativos que gerencia bastante esses dados, posso citar alguns como o LastPass, 1Password, bitwarden, Dashlane e principalmente os navegadores. Sim, os navegadores já oferecem recursos para gerenciarmos nossos dados. O Chrome, Firefox e o Safari, oferecem recurso nativos para podemos gerenciar nosso logins e senhas em diversos sites. Pois bem! Mas dai surge uma dúvida: como que fazemos para informar esses dados para os navegadores? Como que consigo integrar meu sistema de login com o navegador? Dai que surgiu a proposta da [Credential Management API](https://www.w3.org/TR/credential-management-1/). No exato momento que escrevo, apenas o Chrome (Android e desktop) já tem a API implementada. Os outros navegadores estão trabalhando na implementação.
 
-Sabemos que os navegadores possuem o recurso de gerenciamento de dados de autenticação, mas e como que fazemos para informar esses dados para os navegadores? Como que consigo integrar meu sistema de login com o navegador? Para facilitar essa interação entre website > navegador, que surgiu a proposta da [Credential Management API](https://www.w3.org/TR/credential-management-1/). No momento, apenas o Google Chrome (para Android e desktop) tem a API implementada. Isso não quer dizer você não possao implementar em seu projeto.
+O Credential Management API segue três pilares:
 
-Existem três pilares para o uso da Credtial Management API:
+- Simplificar o fluxo de acesso;
+- Permitir acesso com um toque com o seletor de contas;
+- Salvar e gerenciar seus dados.
 
-- Simplifique o fluxo de acesso
-- Permite acesso em um toque com o seletor de contas
-- Armazena credenciais
+Existem diversas maneiras de melhorar o fluxo de uso do seu site com a Credential Managament API, facilitando o login automático, se o usuário tiver outras contas salvas no navegador, poderá escolher qual conta será utilizada a garantir de verdade o *logout*.
 
-Como falei anteriormente, a ideia por trás da API é realmente facilitar o fluxo de acesso do usuário com o website.
+## Como usamos no Elo7
 
-## Caso Elo7
-
-Aqui no Elo7, já utilizamos a Credential Management API no sistema de login na versão para dispositivos móveis do marketplace (conto logo, logo o problema com a implementação na versão desktop) há algum tempo e segundo dados que obtemos através do Google Analytics, observamos que muitos usuários estão usando o recurso, que facilita bastante o processo de autenticação em nosso sistema.
-
-Vamos ao que interessa
-
-## Implementando
-
-Antes de iniciar nosso código é bom salientar que para usar a API em produção, seu servidor vai precisar ter implementando algum certificado SSL, já que a Credential Management API (assim como novas API's) só irá funcionar se seu servidor garantir a segurança de navegação.
-
-Para começar, precisamos garantir que a API esteja disponível no navegador
-
-```javascript
-	if ('credentials' in navigator) {
-		// lógica
-	}
-```
-
-Na API, existem  metódos que podemos pegar a informação já salva do usuário, ou salvar essas informações, assim como um metódo para controlar o logout do usuário no seu sistema. Vou falar delas com detalhes nos próximos tópicos.
+Aqui no Elo7, já utilizamos a Credential Management API no sistema de login na versão para dispositivos móveis do marketplace (conto logo, logo o problema com a implementação na versão desktop) e segundo dados que obtemos através do Google Analytics, observamos que muitos usuários estão usando o recurso, que facilita bastante o processo de autenticação em nosso sistema. Mas deixamos de conversa e vamos a implementação!
 
 ### Obtendo informações do usuário
 
-Para obter
+Como grande maioria das API's Javascript lançadas hoje, precisamos garantir a segurança. Ou seja, para usar a API você vai precisar ter um servidor com uma conexão segura, em palavras curtas precisa ter o *https* habilitado no seu servidor. Você pode usar diversos serviços para rodar local, eu recomendo o [ngrok](https://ngrok.com/) ou utilizar o Heroku. Esse último que estou usando do nosso exemplo.
 
+A primeira coisa que precisamos garantir se a API está disponível no navegador.
+
+```javascript
+	if ('credentials' in navigator) {
+		let cred = new PasswordCredential({
+			id: 'login',
+			password: 'senha'
+		});
+
+		navigator.credentials.store(cred).then(() => console.log('Dados salvos')).catch(() => console.log('Não possível salvar os dados'););
+	}
+```
+
+Nota-se que usamos um objeto chamado `PasswordCredential`. É com ele qu
+
+```html
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+	<meta charset="UTF-8">
+	<title>Usando Credential Managament API</title>
+</head>
+<body>
+	<form action='#post'>
+		<fieldset>
+			<legend>Login</legend>
+			<label for='name'>
+				Nome:
+				<input type='text' name='name' id='name'>
+			</label>
+			<label for='pass'>
+				Senha:
+				<input type='password' name='pass' id='pass'>
+			</label>
+			<button>Logar</button>
+		</fieldset>
+	</form>
+</body>
+</html>
+```
 
 ## Nem tudo são flores
