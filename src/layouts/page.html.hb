@@ -64,7 +64,7 @@
 	<script src="/js/vendor/async-define.js"></script>
 </head>
 <body itemscope itemtype="http://schema.org/WebPage" data-env="{{getEnvironment}}" data-ga-code="{{getGaCode}}">
-	<section class="left-pane">
+	<header class="left-pane">
 		<div class="logo-container">
 			<a rel="home" itemprop="url" href="/" class="logo">Tech Blog Elo7</a>
 		</div>
@@ -105,7 +105,7 @@
 			<a title="Github do Elo7" rel="external" itemprop="url" href="https://github.com/elo7" target="_blank" class="github">Github do Elo7</a>
 			<a title="Twitter do Elo7" rel="external" itemprop="url" href="https://twitter.com/elo7tech" target="_blank" class="twitter">Twitter do Elo7</a>
 		</div>
-	</section>
+	</header>
 	<main aria-label="Main content" itemscope itemtype="http://schema.org/Blog">
 		{{{content}}}
 
