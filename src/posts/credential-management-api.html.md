@@ -51,7 +51,7 @@ Nota-se que usamos um objeto chamado `PasswordCredential`. É com ele qu
 	<title>Usando Credential Managament API</title>
 </head>
 <body>
-	<form action='#post'>
+	<form action='/auth' class='form-login'>
 		<fieldset>
 			<legend>Login</legend>
 			<label for='name'>
@@ -65,8 +65,26 @@ Nota-se que usamos um objeto chamado `PasswordCredential`. É com ele qu
 			<button>Logar</button>
 		</fieldset>
 	</form>
+	<script>
+		if (!'credentials' in 'navigator') {
+			console.log('Seu navegador não tem suporte');
+			return;
+		}
+
+		document.querySelector('.form-login').addEventListener('submit', () => {
+			var cred = new PasswordCredential({
+				id: ''
+				password: ''
+			});
+
+			navigator.credentials.store(cred).then(() => {}).catch(() => {});
+		});
+	</script>
+>>>>>>> Stashed changes
 </body>
 </html>
 ```
 
 ## Nem tudo são flores
+
+Por mais que a API venha para facilitar o gerenciamento de contas, ela ainda não funciona 100% no desktop. Principalmente em relação a sessão. Nos testes que realizamos no Elo7... [contar o problema - ver com Aline/Vasco o que aconteceu]
