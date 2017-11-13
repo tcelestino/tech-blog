@@ -1,4 +1,4 @@
-<img align="right" src="http://images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg" />
+<img align="right" src="https://images.elo7.com.br/assets/v3/desktop/svg/logo-elo7.svg" />
 
 # Tech Blog
 *Blog de tecnologia do Elo7*
