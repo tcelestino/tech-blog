@@ -2,6 +2,9 @@
   "name": "tech-elo7",
   "version": "0.1.0",
   "description": "Tech Blog",
+  "config": {
+    "amp": true
+  },
   "dependencies": {
     "define-async": "1.2.0",
     "docpad": "6.79.4",
@@ -31,9 +34,11 @@
     "precopy": "mkdir -p src/assets/js/vendor",
     "copy": "npm run copy:ajax-amd && npm run copy:events-amd && npm run copy:async-amd && npm run copy:doc-amd",
     "postinstall": "npm run copy",
-    "clean": "docpad clean && rm -rf out && rm -rf src/documents/amp",
+    "clean-amp": "rm -rf src/documents/amp",
+    "clean": "docpad clean && rm -rf out && npm run clean-amp",
     "start": "docpad run",
     "test": "docpad generate --silent --env static",
-    "deploy": "docpad deploy-ghpages --silent --env static"
+    "deploy": "npm install && docpad deploy-ghpages --silent --env static",
+    "fast-dev": "npm run clean-amp && rm -rf node_modules/docpad-plugin-tags/ && npm start --tech-elo7:amp=false"
   }
 }
