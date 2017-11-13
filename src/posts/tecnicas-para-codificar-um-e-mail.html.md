@@ -102,7 +102,7 @@ Podemos também utilizar a tag `<center>` para envelopar a nossa `table` que ser
 
 As técnicas apresentadas funcionam nos seguintes clientes de email:
 
-Web
+### Web
 
 |             | Gmail | Inbox | Outlook | Yahoo |
 |-------------|:-----:|:-----:|:-------:|:-----:|
@@ -116,7 +116,7 @@ Web
 | Safari App  |   ✓   |   -   |    ✓    |   ✓   |
 | Edge App    |   ✓   |   -   |    ✓    |   ✓   |
 
-Mobile
+### Mobile
 
 |                   | Gmail App | Inbox App | Outlook App | Yahoo App |
 |-------------------|:---------:|:---------:|:-----------:|:---------:|
@@ -124,11 +124,11 @@ Mobile
 | iOS               |     ✓     |     ✓     |      ✓      |     ✓     |
 | Windows Phone     |     -     |     -     |      ✓      |     -     |
 
-Aplicativo Outlook
+### Aplicativo Outlook
 
 |        | 2007 | 2010 | 2011 | 2013 | 2015 |
 |--------|:----:|:----:|:----:|:----:|:----:|
-| Oulook |  ✗¹  |  ✗¹  |   ✓  |  ✗¹  |   ✓  |
+| Outlook |  ✗¹  |  ✗¹  |   ✓  |  ✗¹  |   ✓  |
 
 ¹ A propriedade `max-width` não funciona
 

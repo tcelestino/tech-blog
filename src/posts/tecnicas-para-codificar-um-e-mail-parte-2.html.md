@@ -11,7 +11,7 @@ title: Técnicas para codificar um e-mail - parte 2
 description: Continuando com a série de posts sobre codificar e-mails, você já teve problemas para adicionar espaçamentos? Ou com cliente de e-mail que não lê corretamente o que foi codificado? Nesse segundo post, vamos abordar diversas técnicas.
 ---
 
-No [primeiro post da série](/tecnicas-para-codificar-um-e-mail/), aprendemos a criar uma base para codificação de e-mail. Neste, iremos abordar as diversas formas de como trabalhar com os espaçamentos.
+No [primeiro post da série](/tecnicas-para-codificar-um-e-mail/), aprendemos a criar uma base para codificação de e-mail. Neste, iremos abordar as diversas formas de trabalhar com os espaçamentos.
 
 Para começar, vamos adicionar um cabeçalho ao nosso e-mail. Criaremos uma tabela e, dentro dela, adicionaremos um título para o nosso e-mail. Para ficar igual ao layout, vamos adicionar o atributo `bgcolor` para alterar a cor do fundo para marrom claro:
 
@@ -47,7 +47,7 @@ Nesta abordagem, adicionamos uma célula antes e outra após a célula que cont�
 
 ![Espaçamento com colunas](../images/tecnicas-para-codificar-um-e-mail-parte-2-2.png)
 
-## Cellspadding
+## Cellpadding
 
 Nesta técnica, utilizamos o atributo `cellpadding`, responsável pelo espaçamento interno da célula, para criar o espaço desejado:
 
@@ -61,9 +61,9 @@ Nesta técnica, utilizamos o atributo `cellpadding`, responsável pelo espaçame
 </table>
 ```
 
-O problema dessa abordagem é que não permite definir diferentes espaçamentos, o valor será sempre igual para todas as direções (`top`, `left`, `bottom` e `right`).
+O problema dessa abordagem é que ela não permite definir diferentes espaçamentos, o valor será sempre igual para todas as direções (`top`, `left`, `bottom` e `right`).
 
-![Espaçamento com cellspadding](../images/tecnicas-para-codificar-um-e-mail-parte-2-3.png)
+![Espaçamento com cellpadding](../images/tecnicas-para-codificar-um-e-mail-parte-2-3.png)
 
 
 ## Padding
@@ -94,11 +94,11 @@ Uma outra forma é adicionar uma margem para os lados no nosso texto:
 </table>
 ```
 
-É importante lembrar não precisamos seguir apenar uma dessas técnicas, em determinadas partes do código uma abordagem é melhor que a outra, por isso não se limite!
+É importante lembrar não precisamos seguir apenas uma dessas técnicas, em determinadas partes do código uma abordagem é melhor que a outra, por isso não se limite!
 
 ## Fonte
 
-Com os espaçamentos feitos, precisamos alterar a fonte para que fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. Também precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização entre os clientes se mantenha igual:
+Com os espaçamentos feitos, precisamos alterar a fonte para que o resultado fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. Também precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização entre os clientes se mantenha igual:
 
 ![Espaçamento no e-mail](../images/tecnicas-para-codificar-um-e-mail-parte-2-4.png)
 
@@ -122,7 +122,7 @@ Nesse caso só adicionamos uma fonte alternativa após a escolhida:
 
 As técnicas apresentadas funcionam nos seguintes clientes de email:
 
-Web
+### Web
 
 |             | Gmail | Inbox | Outlook | Yahoo |
 |-------------|:-----:|:-----:|:-------:|:-----:|
@@ -136,7 +136,7 @@ Web
 | Safari App  |   ✓   |   -   |    ✓    |   ✓   |
 | Edge App    |   ✓   |   -   |    ✓    |   ✓   |
 
-Mobile
+### Mobile
 
 |                   | Gmail App | Inbox App | Outlook App | Yahoo App |
 |-------------------|:---------:|:---------:|:-----------:|:---------:|
@@ -144,14 +144,14 @@ Mobile
 | iOS               |     ✓     |     ✓     |      ✓      |     ✓     |
 | Windows Phone     |     -     |     -     |      ✓      |     -     |
 
-Aplicativo Outlook
+### Aplicativo Outlook
 
 |        | 2007 | 2010 | 2011 | 2013 | 2015 |
 |--------|:----:|:----:|:----:|:----:|:----:|
-| Oulook |   ✓  |   ✓  |   ✓  |   ✓  |   ✓  |
+| Oultook |   ✓  |   ✓  |   ✓  |   ✓  |   ✓  |
 
-##Conclusão
+## Conclusão
 
-Essa foi a segunda parte da série de posts de como codificar um e-mail, a qual aprendemos a lidar com espaçamentos. No próximo iremos abordar sobre técnicas para torná-lo responsivo.
+Essa foi a segunda parte da série de posts de como codificar um e-mail, na qual aprendemos a lidar com espaçamentos. No próximo iremos abordar técnicas para torná-lo responsivo.
 
 E você? Já teve problemas com espaçamentos? =]
