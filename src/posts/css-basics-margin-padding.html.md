@@ -3,12 +3,13 @@ title: CSS Basics - Margin x Padding
 date: 2017-11-13
 category: front-end
 layout: post
-description: 
+description: Como funcionam as propriedades de espaçamento de CSS? Elas sempre funcionam como o esperado? Nesse post falaremos sobre as propriedades margin e padding e como elas funcionam em algumas situações.
 authors: [fernandabernardo]
 tags:
   - css
   - margin
   - padding
+  - box sizing
 ---
 
 Depois de falar sobre *display* no [post anterior](/css-basics-display/), vamos continuar falando sobre propriedades básicas do CSS. Nesse post iremos falar um pouco mais sobre as propriedades de espaçamento como ***margin*** e ***padding***. 
@@ -37,12 +38,27 @@ Um dos valores da propriedade *margin* é *auto*. Para usá-la, precisamos que o
 <p data-height="300" data-theme-id="23784" data-slug-hash="XzgJBz" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Margin: auto" class="codepen">Veja o exemplo <a href="https://codepen.io/FernandaBernardo/pen/XzgJBz/">Margin: auto</a> by Fernanda Bernardo (<a href="https://codepen.io/FernandaBernardo">@FernandaBernardo</a>) no <a href="https://codepen.io">CodePen</a>.</p>
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
+## Margin com elementos inline
+A propriedade *margin* serve para definir o tamanho da área de margem de um *box* e para todas as direções (*top*, *right*, *bottom*, *left*). Com apenas uma exceção, as margens verticais (*top* e *bottom*) não funcionam para elementos inline. Veja o exemplo abaixo, no primeiro parágrafo, como o *span* está com seu *display* padrão (`inline`) a propriedade *margin* funciona somente nas dimensões horizontais. Já no segundo, como está `inline-block` o *margin* é aplicado em todas as direções.
 
+<p data-height="300" data-theme-id="23784" data-slug-hash="jawrZJ" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="jawrZJ" class="codepen">Veja o exemplo <a href="https://codepen.io/FernandaBernardo/pen/jawrZJ/">Margin inline</a> by Fernanda Bernardo (<a href="https://codepen.io/FernandaBernardo">@FernandaBernardo</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
+## Collapsed Margin
+As margins *top* e *bottom* às vezes são combinadas e colapsadas em apenas uma. Mas como funciona isso?
+- Margens de blocos "empilhados": no nosso exemplo o bloco azul tem uma `margin-bottom` de 1em e o bloco rosa uma `margin-top` de 2em. No final, o espaçamento entre os blocos deveria ser de 3em (1em + 2em), certo? Mas não é isso que acontece... O espaçamento final é a maior das duas margens, no caso 2em.
+- Margens com elementos pai e primeiro / último filho: no nosso exemplo se não tiver nenhuma borda, padding ou elemento inline, acontece o mesmo efeito com as margens, e a de maior valor é aplicada. É aplicada a margem do parágrafo, que tem o maior valor, ao invés do bloco verde. Se descomentar a borda do `.outro-bloco`, as margens serão somadas normalmente.
 
-* margin inline
-* box não acompanha a margin
-* background com padding - background-origin: content-box
-* border para diferenciar margin de padding
-* float conta o margin para o tamanho de cada elemento
-* margin com porcentagem
+<p data-height="300" data-theme-id="23784" data-slug-hash="QOgdNV" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Collapsed margin" class="codepen">Veja o exemplo <a href="https://codepen.io/FernandaBernardo/pen/QOgdNV/">Collapsed margin</a> by Fernanda Bernardo (<a href="https://codepen.io/FernandaBernardo">@FernandaBernardo</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+Dois casos em que nunca colapsa a margem são com elementos com *float* ou posição absoluta.
+
+## Background com padding
+Um caso interessante, é se tentarmos usar um *background* com *padding*. O padding não é aplicado nem para o *top* nem para o *left*. Ao invés disso, esse valor é aplicado para a direção oposta. Para ficar "certo", precisamos adicionar a propriedade `background-origin: content-box`. Experimente comentar essa linha no CSS do exemplo para ver o que acontece.
+
+<p data-height="300" data-theme-id="23784" data-slug-hash="OOgWao" data-default-tab="css,result" data-user="FernandaBernardo" data-embed-version="2" data-pen-title="Background with padding" class="codepen">Veja o exemplo <a href="https://codepen.io/FernandaBernardo/pen/OOgWao/">Background with padding</a> by Fernanda Bernardo (<a href="https://codepen.io/FernandaBernardo">@FernandaBernardo</a>) no <a href="https://codepen.io">CodePen</a>.</p>
+<script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
+
+## Conclusão
+Nesse post, falamos um pouco sobre as diferenças entre margin e padding e suas aplicações e formas de funcionar. Continuaremos com a nossa série sobre CSS, e se tiverem alguma sugestão de tema que queiram ver, coloquem nos comentários ;D
