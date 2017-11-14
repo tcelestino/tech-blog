@@ -4,6 +4,8 @@ const moment = require('moment'),
 	ampTask = require('./src/tasks/amp'),
 	sizeOf = require('image-size');
 
+moment.locale('pt-BR');
+
 const orderByDate = (postA, postB) => {
 	let dateA = postA.toJSON().date,
 		dateB = postB.toJSON().date;
@@ -46,6 +48,9 @@ const docpadConfig = function() {
 					},
 					dateAsText(date) {
 						return moment(date).utc().format('DD/MM/YYYY');
+					},
+					formatDate: function(date, format) {
+						return moment(date).utc().format(format);
 					},
 					getCategories() {
 						return categories;
