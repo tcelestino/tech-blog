@@ -157,7 +157,7 @@ const docpadConfig = function() {
 			static: {
 				templateData: {
 					site: {
-						url: 'http://engenharia.elo7.com.br'
+						url: 'https://engenharia.elo7.com.br'
 					}
 				}
 			}

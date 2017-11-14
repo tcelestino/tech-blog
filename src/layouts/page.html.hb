@@ -132,7 +132,7 @@
 		{{/if}}
 	</main>
 	<footer itemscope itemtype="http://schema.org/Organization">
-		<a rel="home" itemprop="url" href="http://engenharia.elo7.com.br/" >
+		<a rel="home" itemprop="url" href="https://engenharia.elo7.com.br/" >
 			engenharia.elo7.com.br © 2017
 		</a>
 		<meta itemprop="name" content="Elo7 Serviços de Informática SA"/>
