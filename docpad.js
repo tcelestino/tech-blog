@@ -165,8 +165,10 @@ const docpadConfig = function() {
 
 		events: {
 			populateCollectionsBefore: () => {
-				categoriesTask(categories);
-				ampTask(categories);
+				if(this.process.env.npm_package_config_amp === 'true') {
+					categoriesTask(categories);
+					ampTask(categories);
+				}
 			}
 		},
 
