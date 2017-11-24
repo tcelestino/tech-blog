@@ -1,10 +1,10 @@
 ---
-date: 2017-02-01
+date: 2017-11-24
 category: back-end
 layout: post
 title: Subindo uma API REST em Clojure
-description: 
-author: ericdallo
+description: Clojure é uma linguagem já conhecida para os amantes do paradigma funcional, neste post, demonstro alguns detalhes de uma biblioteca que faz uma ponte entre esta linguagem e o mundo WEB. Venha aprender como subir uma API REST em 10 minutos!
+authors: [ericdallo]
 tags:
   - API
   - REST
@@ -12,42 +12,44 @@ tags:
   - back-end
 ---
 
-## Motivação
+[Clojure](https://clojure.org/) é uma linguagem funcional e dinâmica que roda na JVM e que vem crescendo bastante no mercado de trabalho. Ela é tão performática quanto qualquer programa que roda em _Java_ e muito menos verbosa. Isso facilita e muito na manutenção do código, influenciando no custo do desenvolvimento.
+Caso não esteja muito familiarizado com esta linguagem incrível, recomendo a leitura do livro [Clojure for the Brave and True](http://www.braveclojure.com/clojure-for-the-brave-and-true/) onde ensina desde o básico sobre Clojure.
 
-com isso em mente, vamos subir uma API com um CRUD de posts de um blog, [clojure7](https://github.com/ericdallo/clojure7), totalmente restful.
+Para testar algumas características da linguagem vamos criar uma aplicação com uma __API REST__ básica. Esse projeto, o [clojure7](https://github.com/ericdallo/clojure7), que será um _CRUD_ de posts de um blog.
 
-Para quem programa ou já programou em clojure, deve ter esbarrado no [Leiningen](https://leiningen.org). Ele é um gerenciador de dependências e tasks, assim como o *gradle* e *maven* para o "javeiros", ele pode ser usado para construir a hierarquia de seu novo projeto, rodar sua aplicação com plugins e entre outros.
-Vamos utilizar um plugin dele chamado **compojure**, que irá criar a hierarquia e arquivos básicos para nossa aplicação.
+Para quem programa ou já programou em _Clojure_, deve ter esbarrado em algum momento no [Leiningen](https://leiningen.org). Ele é um gerenciador de dependências e tasks, assim como o *gradle* e *maven* para os "javeiros".
+Com o *Leinigen*, podemos construir a hierarquia do nosso novo projeto, rodar a aplicação com plugins, entre outros.
 
-## Setup
+## Dependências
 
-[Compojure](https://github.com/weavejester/compojure) é uma biblioteca (não um framework) baseado no [Ring](https://github.com/ring-clojure/ring), uma outra biblioteca que consegue manipular a **request** e **response**, parecido com a especificação **Servlet** do java. A diferença é que o compojure permite você gerenciar as rotas da sua aplicação mais facilmente, para os rubistas, algo semelhante com o `routes.rb` do *Rails*.
+Vamos utilizar um plugin chamado **Compojure**, para criar a hierarquia e arquivos básicos para nossa aplicação.
+O [Compojure](https://github.com/weavejester/compojure) é uma biblioteca, não um framework, baseado no [Ring](https://github.com/ring-clojure/ring) (biblioteca que consegue manipular **request** e **response**, semelhante à especificação **Servlet** no Java). A diferença entre os dois está no fato do compojure permitir o gerenciamento das rotas da aplicação mais facilmente.
 
-Caso tenha dúvidas de como o _ring_ funciona, sugiro a leitura dos conceitos do mesmo, [aqui](https://github.com/ring-clojure/ring/wiki/Concepts)
+Caso tenha dúvidas de como o _Ring_ funciona, sugiro a leitura de [seus conceitos](https://github.com/ring-clojure/ring/wiki/Concepts).
 
 Vamos começar criando o projeto a partir do *Leiningen*:
 
 ```bash
-lein new compojure clojure7
-``` 
+$ lein new compojure clojure7
+```
 
 Ao rodar este comando, o *lein* irá criar alguns arquivos para nós:
 
-* __project.clj__ - arquivo de configrução do projeto, parecido com o `build.gradle` ou `pom.xml`
+* __project.clj__ - arquivo de configuração do projeto, parecido com o `build.gradle` ou `pom.xml`
 * __resources/__  - pasta onde serão guardados arquivos como assets, templates html e migrações de banco
 * __src/__        - pasta contendo todo o código clojure da aplicação
 * __test/__       - pasta contendo os testes da aplicação
 
 
-Vamos adicionar algumas dependencias no arquivo `project.clj`
+Vamos adicionar algumas dependências no arquivo `project.clj`:
 
 * [ring-json](https://github.com/ring-clojure/ring-json) - Permite lidarmos com requisições que contenham _json_ e facilita as respostas da aplicação em _json_.
-* [korma](http://sqlkorma.com/) - Talvez uma das minhas _libs_ favoritas em clojure, um [ORM](https://en.wikipedia.org/wiki/Object-relational_mapping) que mapeia nossos modelos clojure em modelos relacionais no banco de dados.
-* [mysql](https://github.com/clojure/java.jdbc) - Driver do mysql para clojure.
+* [korma](http://sqlkorma.com/) - Uma das minhas _libs_ favoritas em clojure, um [ORM](http://www.devmedia.com.br/orm-object-relational-mapper/19056) que mapeia nossos modelos clojure em modelos relacionais no banco de dados.
+* [mysql](https://github.com/clojure/java.jdbc) - Driver do *mysql* para clojure.
 
-As dependencias da aplicação ficarão assim:
+As dependências da aplicação ficarão assim:
 
-```clojure
+```java
 :dependencies [[org.clojure/clojure "1.8.0"]
                [compojure "1.5.2"]
                [ring/ring-defaults "0.2.1"]
@@ -57,15 +59,15 @@ As dependencias da aplicação ficarão assim:
 
 ```
 
-Ainda neste mesmo arquivo, podemos encontrar a configuração do `ring`: 
+Ainda neste mesmo arquivo, podemos adicionar a configuração do `ring`:
 
 ```clojure
 :ring {:handler clojure7.handler/app}
 ```
 
-A linha acima mostra que temos um **handler**, um arquivo que deverá lidar com cada roda da aplicação, e o namespace apontando para o mesmo.
+Na configuração acima temos um **handler**, um arquivo que deverá lidar com cada rota da aplicação, e o namespace apontando para o mesmo.
 
-Ao abrirmos o `src/clojure7/handler.clj`, vamos alterar o _bind_ dos parâmetros do _ring_ para _json_ e dizer ao _middleware_ dele que após passar pela nossa rota, transformar os dados em _json_ para a resposta.
+Ao abrirmos o `src/clojure7/handler.clj`, vamos alterar o _ring_ para realizar o _bind_ dos parâmetros da _request_ para _json_ e dizer ao ring que após passar pela nossa rota, transforme os dados da resposta em _json_ .
 
 ```clojure
 (ns clojure7.handler
@@ -83,15 +85,14 @@ Neste mesmo arquivo, teremos as definições de rotas:
 ```
 (defroutes all-routes
   (GET "/" [] "Hello World")
-  (route/not-found "Not Found"))
+  (route/not-found "Página não encontrada :("))
 ```
 
-Com o Compojure, temos a definição da nossa rota com o `defroutes`, onde podemos passar uma lista de rotas para ele. Podemos ver que já temos uma rota *GET* para a raiz da aplicação que retornará uma _String_ no corpo da resposta, e outra que caso não encontre nenhuma rota definida deste método, exiba a página de 404, "Not Found".
+Com o Compojure, temos a definição da nossa rota com o `defroutes`, onde podemos passar uma lista de rotas para ele. Podemos ver que já temos uma rota *GET* para a raiz da aplicação que retornará uma _String_ no corpo da resposta, e outra que caso não encontre nenhuma rota definida deste método, exiba a página de 404, "Página não encontrada :(".
 
 ## Banco de dados
 
-Assim como no *Ruby on Rails*, podemos ter migrações de banco de dados, neste post não irei demonstrar, talvez em um próximo, mas caso queira aprender, sugiro o uso do [migratus](https://github.com/yogthos/migratus), outra _lib_ excelente.
-Criaremos a nossa tabela `post` no nosso banco de dados mysql:
+Criaremos então a nossa tabela `post` no nosso banco de dados mysql:
 
 ```sql
 CREATE TABLE post (
@@ -101,6 +102,9 @@ CREATE TABLE post (
   PRIMARY KEY (`id`)
 );
 ```
+
+A título de curiosidade, assim como no *Ruby on Rails*, podemos ter migrações de banco de dados para facilitar na criação/alteração de novas tabelas. Neste post não irei demonstrar pela extensão do assunto, mas caso queira aprender, sugiro o uso do [migratus](https://github.com/yogthos/migratus) que também é outra _lib_ excelente.
+
 Vamos criar o arquivo `src/clojure7/db.clj` contendo as configurações do banco de dados:
 
 ```clojure
@@ -117,7 +121,7 @@ Vamos criar o arquivo `src/clojure7/db.clj` contendo as configurações do banco
 
 ## Recursos
 
-Se tratando de _REST_, nosso modelo `post` é um recurso, então vamos mapea-lo no arquivo `src/clojure7/post/post.clj`:
+Se tratando de _REST_, nosso modelo `post` é um recurso, então vamos mapeá-lo no arquivo `src/clojure7/post/post.clj`:
 
 ```clojure
 (ns clojure7.post.post
@@ -128,13 +132,13 @@ Se tratando de _REST_, nosso modelo `post` é um recurso, então vamos mapea-lo 
 (defentity post)
 ```
 
-Podemos observar que com o `defentity` transformamos o objeto `posts` em uma entidade gerenciada pelo **korma**, agora podemos manipular os dados da tabela através do clojure, então vamos criar os métodos para cada operação do _CRUD_:
+Podemos observar que com o `defentity` transformamos o objeto `post` em uma entidade gerenciada pelo **korma**. Agora podemos manipular os dados da tabela através do clojure, então vamos criar os métodos para cada operação do _CRUD_:
 
 ```clojure
 (defn find-all []
   (select post))
 
-(defn find-by-id [id]  
+(defn find-by-id [id]
     (select post
       (where {:id id})
       (limit 1)))
@@ -153,19 +157,23 @@ Podemos observar que com o `defentity` transformamos o objeto `posts` em uma ent
     (where {:id id})))
 ```
 
+Criaremos agora as rotas para alterar nosso recurso `post` no arquivo `src/clojure7/handler.clj` e adicionaremos no namespace dele o link para o namespace `post.clj`, assim conseguimos acessar os métodos daquele namespace:
 
-Criaremos agora as rotas para alterar nosso recurso `post`:
-
-`src/clojure7/handler.clj`
 ```clojure
+(ns clojure7.handler
+    (:require [compojure.core :refer :all]
+              [compojure.route :as route]
+              [clojure7.post.post :as post]
+              [ring.middleware.json :refer [wrap-json-response wrap-json-body]]))
+
 (defroutes all-routes
-  (GET "/posts" [] 
+  (GET "/posts" []
     (post/find-all))
   (POST "/posts" req
     (let [name (get-in req [:body "name"])
           category (get-in req [:body "category"])]
           (post/create name category)))
-  (GET "/posts/:id" [id] 
+  (GET "/posts/:id" [id]
     (post/find-by-id id))
   (PUT "/posts/:id" req
     (let [id (read-string (get-in req [:params :id]))
@@ -173,7 +181,7 @@ Criaremos agora as rotas para alterar nosso recurso `post`:
           category (get-in req [:body "category"])]
           (post/update-by-id id name category)
           (post/find-by-id id)))
-  (DELETE "/posts/:id" [id] 
+  (DELETE "/posts/:id" [id]
     (post/delete-by-id id)
     (str "Deleted post " id))
   (route/not-found "Not Found"))
@@ -182,29 +190,37 @@ Criaremos agora as rotas para alterar nosso recurso `post`:
 
 Podemos agora subir nossa aplicação com o seguinte comando ``lein ring server``, por padrão ele irá subir na porta 3000.
 
-Criando um `post`:
+Para executar cada uma das ações que criamos no código, seguem abaixo os comandos:
+
+* Criando um `post`
 
 ```bash
 curl -X POST localhost:3000/posts -H "Content-Type: application/json" -d '{"name":"Clojure com o Simbal", "category":"cool-posts"}'
 ```
 
-Editando um `post`:
+* Listando todos os `post`'s
+
+```bash
+curl -X GET localhost:3000/posts
+```
+
+* Editando um `post`
 
 ```bash
 curl -X PUT localhost:3000/posts/1 -H "Content-Type: application/json" -d '{"name":"Clojure com o Greg", "category":"other-posts"}'
 ```
 
-Encontrando um `post`:
+* Encontrando um `post`
 
 ```bash
 curl -X GET localhost:3000/posts/1
 ```
 
-Removendo um `post`:
+* Removendo um `post`
 
 ```bash
 curl -X DELETE localhost:3000/posts/1
 ```
 
-Gostou do post? tem alguma dúvida? alguma crítica? Comenta aqui em baixo :)
-Espero que tenha despertardo, para quem nâo conhece, aquela curiosidade que todo *dev* tem quando descobre que existe outra maneira de subir uma API REST nos seus novos projetos :D
+Gostou do post? Tem alguma dúvida? Alguma crítica? Comenta aqui em baixo :)
+Espero que tenha despertado, para quem não conhece, aquela curiosidade que todo *dev* tem quando descobre que existe outra maneira de subir uma API REST nos seus novos projetos :D
