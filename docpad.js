@@ -43,6 +43,9 @@ const docpadConfig = function() {
 							})
 							.toJSON();
 					},
+					toLowerCase(text) {
+						return typeof text === 'string' ? text.toLowerCase() : text;
+					},
 					getSlug(text) {
 						return text.toLowerCase().replace(/(\s|\.)/g, '-');
 					},
