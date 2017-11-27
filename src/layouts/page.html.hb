@@ -7,7 +7,7 @@
 	<meta name="google-site-verification" content="NqCILBTY8B8P-r_KF8BSZKH9kUQgQOEbXJvEMaB33vw">
 	<meta name="google-site-verification" content="cKh-stJM3_ENNfMjaBIIyYiDgMXZFpRkoH8eQTcPwhM" />
 	<meta name="theme-color" content="#FDC24F">
-	<meta name="keywords" content="Elo7,tecnologia,post,desenvolvimento,blog,{{document.tags}}">
+	<meta name="keywords" content="Elo7,tecnologia,post,desenvolvimento,blog,{{toLowerCase document.tags}}">
 	<meta name="language" content="pt-br">
 	<meta name="title" content="Elo7 Tech - {{document.title}}">
 	<meta name="apple-mobile-web-app-title" content="Elo7 Tech - {{document.title}}">

@@ -27,7 +27,7 @@ layout: page
 		<ul class='tag-list'>
 		{{#each document.tags}}
 			<li>
-				<a href='/tags/{{getSlug . }}/'>{{.}}</a>
+				<a href='/tags/{{getSlug . }}/'>{{toLowerCase . }}</a>
 			</li>
 		{{/each}}
 		</ul>
@@ -82,4 +82,3 @@ layout: page
 	<noscript>Habilite o JavaScript para ver os comentários</noscript>
 </article>
 <script async src="/js/post.js"></script>
-
