@@ -174,6 +174,10 @@
 			border-left: 5px solid #7c9ec4;
 		}
 
+		.card-cultura {
+			border-left: 5px solid #f44336;
+		}
+
 		.post-card:not(:last-of-type) {
 			margin-bottom: 1em;
 		}
