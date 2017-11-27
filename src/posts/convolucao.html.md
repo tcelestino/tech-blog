@@ -1,5 +1,5 @@
 ---
-date: 2017-09-18
+date: 2017-11-27
 category: back-end
 tags:
   - data science
@@ -8,7 +8,7 @@ tags:
 authors: [abarbosa94, igorbonadio]
 layout: post
 title: Convolução
-description: Alguma descrição do post que irá aparecer na home...
+description: Apresentaremos uma técnica chama convolução, que é base de diversos algoritmos de processamento de imagens.
 ---
 
 Quando trabalhamos com processamento de imagens, existem diferentes agoritmos que podemos utilizar dependendo do objetivo que queremos atingir. Alguns exemplos conhecidos podem ser vistos logo abaixo:
