@@ -4,13 +4,14 @@ date: 2017-11-27
 authors: [davidrobert]
 layout: post
 category: vagas
-description: O Elo7, maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar com seus novos projetos. Estamos à procura de profissionais de pesquisa e desenvolvimento para nosso time de Data Science.
+description: O Elo7, maior marketplace de produtos criativos da América Latina, está com muitos desafios técnicos para implementar seus novos projetos. Estamos à procura de profissionais de pesquisa e desenvolvimento para nosso time de Data Science.
 tags:
   - data scientist
   - deep learning
   - big data
   - machine learning
   - python
+  - java
 ---
 
 O Elo7 é um marketplace que busca conectar milhões de usuários a produtos feitos sob encomenda por milhares de vendedores para oferecer uma experiência de compra única na internet. O objetivo do Elo7 é oferecer as melhores ferramentas para compra e venda de produtos personalizados.
