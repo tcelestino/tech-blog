@@ -79,7 +79,7 @@ autoprefix: true
 		font-size: 0.9em;
 	}
 
-	p code {
+	p code, ol code, ul code  {
 		padding: 0.2em;
 		color: map-get($colors-text, marron);
 		background-color: map-get($colors-background, light-gray);
