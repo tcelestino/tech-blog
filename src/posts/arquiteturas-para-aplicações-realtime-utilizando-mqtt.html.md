@@ -1,5 +1,5 @@
 ---
-date: 2017-04-18
+date: 2017-12-04
 category: back-end
 layout: post
 title: Arquiteturas para aplicações realtime utilizando MQTT
