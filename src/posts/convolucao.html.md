@@ -7,11 +7,11 @@ tags:
   - processamento de imagens
 authors: [abarbosa94, igorbonadio]
 layout: post
-title: Convolução
-description: Apresentaremos uma técnica chama convolução, que é base de diversos algoritmos de processamento de imagens.
+title: Princípios de Processamento de Imagens: Uma introdução à Convolução
+description: Apresentaremos uma técnica chamada convolução, que é base de diversos algoritmos de processamento de imagens.
 ---
 
-Quando trabalhamos com processamento de imagens, existem diferentes agoritmos que podemos utilizar dependendo do objetivo que queremos atingir. Alguns exemplos conhecidos podem ser vistos logo abaixo:
+Quando trabalhamos com processamento de imagens, existem diferentes algoritmos que podemos utilizar dependendo do objetivo que queremos atingir. Alguns exemplos conhecidos podem ser vistos logo abaixo:
 
 | Objetivo        | Imagem Original | Resultado  |
 |:-------------:| :-------------: |:---------------:| :----------:|
@@ -23,7 +23,7 @@ Assim, dentro da área de processamento de imagem, uma das técnicas mais difund
 
 Sua definição tem raizes na [matemática](https://en.wikipedia.org/wiki/Convolution), e pode ser contínua (que é usada em processamento de sinais, por exemplo) ou discreta (que é usada em processamento de imagens).
 
-Antes de tudo, uma coisa que é legal percebemos é que quando o computador "enxerga" uma imagem ele não vê nada além de números (no caso, matrizes):
+Antes de tudo, uma coisa que podemos perceber é que quando o computador "enxerga" uma imagem ele não vê nada além de números (no caso, matrizes):
 
 | O que a gente vê| O que o computador vê  |
 | :-------------: |:---------------:|
