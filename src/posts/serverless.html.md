@@ -1,6 +1,6 @@
 ---
 title: Serverless e AWS Lambda
-date: 2017-07-10
+date: 2017-12-06
 category: back-end
 layout: post
 description: Serverless. O que é? Onde vide? Do que se alimenta?
@@ -14,7 +14,7 @@ tags:
 
 Todos os dias surgem novas buzzwords no mercado, cada uma relacionada a uma nova tecnologia/metodologia que promete revolucionar o modo de fazer as coisas, uma das mais recentes é a Serverless. Ao longo desse post vou tentar descrever o que é essa nova buzzword e vai de você analisar se faz sentido ou não aplicá-la ao seu projeto.
 
-## Serverless
+# Serverless
 
 Serverless permite você contruir e executar aplicações sem ter que gerenciar nenhuma infraestrutura. Sua aplicação ainda roda em servidores, mais todo o gerencimanete vai ser feito pelo Vendor (AWS, GCP, Azure, etc). Não é mais necessario provisionar, gerenciar ou escalar servidores para executar sua aplicação. Serverless são funções executadas em containers stateless, efêmero e gerenciado por terceiro.
 
@@ -37,11 +37,11 @@ Analisando o gráfico, podemos perceber que a linha vermelha representa a capaci
 
 Uma arquitetura Serverless age em cima desses dois problemas: recursos ociosos e aumentos súbitos e/ou spike de requisições. Como não precisamos nos preocupar com infra/provisionamento/escalabilidade já que só é cobrado pelo o que for executado, nunca mais teremos máquinas sendo executadas com recursos ociosos, você entrega seu código para o Vendor e ele se vira para executá-lo.
 
-### Stateless
+## Stateless
 
 Todo serverless por natureza é stateless (lembra da imagem do ciclo de vida?), então no final da execução nosso container é destruído levando consigo todas as informações que foram guardadas localmente como: variáveis estáticas, arquivos da pasta /tmp e estado da memória RAM (tenha isso em mente quando for desenvolver algo que utilize serverless). Uma opção para não perdê-los, seria salvá-los em outro lugar como um banco relacional, Dynamo, Redis ou até mesmo no S3.
 
-## AWS Lambda
+# AWS Lambda
 
 Como serverless por si só representa um conjunto de conceitos, precisamos de alguém para implementá-lo! Entre os serviços mais usados no mercado temos: AWS Lambda, Google Cloud Functions, Azure Functions e Apache OpenWhisk (este último open-source). Nesse post por questões de abrangência de conhecimento da minha parte vamos utilizar o AWS Lambda.
 
@@ -63,11 +63,11 @@ Caso você já tenha um sistema e precise chamar uma função o próprio SDK da 
 
 É possível agendar funções para serem executadas em determinados horários e dias (utilizando Expressões Cron para isso).
 
-### Segurança
+## Segurança
 
 Como em todos os produtos da Amazon é possível utilizar roles e VPC específicas para cada função.
 
-### Precificação
+## Precificação
 
 A precificação é feita baseada no número de execuções da função e sua duração.
 
@@ -83,7 +83,7 @@ A partir do momento que a função começa a ser executada é iniciada a cobran�
 
 Para incentivar o uso do lambda a AWS oferece um nível gratis, 1 milhão de solicitações por mês e 400GB/segundo de tempo por mês.
 
-### Limites
+## Limites
 
 A AwS colocou alguns limites que podem complicar a sua vida e devem ser levados em conta na hora do desenvolvimento.. Veja abaixo:
 
@@ -108,13 +108,15 @@ Esse pode ser um dos mais problemáticos, pois como no lambda não existe separa
 
 Esses são apenas alguns limites, no site da aws você pode encontrar todos os limites [http://docs.aws.amazon.com/lambda/latest/dg/limits.html](http://docs.aws.amazon.com/lambda/latest/dg/limits.html)
 
-### Vendor lock-in
+## Vendor lock-in
 
 O primeiro passo ao utilizar uma arquitetura serverless é escolher o vendor (AWS, GCP, AZURE). Não importa muito a sua escolha, pois no final das contas você estará preso a ele, principalmente quando as funções começam a se integrar e ser ativadas por eventos de outros produtos deste vendor, como por exemplo quando utilizamos serviços úteis como filas (SQS, GCP pub/sub).
 
 Um ponto para se questionar é como você pode migrar uma função do AWS Lambda para o Cloud Functions e fazer com que ele mantenha a integração com a fila do SQS que ativa esta função? Bom a resposta é que o trigger nativo que a AWS fornece é perdido, então será necessário um certo trabalho de desenvolvimento em cima e provavelmente uma mudança no desenho da arquitetura (e muito boiler plate code) para fazer essa integração, tornando tudo muito custoso!
 
-### Situações ideais para uso
+## Situações de uso
+
+### Ideais
 
 - Coisas pequenas e rápidas
 Uma rapida analise nos limites é possível ver que esse é o publico alvo do Lambda.
@@ -129,27 +131,31 @@ Para que manter uma grande infraestrutura de pé com o consumo de recurso na cas
 Mesmo caso da anterior, tem algum sistema interno que é pouco ou quase nunca utilizado, porem a maquina está sempre rodando e gastando recursos? Talvez faça sentido ele ser um Lambda.
 
 
-### Não ideais para uso
+### Não ideais
 
 - Para tudo
+
 Lambdas são legais, fácil de gerenciar, rápido desenvolvimento e sem infra para se preocupar. Mais tem um preço e caso seja um serviço com um número de requisições muito alto, no final do mês a conta não vai fechar, talvez faça mais sentido usar o bom e velho EC2.
 
 - Processamentos longo
+
 Como ja foi dito anteriormente temos o limites até 5min (depende do timeout que você configurou para a função) para sua função ser executada, após isso a AWS mata a execução.
 
 - Processamentos com alto uso de RAM
+
 Mesmo após a mudança para 3GB no limite de RAM para cada função existem outros serviços da Amazon que são capazes de lidar melhor com esse tipo de processamento. Aqui também temos a mesma limitação do tempo, caso sua função comece a usar mais que 3GB ou o limite que você setou para função, ela é encerrada automaticamente.
 
 - Ambientes multi cloud
+
 Como uma das grandes facilidades são os triggers com outros produtos no vendor não faz muito sentido tentar integrar AWS Lambda com GCP pub/sub.
 
 
-### Um novo mundo que não para de crescer
+## Um novo mundo que não para de crescer
 
 Durante a re:Invent 2017 foram anunciadas uma grande quantidade de novidade para o lambda, mostrando que a Amazon tem apostado fortemente na tecnologia, algumas ainda estão em beta mais estarão disponíveis em breve.
 [Nesse link](https://serverless.com/blog/ultimate-list-serverless-announcements-reinvent) temos tudo que foi anunciado e um comentario falando do porque a funcionalidade é importante.
 
-## Conclusão
+# Conclusão
 
 Existem vários outros tópicos dos quais não citei aqui como o uso de logging, escrever tests, execução de deploys, boas práticas em geral, etc. Todos estes assuntos podem ser explorados em um próximo post.
 
