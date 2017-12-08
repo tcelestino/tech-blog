@@ -1,0 +1,59 @@
+Front-End - Coisas que nos orgulhamos em 2017!
+
+
+Para fechar o ano bem, vou resumir aqui …
+
+HTML5 APIs
+
+Neste ano a tendência de tornar a web cada vez mais amigável aos usuários, muitas vezes de forma bem parecida ao que acontece com os aplicativos, se mostrou bem forte. E ganhamos ferramentas nos navegadores para implementar isso: as HTML5 APIs.
+
+E nós nos divertimos bastante testando e implementando algumas delas:
+
+- [Credential Management API](https://www.w3.org/TR/credential-management/) : facilitando o login dos nossos usuários no site. Muito em breve teremos um post falando com detalhes sobre ele.
+- [Web Share API](https://engenharia.elo7.com.br/web-share-api/): o que melhora o compartilhamento de conteúdo nas redes sociais utilizando os recursos nativos do próprio celular.
+- [Payments Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API): auxiliando o preenchimento dos dados de pagamento no processo de compra do site.
+
+Nós acreditamos no potencial dessas APIs para engajar e melhorar a experiencia do usuário na web, trazendo para a web uma experiencia que apenas um aplicativo poderia trazer.
+
+PWA
+
+Seguindo a idéia de trazer para web funcionalidades comuns em aplicativos, temos o tão falado [Progressive Web Apps](https://engenharia.elo7.com.br/a-tecnologia-por-tras-de-progressive-web-apps/).
+
+Em 2017 conseguimos os requisitos necessários, como por ter a infraestrutura toda do site com HTTPS. Agora contamos com cache de assets, a possibilidade do usuário incluir o atalho do site junto dos aplicativos (algo mais?).
+
+Light House?
+
+JS
+
+Ano passado nós começamos a escrever código javascript que rode tanto no servidor quanto no client, utilizando isomorfismo para tal! Mas foi neste ano que criamos o Nymeria, um ...
+Change detection
+
+Se quiser saber mais sobre o assunto e como nós aplicamos no Elo7 com mais detalhes você pode conferir aqui https://engenharia.elo7.com.br/isomorfismo/.
+
+CSS
+
+Um conceito que nós continuamos praticando bastante em 2017 foi o [ITCSS](https://csswizardry.net/talks/2014/11/itcss-dafed.pdf), aliado ao [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). E com isso estamos construindo uma aplicação muito mais estruturada e com códigos melhor reaproveitados.
+
+Algo que nós ainda estamos começando a fazer esse ano, é deixar o nosso código com uma nomenclatura mais proxima aos nossos designers. O atomic design ajuda muito nessa parte, pois os times de design e desenvolvimento podem trabalhar com os mesmos componentes visuais e a mesma nomenclatura.
+
+Navegadores
+
+A pouquíssimo tempo fomos contemplados com um novo firefox, que promete muitas coisas, como ser 2x mais rápido (o que tem de novo?)
+
+Nós gostamos de acompanhar essa evolução, testar as novas funcionalidades e ficamos bem felizes quando aquela especificação passa a ter suporte. É o caso ….
+
+Shadow root?
+
+Acessibilidade
+
+Um dos assuntos em foco neste ano, a acessibilidade, esteve muito presente no nosso dia-a-dia aqui no Elo7, e acredito que fez parte da vida de muita gente.
+
+Um indicador é o número crescente de debates sobre o tema no mundo front-end em diversos eventos recentes. Lembrando que a [TheDevConf 2017](http://www.thedevelopersconference.com.br/tdc/2017/saopaulo/trilha-acessibilidade) contou com uma trilha específica sobre acessibilidade e a presença do <s>Sr. Saúde</s> Luiz, que trabalha aqui conosco, falando sobre como nós estamos estudando e deixando aos pouquinhos nosso site mais acessível a todos. Aliás se quiser saber mais sobre o assunto esses [posts](https://engenharia.elo7.com.br/tags/acessibilidade/) são sucesso .
+
+Produtividade
+
+Organização e padrões de código sempre ajudam o nosso trabalho a fluir melhor.
+
+Pensando nisso <s>o Mizuta</s> nós incluimos o [Lint](http://www.javascriptlint.com) em boa parte dos projetos, por enquanto só ficaram de fora os projetos muito grandes e antigos. E com isso temos a garatia que estamos escrevendo código padronizado, o code review fica mais focado em melhorias no código e não perdemos tempo em revisar se os padrões estão sendo respeitados.
+
+Travis
