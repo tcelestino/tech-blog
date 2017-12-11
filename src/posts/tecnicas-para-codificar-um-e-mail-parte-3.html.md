@@ -209,20 +209,37 @@ Por fim, podemos só adicionar uma tipografia padrão na tabela de conteúdo:
 
 Assim, todo o texto que está no conteúdo já herda por padrão essa tipografia.
 
-Essas técnicas apresentadas foram testadas nos seguintes clientes de e-mail:
-- Chrome
-    - Gmail
-    - Inbox
-    - Outlook
-    - Yahoo
-- Internet Explorer
-    - Outlook
-    - Yahoo
-- Android
-    - Gmail App
-    - Inbox App
-    - Yahoo App
-    - Outlook App
+## Compatibilidade
+
+As técnicas apresentadas funcionam nos seguintes clientes de email:
+
+### Web
+
+|             | Gmail | Inbox | Outlook | Yahoo |
+|-------------|:-----:|:-----:|:-------:|:-----:|
+| Chrome      |   ✓   |   ✓   |    ✓    |   ✓   |
+| Safari      |   ✓   |   ✓   |    ✓    |   ✓   |
+| Firefox     |   ✓   |   ✓   |    ✓    |   ✓   |
+| IE11        |   ✓   |   -   |    ✓    |   ✓   |
+| Edge        |   ✓   |   ✓   |    ✓    |   ✓   |
+| Chrome App  |   ✓   |   -   |    ✓    |   ✓   |
+| Firefox App |   ✓   |   -   |    ✓    |   ✓   |
+| Safari App  |   ✓   |   -   |    ✓    |   ✓   |
+| Edge App    |   ✓   |   -   |    ✓    |   ✓   |
+
+### Mobile
+
+|                   | Gmail App | Inbox App | Outlook App | Yahoo App |
+|-------------------|:---------:|:---------:|:-----------:|:---------:|
+| Android           |     ✓     |     ✓     |      ✓      |     ✓     |
+| iOS               |     ✓     |     ✓     |      ✓      |     ✓     |
+| Windows Phone     |     -     |     -     |      ✓      |     -     |
+
+### Aplicativo Outlook
+
+|        | 2007 | 2010 | 2011 | 2013 | 2015 |
+|--------|:----:|:----:|:----:|:----:|:----:|
+| Outlook |   ✓  |   ✓  |   ✓  |   ✓  |   ✓  |
 
 ##Conclusão
 

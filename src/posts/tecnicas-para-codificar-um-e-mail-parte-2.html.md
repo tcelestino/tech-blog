@@ -154,6 +154,6 @@ As técnicas apresentadas funcionam nos seguintes clientes de email:
 
 ## Conclusão
 
-Essa foi a segunda parte da série de posts de como codificar um e-mail, na qual aprendemos a lidar com espaçamentos. No próximo iremos abordar técnicas para torná-lo responsivo.
+Essa foi a segunda parte da série de posts de como codificar um e-mail, na qual aprendemos a lidar com espaçamentos. [No próximo iremos abordar técnicas para torná-lo responsivo.](/tecnicas-para-codificar-um-e-mail-parte-3/)
 
 E você? Já teve problemas com espaçamentos? =]
