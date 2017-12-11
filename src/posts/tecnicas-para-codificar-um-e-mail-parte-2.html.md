@@ -98,7 +98,7 @@ Uma outra forma é adicionar uma margem para os lados no nosso texto:
 
 ## Fonte
 
-Com os espaçamentos feitos, precisamos alterar a fonte para que o resultado fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. Também precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização entre os clientes se mantenha igual:
+Com os espaçamentos feitos, precisamos alterar a fonte para que o resultado fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. E vale lembrar que precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização entre os clientes se mantenham iguais:
 
 ![Espaçamento no e-mail](../images/tecnicas-para-codificar-um-e-mail-parte-2-4.png)
 
@@ -119,6 +119,8 @@ Nesse caso só adicionamos uma fonte alternativa após a escolhida:
 ```CSS
     font-family: arial, sans-serif;
 ```
+
+## Compatibilidade
 
 As técnicas apresentadas funcionam nos seguintes clientes de email:
 
@@ -148,7 +150,7 @@ As técnicas apresentadas funcionam nos seguintes clientes de email:
 
 |        | 2007 | 2010 | 2011 | 2013 | 2015 |
 |--------|:----:|:----:|:----:|:----:|:----:|
-| Oultook |   ✓  |   ✓  |   ✓  |   ✓  |   ✓  |
+| Outlook |   ✓  |   ✓  |   ✓  |   ✓  |   ✓  |
 
 ## Conclusão
 
