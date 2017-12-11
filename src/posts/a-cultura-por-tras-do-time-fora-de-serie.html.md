@@ -43,7 +43,7 @@ Apesar de termos diretrizes bem delineadas para toda as equipes, cada time tem a
 Acreditamos que **uma tarefa desenvolvida não deva demorar muito tempo até o seu deploy**, devendo passar pelas etapas de *test* e *fix* da forma mais ágil possível. Dada a frequência de deploys buscada, é muito importante que todos no time **se preocupem com o tempo de deploy**, por isso às vezes agrupamos tarefas para agilizar este processo.
 
 ### - Tá perdido? Levanta a mão!
-As pessoas devem sempre **se manifestar quando estiverem perdidas e/ou travadas**f.
+As pessoas devem sempre **se manifestar quando estiverem perdidas e/ou travadas**.
 
 ### - Dê um tempo para você!
 Sempre existe um **tempo para refrescar a cabeça**, chamamos esta prática no time de "fumar".
