@@ -60,7 +60,7 @@ define(['doc', 'github'], function($, github) {
 			if ($avatar.isPresent()) {
 				var $publisher = $author.find('.publisher'),
 					userName = $publisher.data('author'),
-					listOfInfo = github.getInfoFromUsers('50', [userName]),
+					listOfInfo = github.getInfoFromUsers('64', [userName]),
 					info = listOfInfo[0];
 
 				if (info.avatarUrl) {
