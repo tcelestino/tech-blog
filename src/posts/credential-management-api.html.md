@@ -10,7 +10,7 @@ title: Credential Managament API
 description: Conheça a Credential Managament API e veja como a implementa-la em seu projeto.
 ---
 
-Hoje em dia passamos muito tempo em diversos serviços online. Sejam as redes sociais, fóruns, blogs e sites de comércio eletrônico, sabemos o quanto é chato ter que ficar anotando informações sobre login e senha nesses serviços. E como sabe, nunca devemos usar as mesmas informações de acesso. Existem diversos serviços/aplicativos que gerenciam essas informações e posso citar alguns como o [LastPass](https://www.lastpass.com), [1Password](https://1password.com/), [bitwarden](https://bitwarden.com/), [Dashlane](https://www.dashlane.com/) entre outros. Os principais navegadores do mercado também possuem recursos para fazer esse gerenciamento. Mas daí surge uma dúvida: como fazemos para informar esses dados para os navegadores? Como que consigo integrar meu sistema de login com o navegador? Para resolver essas perguntas (se existirem outras, podem deixar nos comentários), te apresento a [Credential Management API](https://www.w3.org/TR/credential-management-1/), API que pelo o próprio nome já diz, faz o gerenciamento de seus credenciais (login e senha, por exemplo) através do navegador. No momento, apenas a versão do Chrome para desktop e Android possui a API implementada. Acredito que logo logo veremos em outros navegadores.
+Hoje em dia passamos muito tempo em diversos serviços online. Sejam as redes sociais, fóruns, blogs e sites de comércio eletrônico, sabemos o quanto é chato ter que ficar anotando informações sobre login e senha nesses serviços. E como sabe, nunca devemos usar as mesmas informações de acesso. Existem diversos serviços/aplicativos que gerenciam essas informações e posso citar alguns como o [LastPass](https://www.lastpass.com), [1Password](https://1password.com/), [bitwarden](https://bitwarden.com/), [Dashlane](https://www.dashlane.com/) entre outros. Os principais navegadores do mercado também possuem recursos para fazer esse gerenciamento. Mas daí surge uma dúvida: como fazemos para informar esses dados para os navegadores? Como que consigo integrar meu sistema de login com o navegador? Para resolver essas perguntas (se existirem outras, podem deixar nos comentários), te apresento a [Credential Management API](https://www.w3.org/TR/credential-management-1/), API que pelo próprio nome já diz, faz o gerenciamento de suas credenciais (login e senha, por exemplo) através do navegador. No momento, apenas a versão do Chrome para desktop e Android possui a API implementada. Acredito que logo logo veremos em outros navegadores.
 
 O Credential Management API segue três pilares:
 
@@ -33,9 +33,9 @@ Mas deixamos de conversa e vamos a implementação!
 
 ## Implementando a API
 
-Como grande maioria das API's Javascript lançadas hoje em dia, precisamos garantir a segurança das informações. Ou seja, para usar a Credential Management API você vai precisar ter um servidor com uma conexão segura. Em palavras curtas precisa ter o *https* habilitado no seu servidor. Para testar localmente, você pode utilizar o [ngrok](https://ngrok.com/).
+Como grande maioria das API's Javascript lançadas hoje em dia, precisamos garantir a segurança das informações. Ou seja, para usar a Credential Management API você vai precisar ter um servidor com uma conexão segura. Em palavras curtas precisa ter o *https* habilitado no seu servidor.
 
-A primeira coisa que precisamos verificar é se a API está disponível no navegador. Detalhe: nos exemplos, vou usar o ES6. Caso não tenha conhecimento ou nunca tenha ouvido falar, recomendo [ler isso](https://github.com/lukehoban/es6features).
+A primeira coisa que precisamos verificar é se a API está disponível no navegador. Detalhe: nos exemplos, vou usar o ES2015. Caso não tenha conhecimento ou nunca tenha ouvido falar, recomendo [ler isso](https://github.com/lukehoban/es6features).
 
 ```javascript
 'use strict';
@@ -60,9 +60,11 @@ A primeira coisa que precisamos verificar é se a API está disponível no naveg
 })();
 ```
 
-No código acima, chamamos o objeto `PasswordCredential` quando é feito um `submit` em um formulário. O objeto nos retornará uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) no `navigator.credentials.store`. Pode saber mais sobre o metódo `store`, [leia aqui](https://developers.google.com/web/fundamentals/security/credential-management/store-credentials).
+No código acima, chamamos o objeto `PasswordCredential` quando é feito um `submit` em um formulário. A partir desse objeto, podemos acessar diversos métodos que vão retornar uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise).
 
-Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, precisamos utilizar o `navigator.credentials.get`, que também retornará uma Promise com as informações obtidas através do objeto `cred`. Caso não exista nenhuma informação, será retornado um `null`. Para mais detalhes, [leia aqui](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials).
+No nosso primeiro exemplo, estamos salvando as informações que o usuário digitou nos campos do formulário usando o método `navigator.credentials.store`. Além de salvar, também é possível utilizar o método para fazer a atualização dessas informações caso o usuário tenha alterado.
+
+Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, vamos usar o método `navigator.credentials.get`. Esse método retornará as informações que salvamos anteriormente no método `navigator.credentials.store`. Caso não exista nenhuma informação, será retornado um `null`. Ou seja, você pode criar uma abordagem que faça o usuário cadastrar as informações caso o valor seja `null`, por exemplo.
 
 ```javascript
 'use strict';
@@ -251,3 +253,5 @@ A Credentinal Management API é uma solução que pode melhorar bastante o proce
 
 * [A Credential Management API - Google Developer](https://developers.google.com/web/fundamentals/security/credential-management/)
 * [Credential Management API - Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API)
+* [Store Credentials](https://developers.google.com/web/fundamentals/security/credential-management/store-credentials)
+* [Sign in Users](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials)
