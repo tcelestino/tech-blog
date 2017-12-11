@@ -1,6 +1,6 @@
 ---
 title: A cultura por trás do time fora de série!
-date: 2017-10-30
+date: 2017-12-11
 category: cultura
 layout: post
 description: Um resumo sobre a cultura do time de engenharia do Elo7
