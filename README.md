@@ -72,7 +72,7 @@ trecho do código
 
 ```
 npm install
-npm start
+npm run dev
 ```
 
 ### Labels do PR
