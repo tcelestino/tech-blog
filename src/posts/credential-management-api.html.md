@@ -60,9 +60,7 @@ A primeira coisa que precisamos verificar é se a API está disponível no naveg
 })();
 ```
 
-No código acima, chamamos o objeto `PasswordCredential` quando é feito um `submit` em um formulário. A partir desse objeto, podemos acessar diversos métodos que vão retornar uma [Promise](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise).
-
-No nosso primeiro exemplo, estamos salvando as informações que o usuário digitou nos campos do formulário usando o método `navigator.credentials.store`. Além de salvar, também é possível utilizar o método para fazer a atualização dessas informações caso o usuário tenha alterado.
+No código acima, chamamos o objeto `PasswordCredential` quando é feito um `submit` em um formulário, no qual passamos para o objeto as informações preenchidas nos campos do formulário. Após feito isso, chamamos o método `navigator.credentials.store`, passando o valor que passamos para o objeto `PasswordCredential`. Esse método irá retornar uma Promise. Caso não saiba o que seria uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/).
 
 Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, vamos usar o método `navigator.credentials.get`. Esse método retornará as informações que salvamos anteriormente no método `navigator.credentials.store`. Caso não exista nenhuma informação, será retornado um `null`. Ou seja, você pode criar uma abordagem que faça o usuário cadastrar as informações caso o valor seja `null`, por exemplo.
 
@@ -108,6 +106,9 @@ Como podem observar, passamos para o `navigator.credentials.get` duas informaç�
 
 - password: por padrão, o valor é `false`, por isso é preciso setar `true` para recuperar informações do `PasswordCredential`;
 - unmediated: quando for `true`, habilita o login automático, sem precisar exibir a interface de seleção de contas.
+
+![Alt "Seleção de multiplas contas usando a Credential Management API"](../images/credential-management-api-2.png)
+<div style="text-align: center; font-style: italic">Seleção de multiplas contas usando a Credential Management API</div>
 
 Podemos criar diversas abordagens, inclusive integrando como serviços de autenticação de terceiros como o [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) e [Facebook Login](https://developers.facebook.com/docs/facebook-login/). Para isso, existe o `federated`, no qual podemos informar em qual serviços será o fornecedor desses dados. Leia mais [aqui](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials).
 
@@ -158,7 +159,7 @@ Vamos alterar nosso código para melhorar o fluxo de funcionamento caso ele tenh
 })()
 ```
 
-Se você percebeu, adicionamos uma função `login` em nosso código. Mas o que vamos ter nela? Como sabe, precisamos fazer o usuário logar em nosso sistema, logo precisamos fazer uma requisição para o nosso sistema. Vou simular que temos uma rota que recebe essas informações.
+Você pode ter percebido que adicionamos uma função `login` em nosso código. Mas o que vamos ter nela? Como sabe, precisamos fazer o usuário logar em nosso sistema, logo precisamos fazer uma requisição para o nosso sistema. Vou simular que temos uma rota que recebe essas informações.
 
 ```javascript
 'use strict';
