@@ -39,6 +39,6 @@
     "start": "docpad run",
     "test": "docpad generate --silent --env static",
     "deploy": "npm install && docpad deploy-ghpages --silent --env static",
-    "fast-dev": "npm run clean-amp && rm -rf node_modules/docpad-plugin-tags/ && npm start --tech-elo7:amp=false"
+    "dev": "npm run clean-amp && rm -rf node_modules/docpad-plugin-tags/ && npm start --tech-elo7:amp=false"
   }
 }
