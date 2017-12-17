@@ -1,59 +1,59 @@
-Front-End - Coisas que nos orgulhamos em 2017!
+Front-End - Coisas que nós nos orgulhamos em 2017!
 
+2017 foi um ano recheado de projetos interessantes e desafiantes para nós. Neste post vou fazer um resumão delas.
 
-Para fechar o ano bem, vou resumir aqui …
+## HTML5 APIs
 
-HTML5 APIs
+A tendência de tornar a web cada vez mais amigável aos usuários, muitas vezes de forma bem parecida ao que acontece com os aplicativos, se mostrou bem forte. E ganhamos ferramentas nos navegadores para implementar isso: as HTML5 APIs.
 
-Neste ano a tendência de tornar a web cada vez mais amigável aos usuários, muitas vezes de forma bem parecida ao que acontece com os aplicativos, se mostrou bem forte. E ganhamos ferramentas nos navegadores para implementar isso: as HTML5 APIs.
+Foi muito divertido testar e implementar algumas delas:
 
-E nós nos divertimos bastante testando e implementando algumas delas:
-
+- [Web Share API](https://engenharia.elo7.com.br/web-share-api/): que melhora o compartilhamento de conteúdo nas redes sociais utilizando os recursos nativos do próprio celular.
 - [Credential Management API](https://www.w3.org/TR/credential-management/) : facilitando o login dos nossos usuários no site. Muito em breve teremos um post falando com detalhes sobre ele.
-- [Web Share API](https://engenharia.elo7.com.br/web-share-api/): o que melhora o compartilhamento de conteúdo nas redes sociais utilizando os recursos nativos do próprio celular.
 - [Payments Request API](https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API): auxiliando o preenchimento dos dados de pagamento no processo de compra do site.
 
-Nós acreditamos no potencial dessas APIs para engajar e melhorar a experiencia do usuário na web, trazendo para a web uma experiencia que apenas um aplicativo poderia trazer.
+Nós acreditamos no potencial dessas APIs para engajar e melhorar a experiência do usuário na web, trazendo algo que só era visto em um aplicativo.
 
-PWA
+## PWA
 
-Seguindo a idéia de trazer para web funcionalidades comuns em aplicativos, temos o tão falado [Progressive Web Apps](https://engenharia.elo7.com.br/a-tecnologia-por-tras-de-progressive-web-apps/).
+Seguindo a ideia de trazer para web funcionalidades comuns em aplicativos, temos o tão falado [Progressive Web Apps](https://engenharia.elo7.com.br/a-tecnologia-por-tras-de-progressive-web-apps/).
 
-Em 2017 conseguimos os requisitos necessários, como por ter a infraestrutura toda do site com HTTPS. Agora contamos com cache de assets, a possibilidade do usuário incluir o atalho do site junto dos aplicativos (algo mais?).
+Em 2017 conseguimos os requisitos necessários, como por exemplo a infraestrutura do site toda com HTTPS. Agora contamos com cache de assets, a possibilidade do usuário incluir um atalho do site junto dos aplicativos (algo mais?).
 
-Light House?
+## JS
 
-JS
+Ano passado nós começamos a escrever código javascript que rode tanto no servidor quanto no cliente, utilizando ***isomorfismo*** para criar nosso servidor de templates!
+Se quiser saber mais sobre o assunto e como nós aplicamos no Elo7 com mais detalhes você pode conferir esses [posts](https://engenharia.elo7.com.br/isomorfismo/).
 
-Ano passado nós começamos a escrever código javascript que rode tanto no servidor quanto no client, utilizando isomorfismo para tal! Mas foi neste ano que criamos o Nymeria, um ...
-Change detection
+Neste ano para fazer com que a nossa estrutura se adapte melhor a nossa realidade, que é bem dinâmica, nós incluímos ao nosso servidor de templates o [Change Detection](https://teropa.info/blog/2015/03/02/change-and-its-detection-in-javascript-frameworks.html), conhecido aqui como ***Nymeria***.
 
-Se quiser saber mais sobre o assunto e como nós aplicamos no Elo7 com mais detalhes você pode conferir aqui https://engenharia.elo7.com.br/isomorfismo/.
+Agora o modelo que nosso template segue para montar a tela fica mais consistente, e com isso nosso código fica mais claro, com menos funções que alteram o template descentralizadas. A comunicação entre nosso servidor de templates e a aplicação tem menos ruídos trazendo uma percepção para o usuário de rapidez, pois não precisamos renderizar toda a página novamente, apenas o que precisa ser alterado.
 
-CSS
+## CSS
 
 Um conceito que nós continuamos praticando bastante em 2017 foi o [ITCSS](https://csswizardry.net/talks/2014/11/itcss-dafed.pdf), aliado ao [Atomic Design](http://bradfrost.com/blog/post/atomic-web-design/). E com isso estamos construindo uma aplicação muito mais estruturada e com códigos melhor reaproveitados.
 
-Algo que nós ainda estamos começando a fazer esse ano, é deixar o nosso código com uma nomenclatura mais proxima aos nossos designers. O atomic design ajuda muito nessa parte, pois os times de design e desenvolvimento podem trabalhar com os mesmos componentes visuais e a mesma nomenclatura.
+Algo que nós ainda estamos começando a fazer esse ano, é deixar o nosso código com uma nomenclatura mais próxima aos nossos designers. O atomic design ajuda muito nessa parte, pois os times de design e desenvolvimento podem trabalhar com os mesmos componentes visuais e a mesma nomenclatura.
 
-Navegadores
-
-A pouquíssimo tempo fomos contemplados com um novo firefox, que promete muitas coisas, como ser 2x mais rápido (o que tem de novo?)
-
-Nós gostamos de acompanhar essa evolução, testar as novas funcionalidades e ficamos bem felizes quando aquela especificação passa a ter suporte. É o caso ….
-
-Shadow root?
-
-Acessibilidade
+## Acessibilidade
 
 Um dos assuntos em foco neste ano, a acessibilidade, esteve muito presente no nosso dia-a-dia aqui no Elo7, e acredito que fez parte da vida de muita gente.
 
-Um indicador é o número crescente de debates sobre o tema no mundo front-end em diversos eventos recentes. Lembrando que a [TheDevConf 2017](http://www.thedevelopersconference.com.br/tdc/2017/saopaulo/trilha-acessibilidade) contou com uma trilha específica sobre acessibilidade e a presença do <s>Sr. Saúde</s> Luiz, que trabalha aqui conosco, falando sobre como nós estamos estudando e deixando aos pouquinhos nosso site mais acessível a todos. Aliás se quiser saber mais sobre o assunto esses [posts](https://engenharia.elo7.com.br/tags/acessibilidade/) são sucesso .
+Um indicador é o número crescente de debates sobre o tema no mundo front-end em diversos eventos recentes. Lembrando que a [TheDevConf 2017](http://www.thedevelopersconference.com.br/tdc/2017/saopaulo/trilha-acessibilidade) contou com uma trilha específica sobre acessibilidade e a presença do <s>Sr. Saúde</s> Luiz, que trabalha aqui conosco, falando sobre como nós estamos estudando e deixando aos pouquinhos nosso site mais acessível a todos.
 
-Produtividade
+Aqui nós contamos com um grupo de estudos sobre o assunto que nos levou a não só aprender mais sobre o assunto, mas a lembrar dele durante nosso dia-a-dia. Nosso código ainda não se tornou totalmente acessível mas com certeza esta mais amigável.
+Se você se interessa pelo tema, não deixe de conferir esses [posts](https://engenharia.elo7.com.br/tags/acessibilidade/) que foram feitos com muito carinho.
 
-Organização e padrões de código sempre ajudam o nosso trabalho a fluir melhor.
+## Produtividade
 
-Pensando nisso <s>o Mizuta</s> nós incluimos o [Lint](http://www.javascriptlint.com) em boa parte dos projetos, por enquanto só ficaram de fora os projetos muito grandes e antigos. E com isso temos a garatia que estamos escrevendo código padronizado, o code review fica mais focado em melhorias no código e não perdemos tempo em revisar se os padrões estão sendo respeitados.
+Aqui no Elo7 nós temos uma maneira no mínimo incomum de trabalhar, nós trabalhamos em pares, nos dividimos em times intitulados com os nomes das casas de Game of Thrones e ao contrário do que a temática sugere, somos uma grande família, que vive de modo muito colaborativo. Você pode ficar sabendo mais sobre como nós vivemos [aqui](https://engenharia.elo7.com.br/a-cultura-por-tras-do-time-fora-de-serie/) ;
 
-Travis
+Para tudo isso funcionar de maneira muito harmônica, nós levamos organização e padronização de código bem a sério. Pensando nisso <s>o Mizuta</s> nós incluimos o [Lint](http://www.javascriptlint.com) em boa parte dos nossos projetos, por enquanto só ficaram de fora os projetos muito grandes e antigos. Desta forma temos a garantia que estamos escrevendo código padronizado e com menos erros.
+Nosso code review fica mais focado em melhorias de código e não perdemos tanto tempo em revisar se os padrões estão sendo respeitados. Além de deixar claro qual é o padrão de código utilizado pelo time.
+
+Outro ganho de tempo que nós temos foi incluindo o [Travis Ci](https://travis-ci.org) aos nossos projetos, ele garante a execução de testes na versão atual do nosso código, eliminando confusões e automatizando os processos, como o deploy. Muito em breve teremos um post aqui explicando como utilizar ele.
+
+## Conclusão
+
+Bem esses foram pontos que ocuparam bastante nossos dias em 2017, e muitos deles continuarão fazendo parte de 2018. E você? Fez coisas parecidas ou pretende fazer?
+Compartilhe conosco as tecnologias que fizeram seu ano, aqui nós comentários.
