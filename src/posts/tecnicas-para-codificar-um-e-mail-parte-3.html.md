@@ -46,7 +46,7 @@ Uma solução é remover a altura fixa, mas caso a imagem esteja carregando ou n
 
 ![Template do e-mail quebra quando a imagem demora para carregar](../images/tecnicas-para-codificar-um-e-mail-parte-3-4.png)
 
-A melhor solução que encontrei é fazer uma mescla de `width="100%"` e limitar com o `max-width` e o `max-height` o tamanho da imagem.
+A solução que acredito ser a melhor é fazer uma mescla de `width="100%"` e limitar o tamanho da imagem com o `max-width` e o `max-height`.
 
 ![Imagem com altura máxima definida](../images/tecnicas-para-codificar-um-e-mail-parte-3-5.png)
 
@@ -129,6 +129,20 @@ E como usamos o `display: inline-block`, essas colunas já são responsivas:
 O problema agora é que a primeira tabela está causando um scroll horizontal. Isso porque a margem da direita (15px), somada com à largura da imagem (270px) e a margem interna (30px), ultrapassa o limite de 300px (largura mínima de um celular).
 
 Uma forma de resolver é remover o `margin-right` da primeira tabela e adicionar um `span` em volta da tabela com um `border-right: 15px solid white`. Essa borda se encarrega de criar o espaçamento entre as duas tabelas na horizontal e não contabiliza na soma por ser um elemento `inline`. Dessa forma conseguimos atingir o efeito desejado:
+
+```HTML
+<span style="border-right: 15px solid white">
+    <table cellpadding="0" cellspacing="0" width="270" style="display: inline-block" valign="top">
+        [...]
+    </table>
+</span>
+<span>
+    <table cellpadding="0" cellspacing="0" width="270" style="display: inline-block" valign="top">
+        [...]
+    </table>
+</span>
+```
+
 
 ![Colunas usando borda para criar a margem](../images/tecnicas-para-codificar-um-e-mail-parte-3-9.png)
 
