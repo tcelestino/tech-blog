@@ -1,9 +1,10 @@
 ---
-date: 2017-12-29
+date: 2018-01-08
 category: front-end
 tags:
   - javascript
   - web
+  - web api
 authors: [tcelestino]
 layout: post
 title: Credential Managament API
@@ -37,34 +38,57 @@ Como grande maioria das API's Javascript lançadas hoje em dia, precisamos garan
 
 A primeira coisa que precisamos verificar é se esta API está disponível em seu navegador. Importante: nos exemplos a seguir vou usar o ES2015. Caso não tenha conhecimento a respeito, recomendo a seguinte [leitura](https://github.com/lukehoban/es6features).
 
+No exemplo, estou usando a seguinte estrutura HTML:
+
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Credential Management API example</title>
+</head>
+<body>
+	<form id='login' method='POST' action='/auth/login'>
+		<fieldset>
+			<label>Email: <input type='email' name='name'></label>
+			<label>Email: <input type='password' name='pass'></label>
+		</fieldset>
+		<input type='submit' value='Log in'>
+	</form>
+</body>
+</html>
+```
+
 ```javascript
 'use strict';
 
-(function() {
+(() => {
 	if ('credentials' in navigator) {
 		const form = document.forms.login;
 
 		form.addEventListener('submit', () => {
 			let cred = new PasswordCredential({
-				id: form.elements[0].value,
-				password: form.elements[1].value
+				id: form.elements[0].value, // email's field
+				password: form.elements[1].value // password's field
 			});
 
-			navigator.credentials.store(cred).then(() => console.log('Dados salvos'))
-				.catch(() => console.log('Não foi possível salvar os dados'));
+			navigator.credentials.store(cred).then(() => console.log('Data save success'))
+				.catch(() => console.log('Your data were not saved'));
 		});
 	}
 })();
 ```
 
-No código acima, criamos uma instância do objeto `PasswordCredential` quando é feito um `submit` em um formulário, no qual passamos para este as informações preenchidas nos campos do formulário. Feito isso, chamamos o método `navigator.credentials.store()`, passando como argumento/parâmetro o objeto que criamos com `PasswordCredential`. Esse método retornará uma Promise. Caso você não saiba o que é uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) disponível no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/).
+No código acima, criamos uma instância do objeto `PasswordCredential` quando é feito um `submit` em um formulário, no qual passamos para este as informações preenchidas nos campos do formulário. Feito isso, chamamos o método `navigator.credentials.store()`, passando como argumento/parâmetro o objeto que criamos com `PasswordCredential`. Esse método retornará uma Promise. Caso você não saiba o que é uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) disponível no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/). Vale lembrar que, caso aconteça o `catch` o usuário irá logar no sistema, apenas as informações (email e senha) não serão gravadas.
 
-Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, vamos usar o método `navigator.credentials.get`. Esse método retornará as informações que salvamos anteriormente no método `navigator.credentials.store`. Caso não exista nenhuma informação, será retornado um `null`. Ou seja, você pode criar uma abordagem que faça o usuário cadastrar as informações caso o valor seja `null`, por exemplo.
+## Recuperando as informações
+
+Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, vamos usar o método `navigator.credentials.get()`. Esse método retornará as informações que salvamos anteriormente no método `navigator.credentials.store()`. Caso não exista nenhuma informação, será retornado um `null`. Ou seja, você pode criar uma abordagem que faça o usuário cadastrar as informações caso o valor seja `null`, por exemplo.
 
 ```javascript
 'use strict';
 
-(function() {
+(() => {
 	if ('credentials' in navigator) {
 		const form = document.forms.login;
 
@@ -73,12 +97,7 @@ Assim como salvamos, também podemos recuperar informações que já foram salva
 				id: form.elements[0].value,
 				password: form.elements[1].value
 			});
-
-			navigator.credentials.store(cred).then(() => {
-				console.log('Dados salvos')
-			}).catch(() => {
-				console.log('Não foi possível salvar os dados')
-			});
+			navigator.credentials.store(cred).then(() => console.log('Data save success')).catch(() => console.log('Your data were not saved'));
 		});
 
 		document.querySelector('.login').addEventListener('click', (evt) => {
@@ -87,7 +106,7 @@ Assim como salvamos, também podemos recuperar informações que já foram salva
 				unmediated: true
 			}).then((cred) => {
 				if (cred) {
-					// faz algo
+					// do something
 				}
 			});
 
@@ -107,14 +126,14 @@ Como podem observar, passamos para o `navigator.credentials.get()` duas informa�
 ![Alt "Seleção de multiplas contas usando a Credential Management API"](../images/credential-management-api-2.png)
 <div style="text-align: center; font-style: italic">Seleção de multiplas contas usando a Credential Management API</div>
 
-Podemos criar diversas abordagens, inclusive integrando como serviços de autenticação de terceiros como o [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) e [Facebook Login](https://developers.facebook.com/docs/facebook-login/). Para isso, existe o `federated`, no qual podemos informar em qual serviços será o fornecedor desses dados. Leia mais [aqui](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials).
+Podemos criar diversas abordagens, inclusive integrando com serviços de autenticação de terceiros como o [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) e [Facebook Login](https://developers.facebook.com/docs/facebook-login/). Para isso, existe o `federated`, no qual podemos informar em qual serviços será o fornecedor desses dados. Leia mais [aqui](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials).
 
 Vamos alterar nosso código para melhorar o fluxo do usuário caso ele tenha diversas contas. Lembrando que isso é um exemplo e você pode criar a sua própria abordagem a partir das necessidades de seu projeto.
 
 ```javascript
 'use strict';
 
-(function() {
+(() => {
 	if ('credentials' in navigator) {
 		const form = document.forms.login;
 
@@ -124,11 +143,7 @@ Vamos alterar nosso código para melhorar o fluxo do usuário caso ele tenha div
 				password: form.elements[1].value
 			});
 
-			navigator.credentials.store(cred).then(() => {
-				console.log('Dados salvos');
-			}).catch(() => {
-				console.log('Não foi possível salvar os dados');
-			});
+			navigator.credentials.store(cred).then(() => console.log('Data save success')).catch(() => console.log('Your data were not saved'));
 		});
 
 		document.querySelector('.login').addEventListener('click', (evt) => {
@@ -161,7 +176,7 @@ Você pode ter percebido que adicionamos uma função `login` em nosso código. 
 ```javascript
 'use strict';
 
-(function() {
+(() => {
 	if ('credentials' in navigator) {
 		const form = document.forms.login;
 
@@ -175,7 +190,7 @@ Você pode ter percebido que adicionamos uma função `login` em nosso código. 
 				if (result.ok) {
 					window.location = '/main/index';
 				} else {
-					alert('Ocorreu um erro!')
+					alert('An error has occurred!');
 				}
 			}).catch((e) => {
 				console.error(e);
@@ -188,11 +203,7 @@ Você pode ter percebido que adicionamos uma função `login` em nosso código. 
 				password: form.elements[1].value
 			});
 
-			navigator.credentials.store(cred).then(() => {
-				console.log('Dados salvos');
-			}).catch(() => {
-				console.log('Não foi possível salvar os dados');
-			});
+			navigator.credentials.store(cred).then(() => console.log('Data save success')).catch(() => console.log('Your data were not saved'));
 		});
 
 		document.querySelector('.login').addEventListener('click', (evt) => {
@@ -227,7 +238,7 @@ Agora que sabemos como salvar e obter os dados salvos com a Credentinal Manageme
 ```javascript
 'use strict';
 
-(function() {
+(() => {
 	document.querySelector('.logout').addEventListener('click', (evt) => {
 		if ('credentials' in navigator) {
 			navigator.credentials.requireUserMediation();
