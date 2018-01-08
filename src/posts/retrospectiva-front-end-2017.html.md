@@ -1,6 +1,6 @@
 ---
 title: Front-End - Coisas de que nós nos orgulhamos em 2017!
-date: 2018-01-05
+date: 2018-01-08
 authors: [alinelee]
 layout: post
 description: 2017 foi um ano recheado de projetos interessantes e desafiantes para nós. Neste post vou fazer um resumão deles
@@ -34,7 +34,7 @@ Já implementamos no Elo7 e muito em breve teremos um post falando mais sobre el
 ![Ilustração para credential management API](../images/retrospectiva-front-end-2017-04.gif)
 
 - <a href='https://developer.mozilla.org/en-US/docs/Web/API/Payment_Request_API' rel='nofollow' target='_blank'>Payments Request API</a>: auxilia o preenchimento dos dados de pagamento no processo de compra do site.
-O [William Mizuta](/williammizuta/), fez uma palestra sobre o assunto no <a href='https://front7.elo7.com.br/' rel='nofollow' target='_blank'>Front7</a>, aqui estão os <a href='https://pt.slideshare.net/WilliamSeitiMizuta/front7-2017-a-experincia-do-usurio-no-mundo-web-de-hoje-e-quais-so-as-novas-ap-is-web' rel='nofollow' target='_blank'>slides</a> um <a href='https://williammizuta.github.io/html5-apis/payment-request/' rel='nofollow' target='_blank'>exemplo</a> e a <a href='https://github.com/williammizuta/html5-apis' rel='nofollow' target='_blank'>implementação</a>.
+O [William Mizuta](/williammizuta/) fez uma palestra sobre o assunto no <a href='https://front7.elo7.com.br/' rel='nofollow' target='_blank'>Front7</a>. Você pode ver os <a href='https://pt.slideshare.net/WilliamSeitiMizuta/front7-2017-a-experincia-do-usurio-no-mundo-web-de-hoje-e-quais-so-as-novas-ap-is-web' rel='nofollow' target='_blank'>slides</a>, um <a href='https://williammizuta.github.io/html5-apis/payment-request/' rel='nofollow' target='_blank'>exemplo</a> e a <a href='https://github.com/williammizuta/html5-apis' rel='nofollow' target='_blank'>implementação</a>.
 
 Nós acreditamos no potencial dessas APIs para engajar e melhorar a experiência do usuário na web, trazendo algo que só era visto em uma aplicação nativa.
 
