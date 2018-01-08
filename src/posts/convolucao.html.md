@@ -15,15 +15,15 @@ Quando trabalhamos com processamento de imagens, existem diferentes algoritmos q
 
 ![Exemplos](/images/convolucao-1.png)
 
-Assim, dentro da área de processamento de imagem, uma das técnicas mais difundidas para solucionar esses problemas é a **Convolução**.
+Dentro da área de processamento de imagem, uma das técnicas mais difundidas para solucionar esses problemas é a **Convolução**.
 
-Sua definição tem raizes na [matemática](https://en.wikipedia.org/wiki/Convolution), e pode ser contínua (que é usada em processamento de sinais, por exemplo) ou discreta (que é usada em processamento de imagens).
+A convolução tem raizes na [matemática](https://en.wikipedia.org/wiki/Convolution), e pode ser contínua (que é usada em processamento de sinais, por exemplo) ou discreta (que é usada em processamento de imagens).
 
 Antes de tudo, uma coisa que podemos perceber é que quando o computador "enxerga" uma imagem ele não vê nada além de números (no caso, matrizes):
 
 ![Imagem Real](/images/convolucao-2.png)
 
-A Convolução, então, envole a aplicação de um *kernel* sobre uma imagem, gerando uma nova imagem como resultado. O *kernel* também é uma matriz e na prática, ele "desliza" sobre toda a imagem, modificando-a. Para um dado deslocamento, os elementos do *kernel* são multiplicados pelos pixels da imagem, que, por fim são somados e resultam em um elemento da imagem convolucionada:
+A Convolução, então, envolve a aplicação de um *kernel* sobre uma imagem, gerando uma nova imagem como resultado. O *kernel* também é uma matriz e na prática, ele "desliza" sobre toda a imagem, modificando-a. Para um dado deslocamento, os elementos do *kernel* são multiplicados pelos pixels da imagem, que, por fim são somados e resultam em um elemento da imagem convolucionada:
 
 ![Convolução](/images/convolucao-3.png)
 
@@ -53,12 +53,12 @@ Esses exemplos foram gerados com base no seguinte [jupyter notebook](https://git
 
 ## Algumas observações
 
-Outro nome que o *kernel* também é conhecido é *filtro* já que ele, justamente, "filtra" a imagem ao passar por ela.
+Outro nome pelo qual o *kernel* também é conhecido é *filtro* já que ele, justamente, "filtra" a imagem ao passar por ela.
 
 ## Conclusão
 
-Vimos que o uso de convoluções têm diversas aplições em processamento de imagens. Vimos também que esta técnica pode ser utilizada para pré processar uma imagem e facilitar tarefas futuras como a detecção de objetos.
+Vimos que o uso de convoluções têm diversas aplicações em processamento de imagens. Vimos também que esta técnica pode ser utilizada para pré processar uma imagem e facilitar tarefas futuras como a detecção de objetos.
 
-Mas até agora só utilizamos *kernels* pré definidos. Será que existe um *kernel* que funciona melhor para identificar texto em documentos scaneados? Ou para diferenciar gatos de cachorros em uma fotografia? Seria interessante se pudessemos definir um método que pudesse "aprender" o melhor *kernel* (ou melhores *kernels*) para uma determinada tarefa! A parte boa é que isso é possível: **Redes Neurais Convolucionais**! Mas isso fica para outro post.
+Mas até agora só utilizamos *kernels* estáticos e pré-definidos no momento da aplicação da convolução. Será que existe um *kernel* que funciona melhor para identificar texto em documentos scaneados? Ou para diferenciar gatos de cachorros em uma fotografia? Seria interessante se pudéssemos definir um método que "aprendesse" o melhor *kernel* (ou melhores *kernels*) para uma determinada tarefa! A parte boa é que isso é possível: **Redes Neurais Convolucionais**! Mas isso fica para outro post.
 
 
