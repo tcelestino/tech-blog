@@ -5,7 +5,7 @@ authors: [alinelee]
 layout: post
 description: 2017 foi um ano recheado de projetos interessantes e desafiantes para nós. Neste post vou fazer um resumão deles
 category: front-end
-tags:  
+tags:
   - acessibilidade
   - css
   - html
@@ -42,9 +42,9 @@ Nós acreditamos no potencial dessas APIs para engajar e melhorar a experiência
 
 Seguindo a ideia de trazer para web funcionalidades comuns em aplicativos, temos o tão falado [Progressive Web Apps](/a-tecnologia-por-tras-de-progressive-web-apps/).
 
-Em 2017, conseguimos os requisitos necessários para dar suporte ao PWA, como ter por exemplo ter a infraestrutura do site toda com HTTPS.
+Em 2017, conseguimos os requisitos necessários para dar suporte ao PWA, como por exemplo ter a infraestrutura do site toda com HTTPS.
 
-Com isso implementamos o cache de assets do site. Tornamos possível que o usuário inclua um atalho do nosso site junto dos aplicativos do seu celular e aumentamos o engajamento na comunicação entre nossos os vendedores e compradores do site com notificações, as *push notification*. Assim ganhamos uma experiência de uso mais fluida também na web.
+Com isso implementamos o cache de assets do site. Tornamos possível que o usuário inclua um atalho do nosso site junto dos aplicativos do seu celular e aumentamos o engajamento na comunicação entre os nossos vendedores e compradores do site com notificações, as *push notification*. Assim ganhamos uma experiência de uso mais fluida também na web.
 
 ![Ilustração de um usuário adicionando um atalho do site no celular](../images/retrospectiva-front-end-2017-06.jpg)
 
