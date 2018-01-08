@@ -32,7 +32,7 @@ Mas como calculamos os valores dos pixels das bordas da imagem? Existem basicame
 
 * Criar pixels "artificiais" ao redor da imagem
 
-Esses pixels extras podem ser escolhidos arbitrariamente, ou podem ser estimados a partir dos pixels existentes nas suas vizinhaças (como média, valor máximo, valor mínimo, etc).
+Esses pixels extras podem ser escolhidos arbitrariamente, ou podem ser estimados a partir dos pixels existentes nas suas vizinhanças (como média, valor máximo, valor mínimo, etc.).
 
 ![Convolução](/images/convolucao-4.png)
 
@@ -49,7 +49,7 @@ A seguir temos alguns *kernels* tradicionalmente utilizados para:
 ![Convolução](/images/convolucao-6.png)
 
 
-Esses exemplos foram gerados com base no seguinte [jupyter notebook](https://github.com/igorbonadio/Convolution). Sinta-se a vontade para clonar e tentar outros kernels por vocês mesmo :)
+Esses exemplos foram gerados com base no seguinte [jupyter notebook](https://github.com/igorbonadio/Convolution). Sinta-se à vontade para clonar e tentar outros kernels por vocês mesmo :)
 
 ## Algumas observações
 
