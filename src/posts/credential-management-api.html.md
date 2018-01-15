@@ -4,26 +4,26 @@ category: front-end
 tags:
   - javascript
   - web
-  - web api
+  - webapi
 authors: [tcelestino]
 layout: post
 title: Credential Managament API
 description: Conheça a Credential Managament API e veja como a implementá-la em seu projeto.
 ---
 
-Hoje em dia passamos muito tempo em redes sociais, fóruns, blogs e sites de comércio eletrônico, sabemos então o quanto é chato ter que ficar anotando dados de login e senha deste serviços. E como você sabe, por questões de segurança, não devemos usar os mesmo dados para acessar diferentes serviços. Para resolver este problema, existem diversos aplicativos que gerenciam essas informações, como: [LastPass](https://www.lastpass.com), [1Password](https://1password.com/), [bitwarden](https://bitwarden.com/), [Dashlane](https://www.dashlane.com/), entre outros. Os principais navegadores do mercado também possuem recursos para fazer esse gerenciamento. Mas daí surge uma dúvida: como fazemos para informar esses dados para os navegadores? Como que consigo integrar meu sistema de login com o navegador? Para resolver essas perguntas (se existirem outras, podem deixar nos comentários), te apresento a [Credential Management API](https://www.w3.org/TR/credential-management-1/), API que pelo próprio nome já diz, faz o gerenciamento de suas credenciais (login e senha, por exemplo) através do navegador. No momento, apenas a versão do Chrome para desktop e Android possui a API implementada. Acredito que logo logo veremos em outros navegadores.
+Hoje em dia passamos muito tempo em redes sociais, fóruns, blogs e sites de comércio eletrônico, sabemos então o quanto é chato ter que ficar anotando dados de login e senha deste serviços. E como você sabe, por questões de segurança, não devemos usar os mesmo dados para acessar diferentes serviços. Para resolver este problema, existem diversos aplicativos que gerenciam essas informações, como: [LastPass](https://www.lastpass.com), [1Password](https://1password.com/), [bitwarden](https://bitwarden.com/), [Dashlane](https://www.dashlane.com/), entre outros. Os principais navegadores do mercado também possuem recursos para fazer esse gerenciamento. Mas daí surge uma dúvida: como faríamos para informar estes dados ao navegador? É possível integrar meu sistema de login ao mesmo? Para elucidar essas questões (e se existem outras, pode deixar nos comentários logo abaixo), lhe apresento a [Credential Management API](https://www.w3.org/TR/credential-management-1/), API que pelo próprio nome já diz, faz o gerenciamento de suas credenciais (login e senha, por exemplo) através do navegador. No momento, apenas a versão do Chrome para desktop e Android possui a API implementada. Acredito que em breve a veremos em outros navegadores.
 
 O Credential Management API segue três pilares:
 
-- Permitir acesso com um toque com o seletor de contas;
-- Salvar e gerenciar seus dados;
-- Simplificar o fluxo de acesso.
+- Permite acesso com um toque com o seletor de contas;
+- Salva e gerencia seus dados;
+- Simplifica o fluxo de acesso.
 
 Existem diversas maneiras de melhorar o fluxo de utilização do seu site com a Credential Managament API. Um exemplo seria facilitar o processo de login automático, caso o usuário tenha múltiplas contas registradas em seu navegador.
 
 ## Como usamos no Elo7
 
-Antes de mostrar a implementação da API, queria exemplificar com utilizamos aqui no [Elo7](https://elo7.com.br).
+Antes de mostrar a implementação da API, queria exemplificar como a utilizamos aqui no [Elo7](https://elo7.com.br).
 
 Utilizamos a Credential Management API no sistema de login do Elo7 (na versão web mobile) e analisando os resultados através do Google Analytics, observamos que realmente nossos usuários utilizam este recurso, independente do seu nível de conhecimento.
 
@@ -83,7 +83,7 @@ No exemplo, vamos usar a seguinte estrutura HTML:
 
 No código acima, estamos criando uma *credential* de forma assíncrona quando é feito um `submit` no formulário, no qual passamos para este as informações preenchidas nos campos (email e senha). Feito isso, chamamos o método `navigator.credentials.store()`, passando como argumento/parâmetro o objeto que criamos com `navigator.credentials.create()`. Esse método retornará uma Promise. Caso você não saiba o que é uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) disponível no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/). Vale lembrar que, caso aconteça o `catch` o usuário irá logar no sistema, apenas as informações (email e senha) não serão gravadas.
 
-Recentemente a Google atualizou diversas caractéristica da API, inclusive adicionando novas formas de criar uma *credential*, podendo ser criada síncrona criando, instanciando o objeto `PasswordCredential` ou de assíncrona, utilizando o método `navigator.credentials.create()`. Para maiores detalhes, [leia aqui](https://developers.google.com/web/updates/2017/06/credential-management-updates#creating_a_passwordcredential_object).
+Recentemente a Google atualizou diversas características desta API, adicionando novas maneiras de criar uma *credential*. Agora ela pode ser criada de forma síncrona ao instanciar o objeto `PasswordCredential` ou de forma assíncrona utilizando o método `navigator.credentials.create()`. Para maiores detalhes, [leia aqui](https://developers.google.com/web/updates/2017/06/credential-management-updates#creating_a_passwordcredential_object).
 
 **Observação:** existe um objeto construtor chamado `FederatedCredential`, mas não entraremos em detalhes nesse post. Caso queira ter mais detalhes, recomendo a [leitura](https://developer.mozilla.org/pt-BR/docs/Web/API/FederatedCredential).
 
@@ -126,14 +126,14 @@ Como podem observar, passamos para o `navigator.credentials.get()` duas informa�
 
 - password: por padrão, o valor é `false`, por isso é preciso passar o valor `true` para recuperar informações;
 - meditation: você pode passar as seguintes opções:
-	- silent: não exibe a opção de multiplas escolhas. Pode ser considerado um `true`;
-	- optional: exibe a escolha de multiplas contas. ode ser considerado um `false`;
-	- required: sempre exibe a interface de de multiplas contas.
+	- silent: não exibe a opção de múltiplas escolhas. Pode ser considerado um `true`;
+	- optional: exibe a escolha de múltiplas contas. ode ser considerado um `false`;
+	- required: sempre exibe a interface de de múltiplas contas.
 
-![Alt "Seleção de multiplas contas usando a Credential Management API"](../images/credential-management-api-2.png)
-<div style="text-align: center; font-style: italic">Seleção de multiplas contas usando a Credential Management API</div>
+![Alt "Seleção de múltiplas contas usando a Credential Management API"](../images/credential-management-api-2.png)
+<div style="text-align: center; font-style: italic">Seleção de múltiplas contas usando a Credential Management API</div>
 
-Podemos criar diversas abordagens, inclusive integrando com serviços de autenticação de terceiros como o [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) e [Facebook Login](https://developers.facebook.com/docs/facebook-login/). Para isso, existe o `federated`, no qual podemos informar em qual serviços será o fornecedor desses dados. Leia mais [aqui](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials).
+Podemos criar diversas abordagens, inclusive integrando com serviços de autenticação de terceiros como o [Google Sign-In](https://developers.google.com/identity/sign-in/web/sign-in) e [Facebook Login](https://developers.facebook.com/docs/facebook-login/). Para isso, existe o `federated`, no qual podemos informar qual serviço será o fornecedor desses dados. Leia mais [aqui](https://developers.google.com/web/fundamentals/security/credential-management/retrieve-credentials).
 
 Vamos alterar nosso código para melhorar o fluxo do usuário caso ele tenha diversas contas. Lembrando que isso é um exemplo e você pode criar a sua própria abordagem a partir das necessidades de seu projeto.
 
@@ -265,7 +265,7 @@ Como isso, garantimos que o usuário não "logará" automaticamente quando fizer
 
 A Credential Management API é uma solução que pode melhorar bastante a usabilidade do processo de login dos usuários, agilizando bastante e mantendo as informações de forma segura. Claro que será muito mais interessante quando futuramente outros navegadores também a implementarem.
 
-## Refêrencias
+## Referências
 
 * [A Credential Management API - Google Developer](https://developers.google.com/web/fundamentals/security/credential-management/)
 * [Credential Management API - Mozilla Developer Network](https://developer.mozilla.org/en-US/docs/Web/API/Credential_Management_API)
