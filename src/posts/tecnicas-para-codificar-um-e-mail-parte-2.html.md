@@ -31,7 +31,7 @@ Agora vamos para a parte que nos interessa, adicionar um pequeno espaçamento en
 
 ## Colunas
 
-Nesta abordagem, adicionamos uma célula antes e outra após a célula que contém o texto, definimos uma largura e adicionamos algum conteúdo para que seja sempre considerada nos clientes de e-mail. Como neste caso não precisamos de algo escrito de fato, iremos inserir no conteúdo a entidade `&nbsp;` que é equivalente a um espaço na <a href='http://agentewebmaster.ucoz.com.br/publ/tutorial_html/entidades_html/1-1-0-24' rel='nofollow' target='_blank'>tabela de entidades html</a>).
+Nesta abordagem, adicionamos uma célula antes e outra após a célula que contém o texto, definimos uma largura e adicionamos algum conteúdo para que seja sempre considerada nos clientes de e-mail. Como neste caso não precisamos de algo escrito de fato, iremos inserir no conteúdo a entidade `&nbsp;`, que é equivalente a um espaço na <a href='http://agentewebmaster.ucoz.com.br/publ/tutorial_html/entidades_html/1-1-0-24' rel='nofollow' target='_blank'>tabela de entidades html</a>.
 
 ```HTML
 <table bgcolor="#E2D6C7" width="100%" cellpadding="0" cellspacing="0">
@@ -68,7 +68,7 @@ O problema dessa abordagem é que ela não permite definir diferentes espaçamen
 
 ## Padding
 
-Com a propriedade `padding`, podemos definir o espaçamento da mesma forma que faríamos no desenvolvimento de um site. Basta adicionar o `padding-left` e o `padding-right` com o valor de 15px e temos o mesmo efeito:
+Com a propriedade `padding`, podemos definir o espaçamento da mesma forma que faríamos no desenvolvimento de um site. Basta adicionar o `padding-left` e o `padding-right` com o valor de **15px** e temos o mesmo efeito:
 
 ```HTML
 <table bgcolor="#E2D6C7" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 15px; padding-right: 15px">
@@ -94,7 +94,7 @@ Uma outra forma é adicionar uma margem para os lados no nosso texto:
 </table>
 ```
 
-É importante lembrar não precisamos seguir apenas uma dessas técnicas, em determinadas partes do código uma abordagem é melhor que a outra, por isso não se limite!
+É importante lembrar que não precisamos seguir apenas uma dessas técnicas. Em determinadas partes do código uma abordagem é melhor que a outra, por isso não se limite!
 
 ## Fonte
 
