@@ -1,5 +1,5 @@
 ---
-date: 2018-01-08
+date: 2018-01-15
 category: front-end
 tags:
   - javascript
@@ -38,22 +38,22 @@ Como grande maioria das API's Javascript lançadas hoje em dia, precisamos garan
 
 A primeira coisa que precisamos verificar é se esta API está disponível em seu navegador. Importante: nos exemplos a seguir vou usar o ES2015. Caso não tenha conhecimento a respeito, recomendo a seguinte [leitura](https://github.com/lukehoban/es6features).
 
-No exemplo, estou usando a seguinte estrutura HTML:
+No exemplo, vamos usar a seguinte estrutura HTML:
 
 ```html
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
 <head>
 	<meta charset="UTF-8">
-	<title>Credential Management API example</title>
+	<title>Credential Management API</title>
 </head>
 <body>
 	<form id='login' method='POST' action='/auth/login'>
 		<fieldset>
 			<label>Email: <input type='email' name='name'></label>
-			<label>Email: <input type='password' name='pass'></label>
+			<label>Senha: <input type='password' name='pass'></label>
 		</fieldset>
-		<input type='submit' value='Log in'>
+		<input type='submit' value='Logar'>
 	</form>
 </body>
 </html>
@@ -67,21 +67,27 @@ No exemplo, estou usando a seguinte estrutura HTML:
 		const form = document.forms.login;
 
 		form.addEventListener('submit', () => {
-			let cred = new PasswordCredential({
-				id: form.elements[0].value, // email's field
-				password: form.elements[1].value // password's field
+			let cred = await navigator.credentials.create({
+				password: {
+					id: form.elements[0].value, // campo do email
+					password: form.elements[1].value // campo de senha
+				}
 			});
 
-			navigator.credentials.store(cred).then(() => console.log('Data save success'))
-				.catch(() => console.log('Your data were not saved'));
+			navigator.credentials.store(cred).then(() => console.log('Dados foram salvos com sucesso'))
+				.catch(() => console.log('Seus dados não foram salvos'));
 		});
 	}
 })();
 ```
 
-No código acima, criamos uma instância do objeto `PasswordCredential` quando é feito um `submit` em um formulário, no qual passamos para este as informações preenchidas nos campos do formulário. Feito isso, chamamos o método `navigator.credentials.store()`, passando como argumento/parâmetro o objeto que criamos com `PasswordCredential`. Esse método retornará uma Promise. Caso você não saiba o que é uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) disponível no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/). Vale lembrar que, caso aconteça o `catch` o usuário irá logar no sistema, apenas as informações (email e senha) não serão gravadas.
+No código acima, estamos criando uma *credential* de forma assíncrona quando é feito um `submit` no formulário, no qual passamos para este as informações preenchidas nos campos (email e senha). Feito isso, chamamos o método `navigator.credentials.store()`, passando como argumento/parâmetro o objeto que criamos com `navigator.credentials.create()`. Esse método retornará uma Promise. Caso você não saiba o que é uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) disponível no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/). Vale lembrar que, caso aconteça o `catch` o usuário irá logar no sistema, apenas as informações (email e senha) não serão gravadas.
 
-## Recuperando as informações
+Recentemente a Google atualizou diversas caractéristica da API, inclusive adicionando novas formas de criar uma *credential*, podendo ser criada síncrona criando, instanciando o objeto `PasswordCredential` ou de assíncrona, utilizando o método `navigator.credentials.create()`. Para maiores detalhes, [leia aqui](https://developers.google.com/web/updates/2017/06/credential-management-updates#creating_a_passwordcredential_object).
+
+**Observação:** existe um objeto construtor chamado `FederatedCredential`, mas não entraremos em detalhes nesse post. Caso queira ter mais detalhes, recomendo a [leitura](https://developer.mozilla.org/pt-BR/docs/Web/API/FederatedCredential).
+
+## Requistando as informações
 
 Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, vamos usar o método `navigator.credentials.get()`. Esse método retornará as informações que salvamos anteriormente no método `navigator.credentials.store()`. Caso não exista nenhuma informação, será retornado um `null`. Ou seja, você pode criar uma abordagem que faça o usuário cadastrar as informações caso o valor seja `null`, por exemplo.
 
@@ -93,35 +99,36 @@ Assim como salvamos, também podemos recuperar informações que já foram salva
 		const form = document.forms.login;
 
 		form.addEventListener('submit', () => {
-			let cred = new PasswordCredential({
-				id: form.elements[0].value,
-				password: form.elements[1].value
-			});
-			navigator.credentials.store(cred).then(() => console.log('Data save success')).catch(() => console.log('Your data were not saved'));
-		});
-
-		document.querySelector('.login').addEventListener('click', (evt) => {
-			navigator.credentials.get({
-				password: true,
-				unmediated: true
-			}).then((cred) => {
-				if (cred) {
-					// do something
+			let cred = await navigator.credentials.create({
+				password: {
+					id: form.elements[0].value, // campo do email
+					password: form.elements[1].value // campo de senha
 				}
 			});
 
-			evt.preventDefault();
+			navigator.credentials.store(cred).then(() => console.log('Dados foram salvos com sucesso')).catch(() => console.log('Seus dados não foram salvos'));
+		});
+
+		// recuperando dados caso já exista
+		navigator.credentials.get({
+			password: true,
+			mediation: 'silent'
+		}).then((cred) => {
+			if (cred) {
+				// faça alguma coisa
+			}
 		});
 	}
 })();
 ```
 
-**Observação:** existe um objeto construtor chamado `FederatedCredential`, mas não entraremos em detalhes nesse post. Caso queira ter mais detalhes, recomendo a [leitura](https://developer.mozilla.org/pt-BR/docs/Web/API/FederatedCredential).
-
 Como podem observar, passamos para o `navigator.credentials.get()` duas informações:
 
-- password: por padrão, o valor é `false`, por isso é preciso setar `true` para recuperar informações do `PasswordCredential`;
-- unmediated: quando for `true`, habilita o login automático, sem precisar exibir a interface de seleção de contas.
+- password: por padrão, o valor é `false`, por isso é preciso passar o valor `true` para recuperar informações;
+- meditation: você pode passar as seguintes opções:
+	- silent: não exibe a opção de multiplas escolhas. Pode ser considerado um `true`;
+	- optional: exibe a escolha de multiplas contas. ode ser considerado um `false`;
+	- required: sempre exibe a interface de de multiplas contas.
 
 ![Alt "Seleção de multiplas contas usando a Credential Management API"](../images/credential-management-api-2.png)
 <div style="text-align: center; font-style: italic">Seleção de multiplas contas usando a Credential Management API</div>
@@ -138,40 +145,38 @@ Vamos alterar nosso código para melhorar o fluxo do usuário caso ele tenha div
 		const form = document.forms.login;
 
 		form.addEventListener('submit', function() {
-			let cred = new PasswordCredential({
-				id: form.elements[0].value,
-				password: form.elements[1].value
+			let cred = await navigator.credentials.create({
+				password: {
+					id: form.elements[0].value, // campo do email
+					password: form.elements[1].value // campo de senha
+				}
 			});
 
-			navigator.credentials.store(cred).then(() => console.log('Data save success')).catch(() => console.log('Your data were not saved'));
+			navigator.credentials.store(cred).then(() => console.log('Dados foram salvos com sucesso')).catch(() => console.log('Seus dados não foram salvos'));
 		});
 
-		document.querySelector('.login').addEventListener('click', (evt) => {
-			navigator.credentials.get({
-				password: true,
-				unmediated: true
-			}).then((cred) => {
-				if (cred) {
-					login(cred);
-				} else {
-					navigator.credentials.get({
-						password: true,
-						unmediated: false
-					}).then((cred) => {
-						if(cred) {
-							login(cred);
-						}
-					}).catch((e) => { console.error(e) });
-				}
-			}).catch((e) => console.error(e));
-
-			evt.preventDefault();
-		});
+		navigator.credentials.get({
+			password: true,
+			mediation: 'silent'
+		}).then((cred) => {
+			if (cred) {
+				login(cred);
+			} else {
+				navigator.credentials.get({
+					password: true,
+					mediation: 'optional'
+				}).then((cred) => {
+					if(cred) {
+						login(cred);
+					}
+				}).catch((e) => console.error(e));
+			}
+		}).catch((e) => console.error(e));
 	}
 })()
 ```
 
-Você pode ter percebido que adicionamos uma função `login` em nosso código. Mas o que vamos ter nela? Como sabe, precisamos fazer o usuário logar em nosso sistema, logo precisamos fazer uma requisição para o nosso sistema. Vou simular que temos uma rota que recebe essas informações.
+Você pode ter percebido que adicionamos uma função chamada `login` em nosso código. Mas o que vamos ter nela? Como sabe, precisamos fazer o usuário logar em nosso sistema, logo precisamos fazer uma requisição para o nosso sistema. Vou simular que temos uma rota que recebe essas informações.
 
 ```javascript
 'use strict';
@@ -181,52 +186,54 @@ Você pode ter percebido que adicionamos uma função `login` em nosso código. 
 		const form = document.forms.login;
 
 		var login = (cred) => {
-			cred.idName = 'email';
+			if (cred) {
+				let form = new FormData();
 
-			fetch('/auth/login', {
-				method: 'POST',
-				credentials: cred
-			}).then((result) => {
-				if (result.ok) {
-					window.location = '/main/index';
-				} else {
-					alert('An error has occurred!');
-				}
-			}).catch((e) => {
-				console.error(e);
-			});
+				form.append('email', cred.id);
+				form.append('password', cred.password);
+
+				fetch('/auth/login', {
+					method: 'POST',
+					credentials: 'include',
+					body: form
+				}).then(res => {
+					if (res.status === 200) {
+						window.location = '/';
+					} else {
+						window.location = '/auth/error';
+					}
+				}).catch((e) => console.error(e));
+			} else {
+				// implementa um fallback caso o cred não tenha as infos necessárias
+			};
 		};
 
 		form.addEventListener('submit', function() {
-			let cred = new PasswordCredential({
-				id: form.elements[0].value,
-				password: form.elements[1].value
+			let cred = await navigator.credentials.create({
+				password: {
+					id: form.elements[0].value,
+					password: form.elements[1].value
+				}
 			});
 
-			navigator.credentials.store(cred).then(() => console.log('Data save success')).catch(() => console.log('Your data were not saved'));
+			navigator.credentials.store(cred).then(() => console.log('Dados foram salvos com sucesso')).catch(() => console.log('Seus dados não foram salvos'));
 		});
 
-		document.querySelector('.login').addEventListener('click', (evt) => {
-			navigator.credentials.get({
-				password: true,
-				unmediated: true
-			}).then((cred) => {
-				if (cred) {
+		navigator.credentials.get({
+			password: true,
+			mediation: 'silent'
+		}).then((cred) => {
+			if (cred) {
+				login(cred);
+			} else {
+				navigator.credentials.get({
+					password: true,
+					mediation: 'optional'
+				}).then((cred) => {
 					login(cred);
-				} else {
-					navigator.credentials.get({
-						password: true,
-						unmediated: false
-					}).then((cred) => {
-						if(cred) {
-							login(cred);
-						}
-					}).catch((e) => { console.error(e) });
-				}
-			}).catch((e) => console.error(e));
-
-			evt.preventDefault();
-		});
+				}).catch((e) => console.error(e));
+			}
+		}).catch((e) => console.error(e));
 	}
 })()
 ```
@@ -241,7 +248,7 @@ Agora que sabemos como salvar e obter os dados salvos com a Credentinal Manageme
 (() => {
 	document.querySelector('.logout').addEventListener('click', (evt) => {
 		if ('credentials' in navigator) {
-			navigator.credentials.requireUserMediation();
+			navigator.credentials.preventSilentAccess();
 		} else {
 			window.location = '/auth/logout';
 		}
@@ -252,7 +259,7 @@ Agora que sabemos como salvar e obter os dados salvos com a Credentinal Manageme
 
 ```
 
-Como isso, garantimos que o usuário não "logará" automaticamente quando este fizer um novo acesso ao sistema.
+Como isso, garantimos que o usuário não "logará" automaticamente quando fizer um novo acesso ao sistema.
 
 ## Conclusão
 
