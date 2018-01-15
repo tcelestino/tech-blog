@@ -20,7 +20,7 @@ body {
 }
 
 main {
-    padding-bottom: 81px; /*Footer Size*/
+    padding-bottom: 49px; /*Footer Size*/
 }
 
 .left-pane {
@@ -192,8 +192,9 @@ main {
 }
 
 footer {
-    background-color: $yellow-default;
-    padding: 3em 1em;
+    background-color: $lightly-dark-white;
+    border-top: 1px solid map-get($colors-border, light-gray);
+    padding: 1em;
     position: absolute;
     right: 0;
     bottom: 0;
@@ -202,9 +203,9 @@ footer {
     a {
         display: block;
         text-align: center;
-        color: map-get($colors-text, white);
+        color: map-get($colors-text, link);
         text-decoration: none;
-        font-size: 1.2em;
+        font-size: 1;
     }
 }
 
@@ -262,21 +263,14 @@ footer {
     }
 
     footer {
-        background-color: $lightly-dark-white;
-        border-top: 1px solid map-get($colors-border, light-gray);
         margin-left: $left-panel-width;
         background-color: map-get($colors-text, white);
         padding: 2em 1em;
-
-        a {
-            text-align: center;
-            color: map-get($colors-text, link);
-            font-size: 1em;
-        }
     }
 
     main {
         margin-left: $left-panel-width;
+        padding-bottom: 81px; /*Footer Size*/
     }
 }
 
