@@ -13,7 +13,7 @@ description: Continuando com a série de posts sobre codificar e-mails, você j�
 
 No [primeiro post da série](/tecnicas-para-codificar-um-e-mail/), aprendemos a criar uma base para codificação de e-mail. Neste, iremos abordar as diversas formas de trabalhar com os espaçamentos.
 
-Para começar, vamos adicionar um cabeçalho ao nosso e-mail. Criaremos uma tabela e, dentro dela, adicionaremos um título para o nosso e-mail. Para ficar igual ao layout, vamos adicionar o atributo `bgcolor` para alterar a cor do fundo para marrom claro:
+Para começar, vamos adicionar um cabeçalho ao nosso e-mail. Criaremos uma tabela e, dentro dela, adicionaremos um título para o nosso e-mail. Para ficar igual ao <a href='../images/tecnicas-para-codificar-um-e-mail-1.png' target='_blank'>layout proposto no primeiro post da série</a>, vamos adicionar o atributo `bgcolor` para alterar a cor do fundo para marrom claro:
 
 ![Adicionando uma cor de fundo ao nosso cabeçalho](../images/tecnicas-para-codificar-um-e-mail-parte-2-1.png)
 
@@ -27,7 +27,7 @@ Para começar, vamos adicionar um cabeçalho ao nosso e-mail. Criaremos uma tabe
 </table>
 ```
 
-Agora vamos para a parte que nos interessa, adicionar um pequeno espaçamento entre o texto e as bordas. Podemos fazer isso com as técnicas explicadas a seguir.
+Agora vamos para a parte que nos interessa: adicionar um pequeno espaçamento entre o texto e as bordas. Podemos fazer isso com as técnicas explicadas a seguir.
 
 ## Colunas
 
@@ -98,7 +98,7 @@ Uma outra forma é adicionar uma margem para os lados no nosso texto:
 
 ## Fonte
 
-Com os espaçamentos feitos, precisamos alterar a fonte para que o resultado fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. E vale lembrar que precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização entre os clientes se mantenham iguais:
+Com os espaçamentos feitos, precisamos alterar a fonte para que o resultado fique mais próximo ao layout. A cor pode ser alterada utilizando a propriedade `color`, a tipografia com `font-family` e o tamanho com `font-size`. E vale lembrar que precisamos redefinir as margens e os espaçamentos internos para garantir que a renderização se mantenha igual entre os clientes:
 
 ![Espaçamento no e-mail](../images/tecnicas-para-codificar-um-e-mail-parte-2-4.png)
 
@@ -112,7 +112,7 @@ Com os espaçamentos feitos, precisamos alterar a fonte para que o resultado fiq
 </table>
 ```
 
-Para a tipografia é sempre legal colocar uma alternativa para o navegador renderizar, porque nem sempre a fonte escolhida existe no sistema que o usuário utiliza. Uma alternativa genérica são as `sans-serif`, `serif` e `cursive` para as fontes <a href='http://knabbenn.com/classificacao-tipografica/' rel='nofollow' target='_blank'>sem serifa, serifadas e cursivas</a> respectivamente.
+Para a tipografia, é sempre legal colocar uma alternativa para o navegador renderizar, porque nem sempre a fonte escolhida existe no sistema que o usuário utiliza. Uma alternativa genérica são as `sans-serif`, `serif` e `cursive` para as fontes <a href='http://knabbenn.com/classificacao-tipografica/' rel='nofollow' target='_blank'>sem serifa, serifadas e cursivas</a> respectivamente.
 
 Nesse caso só adicionamos uma fonte alternativa após a escolhida:
 
