@@ -3,7 +3,7 @@ title: Controlando e melhorando a performance do build no Travis CI
 date: 2017-11-17
 category: front-end
 layout: post
-description:
+description: Aprenda como criar fluxos de forma simples e flexível em uma das ferramentas mais famosas de Integração Contínua: o Travis CI. Além disso, veja  como podemos otimizar o seu tempo de execução.
 authors: [williammizuta]
 tags:
   - travis ci
