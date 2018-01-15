@@ -22,7 +22,7 @@ Podemos notar isso com formulários, por exemplo. Ao usar os controles de formul
     <legend>Dados pessoais</legend>
     <label>
       Nome
-      <input required>
+      <input type="text" required>
     </label>
     <label>
       E-mail
@@ -33,11 +33,11 @@ Podemos notar isso com formulários, por exemplo. Ao usar os controles de formul
     <legend>Endereço</legend>
     <label>
       Logradouro
-      <input>
+      <input type="text">
     </label>
     <label>
       CEP
-      <input required pattern="[0-9]{5}-[0-9]{3}">
+      <input type="text" required pattern="[0-9]{5}-[0-9]{3}">
     </label>
   </fieldset>
   <button type="submit">Enviar</button>
@@ -62,7 +62,7 @@ Nesses casos, como o próprio desenvolvedor front-end está implementando o comp
 
 CSS é bastante poderoso, e permite, em conjunto com o HTML, [até mesmo a criação de jogos inteiros](https://pt.slideshare.net/fehbernardo/jogos-com-css-65475375). Com esse poder, conseguimos construir componentes visuais que antes só eram possíveis com a ajuda de Javascript, como [menus *drop-down*](http://www.devmedia.com.br/menu-em-css-menu-dropdown-horizontal-com-html5-e-css3/37205) e [caixas de diálogo customizadas](https://tableless.com.br/simples-modal-com-css-responsivo/).
 
-Porém, componentes criados apenas com HTML e CSS **não são automaticamente acessíveis**. Quando implementamos uma solução mais complexa usando essas tecnologias, precisamos tomar o cuidado passar mais informações para o navegador para que ele informe ao usuário o que está acontecendo na página. É aí que entra [a especificação WAI-ARIA](/wai-aria-apanhado-geral/).
+Porém, componentes criados apenas com HTML e CSS **não são automaticamente acessíveis**. Quando implementamos uma solução mais complexa usando essas tecnologias, precisamos tomar o cuidado de passar mais informações para o navegador para que ele informe ao usuário o que está acontecendo na página. É aí que entra [a especificação WAI-ARIA](/wai-aria-apanhado-geral/).
 
 Um exemplo simples de truque poderoso de CSS é o *checkbox hack*, que podemos usar para esconder/mostrar dinamicamente elementos na tela. No Elo7, usamos essa técnica para fazer o menu *drop-down* do vendedor, mostrado anteriormente. No HTML, usamos um *checkbox* associado a um *label* e um elemento que queremos esconder/mostrar (no exemplo abaixo, a lista com a classe `opcoes`):
 
