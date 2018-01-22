@@ -10,6 +10,12 @@
         "title": "Cultura",
         "description": "Confira todos os nossos posts sobre agilidade, ambiente de trabalho, cultura e liderança, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina."
     },
+    
+    {
+        "category": "data-science",
+        "title": "Data Science",
+        "description": "Confira todos os nossos posts sobre Data Science, Machine Learning e Inteligência Artificial, escritos pelo time de Engenharia do Elo7, o maior marketplace de produtos criativos da América Latina."
+    },
 
     {
         "category": "design",
