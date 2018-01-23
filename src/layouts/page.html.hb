@@ -76,7 +76,7 @@
 			<nav aria-label="Navegue pelas categorias do nosso blog" class="nav-list nav-category">
 				{{#each (getCategories)}}
 					<a itemprop="url" href="/{{category}}/" itemscope itemtype="http://schema.org/SiteNavigationElement">
-						<span itemprop="name">{{category}}</span>
+						<span itemprop="name">{{title}}</span>
 					</a>
 				{{/each}}
 			</nav>
