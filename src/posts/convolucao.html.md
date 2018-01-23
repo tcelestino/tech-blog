@@ -1,6 +1,6 @@
 ---
 date: 2018-01-15
-category: back-end
+category: data-science
 tags:
   - data science
   - machine learning
