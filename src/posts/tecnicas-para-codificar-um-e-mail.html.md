@@ -100,9 +100,11 @@ O `margin: 0 auto` já é bem aceito nos clientes mais modernos. Os únicos que 
 
 Podemos também utilizar a tag `<center>` para envelopar a nossa `table` que serve como container. Assim como no exemplo, a tabela ficaria centralizada; entretanto, esta `tag` não funciona no Yahoo Mail.
 
+## Compatibilidade
+
 As técnicas apresentadas funcionam nos seguintes clientes de email:
 
-Web
+### Web
 
 |             | Gmail | Inbox | Outlook | Yahoo |
 |-------------|:-----:|:-----:|:-------:|:-----:|
@@ -116,7 +118,7 @@ Web
 | Safari App  |   ✓   |   -   |    ✓    |   ✓   |
 | Edge App    |   ✓   |   -   |    ✓    |   ✓   |
 
-Mobile
+### Mobile
 
 |                   | Gmail App | Inbox App | Outlook App | Yahoo App |
 |-------------------|:---------:|:---------:|:-----------:|:---------:|
@@ -124,16 +126,16 @@ Mobile
 | iOS               |     ✓     |     ✓     |      ✓      |     ✓     |
 | Windows Phone     |     -     |     -     |      ✓      |     -     |
 
-Aplicativo Outlook
+### Aplicativo Outlook
 
 |        | 2007 | 2010 | 2011 | 2013 | 2015 |
 |--------|:----:|:----:|:----:|:----:|:----:|
-| Oulook |  ✗¹  |  ✗¹  |   ✓  |  ✗¹  |   ✓  |
+| Outlook |  ✗¹  |  ✗¹  |   ✓  |  ✗¹  |   ✓  |
 
 ¹ A propriedade `max-width` não funciona
 
 ## Conclusão
 
-Essa foi a primeira parte de uma série de posts sobre como codificar um e-mail. Neste primeiro artigo, aprendemos a criar a base do layout. No próximo, iremos falar sobre as diversas formas para lidar com espaçamentos.
+Essa foi a primeira parte de uma série de posts sobre como codificar um e-mail. Neste primeiro artigo, aprendemos a criar a base do layout. [No próximo, iremos falar sobre as diversas formas para lidar com espaçamentos.](/tecnicas-para-codificar-um-e-mail-parte-2/)
 
 E você? Já passou por problemas parecidos? =]
