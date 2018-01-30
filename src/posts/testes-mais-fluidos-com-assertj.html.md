@@ -163,11 +163,11 @@ public class MessageTypeTest {
 
 A maioria dos testes continha asserções simples, como `assertEquals()`, `assertTrue()`, `assertFalse()`, `assertNull()` e `assertNotNull()`. Todas elas podem ser facilmente substituídas por, respectivamente:
 
-- `assertThat().isEqualTo()`;
-- `assertThat().isTrue()`;
-- `assertThat().isFalse()`;
-- `assertThat().isNull()`;
-- `assertThat().isNotNull()`.
+- `assertThat().isEqualTo()`
+- `assertThat().isTrue()`
+- `assertThat().isFalse()`
+- `assertThat().isNull()`
+- `assertThat().isNotNull()`
 
 Conhecendo um pouquinho de inglês essa tarefa fica um pouco mais intuitiva.
 
@@ -222,3 +222,80 @@ public class ConversationDAOIntegrationTest {
     }
 }
 ```
+
+Uma outra classe, `ConversationCreationAcceptanceTest` também possui métodos envolvendo conversas. Um deles, inclusive, filtra os participantes de uma conversa, para garantir que a pessoa que criou a conversa é o comprador... Vamos dar uma olhada em como ele estava:
+
+```java
+public class ConversationCreationAcceptanceTest extends BaseAcceptanceTest {
+
+    @Test
+    public void should_create_a_conversation_as_buyer() {
+        // Código omitido para manter a simplicidade...
+
+        Optional<Conversation> optionalConversation = conversations.details();
+
+        assertTrue(optionalConversation.isPresent());
+
+        Conversation conversation = optionalConversation.get();
+
+        assertEquals(randomConversation.getExternalId(), conversation.getExternalId());
+        assertEquals(userCreation.getExternalUserId(), conversation.getLastMessage().get().getSender().getAuthorId());
+        assertEquals(1, conversation.getMembers().stream()
+                            .filter(p -> p.getMemberId().equals(userCreation.getExternalUserId()))
+                            .filter(p -> p.getGroupRole().equals("BUYER"))
+                            .count());
+    }
+}
+```
+
+O `assertTrue()` está presente para verificar se o `optionalConversation` possui algum valor antes de realizarmos o `get()`. Como ele não nos interessa no momento e já sabemos como transformá-lo numa asserção do AssertJ, vamos passar a omití-lo. Os dois primeiros `assertEquals()` também podemos converter facilmente, sobrando o último, que faz um filtro nos membros da conversa. Ao invés de criarmos um _stream_ à partir da lista, podemos chamar direto o método `filteredOn()` do AssertJ, assim:
+
+```java
+public class ConversationCreationAcceptanceTest extends BaseAcceptanceTest {
+
+    @Test
+    public void should_create_a_conversation_as_buyer() {
+        // Código omitido para manter a simplicidade...
+
+        Conversation conversation = optionalConversation.get();
+
+        assertThat(conversation.getExternalId()).isEqualTo(randomConversation.getExternalId());
+        assertThat(conversation.getLastMessage().get().getSender().getAuthorId()).isEqualTo(userCreation.getExternalUserId());
+        assertThat(conversation.getMembers())
+            .filteredOn(conversationMember -> conversationMember.getMemberId().equals(userCreation.getExternalUserId()))
+            .filteredOn(conversationMember -> conversationMember.getGroupRole().equals("BUYER"))
+            .hasSize(1);
+    }
+}
+```
+
+Vou bater na tecla que o AssertJ não está aqui para diminuir a quantidade de código que escrevemos (às vezes ele diminui, mas não é a regra). A ideia de utilizá-lo é tornar o código mais legível para o ser humano, como se estivéssemos escrevendo uma frase.
+
+### Melhorando os testes
+
+O que aconteceria, no último exemplo, se a primeira asserção estiver incorreta? O restante do código nem é executado e não temos como saber se o restante está correto ou não. Ou seja, se o ID externo da conversa não for igual ao esperado, não saberemos se o ID do autor está correto, nem se ele é um comprador. Para isso, o AssertJ nos oferece _soft assertions_, isto é, asserções suaves, que executa todo o código e, ao final, nos informa quais asserções falharam. Vamos alterar o código acima para utilizar esse recurso, através do `SoftAssertions.assertSoftly()`:
+
+```java
+public class ConversationCreationAcceptanceTest extends BaseAcceptanceTest {
+
+    @Test
+    public void should_create_a_conversation_as_buyer() {
+        // Código omitido para manter a simplicidade...
+
+        Conversation conversation = optionalConversation.get();
+
+        SoftAssertions.assertSoftly(softly -> {
+            softly.assertThat(conversation.getExternalId()).isEqualTo(randomConversation.getExternalId());
+            softly.assertThat(conversation.getLastMessage().get().getSender().getAuthorId()).isEqualTo(userCreation.getExternalUserId());
+            softly.assertThat(conversation.getMembers())
+                        .filteredOn(conversationMember -> conversationMember.getMemberId().equals(userCreation.getExternalUserId()))
+                        .filteredOn(conversationMember -> conversationMember.getGroupRole().equals("BUYER"))
+                        .hasSize(1);
+        }
+    }
+}
+```
+
+## Conclusão
+
+Se testes automatizados são ou não importantes não é o foco desse _post_. Vários outros já argumentaram em cima desse tema e, como nós acreditamos que seja importante, estamos de olho no código para melhorá-lo e garantir que tudo funcione corretamente. Para isso, usamos os _frameworks_ e dentre os diversos disponíveis, o AssertJ acabou de entrar na nossa _stack_.
