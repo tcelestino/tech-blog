@@ -77,7 +77,7 @@ Um ponto importante é que mesmo fazendo as alterações ainda é necessário ap
 
 ## Migrando os testes
 
-Para converter todos os testes do JUnit para o AssertJ, o próprio site oficial contém uma [seção](http://joel-costigliola.github.io/assertj/assertj-core-converting-junit-assertions-to-assertj.html), onde é possível fazer o _download_ de um _script_, que faz as alterações automaticamente. Entretanto, para ter certeza que aprendi a utilizar o _framework_ e conhecer um pouco mais de suas _features_, optei por fazer todo o processo manualmente. Felizmente temos 58 classes de teste no projeto em questão.
+Para converter todos os testes do JUnit para o AssertJ, o próprio site oficial contém uma [seção](http://joel-costigliola.github.io/assertj/assertj-core-converting-junit-assertions-to-assertj.html), onde é possível fazer o _download_ de um _script_, que faz as alterações automaticamente. Entretanto, para ter certeza que aprendi a utilizar o _framework_ e conhecer um pouco mais de suas _features_, optei por fazer todo o processo manualmente. Felizmente não temos mais do que 58 classes de teste no projeto em questão.
 
 ### Adicionando a dependência
 
@@ -91,10 +91,9 @@ testCompile 'org.assertj:assertj-core:3.9.0'
 
 > Obs 2: No [_quick start_](http://joel-costigliola.github.io/assertj/assertj-core-quick-start.html) é possível encontrar o código para o Maven.
 
-
 ### Alterando o primeiro teste
 
-Cada _commit_ meu alterava uma única classe de teste, então vamos para a primeira classe, responsável por verificar se, dado um código, há um tipo de mensagem associada ou não. Um código válido, por exemplo, é 1, enquanto que um inválido é 99. Nosso teste antes, estava da seguinte forma:
+Cada _commit_ meu alterava uma única classe de teste, então vamos para a primeira classe, responsável por verificar se, dado um código, há um tipo de mensagem associada ou não. Um código válido, por exemplo, é 1, enquanto que 99 é inválido. Nosso teste antes, estava da seguinte forma:
 
 ```java
 public class MessageTypeTest {
@@ -116,7 +115,29 @@ public class MessageTypeTest {
 }
 ```
 
-Após refatorarmos, ele ficou assim:
+No primeiro exemplo, vimos que onde aparece `assertEquals()`, trocamos por `assertThat().isEqualTo()`, então essa foi a primeira mudança que fiz:
+
+```java
+public class MessageTypeTest {
+
+    @Test
+    public void should_return_present_when_message_type_is_valid() {
+        Optional<MessageType> messageType = MessageType.fromCode(1);
+
+        assertTrue(messageType.isPresent());
+        assertThat(messageType.get().getCode()).isEqualTo(1);
+    }
+
+    @Test
+    public void should_return_empty_when_message_type_is_not_valid() {
+        Optional<MessageType> messageType = MessageType.fromCode(99);
+
+        assertFalse(messageType.isPresent());
+    }
+}
+```
+
+Com o que já vimos, poderíamos alterar as asserções _booleanas_, ficando com `assertThat(messageType.isPresent()).isEqualTo(true)` (ou `false` no segundo caso). Mas o _framework_ nos disponibiliza dois métodos para isso, o `isTrue()` ou `isFalse()`, então podemos refatorar tudo, ficando com o código final abaixo:
 
 ```java
 public class MessageTypeTest {
@@ -138,11 +159,66 @@ public class MessageTypeTest {
 }
 ```
 
-Esse código não é difícil de entender, mas vamos analisar as mudanças que fizemos:
+### Próximos testes
 
-1. Modificamos a asserção que verificava que `messageType.isPresent()` retornava `true`.
-2. Modificamos a asserção que verificava se o código era `1`.
-3. Modificamos a asserção que verificava que `messageType.isPresent()` retornava `false`.
+A maioria dos testes continha asserções simples, como `assertEquals()`, `assertTrue()`, `assertFalse()`, `assertNull()` e `assertNotNull()`. Todas elas podem ser facilmente substituídas por, respectivamente:
 
-Agora repare que ficou mais fácil de ler nosso teste! Veja também que não estamos escrevendo menos código (ao contrário!),
-mas um código mais compreensível e legível!
+- `assertThat().isEqualTo()`;
+- `assertThat().isTrue()`;
+- `assertThat().isFalse()`;
+- `assertThat().isNull()`;
+- `assertThat().isNotNull()`.
+
+Conhecendo um pouquinho de inglês essa tarefa fica um pouco mais intuitiva.
+
+Mas a migração começa a ficar um pouco mais interessante quando começamos a mexer com coleções e _streams_.
+
+Uma das classes, `ConversationDAOIntegrationTest` continha métodos que verificavam o conteúdo de listas de conversas. Como podemos filtrar por mensagens não arquivadas, por exemplo, temos que verificar se determinada conversa está presente ou não numa listagem. Nosso teste estava assim:
+
+```java
+public class ConversationDAOIntegrationTest {
+
+    @Test
+    public void should_filter_active_conversations() {
+        // Código omitido para manter a simplicidade...
+
+        List<GroupParticipation> result = groups.getResults();
+
+        assertThat(result, contains(activeParticipation));
+        assertThat(result, not(contains(archivedParticipation)));
+    }
+}
+```
+
+Repare que estávamos usando Hamcrest aqui! Observe, também, que precisamos ficar encadeando chamadas de métodos para verificar se a lista não contém determinado elemento. Um pouco ruim, não? Com AssertJ, podemos fazer assim:
+
+```java
+public class ConversationDAOIntegrationTest {
+
+    @Test
+    public void should_filter_active_conversations() {
+        // Código omitido para manter a simplicidade...
+
+        List<GroupParticipation> result = groups.getResults();
+
+        assertThat(result).contains(activeParticipation);
+        assertThat(result).doesNotContain(archivedParticipation);
+    }
+}
+```
+
+Um pouco melhor, certo? Olhando um pouco mais o [Javadoc](http://joel-costigliola.github.io/assertj/core-8/api/index.html), vi que há outros métodos, um deles chamado de `containsExactly()`, que verifica se o grupo possui o elemento passado como parâmetro e nada mais, em ordem! Nesse caso não há problema, pois temos apenas um único parâmetro, caso tivéssemos mais de um e a ordem não importasse, poderíamos usar ainda o `containsExactlyInAnyOrder()`. Usando o método que acabamos de descobrir, temos o seguinte:
+
+```java
+public class ConversationDAOIntegrationTest {
+
+    @Test
+    public void should_filter_active_conversations() {
+        // Código omitido para manter a simplicidade...
+
+        List<GroupParticipation> result = groups.getResults();
+
+        assertThat(result).containsExactly(activeParticipation);
+    }
+}
+```
