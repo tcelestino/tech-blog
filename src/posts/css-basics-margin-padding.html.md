@@ -69,4 +69,4 @@ Um caso interessante é se tentarmos usar um *background* com *padding*. Visualm
 <script async src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
 
 ## Conclusão
-Nesse post, falamos um pouco sobre as diferenças entre margin e padding, suas aplicações e funcionamento. Continuaremos com a nossa série sobre CSS, e se tiver alguma sugestão de tema que queira ver, coloque nos comentários ;D
+Nesse post, falamos um pouco sobre as diferenças entre margin e padding, suas aplicações e funcionamento. Continuaremos com a nossa [série sobre CSS](https://engenharia.elo7.com.br/tags/css), e se tiver alguma sugestão de tema que queira ver, coloque nos comentários ;D
