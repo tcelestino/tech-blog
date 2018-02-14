@@ -597,7 +597,7 @@ public class JUnit5Test {
 ```
 
 O arquivo `parameters.csv` (o parâmetro `resources` é um array, permitindo que vários arquivos possam ser utilizados para o mesmo teste):
-```csv
+```
 Hello, 1
 World, 2
 ```
