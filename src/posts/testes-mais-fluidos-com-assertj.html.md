@@ -50,7 +50,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.equalTo;
 ```
 
-É possível observar que agora escrevemos na ordem que esperamos, ou seja, primeiro o valor real, depois o esperado. Um outro ponto é que aumentamos o número que `import`s para dois, mas isso é totalmente aceitável.
+É possível observar que agora escrevemos na ordem que esperamos, ou seja, primeiro o valor real, depois o esperado. Um outro ponto é que aumentamos o número de `import`s para dois, mas isso é totalmente aceitável.
 
 ### AssertJ
 
