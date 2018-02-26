@@ -11,15 +11,15 @@ description: Você ouviu falar ou leu a respeito de uma tal "programação reati
 ---
 Em tempos recentes, a expressão "programação reativa" tem ganhado (ainda mais) força nas discussões do mundo do software. Apesar de não ser algo necessariamente "novo" (nem um pouco, na verdade) e se basear em conceitos e padrões já existentes, a tal "programação reativa" tem ganho *muito* destaque e há um bom número de frameworks que suportam esse paradigma em diversas linguagens. Mas será apenas mais uma "buzzword" ou algo realmente útil?
 
-Este post é o primeiro de uma série sobre programação reativa, onde queremos tentar atribuir um significado mais concreto para esse conceito, tanto an nível de implementação quanto arquitetura. Esperamos poder ajudá-lo a formar uma visão mais clara do impacto dessas idéias no seu software.
+Este post é o primeiro de uma série sobre programação reativa, onde queremos tentar atribuir um significado mais concreto para esse conceito, tanto a nível de implementação quanto arquitetura. Esperamos poder ajudá-lo a formar uma visão mais clara do impacto dessas idéias no seu software.
 
-Este post é baseado na família de frameworks [ReactiveX](http://reactivex.io/), em especial o [RxJava](https://github.com/ReactiveX/RxJava)).
+Este post é baseado na família de frameworks [ReactiveX](http://reactivex.io/), em especial o [RxJava](https://github.com/ReactiveX/RxJava).
 
 # Por que?
 
 Um dos desafios da Engenharia de Software atualmente são aplicações orientadas a alto volumes de dados em tempo real. Usuários querem seus dados **agora**; querem ver seus *tweets* agora, confirmar seus pedidos agora, jogos online precisam responder agora. Agora, agora, agora!
 
-Como desenvolvedores, nossas aplicações precisam igualmente responder a essas demandas **agora**. Não queremos que nosso software fique bloqueado por um pedido de informações ou aguardando o resultado de uma computação. Não queremos que nossa aplicação fique parada aguardando algum resultado, mas precisamos exibi-los assim que estiverem prontos. Se lidamos com um bloco de informações, queremos manipular resultados individuais, e não esperar que o conjunto inteiro seja processado. O comportamento das aplicações evoluiu˜para lidar com dados *empurrados*. Então, precisamos de ferramentas de implementação para construir um código capaz de **reagir** a eventos e informações.
+Como desenvolvedores, nossas aplicações precisam igualmente responder a essas demandas **agora**. Não queremos que nosso software fique bloqueado por um pedido de informações ou aguardando o resultado de uma computação. Não queremos que nossa aplicação fique parada aguardando algum resultado, mas precisamos exibi-los assim que estiverem prontos. Se lidamos com um bloco de informações, queremos manipular resultados individuais, e não esperar que o conjunto inteiro seja processado. O comportamento das aplicações evoluiu para lidar com dados *empurrados*. Então, precisamos de ferramentas de implementação para construir um código capaz de **reagir** a eventos e informações.
 
 # Para que?
 
