@@ -7,7 +7,7 @@ tags:
   - assertj
 authors: [fabioueno]
 layout: post
-title: Testes mais fluídos com AssertJ
+title: Testes mais fluidos com AssertJ
 description: Diversos posts falam sobre a importância dos testes, mas o foco aqui será como melhorar a compreensão e legibilidade de nossos testes utilizando o AssertJ!
 ---
 
@@ -15,7 +15,7 @@ Em um [_post_](https://engenharia.elo7.com.br/a-cultura-por-tras-do-time-fora-de
 
 ## Motivação
 
-A primeira coisa que pensei foi: qual é a vantagem em utilizá-lo? Logo de cara, o radar nos informa que o _framework_ em questão fornece uma interface fluída para asserções. Mas o que é uma interface fluída? [Martin Fowler](https://martinfowler.com/bliki/FluentInterface.html) mostra um exemplo e comenta um pouco, mas, em resumo, é uma forma de escrever nosso código tentando nos aproximar da maneira como escrevemos no dia-a-dia.
+A primeira coisa que pensei foi: qual é a vantagem em utilizá-lo? Logo de cara, o radar nos informa que o _framework_ em questão fornece uma interface fluida para asserções. Mas o que é uma interface fluida? [Martin Fowler](https://martinfowler.com/bliki/FluentInterface.html) mostra um exemplo e comenta um pouco, mas, em resumo, é uma forma de escrever nosso código tentando nos aproximar da maneira como escrevemos no dia-a-dia.
 
 Esclarecidas essas dúvidas, resolvi dar uma olhada no código, de fato. Vamos supor que temos um cenário de teste em que queremos verificar se a variável `a` é igual à variável `b`.
 
