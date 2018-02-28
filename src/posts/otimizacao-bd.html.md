@@ -1,5 +1,5 @@
 ---
-date: 2017-01-30
+date: 2018-03-05
 category: back-end
 tags:
   - sql
@@ -162,3 +162,4 @@ em seu uso:
 
 ## Conclusão
 
+Nesse post vimos como utilizar melhor os índices para melhorar a nossa performance. O que você usa para melhorar a performance quando o assunto é banco de dados? Já tomava esse cuidado com os índices? Comente aqui no post o que achou :)
