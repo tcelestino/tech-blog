@@ -6,8 +6,9 @@ tags:
   - optimization
   - banco de dados
   - query
-  - otimização
+  - otimizacao
   - relacional
+  - mysql
 authors: [victorkendy]
 layout: post
 title: Otimização de queries lentas em bancos relacionais
