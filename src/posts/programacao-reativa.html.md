@@ -134,7 +134,7 @@ onCompleted
 
 * [Observable.error](http://reactivex.io/RxJava/2.x/javadoc/io/reactivex/Observable.html#error-java.lang.Throwable-)
 ```java
-// cria um Observable vazio, que emite apenas onCompleted
+// cria um Observable que emite apenas onError
 Observable.error(new RuntimeException("oops"))
 	.subscribe(
 		System.out::println, //onNext
@@ -233,7 +233,7 @@ E um código reativo:
 ```
 // definimos uma função para representar a operação onNext
 
-myOnNext = {value -> //faz alguma coisa com o valor, atribuído à variável "value"}
+myOnNext = {value -> /* Faz alguma coisa com o valor, atribuído à variável "value"*/ }
 
 //cria o Observable de algum modo
 myObservable = createObservable();
