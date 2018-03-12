@@ -23,7 +23,7 @@ Existem diversas maneiras de melhorar o fluxo de utilização do seu site com a 
 
 ## Como usamos no Elo7
 
-Antes de mostrar a implementação da API, queria exemplificar como a utilizamos aqui no [Elo7](https://elo7.com.br).
+Antes de mostrar a implementação da API, queria exemplificar como a utilizamos aqui no [Elo7](https://www.elo7.com.br/?utm_source=tech-blog&utm_medium=travis-build-stages).
 
 Utilizamos a Credential Management API no sistema de login do Elo7 (na versão web mobile) e analisando os resultados através do Google Analytics, observamos que realmente nossos usuários utilizam este recurso, independente do seu nível de conhecimento.
 
@@ -36,7 +36,7 @@ Interessante os resultados, não? Bom, vamos deixar de conversa e partir para o 
 
 Como grande maioria das API's Javascript lançadas hoje em dia, precisamos garantir a segurança das informações. Ou seja, para usar a Credential Management API você precisa ter um servidor com uma conexão segura. Em outras palavras, é necessário que o protocolo *https* esteja habilitado em seu servidor.
 
-A primeira coisa que precisamos verificar é se esta API está disponível em seu navegador. Importante: nos exemplos a seguir utilizarei algumas das novidades recém adicionadas à linguagem Javascript (ES6/ES7/ES8). Caso não conheça, você pode conhecer mais [clicando aqui](https://github.com/lukehoban/es6features).
+A primeira coisa que precisamos verificar é se esta API está disponível em seu navegador. Importante: nos exemplos a seguir utilizarei algumas das novidades recém adicionadas à linguagem Javascript (ES6/ES7/ES8). Caso não conheça, você pode conhecer mais [clicando aqui](http://kangax.github.io/compat-table/es2016plus/).
 
 No exemplo a seguir, utilizaremos a seguinte estrutura HTML:
 
@@ -62,25 +62,23 @@ No exemplo a seguir, utilizaremos a seguinte estrutura HTML:
 ```javascript
 'use strict';
 
-(() => {
-	if ('credentials' in navigator) {
-		const form = document.forms.login;
+if ('credentials' in navigator) {
+	const form = document.forms.login;
 
-		form.addEventListener('submit', () => {
-			let cred = await navigator.credentials.create({
-				password: {
-					id: form.elements[0].value, // campo do email
-					password: form.elements[1].value // campo de senha
-				}
-			});
-
-			navigator.credentials
-				.store(cred)
-				.then(() => console.log('Dados foram salvos com sucesso'))
-				.catch(() => console.log('Seus dados não foram salvos'));
+	form.addEventListener('submit', () => {
+		let cred = await navigator.credentials.create({
+			password: {
+				id: form.elements[0].value, // campo do email
+				password: form.elements[1].value // campo de senha
+			}
 		});
-	}
-})();
+
+		navigator.credentials
+			.store(cred)
+			.then(() => console.log('Dados foram salvos com sucesso'))
+			.catch(() => console.log('Seus dados não foram salvos'));
+	});
+}
 ```
 
 No código acima, estamos criando uma *credential* de forma assíncrona quando é feito um `submit` no formulário, no qual passamos para este as informações preenchidas nos campos (email e senha). Feito isso, chamamos o método `navigator.credentials.store()`, passando como argumento/parâmetro o objeto que criamos com `navigator.credentials.create()`. Esse método retornará uma Promise. Caso você não saiba o que é uma Promise, recomendo ler a [documentação](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/Global_Objects/Promise) disponível no [Mozilla Developer Network (MDN)](https://developer.mozilla.org/pt-BR/). Vale lembrar que, caso aconteça o `catch` o usuário irá logar no sistema, apenas as informações (email e senha) não serão gravadas.
@@ -94,35 +92,33 @@ Assim como salvamos, também podemos recuperar informações que já foram salva
 ```javascript
 'use strict';
 
-(() => {
-	if ('credentials' in navigator) {
-		const form = document.forms.login;
+if ('credentials' in navigator) {
+	const form = document.forms.login;
 
-		form.addEventListener('submit', () => {
-			let cred = await navigator.credentials.create({
-				password: {
-					id: form.elements[0].value, // campo do email
-					password: form.elements[1].value // campo de senha
-				}
-			});
-
-			navigator.credentials
-				.store(cred)
-				.then(() => console.log('Dados foram salvos com sucesso'))
-				.catch(() => console.log('Seus dados não foram salvos'));
-		});
-
-		// recuperando dados caso já existentes
-		navigator.credentials.get({
-			password: true,
-			mediation: 'silent'
-		}).then((cred) => {
-			if (cred) {
-				// faça alguma coisa
+	form.addEventListener('submit', () => {
+		let cred = await navigator.credentials.create({
+			password: {
+				id: form.elements[0].value, // campo do email
+				password: form.elements[1].value // campo de senha
 			}
 		});
-	}
-})();
+
+		navigator.credentials
+			.store(cred)
+			.then(() => console.log('Dados foram salvos com sucesso'))
+			.catch(() => console.log('Seus dados não foram salvos'));
+	});
+
+	// recuperando dados caso já existentes
+	navigator.credentials.get({
+		password: true,
+		mediation: 'silent'
+	}).then((cred) => {
+		if (cred) {
+			// faça alguma coisa
+		}
+	});
+}
 ```
 
 Como podem observar, passamos para o `navigator.credentials.get()` duas informações:
@@ -142,44 +138,41 @@ Agora, vamos alterar o código para melhorar o fluxo do usuário caso ele tenha 
 
 ```javascript
 'use strict';
+if ('credentials' in navigator) {
+	const form = document.forms.login;
 
-(() => {
-	if ('credentials' in navigator) {
-		const form = document.forms.login;
-
-		form.addEventListener('submit', function() {
-			let cred = await navigator.credentials.create({
-				password: {
-					id: form.elements[0].value, // campo do email
-					password: form.elements[1].value // campo de senha
-				}
-			});
-
-			navigator.credentials
-				.store(cred)
-				.then(() => console.log('Dados foram salvos com sucesso'))
-				.catch(() => console.log('Seus dados não foram salvos'));
+	form.addEventListener('submit', function() {
+		let cred = await navigator.credentials.create({
+			password: {
+				id: form.elements[0].value, // campo do email
+				password: form.elements[1].value // campo de senha
+			}
 		});
 
-		navigator.credentials.get({
-			password: true,
-			mediation: 'silent'
-		}).then((cred) => {
-			if (cred) {
-				login(cred);
-			} else {
-				navigator.credentials.get({
-					password: true,
-					mediation: 'optional'
-				}).then((cred) => {
-					if(cred) {
-						login(cred);
-					}
-				}).catch((e) => console.error(e));
-			}
-		}).catch((e) => console.error(e));
-	}
-})()
+		navigator.credentials
+			.store(cred)
+			.then(() => console.log('Dados foram salvos com sucesso'))
+			.catch(() => console.log('Seus dados não foram salvos'));
+	});
+
+	navigator.credentials.get({
+		password: true,
+		mediation: 'silent'
+	}).then((cred) => {
+		if (cred) {
+			login(cred);
+		} else {
+			navigator.credentials.get({
+				password: true,
+				mediation: 'optional'
+			}).then((cred) => {
+				if(cred) {
+					login(cred);
+				}
+			}).catch((e) => console.error(e));
+		}
+	}).catch((e) => console.error(e));
+}
 ```
 
 Você pode ter percebido que adicionamos uma função chamada `login` em nosso código. Mas o que vamos ter nela? Como sabe, precisamos fazer o usuário logar em nosso sistema, logo precisamos fazer uma requisição para o nosso sistema. Vou simular que temos uma rota que recebe essas informações.
@@ -187,64 +180,62 @@ Você pode ter percebido que adicionamos uma função chamada `login` em nosso c
 ```javascript
 'use strict';
 
-(() => {
-	if ('credentials' in navigator) {
-		const form = document.forms.login;
+if ('credentials' in navigator) {
+	const form = document.forms.login;
 
-		var login = (cred) => {
-			if (cred) {
-				let form = new FormData();
+	var login = (cred) => {
+		if (cred) {
+			let form = new FormData();
 
-				form.append('email', cred.id);
-				form.append('password', cred.password);
+			form.append('email', cred.id);
+			form.append('password', cred.password);
 
-				fetch('/auth/login', {
-					method: 'POST',
-					credentials: 'include',
-					body: form
-				}).then(res => {
-					if (res.status === 200) {
-						window.location = '/';
-					} else {
-						window.location = '/auth/error';
-					}
-				}).catch((e) => console.error(e));
-			} else {
-				// implementa um fallback caso o cred não tenha as infos necessárias
-			};
-		};
-
-		form.addEventListener('submit', function() {
-			let cred = await navigator.credentials.create({
-				password: {
-					id: form.elements[0].value,
-					password: form.elements[1].value
+			fetch('/auth/login', {
+				method: 'POST',
+				credentials: 'include',
+				body: form
+			}).then(res => {
+				if (res.status === 200) {
+					window.location = '/';
+				} else {
+					window.location = '/auth/error';
 				}
-			});
+			}).catch((e) => console.error(e));
+		} else {
+			// implementa um fallback caso o cred não tenha as infos necessárias
+		};
+	};
 
-			navigator.credentials
-				.store(cred)
-				.then(() => console.log('Dados foram salvos com sucesso'))
-				.catch(() => console.log('Seus dados não foram salvos'));
+	form.addEventListener('submit', function() {
+		let cred = await navigator.credentials.create({
+			password: {
+				id: form.elements[0].value,
+				password: form.elements[1].value
+			}
 		});
 
-		navigator.credentials.get({
-			password: true,
-			mediation: 'silent'
-		}).then((cred) => {
-			if (cred) {
+		navigator.credentials
+			.store(cred)
+			.then(() => console.log('Dados foram salvos com sucesso'))
+			.catch(() => console.log('Seus dados não foram salvos'));
+	});
+
+	navigator.credentials.get({
+		password: true,
+		mediation: 'silent'
+	}).then((cred) => {
+		if (cred) {
+			login(cred);
+		} else {
+			navigator.credentials.get({
+				password: true,
+				mediation: 'optional'
+			}).then((cred) => {
 				login(cred);
-			} else {
-				navigator.credentials.get({
-					password: true,
-					mediation: 'optional'
-				}).then((cred) => {
-					login(cred);
-				}).catch((e) => console.error(e));
-			}
-		}).catch((e) => console.error(e));
-	}
-})()
+			}).catch((e) => console.error(e));
+		}
+	}).catch((e) => console.error(e));
+}
 ```
 
 Passamos para a função `login` o objeto `cred` que será usado no nosso back-end para autenticar os dados do usuário. Fazemos uma requisição AJAX usando a [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API/Using_Fetch).
@@ -254,16 +245,14 @@ Agora que sabemos como salvar e obter os dados salvos com a Credentinal Manageme
 ```javascript
 'use strict';
 
-(() => {
-	document.querySelector('.logout').addEventListener('click', (evt) => {
-		if ('credentials' in navigator) {
-			navigator.credentials.preventSilentAccess();
-		} else {
-			window.location = '/auth/logout';
-		}
+document.querySelector('.logout').addEventListener('click', (evt) => {
+	if ('credentials' in navigator) {
+		navigator.credentials.preventSilentAccess();
+	} else {
+		window.location = '/auth/logout';
+	}
 
-		evt.preventDefault();
-	});
+	evt.preventDefault();
 });
 
 ```
@@ -273,6 +262,8 @@ Como isso, garantimos que o usuário não "logará" automaticamente quando fizer
 ## Conclusão
 
 A Credential Management API é uma solução que melhora bastante a usabilidade do processo de autenticação dos usuários, agilizando e mantendo as informações de forma segura. A idéia é que ela se torne muito mais interessante quando for futuramente implementada pela maioria dos navegadores existentes no mercado.
+
+Em caso de dúvidas, críticas e mais dicas de como implementar a API, fique livre para deixar o seu comentário. :)
 
 ## Referências
 
