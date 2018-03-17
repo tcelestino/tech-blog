@@ -1,5 +1,5 @@
 ---
-date: 2018-03-13
+date: 2018-03-19
 category: front-end
 tags:
   - javascript
@@ -23,7 +23,7 @@ Existem diversas maneiras de melhorar o fluxo de utilização do seu site com a 
 
 ## Como usamos no Elo7
 
-Antes de mostrar a implementação da API, queria exemplificar como a utilizamos aqui no [Elo7](https://www.elo7.com.br/?utm_source=tech-blog&utm_medium=travis-build-stages).
+Antes de mostrar a implementação da API, queria exemplificar como a utilizamos aqui no [Elo7](https://www.elo7.com.br/?utm_source=tech-blog&utm_medium=credential-management-api).
 
 Utilizamos a Credential Management API no sistema de login do Elo7 (na versão web mobile) e analisando os resultados através do Google Analytics, observamos que realmente nossos usuários utilizam este recurso, independente do seu nível de conhecimento.
 
@@ -85,7 +85,7 @@ Assim como salvamos, também podemos recuperar informações que já foram salva
 
 if ('credentials' in navigator) {
 	//...
-	
+
 	// recuperando dados caso já estejam existentes
 	navigator.credentials.get({
 		password: true,
@@ -200,18 +200,16 @@ Agora que sabemos como salvar e obter os dados salvos com a Credentinal Manageme
 
 ```javascript
 document.querySelector('.logout').addEventListener('click', (evt) => {
-	if ('credentials' in navigator) {
+	if ('credentials' in navigator && navigator.credentials.preventSilentAccess) {
 		navigator.credentials.preventSilentAccess();
-	} else {
-		window.location = '/auth/logout';
 	}
-
 	evt.preventDefault();
+	window.location = '/auth/logout';
 });
 
 ```
 
-Como isso, garantimos que o usuário não "logará" automaticamente quando fizer um novo acesso ao sistema.
+Com isso, garantimos que o usuário não "logará" automaticamente quando fizer um novo acesso ao sistema.
 
 ## Conclusão
 

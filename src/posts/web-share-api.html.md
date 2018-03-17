@@ -5,7 +5,7 @@ tags:
   - javascript
   - mobile
   - web
-  - web api
+  - webapi
 authors: [tcelestino]
 layout: post
 title: Web Share API
