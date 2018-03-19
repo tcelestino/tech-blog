@@ -8,7 +8,7 @@ tags:
 authors: [tcelestino]
 layout: post
 title: Credential Managament API
-description: Conheça a Credential Managament API e veja como a implementá-la em seu projeto.
+description: Conheça a Credential Managament API e veja como implementá-la em seu projeto.
 ---
 
 Hoje em dia passamos muito tempo em redes sociais, fóruns, blogs e sites de comércio eletrônico, sabemos então o quanto é chato ter que ficar anotando dados de login e senha deste serviços. E como você sabe, por questões de segurança, não devemos usar os mesmos dados para acessar diferentes serviços. Para resolver este problema, existem diversas aplicações que gerenciam essas informações, como: [LastPass](https://www.lastpass.com), [1Password](https://1password.com/), [bitwarden](https://bitwarden.com/), [Dashlane](https://www.dashlane.com/), entre outros. Os principais navegadores do mercado também possuem recursos para fazer esse gerenciamento. Mas daí surge uma dúvida: como faríamos para informar estes dados ao navegador? É possível integrar meu sistema de login ao mesmo? Para elucidar essas questões (e se existem outras, pode deixar nos comentários logo abaixo), lhe apresento a [Credential Management API](https://www.w3.org/TR/credential-management-1/), que pelo próprio nome já diz, faz o gerenciamento de suas credenciais (login e senha) utilizando o navegador. No momento, apenas a versão do Chrome para desktop e Android possui a API implementada. Acredito que em breve a veremos em outros navegadores.
@@ -76,7 +76,7 @@ No código acima, estamos criando uma *credential* de forma assíncrona quando �
 
 Recentemente a Google atualizou diversas características desta API, adicionando novas maneiras de criar uma *credential*. Agora ela pode ser criada de forma síncrona ao instanciar o objeto `PasswordCredential` ou de forma assíncrona utilizando o método `navigator.credentials.create()`. Para maiores detalhes, [leia aqui](https://developers.google.com/web/updates/2017/06/credential-management-updates#creating_a_passwordcredential_object).
 
-## Requistando as informações
+## Requisitando as informações
 
 Assim como salvamos, também podemos recuperar informações que já foram salvas. Para isso, vamos usar o método `navigator.credentials.get()`. Esse método retornará as informações que salvamos anteriormente no método `navigator.credentials.store()`. Caso não exista nenhuma informação, será retornado um `null`. Ou seja, você pode criar uma abordagem que faça o usuário cadastrar as informações caso o valor seja `null`, por exemplo.
 
