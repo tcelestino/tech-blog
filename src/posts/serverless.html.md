@@ -163,6 +163,6 @@ Falamos muito aqui a respeito do mundo mágico do serverless e como ele pode tor
 
 Serveless é um assunto muito novo no mercado. Para você ter uma ideia, o Lambda nasceu há pouco (em meados de 2014), enquanto o Cloud Functions é mais velhinho (nascido em 2011). Apesar disso, trata-se de uma tecnologia que vem sendo utilizada em grande escala e só tende a melhorar nos próximos anos.
 
-Existem alguns frameworks que facilitam bastante a vida na hora de criar funções, como o Serverless framework, e que trabalham de maneira genérica para abranger os principais provedores do mercado.
+Existem alguns frameworks que facilitam bastante a vida na hora de criar funções, como o [Serverless framework](https://serverless.com/), e que trabalham de maneira genérica para abranger os principais provedores do mercado.
 
 Agora é com você! Verifique se sua necessidade pode ser atendida por essa tecnologia, valide os prós e os contras para decidir se é uma boa utilizá-la ou não!
