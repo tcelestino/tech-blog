@@ -102,6 +102,7 @@ Este recurso deve ser configurado manualmente para cada função (não é elást
 2. Tempo
 
 Como a AWS não quer ninguém utilizando o Lambda para rodar tasks grandes e pesadas ou long running applications (afinal para isso existem outros produtos), ela restringe o tempo máximo de execução em 5min. Esse tempo é configurado para cada função, podendo variar de 1s até 5min. Após o tempo limite de execução ser atingido, ela é cortada sem nenhum tipo de callback, apenas lançando uma exception no CloudWatch.
+
 3. Execuções paralelas
 
 Esse pode ser um dos mais problemáticos, pois como no Lambda não existe separação entre ambientes, funções executadas em prod, dev ou teste entram no mesmo contador. Imagine o cenário onde um desenvolvedor está criando uma nova funcionalidade que dispara funções lambda. Digamos que essa chamada da função fique dentro de um loop (FOR/WHILE) e, ao testar esta funcionalidade, esta função é chamada tantas vezes que ultrapassa o limite de 1000 execuções paralelas. De fato, esse teste em dev vai afetar todas as funções de prod que vão começar a ser enfileiradas ou sequer serão executadas, degradando desta forma a performance geral (incluindo o ambiente de prod). Durante a re:Invent 2017 foi anunciado algo para tentar minimizar esse problema: é possível limitar a quantidade de execuções paralelas para cada função.
