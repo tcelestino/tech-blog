@@ -1,6 +1,6 @@
 ---
 title: Serverless e AWS Lambda
-date: 2017-12-06
+date: 2018-03-26
 category: back-end
 layout: post
 description: Serverless. O que é? Onde vive? Do que se alimenta?
