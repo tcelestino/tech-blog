@@ -16,7 +16,7 @@ Todos os dias surgem novas buzzwords no mercado, cada uma relacionada a uma nova
 
 # Serverless
 
-Serverless permite a você contruir e executar aplicações sem ter que gerenciar nenhuma infraestrutura. Sua aplicação ainda roda em servidores, mais todo o gerenciamento vai ser feito pelo Vendor (AWS, GCP, Azure, etc). Não é mais necessário provisionar, gerenciar ou escalar servidores para executar sua aplicação. Serverless são funções executadas em containers stateless, efêmeros e gerenciados por terceiros.
+Serverless permite a você construir e executar aplicações sem ter que gerenciar nenhuma infraestrutura. Sua aplicação ainda roda em servidores, mas todo o gerenciamento vai ser feito pelo Vendor (AWS, GCP, Azure, etc). Não é mais necessário provisionar, gerenciar ou escalar servidores para executar sua aplicação. Serverless são funções executadas em containers stateless, efêmeros e gerenciados por terceiros.
 
 O ciclo de vida pode ser representado assim:
 
