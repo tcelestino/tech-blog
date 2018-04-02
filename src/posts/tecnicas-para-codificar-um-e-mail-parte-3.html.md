@@ -176,19 +176,7 @@ E dentro da media query:
 }
 ```
 
-O `!important` é necessário para conseguirmos sobrescrever o estilo que está declarado `inline`. Com essa mudança conseguimos atingir o mesmo resultado, entretanto a tag `style` no cabeçalho não funciona em alguns clientes de e-mail. Segue a lista dos quais eu testei:
-
-- Chrome Android
-    - Gmail
-    - Outlook
-    - Yahoo
-    - Android
-    - Gmail App
-    - Inbox App
-    - Yahoo App
-    - Outlook App
-- iOS
-    - Apple Mail
+O `!important` é necessário para conseguirmos sobrescrever o estilo que está declarado `inline`. Com essa mudança conseguimos atingir o mesmo resultado, entretanto a tag `style` no cabeçalho não funciona em alguns clientes de e-mail.
 
 Voltando ao nosso e-mail, agora o único problema ainda não resolvido é o fato do template não ser exibido corretamente em telas um pouco menores que 600px, mas maiores que 480px:
 
@@ -227,33 +215,35 @@ Assim, todo o texto que está no conteúdo já herda por padrão essa tipografia
 
 As técnicas apresentadas funcionam nos seguintes clientes de email:
 
+
 ### Web
 
-|             | Gmail | Inbox | Outlook | Yahoo |
-|-------------|:-----:|:-----:|:-------:|:-----:|
-| Chrome      |   ✓   |   ✓   |    ✓    |   ✓   |
-| Safari      |   ✓   |   ✓   |    ✓    |   ✓   |
-| Firefox     |   ✓   |   ✓   |    ✓    |   ✓   |
-| IE11        |   ✓   |   -   |    ✓    |   ✓   |
-| Edge        |   ✓   |   ✓   |    ✓    |   ✓   |
-| Chrome App  |   ✓   |   -   |    ✓    |   ✓   |
-| Firefox App |   ✓   |   -   |    ✓    |   ✓   |
-| Safari App  |   ✓   |   -   |    ✓    |   ✓   |
-| Edge App    |   ✓   |   -   |    ✓    |   ✓   |
+|                | Gmail | Inbox | Outlook | Yahoo |
+|----------------|:-----:|:-----:|:-------:|:-----:|
+| Chrome         |   ✓   |   ✓   |    ✗¹   |   ✓   |
+| Safari         |   ✓   |   ✓   |    ✗¹   |   ✓   |
+| Firefox        |   ✓   |   ✓   |    ✗¹   |   ✓   |
+| IE11           |   ✓   |   -   |    ✗¹   |   ✓   |
+| Edge           |   ✓   |   ✓   |    ✗¹   |   ✓   |
+| Chrome Mobile  |   ✗¹  |   -   |    ✗¹   |   ✓   |
+| Firefox Mobile |   ✗¹  |   -   |    ✗¹   |   ✓   |
+| Safari Mobile  |   ✗¹  |   -   |    ✗¹   |   ✓   |
 
 ### Mobile
 
-|                   | Gmail App | Inbox App | Outlook App | Yahoo App |
-|-------------------|:---------:|:---------:|:-----------:|:---------:|
-| Android           |     ✓     |     ✓     |      ✓      |     ✓     |
-| iOS               |     ✓     |     ✓     |      ✓      |     ✓     |
-| Windows Phone     |     -     |     -     |      ✓      |     -     |
+|                   |  Gmail App |  Inbox App | Outlook App  | Yahoo App  | Apple Mail  |
+|-------------------|:----------:|:----------:|:------------:|:----------:|:-----------:|
+| Android           |     ✓      |     ✓      |      ✓      |     ✓      |      -      |
+| iOS               |     ✗¹     |     ✗¹     |      ✗¹      |     ✗¹     |      ✓      |
+| Windows Phone     |     -      |     -      |      ✓       |     -      |      -      |
 
 ### Aplicativo Outlook
 
 |        | 2007 | 2010 | 2011 | 2013 | 2015 |
 |--------|:----:|:----:|:----:|:----:|:----:|
-| Outlook |   ✓  |   ✓  |   ✓  |   ✓  |   ✓  |
+| Outlook |  ✗¹ |  ✗¹  |   ✓  |  ✗¹  |   ✓  |
+
+¹ A propriedade `style` no `head` não funciona
 
 ##Conclusão
 

@@ -126,17 +126,17 @@ As técnicas apresentadas funcionam nos seguintes clientes de email:
 
 ### Web
 
-|             | Gmail | Inbox | Outlook | Yahoo |
-|-------------|:-----:|:-----:|:-------:|:-----:|
-| Chrome      |   ✓   |   ✓   |    ✓    |   ✓   |
-| Safari      |   ✓   |   ✓   |    ✓    |   ✓   |
-| Firefox     |   ✓   |   ✓   |    ✓    |   ✓   |
-| IE11        |   ✓   |   -   |    ✓    |   ✓   |
-| Edge        |   ✓   |   ✓   |    ✓    |   ✓   |
-| Chrome App  |   ✓   |   -   |    ✓    |   ✓   |
-| Firefox App |   ✓   |   -   |    ✓    |   ✓   |
-| Safari App  |   ✓   |   -   |    ✓    |   ✓   |
-| Edge App    |   ✓   |   -   |    ✓    |   ✓   |
+|                | Gmail | Inbox | Outlook | Yahoo |
+|----------------|:-----:|:-----:|:-------:|:-----:|
+| Chrome         |   ✓   |   ✓   |    ✓    |   ✓   |
+| Safari         |   ✓   |   ✓   |    ✓    |   ✓   |
+| Firefox        |   ✓   |   ✓   |    ✓    |   ✓   |
+| IE11           |   ✓   |   -   |    ✓    |   ✓   |
+| Edge           |   ✓   |   ✓   |    ✓    |   ✓   |
+| Chrome Mobile  |   ✓   |   -   |    ✓    |   ✓   |
+| Firefox Mobile |   ✓   |   -   |    ✓    |   ✓   |
+| Safari Mobile  |   ✓   |   -   |    ✓    |   ✓   |
+| Edge Mobile    |   ✓   |   -   |    ✓    |   ✓   |
 
 ### Mobile
 
