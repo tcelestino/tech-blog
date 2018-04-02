@@ -1,5 +1,5 @@
 ---
-title: Caracteristicas do Big Data
+title: Caracteristicas de Big Data
 date: 2018-04-02
 category: big-data
 layout: post
@@ -18,7 +18,7 @@ Basicamente, um conjunto de dados que podem ser analisados computacionalmente pa
 
 ## 6 V's
 
-Dentre as várias características do Big Data, os que são considerados bem importantes são seus 6V's, é comum algumas pessoas falarem que existem 10, mas para este post vou focar nos 6 principais, são eles:
+Dentre as várias características do Big Data, os que são considerados bem importantes são seus 6V's, é comum algumas pessoas falarem que existem mais do que 6, mas para este post vou focar nos 6 principais, são eles:
 
 ### Volume
 
