@@ -54,7 +54,7 @@ Como a ideia é adicionar a mensagem de erro via Javascript, é necessário gera
 
 Ouça, abaixo, como é feita a leitura de um campo com erro de validação.
 
-<audio controls src="../audios/javascript-e-a11y-1.mp3"/>
+<audio controls src="../audios/javascript-e-a11y-1.mp3"></audio>
 
 Se a mensagem de erro não for lida, fica muito mais difícil de o usuário entender o que está acontecendo. Assim, com essa alteração no código, já melhoramos bastante a acessibilidade. Mas ainda assim o usuário pode ficar perdido, pois o simples fato de as mensagens serem acrescentadas na tela não faz com que elas sejam lidas automaticamente. Além disso, se fosse apenas dito para o usuário "Campo obrigatório", como ele saberia a qual campo a mensagem se refere? Por isso, precisamos fazer *pelo menos* mais uma alteração: quando um ou mais campos estiverem inválidos, devemos **mover o foco do teclado para o primeiro campo inválido**. [Teste aqui a versão com essa alteração](https://codepen.io/lreal/pen/wmXrWr) e veja que ela ajuda todos os usuários, não apenas aqueles que dependem de leitores de tela. Eis um exemplo claro de que **melhorias de acessibilidade ajudam todos os usuários**.
 
@@ -63,3 +63,5 @@ Se a mensagem de erro não for lida, fica muito mais difícil de o usuário ente
 Neste post, vimos casos em que o uso de Javascript prejudica a usabilidade em níveis mais ou menos sutis. Em outras palavras, em todos os casos temos problemas de acessibilidade, em níveis mais ou menos graves.
 
 Vimos algumas técnicas para tornar a validação customizada de formulários mais acessível, mas ainda há muitos padrões de usabilidade que podemos explorar e tentar melhorar nesse quesito. Ou seja: mais posts a caminho!
+
+E você, tem alguma experiência em que o Javascript afetou a acessibilidade da sua página, seja de forma positiva ou negativa? **Compartilhe conosco!**
