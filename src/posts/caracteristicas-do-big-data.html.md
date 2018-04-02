@@ -3,7 +3,7 @@ title: Caracteristicas do Big Data
 date: 2018-04-02
 category: big-data
 layout: post
-description: Um resumo sobre a cultura do time de engenharia do Elo7
+description: Uma pequena introdução sobre Big Data no Elo7
 authors: [ericvinicius]
 tags:
   - big data
@@ -33,18 +33,18 @@ Velocity é basicamente a velocidade com que, capturamos informações, salvamos
 
 ### Variety
 
-A Variety é a heterogeneidade dos dados, antigamente os dados eram guardados somente em tabelas, o que facilitava bastante as análises. Mas, hoje em dia os dados são salvos em diversas formas diferentes, como grafo, imagens, sons etc. Isso causa diversos tipos de problemas, pois, cada tipo deste tem uma forma de consumo ou de salvamento diferente, o que torna  bem difícil comparar essas informações (vamos abordar maneiras melhores de lidar com isso em posts futuros).
-Mas isso não quer dizer que não devemos salvar estas informações, pois elas podem ser úteis em algum momento.
+A Variety é a heterogeneidade dos dados, antigamente os dados eram guardados somente em tabelas, o que facilitava bastante as análises. Mas, hoje em dia os dados são salvos em diversas formas diferentes, como grafo, imagens, sons etc. Isso causa diversos tipos de problemas, pois, cada tipo deste tem uma forma de consumo ou de armazenamento diferente, o que torna  bem difícil comparar essas informações (vamos abordar maneiras melhores de lidar com isso em posts futuros).
+Mas isso não quer dizer que não devemos salvar estas informações, pois elas podem ser úteis em algum momento no futuro.
 
 ![Grande Variedade dos Dados](../images/variety_of_datas.png)
 
 ### Veracity
 
-Veracity representa a assertividade dos nossos dados, o grau de certeza que temos sobre eles, então podemos até dizer que é a qualidade de nossos dados. Muitas vezes está ligado à procedência de nossos dados. Se a informação que estamos consumindo está vindo de um lugar que não é a fonte real do dado, pode ser que a qualidade do dado não seja das melhores. Por exemplo, ao analisar o click dos usuários no seu site, se formos capturar este dado no controller ou em um filter de nosso servidor, poderíamos capturar chamadas de outros sistemas, que na prática não são os clicks reais. Uma informação sem qualidade, não é confiável, e uma análise em cima desta informação pode gerar uma ação ruim ou errada.
+Veracity representa a assertividade dos nossos dados, o grau de certeza que temos sobre eles, então podemos até dizer que é a qualidade de nossos dados. Muitas vezes está ligado à procedência de nossos dados. Se a informação que estamos consumindo está vindo de um lugar que não é a fonte real do dado, pode ser que a qualidade do dado não seja das melhores. Por exemplo, ao analisar o click dos usuários no seu site, se formos capturar este dado no controller ou em um filter de nosso servidor, poderíamos capturar chamadas de outros sistemas, que na prática não são os clicks reais. Uma informação sem qualidade, não é confiável, e uma análise em cima desta informação pode gerar uma ação errada.
 
 ## Valence
 
-É a conectividade dos dados, como os dados estão ligados uns aos outros. Essa informação sobre o seu Big Data é importante pois irá definir como serão feitas as suas análises. Se as suas informações estão quebradas por diversos dados, será necessário fazer "join" destes dados, o que pode influenciar na velocidade que seus dados estarão disponíveis para analisar. Essa característica pode influenciar onde nosso dado estará armazenado. Por exemplo, guardar dados com uma alta conectividade em um banco que não permite "joins" pode não ser uma boa ideia.
+É a conectividade dos dados, como os dados estão ligados uns aos outros. Essa informação sobre o seu Big Data é importante pois irá definir como serão feitas as suas análises. Se as suas informações estão quebradas por diversos dados, será necessário fazer "join" destes dados, o que pode influenciar na velocidade que seus dados estarão disponíveis para analise. Essa característica pode influenciar onde nosso dado estará armazenado. Por exemplo, guardar dados com uma alta conectividade em um banco que não permite "joins" pode não ser uma boa ideia.
 
 ## Value
 
