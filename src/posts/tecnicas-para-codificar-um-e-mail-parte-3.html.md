@@ -160,7 +160,7 @@ Voltando ao nosso exemplo, vamos adicionar a tag `style` com uma media query den
 </head>
 ```
 
-As rgras declaradas nessa media query serão aplicadas para todas as telas com uma largura de no máximo 480px, ou seja, apenas para a versão mobile. Para aplicar a regra de remoção da margem, vamos adicionar uma classe para a primeira tabela:
+As regras declaradas nessa media query serão aplicadas para todas as telas com uma largura de no máximo 480px, ou seja, apenas para a versão mobile. Para aplicar a regra de remoção da margem, vamos adicionar uma classe para a primeira tabela:
 
 ```HTML
 <table class="tabela-responsiva" bgcolor="#ffffff" width="100%" cellpadding="0" cellspacing="0" style="padding-left: 15px; padding-right: 15px; margin-right: 15px;">
@@ -245,8 +245,8 @@ As técnicas apresentadas funcionam nos seguintes clientes de email:
 
 ¹ A propriedade `style` no `head` não funciona
 
-##Conclusão
+## Conclusão
 
-Enfim, conseguimos finalizar o e-mail como o layout apresentado no [primeiro post](/tecnicas-para-codificar-um-e-mail/)! No próximo e último post da série, vamos comentar sobre algumas dicas e web fonts nos e-mails.
+Enfim, conseguimos finalizar o e-mail com o layout apresentado no [primeiro post](/tecnicas-para-codificar-um-e-mail/)! No próximo e último post da série, vamos comentar sobre algumas dicas e web fonts nos e-mails.
 
 E você? Já teve problemas com e-mails responsivos?
