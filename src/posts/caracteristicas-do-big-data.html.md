@@ -43,7 +43,7 @@ Veracity representa a assertividade dos nossos dados, o grau de certeza que temo
 
 ## Valence
 
-É a conectividade dos dados, como os dados estão ligados uns aos outros. Essa informação sobre o seu Big Data é importante pois irá definir como serão feitas as suas análises. Se as suas informações estão quebradas por diversos dados, será necessário fazer "join" destes dados, por exemplo, imagine um sistema dividido em microsserviços, onde cada requisição do usuario passa por diversos sistemas, para analisar o caminho do usario será necessario ligar os dados de todos estes sistemas, o que pode influenciar na velocidade que seus dados estarão disponíveis para analise. Essa característica pode influenciar onde nosso dado estará armazenado, pois desta forma, armazenar tudo isso em um banco que não permite "joins" pode não ser uma boa ideia.
+É a conectividade de dados, como eles estão ligados uns aos outros. Essa informação sobre o seu Big Data é importante, pois irá definir como serão feitas as suas análises. Se as suas informações estão quebradas por diversos dados, será necessário fazer "join" destes dados. Por exemplo, imagine um sistema dividido em microsserviços, onde cada requisição do usuário passa por diversos sistemas, para analisar o caminho do usário será necessario ligar os dados de todos estes sistemas, o que pode influenciar na velocidade em que seus dados estarão disponíveis para análise. Essa característica pode impactar onde nosso dado estará armazenado, dessa forma, armazenar tudo isso em um banco que não permite "joins" pode não ser uma boa ideia, apesar poder ser contornado de outras formas.
 
 ## Value
 
