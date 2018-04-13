@@ -3,7 +3,7 @@ title: Pareamento quase 100% do tempo, como é isso?
 date: 2018-04-13
 category: cultura
 layout: post
-description: Existem outras formas do trabalho funcionar. Uma delas é a cultura de pareamento. Aqui no Elo7 todos os times tem essa cultura, mudando entre elas apenas a frequência que isso acontece. No meu time, de front-end (o nome dele é Martell) isso acontece em quase 100% do tempo. Mas como isso funciona? Nesse post explicarei mais sobre essa cultura.
+description: Existem outras formas do trabalho funcionar além de ficar programando isolado do mundo. Uma delas é a cultura de pareamento. Aqui no Elo7 todos os times tem essa cultura, mudando entre elas apenas a frequência que isso acontece. No meu time, de front-end (o nome dele é Martell) isso acontece em quase 100% do tempo. Mas como isso funciona? Nesse post explicarei mais sobre essa cultura.
 authors: [fernandabernardo]
 tags:
   - agile
@@ -15,15 +15,13 @@ tags:
 
 Geralmente temos a visão dos programadores como sendo aquelas pessoas de fone que se isolam do mundo e de todos.
 
-[IMAGEM PROGRAMADOR DE FONE]
-
 Mas existem outras formas do trabalho funcionar. Uma delas é a cultura de pareamento. Aqui no Elo7 todos os times tem essa cultura, mudando entre elas apenas a frequência que isso acontece. No meu time, de front-end (o nome dele é Martell) isso acontece em quase 100% do tempo. Ao longo desse post eu vou explicar mais como que funciona e quais são os pontos que eu acho vantagem e desvantagem.
 
 # Como funciona?
 
 Para começar, como é isso? Como na imagem abaixo, temos apenas uma máquina (PC), e nessa máquina conectamos dois monitores espelhados. Além disso, cada pessoa tem um teclado e um mouse. Logo, as duas pessoas podem mexer ao mesmo tempo.
 
-[FOTO MINHA E DA ERIKA PAREADO]
+![Pareamento no Elo7](../images/pareamento-01.png)
 
 Já ouvi muitas pessoas perguntando se não funciona como um dojo, em que cada pessoa tem um tempo determinado para digitar e depois troca. Bom… na verdade não. É bem mais dinâmico que isso. E o nome disso é bom senso. Óbvio que às vezes coincide das duas pessoas mexerem ao mesmo tempo, mas aí entramos em um acordo e um só mexe. Mas na grande maioria das vezes esse processo acontece de forma intercalada e assim vamos desenvolvendo o código.
 
