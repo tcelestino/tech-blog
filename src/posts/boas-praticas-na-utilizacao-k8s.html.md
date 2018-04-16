@@ -3,7 +3,7 @@ title: Boas práticas na utilização do Kubernetes em produção
 date: 2018-04-16
 category: devops
 layout: post
-description:
+description: Nesse post discutiremos alguns dos vários pontos de atenção que precisamos ter ao implementar o Kubernetes em ambientes de produção
 authors: [marcusrios]
 tags:
   - devops
@@ -74,11 +74,11 @@ resources:
     cpu: "2000m"
 ```
 
-Neste caso estamos definindo 512MB de memória/2000 millicores para limits e 128 MB de memória/1000 millicores para requests. Lembrando que 1m representa 1/1000 = 0,001 de um core de CPU, assim como 500m = 500/1000 = 0,5 core de uma CPU ou 50% de uma CPU. Voltando ao nosso exemplo estamos falando para o Kubernetes reservar 1 core de uma CPU para nosso container, mas a grande pergunta é: Precisamos realmente reservar 1 core de CPU para esse container? Provavelmente a resposta vai ser não, mas a única forma de termos certeza é acompanharmos o consumo de recursos no container (podemos utilizar ferramentas como o [cAdivisor](https://github.com/google/cadvisor) e o [Prometheus](https://github.com/prometheus/prometheus) para nos ajudar nessa tarefa). O grande problema de usar valores "altos" na configuração das `requests` é que podemos estar superdimensionando nosso cluster, logo precisaremos de mais nodes e consequentemente teremos um desperdício de recursos, visto que o Kubernetes está pré-alocando 1 Core de CPU, mas na verdade estamos usando apenas 30% disso por exemplo. Isso pode parecer pouco, mas se pensarmos em um cenário com centenas de containers com esse mesmo perfil de configuração, ao final do mês estaremos rodando alguns nodes sem necessidade.  
+Neste caso estamos definindo 512MB de memória/2000 millicores para limits e 128 MB de memória/1000 millicores para requests. Lembrando que 1m representa 1/1000 = 0,001 de um core de CPU, assim como 500m = 500/1000 = 0,5 core de uma CPU ou 50% de uma CPU. Voltando ao nosso exemplo estamos falando para o Kubernetes reservar 1 core de uma CPU para nosso container, mas a grande pergunta é: Precisamos realmente reservar 1 core de CPU para esse container? Provavelmente a resposta vai ser não, mas a única forma de termos certeza é acompanharmos o consumo de recursos no container (podemos utilizar ferramentas como o [cAdivisor](https://github.com/google/cadvisor) e o [Prometheus](https://github.com/prometheus/prometheus) para nos ajudar nessa tarefa). O grande problema de usar valores "altos" na configuração das `requests` é que podemos estar superdimensionando nosso cluster, logo precisaremos de mais nodes e consequentemente teremos um desperdício de recursos, visto que o Kubernetes está pré-alocando 1 Core de CPU, mas na verdade estamos usando apenas 30% disso por exemplo. Isso pode parecer pouco, mas se pensarmos em um cenário com centenas de containers com esse mesmo perfil de configuração, ao final do mês estaremos rodando alguns nodes sem necessidade.
 
 ## Definindo limits padrão
 
-Como dito anteriormente, em configurações padrões e se não for informado nada na criação do _deployment_, o kubernetes ira criar o mesmo com recursos "limitados". Para contornar essa situação o Kubernetes disponibiliza de um recurso que defini valores de `requests` e `limits` _defaults_ caso não seja informado. Isso pode ser feito utilizando o objeto [`LimitRange`](https://kubernetes.io/docs/tasks/administer-cluster/memory-default-namespace/)
+Como dito anteriormente, em configurações padrões e se não for informado nada na criação do _deployment_, o kubernetes ira criar o mesmo com recursos "ilimitados". Para contornar essa situação o Kubernetes disponibiliza de um recurso que defini valores de `requests` e `limits` _defaults_ caso não seja informado. Isso pode ser feito utilizando o objeto [`LimitRange`](https://kubernetes.io/docs/tasks/administer-cluster/memory-default-namespace/)
 
 ```yaml
 apiVersion: v1
@@ -139,7 +139,7 @@ spec:
   containers:
   - image: fstab/aws-cli
     command:
-      - "/home/aws/aws/env/bin/aws"
+      - "/usr/local/bin/aws"
       - "s3"
       - "ls"
       - "some-bucket"
