@@ -36,7 +36,7 @@ Note que, sem uma estilização básica da mensagem de erro, pode ser bem difíc
 
 Além da melhoria visual, são necessárias *melhorias semânticas* no nosso código. Sem elas, uma ferramenta assistiva, como um leitor de tela, não sabe informar ao usuário que o elemento que colocamos na página via Javascript é uma mensagem de erro de validação. Isso pode fazer com que o usuário sequer perceba que há um erro no formulário!
 
-Uma primeira melhoria que podemos fazer, então, é ligar cada campo *semanticamente* à sua mensagem de erro. Idealmente, faríamos isso com o atributo `aria-errormessage` passando, nesse atributo, o *id* do elemento com a mensagem de erro, mas o suporte ao atributo `aria-errormessage` não é muito bom. Para contornar essa limitação, podemos usar, em vez dele, o atributo `aria-describedby`, que serve para apontar para elementos que descrevem melhor um determinado elemento. Veja um exemplo abaixo de como poderia ficar a marcação de um campo de senha com uma mensagem de erro de validação e uma descrição de como o campo poderia ser preenchido, e note que podemos apontar para mais de um campo no atributo.
+Uma primeira melhoria que podemos fazer, então, é ligar cada campo *semanticamente* à sua mensagem de erro. Idealmente, faríamos isso com o atributo `aria-errormessage` passando, nesse atributo, o *id* do elemento com a mensagem de erro, mas o suporte ao atributo `aria-errormessage` não é muito bom. Para contornar essa limitação, podemos usar, em vez dele, o atributo `aria-describedby`, que serve para apontar para elementos que descrevem melhor aquele que o declara. Veja um exemplo abaixo de como poderia ficar a marcação de um campo de senha com uma mensagem de erro de validação e uma descrição de como o campo poderia ser preenchido, e note que podemos apontar para mais de um campo no atributo.
 
 ```html
 <input type="password" aria-describedby="erro criterios">
@@ -60,8 +60,6 @@ Se a mensagem de erro não for lida, fica muito mais difícil de o usuário ente
 
 ## Conclusão
 
-Neste post, vimos casos em que o uso de Javascript prejudica a usabilidade em níveis mais ou menos sutis. Em outras palavras, em todos os casos temos problemas de acessibilidade, em níveis mais ou menos graves.
-
-Vimos algumas técnicas para tornar a validação customizada de formulários mais acessível, mas ainda há muitos padrões de usabilidade que podemos explorar e tentar melhorar nesse quesito. Ou seja: mais posts a caminho!
+Neste post, vimos casos em que o uso de Javascript prejudica a usabilidade e a acessibilidade. Mas vimos, também, que o uso **adequado** de Javascript pode melhorar esses pontos, bastando tomar alguns cuidados! Estudamos o caso da validação de formulários, mas ainda há muitos outros padrões de usabilidade que podemos explorar e tentar melhorar nesse quesito. Ou seja: mais posts a caminho!
 
 E você, tem alguma experiência em que o Javascript afetou a acessibilidade da sua página, seja de forma positiva ou negativa? **Compartilhe conosco!**
