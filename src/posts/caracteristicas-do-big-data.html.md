@@ -1,5 +1,5 @@
 ---
-title: Caracteristicas de Big Data
+title: Características de Big Data
 date: 2018-04-23
 category: back-end
 layout: post
