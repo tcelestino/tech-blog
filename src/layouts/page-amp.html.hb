@@ -206,7 +206,7 @@
 
 		#sidebar {
 			width: 60vw;
-			background-color: #FDC24F;
+			background-color: #4a4a4a;
 			color: #fff;
 			padding-right: 1em;
 			padding-left: 1em;
@@ -307,17 +307,52 @@
 		}
 
 		footer {
-			background-color: #dedede;
+			background-color: #4a4a4a;
 			padding-top: 0.5em;
 			padding-bottom: 0.5em;
-			text-align: center;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
 		}
 
 		footer a {
-			color: #666;
+			color: #fff;
 			text-decoration: none;
 			font-size: 0.8em;
 		}
+
+		.footer-social {
+			line-height: 0;
+		}
+
+		.footer-social a {
+			background-size: 2em 2em;
+			background-repeat: no-repeat;
+			display: inline-block;
+			height: 2em;
+			width: 2em;
+			overflow: hidden;
+			text-indent: -9999px;
+		}
+
+		.footer-social a + a {
+			margin-left: 0.5em;
+		}
+
+		.footer-social .github {
+			background-image: url('/images/github_icon.svg');
+		}
+		.footer-social .email {
+			background-image: url('/images/email_icon.png');
+		}
+
+		.footer-social .rss {
+			background-image: url('/images/ico/feed.svg');
+		}
+
+		.footer-social .twitter {
+            background-image: url('/images/ico/ic-negative-twitter.svg');
+        }
 
 		.share {
 			position: relative;
@@ -570,9 +605,15 @@
 	<footer itemscope itemtype='http://schema.org/Organization'>
 		<a rel='home' itemprop='url' href='/amp/home/'>engenharia.elo7.com.br © 2017</a>
 		<meta itemprop='name' content='Elo7 Serviços de Informática SA'/>
+		<section class='footer-social'>
+			<a title='Github do Elo7' rel='external' itemprop='url' href='https://github.com/elo7' target='_blank' class='github'>Github do Elo7</a>
+			<a title='Twitter do Elo7' rel='external' itemprop='url' href='https://twitter.com/elo7tech' target='_blank' class='twitter'>Twitter do Elo7</a>
+			<a title='RSS do Elo7' rel='external' itemprop='url' href='{{site.url}}/rss.xml' target='_blank' class='rss'>RSS do Elo7</a>
+			<a title='Newsletter do Elo7' rel='external' itemprop='url' href='http://eepurl.com/cVUwvH' target='_blank' class='email'>Newsletter do Elo7</a>
+		</section>
 	</footer>
 	<amp-analytics type='googleanalytics'>
-		<script type="application/json">
+		<script type='application/json'>
 			{
 				"vars": {
 					"account": "{{getGaCode}}"
