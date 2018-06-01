@@ -1,7 +1,7 @@
 define(['doc', 'github'], function($, github) {
 
 	var $avatar = $('.avatar'),
-		userName = $('.github').text(),
+		userName = $('.publisher-info .github').text(),
 		$user = $('.info .name'),
 		listOfInfo = github.getInfoFromUsers('100', [userName]);
 
