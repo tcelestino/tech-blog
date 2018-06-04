@@ -31,7 +31,7 @@ Outro questionamento bem comum é sobre a troca de duplas do pareamento. Não fi
 
 Uma coisa importante de dizer, é que não temos lugar fixo, temos uma bancada com 6 computadores reservados ao nosso time. Isso facilita a troca de pareamento, porque é possível trocar facilmente de computador sem aquela ideia de "minhas coisas".
 
-A troca de pareamento estimula a troca de conhecimento, já que cada pessoa tem um assunto que é mais especialista e também diminui a entrada de bugs em produção.
+A troca de pareamento estimula a troca de conhecimento, já que cada pessoa tem um assunto que é mais especialista e também diminui a entrada de bugs em produção. Além disso, traz uma união maior para o time, já que estamos sempre conversando, discutindo e falando sobre tudo.
 
 Também testamos e fazemos code review das nossas tarefas em duplas. Isso melhora a análise do código, já que duas pessoas podem analisar ou perceber partes diferentes. Além disso, é muito bom para passar conhecimento sobre alguma linguagem, sistema, design de código...
 
@@ -57,6 +57,7 @@ Essa é a nossa forma de lidar com o pareamento, e para gente funciona bem. É i
 - Código tende a sair com melhor qualidade na primeira entrega
 - Menos tempo travado em uma tarefa por não saber começar
 - Foco maior, uma pessoa acaba puxando a outra
+- Maior entrosamento do time
 
 ## Desvantagens
 
