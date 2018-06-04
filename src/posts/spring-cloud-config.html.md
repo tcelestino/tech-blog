@@ -11,7 +11,9 @@ tags:
 authors: [denis.oliveira]
 layout: post
 title: Properties dinâmicos com Spring Cloud Config
-description:
+description: Spring Cloud Config permite que suas configs sejam atualizadas dinamicamente sem a necessidade de restart da aplicação, para um Cluster / ELB de máquinas ou apenas uma máquina. Isso possibilita mudanças de configuração sejam elas técnicas ou de negócio quase que instantaneamente.
+
+---
 
 ## O problema existente hoje...
 
@@ -19,11 +21,7 @@ Bom, primeiramente posso dizer que pensei nesse tema, pois já presenciei alguma
 
 Agora imagina isso ocorrendo, no final de um deploy no ambiente de produção, e pior, com os mesmos (properties) dentro da aplicação. Um novo deploy teria que ser feito em N máquinas. Caso o arquivo de properties estivesse fora da aplicação, externalizado, o mesmo teria que ser alterado em todas as máquinas e exigiria um stop e start de todas elas ou então um redeploy teria que ser executado.
 
----
-
 Mas não apenas isso, poderia ter algum parâmetro relacionado ao negócio, como por exemplo, um valor X cobrado no frete, e que repentinamente teria que ser mudado e novamente não seria fácil de fazer.
-
----
 
 Pensando em resolver esse problema, eis que surge o Spring Cloud Config. A idéia dele é simples. Um repositório de properties de forma centralizada e versionada, como por exemplo GitHub, GitLabs ou mesmo um arquivo local de properties (nesse último caso deve estar gerenciado pelo git), e que, ao mudar um ou mais parâmetros do arquivo, executando um commit e posteriormente um push, os mesmos fossem alterados dinamicamente (através de uma URI HTTP POST) na minha aplicação sem restart ou mesmo deploy e em todas as máquinas.
 
@@ -32,6 +30,8 @@ Pensando em resolver esse problema, eis que surge o Spring Cloud Config. A idéi
 Abaixo a imagem ilustra de forma geral como o spring Cloud funciona.
 
 ![Funcionamento Spring Cloud](../images/spring-cloud-config-1.jpg)
+
+Inicialmente temos o Config Server, que basicamente lê as configurações contidas em algum lugar, seja um arquivo (gerenciado pelo git), do GitHub ou GitLab e as disponibiliza para os microserviços ou outros tipos de aplicações. Qualquer mudança feita em um desses arquivos (commit), automaticamente fica disponível as aplicações clientes (microserviços). Porém para que o microserviço de fato use essa alteração sem restart é necesssário fazer uma chamada http post como veremos mais a frente.
 
 ## Vamos ao que interesse, ou seja, código
 
@@ -57,14 +57,14 @@ Uma vez criado o repositório, precisamos criar uma aplicação Spring Boot que 
 
 O ideal é que o Config Server seja um projeto Spring Boot independente de todas as outras aplicações existentes, visto que ele será responsável por gerenciar a configurações de todas elas.
 
-Caso use o [Spring INITIALIZR](https://start.spring.io/) para criar um novo projeto spring, adicione basta adicionar a opção **Config Server** que ele
+Caso use o [Spring INITIALIZR](https://start.spring.io/) para criar um novo projeto spring, basta adicionar a opção **Config Server** que ele
 irá gerar o projeto já configurado.
 
 ![Tela Spring Initializr](../images/spring-cloud-config-2.png)
 
 ### Adicionando manualmente em um projeto Spring já existente
 
-Caso opte por essa segunda opção, basta adicionar as seguintes dependências. Essas dependências, servem para o Config Server como para o client.
+Caso opte por essa segunda opção, basta adicionar as seguintes dependências. Essas dependências, servem tanto para o Config Server como para o client.
 
 No Maven
 
@@ -124,12 +124,6 @@ repositories {
 Uma vez configurado as dependências, vamos criar o config server. Basta adicionar **@EnableConfigServer** em uma aplicação Spring Boot e pronto um config server está criado.
 
 ```java
-package com.elo7.hello;
-
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.config.server.EnableConfigServer;
-
 @EnableConfigServer
 @SpringBootApplication
 public class ConfigServiceApplication {
@@ -164,13 +158,6 @@ Assim, finalmente chegamos a aplicação cliente, que utiliza os properties. As 
 A anotação **@RefreshScope** propicia essa atualização. Nesse caso o valor na property “message” será injetado do repositório e caso não encontre ou o Config server esteja fora o “Hello default” será usado.
 
 ```java
-package com.elo7.hello;
-
-import org.springframework.beans.factory.annotation.Value;
-import org.springframework.cloud.context.config.annotation.RefreshScope;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 @RefreshScope
 @RestController
 public class HelloWorldController {
@@ -187,9 +174,14 @@ public class HelloWorldController {
 Pra atualizarmos o cliente sem stop start usamos o seguinte comando e ele responderá quais properties foram atualizados, como exibido abaixo:
 
 ```bash
+### Chamada http post ao Actuator da aplicação cliente
 curl -X POST localhost:8080/<client-application-context>/actuator/refresh -H "Content-Type: application/json"
 ```
-![Resposta da atualizacao](../images/spring-cloud-config-4.png)
+
+```bash
+### Resposta da chamada hhtp post, indicando o que foi atualizado
+["config.client.version", "message"]
+```
 
 Uma vez feito isso, basta dar o famoso F5 na página da aplicação cliente e tudo estará atualizado dinamicamente.
 
@@ -198,19 +190,6 @@ Uma vez feito isso, basta dar o famoso F5 na página da aplicação cliente e tu
 Podemos para finalizar, garantirmos com testes de integração, usando Spring Test, o funcionamento do mesmo, como mostra-se no exemplo a seguir. No teste ele inicialmente usa um valor previamente definido na aplicação cliente e através do TestPropertyValues, ConfigurableEnviroment e ContextRefresher pode-se validar se o valor de fato está sendo atualizado.
 
 ```java
-package com.elo7.hello;
-
-import static org.assertj.core.api.Assertions.*;
-
-import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.util.TestPropertyValues;
-import org.springframework.cloud.context.refresh.ContextRefresher;
-import org.springframework.core.env.ConfigurableEnvironment;
-import org.springframework.test.context.junit4.SpringRunner;
-
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ConfigClientApplicationTest {
