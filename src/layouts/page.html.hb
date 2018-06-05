@@ -151,5 +151,6 @@
 	<script async src="/js/vendor/events-amd.js"></script>
 	<script async src="/js/vendor/ajax.js"></script>
 	<script async src="/js/vendor/doc.js"></script>
+	<script async type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
