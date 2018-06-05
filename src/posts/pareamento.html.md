@@ -1,6 +1,6 @@
 ---
 title: Pareamento quase 100% do tempo, como é isso?
-date: 2018-04-13
+date: 2018-06-05
 category: cultura
 layout: post
 description: Já ouviu falar de pareamento? Todos os dias e não aquele uma vez por ano? Sabe como isso funciona? Nesse post falarei como fazemos isso no time de front end aqui do Elo7 e como há uma rotação de pessoas, o fluxo de tarefas e o que achamos bom e ruim dessa cultura.
