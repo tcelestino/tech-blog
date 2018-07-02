@@ -34,7 +34,7 @@ No nosso exemplo de e-mail, para que o limitador de largura funcione no Outlook 
 <![endif]-->
 ```
 
-Dessa forma, quando acessada por esses clientes, exibiria uma tabela adicional que limita a largura para 600px.
+Dessa forma, quando acessada por esses clientes, exibiria uma tabela adicional que limita a largura para `600px`.
 
 ## Fontes customizadas
 Muitas vezes, como programador front-end, nos deparamos com um layout de um e-mail com uma fonte diferente dos padrões dos navegadores, seja para manter um padrão com o site ou até mesmo para melhorar a experiência dos nossos usuários usando a tipografia.
@@ -72,7 +72,7 @@ Declarar dentro da tag `style` no `head` a propiedade `@font-face`:
 Usar o clássico `@import` do CSS apontando para o arquivo com as declarações da fonte desejada.
 
 ```CSS
-    @import url('http://fonts.googleapis.com/css?family='Lobster');
+@import url('http://fonts.googleapis.com/css?family='Lobster');
 ```
 Mas não é suportado no Android 2.3 e no AOL acessando pelo IE11.
 
@@ -81,20 +81,20 @@ Mas não é suportado no Android 2.3 e no AOL acessando pelo IE11.
 Ou podemos simplesmente adicionar a tag link apontando para o arquivo com as declarações de `@font-face` da fonte desejada.
 
 ```HTML
-    <head>
-        <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
-    </head>
+<head>
+    <link href="http://fonts.googleapis.com/css?family=Lobster" rel="stylesheet" type="text/css">
+</head>
 ```
 
 Agora, é só usar a propriedade `font-family` como fazemos na web. Lembrando que é sempre bom ter um fallback para as fontes, já que nem todas as fontes funcionarão em todos os clientes, e de preferência que tenham um aspecto parecido ou ao menos uma largura semelhante a sua fonte customizada, para não comprometer o layout quando o fallback for usado.
 
 ```HTML
-    <h1 style="font-size: 2em; font-family: 'Lobster', sans-serif; color: #7F674D">Meu primeiro e-mail</h1>
+<h1 style="font-size: 2em; font-family: 'Lobster', sans-serif; color: #7F674D">Meu primeiro e-mail</h1>
 ```
 
-Aplicando essas mudanças, nosso email ficaria com o seguinte aspecto:
+Aplicando essas mudanças, nosso e-mail ficaria com o seguinte aspecto:
 
-![Email com web fonts customizadas](../images/tecnicas-para-codificar-um-e-mail-parte-4-1.png)
+![E-mail com web fonts customizadas](../images/tecnicas-para-codificar-um-e-mail-parte-4-1.png)
 
 ## Dicas
 - É sempre bom colocar comentários separando blocos, para se organizar. Por exemplo:
@@ -105,11 +105,11 @@ Aplicando essas mudanças, nosso email ficaria com o seguinte aspecto:
         <!-- /cabeçalho -->
     ```
 
-- Sempre idente o código para saber exatamente onde as tags estão sendo abertas e fechadas. Isso ajuda bastante no momento de inspecionar para encontrar erros de fechamento de tag.
+- Sempre indente o código para saber exatamente onde as tags estão sendo abertas e fechadas. Isso ajuda bastante no momento de inspecionar para encontrar erros de fechamento de tag.
 
 - Use alguma ferramenta para testar a visualização do e-mail. Hoje já temos ferramentas como [Litmus](https://litmus.com/) que ajuda nesse processo.
 
-- Não reencaminhe o seu e-mail para testar em outro cliente, muitas vezes ocorrem alterações que acabam não refletindo a realidade. Por isso sempre envie o diretamente o e-mail.
+- Não reencaminhe o seu e-mail para testar em outro cliente, muitas vezes ocorrem alterações que acabam não refletindo a realidade. Por isso, sempre envie diretamente o e-mail.
 
 ## Conclusão
 Com as mudanças dos clientes de e-mails, ficou bem mais fácil desenvolver e-mails responsivos. Principalmente com o suporte a tag `style` no cabeçalho, será possível abandonar o uso do css inline e passar a utilizar seletores nos e-mails, facilitando a manutenção e organização do nosso código.
