@@ -1,5 +1,5 @@
 ---
-title: Conheçendo o Dust.js, uma biblioteca de template para javascript para seus projetos.
+title: Conheçendo o Dust.js, uma biblioteca de template para javascript
 date: 2018-06-04
 category: front-end
 layout: post
@@ -15,9 +15,9 @@ O time de front-end do Elo7 está sempre buscando novas tecnologias para compor 
 
 ## Por que escolhemos o Dust.js?
 
-Antes começar a falar sobre o Dust.js, preciso fazer um resumo do porque que escolhemos usá-lo e não outras soluções existentes no mercado. E uma palavra pode resumir isso: PERFORMANCE! Sim, a partir de vários testes em diversas bibliotecas, concluímos que a performance do Dust.js atenderia melhor a nossa necessidade. Sem contar que estavamos buscando uma solução para usarmos do lado cliente (Client Side Render) quanto no servidor (Server Side Render), o famoso isomorfismo. Caso queria saber mais sobre Javascript isomórfico, recomendo ler o [post](https://engenharia.elo7.com.br/isomorfismo/) da [Fernanda Bernardo](https://engenharia.elo7.com.br/fernandabernardo/) sobre o assunto.
+Antes de começar a falar sobre o Dust.js, preciso fazer um resumo do porque escolhemos usá-lo e não outras soluções existentes no mercado. E uma palavra pode resumir isso: PERFORMANCE! Sim, a partir de vários testes em diversas bibliotecas, concluímos que a performance do Dust.js atenderia melhor a nossa necessidade. Sem contar que estavamos buscando uma solução para usarmos do lado do cliente (Client Side Render) quanto no servidor (Server Side Render), o famoso isomorfismo. Caso queria saber mais sobre Javascript isomórfico, recomendo ler o [post](https://engenharia.elo7.com.br/isomorfismo/) da [Fernanda Bernardo](https://engenharia.elo7.com.br/fernandabernardo/) sobre o assunto.
 
-A permissa do Dust.js é não ter lógica na camada de visualização (view), mesmo você podendo para fazer esse tipo de abordagem, no Dust.js a idéia é manter essa lógica na camada modelo (model), assim conseguimos manter nossas *views* sem regras de negócios. Enxergamos isso como uma boa prática, até porque se pensaramos melhor, não é a *view* que tem que cuidar se um conteúdo vai aparecer ou não na tela, concorda?
+A premissa do Dust.js é não ter lógica na camada de visualização (view), mesmo você podendo fazer esse tipo de abordagem. No Dust.js a ideia é manter essa lógica na camada modelo (model), assim conseguimos manter nossas *views* sem regras de negócios. Enxergamos isso como uma boa prática, até porque, se pensarmos melhor, não é a *view* que tem que cuidar se um conteúdo vai aparecer ou não na tela, concorda?
 
 Na prática, seria como o exemplo abaixo:
 
@@ -33,7 +33,7 @@ Na prática, seria como o exemplo abaixo:
 {/eq}
 ```
 
-Ao invés de escrever todos esses códigos (no post sobre helpers, explicarei sobre o `@eq` e `@gt`) no nosso template, escrevemos nosssa lógica no modelo. Reescrevendo o código acima, ficaria assim:
+Ao invés de escrever todo esse código (no post sobre helpers, explicarei sobre o `@eq` e `@gt`) no nosso template, escrevemos nosssa lógica no modelo. Reescrevendo o código acima, ficaria assim:
 
 ```javascript
 {#elo7UserLogin}
@@ -45,7 +45,7 @@ O `elo7UserLogin` é nosso objeto modelo, nele que podemos ter funções que ir�
 
 ## Iniciando o Dust.js
 
-Nessa primeira parte, vamos ver como funciona o "comportamento" e entender contexto da biblioteca. Para iniciar, vamos criar uma estrutura básica.
+Nessa primeira parte, vamos ver como funciona o "comportamento" e entender o contexto da biblioteca. Para iniciar, vamos criar uma estrutura básica.
 
 <a class="jsbin-embed" href="http://jsbin.com/qatizuf/3/embed?html,output"></a><script src="http://static.jsbin.com/js/embed.min.js?4.1.4"></script>
 
@@ -56,7 +56,7 @@ Fazendo um resumo de como o código acima funciona, teríamos a seguinte estrutu
 - Criamos um template (usando [Template Strings](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript/Reference/template_strings)) e um objeto modelo;
 - Usamos o metódo `renderSource` para renderizar os dados, template e escrever no nosso HTML.
 
-Se você já utilizou alguma *template engine* para javascript ([handlebars](), [mustache](), etc...) vai perceber que o uso do Dust.js é bem similar. Precisamos criar um objeto modelo e usamos as chaves desse objeto para adicionar os dados na tela. Até ai, nada diferente, correto?
+Se você já utilizou alguma *template engine* para javascript ([handlebars](https://handlebarsjs.com/), [mustache](http://mustache.github.io/), etc...) vai perceber que o uso do Dust.js é bem similar. Precisamos criar um objeto modelo e usamos as chaves desse objeto para adicionar os dados na tela. Até ai, nada diferente, correto?
 
 ## Entendendo contexto
 
@@ -66,10 +66,10 @@ O Dust.js trabalha com contexto global e isso pode soar bastante estranho no com
 
 Analisando o código, estamos pecorrendo o objeto modelo para acessar os valores das chaves `{name}`, `{age}` e `{city}`, mas se você observou com atenção, a chave `{city}` não está associada a chave `persona` e mesmo assim conseguimos executar o código. Estranho não?
 
-No Dust.js, os dados do nosso objeto modelo são lidos de "dentro para fora". Ou seja, ao percorrer a chave `{persona}`, conseguimos acessar as chaves daquele *nó*, mas caso não encontre uma chave que esteja sendo usado no template, o Dust.js irá buscar a chave fora desse *nó* e por isso que o nosso código é executado sem quebrar. Soa bastante perigoso esse comportamento quando não temos controle dos dados (no caso de usar uma API de terceiros, por exemplo), mas isso é uma das "coisas" estranhas que observamos durante esse tempo de uso da biblioteca e passamos ter mais cuidado quando escrevemos nossos códigos.
+No Dust.js, os dados do nosso objeto modelo são lidos de "dentro para fora". Ou seja, ao percorrer a chave `{persona}`, conseguimos acessar as chaves daquele *nó*, mas caso não encontre uma chave que esteja sendo usado no template, o Dust.js irá buscar a chave fora desse *nó* e por isso que o nosso código é executado sem quebrar. Soa bastante perigoso esse comportamento quando não temos controle dos dados (no caso de usar uma API de terceiros, por exemplo), mas isso é uma das "coisas" estranhas que observamos durante esse tempo de uso da biblioteca e passamos a ter mais cuidado quando escrevemos nossos códigos.
 
 # Conclusão
 
-Vimos nessa primeira parte o conceito por trás da bibloteca e o como funciona o seu contexto, que num primeiro contato pode parecer muito estranho mas garante códigos mais "seguros".
+Vimos nessa primeira parte o conceito por trás da bibloteca e como funciona o seu contexto, que em um primeiro contato pode parecer muito estranho mas garante códigos mais "seguros".
 
 Nos próximos posts, iremos abordar sobre iteração de dado, condicionais, filtros e *helpers*. Caso não queria perder os próximos posts e também acompanhar os novos, assine nossa [newsletter](http://eepurl.com/cVUwvH) ou acompanhe nosso feed [RSS](https://engenharia.elo7.com.br/rss.xml).
