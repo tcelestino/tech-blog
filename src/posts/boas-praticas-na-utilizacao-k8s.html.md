@@ -16,12 +16,12 @@ O Kubernetes é uma ferramenta para orquestração de containers extremamente co
 
 ## Autenticação e autorização
 
-Existem várias estrátegias de [autenticação](https://kubernetes.io/docs/admin/authentication/#authentication-strategies) no Kubernetes, aqui no Elo7 usamos certificados x509 que são gerados pelo [vault](https://www.vaultproject.io/), no nosso caso a autorização é feita pelo vault com base no usuário do GitHub. Independentemente da estratégia adotada a ideia aqui é não deixar o cluster acessível sem autenticação e preferencialmente que esja adotado um mecanismo de autorização com base nas permissões que cada usuário precise.
+Existem várias estrátegias de [autenticação](https://kubernetes.io/docs/admin/authentication/#authentication-strategies) no Kubernetes aqui no Elo7 usamos certificados x509 que são gerados pelo [vault](https://www.vaultproject.io/) no nosso caso a autorização é feita pelo vault com base no usuário do GitHub. Independentemente da estratégia adotada a ideia aqui, é não deixar o cluster acessível sem autenticação e preferencialmente que seja adotado um mecanismo de autorização com base nas permissões que cada usuário precise.
 
 
 ## Liveness e Readiness probes
 
-Por padrão para o Kubenetes o seu container estará apto a receber requisições a partir do momento em que o pod estiver com o status de _Ready_, mas não necessariamente ele está de fato pronto para receber as requisições. Um bom exemplo disso seria de uma aplicação Java com spring que pode levar alguns segundos até carregar todas as suas dependências e iniciar a app, nesse meio tempo as requisições que forem encaminhadas para esse pod retornaram erro 500 para o [Service](https://kubernetes.io/docs/concepts/services-networking/service/) e consequentemente para o usuário. Pensando nisso existe uma técnica para garantir que o pod só receberá requisições quando a app estiver pronta, podemos fazer isso usando [readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-readiness-probes). Vejamos abaixo um exemplo:
+Para o Kubernetes, por padrão, o seu container estará apto a receber requisições a partir do momento em que o pod estiver com o status de _Ready_, mas não necessariamente ele está de fato pronto para receber as requisições. Um bom exemplo disso seria de uma aplicação Java com spring que pode levar alguns segundos até carregar todas as suas dependências e iniciar a app. Nesse meio tempo as requisições que forem encaminhadas para esse pod retornaram erro 500 para o [Service](https://kubernetes.io/docs/concepts/services-networking/service/) e consequentemente para o usuário. Pensando nisso, existe uma técnica para garantir que o pod só receberá requisições quando a app estiver pronta, podemos fazer isso usando [readiness probe](https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-probes/#define-readiness-probes). Vejamos abaixo um exemplo:
 
 ```yaml
 readinessProbe:
@@ -33,7 +33,7 @@ readinessProbe:
   successThreshold: 3
 ```
 
-**initialDelaySeconds** = Números de segundos após o container ser iniciado que o kubernetes espera antes de realizar uma operação de _readiness_ ou _liveness_
+**initialDelaySeconds** = Números de segundos que o kubernetes espera antes de realizar uma operação de _readiness_ ou _liveness_ após o container ser iniciado.
 
 **periodSeconds** = De quanto em quanto segundos o kubernetes deve realizar uma operação de _readiness_ ou _liveness_
 
@@ -41,7 +41,7 @@ readinessProbe:
 
 No nosso exemplo estamos realizando um GET em `POD_IP:8080/health`
 
-Assim como temos o `readinessProbe` para avaliar se o pod está pronto, também temos o `livenessProbe` para dizer se o pod está vivo, ou seja, para dizer se a app está de pé ou não. O funcionamento é basicamente o mesmo do `readinessProbe`. É importante descatar que essas checagens podem ser feitas com comandos também. Vejamos um exemplo:
+Assim como temos o `readinessProbe` para avaliar se o pod está pronto, também temos o `livenessProbe` para dizer se o pod está vivo, ou seja, para dizer se a app está de pé ou não. O funcionamento é basicamente o mesmo do `readinessProbe`. É importante destacar que essas checagens podem ser feitas com comandos também. Vejamos um exemplo:
 
 ```yaml
 readinessProbe:
@@ -60,8 +60,9 @@ Nesse caso o que vai considerar esse container como saudável é a existencia do
 
 Por padrão se não informado nada o kubernetes irá subir seus containers sem limites para uso de CPU e memória por exemplo. Quando estamos definindo alguns objetos como [deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/) temos a possibilidade de configurar valores de requests e limits na sessão de [`resources`](https://kubernetes.io/docs/concepts/configuration/manage-compute-resources-container/). Vejamos abaixo o que cada um significa e um exemplo de implementação:
 
-**requests** = Qual o valor de CPU e memória que o Kubernetes precisa reservar para o meu container ser iniciado
-**limits** = Qual o valor máximo de CPU e memória que meu container pode consumir no Kubenetes
+**requests** = Qual o valor de CPU e memória que o Kubernetes precisa reservar para o meu container ser iniciado.
+
+**limits** = Qual o valor máximo de CPU e memória que meu container pode consumir no Kubernetes.
 
 
 ```yaml
@@ -78,7 +79,7 @@ Neste caso estamos definindo 512MB de memória/2000 millicores para limits e 128
 
 ## Definindo limits padrão
 
-Como dito anteriormente, em configurações padrões e se não for informado nada na criação do _deployment_, o kubernetes ira criar o mesmo com recursos "ilimitados". Para contornar essa situação o Kubernetes disponibiliza de um recurso que defini valores de `requests` e `limits` _defaults_ caso não seja informado. Isso pode ser feito utilizando o objeto [`LimitRange`](https://kubernetes.io/docs/tasks/administer-cluster/memory-default-namespace/)
+Como dito anteriormente, em configurações padrões e se não for informado nada na criação do _deployment_, o kubernetes ira criar o mesmo com recursos "ilimitados". Para contornar essa situação o Kubernetes disponibiliza de um recurso que define valores de `requests` e `limits` _defaults_ caso não seja informado. Isso pode ser feito utilizando o objeto [`LimitRange`](https://kubernetes.io/docs/tasks/administer-cluster/memory-default-namespace/)
 
 ```yaml
 apiVersion: v1
@@ -149,4 +150,4 @@ spec:
 
 ## Conclusão
 
-Nesse _post_ elecamos alguns dos muitos tópicos que precisam ser tratados junto com a implementação do Kubernetes em produção. E você? como está lidando com os desafios e dilemas na implementação em sua empresa? aproveite o espaço no campo de comentários para deixar seu ponto de vista ou compartilhar como você lidou com esses desafios. Um abraço e até a próxima!
+Nesse _post_ elencamos alguns dos muitos tópicos que precisam ser tratados junto com a implementação do Kubernetes em produção. E você? como está lidando com os desafios e dilemas na implementação em sua empresa? aproveite o espaço no campo de comentários para deixar seu ponto de vista ou compartilhar como você lidou com esses desafios. Um abraço e até a próxima!
