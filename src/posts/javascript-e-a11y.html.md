@@ -1,5 +1,5 @@
 ---
-date: 2018-04-02
+date: 2018-07-16
 category: front-end
 tags:
   - acessibilidade
@@ -12,7 +12,9 @@ title: Javascript e acessibilidade
 description: Javascript: herói ou vilão da acessibilidade na web? Neste post, vamos discutir que cuidados precisamos tomar para que o Javascript não se torne fogo amigo na luta por uma web mais acessível.
 ---
 
-Se temos uma web rica em termos de experiência do usuário, muito se deve ao Javascript, que nos permite criar componentes dinâmicos e torna a web uma plataforma muito mais interativa. Porém, com grandes poderes, vêm grandes responsabilidades e, se não tomarmos cuidado, dependendo da solução que implementarmos, podemos prejudicar a usabilidade e a acessibilidade das nossas interfaces.
+![Javascript: herói ou vilão da acessibilidade?](../images/javascript-e-a11y-capa.jpg)
+
+Se temos uma web rica em termos de experiência do usuário, muito se deve ao Javascript, que nos permite criar componentes dinâmicos e torna a web uma plataforma muito mais interativa. Porém, com grandes poderes, vêm grandes responsabilidades e, se não tomarmos cuidado, dependendo da solução que implementarmos, podemos prejudicar a usabilidade e a acessibilidade das nossas interfaces. [Num post anterior](/um-pouco-sobre-css-js-a11y/), vimos que até o CSS pode atrapalhar em alguns casos, quem dirá o Javascript!
 
 Considere por exemplo a tarefa de preencher um formulário online. O Javascript pode ajudar muito ao validar e formatar automaticamente os dados preenchidos. Ou então ao esconder e mostrar elementos conforme o progresso de preenchimento.
 
@@ -26,13 +28,19 @@ Esses são casos em que a usabilidade, de uma forma geral, acaba ficando prejudi
 
 ## Validação de formulários
 
-Quando implementamos uma validação de formulários com Javascript, normalmente nos preocupamos apenas em fazer com que as mensagens de erro apareçam ou desapareçam corretamente, de acordo com a edição feita pelo usuário. [Uma solução bem simples para essa tarefa pode ser acessada aqui](https://codepen.io/lreal/pen/pLKrRP).
+Quando implementamos uma validação de formulários com Javascript, normalmente nos preocupamos apenas em fazer com que as mensagens de erro apareçam ou desapareçam corretamente, de acordo com a edição feita pelo usuário. <a href='https://codepen.io/lreal/pen/pLKrRP' target='_blank'>Uma solução bem simples para essa tarefa pode ser acessada aqui</a>.
 
-![Mensagem de erro customizada sendo exibida pelo código de exemplo](../images/javascript-e-a11y-2.png)
+<figure>
+  <img src='../images/javascript-e-a11y-2.png' alt='Formulário com mensagem de erro de validação sem estilização'>
+  <figcaption>Mensagem de erro customizada sendo exibida pelo código de exemplo</figcaption>
+</figure>
 
-Note que, sem uma estilização básica da mensagem de erro, pode ser bem difícil identificá-la no meio do formulário! [Num post anterior](/um-pouco-sobre-css-js-a11y/), vimos como a estilização pode prejudicar a acessibilidade de uma página; porém, **esse é um caso em que a estilização ajuda muito a deixar a página mais acessível**, em especial para usuários com alguma deficiência cognitiva. [Veja aqui como poderia ser uma estilização simples para essa mensagem de erro](https://codepen.io/lreal/pen/jzKLLB).
+Note que, sem uma estilização básica da mensagem de erro, pode ser bem difícil identificá-la no meio do formulário! [Num post anterior](/um-pouco-sobre-css-js-a11y/), vimos como a estilização pode prejudicar a acessibilidade de uma página; porém, **esse é um caso em que a estilização ajuda muito a deixar a página mais acessível**, em especial para usuários com alguma deficiência cognitiva. <a href='https://codepen.io/lreal/pen/jzKLLB' target='_blank'>Veja aqui como poderia ser uma estilização simples para essa mensagem de erro</a>.
 
-![Mensagem de erro estilizada](../images/javascript-e-a11y-3.png)
+<figure>
+  <img src='../images/javascript-e-a11y-3.png' alt='Formulário com mensagens de erro de validação estilizadas'>
+  <figcaption>Mensagem de erro estilizada</figcaption>
+</figure>
 
 Além da melhoria visual, são necessárias *melhorias semânticas* no nosso código. Sem elas, uma ferramenta assistiva, como um leitor de tela, não sabe informar ao usuário que o elemento que colocamos na página via Javascript é uma mensagem de erro de validação. Isso pode fazer com que o usuário sequer perceba que há um erro no formulário!
 
@@ -50,13 +58,13 @@ Uma primeira melhoria que podemos fazer, então, é ligar cada campo *semanticam
 </div>
 ```
 
-Como a ideia é adicionar a mensagem de erro via Javascript, é necessário gerar dinamicamente um *id* para a mensagem, a fim de colocá-lo no atributo `aria-describedby`. Além disso, a adição ou remoção do *id* da mensagem do atributo `aria-describedby` deve ser feita com cautela para não destruir o conteúdo original desse atributo (caso ele já venha preenchido no carregamento da página). Apesar de não ser muito simples, essa é uma alteração que já ajuda bastante o usuário e que só precisa ser feita na biblioteca de validação, ou seja, uma única vez. Caso você use uma biblioteca de validação Javascript que leva acessibilidade em conta, provavelmente ela já cuida disso para você. [Aqui, você pode testar o formulário com a implementação do controle do atributo `aria-describedby`](https://codepen.io/lreal/pen/PRaKBN).
+Como a ideia é adicionar a mensagem de erro via Javascript, é necessário gerar dinamicamente um *id* para a mensagem, a fim de colocá-lo no atributo `aria-describedby`. Além disso, a adição ou remoção do *id* da mensagem do atributo `aria-describedby` deve ser feita com cautela para não destruir o conteúdo original desse atributo (caso ele já venha preenchido no carregamento da página). Apesar de não ser muito simples, essa é uma alteração que já ajuda bastante o usuário e que só precisa ser feita na biblioteca de validação, ou seja, uma única vez. Caso você use uma biblioteca de validação Javascript que leva acessibilidade em conta, provavelmente ela já cuida disso para você. <a href='https://codepen.io/lreal/pen/PRaKBN' target='_blank'>Aqui, você pode testar o formulário com a implementação do controle do atributo `aria-describedby`</a>.
 
 Ouça, abaixo, como é feita a leitura de um campo com erro de validação.
 
 <audio controls src="../audios/javascript-e-a11y-1.mp3"></audio>
 
-Se a mensagem de erro não for lida, fica muito mais difícil de o usuário entender o que está acontecendo. Assim, com essa alteração no código, já melhoramos bastante a acessibilidade. Mas ainda assim o usuário pode ficar perdido, pois o simples fato de as mensagens serem acrescentadas na tela não faz com que elas sejam lidas automaticamente. Além disso, se fosse apenas dito para o usuário "Campo obrigatório", como ele saberia a qual campo a mensagem se refere? Por isso, precisamos fazer *pelo menos* mais uma alteração: quando um ou mais campos estiverem inválidos, devemos **mover o foco do teclado para o primeiro campo inválido**. [Teste aqui a versão com essa alteração](https://codepen.io/lreal/pen/wmXrWr) e veja que ela ajuda todos os usuários, não apenas aqueles que dependem de leitores de tela. Eis um exemplo claro de que **melhorias de acessibilidade ajudam todos os usuários**.
+Se a mensagem de erro não for lida, fica muito mais difícil de o usuário entender o que está acontecendo. Assim, com essa alteração no código, já melhoramos bastante a acessibilidade. Mas ainda assim o usuário pode ficar perdido, pois o simples fato de as mensagens serem acrescentadas na tela não faz com que elas sejam lidas automaticamente. Além disso, se fosse apenas dito para o usuário "Campo obrigatório", como ele saberia a qual campo a mensagem se refere? Por isso, precisamos fazer *pelo menos* mais uma alteração: quando um ou mais campos estiverem inválidos, devemos **mover o foco do teclado para o primeiro campo inválido**. <a href='https://codepen.io/lreal/pen/wmXrWr' target='_blank'>Teste aqui a versão com essa alteração</a> e veja que ela ajuda todos os usuários, não apenas aqueles que dependem de leitores de tela. Eis um exemplo claro de que **melhorias de acessibilidade ajudam todos os usuários**.
 
 ## Conclusão
 
