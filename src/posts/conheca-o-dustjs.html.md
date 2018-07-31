@@ -1,6 +1,6 @@
 ---
 title: Conheçendo o Dust.js, uma biblioteca de template para javascript
-date: 2018-06-04
+date: 2018-07-31
 category: front-end
 layout: post
 description: Nesse primeiro post, conheça sobre o Dust.js, biblioteca para trabalhar com templates no cliente e no servidor.
